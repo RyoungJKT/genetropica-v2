@@ -352,6 +352,97 @@ def _generate_literature(
     logger.info("Inserted %d literature entries", count)
 
 
+# Residue data for generating realistic protein-ligand interactions
+_RESIDUE_NAMES = [
+    "ALA", "ARG", "ASN", "ASP", "CYS", "GLN", "GLU", "GLY",
+    "HIS", "ILE", "LEU", "LYS", "MET", "PHE", "PRO", "SER",
+    "THR", "TRP", "TYR", "VAL",
+]
+
+_INTERACTION_TYPES = [
+    "hydrogen_bond",
+    "hydrophobic",
+    "pi_stacking",
+    "salt_bridge",
+    "water_bridge",
+    "pi_cation",
+]
+
+# Weights for interaction type selection (H-bonds and hydrophobic most common)
+_INTERACTION_WEIGHTS = [0.35, 0.30, 0.12, 0.08, 0.08, 0.07]
+
+# Binding site residue ranges for each target (approximate active site regions)
+_BINDING_SITES: dict[str, list[tuple[int, int, str]]] = {
+    "DENV_NS3": [(51, 85, "A"), (130, 165, "A"), (150, 175, "B")],
+    "DENV_NS5": [(270, 310, "A"), (340, 370, "A"), (460, 500, "A")],
+    "DENV_E": [(98, 130, "A"), (195, 225, "A"), (270, 295, "B")],
+    "CHIKV_nsP2": [(475, 510, "A"), (540, 580, "A"), (590, 615, "A")],
+    "CHIKV_nsP1": [(25, 60, "A"), (85, 120, "A"), (155, 180, "A")],
+    "LEPTO_LipL32": [(40, 75, "A"), (120, 155, "A"), (180, 210, "A")],
+}
+
+
+def _generate_interactions(
+    conn, drug_ids: list[str], target_ids: list[str]
+) -> None:
+    """Generate mock protein-ligand interactions for each docking pose."""
+    count = 0
+    for drug_id in drug_ids:
+        for target_id in target_ids:
+            binding_regions = _BINDING_SITES.get(target_id, [(50, 150, "A")])
+
+            for pose_rank in range(1, 4):
+                # Each pose has 4-10 interactions
+                n_interactions = random.randint(4, 10)
+
+                for _ in range(n_interactions):
+                    region = random.choice(binding_regions)
+                    res_start, res_end, chain = region
+
+                    residue_name = random.choice(_RESIDUE_NAMES)
+                    residue_number = random.randint(res_start, res_end)
+
+                    interaction_type = random.choices(
+                        _INTERACTION_TYPES,
+                        weights=_INTERACTION_WEIGHTS,
+                        k=1,
+                    )[0]
+
+                    # Realistic distance ranges by interaction type
+                    if interaction_type == "hydrogen_bond":
+                        distance = round(random.uniform(2.5, 3.5), 2)
+                    elif interaction_type == "hydrophobic":
+                        distance = round(random.uniform(3.3, 4.5), 2)
+                    elif interaction_type == "pi_stacking":
+                        distance = round(random.uniform(3.4, 4.2), 2)
+                    elif interaction_type == "salt_bridge":
+                        distance = round(random.uniform(2.8, 4.0), 2)
+                    elif interaction_type == "water_bridge":
+                        distance = round(random.uniform(2.6, 3.8), 2)
+                    else:  # pi_cation
+                        distance = round(random.uniform(3.2, 4.5), 2)
+
+                    conn.execute(
+                        """INSERT INTO interactions
+                           (drug_id, target_id, pose_rank, residue_name,
+                            residue_number, chain, interaction_type, distance)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                        (
+                            drug_id,
+                            target_id,
+                            pose_rank,
+                            residue_name,
+                            residue_number,
+                            chain,
+                            interaction_type,
+                            distance,
+                        ),
+                    )
+                    count += 1
+
+    logger.info("Inserted %d interaction records", count)
+
+
 def main() -> None:
     """Generate all mock data and populate the database."""
     logger.info("Initializing database...")
@@ -365,6 +456,7 @@ def main() -> None:
         _generate_ml_scores(conn, drug_ids, target_ids, best_vina)
         _generate_admet(conn, drug_ids)
         _generate_literature(conn, drug_ids, target_ids)
+        _generate_interactions(conn, drug_ids, target_ids)
         conn.commit()
         logger.info("Mock data generation complete.")
     finally:
@@ -374,7 +466,10 @@ def main() -> None:
     conn = get_connection()
     try:
         print("\n--- Database Summary ---")
-        for table in ["drugs", "targets", "docking_results", "ml_scores", "admet", "literature"]:
+        for table in [
+            "drugs", "targets", "docking_results", "ml_scores",
+            "admet", "literature", "interactions",
+        ]:
             count = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
             print(f"  {table}: {count} rows")
     finally:

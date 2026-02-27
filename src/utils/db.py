@@ -76,6 +76,19 @@ CREATE TABLE IF NOT EXISTS literature (
     relationship TEXT,
     confidence REAL
 );
+
+-- Protein-ligand interactions
+CREATE TABLE IF NOT EXISTS interactions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    drug_id TEXT REFERENCES drugs(drug_id),
+    target_id TEXT REFERENCES targets(target_id),
+    pose_rank INTEGER,
+    residue_name TEXT,
+    residue_number INTEGER,
+    chain TEXT,
+    interaction_type TEXT,
+    distance REAL
+);
 """
 
 
@@ -242,3 +255,20 @@ def get_drug_literature(drug_id: str, target_id: Optional[str] = None) -> pd.Dat
 def get_all_targets() -> pd.DataFrame:
     """Get all protein targets."""
     return _query_df("SELECT * FROM targets ORDER BY disease, name")
+
+
+def get_interactions(
+    drug_id: str, target_id: str, pose_rank: int = 1
+) -> pd.DataFrame:
+    """Get protein-ligand interactions for a specific docking pose.
+
+    Returns DataFrame with columns: residue_name, residue_number, chain,
+    interaction_type, distance.
+    """
+    return _query_df(
+        """SELECT residue_name, residue_number, chain, interaction_type, distance
+           FROM interactions
+           WHERE drug_id = ? AND target_id = ? AND pose_rank = ?
+           ORDER BY interaction_type, residue_number""",
+        (drug_id, target_id, pose_rank),
+    )
