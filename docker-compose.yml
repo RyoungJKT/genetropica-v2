@@ -7,4 +7,5 @@ services:
     volumes:
       - ./data:/app/data
     environment:
+      # Demo mode: uses synthetic mock data. Set to "false" for real pipeline data.
       - USE_MOCK_DATA=true
