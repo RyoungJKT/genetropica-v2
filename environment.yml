@@ -1,0 +1,29 @@
+name: genetropica
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - rdkit>=2023.03
+  - openbabel>=3.1
+  - numpy>=1.24
+  - pandas>=2.0
+  - scipy>=1.10
+  - matplotlib>=3.7
+  - pip
+  - pip:
+      - streamlit>=1.28
+      - plotly>=5.15
+      - py3Dmol>=2.0
+      - deepchem>=2.7
+      - biopython>=1.80
+      - transformers>=4.30
+      - scispacy>=0.5
+      - vina>=1.2
+      - requests>=2.31
+      - beautifulsoup4>=4.12
+      - sqlalchemy>=2.0
+      - pytest>=7.4
+      - black>=23.7
+      - isort>=5.12
+      - flake8>=6.1

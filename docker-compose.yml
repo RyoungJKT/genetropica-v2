@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  genetropica:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - USE_MOCK_DATA=true

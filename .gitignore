@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.local
+
+# Molecular data files
+*.pdbqt
+*.sdf
+
+# Data directories (large/generated files)
+data/raw/
+data/docking_results/
+
+# Database
+*.db
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Byte-compiled
+*.pyc
+
+# Distribution
+*.tar.gz
+*.whl
