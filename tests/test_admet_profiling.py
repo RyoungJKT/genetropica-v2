@@ -12,6 +12,8 @@ from src.admet.descriptors import (
     check_brenk,
     estimate_esol,
 )
+from src.admet.boiled_egg import classify_absorption, classify_bbb
+from src.admet.profiles import profile_drug, save_profiles, load_profiles
 
 
 # Known molecule SMILES
@@ -178,3 +180,75 @@ class TestBrenk:
     def test_invalid_smiles_empty(self):
         alerts = check_brenk(INVALID_SMILES)
         assert alerts == []
+
+
+class TestBoiledEgg:
+    def test_aspirin_high_gi_absorption(self):
+        d = compute_descriptors(ASPIRIN)
+        result = classify_absorption(d["tpsa"], d["logp"])
+        assert result == "High"
+
+    def test_aspirin_bbb(self):
+        d = compute_descriptors(ASPIRIN)
+        result = classify_bbb(d["tpsa"], d["logp"])
+        assert result in ("Yes", "No")
+
+    def test_high_tpsa_low_absorption(self):
+        result = classify_absorption(tpsa=200.0, wlogp=-2.0)
+        assert result == "Low"
+
+    def test_extreme_logp_no_bbb(self):
+        result = classify_bbb(tpsa=50.0, wlogp=6.0)
+        assert result == "No"
+
+    def test_bbb_yolk_region(self):
+        result = classify_bbb(tpsa=30.0, wlogp=2.0)
+        assert result == "Yes"
+
+
+class TestProfileDrug:
+    def test_aspirin_profile_keys(self):
+        p = profile_drug(ASPIRIN)
+        required = {
+            "descriptors", "lipinski", "veber", "ghose", "egan",
+            "esol", "gi_absorption", "bbb_permeant",
+            "pains_alerts", "brenk_alerts", "drug_likeness_score",
+        }
+        assert required.issubset(p.keys())
+
+    def test_aspirin_drug_likeness_score(self):
+        p = profile_drug(ASPIRIN)
+        assert p["drug_likeness_score"] >= 3
+
+    def test_invalid_smiles_returns_none(self):
+        p = profile_drug(INVALID_SMILES)
+        assert p is None
+
+    def test_gi_absorption_is_string(self):
+        p = profile_drug(ASPIRIN)
+        assert p["gi_absorption"] in ("High", "Low")
+
+    def test_bbb_is_string(self):
+        p = profile_drug(ASPIRIN)
+        assert p["bbb_permeant"] in ("Yes", "No")
+
+    def test_esol_is_float(self):
+        p = profile_drug(ASPIRIN)
+        assert isinstance(p["esol"], float)
+
+
+class TestSaveLoadProfiles:
+    def test_round_trip(self, tmp_path):
+        profiles = [
+            {"drug_id": "D1", "smiles": ASPIRIN, **profile_drug(ASPIRIN)},
+        ]
+        path = save_profiles(profiles, tmp_path / "test_profiles.json")
+        assert path.exists()
+        loaded = load_profiles(path)
+        assert len(loaded) == 1
+        assert loaded[0]["drug_id"] == "D1"
+
+    def test_empty_profiles(self, tmp_path):
+        path = save_profiles([], tmp_path / "empty.json")
+        loaded = load_profiles(path)
+        assert loaded == []
