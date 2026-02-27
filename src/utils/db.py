@@ -272,3 +272,68 @@ def get_interactions(
            ORDER BY interaction_type, residue_number""",
         (drug_id, target_id, pose_rank),
     )
+
+
+# ─── Export helpers for CSV downloads ─────────────────────────
+
+
+def export_results_csv(target_id: str) -> pd.DataFrame:
+    """Full results table for a target — suitable for CSV export."""
+    return _query_df(
+        """
+        SELECT
+            d.drug_id, d.name, d.drugbank_id, d.original_indication,
+            d.smiles, d.molecular_weight, d.logp,
+            dr.vina_score, ml.ml_binding_score,
+            ml.consensus_score, ml.consensus_rank,
+            a.lipinski_pass, a.hepatotoxicity_risk, a.herg_inhibition_risk,
+            a.oral_bioavailability, a.overall_pass,
+            COALESCE(lit.lit_count, 0) AS literature_count
+        FROM drugs d
+        JOIN docking_results dr ON d.drug_id = dr.drug_id AND dr.pose_rank = 1
+        JOIN ml_scores ml ON d.drug_id = ml.drug_id AND dr.target_id = ml.target_id
+        LEFT JOIN admet a ON d.drug_id = a.drug_id
+        LEFT JOIN (
+            SELECT drug_id, target_id, COUNT(*) AS lit_count
+            FROM literature GROUP BY drug_id, target_id
+        ) lit ON d.drug_id = lit.drug_id AND dr.target_id = lit.target_id
+        WHERE dr.target_id = ?
+        ORDER BY ml.consensus_rank
+        """,
+        (target_id,),
+    )
+
+
+def export_top_candidates(target_id: str, n: int = 10) -> pd.DataFrame:
+    """Top N candidates for a target — ADMET-safe only."""
+    df = export_results_csv(target_id)
+    return df[df["overall_pass"] == 1].head(n)
+
+
+def export_admet_csv() -> pd.DataFrame:
+    """All ADMET profiles joined with drug names."""
+    return _query_df(
+        """
+        SELECT d.drug_id, d.name, d.drugbank_id,
+               a.lipinski_pass, a.hepatotoxicity_risk, a.herg_inhibition_risk,
+               a.oral_bioavailability, a.overall_pass
+        FROM admet a
+        JOIN drugs d ON a.drug_id = d.drug_id
+        ORDER BY d.name
+        """
+    )
+
+
+def export_literature_csv() -> pd.DataFrame:
+    """All literature evidence with drug and target names."""
+    return _query_df(
+        """
+        SELECT l.drug_id, d.name AS drug_name, l.target_id,
+               t.name AS target_name, t.disease,
+               l.pmid, l.title, l.relationship, l.confidence
+        FROM literature l
+        JOIN drugs d ON l.drug_id = d.drug_id
+        JOIN targets t ON l.target_id = t.target_id
+        ORDER BY t.disease, d.name, l.confidence DESC
+        """
+    )
