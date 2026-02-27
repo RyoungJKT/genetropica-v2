@@ -1,0 +1,29 @@
+{
+  "docking": {
+    "auc": 0.9331,
+    "ef_1pct": 8.67,
+    "ef_5pct": 11.82,
+    "ef_10pct": 7.43
+  },
+  "gnn": {
+    "auc": 0.9331,
+    "ef_1pct": 8.67,
+    "ef_5pct": 9.45,
+    "ef_10pct": 8.67
+  },
+  "consensus": {
+    "auc": 0.9906,
+    "ef_1pct": 26.0,
+    "ef_5pct": 16.55,
+    "ef_10pct": 9.9
+  },
+  "metadata": {
+    "n_actives": 8,
+    "n_decoys": 200,
+    "n_total": 208,
+    "seed": 42,
+    "target_pdb": "5ZQK",
+    "target_name": "DENV-2 NS5 RdRp"
+  },
+  "verdict": "EXCELLENT"
+}

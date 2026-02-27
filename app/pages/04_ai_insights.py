@@ -115,35 +115,27 @@ for idx, (_, row) in enumerate(top5.iterrows()):
         f"{'🟢' if admet['overall_pass'] else '🔴'} "
         f"**{drug_name}** — Rank #{int(row['consensus_rank'])}"
     ):
-        t1, t2, t3, t4, t5 = st.columns(5)
+        lip = admet["lipinski_pass"]
+        hep = admet["hepatotoxicity_risk"]
+        hep_ok = hep < 0.5
+        herg = admet["herg_inhibition_risk"]
+        herg_ok = herg < 0.5
+        bio = admet["oral_bioavailability"]
+        bio_ok = bio >= 0.5
+        overall = admet["overall_pass"]
+
+        t1, t2, t3 = st.columns(3)
 
         with t1:
-            lip = admet["lipinski_pass"]
-            st.markdown(f"{'🟢' if lip else '🔴'} **Lipinski**")
-            st.caption("Pass" if lip else "Fail")
+            st.markdown(f"{'🟢' if lip else '🔴'} **Lipinski** — {'Pass' if lip else 'Fail'}")
+            st.markdown(f"{'🟢' if hep_ok else '🔴'} **Hepatotox** — Risk {hep:.0%}")
 
         with t2:
-            hep = admet["hepatotoxicity_risk"]
-            hep_ok = hep < 0.5
-            st.markdown(f"{'🟢' if hep_ok else '🔴'} **Hepatotoxicity**")
-            st.caption(f"Risk: {hep:.0%}")
+            st.markdown(f"{'🟢' if herg_ok else '🔴'} **hERG** — Risk {herg:.0%}")
+            st.markdown(f"{'🟢' if bio_ok else '🟡'} **Bioavail** — {bio:.0%}")
 
         with t3:
-            herg = admet["herg_inhibition_risk"]
-            herg_ok = herg < 0.5
-            st.markdown(f"{'🟢' if herg_ok else '🔴'} **hERG**")
-            st.caption(f"Risk: {herg:.0%}")
-
-        with t4:
-            bio = admet["oral_bioavailability"]
-            bio_ok = bio >= 0.5
-            st.markdown(f"{'🟢' if bio_ok else '🟡'} **Bioavailability**")
-            st.caption(f"{bio:.0%}")
-
-        with t5:
-            overall = admet["overall_pass"]
-            st.markdown(f"{'🟢' if overall else '🔴'} **Overall**")
-            st.caption("Pass" if overall else "Fail")
+            st.markdown(f"{'🟢' if overall else '🔴'} **Overall** — {'Pass' if overall else 'Fail'}")
 
         # Mini radar
         st.plotly_chart(admet_radar(drug_id), use_container_width=True, key=f"admet_radar_{idx}")

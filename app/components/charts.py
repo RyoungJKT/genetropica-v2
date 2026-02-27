@@ -62,7 +62,7 @@ def score_comparison_bar(drug_id: str) -> go.Figure:
         xaxis_title="Absolute Binding Score (kcal/mol)",
         barmode="group",
         height=350,
-        margin=dict(l=10, r=10, t=40, b=10),
+        margin=dict(l=10, r=10, t=80, b=10),
         legend=dict(orientation="h", yanchor="bottom", y=1.02),
     )
     return fig
@@ -276,7 +276,7 @@ def vina_vs_ml_scatter(target_id: str) -> go.Figure:
         xaxis_title="Vina Score (kcal/mol)",
         yaxis_title="ML Binding Score (kcal/mol)",
         height=500,
-        margin=dict(l=10, r=10, t=40, b=10),
+        margin=dict(l=10, r=10, t=80, b=10),
         legend=dict(orientation="h", yanchor="bottom", y=1.02),
     )
     return fig
@@ -322,7 +322,7 @@ def admet_overview_bars() -> go.Figure:
         yaxis_title="Number of Drugs",
         barmode="group",
         height=350,
-        margin=dict(l=10, r=10, t=40, b=10),
+        margin=dict(l=10, r=10, t=80, b=10),
         legend=dict(orientation="h", yanchor="bottom", y=1.02),
     )
     return fig

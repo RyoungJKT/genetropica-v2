@@ -95,6 +95,7 @@ st.divider()
 
 st.info(
     "👈 Use the **sidebar** to navigate between pages: Disease Overview, "
-    "Drug Explorer, Binding Viewer, AI Insights, and Methods.",
+    "Drug Explorer, Binding Viewer, AI Insights, Methods, and "
+    "Methodology Validation.",
     icon="ℹ️",
 )
