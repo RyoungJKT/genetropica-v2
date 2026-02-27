@@ -54,7 +54,8 @@ with st.sidebar:
     st.divider()
     st.markdown(
         "**Navigate** using the pages in the sidebar to explore disease targets, "
-        "drug candidates, binding results, and AI-driven insights."
+        "drug candidates, binding interactions, AI insights, methods, "
+        "validation, conservation analysis, and ADMET profiling."
     )
     st.divider()
     st.markdown(
@@ -88,8 +89,11 @@ with col2:
     st.markdown("#### 💊 50 Drug Candidates")
     st.markdown("FDA-approved drugs screened for repurposing potential")
 with col3:
-    st.markdown("#### 🔬 5-Stage Pipeline")
-    st.markdown("From molecular docking to AI-powered scoring and evidence mining")
+    st.markdown("#### 🔬 7-Stage Pipeline")
+    st.markdown(
+        "From molecular docking to AI scoring, conservation analysis, "
+        "and ADMET profiling"
+    )
 
 st.divider()
 
