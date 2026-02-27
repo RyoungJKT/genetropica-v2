@@ -168,3 +168,6 @@ for i, (title, icon, desc) in enumerate(stages):
 
 st.divider()
 st.caption("Data sources: RCSB PDB, DrugBank, ZINC15, PubMed, WHO, Indonesian Ministry of Health")
+st.caption(
+    "GeneTropica v2 — Disease Overview | Russell Young, British School Jakarta"
+)

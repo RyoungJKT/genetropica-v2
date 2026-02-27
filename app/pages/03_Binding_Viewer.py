@@ -257,3 +257,8 @@ else:
         f"**{len(interactions_df)}** interactions across **{n_residues}** unique residues  |  "
         f"Average interaction distance: **{avg_dist:.2f} A**"
     )
+
+st.divider()
+st.caption(
+    "GeneTropica v2 — Binding Viewer | Russell Young, British School Jakarta"
+)

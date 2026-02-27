@@ -277,3 +277,8 @@ uses text classification to categorize the relationship type
 (therapeutic, mechanistic, adverse, etc.) and assigns a confidence
 score based on the strength of the evidence.
 """)
+
+st.divider()
+st.caption(
+    "GeneTropica v2 — AI Insights | Russell Young, British School Jakarta"
+)

@@ -537,6 +537,5 @@ with st.expander("Analysis Parameters"):
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Evolutionary Conservation Analysis  |  "
-    "Russell Young, British School Jakarta"
+    "GeneTropica v2 — Conservation Analysis | Russell Young, British School Jakarta"
 )

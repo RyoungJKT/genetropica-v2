@@ -434,6 +434,5 @@ https://github.com/RyoungJKT/genetropica-v2""",
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Built by Russell Young, British School Jakarta  |  "
-    "MIT License"
+    "GeneTropica v2 — Methods & Pipeline | Russell Young, British School Jakarta"
 )
