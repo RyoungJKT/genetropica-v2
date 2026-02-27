@@ -2,11 +2,12 @@
 
 Orchestrates the full drug repurposing workflow:
   1. Fetch protein targets (PDB structures)
-  2. Prepare drug ligands (SMILES -> PDBQT)
-  3. Prepare receptors (clean PDB -> PDBQT)
-  4. Run molecular docking (AutoDock Vina)
-  5. Parse and rank results
-  6. Analyze protein-ligand interactions
+  2. Predict missing structures (ESMFold / ColabFold)
+  3. Prepare drug ligands (SMILES -> PDBQT)
+  4. Prepare receptors (clean PDB -> PDBQT)
+  5. Run molecular docking (AutoDock Vina)
+  6. Parse and rank results
+  7. Analyze protein-ligand interactions
 
 Supports mock mode for testing without real docking software.
 """
@@ -94,10 +95,68 @@ def _resolve_target(identifier: str) -> str | None:
     return None
 
 
+def predict_missing_structures(target_id: str | None = None) -> dict[str, Path]:
+    """Predict structures for targets lacking experimental PDB files.
+
+    For each target, checks if the experimental structure exists and
+    is of sufficient quality. If not, attempts ESMFold prediction
+    and validates the result.
+
+    Args:
+        target_id: Specific target to predict. None = check all targets.
+
+    Returns:
+        Dict mapping target_id to the path of the structure used.
+    """
+    from src.structure_prediction.esmfold_predict import predict_for_target
+    from src.structure_prediction.validate_structure import (
+        generate_quality_report,
+        is_suitable_for_docking,
+    )
+
+    targets = {}
+    if target_id:
+        resolved = _resolve_target(target_id)
+        if resolved:
+            targets[resolved] = TARGET_PROTEINS[resolved]
+    else:
+        targets = TARGET_PROTEINS
+
+    results = {}
+
+    for tid, info in targets.items():
+        pdb_id = info["pdb_id"]
+        exp_path = STRUCTURES_DIR / f"{pdb_id}.pdb"
+
+        if exp_path.exists():
+            logger.info("%s: experimental structure exists (%s)", tid, pdb_id)
+            results[tid] = exp_path
+            continue
+
+        logger.info("%s: no experimental structure, attempting ESMFold...", tid)
+        predicted = predict_for_target(tid)
+
+        if predicted and predicted.exists():
+            report = generate_quality_report(predicted)
+            if report["suitable_for_docking"]:
+                logger.info("%s: ESMFold prediction accepted", tid)
+                results[tid] = predicted
+            else:
+                logger.warning(
+                    "%s: ESMFold prediction quality too low — %s",
+                    tid, report["recommendation"],
+                )
+        else:
+            logger.warning("%s: structure prediction failed", tid)
+
+    return results
+
+
 def run_real_pipeline(
     target_id: str | None = None,
     n_drugs: int | None = None,
     exhaustiveness: int = 8,
+    predict_structures: bool = False,
 ) -> None:
     """Run the real docking pipeline.
 
@@ -105,9 +164,15 @@ def run_real_pipeline(
         target_id: Specific target to dock. None = all targets.
         n_drugs: Limit number of drugs. None = all drugs.
         exhaustiveness: Vina exhaustiveness parameter.
+        predict_structures: If True, predict missing structures first.
     """
     from src.docking.prepare_receptor import prepare_receptor
     from src.docking.run_vina import dock_batch
+
+    # Optionally predict missing structures
+    if predict_structures:
+        logger.info("=== Structure Prediction Phase ===")
+        predict_missing_structures(target_id)
 
     targets = {}
     if target_id:
@@ -152,6 +217,9 @@ Examples:
   # Real docking (requires Vina + Open Babel)
   python scripts/run_pipeline.py --target DENV_NS3 --n-drugs 5
 
+  # Predict missing structures first, then dock
+  python scripts/run_pipeline.py --predict-structures --target DENV_NS3
+
   # Full campaign
   python scripts/run_pipeline.py
         """,
@@ -185,6 +253,11 @@ Examples:
         type=int,
         default=42,
         help="Random seed for mock data (default: 42).",
+    )
+    parser.add_argument(
+        "--predict-structures",
+        action="store_true",
+        help="Predict missing structures with ESMFold before docking.",
     )
     parser.add_argument(
         "-v", "--verbose",
@@ -227,6 +300,7 @@ Examples:
             target_id=args.target,
             n_drugs=args.n_drugs,
             exhaustiveness=args.exhaustiveness,
+            predict_structures=args.predict_structures,
         )
         print("Docking pipeline complete.")
 
