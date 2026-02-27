@@ -161,8 +161,14 @@ def get_drugs_for_target(target_id: str) -> pd.DataFrame:
         FROM drugs d
         JOIN docking_results dr
             ON d.drug_id = dr.drug_id AND dr.pose_rank = 1
-        JOIN ml_scores ml
-            ON d.drug_id = ml.drug_id AND dr.target_id = ml.target_id
+        JOIN (
+            SELECT drug_id, target_id,
+                   MIN(ml_binding_score) AS ml_binding_score,
+                   MIN(consensus_score) AS consensus_score,
+                   MIN(consensus_rank) AS consensus_rank
+            FROM ml_scores
+            GROUP BY drug_id, target_id
+        ) ml ON d.drug_id = ml.drug_id AND dr.target_id = ml.target_id
         LEFT JOIN admet a
             ON d.drug_id = a.drug_id
         LEFT JOIN (
