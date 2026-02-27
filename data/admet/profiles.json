@@ -1,0 +1,2523 @@
+[
+  {
+    "drug_id": "DRUG_0001",
+    "name": "metformin",
+    "smiles": "CC(=O)NC(=N)NC(=N)N",
+    "descriptors": {
+      "mw": 143.14999999999998,
+      "logp": -1.4596599999999995,
+      "tpsa": 114.85000000000001,
+      "hbd": 5,
+      "hba": 3,
+      "rotatable_bonds": 0,
+      "aromatic_rings": 0,
+      "heavy_atoms": 10,
+      "fraction_csp3": 0.25,
+      "mol_refractivity": 36.59319999999999,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": false,
+      "atoms_ok": false,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": 0.19205579999999978,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "imine_1",
+      "imine_2"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0002",
+    "name": "ibuprofen",
+    "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
+    "descriptors": {
+      "mw": 206.28499999999997,
+      "logp": 3.073200000000001,
+      "tpsa": 37.3,
+      "hbd": 1,
+      "hba": 1,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 1,
+      "heavy_atoms": 15,
+      "fraction_csp3": 0.46153846153846156,
+      "mol_refractivity": 61.03480000000004,
+      "aromatic_proportion": 0.4
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.0870830000000002,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0003",
+    "name": "hydroxychloroquine",
+    "smiles": "CCN(CCO)CCCC(C)Nc1ccnc2cc(Cl)ccc12",
+    "descriptors": {
+      "mw": 335.8790000000001,
+      "logp": 3.783000000000002,
+      "tpsa": 48.39,
+      "hbd": 2,
+      "hba": 4,
+      "rotatable_bonds": 9,
+      "aromatic_rings": 2,
+      "heavy_atoms": 23,
+      "fraction_csp3": 0.5,
+      "mol_refractivity": 98.27150000000005,
+      "aromatic_proportion": 0.43478260869565216
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.033478930434784,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0004",
+    "name": "chloroquine",
+    "smiles": "CCN(CC)CCCC(C)Nc1ccnc2cc(Cl)ccc12",
+    "descriptors": {
+      "mw": 319.88000000000005,
+      "logp": 4.810600000000004,
+      "tpsa": 28.16,
+      "hbd": 1,
+      "hba": 3,
+      "rotatable_bonds": 8,
+      "aromatic_rings": 2,
+      "heavy_atoms": 22,
+      "fraction_csp3": 0.5,
+      "mol_refractivity": 96.85970000000006,
+      "aromatic_proportion": 0.45454545454545453
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.662297636363638,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0005",
+    "name": "doxycycline",
+    "smiles": "CC1C2C(O)C3C(=O)C(=C(O)C(N)=O)C(=O)C3(O)C(O)=C2C(=O)c2c(O)cccc21",
+    "descriptors": {
+      "mw": 415.35400000000016,
+      "logp": -0.7087000000000001,
+      "tpsa": 195.44999999999996,
+      "hbd": 6,
+      "hba": 9,
+      "rotatable_bonds": 1,
+      "aromatic_rings": 1,
+      "heavy_atoms": 30,
+      "fraction_csp3": 0.3,
+      "mol_refractivity": 97.30689999999998,
+      "aromatic_proportion": 0.2
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 1,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": false,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": false,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -2.0507138000000005,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "acyclic_C=C-O",
+      "Michael_acceptor_1",
+      "Michael_acceptor_4"
+    ],
+    "drug_likeness_score": 2
+  },
+  {
+    "drug_id": "DRUG_0006",
+    "name": "ivermectin",
+    "smiles": "CC(C)CC1OC2(CC3CC(C=CC(C)C(OC4CC(OC5CC(C)C(O)C(C)O5)C(O)C4OC)C(C)CC=CC=CC3OC2=O)C)O1",
+    "descriptors": {
+      "mw": 676.8880000000003,
+      "logp": 5.4546000000000054,
+      "tpsa": 122.14000000000003,
+      "hbd": 2,
+      "hba": 10,
+      "rotatable_bonds": 7,
+      "aromatic_rings": 0,
+      "heavy_atoms": 48,
+      "fraction_csp3": 0.8157894736842105,
+      "mol_refractivity": 179.3545999999995,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": false,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -7.0111036000000055,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "isolated_alkene"
+    ],
+    "drug_likeness_score": 3
+  },
+  {
+    "drug_id": "DRUG_0007",
+    "name": "ribavirin",
+    "smiles": "OCC1OC(n2cnc(C(=O)N)n2)C(O)C1O",
+    "descriptors": {
+      "mw": 244.20700000000002,
+      "logp": -3.0114999999999994,
+      "tpsa": 143.72,
+      "hbd": 4,
+      "hba": 7,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 1,
+      "heavy_atoms": 17,
+      "fraction_csp3": 0.625,
+      "mol_refractivity": 51.54930000000002,
+      "aromatic_proportion": 0.29411764705882354
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": false,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": 0.52351454117647,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 2
+  },
+  {
+    "drug_id": "DRUG_0008",
+    "name": "sofosbuvir",
+    "smiles": "CC(C)OC(=O)C(C)NP(=O)(OCC1OC(n2ccc(=O)[nH]c2=O)C(C(F)(F)F)C1O)Oc1ccccc1",
+    "descriptors": {
+      "mw": 565.4380000000002,
+      "logp": 2.106799999999999,
+      "tpsa": 158.17999999999995,
+      "hbd": 3,
+      "hba": 9,
+      "rotatable_bonds": 10,
+      "aromatic_rings": 2,
+      "heavy_atoms": 38,
+      "fraction_csp3": 0.5,
+      "mol_refractivity": 125.23870000000001,
+      "aromatic_proportion": 0.3157894736842105
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 1,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -4.246683810526316,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "phosphor"
+    ],
+    "drug_likeness_score": 2
+  },
+  {
+    "drug_id": "DRUG_0009",
+    "name": "oseltamivir",
+    "smiles": "CCOC(=O)C1=CC(OC(CC)CC)C(NC(C)=O)C(N)C1",
+    "descriptors": {
+      "mw": 312.41,
+      "logp": 1.2853999999999997,
+      "tpsa": 90.64999999999999,
+      "hbd": 2,
+      "hba": 5,
+      "rotatable_bonds": 7,
+      "aromatic_rings": 0,
+      "heavy_atoms": 22,
+      "fraction_csp3": 0.75,
+      "mol_refractivity": 84.15610000000005,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -2.1247439999999997,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0010",
+    "name": "favipiravir",
+    "smiles": "NC1=NC(=O)C(=CN1)F",
+    "descriptors": {
+      "mw": 129.09399999999997,
+      "logp": -0.5088000000000001,
+      "tpsa": 71.77,
+      "hbd": 2,
+      "hba": 3,
+      "rotatable_bonds": 0,
+      "aromatic_rings": 1,
+      "heavy_atoms": 9,
+      "fraction_csp3": 0.0,
+      "mol_refractivity": 29.22810000000001,
+      "aromatic_proportion": 0.6666666666666666
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": false,
+      "atoms_ok": false,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -0.8131721333333329,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0011",
+    "name": "remdesivir",
+    "smiles": "CCC(CC)COC(=O)C(C)NP(=O)(OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O)Oc1ccccc1",
+    "descriptors": {
+      "mw": 578.5630000000002,
+      "logp": 2.1888999999999985,
+      "tpsa": 193.16999999999993,
+      "hbd": 4,
+      "hba": 12,
+      "rotatable_bonds": 13,
+      "aromatic_rings": 3,
+      "heavy_atoms": 40,
+      "fraction_csp3": 0.52,
+      "mol_refractivity": 143.91619999999995,
+      "aromatic_proportion": 0.375
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": false
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -4.2255976,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "phosphor"
+    ],
+    "drug_likeness_score": 1
+  },
+  {
+    "drug_id": "DRUG_0012",
+    "name": "lopinavir",
+    "smiles": "CC(C)C(NC(=O)C(CC1CCCCC1)CC(O)C(Cc1ccccc1)NC(=O)COc1c(C)cccc1C)C(=O)NC(CC(=O)N)C",
+    "descriptors": {
+      "mw": 664.8879999999999,
+      "logp": 4.268240000000003,
+      "tpsa": 159.85000000000002,
+      "hbd": 5,
+      "hba": 6,
+      "rotatable_bonds": 18,
+      "aromatic_rings": 2,
+      "heavy_atoms": 48,
+      "fraction_csp3": 0.5789473684210527,
+      "mol_refractivity": 186.97829999999948,
+      "aromatic_proportion": 0.25
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 1,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -5.648296800000002,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 2
+  },
+  {
+    "drug_id": "DRUG_0013",
+    "name": "ritonavir",
+    "smiles": "CC(C)C(NC(=O)OCC1CCCO1)C(=O)NC(CC(O)C(Cc1ccccc1)NC(=O)OCc1cncs1)CC1CCCCC1",
+    "descriptors": {
+      "mw": 658.8619999999997,
+      "logp": 5.1166000000000045,
+      "tpsa": 148.11,
+      "hbd": 4,
+      "hba": 9,
+      "rotatable_bonds": 16,
+      "aromatic_rings": 2,
+      "heavy_atoms": 46,
+      "fraction_csp3": 0.6470588235294118,
+      "mol_refractivity": 175.19889999999953,
+      "aromatic_proportion": 0.2391304347826087
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": false,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -6.269358921739133,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 1
+  },
+  {
+    "drug_id": "DRUG_0014",
+    "name": "celecoxib",
+    "smiles": "CC1=CC=C(C=C1)C1=CC(=NN1C1=CC=C(S(N)(=O)=O)C=C1)C(F)(F)F",
+    "descriptors": {
+      "mw": 381.379,
+      "logp": 3.5139200000000015,
+      "tpsa": 77.98,
+      "hbd": 1,
+      "hba": 3,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 3,
+      "heavy_atoms": 26,
+      "fraction_csp3": 0.11764705882352941,
+      "mol_refractivity": 90.11220000000003,
+      "aromatic_proportion": 0.6538461538461539
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.704165553846155,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0015",
+    "name": "amlodipine",
+    "smiles": "CCOC(=O)C1=C(COCCN)NC(C)=C(C1c1ccccc1Cl)C(=O)OC",
+    "descriptors": {
+      "mw": 408.88200000000006,
+      "logp": 2.2663,
+      "tpsa": 99.88000000000001,
+      "hbd": 2,
+      "hba": 7,
+      "rotatable_bonds": 8,
+      "aromatic_rings": 1,
+      "heavy_atoms": 28,
+      "fraction_csp3": 0.4,
+      "mol_refractivity": 105.57710000000003,
+      "aromatic_proportion": 0.21428571428571427
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.433408828571429,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "Aliphatic_long_chain"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0016",
+    "name": "losartan",
+    "smiles": "CCCCc1nc(Cl)c(n1Cc1ccc(-c2ccccc2-c2nnn[nH]2)cc1)CO",
+    "descriptors": {
+      "mw": 422.92000000000013,
+      "logp": 4.266800000000004,
+      "tpsa": 92.51,
+      "hbd": 2,
+      "hba": 5,
+      "rotatable_bonds": 8,
+      "aromatic_rings": 4,
+      "heavy_atoms": 30,
+      "fraction_csp3": 0.2727272727272727,
+      "mol_refractivity": 115.92350000000002,
+      "aromatic_proportion": 0.7333333333333333
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -5.1648546666666695,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0017",
+    "name": "atorvastatin",
+    "smiles": "CC(C)c1n(CC(O)CC(O)CC(=O)O)c(c2ccc(F)cc2)c(c1c1ccccc1)C(=O)Nc1ccccc1",
+    "descriptors": {
+      "mw": 544.6230000000002,
+      "logp": 5.923500000000005,
+      "tpsa": 111.78999999999999,
+      "hbd": 4,
+      "hba": 4,
+      "rotatable_bonds": 11,
+      "aromatic_rings": 4,
+      "heavy_atoms": 40,
+      "fraction_csp3": 0.25,
+      "mol_refractivity": 152.62959999999978,
+      "aromatic_proportion": 0.575
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": false,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": true,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": false,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": true,
+      "logp_ok": false
+    },
+    "esol": -6.647967600000005,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 1
+  },
+  {
+    "drug_id": "DRUG_0018",
+    "name": "methotrexate",
+    "smiles": "CN(Cc1cnc2nc(N)nc(N)c2n1)c1ccc(C(=O)NC(CCC(=O)O)C(=O)O)cc1",
+    "descriptors": {
+      "mw": 454.44700000000023,
+      "logp": 0.2684000000000012,
+      "tpsa": 210.53999999999996,
+      "hbd": 5,
+      "hba": 10,
+      "rotatable_bonds": 9,
+      "aromatic_rings": 3,
+      "heavy_atoms": 33,
+      "fraction_csp3": 0.25,
+      "mol_refractivity": 118.26160000000004,
+      "aromatic_proportion": 0.48484848484848486
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -2.5914512787878805,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 3
+  },
+  {
+    "drug_id": "DRUG_0019",
+    "name": "azithromycin",
+    "smiles": "CCC1OC(=O)C(C)C(OC2CC(C)(OC)C(O)C(C)O2)C(C)C(OC2OC(C)CC(N(C)C)C2O)C(C)(O)CC(C)C(=O)C(C)C(O)C1(C)O",
+    "descriptors": {
+      "mw": 733.9370000000002,
+      "logp": 1.785600000000004,
+      "tpsa": 193.91,
+      "hbd": 5,
+      "hba": 14,
+      "rotatable_bonds": 7,
+      "aromatic_rings": 0,
+      "heavy_atoms": 51,
+      "fraction_csp3": 0.9459459459459459,
+      "mol_refractivity": 186.25799999999953,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": false
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -5.053337400000004,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 1
+  },
+  {
+    "drug_id": "DRUG_0020",
+    "name": "prednisone",
+    "smiles": "CC12CC(=O)C3C(CCC4=CC(=O)C=CC34C)C1CCC2(O)C(=O)CO",
+    "descriptors": {
+      "mw": 358.43400000000014,
+      "logp": 1.7658,
+      "tpsa": 91.67,
+      "hbd": 2,
+      "hba": 5,
+      "rotatable_bonds": 2,
+      "aromatic_rings": 0,
+      "heavy_atoms": 26,
+      "fraction_csp3": 0.6666666666666666,
+      "mol_refractivity": 94.04860000000004,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.0427448000000004,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0021",
+    "name": "dexamethasone",
+    "smiles": "CC1CC2C3CCC4=CC(=O)C=CC4(C)C3(F)C(O)CC2(C)C1(O)C(=O)CO",
+    "descriptors": {
+      "mw": 392.4670000000002,
+      "logp": 1.8957000000000002,
+      "tpsa": 94.83,
+      "hbd": 3,
+      "hba": 5,
+      "rotatable_bonds": 2,
+      "aromatic_rings": 0,
+      "heavy_atoms": 28,
+      "fraction_csp3": 0.7272727272727273,
+      "mol_refractivity": 99.94440000000004,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.3355864000000017,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0022",
+    "name": "colchicine",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1CC2NC(C)=O",
+    "descriptors": {
+      "mw": 385.41600000000017,
+      "logp": 2.4815000000000005,
+      "tpsa": 83.09,
+      "hbd": 1,
+      "hba": 6,
+      "rotatable_bonds": 5,
+      "aromatic_rings": 2,
+      "heavy_atoms": 28,
+      "fraction_csp3": 0.3333333333333333,
+      "mol_refractivity": 104.61770000000006,
+      "aromatic_proportion": 0.4642857142857143
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.8064956285714295,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0023",
+    "name": "baricitinib",
+    "smiles": "CCS(=O)(=O)N1CC(CC1C#N)n1cc2c(n1)ncnc2N",
+    "descriptors": {
+      "mw": 321.36600000000004,
+      "logp": -0.10282000000000024,
+      "tpsa": 130.79,
+      "hbd": 1,
+      "hba": 7,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 2,
+      "heavy_atoms": 22,
+      "fraction_csp3": 0.5,
+      "mol_refractivity": 78.95720000000003,
+      "aromatic_proportion": 0.4090909090909091
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -1.8724198727272727,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0024",
+    "name": "nitazoxanide",
+    "smiles": "CC(=O)Oc1ccc(NC(=O)c2ncc(s2)[N+](=O)[O-])cc1",
+    "descriptors": {
+      "mw": 307.28700000000003,
+      "logp": 2.2288999999999994,
+      "tpsa": 111.43,
+      "hbd": 1,
+      "hba": 7,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 2,
+      "heavy_atoms": 21,
+      "fraction_csp3": 0.08333333333333333,
+      "mol_refractivity": 74.47260000000001,
+      "aromatic_proportion": 0.5238095238095238
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.2730054476190475,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond",
+      "phenol_ester"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0025",
+    "name": "suramin",
+    "smiles": "CC(=O)Nc1ccc2c(c1)cc(cc2S(=O)(=O)O)C(=O)Nc1ccc(cc1)C",
+    "descriptors": {
+      "mw": 398.4400000000001,
+      "logp": 3.605620000000001,
+      "tpsa": 112.57,
+      "hbd": 3,
+      "hba": 4,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 3,
+      "heavy_atoms": 28,
+      "fraction_csp3": 0.1,
+      "mol_refractivity": 107.19850000000002,
+      "aromatic_proportion": 0.5714285714285714
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.740725742857144,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "Sulfonic_acid_2"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0026",
+    "name": "praziquantel",
+    "smiles": "O=C1OC2CC3c4ccccc4CCN3CC2N1Cc1ccccc1",
+    "descriptors": {
+      "mw": 334.41900000000004,
+      "logp": 3.379100000000002,
+      "tpsa": 32.78,
+      "hbd": 0,
+      "hba": 3,
+      "rotatable_bonds": 2,
+      "aromatic_rings": 2,
+      "heavy_atoms": 25,
+      "fraction_csp3": 0.38095238095238093,
+      "mol_refractivity": 95.11900000000004,
+      "aromatic_proportion": 0.48
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.265430800000001,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0027",
+    "name": "albendazole",
+    "smiles": "CCCSc1ccc2[nH]c(NC(=O)OC)nc2c1",
+    "descriptors": {
+      "mw": 265.33799999999997,
+      "logp": 3.2433000000000005,
+      "tpsa": 67.01,
+      "hbd": 2,
+      "hba": 4,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 2,
+      "heavy_atoms": 18,
+      "fraction_csp3": 0.3333333333333333,
+      "mol_refractivity": 73.13640000000002,
+      "aromatic_proportion": 0.5
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.6343746,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0028",
+    "name": "mebendazole",
+    "smiles": "COC(=O)Nc1[nH]c2ccc(C(=O)c3ccccc3)cc2n1",
+    "descriptors": {
+      "mw": 295.298,
+      "logp": 2.972200000000001,
+      "tpsa": 84.08,
+      "hbd": 2,
+      "hba": 4,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 3,
+      "heavy_atoms": 22,
+      "fraction_csp3": 0.0625,
+      "mol_refractivity": 81.99590000000002,
+      "aromatic_proportion": 0.6818181818181818
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.849879054545455,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0029",
+    "name": "artemisinin",
+    "smiles": "CC1CCC2C(C)C(=O)OC3OC4(C)CCC1C23OO4",
+    "descriptors": {
+      "mw": 282.33599999999996,
+      "logp": 2.3949000000000007,
+      "tpsa": 53.99000000000001,
+      "hbd": 0,
+      "hba": 5,
+      "rotatable_bonds": 0,
+      "aromatic_rings": 0,
+      "heavy_atoms": 20,
+      "fraction_csp3": 0.9333333333333333,
+      "mol_refractivity": 68.04700000000005,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.0992702000000003,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "peroxide"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0030",
+    "name": "quinine",
+    "smiles": "COc1ccc2nccc(C(O)C3CC4CCN3CC4C=C)c2c1",
+    "descriptors": {
+      "mw": 324.4240000000001,
+      "logp": 3.1732000000000014,
+      "tpsa": 45.59,
+      "hbd": 1,
+      "hba": 4,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 2,
+      "heavy_atoms": 24,
+      "fraction_csp3": 0.45,
+      "mol_refractivity": 95.02680000000004,
+      "aromatic_proportion": 0.4166666666666667
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.894878133333335,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "isolated_alkene"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0031",
+    "name": "primaquine",
+    "smiles": "COc1cc(N)c2ncccc2c1NC(C)CCCN",
+    "descriptors": {
+      "mw": 274.36800000000005,
+      "logp": 2.3649,
+      "tpsa": 86.19,
+      "hbd": 3,
+      "hba": 5,
+      "rotatable_bonds": 6,
+      "aromatic_rings": 2,
+      "heavy_atoms": 20,
+      "fraction_csp3": 0.4,
+      "mol_refractivity": 84.08050000000003,
+      "aromatic_proportion": 0.5
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.0049686000000007,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "aniline"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0032",
+    "name": "dapsone",
+    "smiles": "Nc1ccc(cc1)S(=O)(=O)c1ccc(N)cc1",
+    "descriptors": {
+      "mw": 248.307,
+      "logp": 1.6838000000000002,
+      "tpsa": 86.18,
+      "hbd": 2,
+      "hba": 4,
+      "rotatable_bonds": 2,
+      "aromatic_rings": 2,
+      "heavy_atoms": 17,
+      "fraction_csp3": 0.0,
+      "mol_refractivity": 67.16060000000002,
+      "aromatic_proportion": 0.7058823529411765
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -2.8306503411764705,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "aniline"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0033",
+    "name": "rifampicin",
+    "smiles": "COC1C=COC2(C)Oc3c(C)c(O)c4c(c3C2=O)C(=O)C(NC(=O)C(C)=CC=CC(C)C(OC(C)=O)C(C)C(O)C(C)C(O)C(C)C=CC1C)=C(O)C4=O",
+    "descriptors": {
+      "mw": 765.8530000000004,
+      "logp": 4.708320000000004,
+      "tpsa": 215.21999999999997,
+      "hbd": 5,
+      "hba": 13,
+      "rotatable_bonds": 2,
+      "aromatic_rings": 1,
+      "heavy_atoms": 55,
+      "fraction_csp3": 0.4878048780487805,
+      "mol_refractivity": 199.1123999999995,
+      "aromatic_proportion": 0.10909090909090909
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": false
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -7.503257472727277,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [
+      "quinone_A(370)"
+    ],
+    "brenk_alerts": [
+      "isolated_alkene"
+    ],
+    "drug_likeness_score": 0
+  },
+  {
+    "drug_id": "DRUG_0034",
+    "name": "isoniazid",
+    "smiles": "NNC(=O)c1ccncc1",
+    "descriptors": {
+      "mw": 137.142,
+      "logp": -0.3149000000000006,
+      "tpsa": 68.00999999999999,
+      "hbd": 2,
+      "hba": 3,
+      "rotatable_bonds": 1,
+      "aromatic_rings": 1,
+      "heavy_atoms": 10,
+      "fraction_csp3": 0.0,
+      "mol_refractivity": 35.89060000000001,
+      "aromatic_proportion": 0.6
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -0.8698933999999996,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "acyl_hydrazine",
+      "hydrazine",
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0035",
+    "name": "pyrazinamide",
+    "smiles": "NC(=O)c1cnccn1",
+    "descriptors": {
+      "mw": 123.11499999999998,
+      "logp": -0.4245000000000001,
+      "tpsa": 68.87,
+      "hbd": 1,
+      "hba": 3,
+      "rotatable_bonds": 1,
+      "aromatic_rings": 1,
+      "heavy_atoms": 9,
+      "fraction_csp3": 0.0,
+      "mol_refractivity": 30.549899999999997,
+      "aromatic_proportion": 0.6666666666666666
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": false,
+      "atoms_ok": false,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -0.763211333333333,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0036",
+    "name": "ethambutol",
+    "smiles": "CCC(CO)NCCNC(CC)CO",
+    "descriptors": {
+      "mw": 204.314,
+      "logp": -0.292599999999999,
+      "tpsa": 64.52,
+      "hbd": 4,
+      "hba": 4,
+      "rotatable_bonds": 9,
+      "aromatic_rings": 0,
+      "heavy_atoms": 14,
+      "fraction_csp3": 1.0,
+      "mol_refractivity": 58.33500000000005,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -0.3284088000000005,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "Aliphatic_long_chain"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0037",
+    "name": "ciprofloxacin",
+    "smiles": "OC(=O)c1cn(C2CC2)c2cc(N3CCNCC3)c(F)cc2c1=O",
+    "descriptors": {
+      "mw": 331.34700000000004,
+      "logp": 1.5833,
+      "tpsa": 74.57,
+      "hbd": 2,
+      "hba": 4,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 2,
+      "heavy_atoms": 24,
+      "fraction_csp3": 0.4117647058823529,
+      "mol_refractivity": 88.47900000000006,
+      "aromatic_proportion": 0.4166666666666667
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -3.002163733333334,
+    "gi_absorption": "High",
+    "bbb_permeant": "Yes",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0038",
+    "name": "fluconazole",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "descriptors": {
+      "mw": 306.276,
+      "logp": 0.7357999999999993,
+      "tpsa": 81.64999999999999,
+      "hbd": 1,
+      "hba": 5,
+      "rotatable_bonds": 5,
+      "aromatic_rings": 3,
+      "heavy_atoms": 22,
+      "fraction_csp3": 0.23076923076923078,
+      "mol_refractivity": 70.29880000000001,
+      "aromatic_proportion": 0.7272727272727273
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -2.4106470181818174,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0039",
+    "name": "acyclovir",
+    "smiles": "NC1=Nc2c(ncn2COCCO)C(=O)N1",
+    "descriptors": {
+      "mw": 225.20799999999997,
+      "logp": -1.3318000000000003,
+      "tpsa": 119.04999999999998,
+      "hbd": 3,
+      "hba": 6,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 2,
+      "heavy_atoms": 16,
+      "fraction_csp3": 0.375,
+      "mol_refractivity": 55.59890000000001,
+      "aromatic_proportion": 0.5625
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": false,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -0.5495055999999996,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "Aliphatic_long_chain"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0040",
+    "name": "zidovudine",
+    "smiles": "CC1=CN(C2CC(N=[N+]=[N-])C(CO)O2)C(=O)NC1=O",
+    "descriptors": {
+      "mw": 267.245,
+      "logp": -0.19628000000000012,
+      "tpsa": 133.07999999999998,
+      "hbd": 2,
+      "hba": 5,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 1,
+      "heavy_atoms": 19,
+      "fraction_csp3": 0.6,
+      "mol_refractivity": 64.60650000000003,
+      "aromatic_proportion": 0.3157894736842105
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -1.4089468105263157,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [
+      "azo_A(324)"
+    ],
+    "brenk_alerts": [
+      "Azido_group",
+      "diazo_group",
+      "quaternary_nitrogen_3"
+    ],
+    "drug_likeness_score": 2
+  },
+  {
+    "drug_id": "DRUG_0041",
+    "name": "tenofovir",
+    "smiles": "NC1=NC=NC2=C1N=CN2CCOP(=O)(O)O",
+    "descriptors": {
+      "mw": 259.1619999999999,
+      "logp": -0.4822000000000003,
+      "tpsa": 136.38000000000002,
+      "hbd": 3,
+      "hba": 6,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 2,
+      "heavy_atoms": 17,
+      "fraction_csp3": 0.2857142857142857,
+      "mol_refractivity": 57.73150000000002,
+      "aromatic_proportion": 0.5294117647058824
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": false,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -1.2707831058823524,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "phosphor"
+    ],
+    "drug_likeness_score": 3
+  },
+  {
+    "drug_id": "DRUG_0042",
+    "name": "entecavir",
+    "smiles": "NC1=NC(=O)C2=C(N1)N(C=N2)C1CC(CO)C(=C1)CO",
+    "descriptors": {
+      "mw": 277.28400000000005,
+      "logp": -0.8262,
+      "tpsa": 130.04999999999998,
+      "hbd": 4,
+      "hba": 6,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 2,
+      "heavy_atoms": 20,
+      "fraction_csp3": 0.4166666666666667,
+      "mol_refractivity": 71.9597,
+      "aromatic_proportion": 0.45
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": false,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -1.1736548000000002,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "isolated_alkene"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0043",
+    "name": "daclatasvir",
+    "smiles": "COC(=O)NC(C(=O)N1CCCC1c1ncc(-c2ccc(-c3ccn(C)c3)cc2)n1C)C1CCCCC1",
+    "descriptors": {
+      "mw": 503.6470000000003,
+      "logp": 5.061000000000005,
+      "tpsa": 81.39000000000001,
+      "hbd": 1,
+      "hba": 4,
+      "rotatable_bonds": 6,
+      "aromatic_rings": 3,
+      "heavy_atoms": 37,
+      "fraction_csp3": 0.4827586206896552,
+      "mol_refractivity": 142.64269999999985,
+      "aromatic_proportion": 0.43243243243243246
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": false,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -6.075041400000005,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [],
+    "drug_likeness_score": 3
+  },
+  {
+    "drug_id": "DRUG_0044",
+    "name": "mycophenolate",
+    "smiles": "COc1c(C)c2COC(=O)c2c(O)c1CC=C(C)CCC(=O)OCCCCCCO",
+    "descriptors": {
+      "mw": 420.50200000000035,
+      "logp": 3.7445200000000027,
+      "tpsa": 102.29000000000002,
+      "hbd": 2,
+      "hba": 7,
+      "rotatable_bonds": 12,
+      "aromatic_rings": 1,
+      "heavy_atoms": 30,
+      "fraction_csp3": 0.5652173913043478,
+      "mol_refractivity": 111.72310000000006,
+      "aromatic_proportion": 0.2
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": true,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.162160000000004,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "Aliphatic_long_chain",
+      "isolated_alkene"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0045",
+    "name": "sirolimus",
+    "smiles": "COCC1CCC(=O)C(CC(OC(=O)C(C)CC2CCC(C)CC(OC3OC(C)CC(O)C3OC)C(=O)C(OC)CC(=O)CC(O)C1C)C1CCC(O)C(OC)C1)C=CC2OC",
+    "descriptors": {
+      "mw": 883.1260000000001,
+      "logp": 4.566000000000008,
+      "tpsa": 202.80999999999997,
+      "hbd": 3,
+      "hba": 15,
+      "rotatable_bonds": 9,
+      "aromatic_rings": 0,
+      "heavy_atoms": 62,
+      "fraction_csp3": 0.8723404255319149,
+      "mol_refractivity": 227.80639999999914,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": false,
+      "violations": 2,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": false
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": false,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": false
+    },
+    "egan": {
+      "pass": false,
+      "tpsa_ok": false,
+      "logp_ok": true
+    },
+    "esol": -7.597961200000005,
+    "gi_absorption": "Low",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "isolated_alkene"
+    ],
+    "drug_likeness_score": 1
+  },
+  {
+    "drug_id": "DRUG_0046",
+    "name": "niclosamide",
+    "smiles": "Oc1ccc(Cl)cc1C(=O)Nc1ccc([N+](=O)[O-])cc1Cl",
+    "descriptors": {
+      "mw": 327.12300000000005,
+      "logp": 3.8595000000000006,
+      "tpsa": 92.47,
+      "hbd": 2,
+      "hba": 4,
+      "rotatable_bonds": 3,
+      "aromatic_rings": 2,
+      "heavy_atoms": 21,
+      "fraction_csp3": 0.0,
+      "mol_refractivity": 79.17639999999999,
+      "aromatic_proportion": 0.5714285714285714
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": true,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.524504742857142,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "drug_likeness_score": 5
+  },
+  {
+    "drug_id": "DRUG_0047",
+    "name": "auranofin",
+    "smiles": "CCC(=O)OCC1OC(S[Au]PC)C(OC(=O)CC)C(OC(=O)CC)C1OC(=O)CC",
+    "descriptors": {
+      "mw": 663.4559999999999,
+      "logp": 2.5839000000000008,
+      "tpsa": 114.43,
+      "hbd": 0,
+      "hba": 10,
+      "rotatable_bonds": 12,
+      "aromatic_rings": 0,
+      "heavy_atoms": 31,
+      "fraction_csp3": 0.7894736842105263,
+      "mol_refractivity": 112.25400000000006,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 1,
+      "mw_ok": false,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": true,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": false,
+      "logp_ok": true,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.7892842,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      ">_2_ester_groups",
+      "phosphor"
+    ],
+    "drug_likeness_score": 3
+  },
+  {
+    "drug_id": "DRUG_0048",
+    "name": "thalidomide",
+    "smiles": "O=C1CCC(N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "descriptors": {
+      "mw": 258.23299999999995,
+      "logp": 0.08779999999999993,
+      "tpsa": 83.55000000000001,
+      "hbd": 1,
+      "hba": 4,
+      "rotatable_bonds": 1,
+      "aromatic_rings": 1,
+      "heavy_atoms": 19,
+      "fraction_csp3": 0.23076923076923078,
+      "mol_refractivity": 63.113700000000016,
+      "aromatic_proportion": 0.3157894736842105
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -1.6640428105263152,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "phthalimide"
+    ],
+    "drug_likeness_score": 4
+  },
+  {
+    "drug_id": "DRUG_0049",
+    "name": "miltefosine",
+    "smiles": "CCCCCCCCCCCCCCCCOP(=O)([O-])OCC[N+](C)(C)C",
+    "descriptors": {
+      "mw": 407.57600000000014,
+      "logp": 5.675500000000006,
+      "tpsa": 58.59,
+      "hbd": 0,
+      "hba": 4,
+      "rotatable_bonds": 20,
+      "aromatic_rings": 0,
+      "heavy_atoms": 27,
+      "fraction_csp3": 1.0,
+      "mol_refractivity": 112.7219000000001,
+      "aromatic_proportion": 0.0
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 1,
+      "mw_ok": true,
+      "logp_ok": false,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": false,
+      "tpsa_ok": true,
+      "rotbonds_ok": false
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": false,
+      "atoms_ok": true,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -4.622536200000004,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "Aliphatic_long_chain",
+      "phosphor",
+      "quaternary_nitrogen_2"
+    ],
+    "drug_likeness_score": 3
+  },
+  {
+    "drug_id": "DRUG_0050",
+    "name": "benznidazole",
+    "smiles": "O=[N+]([O-])c1cn(CC(=O)NCc2ccccc2)cn1",
+    "descriptors": {
+      "mw": 260.253,
+      "logp": 1.1077,
+      "tpsa": 90.06,
+      "hbd": 1,
+      "hba": 4,
+      "rotatable_bonds": 5,
+      "aromatic_rings": 2,
+      "heavy_atoms": 19,
+      "fraction_csp3": 0.16666666666666666,
+      "mol_refractivity": 67.17010000000002,
+      "aromatic_proportion": 0.5789473684210527
+    },
+    "lipinski": {
+      "pass": true,
+      "violations": 0,
+      "mw_ok": true,
+      "logp_ok": true,
+      "hbd_ok": true,
+      "hba_ok": true
+    },
+    "veber": {
+      "pass": true,
+      "tpsa_ok": true,
+      "rotbonds_ok": true
+    },
+    "ghose": {
+      "pass": false,
+      "mw_ok": true,
+      "logp_ok": true,
+      "atoms_ok": false,
+      "mr_ok": true
+    },
+    "egan": {
+      "pass": true,
+      "tpsa_ok": true,
+      "logp_ok": true
+    },
+    "esol": -2.2498406526315784,
+    "gi_absorption": "High",
+    "bbb_permeant": "No",
+    "pains_alerts": [],
+    "brenk_alerts": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "drug_likeness_score": 4
+  }
+]
