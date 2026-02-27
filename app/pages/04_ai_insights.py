@@ -103,7 +103,7 @@ st.plotly_chart(admet_overview_bars(), use_container_width=True)
 st.subheader("Top 5 Candidate Safety Profiles")
 
 top5 = df.head(5)
-for _, row in top5.iterrows():
+for idx, (_, row) in enumerate(top5.iterrows()):
     drug_id = row["drug_id"]
     drug_name = row["name"].capitalize()
     admet = get_drug_admet(drug_id)
@@ -146,7 +146,7 @@ for _, row in top5.iterrows():
             st.caption("Pass" if overall else "Fail")
 
         # Mini radar
-        st.plotly_chart(admet_radar(drug_id), use_container_width=True)
+        st.plotly_chart(admet_radar(drug_id), use_container_width=True, key=f"admet_radar_{idx}")
 
 
 # ─────────────────────────────────────────────────────────────
