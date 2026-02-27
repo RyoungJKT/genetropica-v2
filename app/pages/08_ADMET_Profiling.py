@@ -563,5 +563,5 @@ properties for the intended therapeutic targets.
 # -----------------------------------------------------------------
 st.divider()
 st.caption(
-    "GeneTropica v2 -- ADMET Profiling | Russell Young, British School Jakarta"
+    "GeneTropica v2 — ADMET Profiling | Russell Young, British School Jakarta"
 )

@@ -314,6 +314,5 @@ with st.expander("Methodology"):
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Virtual Screening Validation  |  "
-    "Russell Young, British School Jakarta"
+    "GeneTropica v2 — Methodology Validation | Russell Young, British School Jakarta"
 )

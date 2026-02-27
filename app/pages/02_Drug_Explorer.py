@@ -241,3 +241,8 @@ if selected_drug_id:
             )
     else:
         st.caption("No literature evidence found for this drug-target combination.")
+
+st.divider()
+st.caption(
+    "GeneTropica v2 — Drug Candidate Explorer | Russell Young, British School Jakarta"
+)
