@@ -40,7 +40,7 @@ with st.sidebar:
     st.divider()
     st.markdown(
         "Built by [Russell Young](https://github.com/RyoungJKT)  \n"
-        "University of Indonesia"
+        "British School Jakarta"
     )
 
 # --- Home Page ---
