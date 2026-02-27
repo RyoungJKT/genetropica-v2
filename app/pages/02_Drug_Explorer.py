@@ -168,6 +168,20 @@ if filtered.empty:
     st.info("No drugs match your current filters. Try adjusting the filters.")
     st.stop()
 
+# Style the drug selector to be more prominent
+st.markdown("""<style>
+div[data-testid="stSelectbox"] > div > div {
+    border: 2px solid #1B4F72;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(27, 79, 114, 0.15);
+    padding: 2px;
+}
+div[data-testid="stSelectbox"] > div > div:hover {
+    border-color: #2E86C1;
+    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.25);
+}
+</style>""", unsafe_allow_html=True)
+
 # Drug selector
 drug_options = filtered["drug_id"].tolist()
 drug_names = filtered["name"].tolist()
