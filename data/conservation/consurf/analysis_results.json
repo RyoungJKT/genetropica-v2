@@ -1,0 +1,212 @@
+{
+  "pairwise_identity": {
+    "DENV-1": {
+      "DENV-1": 100.0,
+      "DENV-2": 69.7,
+      "DENV-3": 72.6,
+      "DENV-4": 66.5,
+      "ZIKV": 57.9,
+      "YFV": 53.4,
+      "WNV": 58.0,
+      "JEV": 58.0,
+      "HCV": 10.0
+    },
+    "DENV-2": {
+      "DENV-1": 69.7,
+      "DENV-2": 100.0,
+      "DENV-3": 69.8,
+      "DENV-4": 66.1,
+      "ZIKV": 58.3,
+      "YFV": 52.4,
+      "WNV": 59.0,
+      "JEV": 57.9,
+      "HCV": 10.0
+    },
+    "DENV-3": {
+      "DENV-1": 72.6,
+      "DENV-2": 69.8,
+      "DENV-3": 100.0,
+      "DENV-4": 68.8,
+      "ZIKV": 59.2,
+      "YFV": 53.3,
+      "WNV": 58.2,
+      "JEV": 58.9,
+      "HCV": 10.0
+    },
+    "DENV-4": {
+      "DENV-1": 66.5,
+      "DENV-2": 66.1,
+      "DENV-3": 68.8,
+      "DENV-4": 100.0,
+      "ZIKV": 60.0,
+      "YFV": 53.8,
+      "WNV": 57.6,
+      "JEV": 58.0,
+      "HCV": 9.7
+    },
+    "ZIKV": {
+      "DENV-1": 57.9,
+      "DENV-2": 58.3,
+      "DENV-3": 59.2,
+      "DENV-4": 60.0,
+      "ZIKV": 100.0,
+      "YFV": 54.5,
+      "WNV": 62.4,
+      "JEV": 61.6,
+      "HCV": 9.8
+    },
+    "YFV": {
+      "DENV-1": 53.4,
+      "DENV-2": 52.4,
+      "DENV-3": 53.3,
+      "DENV-4": 53.8,
+      "ZIKV": 54.5,
+      "YFV": 100.0,
+      "WNV": 54.3,
+      "JEV": 53.7,
+      "HCV": 10.3
+    },
+    "WNV": {
+      "DENV-1": 58.0,
+      "DENV-2": 59.0,
+      "DENV-3": 58.2,
+      "DENV-4": 57.6,
+      "ZIKV": 62.4,
+      "YFV": 54.3,
+      "WNV": 100.0,
+      "JEV": 72.9,
+      "HCV": 10.3
+    },
+    "JEV": {
+      "DENV-1": 58.0,
+      "DENV-2": 57.9,
+      "DENV-3": 58.9,
+      "DENV-4": 58.0,
+      "ZIKV": 61.6,
+      "YFV": 53.7,
+      "WNV": 72.9,
+      "JEV": 100.0,
+      "HCV": 9.8
+    },
+    "HCV": {
+      "DENV-1": 10.0,
+      "DENV-2": 10.0,
+      "DENV-3": 10.0,
+      "DENV-4": 9.7,
+      "ZIKV": 9.8,
+      "YFV": 10.3,
+      "WNV": 10.3,
+      "JEV": 9.8,
+      "HCV": 100.0
+    }
+  },
+  "mann_whitney": {
+    "p_value": 0.068049,
+    "statistic": 3444.5,
+    "binding_mean": 8.2,
+    "nonbinding_mean": 6.88,
+    "n_binding": 5,
+    "n_nonbinding": 1001,
+    "significant": false
+  },
+  "key_residues": [
+    {
+      "residue_number": 533,
+      "reference_aa": "D",
+      "DENV-1": "D",
+      "DENV-2": "D",
+      "DENV-3": "D",
+      "DENV-4": "D",
+      "ZIKV": "D",
+      "YFV": "D",
+      "WNV": "D",
+      "JEV": "D",
+      "HCV": "Y",
+      "conservation_pct": 88.9
+    },
+    {
+      "residue_number": 534,
+      "reference_aa": "D",
+      "DENV-1": "D",
+      "DENV-2": "D",
+      "DENV-3": "D",
+      "DENV-4": "D",
+      "ZIKV": "D",
+      "YFV": "D",
+      "WNV": "D",
+      "JEV": "D",
+      "HCV": "D",
+      "conservation_pct": 100.0
+    },
+    {
+      "residue_number": 535,
+      "reference_aa": "T",
+      "DENV-1": "T",
+      "DENV-2": "T",
+      "DENV-3": "T",
+      "DENV-4": "T",
+      "ZIKV": "T",
+      "YFV": "T",
+      "WNV": "T",
+      "JEV": "T",
+      "HCV": "T",
+      "conservation_pct": 100.0
+    },
+    {
+      "residue_number": 663,
+      "reference_aa": "D",
+      "DENV-1": "D",
+      "DENV-2": "D",
+      "DENV-3": "D",
+      "DENV-4": "D",
+      "ZIKV": "D",
+      "YFV": "D",
+      "WNV": "D",
+      "JEV": "D",
+      "HCV": "D",
+      "conservation_pct": 100.0
+    },
+    {
+      "residue_number": 664,
+      "reference_aa": "D",
+      "DENV-1": "D",
+      "DENV-2": "D",
+      "DENV-3": "D",
+      "DENV-4": "D",
+      "ZIKV": "D",
+      "YFV": "D",
+      "WNV": "D",
+      "JEV": "D",
+      "HCV": "D",
+      "conservation_pct": 100.0
+    },
+    {
+      "residue_number": 737,
+      "reference_aa": "R",
+      "DENV-1": "R",
+      "DENV-2": "R",
+      "DENV-3": "R",
+      "DENV-4": "R",
+      "ZIKV": "R",
+      "YFV": "R",
+      "WNV": "R",
+      "JEV": "R",
+      "HCV": "R",
+      "conservation_pct": 100.0
+    },
+    {
+      "residue_number": 794,
+      "reference_aa": "T",
+      "DENV-1": "T",
+      "DENV-2": "T",
+      "DENV-3": "T",
+      "DENV-4": "T",
+      "ZIKV": "T",
+      "YFV": "T",
+      "WNV": "T",
+      "JEV": "S",
+      "HCV": "K",
+      "conservation_pct": 77.8
+    }
+  ]
+}
