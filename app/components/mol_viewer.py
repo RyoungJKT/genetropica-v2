@@ -139,25 +139,40 @@ def render_binding_complex(
     ).hexdigest()[:8]
 
     # Build residue selection JS for binding pocket highlight
+    # Protein backbone = blue/cool tones; binding pocket = red/warm tones
     resi_js = ""
     if highlight_residues:
         resi_list = ",".join(str(r) for r in highlight_residues)
         resi_js = f"""
-        // Highlight binding pocket residues
+        // Binding pocket residues — warm red/magenta to contrast with protein
         viewer.setStyle(
             {{resi: [{resi_list}], chain: "{highlight_chain}"}},
-            {{stick: {{colorscheme: "orangeCarbon", radius: 0.15}},
-              {style}: {{color: "{color}", opacity: 0.7}}}}
+            {{stick: {{color: "0xE74C3C", radius: 0.18}},
+              {style}: {{color: "0xE74C3C", opacity: 0.5}}}}
         );
+
+        // Add translucent surface around binding pocket only
+        viewer.addSurface($3Dmol.SurfaceType.VDW, {{
+            opacity: 0.25,
+            color: "0xE74C3C"
+        }}, {{resi: [{resi_list}], chain: "{highlight_chain}"}});
         """
 
     surface_js = ""
     if show_surface:
         surface_js = """
+        // Whole-protein surface
         viewer.addSurface($3Dmol.SurfaceType.VDW, {
-            opacity: 0.15, color: "white"
+            opacity: 0.12, color: "0x85C1E9"
         });
         """
+
+    # Force protein backbone to a cool blue/teal when pocket is highlighted
+    # so the red binding pocket stands out clearly
+    if highlight_residues:
+        protein_color = "0x2E86C1"
+    else:
+        protein_color = f'"{color}"'
 
     html = f"""
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
@@ -167,8 +182,8 @@ def render_binding_complex(
         var viewer = $3Dmol.createViewer("v_{uid}", {{backgroundColor: "white"}});
         viewer.addModel(`{safe}`, "pdb");
 
-        // Base protein style
-        viewer.setStyle({{}}, {{{style}: {{color: "{color}"}}}});
+        // Protein backbone — cool blue
+        viewer.setStyle({{}}, {{{style}: {{color: {protein_color}}}}});
 
         {resi_js}
         {surface_js}
@@ -177,13 +192,23 @@ def render_binding_complex(
         viewer.render();
     </script>
     <div style="text-align:center; margin-top:4px;">
-        <span style="background:#FFF3CD; padding:3px 10px; border-radius:4px;
-                     font-size:0.8em; color:#856404;">
-            Preview mode — actual docking poses will replace this view
+        <span style="display:inline-block; margin-right:16px;">
+            <span style="display:inline-block;width:12px;height:12px;background:#2E86C1;
+                         border-radius:2px;vertical-align:middle;margin-right:4px;"></span>
+            <span style="font-size:0.8em;color:#555;">Protein</span>
+        </span>
+        <span style="display:inline-block; margin-right:16px;">
+            <span style="display:inline-block;width:12px;height:12px;background:#E74C3C;
+                         border-radius:2px;vertical-align:middle;margin-right:4px;"></span>
+            <span style="font-size:0.8em;color:#555;">Binding Pocket ({drug_name})</span>
+        </span>
+        <span style="background:#FFF3CD; padding:2px 8px; border-radius:4px;
+                     font-size:0.75em; color:#856404;">
+            Preview — docked poses will replace this view
         </span>
     </div>
     """
-    components.html(html, width=width + 10, height=height + 60)
+    components.html(html, width=width + 10, height=height + 70)
 
 
 def render_comparison(
