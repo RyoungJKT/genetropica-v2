@@ -84,16 +84,17 @@ def render_protein(
 
     html = f"""
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-    <div id="v_{uid}" style="width:{width}px;height:{height}px;position:relative;"></div>
+    <div id="v_{uid}" style="width:100%;max-width:{width}px;height:{height}px;position:relative;"></div>
     <script>
         var viewer = $3Dmol.createViewer("v_{uid}", {{backgroundColor: "white"}});
         viewer.addModel(`{safe}`, "pdb");
         viewer.setStyle({{}}, {{{style}: {{color: "{color}"}}}});
         viewer.zoomTo();
         viewer.render();
+        window.addEventListener('resize', function() {{ viewer.resize(); viewer.render(); }});
     </script>
     """
-    components.html(html, width=width + 10, height=height + 10)
+    components.html(html, height=height + 10)
 
 
 def render_binding_complex(
@@ -176,7 +177,7 @@ def render_binding_complex(
 
     html = f"""
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-    <div id="v_{uid}" style="width:{width}px;height:{height}px;position:relative;">
+    <div id="v_{uid}" style="width:100%;max-width:{width}px;height:{height}px;position:relative;">
     </div>
     <script>
         var viewer = $3Dmol.createViewer("v_{uid}", {{backgroundColor: "white"}});
@@ -190,25 +191,26 @@ def render_binding_complex(
 
         viewer.zoomTo();
         viewer.render();
+        window.addEventListener('resize', function() {{ viewer.resize(); viewer.render(); }});
     </script>
-    <div style="text-align:center; margin-top:4px;">
-        <span style="display:inline-block; margin-right:16px;">
+    <div style="text-align:center; margin-top:4px; flex-wrap:wrap;">
+        <span style="display:inline-block; margin-right:16px; margin-bottom:4px;">
             <span style="display:inline-block;width:12px;height:12px;background:#2E86C1;
                          border-radius:2px;vertical-align:middle;margin-right:4px;"></span>
             <span style="font-size:0.8em;color:#555;">Protein</span>
         </span>
-        <span style="display:inline-block; margin-right:16px;">
+        <span style="display:inline-block; margin-right:16px; margin-bottom:4px;">
             <span style="display:inline-block;width:12px;height:12px;background:#E74C3C;
                          border-radius:2px;vertical-align:middle;margin-right:4px;"></span>
             <span style="font-size:0.8em;color:#555;">Binding Pocket ({drug_name})</span>
         </span>
-        <span style="background:#FFF3CD; padding:2px 8px; border-radius:4px;
-                     font-size:0.75em; color:#856404;">
+        <span style="display:inline-block; background:#FFF3CD; padding:2px 8px; border-radius:4px;
+                     font-size:0.75em; color:#856404; margin-bottom:4px;">
             Preview — docked poses will replace this view
         </span>
     </div>
     """
-    components.html(html, width=width + 10, height=height + 70)
+    components.html(html, height=height + 70)
 
 
 def render_comparison(

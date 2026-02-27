@@ -217,7 +217,7 @@ else:
     # Summary by interaction type
     type_counts = interactions_df["interaction_type"].value_counts()
 
-    type_cols = st.columns(min(len(type_counts), 6))
+    type_cols = st.columns(min(len(type_counts), 4))
     type_icons = {
         "hydrogen_bond": "🔵",
         "hydrophobic": "🟤",

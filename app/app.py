@@ -19,6 +19,25 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Responsive CSS — only activates on screens < 768px (mobile)
+st.markdown("""<style>
+@media (max-width: 768px) {
+    /* Stack Streamlit columns vertically on mobile */
+    [data-testid="column"] {
+        width: 100% !important;
+        flex: 1 0 100% !important;
+    }
+    /* Prevent 3D viewer iframes from overflowing */
+    iframe {
+        max-width: 100% !important;
+    }
+    /* Give metric cards some breathing room */
+    [data-testid="stMetric"] {
+        padding: 0.3rem 0;
+    }
+}
+</style>""", unsafe_allow_html=True)
+
 # Initialize database on first run
 if "db_initialized" not in st.session_state:
     init_db()
