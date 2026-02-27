@@ -135,8 +135,38 @@ png conservation_map.png, dpi=300
     return script
 
 
+def _safe_pdb(pdb_data: str) -> str:
+    """Escape PDB data for safe JS template literal embedding."""
+    return (
+        pdb_data
+        .replace("\\", "\\\\")
+        .replace("`", "\\`")
+        .replace("${", "\\${")
+    )
+
+
+def _grade_to_hex(grade: int) -> str:
+    """Convert ConSurf grade (1-9) to hex color string.
+
+    Grade 9 (conserved) = blue (#0000FF)
+    Grade 5 (neutral)   = white (#FFFFFF)
+    Grade 1 (variable)  = red (#FF0000)
+    """
+    if grade >= 5:
+        t = (grade - 5) / 4.0
+        r = int(255 * (1 - t))
+        g = int(255 * (1 - t))
+        b = 255
+    else:
+        t = (grade - 1) / 4.0
+        r = 255
+        g = int(255 * t)
+        b = int(255 * t)
+    return f"0x{r:02x}{g:02x}{b:02x}"
+
+
 def generate_conservation_viewer_html(
-    pdb_id: str,
+    pdb_data: str,
     conservation_grades: dict[int, int],
     binding_residues: Optional[list[int]] = None,
     width: int = 800,
@@ -144,11 +174,12 @@ def generate_conservation_viewer_html(
 ) -> str:
     """Generate py3Dmol HTML for conservation-colored 3D visualization.
 
-    Colors residues on a blue (conserved, grade 9) to red (variable,
-    grade 1) spectrum. Binding site residues shown as sticks with labels.
+    Embeds the PDB data directly (no AJAX) for reliable rendering.
+    Colors residues on a blue-white-red spectrum by conservation grade.
+    Binding site residues shown as sticks with labels.
 
     Args:
-        pdb_id: PDB identifier to fetch.
+        pdb_data: PDB file content as string (pre-fetched).
         conservation_grades: Dict mapping residue number to ConSurf grade 1-9.
         binding_residues: Residues to highlight as sticks.
         width: Viewer width in pixels.
@@ -160,43 +191,23 @@ def generate_conservation_viewer_html(
     if binding_residues is None:
         binding_residues = [533, 663, 664, 737, 794]
 
-    # Build JS color commands
-    # Grade 9 (conserved) = blue (#0000FF)
-    # Grade 5 (neutral) = white (#FFFFFF)
-    # Grade 1 (variable) = red (#FF0000)
-    color_commands: list[str] = []
+    safe = _safe_pdb(pdb_data)
+
+    # Build a JS object mapping residue number to hex color
+    # This is more efficient than individual setStyle calls
+    color_map_entries: list[str] = []
     for resi, grade in conservation_grades.items():
-        if grade >= 5:
-            t = (grade - 5) / 4.0
-            r = int(255 * (1 - t))
-            g = int(255 * (1 - t))
-            b = 255
-        else:
-            t = (grade - 1) / 4.0
-            r = 255
-            g = int(255 * t)
-            b = int(255 * t)
-        hex_color = f"0x{r:02x}{g:02x}{b:02x}"
-        color_commands.append(
-            f'viewer.setStyle({{resi: {resi}, chain: "A"}}, '
-            f'{{cartoon: {{color: "{hex_color}"}}}});'
-        )
+        hex_color = _grade_to_hex(grade)
+        color_map_entries.append(f"{resi}: \"{hex_color}\"")
+    color_map_js = "{" + ", ".join(color_map_entries) + "}"
 
     resi_list = ",".join(str(r) for r in binding_residues)
-    binding_js = f"""
-    viewer.setStyle({{resi: [{resi_list}], chain: "A"}},
-        {{stick: {{radius: 0.15, color: "0xFFD700"}},
-          cartoon: {{color: "0xFFD700"}}}});
-    """
 
     label_js = "\n".join(
         f'viewer.addLabel("{r}", {{position: {{resi: {r}, chain: "A"}}, '
         f'backgroundColor: "0x333333", fontColor: "white", fontSize: 11}});'
         for r in binding_residues
     )
-
-    color_js = "\n".join(color_commands)
-    pdb_url = RCSB_URL.format(pdb_id=pdb_id.upper())
 
     html = f"""
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
@@ -206,21 +217,32 @@ def generate_conservation_viewer_html(
     <script>
         var viewer = $3Dmol.createViewer("conservation_viewer",
             {{backgroundColor: "white"}});
-        jQuery.ajax("{pdb_url}", {{
-            success: function(data) {{
-                viewer.addModel(data, "pdb");
-                viewer.setStyle({{}}, {{cartoon: {{color: "0xCCCCCC"}}}});
-                {color_js}
-                {binding_js}
-                {label_js}
-                viewer.zoomTo();
-                viewer.render();
-            }},
-            error: function() {{
-                document.getElementById("conservation_viewer").innerHTML =
-                    "<p>Failed to load structure. Check network connection.</p>";
-            }}
-        }});
+        viewer.addModel(`{safe}`, "pdb");
+
+        // Base style: grey cartoon
+        viewer.setStyle({{}}, {{cartoon: {{color: "0xCCCCCC"}}}});
+
+        // Color by conservation grade
+        var colorMap = {color_map_js};
+        for (var resi in colorMap) {{
+            viewer.setStyle(
+                {{resi: parseInt(resi), chain: "A"}},
+                {{cartoon: {{color: colorMap[resi]}}}}
+            );
+        }}
+
+        // Binding site residues as gold sticks
+        viewer.setStyle(
+            {{resi: [{resi_list}], chain: "A"}},
+            {{stick: {{radius: 0.15, color: "0xFFD700"}},
+              cartoon: {{color: "0xFFD700"}}}}
+        );
+
+        // Labels for binding site
+        {label_js}
+
+        viewer.zoomTo();
+        viewer.render();
         window.addEventListener('resize', function() {{
             viewer.resize(); viewer.render();
         }});
@@ -253,7 +275,7 @@ def generate_conservation_viewer_html(
 
 
 def render_conservation_viewer(
-    pdb_id: str,
+    pdb_data: str,
     conservation_grades: dict[int, int],
     binding_residues: Optional[list[int]] = None,
     width: int = 800,
@@ -262,13 +284,13 @@ def render_conservation_viewer(
     """Render the conservation 3D viewer in Streamlit.
 
     Args:
-        pdb_id: PDB identifier.
+        pdb_data: PDB file content as string (pre-fetched).
         conservation_grades: Dict mapping residue number to ConSurf grade.
         binding_residues: Residues to highlight.
         width: Viewer width.
         height: Viewer height.
     """
     html = generate_conservation_viewer_html(
-        pdb_id, conservation_grades, binding_residues, width, height
+        pdb_data, conservation_grades, binding_residues, width, height
     )
     components.html(html, height=height + 50)

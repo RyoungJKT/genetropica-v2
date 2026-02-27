@@ -300,13 +300,14 @@ class TestStructureMapping:
 
     def test_conservation_viewer_html(self):
         grades = {100: 9, 200: 5, 300: 1}
+        fake_pdb = "ATOM      1  CA  ALA A 100       1.0   2.0   3.0  1.00 90.00           C\nEND\n"
         html = generate_conservation_viewer_html(
-            pdb_id="5ZQK",
+            pdb_data=fake_pdb,
             conservation_grades=grades,
             binding_residues=[100],
         )
         assert "3Dmol" in html
-        assert "5ZQK" in html
+        assert "ALA" in html  # PDB data is embedded directly
 
     def test_write_conservation_pdb(self, tmp_path):
         pdb_lines = [

@@ -28,6 +28,7 @@ from src.conservation.conservation_scores import (
     normalize_to_consurf_scale,
 )
 from src.conservation.map_to_structure import (
+    fetch_pdb,
     generate_conservation_viewer_html,
 )
 from src.conservation.run_alignment import (
@@ -368,14 +369,18 @@ st.markdown(
 )
 
 if grades_by_resi:
-    html = generate_conservation_viewer_html(
-        pdb_id="5ZQK",
-        conservation_grades=grades_by_resi,
-        binding_residues=BINDING_SITE_RESIDUES,
-        width=800,
-        height=550,
-    )
-    components.html(html, height=610)
+    pdb_data = fetch_pdb("5ZQK")
+    if pdb_data:
+        html = generate_conservation_viewer_html(
+            pdb_data=pdb_data,
+            conservation_grades=grades_by_resi,
+            binding_residues=BINDING_SITE_RESIDUES,
+            width=800,
+            height=550,
+        )
+        components.html(html, height=610)
+    else:
+        st.warning("Could not fetch PDB 5ZQK from RCSB. Check network connection.")
 else:
     st.warning("Conservation grades not available. Run the analysis pipeline first.")
 
