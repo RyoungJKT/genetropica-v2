@@ -52,3 +52,13 @@ node_modules/
 # Distribution
 *.tar.gz
 *.whl
+
+# MD simulation — large trajectory files (generated on Colab)
+data/md_simulation/*/trajectory/
+data/md_simulation/*/*.xtc
+data/md_simulation/*/*.trr
+data/md_simulation/*/*.edr
+data/md_simulation/*/*.cpt
+data/md_simulation/*/*.tpr
+data/md_simulation/*/*.gro
+!data/md_simulation/*/input/*.gro
