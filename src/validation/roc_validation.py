@@ -358,9 +358,11 @@ def run_real_validation(
                     float(np.clip((best_vina + 4.0) / -8.0, 0.0, 1.0)), 4,
                 )
 
-            # Consensus: 0.4 * vina_norm + 0.6 * ml_score
+            # Consensus: target-specific weights
+            from src.ai_scoring.consensus_rank import get_target_weights
+            vw, mw = get_target_weights(target_id)
             vina_norm = float(np.clip((best_vina + 4.0) / -8.0, 0.0, 1.0))
-            consensus = round(0.4 * vina_norm + 0.6 * ml_score, 4)
+            consensus = round(vw * vina_norm + mw * ml_score, 4)
 
             return {
                 "name": name,

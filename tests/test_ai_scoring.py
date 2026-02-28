@@ -20,8 +20,10 @@ from src.ai_scoring.literature_mining import (
     search_pubmed,
 )
 from src.ai_scoring.consensus_rank import (
+    TARGET_WEIGHTS,
     compute_consensus,
     flag_novel_discoveries,
+    get_target_weights,
     get_top_candidates,
 )
 from src.utils.db import get_connection, init_db
@@ -148,6 +150,35 @@ class TestConsensusScore:
             for ml in [0.0, 0.25, 0.5, 0.75, 1.0]:
                 score = consensus_score(vina, ml)
                 assert 0.0 <= score <= 1.0, f"Out of range: vina={vina}, ml={ml}"
+
+    def test_target_specific_weights(self):
+        """DENV_NS5 should use 0.1/0.9 weights (ML-heavy)."""
+        # With asymmetric vina/ml scores, NS5 weights should differ
+        score_default = consensus_score(-10.0, 0.5)
+        score_ns5 = consensus_score(-10.0, 0.5, target_id="DENV_NS5")
+        # NS5 weights ML more → with ml=0.5 and vina_norm=0.75,
+        # default: 0.4*0.75 + 0.6*0.5 = 0.6
+        # NS5:     0.1*0.75 + 0.9*0.5 = 0.525
+        assert score_default != score_ns5
+
+    def test_target_specific_ns5_weights(self):
+        """Verify NS5 uses 0.1 Vina + 0.9 ML."""
+        vw, mw = get_target_weights("DENV_NS5")
+        assert vw == 0.1
+        assert mw == 0.9
+
+    def test_target_specific_default_weights(self):
+        """Other targets should use 0.4/0.6 weights."""
+        for tid in ["DENV_NS3", "DENV_E", "CHIKV_nsP2", "CHIKV_nsP1", "LEPTO_LipL32"]:
+            vw, mw = get_target_weights(tid)
+            assert vw == 0.4, f"{tid}: expected vina=0.4, got {vw}"
+            assert mw == 0.6, f"{tid}: expected ml=0.6, got {mw}"
+
+    def test_unknown_target_gets_defaults(self):
+        """Unknown target should fall back to default 0.4/0.6."""
+        vw, mw = get_target_weights("UNKNOWN_TARGET")
+        assert vw == 0.4
+        assert mw == 0.6
 
 
 # ─── ML rescoring tests ──────────────────────────────────

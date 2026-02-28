@@ -12,7 +12,7 @@
     "ef_10pct": 1.98
   },
   "consensus": {
-    "auc": 0.4,
+    "auc": 0.6753,
     "ef_1pct": 0.0,
     "ef_5pct": 0.0,
     "ef_10pct": 0.99
@@ -25,7 +25,19 @@
     "target_name": "DENV NS5 RdRp",
     "scoring": "library_based_real_docking",
     "exhaustiveness": 8,
-    "active_definition": "Category A_RdRp_Inhibitors"
+    "active_definition": "Category A_RdRp_Inhibitors",
+    "consensus_weights": {
+      "vina": 0.1,
+      "ml": 0.9
+    },
+    "note": "Consensus uses target-specific weights (0.1 Vina + 0.9 ML for NS5)"
   },
-  "verdict": "POOR"
+  "verdict": "ACCEPTABLE",
+  "consensus_reweighted": {
+    "auc": 0.6753,
+    "weights": {
+      "vina": 0.1,
+      "ml": 0.9
+    }
+  }
 }
