@@ -21,7 +21,10 @@ CREATE TABLE IF NOT EXISTS drugs (
     smiles TEXT,
     molecular_weight REAL,
     logp REAL,
-    pdbqt_path TEXT
+    pdbqt_path TEXT,
+    category TEXT,
+    selection_rationale TEXT,
+    pubchem_cid TEXT
 );
 
 -- Protein targets
@@ -89,6 +92,33 @@ CREATE TABLE IF NOT EXISTS interactions (
     chain TEXT,
     interaction_type TEXT,
     distance REAL
+);
+
+-- Docking parameters used for each target
+CREATE TABLE IF NOT EXISTS docking_parameters (
+    target_id TEXT PRIMARY KEY REFERENCES targets(target_id),
+    vina_version TEXT NOT NULL,
+    exhaustiveness INTEGER NOT NULL,
+    num_modes INTEGER NOT NULL,
+    energy_range REAL NOT NULL,
+    grid_center_x REAL NOT NULL,
+    grid_center_y REAL NOT NULL,
+    grid_center_z REAL NOT NULL,
+    grid_size_x REAL NOT NULL,
+    grid_size_y REAL NOT NULL,
+    grid_size_z REAL NOT NULL
+);
+
+-- Category-level aggregate statistics
+CREATE TABLE IF NOT EXISTS category_stats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category TEXT NOT NULL,
+    target_id TEXT NOT NULL REFERENCES targets(target_id),
+    mean_vina_score REAL,
+    mean_ml_score REAL,
+    mean_consensus_score REAL,
+    drug_count INTEGER,
+    UNIQUE(category, target_id)
 );
 """
 
