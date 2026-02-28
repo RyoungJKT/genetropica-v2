@@ -188,7 +188,7 @@ class TestMLRescore:
     def test_load_model(self):
         model, backend = load_model()
         assert model is not None
-        assert backend == "sklearn"
+        assert backend in ("sklearn", "sklearn_chembl")
 
     def test_smiles_to_features(self):
         features = _smiles_to_features(ASPIRIN_SMILES, vina_score=-7.0)
