@@ -206,7 +206,7 @@ def rescore_batch(
             if ml_score is None:
                 continue
 
-            cons = consensus_score(vina_score, ml_score)
+            cons = consensus_score(vina_score, ml_score, target_id=target_id)
 
             conn.execute(
                 """INSERT OR REPLACE INTO ml_scores
@@ -229,20 +229,31 @@ def consensus_score(
     vina_score: float,
     ml_score: float,
     weights: tuple[float, float] = (0.4, 0.6),
+    target_id: Optional[str] = None,
 ) -> float:
     """Calculate weighted consensus score from Vina and ML scores.
 
     Vina scores are normalized: typical range -12 to -4 kcal/mol
     is mapped to 0-1 (more negative = higher score).
 
+    When *target_id* is provided and *weights* is the default, the
+    target-specific weights from
+    :data:`consensus_rank.TARGET_WEIGHTS` are used instead.
+
     Args:
         vina_score: Vina binding energy (kcal/mol, negative).
         ml_score: ML binding score (0-1, higher = better).
         weights: (vina_weight, ml_weight), must sum to 1.0.
+        target_id: Optional target identifier for target-specific
+            weights.
 
     Returns:
         Consensus score between 0 and 1 (higher = better candidate).
     """
+    if target_id is not None and weights == (0.4, 0.6):
+        from src.ai_scoring.consensus_rank import get_target_weights
+        weights = get_target_weights(target_id)
+
     # Normalize Vina: -12 -> 1.0, -4 -> 0.0
     vina_norm = min(max((vina_score + 4.0) / -8.0, 0.0), 1.0)
 

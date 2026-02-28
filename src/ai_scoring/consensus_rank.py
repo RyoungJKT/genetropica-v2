@@ -14,28 +14,60 @@ from src.utils.db import get_connection
 
 logger = logging.getLogger(__name__)
 
+# Target-specific consensus weights.
+# Rationale: Vina has documented size bias that penalises nucleoside
+# analogues against polymerase targets.  ROC validation showed that
+# for DENV_NS5 RdRp, Vina (AUC 0.370) actively hurts consensus
+# (AUC 0.400) relative to ML-only scoring (AUC 0.644).
+TARGET_WEIGHTS: dict[str, dict[str, float]] = {
+    "DENV_NS5":     {"vina": 0.1, "ml": 0.9},   # Vina hurts here (AUC 0.370)
+    "DENV_NS3":     {"vina": 0.4, "ml": 0.6},   # Default
+    "DENV_E":       {"vina": 0.4, "ml": 0.6},   # Default
+    "CHIKV_nsP2":   {"vina": 0.4, "ml": 0.6},   # Default
+    "CHIKV_nsP1":   {"vina": 0.4, "ml": 0.6},   # Default
+    "LEPTO_LipL32": {"vina": 0.4, "ml": 0.6},   # Default
+}
+
+DEFAULT_WEIGHTS: dict[str, float] = {"vina": 0.4, "ml": 0.6}
+
+
+def get_target_weights(target_id: str) -> tuple[float, float]:
+    """Return (vina_weight, ml_weight) for a target.
+
+    Uses target-specific weights from TARGET_WEIGHTS when available,
+    falling back to DEFAULT_WEIGHTS.
+    """
+    w = TARGET_WEIGHTS.get(target_id, DEFAULT_WEIGHTS)
+    return w["vina"], w["ml"]
+
 
 def compute_consensus(
     target_id: str,
-    vina_weight: float = 0.4,
-    ml_weight: float = 0.6,
+    vina_weight: Optional[float] = None,
+    ml_weight: Optional[float] = None,
     db_path: Optional[Path] = None,
 ) -> pd.DataFrame:
     """Calculate consensus scores and update rankings for a target.
 
     Normalizes Vina scores across all drugs for the target, then
-    combines with ML scores using the specified weights.
+    combines with ML scores using the specified weights.  When
+    weights are not provided, target-specific defaults from
+    :data:`TARGET_WEIGHTS` are used.
 
     Args:
         target_id: Target identifier.
-        vina_weight: Weight for normalized Vina score.
-        ml_weight: Weight for ML binding score.
+        vina_weight: Weight for normalized Vina score.  Defaults to
+            target-specific weight from TARGET_WEIGHTS.
+        ml_weight: Weight for ML binding score.  Defaults to
+            target-specific weight from TARGET_WEIGHTS.
         db_path: Optional database path override.
 
     Returns:
         DataFrame with drug_id, vina_score, ml_binding_score,
         consensus_score, and consensus_rank.
     """
+    if vina_weight is None or ml_weight is None:
+        vina_weight, ml_weight = get_target_weights(target_id)
     conn = get_connection(db_path)
 
     try:
@@ -115,15 +147,13 @@ def compute_consensus(
 
 
 def rank_all_targets(
-    vina_weight: float = 0.4,
-    ml_weight: float = 0.6,
     db_path: Optional[Path] = None,
 ) -> dict[str, pd.DataFrame]:
     """Compute consensus rankings for all targets.
 
+    Uses target-specific weights from :data:`TARGET_WEIGHTS`.
+
     Args:
-        vina_weight: Weight for Vina scores.
-        ml_weight: Weight for ML scores.
         db_path: Optional database path override.
 
     Returns:
@@ -133,9 +163,14 @@ def rank_all_targets(
 
     results = {}
     for target_id in TARGET_PROTEINS:
-        df = compute_consensus(target_id, vina_weight, ml_weight, db_path)
+        vw, mw = get_target_weights(target_id)
+        df = compute_consensus(target_id, vw, mw, db_path)
         if not df.empty:
             results[target_id] = df
+            logger.info(
+                "  %s: weights vina=%.1f ml=%.1f",
+                target_id, vw, mw,
+            )
 
     logger.info("Ranked %d targets", len(results))
     return results

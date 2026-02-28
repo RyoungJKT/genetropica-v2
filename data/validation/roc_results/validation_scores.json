@@ -7,7 +7,7 @@
       "is_active": true,
       "docking_score": -7.39,
       "gnn_score": 0.765,
-      "consensus_score": 0.7402
+      "consensus_score": 0.7309
     },
     {
       "name": "remdesivir",
@@ -16,7 +16,7 @@
       "is_active": true,
       "docking_score": -6.67,
       "gnn_score": 0.7671,
-      "consensus_score": 0.6787
+      "consensus_score": 0.7238
     },
     {
       "name": "sofosbuvir",
@@ -25,7 +25,7 @@
       "is_active": true,
       "docking_score": -6.24,
       "gnn_score": 0.7729,
-      "consensus_score": 0.644
+      "consensus_score": 0.7236
     },
     {
       "name": "balapiravir",
@@ -34,7 +34,7 @@
       "is_active": true,
       "docking_score": -5.85,
       "gnn_score": 0.8121,
-      "consensus_score": 0.6342
+      "consensus_score": 0.754
     },
     {
       "name": "entecavir",
@@ -43,7 +43,7 @@
       "is_active": true,
       "docking_score": -5.65,
       "gnn_score": 0.8271,
-      "consensus_score": 0.6256
+      "consensus_score": 0.765
     },
     {
       "name": "galidesivir",
@@ -52,7 +52,7 @@
       "is_active": true,
       "docking_score": -5.35,
       "gnn_score": 0.8479,
-      "consensus_score": 0.6117
+      "consensus_score": 0.78
     },
     {
       "name": "molnupiravir",
@@ -61,7 +61,7 @@
       "is_active": true,
       "docking_score": -5.14,
       "gnn_score": 0.8767,
-      "consensus_score": 0.6112
+      "consensus_score": 0.8033
     },
     {
       "name": "ribavirin",
@@ -70,7 +70,7 @@
       "is_active": true,
       "docking_score": -5.11,
       "gnn_score": 0.8755,
-      "consensus_score": 0.6071
+      "consensus_score": 0.8018
     },
     {
       "name": "tenofovir",
@@ -79,7 +79,7 @@
       "is_active": true,
       "docking_score": -4.82,
       "gnn_score": 0.8785,
-      "consensus_score": 0.5836
+      "consensus_score": 0.8009
     },
     {
       "name": "favipiravir",
@@ -88,7 +88,7 @@
       "is_active": true,
       "docking_score": -4.25,
       "gnn_score": 0.8821,
-      "consensus_score": 0.5363
+      "consensus_score": 0.797
     }
   ],
   "decoys": [
@@ -99,7 +99,7 @@
       "is_active": false,
       "docking_score": -8.75,
       "gnn_score": 0.6805,
-      "consensus_score": 0.8083
+      "consensus_score": 0.6718
     },
     {
       "name": "grazoprevir",
@@ -108,7 +108,7 @@
       "is_active": false,
       "docking_score": -8.64,
       "gnn_score": 0.6811,
-      "consensus_score": 0.7991
+      "consensus_score": 0.671
     },
     {
       "name": "pibrentasvir",
@@ -117,7 +117,7 @@
       "is_active": false,
       "docking_score": -8.19,
       "gnn_score": 0.6918,
-      "consensus_score": 0.7661
+      "consensus_score": 0.675
     },
     {
       "name": "voxilaprevir",
@@ -126,7 +126,7 @@
       "is_active": false,
       "docking_score": -8.23,
       "gnn_score": 0.6821,
-      "consensus_score": 0.7632
+      "consensus_score": 0.6668
     },
     {
       "name": "paritaprevir",
@@ -135,7 +135,7 @@
       "is_active": false,
       "docking_score": -7.64,
       "gnn_score": 0.7403,
-      "consensus_score": 0.747
+      "consensus_score": 0.7118
     },
     {
       "name": "atazanavir",
@@ -144,7 +144,7 @@
       "is_active": false,
       "docking_score": -7.59,
       "gnn_score": 0.7387,
-      "consensus_score": 0.7419
+      "consensus_score": 0.7097
     },
     {
       "name": "darunavir",
@@ -153,7 +153,7 @@
       "is_active": false,
       "docking_score": -7.42,
       "gnn_score": 0.7606,
-      "consensus_score": 0.7401
+      "consensus_score": 0.7273
     },
     {
       "name": "sorafenib",
@@ -162,7 +162,7 @@
       "is_active": false,
       "docking_score": -7.37,
       "gnn_score": 0.7656,
-      "consensus_score": 0.7382
+      "consensus_score": 0.7312
     },
     {
       "name": "nelfinavir",
@@ -171,7 +171,7 @@
       "is_active": false,
       "docking_score": -7.33,
       "gnn_score": 0.7622,
-      "consensus_score": 0.7334
+      "consensus_score": 0.7276
     },
     {
       "name": "ivermectin",
@@ -180,7 +180,7 @@
       "is_active": false,
       "docking_score": -7.4,
       "gnn_score": 0.7526,
-      "consensus_score": 0.7331
+      "consensus_score": 0.7198
     },
     {
       "name": "doxycycline",
@@ -189,7 +189,7 @@
       "is_active": false,
       "docking_score": -7.34,
       "gnn_score": 0.7603,
-      "consensus_score": 0.7331
+      "consensus_score": 0.726
     },
     {
       "name": "ombitasvir",
@@ -198,7 +198,7 @@
       "is_active": false,
       "docking_score": -7.3,
       "gnn_score": 0.7649,
-      "consensus_score": 0.7324
+      "consensus_score": 0.7297
     },
     {
       "name": "praziquantel",
@@ -207,7 +207,7 @@
       "is_active": false,
       "docking_score": -7.24,
       "gnn_score": 0.7709,
-      "consensus_score": 0.7306
+      "consensus_score": 0.7343
     },
     {
       "name": "simeprevir",
@@ -216,7 +216,7 @@
       "is_active": false,
       "docking_score": -7.32,
       "gnn_score": 0.7579,
-      "consensus_score": 0.7293
+      "consensus_score": 0.7236
     },
     {
       "name": "ledipasvir",
@@ -225,7 +225,7 @@
       "is_active": false,
       "docking_score": -7.12,
       "gnn_score": 0.7675,
-      "consensus_score": 0.7175
+      "consensus_score": 0.7298
     },
     {
       "name": "elbasvir",
@@ -234,7 +234,7 @@
       "is_active": false,
       "docking_score": -7.08,
       "gnn_score": 0.7625,
-      "consensus_score": 0.7113
+      "consensus_score": 0.7248
     },
     {
       "name": "atovaquone",
@@ -243,7 +243,7 @@
       "is_active": false,
       "docking_score": -7.04,
       "gnn_score": 0.7619,
-      "consensus_score": 0.708
+      "consensus_score": 0.7237
     },
     {
       "name": "suramin",
@@ -252,7 +252,7 @@
       "is_active": false,
       "docking_score": -7.0,
       "gnn_score": 0.7683,
-      "consensus_score": 0.7076
+      "consensus_score": 0.729
     },
     {
       "name": "daclatasvir",
@@ -261,7 +261,7 @@
       "is_active": false,
       "docking_score": -6.85,
       "gnn_score": 0.7721,
-      "consensus_score": 0.6974
+      "consensus_score": 0.7305
     },
     {
       "name": "methotrexate",
@@ -270,7 +270,7 @@
       "is_active": false,
       "docking_score": -6.83,
       "gnn_score": 0.7722,
-      "consensus_score": 0.6952
+      "consensus_score": 0.7304
     },
     {
       "name": "baloxavir_marboxil",
@@ -279,7 +279,7 @@
       "is_active": false,
       "docking_score": -6.82,
       "gnn_score": 0.765,
-      "consensus_score": 0.69
+      "consensus_score": 0.7238
     },
     {
       "name": "telaprevir",
@@ -288,7 +288,7 @@
       "is_active": false,
       "docking_score": -6.77,
       "gnn_score": 0.7635,
-      "consensus_score": 0.685
+      "consensus_score": 0.7218
     },
     {
       "name": "prednisolone",
@@ -297,7 +297,7 @@
       "is_active": false,
       "docking_score": -6.72,
       "gnn_score": 0.7696,
-      "consensus_score": 0.6842
+      "consensus_score": 0.7266
     },
     {
       "name": "cetirizine",
@@ -306,7 +306,7 @@
       "is_active": false,
       "docking_score": -6.68,
       "gnn_score": 0.7648,
-      "consensus_score": 0.6776
+      "consensus_score": 0.7218
     },
     {
       "name": "cyclosporine",
@@ -315,7 +315,7 @@
       "is_active": false,
       "docking_score": -6.61,
       "gnn_score": 0.7675,
-      "consensus_score": 0.6735
+      "consensus_score": 0.7234
     },
     {
       "name": "celecoxib",
@@ -324,7 +324,7 @@
       "is_active": false,
       "docking_score": -6.56,
       "gnn_score": 0.7706,
-      "consensus_score": 0.6712
+      "consensus_score": 0.7255
     },
     {
       "name": "sirolimus",
@@ -333,7 +333,7 @@
       "is_active": false,
       "docking_score": -6.54,
       "gnn_score": 0.7717,
-      "consensus_score": 0.6703
+      "consensus_score": 0.7263
     },
     {
       "name": "minocycline",
@@ -342,7 +342,7 @@
       "is_active": false,
       "docking_score": -6.53,
       "gnn_score": 0.7676,
-      "consensus_score": 0.6662
+      "consensus_score": 0.7225
     },
     {
       "name": "glecaprevir",
@@ -351,7 +351,7 @@
       "is_active": false,
       "docking_score": -6.46,
       "gnn_score": 0.7699,
-      "consensus_score": 0.6622
+      "consensus_score": 0.7237
     },
     {
       "name": "atorvastatin",
@@ -360,7 +360,7 @@
       "is_active": false,
       "docking_score": -6.45,
       "gnn_score": 0.7715,
-      "consensus_score": 0.6622
+      "consensus_score": 0.725
     },
     {
       "name": "omeprazole",
@@ -369,7 +369,7 @@
       "is_active": false,
       "docking_score": -6.43,
       "gnn_score": 0.7693,
-      "consensus_score": 0.6589
+      "consensus_score": 0.7227
     },
     {
       "name": "artemisinin",
@@ -378,7 +378,7 @@
       "is_active": false,
       "docking_score": -6.31,
       "gnn_score": 0.7693,
-      "consensus_score": 0.6487
+      "consensus_score": 0.7212
     },
     {
       "name": "sunitinib",
@@ -387,7 +387,7 @@
       "is_active": false,
       "docking_score": -6.29,
       "gnn_score": 0.772,
-      "consensus_score": 0.6483
+      "consensus_score": 0.7234
     },
     {
       "name": "vandetanib",
@@ -396,7 +396,7 @@
       "is_active": false,
       "docking_score": -6.26,
       "gnn_score": 0.7723,
-      "consensus_score": 0.6462
+      "consensus_score": 0.7233
     },
     {
       "name": "fenofibrate",
@@ -405,7 +405,7 @@
       "is_active": false,
       "docking_score": -6.24,
       "gnn_score": 0.7722,
-      "consensus_score": 0.6437
+      "consensus_score": 0.723
     },
     {
       "name": "lopinavir",
@@ -414,7 +414,7 @@
       "is_active": false,
       "docking_score": -6.22,
       "gnn_score": 0.7745,
-      "consensus_score": 0.6433
+      "consensus_score": 0.7248
     },
     {
       "name": "nafamostat",
@@ -423,7 +423,7 @@
       "is_active": false,
       "docking_score": -6.21,
       "gnn_score": 0.7737,
-      "consensus_score": 0.6419
+      "consensus_score": 0.724
     },
     {
       "name": "mefloquine",
@@ -432,7 +432,7 @@
       "is_active": false,
       "docking_score": -6.22,
       "gnn_score": 0.7713,
-      "consensus_score": 0.6415
+      "consensus_score": 0.7219
     },
     {
       "name": "camostat",
@@ -441,7 +441,7 @@
       "is_active": false,
       "docking_score": -6.22,
       "gnn_score": 0.7685,
-      "consensus_score": 0.6403
+      "consensus_score": 0.7194
     },
     {
       "name": "abacavir",
@@ -450,7 +450,7 @@
       "is_active": false,
       "docking_score": -5.86,
       "gnn_score": 0.8153,
-      "consensus_score": 0.6364
+      "consensus_score": 0.757
     },
     {
       "name": "pentamidine",
@@ -459,7 +459,7 @@
       "is_active": false,
       "docking_score": -6.15,
       "gnn_score": 0.7705,
-      "consensus_score": 0.6349
+      "consensus_score": 0.7203
     },
     {
       "name": "fludarabine",
@@ -468,7 +468,7 @@
       "is_active": false,
       "docking_score": -6.13,
       "gnn_score": 0.7704,
-      "consensus_score": 0.6336
+      "consensus_score": 0.72
     },
     {
       "name": "colchicine",
@@ -477,7 +477,7 @@
       "is_active": false,
       "docking_score": -5.76,
       "gnn_score": 0.8244,
-      "consensus_score": 0.6334
+      "consensus_score": 0.764
     },
     {
       "name": "pantoprazole",
@@ -486,7 +486,7 @@
       "is_active": false,
       "docking_score": -6.11,
       "gnn_score": 0.7724,
-      "consensus_score": 0.6329
+      "consensus_score": 0.7215
     },
     {
       "name": "nirmatrelvir",
@@ -495,7 +495,7 @@
       "is_active": false,
       "docking_score": -5.79,
       "gnn_score": 0.8193,
-      "consensus_score": 0.6329
+      "consensus_score": 0.7597
     },
     {
       "name": "niclosamide",
@@ -504,7 +504,7 @@
       "is_active": false,
       "docking_score": -6.11,
       "gnn_score": 0.7725,
-      "consensus_score": 0.6329
+      "consensus_score": 0.7216
     },
     {
       "name": "indomethacin",
@@ -513,7 +513,7 @@
       "is_active": false,
       "docking_score": -5.81,
       "gnn_score": 0.8142,
-      "consensus_score": 0.6317
+      "consensus_score": 0.7554
     },
     {
       "name": "zidovudine",
@@ -522,7 +522,7 @@
       "is_active": false,
       "docking_score": -5.68,
       "gnn_score": 0.8288,
-      "consensus_score": 0.629
+      "consensus_score": 0.7669
     },
     {
       "name": "gemcitabine",
@@ -531,7 +531,7 @@
       "is_active": false,
       "docking_score": -6.04,
       "gnn_score": 0.7735,
-      "consensus_score": 0.6272
+      "consensus_score": 0.7216
     },
     {
       "name": "ruxolitinib",
@@ -540,7 +540,7 @@
       "is_active": false,
       "docking_score": -5.72,
       "gnn_score": 0.8189,
-      "consensus_score": 0.6267
+      "consensus_score": 0.7585
     },
     {
       "name": "mycophenolate_mofetil",
@@ -549,7 +549,7 @@
       "is_active": false,
       "docking_score": -6.05,
       "gnn_score": 0.7698,
-      "consensus_score": 0.6262
+      "consensus_score": 0.7184
     },
     {
       "name": "clevudine",
@@ -558,7 +558,7 @@
       "is_active": false,
       "docking_score": -5.63,
       "gnn_score": 0.8284,
-      "consensus_score": 0.6243
+      "consensus_score": 0.7659
     },
     {
       "name": "boceprevir",
@@ -567,7 +567,7 @@
       "is_active": false,
       "docking_score": -6.01,
       "gnn_score": 0.7722,
-      "consensus_score": 0.6236
+      "consensus_score": 0.7201
     },
     {
       "name": "benznidazole",
@@ -576,7 +576,7 @@
       "is_active": false,
       "docking_score": -5.88,
       "gnn_score": 0.7882,
-      "consensus_score": 0.6225
+      "consensus_score": 0.7329
     },
     {
       "name": "leflunomide",
@@ -585,7 +585,7 @@
       "is_active": false,
       "docking_score": -5.98,
       "gnn_score": 0.7732,
-      "consensus_score": 0.6217
+      "consensus_score": 0.7206
     },
     {
       "name": "levothyroxine",
@@ -594,7 +594,7 @@
       "is_active": false,
       "docking_score": -5.91,
       "gnn_score": 0.7815,
-      "consensus_score": 0.6208
+      "consensus_score": 0.7272
     },
     {
       "name": "nitazoxanide",
@@ -603,7 +603,7 @@
       "is_active": false,
       "docking_score": -5.57,
       "gnn_score": 0.8302,
-      "consensus_score": 0.6202
+      "consensus_score": 0.7668
     },
     {
       "name": "cladribine",
@@ -612,7 +612,7 @@
       "is_active": false,
       "docking_score": -5.52,
       "gnn_score": 0.8349,
-      "consensus_score": 0.6185
+      "consensus_score": 0.7704
     },
     {
       "name": "trifluridine",
@@ -621,7 +621,7 @@
       "is_active": false,
       "docking_score": -5.48,
       "gnn_score": 0.8396,
-      "consensus_score": 0.6184
+      "consensus_score": 0.7741
     },
     {
       "name": "stavudine",
@@ -630,7 +630,7 @@
       "is_active": false,
       "docking_score": -5.28,
       "gnn_score": 0.8636,
-      "consensus_score": 0.6153
+      "consensus_score": 0.7932
     },
     {
       "name": "albendazole",
@@ -639,7 +639,7 @@
       "is_active": false,
       "docking_score": -5.43,
       "gnn_score": 0.8408,
-      "consensus_score": 0.6148
+      "consensus_score": 0.7746
     },
     {
       "name": "telbivudine",
@@ -648,7 +648,7 @@
       "is_active": false,
       "docking_score": -5.26,
       "gnn_score": 0.8658,
-      "consensus_score": 0.6143
+      "consensus_score": 0.795
     },
     {
       "name": "umifenovir",
@@ -657,7 +657,7 @@
       "is_active": false,
       "docking_score": -5.4,
       "gnn_score": 0.8444,
-      "consensus_score": 0.6137
+      "consensus_score": 0.7775
     },
     {
       "name": "naproxen",
@@ -666,7 +666,7 @@
       "is_active": false,
       "docking_score": -5.42,
       "gnn_score": 0.8413,
-      "consensus_score": 0.6137
+      "consensus_score": 0.7749
     },
     {
       "name": "prochlorperazine",
@@ -675,7 +675,7 @@
       "is_active": false,
       "docking_score": -5.39,
       "gnn_score": 0.8447,
-      "consensus_score": 0.6133
+      "consensus_score": 0.7776
     },
     {
       "name": "baricitinib",
@@ -684,7 +684,7 @@
       "is_active": false,
       "docking_score": -5.36,
       "gnn_score": 0.8467,
-      "consensus_score": 0.6122
+      "consensus_score": 0.779
     },
     {
       "name": "lovastatin",
@@ -693,7 +693,7 @@
       "is_active": false,
       "docking_score": -5.37,
       "gnn_score": 0.843,
-      "consensus_score": 0.6108
+      "consensus_score": 0.7758
     },
     {
       "name": "cytarabine",
@@ -702,7 +702,7 @@
       "is_active": false,
       "docking_score": -5.35,
       "gnn_score": 0.8458,
-      "consensus_score": 0.6103
+      "consensus_score": 0.7781
     },
     {
       "name": "didanosine",
@@ -711,7 +711,7 @@
       "is_active": false,
       "docking_score": -5.14,
       "gnn_score": 0.875,
-      "consensus_score": 0.6101
+      "consensus_score": 0.8017
     },
     {
       "name": "hydroxychloroquine",
@@ -720,7 +720,7 @@
       "is_active": false,
       "docking_score": -5.33,
       "gnn_score": 0.8462,
-      "consensus_score": 0.6094
+      "consensus_score": 0.7782
     },
     {
       "name": "pyrimethamine",
@@ -729,7 +729,7 @@
       "is_active": false,
       "docking_score": -5.23,
       "gnn_score": 0.8609,
-      "consensus_score": 0.6093
+      "consensus_score": 0.7902
     },
     {
       "name": "erlotinib",
@@ -738,7 +738,7 @@
       "is_active": false,
       "docking_score": -5.33,
       "gnn_score": 0.8455,
-      "consensus_score": 0.6087
+      "consensus_score": 0.7776
     },
     {
       "name": "adefovir",
@@ -747,7 +747,7 @@
       "is_active": false,
       "docking_score": -5.15,
       "gnn_score": 0.8699,
-      "consensus_score": 0.6079
+      "consensus_score": 0.7973
     },
     {
       "name": "azathioprine",
@@ -756,7 +756,7 @@
       "is_active": false,
       "docking_score": -5.24,
       "gnn_score": 0.8565,
-      "consensus_score": 0.6074
+      "consensus_score": 0.7863
     },
     {
       "name": "ibuprofen",
@@ -765,7 +765,7 @@
       "is_active": false,
       "docking_score": -5.19,
       "gnn_score": 0.8634,
-      "consensus_score": 0.6073
+      "consensus_score": 0.7919
     },
     {
       "name": "acyclovir",
@@ -774,7 +774,7 @@
       "is_active": false,
       "docking_score": -5.18,
       "gnn_score": 0.8635,
-      "consensus_score": 0.606
+      "consensus_score": 0.7919
     },
     {
       "name": "lisinopril",
@@ -783,7 +783,7 @@
       "is_active": false,
       "docking_score": -5.05,
       "gnn_score": 0.877,
-      "consensus_score": 0.6031
+      "consensus_score": 0.8024
     },
     {
       "name": "amlodipine",
@@ -792,7 +792,7 @@
       "is_active": false,
       "docking_score": -4.96,
       "gnn_score": 0.88,
-      "consensus_score": 0.5974
+      "consensus_score": 0.804
     },
     {
       "name": "chloroquine",
@@ -801,7 +801,7 @@
       "is_active": false,
       "docking_score": -4.94,
       "gnn_score": 0.8801,
-      "consensus_score": 0.5956
+      "consensus_score": 0.8038
     },
     {
       "name": "pentoxifylline",
@@ -810,7 +810,7 @@
       "is_active": false,
       "docking_score": -4.89,
       "gnn_score": 0.8808,
-      "consensus_score": 0.5916
+      "consensus_score": 0.8038
     },
     {
       "name": "lamivudine",
@@ -819,7 +819,7 @@
       "is_active": false,
       "docking_score": -4.91,
       "gnn_score": 0.8771,
-      "consensus_score": 0.5905
+      "consensus_score": 0.8008
     },
     {
       "name": "amantadine",
@@ -828,7 +828,7 @@
       "is_active": false,
       "docking_score": -4.88,
       "gnn_score": 0.8771,
-      "consensus_score": 0.5887
+      "consensus_score": 0.8004
     },
     {
       "name": "chlorpromazine",
@@ -837,7 +837,7 @@
       "is_active": false,
       "docking_score": -4.83,
       "gnn_score": 0.8804,
-      "consensus_score": 0.586
+      "consensus_score": 0.8027
     },
     {
       "name": "primaquine",
@@ -846,7 +846,7 @@
       "is_active": false,
       "docking_score": -4.83,
       "gnn_score": 0.8769,
-      "consensus_score": 0.5842
+      "consensus_score": 0.7996
     },
     {
       "name": "oseltamivir",
@@ -855,7 +855,7 @@
       "is_active": false,
       "docking_score": -4.75,
       "gnn_score": 0.8779,
-      "consensus_score": 0.5778
+      "consensus_score": 0.7995
     },
     {
       "name": "metformin",
@@ -864,7 +864,7 @@
       "is_active": false,
       "docking_score": -4.67,
       "gnn_score": 0.8784,
-      "consensus_score": 0.5708
+      "consensus_score": 0.7989
     },
     {
       "name": "rimantadine",
@@ -873,7 +873,7 @@
       "is_active": false,
       "docking_score": -4.65,
       "gnn_score": 0.8807,
-      "consensus_score": 0.5701
+      "consensus_score": 0.8008
     },
     {
       "name": "gabapentin",
@@ -882,7 +882,7 @@
       "is_active": false,
       "docking_score": -4.42,
       "gnn_score": 0.88,
-      "consensus_score": 0.55
+      "consensus_score": 0.7973
     },
     {
       "name": "miltefosine",
@@ -891,7 +891,7 @@
       "is_active": false,
       "docking_score": -4.17,
       "gnn_score": 0.8764,
-      "consensus_score": 0.5258
+      "consensus_score": 0.7909
     }
   ]
 }
