@@ -1,0 +1,9 @@
+target,molecule,vina_score,ml_score,consensus_score,consensus_rank
+DENV_NS5,sofosbuvir (parent),-6.235,0.7729,0.7407,82
+DENV_NS5,GS-461203 (triphosphate),-6.35,0.767,0.7197,N/A
+DENV_NS3,sofosbuvir (parent),-8.319,0.6927,0.6509,14
+DENV_NS3,GS-461203 (triphosphate),-8.147,0.6901,0.6214,N/A
+DENV_E,sofosbuvir (parent),-6.083,0.7743,0.6834,158
+DENV_E,GS-461203 (triphosphate),-6.916,0.7664,0.6056,N/A
+DENV_NS5,favipiravir,-4.25,0.8821,0.7957,23
+DENV_NS5,dasabuvir,-7.392,0.765,0.7588,49
