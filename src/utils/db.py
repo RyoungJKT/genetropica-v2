@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS literature (
     pmid TEXT,
     title TEXT,
     relationship TEXT,
-    confidence REAL
+    confidence REAL,
+    UNIQUE(drug_id, target_id, pmid)
 );
 
 -- Protein-ligand interactions

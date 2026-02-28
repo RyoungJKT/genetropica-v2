@@ -22,6 +22,48 @@ logger = logging.getLogger(__name__)
 _ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 _EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 
+# Drug synonyms: generic name → list of alternative search terms
+# Includes brand names, metabolite names, and common abbreviations
+DRUG_SYNONYMS: dict[str, list[str]] = {
+    "sofosbuvir": ["Sovaldi", "GS-7977", "GS-461203", "PSI-7977"],
+    "remdesivir": ["Veklury", "GS-5734", "GS-441524"],
+    "favipiravir": ["Avigan", "T-705"],
+    "ribavirin": ["Virazole", "Copegus", "Rebetol"],
+    "oseltamivir": ["Tamiflu"],
+    "lopinavir": ["Kaletra"],
+    "ritonavir": ["Norvir"],
+    "hydroxychloroquine": ["Plaquenil", "HCQ"],
+    "chloroquine": ["Aralen", "CQ"],
+    "ivermectin": ["Stromectol", "Mectizan"],
+    "doxycycline": ["Vibramycin"],
+    "azithromycin": ["Zithromax", "Z-pack"],
+    "niclosamide": ["Niclocide", "Yomesan"],
+    "baricitinib": ["Olumiant"],
+    "daclatasvir": ["Daklinza", "BMS-790052"],
+    "acyclovir": ["Zovirax"],
+    "entecavir": ["Baraclude"],
+    "tenofovir": ["Viread", "TDF", "tenofovir disoproxil"],
+    "mycophenolate": ["CellCept", "mycophenolic acid", "MPA"],
+    "sirolimus": ["rapamycin", "Rapamune"],
+    "celecoxib": ["Celebrex"],
+    "dexamethasone": ["Decadron"],
+    "miltefosine": ["Impavido"],
+    "nitazoxanide": ["Alinia"],
+}
+
+# Target name synonyms: config target name → list of alternative search terms
+TARGET_SYNONYMS: dict[str, list[str]] = {
+    "NS3 Protease-Helicase": ["NS3", "DENV NS3", "dengue NS3 protease", "NS3pro"],
+    "NS5 RNA-dependent RNA Polymerase": [
+        "NS5 RdRp", "DENV NS5", "dengue NS5", "dengue polymerase",
+        "dengue RNA polymerase", "NS5 polymerase", "flavivirus RdRp",
+    ],
+    "Envelope (E) Protein": ["DENV E protein", "dengue envelope", "dengue E glycoprotein"],
+    "nsP2 Protease": ["CHIKV nsP2", "chikungunya nsP2", "nsP2 cysteine protease"],
+    "nsP1 Capping Enzyme": ["CHIKV nsP1", "chikungunya nsP1", "nsP1 methyltransferase"],
+    "LipL32": ["leptospiral LipL32", "LipL32 lipoprotein", "Leptospira LipL32"],
+}
+
 # Relationship keywords for classification
 _RELATIONSHIP_PATTERNS = {
     "therapeutic": [
@@ -186,10 +228,46 @@ def mine_target(target_name: str, disease: str, max_results: int = 20) -> list[d
     return articles
 
 
+def _build_synonym_query(
+    drug_name: str, target_name: str, disease: str,
+) -> str:
+    """Build a PubMed query with drug and target synonyms for broader recall.
+
+    Uses Boolean OR to include alternative names, and AND to combine
+    the drug term, target term, and disease.
+
+    Args:
+        drug_name: Primary drug name.
+        target_name: Primary target name.
+        disease: Disease name.
+
+    Returns:
+        PubMed query string with synonym expansion.
+    """
+    # Drug terms: generic name + any known synonyms
+    drug_lower = drug_name.lower()
+    drug_terms = [drug_name]
+    if drug_lower in DRUG_SYNONYMS:
+        drug_terms.extend(DRUG_SYNONYMS[drug_lower])
+    drug_clause = " OR ".join(f'"{t}"' for t in drug_terms)
+
+    # Target terms: full name + abbreviations
+    target_terms = [target_name]
+    if target_name in TARGET_SYNONYMS:
+        target_terms.extend(TARGET_SYNONYMS[target_name])
+    target_clause = " OR ".join(f'"{t}"' for t in target_terms)
+
+    return f"({drug_clause}) AND ({target_clause}) AND {disease}"
+
+
 def mine_drug_target(
     drug_name: str, target_name: str, disease: str, max_results: int = 10,
 ) -> list[dict]:
     """Check if a specific drug-target relationship exists in PubMed.
+
+    Uses synonym expansion for both drug names (brand names, metabolite
+    codes) and target names (abbreviations, common aliases) to maximize
+    recall of relevant literature.
 
     Args:
         drug_name: Drug name (e.g. 'Sofosbuvir').
@@ -200,7 +278,7 @@ def mine_drug_target(
     Returns:
         List of relevant articles with relationships.
     """
-    query = f"{drug_name} {target_name} {disease}"
+    query = _build_synonym_query(drug_name, target_name, disease)
     articles = search_pubmed(query, max_results=max_results)
 
     for article in articles:
