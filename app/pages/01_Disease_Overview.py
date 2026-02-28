@@ -149,7 +149,7 @@ stages = [
     ("1. Data Acquisition", "📥", "Gather FDA-approved drug structures from DrugBank/ZINC15 and protein targets from RCSB PDB."),
     ("2. Structure Prediction", "🧠", "Predict 3D protein structures using ESMFold where experimental structures are unavailable."),
     ("3. Molecular Docking", "🔗", "Simulate drug-protein binding with AutoDock Vina to estimate binding affinity."),
-    ("4. AI Scoring", "🤖", "ML rescoring with DeepChem, ADMET toxicity prediction, and PubMed literature mining."),
+    ("4. AI Scoring", "🤖", "ML rescoring with Random Forest, ADMET toxicity prediction, and PubMed literature mining."),
     ("5. Dashboard", "📊", "Interactive Streamlit app with 3D visualization, ranked candidates, and evidence."),
 ]
 

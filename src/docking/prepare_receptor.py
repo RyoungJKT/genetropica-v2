@@ -28,26 +28,29 @@ class SearchBox:
 
 
 # Pre-defined binding site coordinates for each target.
-# Derived from known active site residues in the literature.
+# Coordinates validated against actual PDB crystal structures.
+# Uses co-crystallized ligand positions where available,
+# protein center-of-mass for structures without ligands.
 BINDING_SITES: dict[str, SearchBox] = {
     # Dengue NS3 Protease-Helicase (2VBC)
     # Active site: His51, Asp75, Ser135 catalytic triad
-    "DENV_NS3": SearchBox(center_x=15.0, center_y=45.0, center_z=30.0),
+    # No co-crystallized ligand — using protein COM
+    "DENV_NS3": SearchBox(center_x=-6.2, center_y=2.9, center_z=20.9),
     # Dengue NS5 RdRp (5CCV)
-    # RNA binding groove / GDD motif region
-    "DENV_NS5": SearchBox(center_x=22.0, center_y=10.0, center_z=55.0),
+    # Co-crystallized SAH marks the methyltransferase active site
+    "DENV_NS5": SearchBox(center_x=-118.9, center_y=60.8, center_z=40.2),
     # Dengue Envelope protein (1OAN)
-    # Fusion peptide / hydrophobic pocket at domain II
-    "DENV_E": SearchBox(center_x=35.0, center_y=20.0, center_z=40.0),
+    # Glycosylation site ligands (NAG/BMA/FUC) at domain II
+    "DENV_E": SearchBox(center_x=-12.5, center_y=69.2, center_z=24.4),
     # Chikungunya nsP2 Protease (3TRK)
     # Cysteine protease active site: Cys1013, His1083
-    "CHIKV_nsP2": SearchBox(center_x=18.0, center_y=25.0, center_z=35.0),
+    "CHIKV_nsP2": SearchBox(center_x=15.1, center_y=26.4, center_z=20.8),
     # Chikungunya nsP1 Capping Enzyme (6Z0V)
-    # SAM-dependent methyltransferase site
-    "CHIKV_nsP1": SearchBox(center_x=40.0, center_y=30.0, center_z=20.0),
+    # Chain A center of mass (dodecameric complex — dock against one chain)
+    "CHIKV_nsP1": SearchBox(center_x=60.2, center_y=129.8, center_z=97.7),
     # Leptospira LipL32 (3FRH)
-    # Surface-exposed calcium-binding region
-    "LEPTO_LipL32": SearchBox(center_x=25.0, center_y=15.0, center_z=25.0),
+    # Co-crystallized SAH at calcium-binding region
+    "LEPTO_LipL32": SearchBox(center_x=-12.5, center_y=4.0, center_z=-1.7),
 }
 
 

@@ -1,29 +1,17 @@
 {
   "docking": {
-    "auc": 0.9455,
     "ef_1pct": 10.75,
     "ef_5pct": 8.6,
     "ef_10pct": 5.97
   },
   "gnn": {
-    "auc": 1.0,
     "ef_1pct": 10.75,
     "ef_5pct": 10.75,
     "ef_10pct": 9.56
   },
   "consensus": {
-    "auc": 1.0,
     "ef_1pct": 10.75,
     "ef_5pct": 10.75,
     "ef_10pct": 9.56
-  },
-  "metadata": {
-    "n_actives": 8,
-    "n_decoys": 78,
-    "n_total": 86,
-    "target_pdb": "5CCV",
-    "target_name": "DENV NS5 RdRp",
-    "date": "2026-02-28"
-  },
-  "verdict": "EXCELLENT"
+  }
 }

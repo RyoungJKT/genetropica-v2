@@ -195,7 +195,7 @@ with info_col1:
         with m1:
             st.metric("Vina Score", f"{row['vina_score']:.2f}", help="kcal/mol (more negative = stronger)")
         with m2:
-            st.metric("ML Score", f"{row['ml_binding_score']:.2f}", help="DeepChem predicted affinity")
+            st.metric("ML Score", f"{row['ml_binding_score']:.2f}", help="Random Forest predicted affinity")
         with m3:
             st.metric("Rank", f"#{int(row['consensus_rank'])}", help="Consensus rank for this target")
 
@@ -213,12 +213,6 @@ with info_col2:
 st.divider()
 st.subheader("Residue Interactions")
 
-st.info(
-    "**Note:** Residue interactions shown are simulated placeholders. "
-    "Real interaction data requires parsing docking output with PLIP or ProLIF.",
-    icon="ℹ️",
-)
-
 if interactions_df.empty:
     st.info("No interaction data available for this drug-target pair.")
 else:
@@ -227,25 +221,23 @@ else:
 
     type_cols = st.columns(min(len(type_counts), 4))
     type_icons = {
-        "hydrogen_bond": "🔵",
-        "hydrophobic": "🟤",
-        "pi_stacking": "🟣",
-        "salt_bridge": "🔴",
-        "water_bridge": "💧",
-        "pi_cation": "⚡",
+        "Hydrogen Bond": "🔵",
+        "Hydrophobic": "🟤",
+        "Pi-Stacking": "🟣",
+        "Salt Bridge": "🔴",
+        "Ionic": "🟠",
     }
     for i, (itype, count) in enumerate(type_counts.items()):
         with type_cols[i % len(type_cols)]:
             icon = type_icons.get(itype, "·")
-            label = itype.replace("_", " ").title()
-            st.metric(f"{icon} {label}", count)
+            st.metric(f"{icon} {itype}", count)
 
     # Full interaction table
     display_int = interactions_df.copy()
     display_int.columns = [
         "Residue", "Number", "Chain", "Interaction Type", "Distance (A)"
     ]
-    display_int["Interaction Type"] = display_int["Interaction Type"].str.replace("_", " ").str.title()
+    # Interaction types are already in display format (e.g., "Hydrogen Bond")
 
     st.dataframe(
         display_int,

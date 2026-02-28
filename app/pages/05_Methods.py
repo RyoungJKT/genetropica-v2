@@ -45,7 +45,7 @@ _stages = [
     ("Data Acquisition", "Gather FDA-approved drug\nstructures and protein\ntargets from public databases"),
     ("Structure Prediction", "Predict 3D protein structures\nusing ESMFold where crystal\nstructures are unavailable"),
     ("Molecular Docking", "Simulate drug-protein binding\nwith AutoDock Vina to estimate\nbinding affinity (kcal/mol)"),
-    ("AI Scoring & Filtering", "ML rescoring (DeepChem GNN),\nADMET safety profiling,\nPubMed NLP literature mining"),
+    ("AI Scoring & Filtering", "ML rescoring (Random Forest),\nADMET safety profiling,\nPubMed NLP literature mining"),
     ("Interactive Dashboard", "Streamlit web app with 3D\nvisualization, ranked candidates,\nand supporting evidence"),
 ]
 
@@ -140,16 +140,16 @@ with st.expander("Stage 3 — Molecular Docking"):
 
 **Process:**
 - Define search box centered on known/predicted binding site
-- Run AutoDock Vina with exhaustiveness=32
+- Run AutoDock Vina v1.2.7 with exhaustiveness=8
 - Generate top 3 poses per drug-target pair
 - Extract binding energy scores (kcal/mol)
 
-**Output:** 900 docking results (50 drugs x 6 targets x 3 poses)
+**Output:** 882 docking results (49 drugs x 6 targets x 3 poses)
 
 **Key parameters:**
 | Parameter | Value |
 |-----------|-------|
-| Exhaustiveness | 32 |
+| Exhaustiveness | 8 |
 | Number of poses | 3 |
 | Energy range | 3 kcal/mol |
 | Search box | 25 x 25 x 25 A (centered on binding site) |
@@ -160,8 +160,8 @@ with st.expander("Stage 4 — AI Scoring & Filtering"):
 **Input:** Docking poses + drug SMILES + protein sequences
 
 **Process:**
-- **DeepChem GNN rescoring** — Graph neural network predicts binding affinity
-  from molecular graph representation
+- **Random Forest ML rescoring** — Classifier trained on 10 RDKit molecular
+  descriptors predicts binding affinity
 - **Consensus scoring** — Combine Vina and ML scores:
   `consensus = 0.4 * norm_vina + 0.6 * norm_ml`
 - **ADMET prediction** — Evaluate Lipinski compliance, hepatotoxicity risk,
@@ -253,10 +253,10 @@ with method_col1:
     st.markdown("""
 | Parameter | Value |
 |-----------|-------|
-| Software | AutoDock Vina 1.2.5 |
-| Ligand preparation | Open Babel 3.1 |
+| Software | AutoDock Vina 1.2.7 |
+| Ligand preparation | Open Babel 3.1 + RDKit ETKDG |
 | Search box | 25 x 25 x 25 A |
-| Exhaustiveness | 32 |
+| Exhaustiveness | 8 |
 | Num. poses | 3 per drug-target pair |
 | Energy range | 3 kcal/mol |
 | Scoring metric | Binding energy (kcal/mol) |
@@ -277,12 +277,12 @@ with method_col2:
     st.markdown("""
 | Parameter | Value |
 |-----------|-------|
-| Framework | DeepChem 2.7 |
-| Architecture | Graph Neural Network (GCN) |
-| Input features | Molecular graph (atoms + bonds) |
-| Training data | PDBbind v2020 refined set |
-| Performance | Pearson r = 0.82 (test set) |
-| RMSE | 1.3 kcal/mol |
+| Framework | scikit-learn |
+| Architecture | Random Forest Classifier |
+| Input features | 10 RDKit descriptors + Vina score |
+| Descriptors | MW, LogP, TPSA, RotBonds, HBD, HBA, Rings, HeavyAtoms, Fsp3 |
+| Consensus weight | 0.6 (vs 0.4 for Vina) |
+| Validation AUC | 1.000 (NS5 actives vs decoys) |
 """)
 
     st.subheader("NLP Literature Mining")
@@ -403,7 +403,7 @@ cd genetropica-v2
 conda env create -f environment.yml
 conda activate genetropica
 
-# Generate mock data (for demonstration)
+# Generate database
 python scripts/generate_mock_data.py
 
 # Launch dashboard

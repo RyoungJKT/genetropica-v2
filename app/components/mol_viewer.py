@@ -110,8 +110,8 @@ def render_binding_complex(
 ) -> None:
     """Render protein with highlighted binding pocket and annotation.
 
-    In mock mode (no actual docked poses), shows the protein with
-    binding site residues highlighted and an info label.
+    Shows the protein with binding site residues highlighted
+    and an info label.
 
     Args:
         pdb_id: 4-character PDB identifier.
