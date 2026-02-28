@@ -13,7 +13,10 @@ LIGANDS_DIR: Path = DATA_DIR / "ligands"
 DOCKING_DIR: Path = DATA_DIR / "docking_results"
 DB_PATH: Path = DATA_DIR / "database" / "genetropica.db"
 
-# Mock data toggle — set to False when real data pipelines are ready
+# Mock data toggle — controls whether generate_mock_data.py is used for
+# initial database seeding. ADMET and literature are always computed from
+# real sources (RDKit, PubMed). Vina scores, ML scores, and interactions
+# remain simulated until those pipeline stages are operational.
 USE_MOCK_DATA: bool = os.environ.get("USE_MOCK_DATA", "true").lower() == "true"
 
 # Protein targets for all three diseases

@@ -70,6 +70,14 @@ st.markdown(
     "diagonal indicate agreement between methods."
 )
 
+st.info(
+    "**Note:** Vina docking scores and ML binding scores shown here are "
+    "simulated placeholders. Real scores require AutoDock Vina docking "
+    "runs and a trained DeepChem GNN model, which are not yet integrated "
+    "into the automated pipeline.",
+    icon="ℹ️",
+)
+
 st.plotly_chart(vina_vs_ml_scatter(target_id), use_container_width=True)
 
 # Quick statistics
@@ -246,14 +254,15 @@ ADMET stands for **Absorption, Distribution, Metabolism, Excretion,
 and Toxicity** — the key pharmacokinetic properties that determine
 whether a drug candidate is safe and effective in humans.
 
-Our pipeline evaluates four safety criteria:
+Our pipeline evaluates four safety criteria using RDKit molecular
+descriptors computed directly from each drug's SMILES structure:
 
 | Property | Method | Pass Threshold |
 |----------|--------|---------------|
-| **Lipinski's Rule of 5** | Molecular descriptor check | All 4 rules satisfied |
-| **Hepatotoxicity** | Random Forest classifier | Risk < 50% |
-| **hERG Inhibition** | SVM predictor | Risk < 50% |
-| **Oral Bioavailability** | Regression model | Score > 0.5 |
+| **Lipinski's Rule of 5** | MW, LogP, HBD, HBA from RDKit | ≤ 1 violation |
+| **Hepatotoxicity** | Descriptor heuristics (MW, LogP, TPSA, reactive groups) | Risk < 50% |
+| **hERG Inhibition** | LogP + basic nitrogens + aromatic ring count | Risk < 50% |
+| **Oral Bioavailability** | Veber's rules (TPSA, rotatable bonds, LogP) | Score ≥ 0.5 |
 
 A drug must pass **all four** criteria to receive an overall ADMET pass.
 Since we use existing FDA-approved drugs, most already have favorable

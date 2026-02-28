@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
-"""Mock data generator for GeneTropica development.
+"""Data generator for GeneTropica development.
 
-Populates the SQLite database with realistic mock data including
-FDA-approved drugs, protein targets, docking results, ML scores,
-ADMET predictions, and literature evidence.
+Populates the SQLite database with a mix of real and mock data.
+
+DATA SOURCE SUMMARY:
+  Real data (computed from actual inputs):
+    - Drug properties (name, SMILES, MW, LogP, indication) — from DrugBank/PubChem
+    - Protein targets (PDB IDs, UniProt IDs, disease) — from PDB/UniProt
+    - ADMET predictions — computed via RDKit from real SMILES
+    - Literature evidence — known entries from real PubMed papers;
+      remaining entries are fabricated placeholders
+
+  Mock data (randomly generated — needs real pipeline runs to replace):
+    - Vina docking scores — need actual AutoDock Vina runs with PDB/PDBQT files
+    - ML binding scores — need trained DeepChem GNN model
+    - Consensus scores — computed from mock Vina + ML inputs
+    - Protein-ligand interactions — need real docking output parsing
 """
 
 import logging
@@ -135,7 +147,11 @@ def _generate_targets(conn) -> list[str]:
 def _generate_docking_results(
     conn, drug_ids: list[str], target_ids: list[str]
 ) -> dict[tuple[str, str], float]:
-    """Generate docking results with 3 poses per drug-target pair.
+    """Generate MOCK docking results with 3 poses per drug-target pair.
+
+    WARNING: These are randomly generated scores, NOT from real AutoDock Vina.
+    Real docking requires PDB receptor files and PDBQT ligand files.
+    Replace with actual Vina output when docking pipeline is operational.
 
     Returns a mapping of (drug_id, target_id) -> best vina score for
     downstream ML scoring.
@@ -191,7 +207,11 @@ def _generate_ml_scores(
     target_ids: list[str],
     best_vina: dict[tuple[str, str], float],
 ) -> None:
-    """Generate ML rescoring with consensus rankings per target.
+    """Generate MOCK ML rescoring with consensus rankings per target.
+
+    WARNING: ML scores are mock (Vina + Gaussian noise), NOT from a real
+    DeepChem GNN model. Consensus formula is real (0.4*Vina + 0.6*ML),
+    but both inputs are mock. Replace when trained model is available.
 
     Consensus score = 0.4 * normalized_vina + 0.6 * normalized_ml
     (Vina scores are negative, so more negative = better binding.)
@@ -242,32 +262,24 @@ def _generate_ml_scores(
 
 
 def _generate_admet(conn, drug_ids: list[str]) -> None:
-    """Generate ADMET predictions with realistic pass/fail distribution.
+    """Compute real ADMET predictions from drug SMILES via RDKit.
 
-    ~80% pass Lipinski, ~15% hepatotoxicity risk, ~10% hERG risk.
-    Overall pass requires all three criteria met.
+    Uses Lipinski Rule of Five, hepatotoxicity heuristics, hERG risk
+    estimation, and Veber's bioavailability rules — all computed from
+    the actual molecular structure (SMILES) stored in the drugs table.
     """
+    from src.ai_scoring.admet_predict import full_admet_profile
+
     count = 0
     for drug_id in drug_ids:
-        lipinski_pass = random.random() < 0.80
-        hepatotoxicity_risk = round(
-            random.betavariate(1.5, 8) if random.random() > 0.15
-            else random.uniform(0.5, 0.95),
-            3,
-        )
-        herg_risk = round(
-            random.betavariate(1.2, 10) if random.random() > 0.10
-            else random.uniform(0.5, 0.90),
-            3,
-        )
-        oral_bioavailability = round(random.uniform(0.2, 0.95), 3)
+        row = conn.execute(
+            "SELECT smiles FROM drugs WHERE drug_id = ?", (drug_id,)
+        ).fetchone()
+        if not row or not row["smiles"]:
+            logger.warning("No SMILES for %s, skipping ADMET", drug_id)
+            continue
 
-        overall_pass = (
-            lipinski_pass
-            and hepatotoxicity_risk < 0.5
-            and herg_risk < 0.5
-        )
-
+        profile = full_admet_profile(row["smiles"])
         conn.execute(
             """INSERT OR REPLACE INTO admet
                (drug_id, lipinski_pass, hepatotoxicity_risk,
@@ -275,16 +287,16 @@ def _generate_admet(conn, drug_ids: list[str]) -> None:
                VALUES (?, ?, ?, ?, ?, ?)""",
             (
                 drug_id,
-                lipinski_pass,
-                hepatotoxicity_risk,
-                herg_risk,
-                oral_bioavailability,
-                overall_pass,
+                profile["lipinski_pass"],
+                profile["hepatotoxicity_risk"],
+                profile["herg_inhibition_risk"],
+                profile["oral_bioavailability"],
+                profile["overall_pass"],
             ),
         )
         count += 1
 
-    logger.info("Inserted %d ADMET profiles", count)
+    logger.info("Computed real ADMET profiles for %d drugs", count)
 
 
 # Realistic PubMed-style article titles for literature evidence
@@ -404,15 +416,16 @@ _DRUG_NAME_TO_ID = {name.lower(): f"DRUG_{i+1:04d}" for i, (name, *_) in enumera
 def _generate_literature(
     conn, drug_ids: list[str], target_ids: list[str]
 ) -> None:
-    """Generate literature evidence combining known actives + random pairs.
+    """Populate literature from real PubMed queries via NCBI E-utilities.
 
-    Known drug-target pairs from real PubMed literature are always included.
-    Additional random entries are generated for ~30% of remaining pairs.
-    Uses INSERT OR IGNORE to prevent duplicates.
+    Step 1: Insert curated known evidence (always present as fallback).
+    Step 2: Run batch_mine() to query PubMed for all drug-target pairs,
+            fetching real PMIDs, titles, and relationship classifications.
+    Requires network access; rate-limited to respect NCBI guidelines.
     """
     count = 0
 
-    # Step 1: Insert known published evidence (always present)
+    # Step 1: Insert curated known evidence as baseline
     for drug_name, target_id, pmid, title, relationship, confidence in _KNOWN_LITERATURE:
         drug_id = _DRUG_NAME_TO_ID.get(drug_name.lower())
         if drug_id and drug_id in drug_ids and target_id in target_ids:
@@ -423,49 +436,19 @@ def _generate_literature(
                 (drug_id, target_id, pmid, title, relationship, confidence),
             )
             count += 1
+    conn.commit()
+    logger.info("Inserted %d curated literature entries", count)
 
-    # Step 2: Generate random entries for ~30% of remaining pairs
-    # Track which pairs already have known literature
-    known_pairs = {
-        (_DRUG_NAME_TO_ID.get(name.lower()), tid)
-        for name, tid, *_ in _KNOWN_LITERATURE
-    }
-
-    for drug_id in drug_ids:
-        for target_id in target_ids:
-            # Skip pairs that already have known literature (they're covered)
-            if (drug_id, target_id) in known_pairs:
-                continue
-
-            if random.random() > 0.30:
-                continue
-
-            n_refs = random.randint(1, 3)
-            target_info = TARGET_PROTEINS[target_id]
-
-            for _ in range(n_refs):
-                drug_idx = int(drug_id.split("_")[1]) - 1
-                drug_name = DRUG_DATA[drug_idx][0]
-
-                template = random.choice(_TITLE_TEMPLATES)
-                title = template.format(
-                    drug=drug_name.capitalize(),
-                    disease=target_info["disease"],
-                    target=target_info["name"],
-                )
-                pmid = str(random.randint(20000000, 39999999))
-                relationship = random.choice(_RELATIONSHIPS)
-                confidence = round(random.uniform(0.5, 0.95), 3)
-
-                conn.execute(
-                    """INSERT OR IGNORE INTO literature
-                       (drug_id, target_id, pmid, title, relationship, confidence)
-                       VALUES (?, ?, ?, ?, ?, ?)""",
-                    (drug_id, target_id, pmid, title, relationship, confidence),
-                )
-                count += 1
-
-    logger.info("Inserted %d literature entries", count)
+    # Step 2: Run real PubMed mining for all pairs
+    try:
+        from src.ai_scoring.literature_mining import batch_mine
+        pubmed_count = batch_mine(max_per_pair=5)
+        logger.info("PubMed mining added %d entries", pubmed_count)
+    except Exception as e:
+        logger.warning(
+            "PubMed mining failed (network issue?): %s. "
+            "Using curated entries only.", e,
+        )
 
 
 # Residue data for generating realistic protein-ligand interactions
@@ -501,7 +484,13 @@ _BINDING_SITES: dict[str, list[tuple[int, int, str]]] = {
 def _generate_interactions(
     conn, drug_ids: list[str], target_ids: list[str]
 ) -> None:
-    """Generate mock protein-ligand interactions for each docking pose."""
+    """Generate MOCK protein-ligand interactions for each docking pose.
+
+    WARNING: These are randomly generated residue interactions, NOT from
+    real docking output. Residue numbers are constrained to approximate
+    binding-site regions but are not from actual pose analysis. Replace
+    with PLIP or ProLIF parsed output from real docking poses.
+    """
     count = 0
     for drug_id in drug_ids:
         for target_id in target_ids:
@@ -560,7 +549,7 @@ def _generate_interactions(
 
 
 def main() -> None:
-    """Generate all mock data and populate the database."""
+    """Generate database: real drugs/ADMET/literature + mock docking/ML/interactions."""
     logger.info("Initializing database...")
     init_db()
 

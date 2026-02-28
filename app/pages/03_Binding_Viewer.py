@@ -213,6 +213,12 @@ with info_col2:
 st.divider()
 st.subheader("Residue Interactions")
 
+st.info(
+    "**Note:** Residue interactions shown are simulated placeholders. "
+    "Real interaction data requires parsing docking output with PLIP or ProLIF.",
+    icon="ℹ️",
+)
+
 if interactions_df.empty:
     st.info("No interaction data available for this drug-target pair.")
 else:
