@@ -49,6 +49,8 @@ else:
     st.code("python -c \"from src.validation.roc_validation import run_full_validation; run_full_validation()\"")
     st.stop()
 
+meta = summary.get("metadata", {})
+
 
 # ─────────────────────────────────────────────────────────────
 # Section 1 — Why Validation Matters
@@ -78,9 +80,11 @@ The standard metrics are:
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("2. ROC Curves")
+n_act = meta.get("n_actives", 10)
+n_dec = meta.get("n_decoys", 89)
 st.markdown(
-    "Receiver Operating Characteristic curves for three scoring methods, "
-    "each tested on 8 known RdRp inhibitors vs 78 property-matched decoys."
+    f"Receiver Operating Characteristic curves for three scoring methods, "
+    f"each tested on {n_act} known RdRp inhibitors vs {n_dec} library compounds."
 )
 
 # Build ROC plot from summary data
@@ -228,8 +232,6 @@ else:
 st.divider()
 st.header("6. Validation Details")
 
-meta = summary.get("metadata", {})
-
 d1, d2, d3 = st.columns(3)
 with d1:
     st.metric("Known Actives", meta.get("n_actives", 8))
@@ -248,39 +250,47 @@ actives_table = {
 st.dataframe(actives_table, use_container_width=True)
 
 with st.expander("Screening Parameters"):
-    st.markdown("""
+    st.markdown(f"""
     | Parameter | Value |
     |-----------|-------|
     | Validation target | DENV NS5 RdRp (PDB: 5CCV) |
     | Docking software | AutoDock Vina 1.2.7 |
     | Exhaustiveness | 8 |
     | Search box | Same as main pipeline (25 x 25 x 25 A) |
-    | ML rescoring | sklearn Random Forest (10 RDKit descriptors) |
+    | ML rescoring | sklearn Random Forest (2048-bit Morgan FP + Vina norm) |
     | Consensus formula | 0.4 x Vina_norm + 0.6 x ML |
-    | Decoy generation | Property-matched (MW +/-25%, LogP +/-1.0, Tanimoto < 0.4) |
-    | Decoy count | 78 (property-matched from fragment library) |
+    | Active definition | Category A: RdRp Inhibitors ({meta.get('n_actives', 10)} compounds) |
+    | Decoy definition | All other library drugs ({meta.get('n_decoys', 89)} compounds) |
     """)
 
 with st.expander("Methodology"):
     st.markdown("""
-    **Retrospective validation** follows the DUD-E (Directory of Useful
-    Decoys — Enhanced) protocol:
+    **Library-based retrospective validation** tests whether the pipeline
+    can distinguish known RdRp inhibitors from unrelated drugs within the
+    same 100-drug library:
 
-    1. **Collect actives** — 8 compounds with published RdRp inhibitory
-       activity against dengue or related flaviviruses.
+    1. **Define actives** — 10 compounds from the A_RdRp_Inhibitors
+       category (sofosbuvir, remdesivir, favipiravir, ribavirin, etc.)
+       with published RdRp inhibitory activity.
 
-    2. **Generate decoys** — For each active, generate property-matched
-       molecules that share physicochemical properties (MW, LogP, rotatable
-       bonds) but differ in molecular topology (Tanimoto similarity < 0.4).
+    2. **Define decoys** — All remaining 89 library drugs, which include
+       negative controls (metformin, ibuprofen, gabapentin, etc.) and
+       drugs targeting other mechanisms (protease inhibitors, kinase
+       inhibitors, etc.).
 
-    3. **Screen blindly** — Dock all actives and decoys against 5CCV using
-       identical parameters as the main screening campaign.
+    3. **Use existing docking** — All compounds were already docked
+       against 5CCV using identical parameters during the main screening
+       campaign (AutoDock Vina, exhaustiveness=8, 25A grid box).
 
-    4. **Score and rank** — Apply the same docking, ML, and consensus
-       scoring pipeline.
+    4. **Score and rank** — The same ML rescoring (2048-bit Morgan
+       fingerprints + Vina score) and consensus formula (0.4 x Vina_norm
+       + 0.6 x ML) used throughout the pipeline.
 
-    5. **Evaluate** — Compute ROC curves, AUC, and enrichment factors to
-       measure how well each method separates actives from decoys.
+    5. **Evaluate** — Compute ROC curves, AUC, and enrichment factors.
+       Note: Vina scoring shows negative correlation with RdRp inhibitor
+       activity because these nucleoside analogs are small molecules that
+       score weakly compared to larger protease inhibitors. This is a
+       known limitation of physics-based scoring functions.
     """)
 
 st.divider()

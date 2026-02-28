@@ -279,10 +279,10 @@ with method_col2:
 |-----------|-------|
 | Framework | scikit-learn |
 | Architecture | Random Forest Classifier |
-| Input features | 10 RDKit descriptors + Vina score |
-| Descriptors | MW, LogP, TPSA, RotBonds, HBD, HBA, Rings, HeavyAtoms, Fsp3 |
+| Input features | 2048-bit Morgan fingerprints (radius=2) + normalised Vina score |
+| Feature dimension | 2049 |
 | Consensus weight | 0.6 (vs 0.4 for Vina) |
-| Validation AUC | 1.000 (NS5 actives vs decoys) |
+| Validation ML AUC | 0.644 (NS5 RdRp inhibitors vs library) |
 """)
 
     st.subheader("NLP Literature Mining")

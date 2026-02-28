@@ -230,23 +230,23 @@ class TestMockScores:
 
 class TestFullValidation:
     def test_full_validation_returns_summary(self, tmp_path):
-        summary = run_full_validation(seed=42, output_dir=tmp_path)
+        summary = run_full_validation(use_mock=True, seed=42, output_dir=tmp_path)
         assert "docking" in summary
         assert "gnn" in summary
         assert "consensus" in summary
         assert "verdict" in summary
 
     def test_full_validation_auc_range(self, tmp_path):
-        summary = run_full_validation(seed=42, output_dir=tmp_path)
+        summary = run_full_validation(use_mock=True, seed=42, output_dir=tmp_path)
         for method in ["docking", "gnn", "consensus"]:
             assert 0.5 < summary[method]["auc"] <= 1.0
 
     def test_consensus_outperforms_random(self, tmp_path):
-        summary = run_full_validation(seed=42, output_dir=tmp_path)
+        summary = run_full_validation(use_mock=True, seed=42, output_dir=tmp_path)
         assert summary["consensus"]["auc"] > 0.6
 
     def test_saves_output_files(self, tmp_path):
-        run_full_validation(seed=42, output_dir=tmp_path)
+        run_full_validation(use_mock=True, seed=42, output_dir=tmp_path)
         assert (tmp_path / "validation_summary.json").exists()
         assert (tmp_path / "docking_scores.csv").exists()
         assert (tmp_path / "gnn_scores.csv").exists()
@@ -254,7 +254,7 @@ class TestFullValidation:
         assert (tmp_path / "validation_scores.json").exists()
 
     def test_verdict_is_valid(self, tmp_path):
-        summary = run_full_validation(seed=42, output_dir=tmp_path)
+        summary = run_full_validation(use_mock=True, seed=42, output_dir=tmp_path)
         assert summary["verdict"] in ("EXCELLENT", "GOOD", "ACCEPTABLE", "POOR")
 
 

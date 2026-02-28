@@ -1,29 +1,31 @@
 {
   "docking": {
-    "auc": 0.9455,
-    "ef_1pct": 10.75,
-    "ef_5pct": 8.6,
-    "ef_10pct": 5.97
+    "auc": 0.3702,
+    "ef_1pct": 0.0,
+    "ef_5pct": 0.0,
+    "ef_10pct": 0.99
   },
   "gnn": {
-    "auc": 1.0,
-    "ef_1pct": 10.75,
-    "ef_5pct": 10.75,
-    "ef_10pct": 9.56
+    "auc": 0.6444,
+    "ef_1pct": 9.9,
+    "ef_5pct": 1.98,
+    "ef_10pct": 1.98
   },
   "consensus": {
-    "auc": 1.0,
-    "ef_1pct": 10.75,
-    "ef_5pct": 10.75,
-    "ef_10pct": 9.56
+    "auc": 0.4,
+    "ef_1pct": 0.0,
+    "ef_5pct": 0.0,
+    "ef_10pct": 0.99
   },
   "metadata": {
-    "n_actives": 8,
-    "n_decoys": 78,
-    "n_total": 86,
+    "n_actives": 10,
+    "n_decoys": 89,
+    "n_total": 99,
     "target_pdb": "5CCV",
     "target_name": "DENV NS5 RdRp",
-    "date": "2026-02-28"
+    "scoring": "library_based_real_docking",
+    "exhaustiveness": 8,
+    "active_definition": "Category A_RdRp_Inhibitors"
   },
-  "verdict": "EXCELLENT"
+  "verdict": "POOR"
 }
