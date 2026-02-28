@@ -127,9 +127,9 @@ class TestSearchBox:
 
     def test_define_known_target(self):
         box = define_search_box("DENV_NS3")
-        assert box.center_x == 15.0
-        assert box.center_y == 45.0
-        assert box.center_z == 30.0
+        assert box.center_x == -6.2
+        assert box.center_y == 2.9
+        assert box.center_z == 20.9
 
     def test_define_unknown_target(self):
         box = define_search_box("UNKNOWN_TARGET")

@@ -58,7 +58,6 @@ def dock_single(
         "--exhaustiveness", str(exhaustiveness),
         "--num_modes", str(n_poses),
         "--out", str(output_path),
-        "--log", str(log_path),
     ]
 
     try:
@@ -68,9 +67,12 @@ def dock_single(
             logger.warning("Vina failed for %s: %s", ligand_pdbqt.name, result.stderr)
             return None
 
-        scores = _parse_vina_log(log_path)
+        # Save stdout as log file for reference
+        log_path.write_text(result.stdout)
+
+        scores = _parse_vina_stdout(result.stdout)
         if not scores:
-            scores = _parse_vina_stdout(result.stdout)
+            scores = _parse_vina_log(log_path)
 
         logger.info(
             "Docked %s -> %s: best score %.2f kcal/mol",
@@ -174,7 +176,7 @@ def dock_batch(
     Returns:
         Dict mapping drug_id to docking result dict.
     """
-    lig_dir = ligand_dir or LIGANDS_DIR
+    lig_dir = ligand_dir or (LIGANDS_DIR / "pdbqt")
     box = define_search_box(target_id)
 
     ligands = sorted(lig_dir.glob("*.pdbqt"))

@@ -93,10 +93,10 @@ DRUG_DATA = [
 
 
 def _generate_drugs(conn) -> list[str]:
-    """Insert 50 mock drugs and return their drug_ids."""
+    """Insert 50 drugs with real chemistry data and return their drug_ids."""
     drug_ids = []
     for i, (name, smiles, indication, mw, logp) in enumerate(DRUG_DATA):
-        drug_id = f"DRUG_{i+1:04d}"
+        drug_id = name.lower().replace(" ", "_")
         drugbank_id = f"DB{i+1:05d}"
         conn.execute(
             """INSERT OR REPLACE INTO drugs
@@ -410,7 +410,7 @@ _KNOWN_LITERATURE = [
 ]
 
 # Build lookup: drug_name → drug_id
-_DRUG_NAME_TO_ID = {name.lower(): f"DRUG_{i+1:04d}" for i, (name, *_) in enumerate(DRUG_DATA)}
+_DRUG_NAME_TO_ID = {name.lower(): name.lower().replace(" ", "_") for name, *_ in DRUG_DATA}
 
 
 def _generate_literature(

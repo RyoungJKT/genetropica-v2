@@ -198,11 +198,11 @@ def generate_roc_plot(
         line=dict(color=THEME_PRIMARY, width=2),
     ))
 
-    # GNN only
+    # ML only
     fig.add_trace(go.Scatter(
         x=roc_gnn["fpr"], y=roc_gnn["tpr"],
         mode="lines",
-        name=f"GNN Only (AUC = {roc_gnn['auc']:.3f})",
+        name=f"ML Only (AUC = {roc_gnn['auc']:.3f})",
         line=dict(color=THEME_SECONDARY, width=2),
     ))
 
@@ -254,7 +254,7 @@ def generate_enrichment_plot(
     ))
     fig.add_trace(go.Bar(
         x=categories, y=gnn_vals,
-        name="GNN Only", marker_color=THEME_SECONDARY,
+        name="ML Only", marker_color=THEME_SECONDARY,
         text=[f"{v:.1f}" for v in gnn_vals], textposition="outside",
     ))
     fig.add_trace(go.Bar(
@@ -287,7 +287,7 @@ def generate_score_distribution_plot(scores_data: dict) -> go.Figure:
 
     methods = [
         ("docking_score", "Docking Score", True),
-        ("gnn_score", "GNN Score", False),
+        ("gnn_score", "ML Score", False),
         ("consensus_score", "Consensus Score", False),
     ]
 
@@ -483,7 +483,7 @@ def _print_report(summary: dict) -> None:
     print("  " + "-" * 48)
     for method in ["docking", "gnn", "consensus"]:
         m = summary[method]
-        name = {"docking": "Docking only", "gnn": "GNN only", "consensus": "Consensus"}[method]
+        name = {"docking": "Docking only", "gnn": "ML only", "consensus": "Consensus"}[method]
         print(f"  {name:<16} {m['auc']:>8.3f} {m['ef_1pct']:>8.1f} {m['ef_5pct']:>8.1f} {m['ef_10pct']:>8.1f}")
     print(f"  {'Random':<16} {'0.500':>8} {'1.0':>8} {'1.0':>8} {'1.0':>8}")
     print()

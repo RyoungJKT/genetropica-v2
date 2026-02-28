@@ -21,11 +21,9 @@ from src.validation.roc_validation import (
     compute_enrichment_factors,
     compute_roc,
     generate_enrichment_plot,
-    generate_mock_validation_scores,
     generate_roc_plot,
     generate_score_distribution_plot,
     load_validation_results,
-    run_full_validation,
 )
 
 import numpy as np
@@ -38,50 +36,18 @@ st.markdown(
 )
 
 # ─────────────────────────────────────────────────────────────
-# Load or generate validation results
+# Load validation results
 # ─────────────────────────────────────────────────────────────
 
 saved = load_validation_results()
-if saved is not None and "_scores_data" in saved:
+if saved is not None:
     summary = saved
-    scores_data = saved["_scores_data"]
+    scores_data = saved.get("_scores_data", None)
     data_source = "saved"
 else:
-    # Generate fresh mock data
-    scores_data = generate_mock_validation_scores(seed=42)
-    all_entries = scores_data["actives"] + scores_data["decoys"]
-    labels = [1 if e["is_active"] else 0 for e in all_entries]
-    docking_scores = [-e["docking_score"] for e in all_entries]
-    gnn_scores = [e["gnn_score"] for e in all_entries]
-    consensus_scores = [e["consensus_score"] for e in all_entries]
-
-    summary = {}
-    for method_name, scores in [
-        ("docking", docking_scores),
-        ("gnn", gnn_scores),
-        ("consensus", consensus_scores),
-    ]:
-        roc = compute_roc(labels, scores)
-        ef = compute_enrichment_factors(labels, scores)
-        summary[method_name] = {"auc": roc["auc"], "fpr": roc["fpr"], "tpr": roc["tpr"], **ef}
-
-    summary["metadata"] = {
-        "n_actives": 8,
-        "n_decoys": 200,
-        "n_total": 208,
-        "target_pdb": "5ZQK",
-        "target_name": "DENV-2 NS5 RdRp",
-    }
-    consensus_auc = summary["consensus"]["auc"]
-    if consensus_auc > 0.85:
-        summary["verdict"] = "EXCELLENT"
-    elif consensus_auc >= 0.70:
-        summary["verdict"] = "GOOD"
-    elif consensus_auc >= 0.60:
-        summary["verdict"] = "ACCEPTABLE"
-    else:
-        summary["verdict"] = "POOR"
-    data_source = "generated"
+    st.warning("No validation data found. Please run the validation pipeline first.")
+    st.code("python -c \"from src.validation.roc_validation import run_full_validation; run_full_validation()\"")
+    st.stop()
 
 
 # ─────────────────────────────────────────────────────────────
@@ -114,7 +80,7 @@ st.divider()
 st.header("2. ROC Curves")
 st.markdown(
     "Receiver Operating Characteristic curves for three scoring methods, "
-    "each tested on 8 known RdRp inhibitors vs ~200 property-matched decoys."
+    "each tested on 8 known RdRp inhibitors vs 78 property-matched decoys."
 )
 
 # Build ROC plot from summary data
@@ -125,7 +91,7 @@ if "fpr" in summary.get("docking", {}):
         summary["consensus"],
     )
     st.plotly_chart(roc_fig, use_container_width=True)
-else:
+elif scores_data is not None:
     # Regenerate ROC from raw scores if only compact summary available
     all_entries = scores_data["actives"] + scores_data["decoys"]
     labels = [1 if e["is_active"] else 0 for e in all_entries]
@@ -134,13 +100,15 @@ else:
     roc_c = compute_roc(labels, [e["consensus_score"] for e in all_entries])
     roc_fig = generate_roc_plot(roc_d, roc_g, roc_c)
     st.plotly_chart(roc_fig, use_container_width=True)
+else:
+    st.info("ROC curve data not available. Run full validation to generate.")
 
 # AUC summary metrics
 a1, a2, a3, a4 = st.columns(4)
 with a1:
     st.metric("Docking AUC", f"{summary['docking']['auc']:.3f}")
 with a2:
-    st.metric("GNN AUC", f"{summary['gnn']['auc']:.3f}")
+    st.metric("ML AUC", f"{summary['gnn']['auc']:.3f}")
 with a3:
     st.metric("Consensus AUC", f"{summary['consensus']['auc']:.3f}")
 with a4:
@@ -168,7 +136,7 @@ st.plotly_chart(ef_fig, use_container_width=True)
 
 # Enrichment factor table
 ef_table = {
-    "Method": ["Docking Only", "GNN Only", "Consensus", "Random"],
+    "Method": ["Docking Only", "ML Only", "Consensus", "Random"],
     "EF @ 1%": [ef_d.get("ef_1pct", 0), ef_g.get("ef_1pct", 0), ef_c.get("ef_1pct", 0), 1.0],
     "EF @ 5%": [ef_d.get("ef_5pct", 0), ef_g.get("ef_5pct", 0), ef_c.get("ef_5pct", 0), 1.0],
     "EF @ 10%": [ef_d.get("ef_10pct", 0), ef_g.get("ef_10pct", 0), ef_c.get("ef_10pct", 0), 1.0],
@@ -187,8 +155,11 @@ st.markdown(
     "discriminatory power."
 )
 
-dist_fig = generate_score_distribution_plot(scores_data)
-st.plotly_chart(dist_fig, use_container_width=True)
+if scores_data is not None:
+    dist_fig = generate_score_distribution_plot(scores_data)
+    st.plotly_chart(dist_fig, use_container_width=True)
+else:
+    st.info("Score distribution data not available. Run full validation to generate.")
 
 
 # ─────────────────────────────────────────────────────────────
@@ -280,14 +251,14 @@ with st.expander("Screening Parameters"):
     st.markdown("""
     | Parameter | Value |
     |-----------|-------|
-    | Validation target | DENV-2 NS5 RdRp (PDB: 5ZQK) |
-    | Docking software | AutoDock Vina 1.2.5 |
+    | Validation target | DENV NS5 RdRp (PDB: 5CCV) |
+    | Docking software | AutoDock Vina 1.2.7 |
     | Exhaustiveness | 8 |
-    | Search box | Same as main pipeline |
-    | ML rescoring | DeepChem AttentiveFP / sklearn fallback |
-    | Consensus formula | 0.4 x Vina_norm + 0.6 x GNN |
+    | Search box | Same as main pipeline (25 x 25 x 25 A) |
+    | ML rescoring | sklearn Random Forest (10 RDKit descriptors) |
+    | Consensus formula | 0.4 x Vina_norm + 0.6 x ML |
     | Decoy generation | Property-matched (MW +/-25%, LogP +/-1.0, Tanimoto < 0.4) |
-    | Decoy count | ~200 (25-30 per active) |
+    | Decoy count | 78 (property-matched from fragment library) |
     """)
 
 with st.expander("Methodology"):
@@ -302,10 +273,10 @@ with st.expander("Methodology"):
        molecules that share physicochemical properties (MW, LogP, rotatable
        bonds) but differ in molecular topology (Tanimoto similarity < 0.4).
 
-    3. **Screen blindly** — Dock all actives and decoys against 5ZQK using
+    3. **Screen blindly** — Dock all actives and decoys against 5CCV using
        identical parameters as the main screening campaign.
 
-    4. **Score and rank** — Apply the same docking, GNN, and consensus
+    4. **Score and rank** — Apply the same docking, ML, and consensus
        scoring pipeline.
 
     5. **Evaluate** — Compute ROC curves, AUC, and enrichment factors to
