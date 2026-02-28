@@ -160,9 +160,16 @@ class TestMLRescore:
         assert backend == "sklearn"
 
     def test_smiles_to_features(self):
-        features = _smiles_to_features(ASPIRIN_SMILES)
+        features = _smiles_to_features(ASPIRIN_SMILES, vina_score=-7.0)
         assert features is not None
-        assert len(features) == 10
+        assert len(features) == 2049  # 2048-bit Morgan FP + 1 Vina norm
+
+    def test_smiles_to_features_target_specific(self):
+        """Same drug with different Vina scores should produce different features."""
+        f1 = _smiles_to_features(ASPIRIN_SMILES, vina_score=-7.0)
+        f2 = _smiles_to_features(ASPIRIN_SMILES, vina_score=-10.0)
+        assert f1 is not None and f2 is not None
+        assert f1[-1] != f2[-1]  # Vina norm differs
 
     def test_smiles_to_features_invalid(self):
         assert _smiles_to_features(INVALID_SMILES) is None
