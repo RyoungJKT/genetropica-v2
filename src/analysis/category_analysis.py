@@ -39,33 +39,31 @@ def compute_category_stats(db_path=None) -> list[dict]:
     # Clear existing stats
     conn.execute("DELETE FROM category_stats")
 
-    # Compute stats: join drugs with docking and ML scores
-    # For Vina, use best (most negative) score per drug-target pair
+    # Compute stats: join drugs with docking and pre-computed ML/consensus scores
+    # Uses consensus_score from ml_scores (already computed with proper
+    # within-target normalization and positive-score exclusion)
     query = """
         INSERT INTO category_stats (category, target_id, mean_vina_score,
                                      mean_ml_score, mean_consensus_score,
                                      drug_count)
         SELECT
             d.category,
-            dr.target_id,
+            ms.target_id,
             AVG(best_vina) AS mean_vina_score,
-            AVG(COALESCE(ms.ml_score, 0.5)) AS mean_ml_score,
-            AVG(
-                0.4 * MIN(MAX((best_vina + 4.0) / -8.0, 0.0), 1.0)
-                + 0.6 * COALESCE(ms.ml_score, 0.5)
-            ) AS mean_consensus_score,
+            AVG(ms.ml_binding_score) AS mean_ml_score,
+            AVG(ms.consensus_score) AS mean_consensus_score,
             COUNT(DISTINCT d.drug_id) AS drug_count
         FROM drugs d
+        JOIN ml_scores ms ON d.drug_id = ms.drug_id
         JOIN (
             SELECT drug_id, target_id, MIN(vina_score) AS best_vina
             FROM docking_results
             WHERE pose_rank = 1
             GROUP BY drug_id, target_id
         ) dr ON d.drug_id = dr.drug_id
-        LEFT JOIN ml_scores ms ON d.drug_id = ms.drug_id
-            AND dr.target_id = ms.target_id
+            AND ms.target_id = dr.target_id
         WHERE d.category IS NOT NULL
-        GROUP BY d.category, dr.target_id
+        GROUP BY d.category, ms.target_id
     """
     conn.execute(query)
     conn.commit()
@@ -107,26 +105,19 @@ def verify_negative_controls(db_path=None) -> dict:
 
     results = {}
     targets = [r[0] for r in conn.execute(
-        "SELECT DISTINCT target_id FROM docking_results"
+        "SELECT DISTINCT target_id FROM ml_scores"
     ).fetchall()]
 
     for tid in targets:
-        # Get all consensus scores for this target, ranked
+        # Get all pre-computed consensus scores for this target, ranked
         all_scores = conn.execute("""
             SELECT d.drug_id, d.category, d.name,
-                   MIN(dr.vina_score) as best_vina,
-                   COALESCE(ms.ml_score, 0.5) as ml_score
+                   ms.consensus_score, ms.consensus_rank
             FROM drugs d
-            JOIN docking_results dr ON d.drug_id = dr.drug_id
-                AND dr.target_id = ? AND dr.pose_rank = 1
-            LEFT JOIN ml_scores ms ON d.drug_id = ms.drug_id
+            JOIN ml_scores ms ON d.drug_id = ms.drug_id
                 AND ms.target_id = ?
-            GROUP BY d.drug_id
-            ORDER BY (
-                0.4 * MIN(MAX((MIN(dr.vina_score) + 4.0) / -8.0, 0.0), 1.0)
-                + 0.6 * COALESCE(ms.ml_score, 0.5)
-            ) DESC
-        """, (tid, tid)).fetchall()
+            ORDER BY ms.consensus_score DESC
+        """, (tid,)).fetchall()
 
         n_total = len(all_scores)
         if n_total == 0:
@@ -137,10 +128,8 @@ def verify_negative_controls(db_path=None) -> dict:
         # Find negative control drugs and their ranks
         neg_controls = []
         for rank, row in enumerate(all_scores):
-            drug_id, category, name, best_vina, ml_score = row
+            drug_id, category, name, consensus, cons_rank = row
             if category in NEGATIVE_CONTROL_CATEGORIES:
-                vina_norm = max(min((best_vina + 4.0) / -8.0, 1.0), 0.0)
-                consensus = 0.4 * vina_norm + 0.6 * ml_score
                 neg_controls.append({
                     "drug_id": drug_id,
                     "name": name,

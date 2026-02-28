@@ -295,7 +295,8 @@ def batch_mine(
     """Run literature mining for all drug-target pairs with docking scores.
 
     Queries PubMed for each drug-target combination and stores
-    results in the literature table.
+    results in the literature table. Commits after each pair to
+    avoid holding the DB lock for long periods.
 
     Args:
         db_path: Optional database path override.
@@ -319,7 +320,28 @@ def batch_mine(
                ORDER BY d.drug_id, dr.target_id"""
         ).fetchall()
 
-        for pair in pairs:
+        # Check which pairs already have literature entries
+        existing = set()
+        for row in conn.execute(
+            "SELECT DISTINCT drug_id || '|' || target_id FROM literature"
+        ).fetchall():
+            existing.add(row[0])
+
+        pairs_list = [dict(p) for p in pairs]
+        conn.close()
+
+        # Filter to only pairs without literature
+        missing_pairs = [
+            p for p in pairs_list
+            if f"{p['drug_id']}|{p['target_id']}" not in existing
+        ]
+
+        logger.info(
+            "Literature mining: %d total pairs, %d already done, %d to mine",
+            len(pairs_list), len(existing), len(missing_pairs),
+        )
+
+        for i, pair in enumerate(missing_pairs, 1):
             drug_id = pair["drug_id"]
             drug_name = pair["drug_name"]
             target_id = pair["target_id"]
@@ -331,6 +353,9 @@ def batch_mine(
                 max_results=max_per_pair,
             )
 
+            # Open connection briefly to store results
+            conn = get_connection(db_path)
+            pair_count = 0
             for article in articles:
                 rels = article.get("relationships", [])
                 rel_type = rels[0]["relationship"] if rels else "unknown"
@@ -343,15 +368,29 @@ def batch_mine(
                     (drug_id, target_id, article["pmid"],
                      article["title"], rel_type, confidence),
                 )
-                total += 1
+                pair_count += 1
+
+            conn.commit()
+            conn.close()
+            total += pair_count
+
+            if i % 20 == 0 or i == len(missing_pairs):
+                logger.info(
+                    "  [%d/%d] %s x %s: %d articles (total: %d)",
+                    i, len(missing_pairs), drug_name, target_id,
+                    pair_count, total,
+                )
 
             # Rate limit: be kind to NCBI
             time.sleep(0.4)
 
-        conn.commit()
-        logger.info("Literature mining complete: %d entries stored", total)
+        logger.info("Literature mining complete: %d new entries stored", total)
 
-    finally:
-        conn.close()
+    except Exception:
+        try:
+            conn.close()
+        except Exception:
+            pass
+        raise
 
     return total

@@ -20,6 +20,10 @@ env/
 *.pdbqt
 *.sdf
 
+# Docking output logs
+data/docking_output/**/*.log
+data/validation/docking_output/
+
 # Data directories (large/generated files)
 data/raw/
 data/docking_results/
