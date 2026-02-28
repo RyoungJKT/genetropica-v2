@@ -36,9 +36,43 @@ st.markdown(
 )
 
 # ─────────────────────────────────────────────────────────────
-# Target selector (sidebar)
+# Target selector (sidebar) — visible list with active highlight
 # ─────────────────────────────────────────────────────────────
 st.sidebar.header("Analysis Scope")
+
+# Custom CSS to style radio buttons as a clean sidebar navigation list
+st.sidebar.markdown("""<style>
+/* Hide the radio circle indicators */
+div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label > div:first-child {
+    display: none !important;
+}
+/* Style each radio option as a sidebar navigation item */
+div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.55rem 0.85rem !important;
+    margin: 0.15rem 0 !important;
+    border-radius: 0.45rem !important;
+    cursor: pointer !important;
+    transition: background-color 0.15s ease !important;
+    border-left: 3px solid transparent !important;
+    font-size: 0.88rem !important;
+}
+/* Hover state */
+div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label:hover {
+    background-color: rgba(151, 166, 195, 0.15) !important;
+}
+/* Selected / active state — use :has() to detect checked radio input */
+div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label:has(input:checked) {
+    background-color: rgba(80, 140, 250, 0.15) !important;
+    border-left: 3px solid #508cfa !important;
+    font-weight: 600 !important;
+}
+/* Hide the label heading above the radio group */
+div[data-testid="stSidebar"] .stRadio > label {
+    display: none !important;
+}
+</style>""", unsafe_allow_html=True)
 
 target_options = []
 target_labels = {}
@@ -47,10 +81,11 @@ for disease, info in DISEASES.items():
         target_options.append(tid)
         target_labels[tid] = f"{disease} — {TARGET_PROTEINS[tid]['name']}"
 
-target_id = st.sidebar.selectbox(
+target_id = st.sidebar.radio(
     "Protein Target",
     options=target_options,
     format_func=lambda x: target_labels[x],
+    label_visibility="collapsed",
 )
 target_info = TARGET_PROTEINS[target_id]
 
@@ -169,12 +204,52 @@ st.subheader("Literature Detail")
 lit_drug_options = df[df["lit_count"] > 0]["drug_id"].tolist()
 lit_drug_names = dict(zip(df["drug_id"], df["name"]))
 
+# CSS to give the literature selectbox a prominent card-like appearance
+st.markdown("""<style>
+div[data-testid="stMainBlockContainer"] [data-testid="stSelectbox"] > div {
+    border: 1px solid rgba(120, 130, 150, 0.35) !important;
+    border-radius: 0.55rem !important;
+    padding: 0.15rem 0.25rem !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    transition: box-shadow 0.15s ease !important;
+}
+div[data-testid="stMainBlockContainer"] [data-testid="stSelectbox"] > div:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+}
+</style>""", unsafe_allow_html=True)
+
 if lit_drug_options:
     selected_lit_drug = st.selectbox(
         "Select drug to view references",
         options=lit_drug_options,
         format_func=lambda x: f"{lit_drug_names[x].capitalize()} ({int(df[df['drug_id']==x]['lit_count'].values[0])} refs)",
     )
+
+    # Show the selected drug's consensus ranking
+    drug_row = df[df["drug_id"] == selected_lit_drug].iloc[0]
+    drug_rank = int(drug_row["consensus_rank"])
+    drug_display_name = drug_row["name"].capitalize()
+    n_total = len(df)
+
+    rank_col, score_col, lit_col2 = st.columns(3)
+    with rank_col:
+        st.metric(
+            "Consensus Rank",
+            f"#{drug_rank} / {n_total}",
+            help=f"{drug_display_name}'s position among all drugs screened for this target",
+        )
+    with score_col:
+        st.metric(
+            "Consensus Score",
+            f"{drug_row['consensus_score']:.4f}",
+            help="Combined Vina + ML normalised score",
+        )
+    with lit_col2:
+        st.metric(
+            "References",
+            int(drug_row["lit_count"]),
+            help="Number of PubMed references for this drug-target pair",
+        )
 
     lit_df = get_drug_literature(selected_lit_drug, target_id)
     if not lit_df.empty:

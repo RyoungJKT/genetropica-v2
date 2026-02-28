@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "genetropica",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "streamlit", "run", "app/app.py", "--server.headless", "true", "--server.port", "8502"],
-      "port": 8502
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "streamlit", "run", "app/Home.py", "--server.headless", "true", "--server.port", "8505"],
+      "port": 8505
     }
   ]
 }
