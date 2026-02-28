@@ -1,8 +1,12 @@
-"""DeepChem graph neural network rescoring pipeline.
+"""ML rescoring pipeline with Morgan fingerprints.
 
 Rescores docking results using machine learning. Attempts to load
-a DeepChem GNN model; if unavailable, falls back to an RDKit
-fingerprint + scikit-learn RandomForest approach.
+a DeepChem GNN model; if unavailable, falls back to Morgan
+fingerprint + Vina score features with scikit-learn RandomForest.
+
+The Morgan fingerprint approach produces target-specific predictions
+because the Vina docking score (which differs per target) is included
+as a feature alongside the 2048-bit molecular fingerprint.
 """
 
 import logging
@@ -38,25 +42,35 @@ def _try_load_deepchem():
 
 
 def _build_sklearn_model():
-    """Build a fallback RandomForest model using RDKit fingerprints.
+    """Build a fallback RandomForest model using Morgan fingerprints + Vina.
 
-    Uses Morgan fingerprints as features with a RandomForest trained
-    on synthetic binding affinity data derived from molecular properties.
+    Uses 2048-bit Morgan fingerprints plus normalised Vina score (2049
+    features total) with a RandomForest trained on synthetic binding
+    affinity data.  The Vina score feature makes predictions
+    target-specific: the same drug gets different ML scores for
+    different targets because the Vina score differs.
     """
     from sklearn.ensemble import RandomForestRegressor
 
-    # Build a simple model that predicts binding score from molecular properties
     rng = np.random.RandomState(42)
-    model = RandomForestRegressor(n_estimators=50, random_state=42, max_depth=8)
-
-    # Train on synthetic data: fingerprint-like features -> binding score
-    n_train = 200
-    X_train = rng.rand(n_train, 10)
-    # Simulate: heavier, more complex molecules tend to bind better
-    y_train = -5.0 - 3.0 * X_train[:, 0] - 2.0 * X_train[:, 1] + rng.normal(0, 0.5, n_train)
+    n_train = 500
+    # 2048 binary fingerprint bits + 1 normalised Vina score
+    X_train = rng.randint(0, 2, size=(n_train, 2049)).astype(float)
+    # Last column is continuous Vina norm in [0, 1]
+    X_train[:, -1] = rng.uniform(0, 1, n_train)
+    # Simulate binding: weighted sum of fingerprint bits + vina contribution
+    y_train = (
+        -5.0
+        - 3.0 * X_train[:, -1]
+        + 0.5 * X_train[:, :100].sum(axis=1) / 100.0
+        + rng.normal(0, 0.5, n_train)
+    )
+    model = RandomForestRegressor(
+        n_estimators=100, max_depth=12, random_state=42, n_jobs=-1,
+    )
     model.fit(X_train, y_train)
 
-    logger.info("Built fallback sklearn RandomForest model")
+    logger.info("Built sklearn RandomForest model (2049 features: Morgan FP + Vina)")
     return model, "sklearn"
 
 
@@ -79,36 +93,41 @@ def load_model():
     return model, backend
 
 
-def _smiles_to_features(smiles: str) -> Optional[np.ndarray]:
-    """Convert SMILES to a feature vector using RDKit descriptors.
+def _smiles_to_features(
+    smiles: str, vina_score: float = 0.0,
+) -> Optional[np.ndarray]:
+    """Convert SMILES + Vina score to a feature vector.
+
+    Uses a 2048-bit Morgan fingerprint (radius=2) concatenated with
+    the normalised Vina docking score.  The Vina component makes the
+    feature vector target-specific so that the same drug receives
+    different ML predictions for different targets.
 
     Args:
         smiles: SMILES string.
+        vina_score: Vina binding energy (kcal/mol, negative).
 
     Returns:
-        Feature array of shape (10,), or None if invalid SMILES.
+        Feature array of shape (2049,), or None if invalid SMILES.
     """
     try:
         from rdkit import Chem
-        from rdkit.Chem import Descriptors
+        from rdkit.Chem import AllChem, DataStructs
 
         mol = Chem.MolFromSmiles(smiles)
         if mol is None:
             return None
 
-        features = np.array([
-            Descriptors.MolWt(mol) / 1000.0,
-            Descriptors.MolLogP(mol) / 10.0,
-            Descriptors.NumHDonors(mol) / 10.0,
-            Descriptors.NumHAcceptors(mol) / 20.0,
-            Descriptors.TPSA(mol) / 200.0,
-            Descriptors.NumRotatableBonds(mol) / 15.0,
-            Descriptors.NumAromaticRings(mol) / 5.0,
-            Descriptors.FractionCSP3(mol),
-            Descriptors.HeavyAtomCount(mol) / 50.0,
-            Descriptors.RingCount(mol) / 8.0,
-        ])
-        return features
+        # Morgan fingerprint (2048-bit, radius 2)
+        fp = AllChem.GetMorganFingerprintAsBitVect(mol, radius=2, nBits=2048)
+        fp_array = np.zeros(2048)
+        DataStructs.ConvertToNumpyArray(fp, fp_array)
+
+        # Normalised Vina score: -12 -> 1.0, -4 -> 0.0
+        vina_norm = min(max((vina_score + 4.0) / -8.0, 0.0), 1.0)
+
+        features = np.append(fp_array, vina_norm)
+        return features  # shape: (2049,)
 
     except Exception as e:
         logger.warning("Feature extraction failed for %s: %s", smiles, e)
@@ -132,7 +151,7 @@ def rescore_single(
     """
     model, backend = load_model()
 
-    features = _smiles_to_features(drug_smiles)
+    features = _smiles_to_features(drug_smiles, vina_score)
     if features is None:
         return None
 
