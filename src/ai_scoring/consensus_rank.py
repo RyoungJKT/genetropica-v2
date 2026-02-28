@@ -54,15 +54,34 @@ def compute_consensus(
             logger.warning("No scores found for %s", target_id)
             return df
 
-        # Normalize Vina scores (more negative = better = higher normalized)
-        vina_min = df["vina_score"].min()
-        vina_max = df["vina_score"].max()
+        # Exclude positive Vina scores (failed docking) from normalization
+        # but keep them in the DataFrame with consensus_score = 0
+        valid_mask = df["vina_score"] < 0
+        n_excluded = (~valid_mask).sum()
+        if n_excluded > 0:
+            logger.warning(
+                "Excluding %d drugs with positive Vina scores from %s rankings",
+                n_excluded, target_id,
+            )
+
+        # Normalize Vina scores using only valid (negative) scores
+        # Maps most negative score to 1.0 and least negative to 0.0
+        valid_scores = df.loc[valid_mask, "vina_score"]
+        if len(valid_scores) > 0:
+            vina_min = valid_scores.min()
+            vina_max = valid_scores.max()
+        else:
+            vina_min = -10.0
+            vina_max = -3.0
         vina_range = vina_max - vina_min
 
         if vina_range > 0:
             df["vina_norm"] = (df["vina_score"] - vina_max) / -vina_range
         else:
             df["vina_norm"] = 0.5
+
+        # Clamp positive-score drugs to 0.0 normalized
+        df.loc[~valid_mask, "vina_norm"] = 0.0
 
         # Consensus = weighted sum
         df["consensus_score"] = (

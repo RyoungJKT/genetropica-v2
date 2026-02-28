@@ -3,10 +3,14 @@
 Computes ROC curves, AUC-ROC, and enrichment factors for three
 scoring methods: docking only (Vina), GNN only, and consensus.
 Generates interactive Plotly plots and summary reports.
+
+Supports both mock scores (for rapid testing) and real docking-based
+validation against DENV NS5 RdRp (PDB: 5CCV).
 """
 
 import json
 import logging
+import tempfile
 from pathlib import Path
 from typing import Optional
 
@@ -112,6 +116,12 @@ def compute_enrichment_factors(
 def generate_mock_validation_scores(seed: int = 42) -> dict:
     """Generate realistic mock validation scores.
 
+    .. deprecated::
+        Use :func:`run_real_validation` instead, which performs actual
+        Vina docking and ML rescoring rather than sampling from
+        synthetic distributions.  This function is retained only for
+        rapid testing / offline development.
+
     Actives get systematically better scores than decoys, with
     realistic overlap to produce AUC ~0.78-0.85.
 
@@ -168,6 +178,319 @@ def generate_mock_validation_scores(seed: int = 42) -> dict:
         })
 
     return {"actives": actives, "decoys": decoys}
+
+
+# ─── Real docking validation ─────────────────────────────────
+
+
+def _prepare_single_ligand(name: str, smiles: str, output_dir: Path) -> Optional[Path]:
+    """Prepare a single ligand PDBQT from SMILES.
+
+    Generates 3D coordinates with RDKit ETKDG, then converts to PDBQT
+    via Open Babel.  Mirrors the logic in prepare_ligands.py but
+    operates on a single compound.
+
+    Args:
+        name: Compound identifier (used for filenames).
+        smiles: SMILES string.
+        output_dir: Directory for intermediate SDF and output PDBQT.
+
+    Returns:
+        Path to the PDBQT file, or None on failure.
+    """
+    from src.data_acquisition.prepare_ligands import convert_to_pdbqt, smiles_to_3d
+
+    safe_name = name.lower().replace(" ", "_").replace("'", "").replace("-", "_")
+    sdf_dir = output_dir / "sdf"
+    pdbqt_dir = output_dir / "pdbqt"
+    sdf_dir.mkdir(parents=True, exist_ok=True)
+    pdbqt_dir.mkdir(parents=True, exist_ok=True)
+
+    sdf_path = sdf_dir / f"{safe_name}.sdf"
+    pdbqt_path = pdbqt_dir / f"{safe_name}.pdbqt"
+
+    if pdbqt_path.exists():
+        return pdbqt_path
+
+    if not sdf_path.exists():
+        if not smiles_to_3d(smiles, sdf_path):
+            logger.warning("3D generation failed for %s", name)
+            return None
+
+    if not convert_to_pdbqt(sdf_path, pdbqt_path):
+        logger.warning("PDBQT conversion failed for %s", name)
+        return None
+
+    return pdbqt_path
+
+
+def run_real_validation(
+    output_dir: Optional[Path] = None,
+    exhaustiveness: int = 8,
+) -> dict:
+    """Run validation with real Vina docking and ML rescoring.
+
+    Docks the 8 known RdRp inhibitors and ~200+ property-matched
+    decoys against DENV NS5 (PDB 5CCV), applies ML rescoring, and
+    computes ROC / enrichment metrics for all three scoring methods.
+
+    Args:
+        output_dir: Directory for results.  Defaults to ROC_RESULTS_DIR.
+        exhaustiveness: Vina exhaustiveness parameter.
+
+    Returns:
+        Dict with per-method ROC/EF results, metadata, and verdict,
+        compatible with :func:`load_validation_results`.
+    """
+    from src.docking.prepare_receptor import prepare_receptor, define_search_box
+    from src.docking.run_vina import dock_single
+    from src.ai_scoring.ml_rescore import rescore_single
+    from src.validation.generate_decoys import generate_decoys_for_active
+
+    out = output_dir or ROC_RESULTS_DIR
+    out.mkdir(parents=True, exist_ok=True)
+
+    target_id = "DENV_NS5"
+
+    # ── 1. Prepare receptor ──────────────────────────────────
+    logger.info("Preparing receptor for %s ...", target_id)
+    receptor_pdbqt = prepare_receptor(target_id)
+    if receptor_pdbqt is None:
+        raise RuntimeError(
+            f"Receptor preparation failed for {target_id}. "
+            "Ensure the PDB file exists in data/structures/."
+        )
+    search_box = define_search_box(target_id)
+
+    # ── 2. Generate decoys ───────────────────────────────────
+    logger.info("Generating property-matched decoys ...")
+    decoy_smiles_set: set[str] = set()
+    decoy_records: list[dict] = []
+
+    for active in KNOWN_ACTIVES:
+        # First pass: tighter parameters for harder decoys
+        tight_decoys = generate_decoys_for_active(
+            active["smiles"],
+            n_decoys=40,
+            seed=42,
+            mw_tolerance=0.15,
+            logp_tolerance=0.5,
+            max_tanimoto=0.5,
+        )
+        for smi in tight_decoys:
+            if smi not in decoy_smiles_set:
+                decoy_smiles_set.add(smi)
+                decoy_records.append({
+                    "name": f"DECOY_{len(decoy_records) + 1:04d}",
+                    "smiles": smi,
+                    "source_active": active["name"],
+                })
+
+    # If fewer than 200 total decoys, do a second pass with standard params
+    if len(decoy_records) < 200:
+        logger.info(
+            "Only %d decoys from tight params; filling with standard params ...",
+            len(decoy_records),
+        )
+        for active in KNOWN_ACTIVES:
+            if len(decoy_records) >= 200:
+                break
+            standard_decoys = generate_decoys_for_active(
+                active["smiles"],
+                n_decoys=30,
+                seed=123,
+                mw_tolerance=0.25,
+                logp_tolerance=1.0,
+                max_tanimoto=0.4,
+            )
+            for smi in standard_decoys:
+                if smi not in decoy_smiles_set:
+                    decoy_smiles_set.add(smi)
+                    decoy_records.append({
+                        "name": f"DECOY_{len(decoy_records) + 1:04d}",
+                        "smiles": smi,
+                        "source_active": active["name"],
+                    })
+                    if len(decoy_records) >= 200:
+                        break
+
+    logger.info("Total decoys generated: %d", len(decoy_records))
+
+    # ── 3. Prepare ligand PDBQTs and dock ────────────────────
+    with tempfile.TemporaryDirectory(prefix="genetropica_val_") as tmp_str:
+        tmp = Path(tmp_str)
+        ligand_dir = tmp / "ligands"
+        dock_dir = tmp / "docking"
+        ligand_dir.mkdir()
+        dock_dir.mkdir()
+
+        # Helper: dock a single compound, return scores dict or None
+        def _dock_and_score(
+            name: str, smiles: str, is_active: bool
+        ) -> Optional[dict]:
+            pdbqt = _prepare_single_ligand(name, smiles, ligand_dir)
+            if pdbqt is None:
+                logger.warning("Skipping %s — ligand preparation failed", name)
+                return None
+
+            result = dock_single(
+                receptor_pdbqt,
+                pdbqt,
+                search_box,
+                output_dir=dock_dir,
+                exhaustiveness=exhaustiveness,
+                n_poses=3,
+            )
+            if result is None or not result["scores"]:
+                logger.warning("Skipping %s — docking failed", name)
+                return None
+
+            best_vina = result["scores"][0]
+
+            # ML rescore
+            ml_score = rescore_single(smiles, target_id, best_vina)
+            if ml_score is None:
+                logger.warning(
+                    "ML rescoring failed for %s; using Vina-only consensus", name,
+                )
+                # Fallback: use Vina-normalised score as the ML component
+                ml_score = round(
+                    float(np.clip((best_vina + 4.0) / -8.0, 0.0, 1.0)), 4,
+                )
+
+            # Consensus: 0.4 * vina_norm + 0.6 * ml_score
+            vina_norm = float(np.clip((best_vina + 4.0) / -8.0, 0.0, 1.0))
+            consensus = round(0.4 * vina_norm + 0.6 * ml_score, 4)
+
+            return {
+                "name": name,
+                "is_active": is_active,
+                "docking_score": round(best_vina, 2),
+                "gnn_score": ml_score,
+                "consensus_score": consensus,
+            }
+
+        # ── 3a. Dock actives ─────────────────────────────────
+        actives_results: list[dict] = []
+        n_actives_total = len(KNOWN_ACTIVES)
+        for idx, compound in enumerate(KNOWN_ACTIVES, start=1):
+            logger.info(
+                "[Active %d/%d] Docking %s ...",
+                idx, n_actives_total, compound["name"],
+            )
+            entry = _dock_and_score(
+                compound["name"], compound["smiles"], is_active=True,
+            )
+            if entry is not None:
+                entry["pubchem_cid"] = compound["pubchem_cid"]
+                actives_results.append(entry)
+
+        if not actives_results:
+            raise RuntimeError("All actives failed to dock — cannot compute ROC.")
+
+        logger.info(
+            "Successfully docked %d / %d actives",
+            len(actives_results), n_actives_total,
+        )
+
+        # ── 3b. Dock decoys ──────────────────────────────────
+        decoys_results: list[dict] = []
+        n_decoys_total = len(decoy_records)
+        for idx, decoy in enumerate(decoy_records, start=1):
+            if idx % 25 == 0 or idx == 1:
+                logger.info(
+                    "[Decoy %d/%d] Docking %s ...",
+                    idx, n_decoys_total, decoy["name"],
+                )
+            entry = _dock_and_score(
+                decoy["name"], decoy["smiles"], is_active=False,
+            )
+            if entry is not None:
+                decoys_results.append(entry)
+
+        logger.info(
+            "Successfully docked %d / %d decoys",
+            len(decoys_results), n_decoys_total,
+        )
+
+    if not decoys_results:
+        raise RuntimeError("All decoys failed to dock — cannot compute ROC.")
+
+    # ── 4. Assemble scores_data and compute metrics ──────────
+    scores_data = {"actives": actives_results, "decoys": decoys_results}
+    all_entries = actives_results + decoys_results
+
+    labels = [1 if e["is_active"] else 0 for e in all_entries]
+
+    # For docking: more negative = better, so negate for ROC (higher = better)
+    docking_scores = [-e["docking_score"] for e in all_entries]
+    gnn_scores = [e["gnn_score"] for e in all_entries]
+    consensus_scores = [e["consensus_score"] for e in all_entries]
+
+    summary: dict = {}
+    for method_name, scores in [
+        ("docking", docking_scores),
+        ("gnn", gnn_scores),
+        ("consensus", consensus_scores),
+    ]:
+        roc = compute_roc(labels, scores)
+        ef = compute_enrichment_factors(labels, scores)
+        summary[method_name] = {
+            "auc": roc["auc"],
+            "fpr": roc["fpr"],
+            "tpr": roc["tpr"],
+            **ef,
+        }
+
+    # Metadata
+    summary["metadata"] = {
+        "n_actives": sum(labels),
+        "n_decoys": len(labels) - sum(labels),
+        "n_total": len(labels),
+        "target_pdb": "5CCV",
+        "target_name": "DENV NS5 RdRp",
+        "scoring": "real_docking",
+        "exhaustiveness": exhaustiveness,
+    }
+
+    # Verdict
+    consensus_auc = summary["consensus"]["auc"]
+    if consensus_auc > 0.85:
+        summary["verdict"] = "EXCELLENT"
+    elif consensus_auc >= 0.70:
+        summary["verdict"] = "GOOD"
+    elif consensus_auc >= 0.60:
+        summary["verdict"] = "ACCEPTABLE"
+    else:
+        summary["verdict"] = "POOR"
+
+    # ── 5. Save results ──────────────────────────────────────
+    _save_scores_csv(all_entries, "docking_score", out / "docking_scores.csv")
+    _save_scores_csv(all_entries, "gnn_score", out / "gnn_scores.csv")
+    _save_scores_csv(all_entries, "consensus_score", out / "consensus_scores.csv")
+
+    summary_compact: dict = {}
+    for key in ["docking", "gnn", "consensus"]:
+        summary_compact[key] = {
+            "auc": summary[key]["auc"],
+            "ef_1pct": summary[key]["ef_1pct"],
+            "ef_5pct": summary[key]["ef_5pct"],
+            "ef_10pct": summary[key]["ef_10pct"],
+        }
+    summary_compact["metadata"] = summary["metadata"]
+    summary_compact["verdict"] = summary["verdict"]
+
+    summary_path = out / "validation_summary.json"
+    with open(summary_path, "w") as f:
+        json.dump(summary_compact, f, indent=2)
+
+    scores_path = out / "validation_scores.json"
+    with open(scores_path, "w") as f:
+        json.dump(scores_data, f, indent=2)
+
+    _print_report(summary)
+    logger.info("Validation results saved to %s", out)
+    return summary
 
 
 # ─── Plot generation ──────────────────────────────────────────
@@ -330,21 +653,36 @@ def generate_score_distribution_plot(scores_data: dict) -> go.Figure:
 
 
 def run_full_validation(
+    use_mock: bool = False,
     seed: int = 42,
     output_dir: Optional[Path] = None,
+    exhaustiveness: int = 8,
 ) -> dict:
     """Run the complete validation pipeline and save results.
 
-    Generates mock scores, computes ROC curves and enrichment factors
-    for all three methods, and saves results to disk.
+    By default performs real Vina docking and ML rescoring against
+    DENV NS5 RdRp (PDB 5CCV).  Set ``use_mock=True`` to fall back
+    to synthetic score generation for offline / rapid testing.
 
     Args:
-        seed: Random seed for reproducibility.
+        use_mock: If True, use mock score generation instead of real
+            docking.  Default False.
+        seed: Random seed for mock score reproducibility (ignored when
+            use_mock is False).
         output_dir: Directory for results. Defaults to ROC_RESULTS_DIR.
+        exhaustiveness: Vina exhaustiveness (only used when
+            use_mock is False).
 
     Returns:
         Summary dict with results for each method.
     """
+    if not use_mock:
+        return run_real_validation(
+            output_dir=output_dir,
+            exhaustiveness=exhaustiveness,
+        )
+
+    # ── Mock path (retained for offline / rapid testing) ─────
     out = output_dir or ROC_RESULTS_DIR
     out.mkdir(parents=True, exist_ok=True)
 
@@ -381,8 +719,9 @@ def run_full_validation(
         "n_decoys": len(labels) - sum(labels),
         "n_total": len(labels),
         "seed": seed,
-        "target_pdb": "5ZQK",
-        "target_name": "DENV-2 NS5 RdRp",
+        "target_pdb": "5CCV",
+        "target_name": "DENV NS5 RdRp",
+        "scoring": "mock",
     }
 
     # Interpret results
@@ -478,6 +817,8 @@ def _print_report(summary: dict) -> None:
     print(f"  Actives: {summary['metadata']['n_actives']}")
     print(f"  Decoys:  {summary['metadata']['n_decoys']}")
     print(f"  Total:   {summary['metadata']['n_total']}")
+    scoring = summary["metadata"].get("scoring", "unknown")
+    print(f"  Scoring: {scoring}")
     print()
     print(f"  {'Method':<16} {'AUC-ROC':>8} {'EF@1%':>8} {'EF@5%':>8} {'EF@10%':>8}")
     print("  " + "-" * 48)
@@ -493,4 +834,4 @@ def _print_report(summary: dict) -> None:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    run_full_validation(seed=42)
+    run_full_validation()
