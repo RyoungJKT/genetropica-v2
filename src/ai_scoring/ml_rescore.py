@@ -21,7 +21,28 @@ from src.utils.db import get_connection
 logger = logging.getLogger(__name__)
 
 _MODEL = None
-_BACKEND = None  # "deepchem" or "sklearn"
+_BACKEND = None  # "deepchem", "sklearn_chembl", or "sklearn"
+
+
+def _try_load_chembl_model():
+    """Try to load the ChEMBL-trained RandomForest classifier.
+
+    The model was trained on 166 real experimental binding data points
+    from ChEMBL (HCV NS5B, Dengue NS5, and Influenza RdRp targets).
+    Cross-validation AUC: 0.875 ± 0.094.
+
+    Returns:
+        Tuple of (model, backend_name) or (None, None) if not found.
+    """
+    import pickle
+
+    model_path = Path(__file__).resolve().parents[2] / "models" / "rf_chembl_rdrp.pkl"
+    if model_path.exists():
+        with open(model_path, "rb") as f:
+            model = pickle.load(f)
+        logger.info("Loaded ChEMBL-trained RandomForest classifier from %s", model_path)
+        return model, "sklearn_chembl"
+    return None, None
 
 
 def _try_load_deepchem():
@@ -46,9 +67,11 @@ def _build_sklearn_model():
 
     Uses 2048-bit Morgan fingerprints plus normalised Vina score (2049
     features total) with a RandomForest trained on synthetic binding
-    affinity data.  The Vina score feature makes predictions
-    target-specific: the same drug gets different ML scores for
-    different targets because the Vina score differs.
+    affinity data.
+
+    .. deprecated::
+        This is the legacy synthetic-data model. The ChEMBL-trained
+        classifier (:func:`_try_load_chembl_model`) is preferred.
     """
     from sklearn.ensemble import RandomForestRegressor
 
@@ -75,7 +98,9 @@ def _build_sklearn_model():
 
 
 def load_model():
-    """Load the ML scoring model, trying DeepChem first then sklearn fallback.
+    """Load the ML scoring model.
+
+    Priority: ChEMBL-trained classifier > DeepChem GNN > synthetic fallback.
 
     Returns:
         Tuple of (model, backend_name).
@@ -85,7 +110,14 @@ def load_model():
     if _MODEL is not None:
         return _MODEL, _BACKEND
 
-    model, backend = _try_load_deepchem()
+    # 1. Try ChEMBL-trained classifier (preferred)
+    model, backend = _try_load_chembl_model()
+
+    # 2. Try DeepChem GNN
+    if model is None:
+        model, backend = _try_load_deepchem()
+
+    # 3. Fall back to synthetic model
     if model is None:
         model, backend = _build_sklearn_model()
 
@@ -156,15 +188,21 @@ def rescore_single(
         return None
 
     try:
-        if backend == "sklearn":
+        if backend == "sklearn_chembl":
+            # ChEMBL classifier: predict_proba gives P(active)
+            proba = model.predict_proba(features.reshape(1, -1))[0]
+            # proba has [P(inactive), P(active)] — use P(active) as score
+            return round(float(proba[1]), 4)
+        elif backend == "sklearn":
+            # Legacy regressor: predict returns continuous value
             prediction = model.predict(features.reshape(1, -1))[0]
+            normalized = min(max((prediction + 12.0) / 8.0, 0.0), 1.0)
+            return round(float(normalized), 4)
         else:
             # DeepChem path
             prediction = float(model.predict_on_batch([drug_smiles])[0])
-
-        # Normalize to a 0-1 scale (more negative Vina = better = higher ML score)
-        normalized = min(max((prediction + 12.0) / 8.0, 0.0), 1.0)
-        return round(float(normalized), 4)
+            normalized = min(max((prediction + 12.0) / 8.0, 0.0), 1.0)
+            return round(float(normalized), 4)
 
     except Exception as e:
         logger.warning("ML rescoring failed: %s", e)

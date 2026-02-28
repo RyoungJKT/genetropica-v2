@@ -279,10 +279,12 @@ with method_col2:
 |-----------|-------|
 | Framework | scikit-learn |
 | Architecture | Random Forest Classifier |
+| Training data | 166 compounds from ChEMBL (HCV NS5B, Dengue NS5, Influenza RdRp) |
 | Input features | 2048-bit Morgan fingerprints (radius=2) + normalised Vina score |
 | Feature dimension | 2049 |
-| Consensus weight | 0.6 (vs 0.4 for Vina) |
-| Validation ML AUC | 0.644 (NS5 RdRp inhibitors vs library) |
+| ChEMBL CV AUC | 0.875 ± 0.094 (5-fold stratified) |
+| Consensus weight | Target-specific (0.9 ML for NS5, 0.6 ML for others) |
+| Validation ML AUC | 0.509 (NS5 RdRp inhibitors vs library) |
 """)
 
     st.subheader("NLP Literature Mining")

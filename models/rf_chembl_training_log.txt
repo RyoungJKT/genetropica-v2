@@ -1,0 +1,25 @@
+=== ChEMBL RdRp RandomForest Training Log ===
+
+Date: 2026-02-28
+Data source: ChEMBL REST API (polymerase targets)
+Targets:
+  - Dengue virus NS5 RdRp: 105 compounds
+  - HCV NS5B RdRp: 57 compounds
+  - Influenza RdRp PA: 4 compounds
+
+Total compounds: 166
+  Active (pIC50 > 6.0): 56
+  Inactive (pIC50 <= 6.0): 110
+  pIC50 range: 4.00 - 10.28
+
+Features: 2048-bit Morgan fingerprints (radius=2) + normalized Vina score
+Feature dimension: 2049
+
+Model: RandomForestClassifier
+  n_estimators: 100
+  max_depth: 12
+  class_weight: balanced
+  random_state: 42
+
+Cross-validation AUC: 0.875 ± 0.094
+  Per-fold: ['0.845', '0.955', '0.930', '0.702', '0.942']
