@@ -11,6 +11,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.utils.db import init_db
+from app.components.layout import render_sidebar
 
 st.set_page_config(
     page_title="GeneTropica",
@@ -44,24 +45,7 @@ if "db_initialized" not in st.session_state:
     st.session_state.db_initialized = True
 
 # --- Sidebar ---
-with st.sidebar:
-    st.image(
-        "https://img.icons8.com/color/96/dna-helix.png",
-        width=60,
-    )
-    st.title("GeneTropica")
-    st.caption("Drug Repurposing for Neglected Tropical Diseases")
-    st.divider()
-    st.markdown(
-        "**Navigate** using the pages in the sidebar to explore disease targets, "
-        "drug candidates, binding interactions, AI insights, methods, "
-        "validation, conservation analysis, and ADMET profiling."
-    )
-    st.divider()
-    st.markdown(
-        "Built by [Russell Young](https://github.com/RyoungJKT)  \n"
-        "British School Jakarta"
-    )
+render_sidebar()
 
 # --- Home Page ---
 st.title("GeneTropica")

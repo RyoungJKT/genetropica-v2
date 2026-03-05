@@ -15,8 +15,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.components.layout import render_sidebar
 from app.components.mol_viewer import render_protein
 from src.utils.config import DISEASES, TARGET_PROTEINS
+
+render_sidebar()
 
 st.title("Disease Overview")
 st.markdown(

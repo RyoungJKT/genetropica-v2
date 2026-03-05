@@ -407,6 +407,102 @@ def novel_discoveries_highlight(target_id: str, n: int = 10) -> go.Figure:
     return fig
 
 
+# ---------------------------------------------------------------------------
+# MD Simulation Charts
+# ---------------------------------------------------------------------------
+
+MD_DRUG_COLORS = {
+    "celecoxib": "#E74C3C",
+    "methotrexate": "#3498DB",
+    "dasabuvir": "#2ECC71",
+}
+
+MD_DRUG_LABELS = {
+    "celecoxib": "Celecoxib (#1)",
+    "methotrexate": "Methotrexate (#3)",
+    "dasabuvir": "Dasabuvir (#17)",
+}
+
+
+def md_timeseries(
+    data: dict,
+    x_col: str,
+    y_col: str,
+    title: str,
+    yaxis_title: str,
+    smooth_window: int = 0,
+) -> go.Figure:
+    """Interactive Plotly line chart for MD time-series data.
+
+    Args:
+        data: Dict mapping drug name → DataFrame.
+        x_col: Column name for x-axis (e.g. 'time_ns').
+        y_col: Column name for y-axis (e.g. 'protein_rmsd_A').
+        title: Chart title.
+        yaxis_title: Y-axis label.
+        smooth_window: If > 0, apply rolling average.
+    """
+    fig = go.Figure()
+    for drug, df in data.items():
+        y_vals = df[y_col]
+        x_vals = df[x_col]
+        if smooth_window > 0 and len(y_vals) > smooth_window:
+            y_vals = y_vals.rolling(window=smooth_window, min_periods=1).mean()
+        fig.add_trace(go.Scatter(
+            x=x_vals,
+            y=y_vals,
+            mode="lines",
+            name=MD_DRUG_LABELS.get(drug, drug.capitalize()),
+            line=dict(color=MD_DRUG_COLORS.get(drug, "#888"), width=1.5),
+            opacity=0.85,
+        ))
+    fig.update_layout(
+        title=title,
+        xaxis_title="Time (ns)",
+        yaxis_title=yaxis_title,
+        height=400,
+        margin=dict(l=10, r=10, t=50, b=10),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02),
+        hovermode="x unified",
+    )
+    return fig
+
+
+def md_bar_comparison(
+    labels: list,
+    values: list,
+    errors: list | None,
+    title: str,
+    yaxis_title: str,
+) -> go.Figure:
+    """Plotly bar chart comparing a metric across 3 drugs.
+
+    Args:
+        labels: Drug names.
+        values: Metric values.
+        errors: Standard deviations (or None).
+        title: Chart title.
+        yaxis_title: Y-axis label.
+    """
+    colors = [MD_DRUG_COLORS.get(d.lower(), "#888") for d in labels]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        x=[MD_DRUG_LABELS.get(d.lower(), d) for d in labels],
+        y=values,
+        error_y=dict(type="data", array=errors, visible=True) if errors else None,
+        marker_color=colors,
+        text=[f"{v:.2f}" for v in values],
+        textposition="outside",
+    ))
+    fig.update_layout(
+        title=title,
+        yaxis_title=yaxis_title,
+        height=350,
+        margin=dict(l=10, r=10, t=50, b=10),
+    )
+    return fig
+
+
 def _empty_figure(message: str) -> go.Figure:
     """Create a blank figure with a centered message."""
     fig = go.Figure()

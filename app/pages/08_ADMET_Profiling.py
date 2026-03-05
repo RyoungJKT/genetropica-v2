@@ -19,8 +19,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.components.layout import render_sidebar
 from src.admet.profiles import load_profiles
 from src.utils.db import get_connection
+
+render_sidebar()
 
 # Theme colours consistent with main dashboard
 THEME_PRIMARY = "#1B4F72"
