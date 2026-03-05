@@ -16,6 +16,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.components.layout import render_sidebar
 from src.validation.collect_actives import KNOWN_ACTIVES
 from src.validation.roc_validation import (
     compute_enrichment_factors,
@@ -27,6 +28,8 @@ from src.validation.roc_validation import (
 )
 
 import numpy as np
+
+render_sidebar()
 
 st.title("Methodology Validation")
 st.markdown(

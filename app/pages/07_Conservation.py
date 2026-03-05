@@ -38,6 +38,9 @@ from src.conservation.run_alignment import (
     compute_pairwise_identity,
     parse_clustal_alignment,
 )
+from app.components.layout import render_sidebar
+
+render_sidebar()
 
 # Theme colours consistent with main dashboard
 THEME_PRIMARY = "#1B4F72"
