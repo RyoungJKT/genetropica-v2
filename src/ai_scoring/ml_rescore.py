@@ -1,12 +1,17 @@
 """ML rescoring pipeline with Morgan fingerprints.
 
-Rescores docking results using machine learning. Attempts to load
-a DeepChem GNN model; if unavailable, falls back to Morgan
-fingerprint + Vina score features with scikit-learn RandomForest.
+Scores each drug with a scikit-learn RandomForest classifier trained on
+166 experimental binding data points from ChEMBL (HCV NS5B, Dengue NS5,
+Influenza RdRp); cross-validation AUC 0.875 +/- 0.094. A DeepChem GNN is
+attempted first but is not shipped, so the RandomForest is what produces
+the stored scores.
 
-The Morgan fingerprint approach produces target-specific predictions
-because the Vina docking score (which differs per target) is included
-as a feature alongside the 2048-bit molecular fingerprint.
+IMPORTANT: this is a *ligand-based* model. In practice it keys almost
+entirely on the 2048-bit Morgan fingerprint, so a given drug receives the
+same score for every target (the single Vina feature is swamped by 2048
+fingerprint bits). Treat ml_binding_score as a target-agnostic activity
+prior, NOT a per-target binding prediction. Per-target ranking is done
+from docking (Vina and ligand efficiency) in scripts/recompute_rankings.py.
 """
 
 import logging
@@ -131,9 +136,10 @@ def _smiles_to_features(
     """Convert SMILES + Vina score to a feature vector.
 
     Uses a 2048-bit Morgan fingerprint (radius=2) concatenated with
-    the normalised Vina docking score.  The Vina component makes the
-    feature vector target-specific so that the same drug receives
-    different ML predictions for different targets.
+    the normalised Vina docking score.  The Vina component is included
+    as a feature, but empirically the shipped RandomForest keys almost
+    entirely on the fingerprint, so predictions are effectively
+    constant for a drug across targets (a ligand-based prior).
 
     Args:
         smiles: SMILES string.
