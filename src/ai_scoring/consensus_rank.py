@@ -1,7 +1,20 @@
-"""Combine Vina and ML scores into consensus rankings.
+"""Per-target candidate ranking.
 
-Produces final ranked lists per target, identifies novel discovery
-candidates, and generates summary statistics.
+The dashboard ranks drug-like candidates (MW 250-600 Da) by two
+complementary, bias-aware metrics computed in
+``scripts/recompute_rankings.py``:
+
+  * raw AutoDock Vina score (target-specific, but size-biased), and
+  * ligand efficiency (-Vina / heavy atoms; corrects the size bias).
+
+These are stored as ``vina_rank`` and ``le_rank`` in ``ml_scores``.
+
+The weighted-consensus helpers below are retained for reference and for
+the legacy ``consensus_score`` column, but a single weighted "consensus"
+is intentionally NOT the headline ranking: ``ml_binding_score`` is a
+target-agnostic ligand-based prior (identical for a drug across all
+targets), so weighting it heavily made one molecule top nearly every
+target. See the recompute script's docstring for the full rationale.
 """
 
 import logging
