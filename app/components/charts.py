@@ -151,25 +151,16 @@ def score_distribution_histogram(target_id: str) -> go.Figure:
         return _empty_figure("No data available")
 
     dl = df[df["is_druglike"] == 1]
-    vals = dl["ligand_efficiency"].dropna()
-    counts, edges = np.histogram(vals, bins=20)
-    centers = (edges[:-1] + edges[1:]) / 2
-    bin_width = (edges[1] - edges[0]) if len(edges) > 1 else 1.0
-    # Pre-binned bar (rather than px.histogram) so the bars can animate from zero.
-    fig = go.Figure(
-        go.Bar(
-            x=centers,
-            y=counts,
-            width=bin_width,
-            marker_color=THEME_PRIMARY,
-            marker_line_width=0,
-        )
+    fig = px.histogram(
+        dl,
+        x="ligand_efficiency",
+        nbins=20,
+        color_discrete_sequence=[THEME_PRIMARY],
+        labels={"ligand_efficiency": "Ligand Efficiency"},
     )
     fig.update_layout(
         title="Ligand-Efficiency Distribution (drug-like)",
-        xaxis_title="Ligand Efficiency",
         yaxis_title="Number of Drugs",
-        bargap=0,
         height=300,
         margin=dict(l=10, r=10, t=40, b=10),
     )

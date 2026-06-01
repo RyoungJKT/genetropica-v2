@@ -25,7 +25,6 @@ from app.components.charts import (
     score_distribution_histogram,
     top_candidates_bar,
 )
-from app.components.animated_charts import animated_figure
 from app.components.filters import (
     render_admet_filter,
     render_druglike_filter,
@@ -115,9 +114,15 @@ st.divider()
 # ─────────────────────────────────────────────────────────────
 chart_col1, chart_col2 = st.columns(2)
 with chart_col1:
-    animated_figure(score_distribution_histogram(target_id))
+    st.plotly_chart(
+        score_distribution_histogram(target_id),
+        use_container_width=True,
+    )
 with chart_col2:
-    animated_figure(top_candidates_bar(target_id, n=10))
+    st.plotly_chart(
+        top_candidates_bar(target_id, n=10),
+        use_container_width=True,
+    )
 
 st.divider()
 

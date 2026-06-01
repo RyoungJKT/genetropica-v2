@@ -19,7 +19,6 @@ from app.components.layout import inject_theme
 
 inject_theme()
 
-from app.components.animated_charts import animated_figure
 from app.components.charts import (
     admet_overview_bars,
     admet_radar,
@@ -139,7 +138,7 @@ st.markdown(
 )
 
 # Overview bars for entire library
-animated_figure(admet_overview_bars())
+st.plotly_chart(admet_overview_bars(), use_container_width=True)
 
 # Traffic-light indicators for top 5 candidates
 st.subheader("Top 5 Candidate Safety Profiles")
