@@ -150,7 +150,7 @@ for idx, (_, row) in enumerate(top5.iterrows()):
 
     with st.expander(
         f"{'🟢' if admet['overall_pass'] else '🔴'} "
-        f"**{drug_name}** — Rank #{int(row['consensus_rank'])}"
+        f"**{drug_name}** — Vina rank #{int(row['vina_rank'])}"
     ):
         lip = admet["lipinski_pass"]
         hep = admet["hepatotoxicity_risk"]
@@ -225,24 +225,26 @@ if lit_drug_options:
         format_func=lambda x: f"{lit_drug_names[x].capitalize()} ({int(df[df['drug_id']==x]['lit_count'].values[0])} refs)",
     )
 
-    # Show the selected drug's consensus ranking
+    # Show the selected drug's Vina rank and ligand efficiency
     drug_row = df[df["drug_id"] == selected_lit_drug].iloc[0]
-    drug_rank = int(drug_row["consensus_rank"])
+    vr = drug_row["vina_rank"]
+    drug_rank = int(vr) if (vr == vr and vr is not None) else None
+    le = drug_row["ligand_efficiency"]
     drug_display_name = drug_row["name"].capitalize()
-    n_total = len(df)
+    n_dl = int((df["is_druglike"] == 1).sum())
 
     rank_col, score_col, lit_col2 = st.columns(3)
     with rank_col:
         st.metric(
-            "Consensus Rank",
-            f"#{drug_rank} / {n_total}",
-            help=f"{drug_display_name}'s position among all drugs screened for this target",
+            "Vina Rank (drug-like)",
+            f"#{drug_rank} / {n_dl}" if drug_rank else "not drug-like",
+            help=f"{drug_display_name}'s Vina rank among drug-like candidates for this target",
         )
     with score_col:
         st.metric(
-            "Consensus Score",
-            f"{drug_row['consensus_score']:.4f}",
-            help="Combined Vina + ML normalised score",
+            "Ligand Efficiency",
+            f"{le:.3f}" if (le == le and le is not None) else "n/a",
+            help="Binding energy per heavy atom (size-corrected)",
         )
     with lit_col2:
         st.metric(
@@ -303,30 +305,30 @@ The scoring function accounts for:
 - **Receptors:** PDB structures cleaned and converted to PDBQT via Open Babel
 - **Ligands:** 3D conformers generated with RDKit ETKDG, optimised with MMFF94/UFF
 
-Each of our 50 FDA-approved drugs was docked against all 6 protein
-targets (294 runs total, excluding auranofin which contains a gold
-atom unsupported by Vina).
+Each of our 100 FDA-approved drugs was docked against all 6 protein
+targets (594 of 600 runs completed, excluding auranofin which contains
+a gold atom unsupported by Vina).
 """)
 
 with st.expander("Machine Learning Rescoring"):
     st.markdown("""
-A Random Forest classifier trained on RDKit molecular descriptors
-rescores each drug-target pair. The model uses 10 physicochemical
-features (molecular weight, LogP, TPSA, rotatable bonds, H-bond
-donors/acceptors, aromatic rings, heavy atom count, fraction of
-sp3 carbons, and Vina docking score) to predict binding likelihood.
+A scikit-learn Random Forest classifier provides a supporting activity
+score for each drug. It is trained on 166 experimental binding
+measurements from ChEMBL (HCV NS5B, dengue NS5, influenza RdRp) using
+2048-bit Morgan fingerprints. Because it scores a drug from the drug's
+own structure, it gives the same value for every target: a
+target-agnostic activity prior, not a per-target prediction.
 
-**Why use ML alongside Vina?**
-- Vina uses physics approximations that can miss important interactions
-- ML models capture patterns from descriptor space that physics cannot
-- Combining both methods (consensus scoring) reduces false positives
+**How the ML score is used:**
+- The RandomForest is a ligand-based, target-agnostic activity prior: it gives a drug the same score for every target, so it is a supporting signal, not a per-target predictor.
+- Per-target ranking therefore uses Vina and ligand efficiency, restricted to a drug-like molecular-weight window (250-600 Da) to control for docking's size bias.
 
-**Consensus formula: 0.4 x Vina + 0.6 x ML**, where both scores
-are normalised to a 0-1 scale before combining.
-
-**Validation:** ROC analysis against 8 known DENV NS5 RdRp inhibitors
-and 78 property-matched decoys yielded AUC = 1.000 for the consensus
-method, with enrichment factor EF@1% = 10.8x (maximum possible).
+**Honest validation note:** An initial ROC against 8 known DENV NS5 RdRp
+inhibitors and only 78 weakly-matched decoys gave a suspicious AUC = 1.000.
+On a fairer, library-based test, Vina actually scored AUC = 0.37 for NS5
+(below random — a size-bias artifact). That failure is reported openly, and
+it is why, for NS5, mechanism and published literature carry more weight
+than the docking score.
 """)
 
 with st.expander("ADMET Predictions — Safety Profiling"):
@@ -351,7 +353,7 @@ ADMET profiles — but repurposing for a new indication may reveal
 different safety considerations.
 """)
 
-with st.expander("PubMedBERT NLP — Literature Mining"):
+with st.expander("Literature Search (PubMed E-utilities)"):
     st.markdown("""
 We use NLP (Natural Language Processing) to search PubMed for existing
 evidence linking our drug candidates to the target diseases. This helps

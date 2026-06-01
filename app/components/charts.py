@@ -120,7 +120,7 @@ def admet_radar(drug_id: str) -> go.Figure:
 
 
 def score_distribution_histogram(target_id: str) -> go.Figure:
-    """Distribution histogram of consensus scores for a target.
+    """Distribution histogram of ligand efficiency for drug-like candidates.
 
     Args:
         target_id: Target to show distribution for.
@@ -132,15 +132,16 @@ def score_distribution_histogram(target_id: str) -> go.Figure:
     if df.empty:
         return _empty_figure("No data available")
 
+    dl = df[df["is_druglike"] == 1]
     fig = px.histogram(
-        df,
-        x="consensus_score",
+        dl,
+        x="ligand_efficiency",
         nbins=20,
         color_discrete_sequence=[THEME_PRIMARY],
-        labels={"consensus_score": "Consensus Score"},
+        labels={"ligand_efficiency": "Ligand Efficiency"},
     )
     fig.update_layout(
-        title="Score Distribution",
+        title="Ligand-Efficiency Distribution (drug-like)",
         yaxis_title="Number of Drugs",
         height=300,
         margin=dict(l=10, r=10, t=40, b=10),
@@ -162,7 +163,9 @@ def top_candidates_bar(target_id: str, n: int = 10) -> go.Figure:
     if df.empty:
         return _empty_figure("No data available")
 
-    top = df.head(n).copy()
+    top = df[df["is_druglike"] == 1].sort_values(
+        "ligand_efficiency", ascending=False
+    ).head(n).copy()
     # Reverse for horizontal bar (top candidate at top of chart)
     top = top.iloc[::-1]
 
@@ -175,15 +178,15 @@ def top_candidates_bar(target_id: str, n: int = 10) -> go.Figure:
     fig = go.Figure()
     fig.add_trace(go.Bar(
         y=top["name"],
-        x=top["consensus_score"],
+        x=top["ligand_efficiency"],
         orientation="h",
         marker_color=colors,
-        text=top["consensus_score"].round(3),
+        text=top["ligand_efficiency"].round(3),
         textposition="outside",
     ))
     fig.update_layout(
-        title=f"Top {n} Candidates",
-        xaxis_title="Consensus Score",
+        title=f"Top {n} Drug-like Candidates by Ligand Efficiency",
+        xaxis_title="Ligand Efficiency",
         height=max(300, n * 35),
         margin=dict(l=10, r=10, t=40, b=10),
     )
@@ -194,14 +197,14 @@ def vina_vs_ml_scatter(target_id: str) -> go.Figure:
     """Scatter plot of Vina score vs ML score for all drugs against a target.
 
     Points colored by ADMET pass/fail, sized by literature evidence count,
-    with top-10 consensus candidates highlighted.
+    with the top-10 drug-like candidates by Vina rank highlighted.
     """
     df = get_drugs_for_target(target_id)
     if df.empty:
         return _empty_figure("No data available")
 
     df["admet_label"] = df["overall_pass"].map({1: "ADMET Pass", 0: "ADMET Fail"})
-    df["is_top10"] = df["consensus_rank"] <= 10
+    df["is_top10"] = df["vina_rank"] <= 10
     # Ensure lit_count sizing is visible (min size 4)
     df["marker_size"] = df["lit_count"].clip(lower=0) + 4
 
@@ -254,9 +257,9 @@ def vina_vs_ml_scatter(target_id: str) -> go.Figure:
         text=top10["name"],
         textposition="top center",
         textfont=dict(size=9),
-        name="Top 10 Consensus",
-        hovertemplate="%{text}<br>Vina: %{x:.2f}<br>ML: %{y:.2f}<br>Rank: #%{customdata}<extra></extra>",
-        customdata=top10["consensus_rank"],
+        name="Top 10 (Vina rank)",
+        hovertemplate="%{text}<br>Vina: %{x:.2f}<br>ML prior: %{y:.2f}<br>Vina rank: #%{customdata}<extra></extra>",
+        customdata=top10["vina_rank"],
     ))
 
     # Diagonal reference line (perfect correlation)
@@ -365,17 +368,17 @@ def literature_bar(target_id: str, n: int = 15) -> go.Figure:
 
 
 def novel_discoveries_highlight(target_id: str, n: int = 10) -> go.Figure:
-    """Highlight drugs with strong consensus scores but zero literature.
+    """Highlight drug-like candidates with strong ligand efficiency but zero literature.
 
-    These represent potential novel discoveries — computationally
-    promising candidates that haven't been studied for this target.
+    These represent potential novel leads — computationally promising,
+    drug-like candidates that have not been studied for this target.
     """
     df = get_drugs_for_target(target_id)
     if df.empty:
         return _empty_figure("No data available")
 
-    novels = df[(df["lit_count"] == 0)].sort_values(
-        "consensus_score", ascending=False
+    novels = df[(df["lit_count"] == 0) & (df["is_druglike"] == 1)].sort_values(
+        "ligand_efficiency", ascending=False
     ).head(n).copy()
 
     if novels.empty:
@@ -386,21 +389,21 @@ def novel_discoveries_highlight(target_id: str, n: int = 10) -> go.Figure:
     fig = go.Figure()
     fig.add_trace(go.Bar(
         y=novels["name"],
-        x=novels["consensus_score"],
+        x=novels["ligand_efficiency"],
         orientation="h",
         marker_color=[
             "#F39C12" if row["overall_pass"] else "#E67E22"
             for _, row in novels.iterrows()
         ],
         text=[
-            f"{row['consensus_score']:.3f} {'(ADMET safe)' if row['overall_pass'] else ''}"
+            f"{row['ligand_efficiency']:.3f} {'(ADMET safe)' if row['overall_pass'] else ''}"
             for _, row in novels.iterrows()
         ],
         textposition="outside",
     ))
     fig.update_layout(
-        title="Novel Discovery Candidates (No Prior Literature)",
-        xaxis_title="Consensus Score",
+        title="Novel Lead Candidates (drug-like, no prior literature)",
+        xaxis_title="Ligand Efficiency",
         height=max(250, len(novels) * 30),
         margin=dict(l=10, r=50, t=40, b=10),
     )

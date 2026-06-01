@@ -182,10 +182,15 @@ def get_drugs_for_target(target_id: str) -> pd.DataFrame:
             d.name,
             d.drugbank_id,
             d.original_indication,
+            d.molecular_weight,
             dr.vina_score,
             ml.ml_binding_score,
+            ml.ligand_efficiency,
             ml.consensus_score,
+            ml.vina_rank,
+            ml.le_rank,
             ml.consensus_rank,
+            ml.is_druglike,
             a.lipinski_pass,
             a.overall_pass,
             COALESCE(lit.lit_count, 0) AS lit_count
@@ -195,8 +200,12 @@ def get_drugs_for_target(target_id: str) -> pd.DataFrame:
         JOIN (
             SELECT drug_id, target_id,
                    MIN(ml_binding_score) AS ml_binding_score,
+                   MIN(ligand_efficiency) AS ligand_efficiency,
                    MIN(consensus_score) AS consensus_score,
-                   MIN(consensus_rank) AS consensus_rank
+                   MIN(vina_rank) AS vina_rank,
+                   MIN(le_rank) AS le_rank,
+                   MIN(consensus_rank) AS consensus_rank,
+                   MAX(is_druglike) AS is_druglike
             FROM ml_scores
             GROUP BY drug_id, target_id
         ) ml ON d.drug_id = ml.drug_id AND dr.target_id = ml.target_id
@@ -208,7 +217,7 @@ def get_drugs_for_target(target_id: str) -> pd.DataFrame:
             GROUP BY drug_id, target_id
         ) lit ON d.drug_id = lit.drug_id AND dr.target_id = lit.target_id
         WHERE dr.target_id = ?
-        ORDER BY ml.consensus_rank
+        ORDER BY (ml.vina_rank IS NULL), ml.vina_rank
         """,
         (target_id,),
     )

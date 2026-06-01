@@ -54,14 +54,15 @@ def _load_profiles() -> list[dict]:
 
 @st.cache_data(ttl=3600)
 def _load_consensus_scores() -> pd.DataFrame:
-    """Load average consensus scores per drug from the database."""
+    """Load average ligand efficiency per drug-like candidate from the database."""
     try:
         conn = get_connection()
         try:
             df = pd.read_sql_query(
-                "SELECT d.name, AVG(m.consensus_score) AS avg_score "
+                "SELECT d.name, AVG(m.ligand_efficiency) AS avg_score "
                 "FROM ml_scores m "
                 "JOIN drugs d ON m.drug_id = d.drug_id "
+                "WHERE m.is_druglike = 1 "
                 "GROUP BY d.name",
                 conn,
             )
@@ -497,7 +498,7 @@ if not consensus_df.empty:
         on="Drug",
         how="left",
     )
-    summary_df.rename(columns={"avg_score": "Avg Consensus"}, inplace=True)
+    summary_df.rename(columns={"avg_score": "Avg Ligand Eff."}, inplace=True)
 
 st.dataframe(
     summary_df,
