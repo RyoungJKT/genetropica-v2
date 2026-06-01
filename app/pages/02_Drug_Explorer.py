@@ -23,7 +23,7 @@ from app.components.charts import (
 )
 from app.components.filters import (
     render_admet_filter,
-    render_score_filter,
+    render_druglike_filter,
     render_sort_selector,
     render_target_filter,
 )
@@ -54,53 +54,54 @@ if df.empty:
     st.code("python scripts/generate_mock_data.py")
     st.stop()
 
-# Score range filter (based on actual data range)
-score_min = float(df["consensus_score"].min())
-score_max = float(df["consensus_score"].max())
-min_score, max_score = render_score_filter(
-    min_default=round(score_min, 2),
-    max_default=round(score_max, 2),
-)
-
-# ADMET filters
+# Drug-like filter (the key bias-aware filter) + ADMET filters
+druglike_only = render_druglike_filter()
 admet_only, lipinski_only = render_admet_filter()
 
-# Sort selector
+# Sort selector (dual-metric)
 sort_col = render_sort_selector()
 
 # ─────────────────────────────────────────────────────────────
 # Apply filters
 # ─────────────────────────────────────────────────────────────
-filtered = df[
-    (df["consensus_score"] >= min_score)
-    & (df["consensus_score"] <= max_score)
-].copy()
-
+filtered = df.copy()
+if druglike_only:
+    filtered = filtered[filtered["is_druglike"] == 1]
 if admet_only:
     filtered = filtered[filtered["overall_pass"] == 1]
 if lipinski_only:
     filtered = filtered[filtered["lipinski_pass"] == 1]
 
-# Sort
-ascending = sort_col in ("consensus_rank", "vina_score", "ml_binding_score")
-filtered = filtered.sort_values(sort_col, ascending=ascending).reset_index(drop=True)
+# Sort: ranks and Vina score ascending (best first); ligand efficiency descending
+ascending = sort_col in ("vina_rank", "le_rank", "vina_score")
+filtered = filtered.sort_values(
+    sort_col, ascending=ascending, na_position="last"
+).reset_index(drop=True)
 
 # ─────────────────────────────────────────────────────────────
 # Summary metrics
 # ─────────────────────────────────────────────────────────────
 st.subheader(f"Target: {target_info['name']}  ·  {target_info['disease']}")
 
+n_druglike = int((df["is_druglike"] == 1).sum())
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric("Total Screened", len(df))
 with col2:
-    hits = len(df[df["consensus_score"] >= 0.6])
-    st.metric("Hits (score ≥ 0.6)", hits)
+    st.metric("Drug-like (MW 250-600)", n_druglike)
 with col3:
-    safe_hits = len(df[(df["consensus_score"] >= 0.6) & (df["overall_pass"] == 1)])
-    st.metric("ADMET-Safe Hits", safe_hits)
+    safe = int(((df["is_druglike"] == 1) & (df["overall_pass"] == 1)).sum())
+    st.metric("ADMET-Safe Drug-like", safe)
 with col4:
     st.metric("Showing", len(filtered))
+
+st.caption(
+    "Candidates are ranked by AutoDock Vina score and by ligand efficiency "
+    "(binding energy per heavy atom), shown side by side, over drug-like "
+    "candidates. The ML score is a target-agnostic activity prior, not a "
+    "per-target prediction. See the Methods page for the documented scoring "
+    "biases and the dengue NS5 validation caveat (Vina AUC 0.37)."
+)
 
 st.divider()
 
@@ -126,16 +127,16 @@ st.divider()
 # ─────────────────────────────────────────────────────────────
 st.subheader("Drug Candidates")
 
-# Prepare display dataframe
+# Prepare display dataframe (dual-metric)
 display_df = filtered[[
-    "name", "drugbank_id", "original_indication",
-    "vina_score", "ml_binding_score", "consensus_score", "consensus_rank",
+    "name", "drugbank_id", "molecular_weight",
+    "vina_rank", "vina_score", "le_rank", "ligand_efficiency", "ml_binding_score",
     "overall_pass", "lipinski_pass", "lit_count",
 ]].copy()
 
 display_df.columns = [
-    "Drug Name", "DrugBank ID", "Indication",
-    "Vina Score", "ML Score", "Consensus Score", "Rank",
+    "Drug Name", "DrugBank ID", "MW",
+    "Vina Rank", "Vina Score", "LE Rank", "Ligand Eff.", "ML Prior",
     "ADMET Pass", "Lipinski Pass", "References",
 ]
 
@@ -148,10 +149,12 @@ st.dataframe(
     use_container_width=True,
     height=400,
     column_config={
+        "MW": st.column_config.NumberColumn(format="%.0f"),
+        "Vina Rank": st.column_config.NumberColumn(format="%d"),
         "Vina Score": st.column_config.NumberColumn(format="%.2f"),
-        "ML Score": st.column_config.NumberColumn(format="%.2f"),
-        "Consensus Score": st.column_config.NumberColumn(format="%.4f"),
-        "Rank": st.column_config.NumberColumn(format="%d"),
+        "LE Rank": st.column_config.NumberColumn(format="%d"),
+        "Ligand Eff.": st.column_config.NumberColumn(format="%.3f"),
+        "ML Prior": st.column_config.NumberColumn(format="%.2f"),
         "ADMET Pass": st.column_config.TextColumn(),
         "Lipinski Pass": st.column_config.TextColumn(),
         "References": st.column_config.NumberColumn(format="%d"),

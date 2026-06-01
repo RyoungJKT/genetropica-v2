@@ -66,7 +66,7 @@ drug_names = dict(zip(top_drugs["drug_id"], top_drugs["name"]))
 selected_drug = st.sidebar.selectbox(
     "Drug Candidate",
     options=drug_options,
-    format_func=lambda x: f"{drug_names[x].capitalize()} (rank #{top_drugs[top_drugs['drug_id']==x]['consensus_rank'].values[0]})",
+    format_func=lambda x: f"{drug_names[x].capitalize()} (Vina rank #{int(top_drugs[top_drugs['drug_id']==x]['vina_rank'].values[0])})",
 )
 
 st.sidebar.divider()
@@ -122,7 +122,7 @@ if compare_mode:
         drug2 = st.selectbox(
             "Compare with",
             options=other_options,
-            format_func=lambda x: f"{drug_names[x].capitalize()} (rank #{top_drugs[top_drugs['drug_id']==x]['consensus_rank'].values[0]})",
+            format_func=lambda x: f"{drug_names[x].capitalize()} (Vina rank #{int(top_drugs[top_drugs['drug_id']==x]['vina_rank'].values[0])})",
         )
         drug2_details = get_drug_details(drug2)
         drug2_name = drug2_details["name"].capitalize() if drug2_details else drug2
@@ -154,12 +154,12 @@ if compare_mode:
 
         with sc1:
             st.metric("Vina Score", f"{drug_row['vina_score']:.2f} kcal/mol")
-            st.metric("ML Score", f"{drug_row['ml_binding_score']:.2f}")
-            st.metric("Consensus Rank", f"#{int(drug_row['consensus_rank'])}")
+            st.metric("ML Prior", f"{drug_row['ml_binding_score']:.2f}")
+            st.metric("Vina Rank", f"#{int(drug_row['vina_rank'])}")
         with sc2:
             st.metric("Vina Score", f"{drug2_row['vina_score']:.2f} kcal/mol")
-            st.metric("ML Score", f"{drug2_row['ml_binding_score']:.2f}")
-            st.metric("Consensus Rank", f"#{int(drug2_row['consensus_rank'])}")
+            st.metric("ML Prior", f"{drug2_row['ml_binding_score']:.2f}")
+            st.metric("Vina Rank", f"#{int(drug2_row['vina_rank'])}")
 
 else:
     st.subheader(f"{drug_name} — {target_info['name']}")
@@ -195,9 +195,9 @@ with info_col1:
         with m1:
             st.metric("Vina Score", f"{row['vina_score']:.2f}", help="kcal/mol (more negative = stronger)")
         with m2:
-            st.metric("ML Score", f"{row['ml_binding_score']:.2f}", help="Random Forest predicted affinity")
+            st.metric("ML Prior", f"{row['ml_binding_score']:.2f}", help="Target-agnostic RandomForest activity prior")
         with m3:
-            st.metric("Rank", f"#{int(row['consensus_rank'])}", help="Consensus rank for this target")
+            st.metric("Vina Rank", f"#{int(row['vina_rank'])}", help="Vina rank among drug-like candidates")
 
 # Drug properties
 with info_col2:

@@ -163,14 +163,14 @@ with st.expander("Stage 4 — AI Scoring & Filtering"):
 **Input:** Docking poses + drug SMILES + protein sequences
 
 **Process:**
-- **Random Forest ML rescoring** — Classifier trained on 10 RDKit molecular
-  descriptors predicts binding affinity
-- **Consensus scoring** — Combine Vina and ML scores:
-  `consensus = 0.4 * norm_vina + 0.6 * norm_ml`
+- **Random Forest ML rescoring** — Classifier on 2048-bit Morgan fingerprints
+  + Vina score; a target-agnostic activity prior (supporting signal)
+- **Dual-metric ranking** — Rank drug-like candidates (MW 250-600) by Vina
+  score and ligand efficiency, shown side by side
 - **ADMET prediction** — Evaluate Lipinski compliance, hepatotoxicity risk,
   hERG inhibition risk, oral bioavailability
-- **PubMed NLP mining** — Search for existing drug-disease literature using
-  PubMedBERT for relationship extraction
+- **PubMed search** — Search for existing drug-disease literature via
+  NCBI E-utilities with keyword matching
 
 **Output:** Ranked candidate list with safety profiles and literature evidence
 """)
@@ -294,22 +294,23 @@ with method_col2:
     st.markdown("""
 | Parameter | Value |
 |-----------|-------|
-| Model | PubMedBERT (microsoft/BiomedNLP) |
-| Tokenizer | WordPiece (biomedical vocabulary) |
-| Entity extraction | scispaCy (en_core_sci_lg) |
-| Search API | NCBI E-utilities (PubMed) |
-| Relationship types | Therapeutic, mechanistic, adverse |
-| Confidence scoring | Softmax classification probability |
+| Method | Keyword and synonym matching |
+| Search API | NCBI E-utilities (PubMed esearch + efetch) |
+| Output | PubMed entries with PMIDs for traceability |
 """)
 
-st.subheader("Consensus Scoring Formula")
-st.latex(r"\text{Consensus} = 0.4 \times \hat{V} + 0.6 \times \hat{M}")
+st.subheader("Ranking")
 st.markdown("""
-Where:
-- **V-hat** = min-max normalized Vina score (inverted so higher = better)
-- **M-hat** = min-max normalized ML binding score (inverted)
-- Weights reflect higher confidence in ML predictions for this dataset
+Drug-like candidates (MW 250-600) are ranked by **AutoDock Vina score** and by
+**ligand efficiency** (binding energy per heavy atom), shown side by side, to
+control for docking's size bias. The RandomForest ML score is a target-agnostic
+activity prior, used only as a supporting signal.
+
+A legacy weighted consensus (below) is retained in the database for reference but
+is **not** the headline ranking, because weighting the target-agnostic ML term
+heavily made one molecule top nearly every target:
 """)
+st.latex(r"\text{Consensus (legacy)} = 0.4 \times \hat{V} + 0.6 \times \hat{M}")
 
 
 # ─────────────────────────────────────────────────────────────

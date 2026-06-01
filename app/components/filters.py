@@ -38,12 +38,12 @@ def render_score_filter(
         Tuple of (min_score, max_score).
     """
     score_range = st.sidebar.slider(
-        "Consensus Score Range",
+        "Score Range",
         min_value=min_default,
         max_value=max_default,
         value=(min_default, max_default),
         step=0.01,
-        help="Filter drugs by consensus score (higher = stronger candidate).",
+        help="Filter drugs by score.",
     )
     return score_range
 
@@ -74,10 +74,10 @@ def render_sort_selector() -> str:
         Column name to sort by.
     """
     sort_options = {
-        "consensus_rank": "Consensus Rank",
-        "vina_score": "Vina Score (best first)",
-        "ml_binding_score": "ML Score (best first)",
-        "consensus_score": "Consensus Score (highest first)",
+        "vina_rank": "Vina rank (best first)",
+        "le_rank": "Ligand-efficiency rank (best first)",
+        "ligand_efficiency": "Ligand efficiency (highest first)",
+        "vina_score": "Vina score (best first)",
     }
     selected = st.sidebar.selectbox(
         "Sort by",
@@ -85,3 +85,18 @@ def render_sort_selector() -> str:
         format_func=lambda x: sort_options[x],
     )
     return selected
+
+
+def render_druglike_filter() -> bool:
+    """Render a drug-like (MW 250-600 Da) toggle in the sidebar.
+
+    Returns:
+        True if only drug-like candidates should be shown.
+    """
+    return st.sidebar.toggle(
+        "Drug-like only (MW 250-600)",
+        value=True,
+        help="Restrict to a drug-like molecular-weight window. This removes both "
+             "the oversized molecules that dominate raw Vina (size bias) and the "
+             "tiny fragments that dominate ligand efficiency.",
+    )
