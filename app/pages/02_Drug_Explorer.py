@@ -50,7 +50,7 @@ target_info = TARGET_PROTEINS[target_id]
 df = get_drugs_for_target(target_id)
 
 if df.empty:
-    st.warning("No data found. Please run the mock data generator first.")
+    st.warning("No data loaded. Generate demonstration data, or run the real pipeline, to populate the database:")
     st.code("python scripts/generate_mock_data.py")
     st.stop()
 
