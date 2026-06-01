@@ -1,16 +1,15 @@
 # GeneTropica dashboard, runtime dependencies (Railway / Streamlit Cloud).
 #
-# Scoped to what the dashboard actually imports at runtime. Pipeline-only or
-# unused libraries (vina, deepchem, transformers, scispacy, matplotlib,
-# biopython, beautifulsoup4, sqlalchemy, py3Dmol) are intentionally excluded to
-# keep the image small and the build reliable. scipy and scikit-learn are
-# required because the Conservation and Methodology Validation pages import
-# modules that use them.
+# Scoped to what the dashboard imports at runtime. Pipeline-only or unused
+# libraries (vina, deepchem, transformers, scispacy, matplotlib, biopython,
+# beautifulsoup4, sqlalchemy, py3Dmol) are intentionally excluded to keep the
+# image small and the build reliable. scipy and scikit-learn are required by
+# the Conservation and Methodology Validation pages.
 streamlit>=1.28
 plotly>=5.15
-pandas>=2.0
-numpy>=1.24
+pandas>=2.0,<3.0
+numpy>=1.24,<3.0
 scipy>=1.10
 scikit-learn>=1.3
-rdkit-pypi>=2023.03
+rdkit>=2023.9
 requests>=2.31
