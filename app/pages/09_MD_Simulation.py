@@ -1,4 +1,4 @@
-"""MD Simulation Analysis — 50 ns trajectory analysis for 3 drug candidates."""
+"""MD Simulation Analysis, 50 ns trajectory analysis for 3 drug candidates."""
 
 import sys
 from pathlib import Path
@@ -102,7 +102,7 @@ for idx, drug in enumerate(DRUGS):
 # Highlight best binder
 best_drug = summary.loc[summary["MinDist_avg"].astype(float).idxmin(), "Drug"]
 st.success(
-    f"**{best_drug}** shows the strongest binding — lowest minimum distance "
+    f"**{best_drug}** shows the strongest binding, lowest minimum distance "
     f"to the protein, indicating the most stable ligand-protein complex."
 )
 
@@ -145,7 +145,7 @@ st.header("3. Structural Flexibility")
 rmsf_data = load_per_drug_csv("rmsf")
 if rmsf_data:
     st.markdown(
-        "**RMSF** (Root Mean Square Fluctuation) per residue — higher values "
+        "**RMSF** (Root Mean Square Fluctuation) per residue, higher values "
         "indicate more flexible regions. Binding site residues should show "
         "moderate flexibility."
     )
@@ -214,7 +214,7 @@ if contacts_data:
                     [str(int(r)) for r in df["resid"]],
                     df["occupancy_pct"].tolist(),
                     None,
-                    f"Top Contact Residues — {drug.capitalize()}",
+                    f"Top Contact Residues, {drug.capitalize()}",
                     "Occupancy (%)",
                 )
                 fig.update_layout(height=400)
@@ -228,7 +228,7 @@ st.divider()
 st.header("5. Binding Stability")
 st.markdown(
     "Minimum ligand-protein distance and atom-atom contact count "
-    "over time — proxies for binding affinity."
+    "over time, proxies for binding affinity."
 )
 
 proxy_data = load_per_drug_csv("binding_proxy")
@@ -277,5 +277,5 @@ st.divider()
 st.caption(
     "MD simulations performed with GROMACS 2024.4 on Google Colab (NVIDIA H100). "
     "Analysis via MDAnalysis 2.x. "
-    "GeneTropica — Russell Young, British School Jakarta."
+    "GeneTropica, Russell Young, British School Jakarta."
 )

@@ -17,7 +17,7 @@ def render_target_filter() -> str:
         for tid in info["targets"]:
             target = TARGET_PROTEINS[tid]
             options.append(tid)
-            labels[tid] = f"{disease} — {target['name']}"
+            labels[tid] = f"{disease} · {target['name']}"
 
     selected = st.sidebar.selectbox(
         "Protein Target",

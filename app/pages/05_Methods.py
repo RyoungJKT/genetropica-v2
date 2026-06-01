@@ -34,7 +34,7 @@ st.markdown(
 )
 
 # ─────────────────────────────────────────────────────────────
-# Section 1 — Pipeline Diagram
+# Section 1, Pipeline Diagram
 # ─────────────────────────────────────────────────────────────
 st.header("1. Pipeline Overview")
 st.markdown(
@@ -111,7 +111,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 # Expandable stage details
-with st.expander("Stage 1 — Data Acquisition"):
+with st.expander("Stage 1, Data Acquisition"):
     st.markdown("""
 **Input:** Drug names, disease protein identifiers
 
@@ -124,7 +124,7 @@ with st.expander("Stage 1 — Data Acquisition"):
 **Output:** 50 drug PDBQT files, 6 protein PDB/PDBQT files
 """)
 
-with st.expander("Stage 2 — Structure Prediction"):
+with st.expander("Stage 2, Structure Prediction"):
     st.markdown("""
 **Input:** Protein sequences without experimental structures
 
@@ -137,7 +137,7 @@ with st.expander("Stage 2 — Structure Prediction"):
 **Output:** Predicted 3D structures for any targets lacking PDB entries
 """)
 
-with st.expander("Stage 3 — Molecular Docking"):
+with st.expander("Stage 3, Molecular Docking"):
     st.markdown("""
 **Input:** Drug PDBQT files + protein PDBQT files
 
@@ -158,24 +158,24 @@ with st.expander("Stage 3 — Molecular Docking"):
 | Search box | 25 x 25 x 25 A (centered on binding site) |
 """)
 
-with st.expander("Stage 4 — AI Scoring & Filtering"):
+with st.expander("Stage 4, AI Scoring & Filtering"):
     st.markdown("""
 **Input:** Docking poses + drug SMILES + protein sequences
 
 **Process:**
-- **Random Forest ML rescoring** — Classifier on 2048-bit Morgan fingerprints
+- **Random Forest ML rescoring**, Classifier on 2048-bit Morgan fingerprints
   + Vina score; a target-agnostic activity prior (supporting signal)
-- **Dual-metric ranking** — Rank drug-like candidates (MW 250-600) by Vina
+- **Dual-metric ranking**, Rank drug-like candidates (MW 250-600) by Vina
   score and ligand efficiency, shown side by side
-- **ADMET prediction** — Evaluate Lipinski compliance, hepatotoxicity risk,
+- **ADMET prediction**, Evaluate Lipinski compliance, hepatotoxicity risk,
   hERG inhibition risk, oral bioavailability
-- **PubMed search** — Search for existing drug-disease literature via
+- **PubMed search**, Search for existing drug-disease literature via
   NCBI E-utilities with keyword matching
 
 **Output:** Ranked candidate list with safety profiles and literature evidence
 """)
 
-with st.expander("Stage 5 — Interactive Dashboard"):
+with st.expander("Stage 5, Interactive Dashboard"):
     st.markdown("""
 **Input:** Complete results database
 
@@ -190,7 +190,7 @@ with st.expander("Stage 5 — Interactive Dashboard"):
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 2 — Data Sources
+# Section 2, Data Sources
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("2. Data Sources")
@@ -244,7 +244,7 @@ st.dataframe(
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 3 — Computational Methods
+# Section 3, Computational Methods
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("3. Computational Methods")
@@ -314,7 +314,7 @@ st.latex(r"\text{Consensus (legacy)} = 0.4 \times \hat{V} + 0.6 \times \hat{M}")
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 4 — Results Download
+# Section 4, Results Download
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("4. Download Results")
@@ -326,7 +326,7 @@ target_labels = {}
 for disease, info in DISEASES.items():
     for tid in info["targets"]:
         target_options.append(tid)
-        target_labels[tid] = f"{disease} — {TARGET_PROTEINS[tid]['name']}"
+        target_labels[tid] = f"{disease}, {TARGET_PROTEINS[tid]['name']}"
 
 dl_target = st.selectbox(
     "Select target for per-target downloads",
@@ -387,7 +387,7 @@ with dl4:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 5 — Reproducibility
+# Section 5, Reproducibility
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("5. Reproducibility")
@@ -421,11 +421,11 @@ st.subheader("Running the Full Pipeline")
 st.markdown("""
 To reproduce results from scratch:
 
-1. **Data acquisition** — `python -m src.data_acquisition.fetch_drugs`
-2. **Structure preparation** — `python -m src.structure_prediction.predict`
-3. **Molecular docking** — `python -m src.docking.run_vina`
-4. **AI scoring** — `python -m src.ai_scoring.rescore`
-5. **Launch dashboard** — `streamlit run app/app.py`
+1. **Data acquisition**, `python -m src.data_acquisition.fetch_drugs`
+2. **Structure preparation**, `python -m src.structure_prediction.predict`
+3. **Molecular docking**, `python -m src.docking.run_vina`
+4. **AI scoring**, `python -m src.ai_scoring.rescore`
+5. **Launch dashboard**, `streamlit run app/app.py`
 
 Each stage writes to the SQLite database at `data/database/genetropica.db`.
 """)
@@ -440,5 +440,5 @@ https://github.com/RyoungJKT/genetropica-v2""",
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Methods & Pipeline | Russell Young, British School Jakarta"
+    "GeneTropica v2, Methods & Pipeline | Russell Young, British School Jakarta"
 )

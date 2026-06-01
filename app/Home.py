@@ -1,4 +1,4 @@
-"""GeneTropica — Main Streamlit app entry point."""
+"""GeneTropica, Main Streamlit app entry point."""
 
 import sys
 from pathlib import Path
@@ -20,7 +20,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Responsive CSS — only activates on screens < 768px (mobile)
+# Responsive CSS, only activates on screens < 768px (mobile)
 st.markdown("""<style>
 @media (max-width: 768px) {
     /* Stack Streamlit columns vertically on mobile */
@@ -58,7 +58,7 @@ Despite this, drug development for NTDs is severely underfunded.
 
 **GeneTropica** takes a different approach: instead of developing new molecules from
 scratch, this platform screens a curated library of 100 **existing FDA-approved drugs** against
-disease protein targets to find new therapeutic uses — a strategy called
+disease protein targets to find new therapeutic uses, a strategy called
 **drug repurposing**.
 """)
 
