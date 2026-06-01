@@ -57,7 +57,7 @@ Indonesia bearing a disproportionate burden of dengue, chikungunya, and leptospi
 Despite this, drug development for NTDs is severely underfunded.
 
 **GeneTropica** takes a different approach: instead of developing new molecules from
-scratch, this platform screens thousands of **existing FDA-approved drugs** against
+scratch, this platform screens a curated library of 100 **existing FDA-approved drugs** against
 disease protein targets to find new therapeutic uses — a strategy called
 **drug repurposing**.
 """)
@@ -70,7 +70,7 @@ with col1:
     st.markdown("#### 🎯 6 Protein Targets")
     st.markdown("Across 3 neglected tropical diseases prevalent in Indonesia")
 with col2:
-    st.markdown("#### 💊 50 Drug Candidates")
+    st.markdown("#### 💊 100 Drug Candidates")
     st.markdown("FDA-approved drugs screened for repurposing potential")
 with col3:
     st.markdown("#### 🔬 7-Stage Pipeline")
