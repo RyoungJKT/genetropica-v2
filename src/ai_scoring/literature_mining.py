@@ -1,4 +1,4 @@
-"""PubMedBERT NLP pipeline for literature evidence mining.
+"""PubMed literature mining (keyword-based; optional PubMedBERT upgrade).
 
 Searches PubMed via NCBI E-utilities API for existing evidence
 linking drug candidates to disease targets. Uses keyword-based

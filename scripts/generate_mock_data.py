@@ -13,7 +13,7 @@ DATA SOURCE SUMMARY:
 
   Mock data (randomly generated — needs real pipeline runs to replace):
     - Vina docking scores — need actual AutoDock Vina runs with PDB/PDBQT files
-    - ML binding scores — need trained DeepChem GNN model
+    - ML binding scores — replaced by the ChEMBL-trained RandomForest in the real pipeline
     - Consensus scores — computed from mock Vina + ML inputs
     - Protein-ligand interactions — need real docking output parsing
 """
@@ -263,9 +263,9 @@ def _generate_ml_scores(
 ) -> None:
     """Generate MOCK ML rescoring with consensus rankings per target.
 
-    WARNING: ML scores are mock (Vina + Gaussian noise), NOT from a real
-    DeepChem GNN model. Consensus formula is real (0.4*Vina + 0.6*ML),
-    but both inputs are mock. Replace when trained model is available.
+    WARNING: these ML scores are mock (Vina + Gaussian noise), for local demo
+    only. The real pipeline uses a ChEMBL-trained scikit-learn RandomForest as
+    a target-agnostic prior, and ranks by Vina + ligand efficiency.
 
     Consensus score = 0.4 * normalized_vina + 0.6 * normalized_ml
     (Vina scores are negative, so more negative = better binding.)
