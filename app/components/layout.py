@@ -99,17 +99,29 @@ hr,[data-testid="stDivider"]{border-color:var(--line)!important;background:var(-
 footer{visibility:hidden;}
 [data-testid="stToolbar"]{display:none;}
 
-/* ---- pin the sidebar open on all pages (desktop): remove the collapse affordance so it can never be accidentally hidden ---- */
+/* ---- pin the sidebar open on all pages (desktop) ----
+   Streamlit 1.45 enforces its collapsed state with a high-specificity rule
+   (transform: translateX(-100%) plus max-width/min-width: 0) and an animated
+   transition. Overriding it from author CSS needs BOTH:
+     (a) higher specificity: the data-testid attribute is repeated so this
+         selector out-weighs Streamlit's collapsed-state rule, and
+     (b) transition: none: so the pinned size/position apply instantly instead
+         of animating back toward the collapsed values.
+   Verified live against the real collapsed state. The repeated attribute is
+   intentional, not a typo. */
 @media (min-width:768px){
-  section[data-testid="stSidebar"]{
-    position:relative!important;
+  section[data-testid="stSidebar"][data-testid="stSidebar"][data-testid="stSidebar"][data-testid="stSidebar"][data-testid="stSidebar"]{
+    transition:none!important;
     transform:none!important;
-    margin-left:0!important;
-    left:0!important;
-    visibility:visible!important;
+    position:relative!important;
     width:300px!important;
     min-width:300px!important;
     max-width:300px!important;
+    margin-left:0!important;
+    left:0!important;
+    right:auto!important;
+    visibility:visible!important;
+    opacity:1!important;
   }
   /* drop the collapse (<<) button and the reopen (>>) control: not needed when the sidebar is pinned open */
   [data-testid="stSidebarCollapseButton"]{display:none!important;}
