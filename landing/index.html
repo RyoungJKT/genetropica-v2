@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeneTropica. Finding new medicines hidden in old ones</title>
+<meta name="description" content="A computational drug-repurposing study screening 100 approved drugs against the proteins behind dengue and other neglected tropical diseases.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hanken+Grotesk:wght@300..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F4F0E6;
+    --paper-2:#ECE6D8;
+    --paper-3:#E4DCC9;
+    --ink:#1C1A17;
+    --ink-soft:#544F45;
+    --ink-faint:#8A8273;
+    --green:#1F5740;
+    --green-bright:#2E7D5B;
+    --clay:#A8492B;
+    --line:#D8D0BD;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Hanken Grotesk',system-ui,sans-serif;
+    --mono:'Spline Sans Mono',ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:380;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:clip;
+  }
+  html{overflow-x:clip}
+
+  /* paper grain overlay */
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    opacity:.045;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(22px,5vw,72px);position:relative;z-index:2}
+
+  /* ---- top bar ---- */
+  header.top{
+    position:fixed;top:0;left:0;right:0;z-index:40;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(22px,5vw,72px);
+    mix-blend-mode:multiply;
+    transition:background .4s ease, padding .4s ease;
+  }
+  header.top.solid{
+    background:rgba(244,240,230,.86);backdrop-filter:blur(8px);
+    mix-blend-mode:normal;border-bottom:1px solid var(--line);padding-top:14px;padding-bottom:14px;
+  }
+  .brand{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand span{color:var(--green)}
+  .top nav{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.13em}
+  .top nav a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
+  .top nav a:hover{color:var(--green)}
+  .top .launch{
+    border:1px solid var(--ink);border-radius:100px;padding:8px 16px;color:var(--ink);
+    text-decoration:none;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.13em;
+    transition:all .3s;
+  }
+  .top .launch:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:760px){.top nav .nlink{display:none}}
+
+  /* ---- section index rail ---- */
+  .rail{position:fixed;left:clamp(14px,2.6vw,34px);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:14px}
+  .rail a{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-faint);text-decoration:none;display:flex;align-items:center;gap:9px;transition:color .3s}
+  .rail a .dot{width:6px;height:6px;border-radius:50%;background:var(--line);transition:all .3s}
+  .rail a.active{color:var(--green)}
+  .rail a.active .dot{background:var(--green);transform:scale(1.6)}
+  .rail a .rlabel{opacity:0;transform:translateX(-4px);transition:all .3s}
+  .rail a:hover .rlabel,.rail a.active .rlabel{opacity:1;transform:none}
+  @media(max-width:1080px){.rail{display:none}}
+
+  /* ---- hero ---- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px;position:relative}
+  .eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.22em;color:var(--green);margin-bottom:30px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:18px}}
+  .hero h1{font-family:var(--serif);font-weight:340;font-size:clamp(44px,7.4vw,104px);line-height:.96;letter-spacing:-.025em}
+  .hero h1 .lwrap{display:block;overflow:hidden}
+  .hero h1 em{font-style:italic;color:var(--green)}
+  .hero h1 .small{font-size:.52em;font-weight:300}
+  .standfirst{font-family:var(--serif);font-weight:300;font-size:clamp(17px,1.7vw,22px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin-top:30px}
+  .standfirst b{font-weight:500;color:var(--ink)}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:38px}
+  .btn{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;
+    padding:14px 26px;border-radius:100px;transition:all .3s;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary{background:var(--green);color:var(--paper);border:1px solid var(--green)}
+  .btn-primary:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn .arr{transition:transform .3s}
+  .btn:hover .arr{transform:translateX(4px)}
+
+  /* molecule figure */
+  .figure{position:relative;aspect-ratio:1;width:100%}
+  .figure svg{width:100%;height:100%;overflow:visible}
+  .fig-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);text-align:center;margin-top:14px;text-transform:uppercase}
+  .bond{stroke:var(--ink);stroke-width:1.4;fill:none}
+  .bond.accent{stroke:var(--green);stroke-width:1.8}
+  .atom{fill:var(--paper);stroke:var(--ink);stroke-width:1.4}
+  .atom.green{fill:var(--green);stroke:var(--green)}
+  .atom.clay{fill:var(--clay);stroke:var(--clay)}
+  .halo{fill:none;stroke:var(--green);stroke-width:1;opacity:.35}
+
+  /* ---- generic section ---- */
+  section{padding:clamp(80px,12vh,150px) 0;position:relative}
+  .sec-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--clay);text-transform:uppercase;margin-bottom:18px;display:block}
+  h2{font-family:var(--serif);font-weight:340;font-size:clamp(32px,4.8vw,62px);line-height:1.02;letter-spacing:-.02em;max-width:18ch}
+  h2 em{font-style:italic;color:var(--green)}
+  .lede{font-family:var(--serif);font-weight:300;font-size:clamp(18px,2vw,25px);line-height:1.5;color:var(--ink-soft);max-width:34ch}
+  p.body{font-size:17px;line-height:1.72;color:var(--ink-soft);max-width:60ch;margin-top:18px}
+  p.body b{color:var(--ink);font-weight:560}
+  .rule{height:1px;background:var(--line);width:100%;transform-origin:left;margin:0}
+
+  .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,90px);align-items:start}
+  @media(max-width:820px){.split{grid-template-columns:1fr;gap:26px}}
+
+  /* big number callout */
+  .bignum{font-family:var(--serif);font-weight:300;font-size:clamp(64px,13vw,168px);line-height:.86;letter-spacing:-.03em;color:var(--green)}
+  .bignum-sub{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase;margin-top:10px}
+
+  /* pipeline steps */
+  .steps{margin-top:50px;border-top:1px solid var(--line)}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:26px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+  .step .n{font-family:var(--mono);font-size:13px;color:var(--clay);letter-spacing:.05em;padding-top:6px}
+  .step h3{font-family:var(--serif);font-weight:420;font-size:clamp(21px,2.4vw,28px);letter-spacing:-.01em;margin-bottom:6px}
+  .step p{font-size:15.5px;color:var(--ink-soft);max-width:58ch}
+  .step:hover{background:var(--paper-2)}
+  .step{transition:background .3s;border-radius:8px}
+
+  /* honesty band */
+  .band{background:var(--ink);color:var(--paper)}
+  .band .sec-num{color:#C99A5B}
+  .band h2{color:var(--paper)}
+  .band h2 em{color:#7FC9A3}
+  .band p.body{color:#C9C3B5}
+  .band p.body b{color:var(--paper)}
+  .pullquote{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(28px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;color:var(--paper);max-width:20ch;margin-top:50px}
+  .pullquote .mark{color:#7FC9A3}
+
+  /* stats grid */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:54px}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--paper);padding:34px 26px}
+  .stat .v{font-family:var(--serif);font-weight:320;font-size:clamp(40px,6vw,68px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .stat .v .pre{color:var(--clay)}
+  .stat .k{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);margin-top:14px;line-height:1.4}
+
+  .classes{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .chip{border:1px solid var(--line);border-radius:100px;padding:9px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink);background:var(--paper)}
+  .chip b{color:var(--green)}
+
+  /* CTA */
+  .cta{text-align:center;padding:clamp(90px,16vh,180px) 0}
+  .cta h2{margin:0 auto;max-width:22ch}
+  .cta .hero-cta{justify-content:center}
+
+  footer{border-top:1px solid var(--line);padding:46px 0 60px;background:var(--paper-2)}
+  .colophon{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-faint);text-transform:uppercase}
+  .colophon a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+  .colophon a:hover{color:var(--green)}
+  .stack{display:flex;gap:18px;flex-wrap:wrap}
+
+  [data-reveal]{will-change:transform,opacity}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="top" id="top">
+  <div class="brand">Gene<span>Tropica</span></div>
+  <nav>
+    <a href="#problem" class="nlink">The Problem</a>
+    <a href="#how" class="nlink">How It Works</a>
+    <a href="#rigor" class="nlink">Rigor</a>
+    <a class="launch" href="https://genetropica2.streamlit.app/" target="_blank" rel="noopener">Launch Dashboard</a>
+  </nav>
+</header>
+
+<div class="rail" id="rail">
+  <a href="#hero" data-rail="hero" class="active"><span class="dot"></span><span class="rlabel">Cover</span></a>
+  <a href="#problem" data-rail="problem"><span class="dot"></span><span class="rlabel">01 Problem</span></a>
+  <a href="#idea" data-rail="idea"><span class="dot"></span><span class="rlabel">02 Idea</span></a>
+  <a href="#how" data-rail="how"><span class="dot"></span><span class="rlabel">03 Method</span></a>
+  <a href="#rigor" data-rail="rigor"><span class="dot"></span><span class="rlabel">04 Rigor</span></a>
+  <a href="#results" data-rail="results"><span class="dot"></span><span class="rlabel">05 Results</span></a>
+</div>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow" data-hero="eb">A computational drug-repurposing study · Russell Young · 2026</div>
+        <h1>
+          <span class="lwrap"><span class="ln">Finding new</span></span>
+          <span class="lwrap"><span class="ln">medicines <em>hidden</em></span></span>
+          <span class="lwrap"><span class="ln">in old ones.</span></span>
+        </h1>
+        <p class="standfirst" data-hero="sf">A search for forgotten cures: screening <b>100 approved drugs</b> against the proteins behind <b>dengue</b> and other neglected tropical diseases, using physics, chemistry, and a measured dose of machine learning.</p>
+        <div class="hero-cta" data-hero="cta">
+          <a class="btn btn-primary" href="https://genetropica2.streamlit.app/" target="_blank" rel="noopener">Open the live dashboard <span class="arr">&rarr;</span></a>
+          <a class="btn btn-ghost" href="#problem">Read how it works</a>
+        </div>
+      </div>
+      <div>
+        <figure class="figure" data-hero="fig">
+          <svg viewBox="0 0 320 320" aria-hidden="true">
+            <circle class="halo" cx="160" cy="160" r="120"/>
+            <circle class="halo" cx="160" cy="160" r="92"/>
+            <!-- bonds (hexagonal ring + branches) -->
+            <path class="bond ring" pathLength="1" d="M160 70 L238 115 L238 205 L160 250 L82 205 L82 115 Z"/>
+            <path class="bond accent br" pathLength="1" d="M160 70 L160 28"/>
+            <path class="bond br" pathLength="1" d="M238 115 L282 92"/>
+            <path class="bond br" pathLength="1" d="M82 115 L38 92"/>
+            <path class="bond accent br" pathLength="1" d="M160 250 L160 292"/>
+            <path class="bond br" pathLength="1" d="M238 205 L284 230"/>
+            <path class="bond br" pathLength="1" d="M82 205 L36 230"/>
+            <!-- atoms -->
+            <circle class="atom node" cx="160" cy="70" r="9"/>
+            <circle class="atom node" cx="238" cy="115" r="9"/>
+            <circle class="atom node" cx="238" cy="205" r="9"/>
+            <circle class="atom node" cx="160" cy="250" r="9"/>
+            <circle class="atom node" cx="82" cy="205" r="9"/>
+            <circle class="atom node" cx="82" cy="115" r="9"/>
+            <circle class="atom green node" cx="160" cy="28" r="7"/>
+            <circle class="atom clay node" cx="160" cy="292" r="7"/>
+            <circle class="atom node" cx="282" cy="92" r="6"/>
+            <circle class="atom node" cx="38" cy="92" r="6"/>
+            <circle class="atom node" cx="284" cy="230" r="6"/>
+            <circle class="atom node" cx="36" cy="230" r="6"/>
+          </svg>
+          <figcaption class="fig-cap">Fig. 1, a candidate ligand, abstracted</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" data-reveal></div>
+
+  <!-- 01 PROBLEM -->
+  <section id="problem">
+    <div class="split">
+      <div>
+        <span class="sec-num">01 / The problem</span>
+        <h2 data-reveal>A billion people, and <em>almost no new drugs.</em></h2>
+      </div>
+      <div>
+        <p class="body" data-reveal>Neglected tropical diseases like <b>dengue</b>, chikungunya, and leptospirosis affect more than a billion people, and Indonesia carries a disproportionate share of that burden.</p>
+        <p class="body" data-reveal>Yet building a brand-new drug takes well over a decade and a billion dollars. For diseases that mostly affect the world's poorest, that investment rarely comes. The pipeline is, in practice, empty.</p>
+        <div style="margin-top:48px">
+          <div class="bignum"><span data-count="1000000000" data-suffix="+">0</span></div>
+          <div class="bignum-sub">people at risk worldwide</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" data-reveal></div>
+
+  <!-- 02 IDEA -->
+  <section id="idea">
+    <div class="split">
+      <div>
+        <span class="sec-num">02 / The idea</span>
+        <h2 data-reveal>What if the cure <em>already exists?</em></h2>
+      </div>
+      <div>
+        <p class="body" data-reveal><b>Drug repurposing</b> asks a simple question: instead of inventing a new molecule, could a medicine we already trust, already proven safe in millions of people, work against a disease it was never designed for?</p>
+        <p class="body" data-reveal>It is faster, cheaper, and safer at the starting line, because the hardest question, "is this safe for humans," already has an answer. GeneTropica screens a curated library of approved drugs to find those hidden second lives.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" data-reveal></div>
+
+  <!-- 03 HOW -->
+  <section id="how">
+    <span class="sec-num">03 / The method</span>
+    <h2 data-reveal>Seven stages, from <em>molecule</em> to candidate.</h2>
+    <div class="steps">
+      <div class="step" data-reveal><div class="n">i</div><div><h3>A curated library</h3><p>100 FDA-approved drugs, chosen to span chemical space, become the search pool.</p></div></div>
+      <div class="step" data-reveal><div class="n">ii</div><div><h3>Six disease targets</h3><p>Key proteins from dengue, chikungunya, and leptospirosis, the machinery each disease depends on to survive.</p></div></div>
+      <div class="step" data-reveal><div class="n">iii</div><div><h3>~1,800 docking simulations</h3><p>AutoDock Vina computes how snugly every drug fits into every target, like testing keys against a lock.</p></div></div>
+      <div class="step" data-reveal><div class="n">iv</div><div><h3>Two honest rankings</h3><p>Candidates are scored both by raw binding strength and by ligand efficiency, the binding earned per atom, shown side by side.</p></div></div>
+      <div class="step" data-reveal><div class="n">v</div><div><h3>A machine-learning prior</h3><p>A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.</p></div></div>
+      <div class="step" data-reveal><div class="n">vi</div><div><h3>Safety screening</h3><p>ADMET filters keep only drug-like, tolerable molecules, the ones a body could plausibly absorb and clear.</p></div></div>
+      <div class="step" data-reveal><div class="n">vii</div><div><h3>Molecular dynamics</h3><p>The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.</p></div></div>
+    </div>
+  </section>
+
+  <div class="rule" data-reveal></div>
+
+</main>
+
+<!-- 04 RIGOR (dark band) -->
+<section id="rigor" class="band">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="sec-num">04 / Rigor</span>
+        <h2 data-reveal>Built to be <em>doubted.</em></h2>
+      </div>
+      <div>
+        <p class="body" data-reveal>Good science earns trust by showing its limits, not hiding them. GeneTropica is built around that idea.</p>
+        <p class="body" data-reveal>A known antiviral, <b>sofosbuvir</b>, is included as a positive control: if the method is sound, it should recognise a drug we already know works. Where the model is weak, that weakness is published openly, including a validation score of <b>0.37</b> on one dengue target. The machine learning is a prior, not a proof.</p>
+      </div>
+    </div>
+    <p class="pullquote" data-reveal>A result you <span class="mark">can't question</span> isn't science.</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- 05 RESULTS -->
+  <section id="results">
+    <span class="sec-num">05 / Results</span>
+    <h2 data-reveal>What the search <em>turned up.</em></h2>
+    <div class="stats">
+      <div class="stat" data-reveal><div class="v"><span data-count="100">0</span></div><div class="k">approved drugs<br>screened</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="6">0</span></div><div class="k">protein targets<br>across 3 diseases</div></div>
+      <div class="stat" data-reveal><div class="v"><span class="pre">~</span><span data-count="1800">0</span></div><div class="k">docking<br>simulations</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="65">0</span></div><div class="k">drug-like<br>candidates</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="42">0</span></div><div class="k">ADMET-safe<br>candidates</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="50">0</span><span class="pre"> ns</span></div><div class="k">dynamics per<br>finalist</div></div>
+    </div>
+    <p class="body" data-reveal style="margin-top:46px">Against dengue's replication machinery, two families of drug rose to the top: <b>nucleoside analogues</b> and <b>hepatitis-C antivirals</b>, classes that already disrupt viral copying in other diseases. Promising leads, openly caveated, ready for a wet lab to test.</p>
+    <div class="classes" data-reveal>
+      <div class="chip"><b>Nucleoside</b> analogues</div>
+      <div class="chip"><b>Hepatitis-C</b> antivirals</div>
+      <div class="chip">Dengue <b>NS3</b> &amp; <b>NS5</b></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CTA -->
+<section class="band">
+  <div class="wrap cta">
+    <span class="sec-num" style="text-align:center;display:block">The interactive study</span>
+    <h2 data-reveal>Explore every drug, target, and 3D binding pose <em>yourself.</em></h2>
+    <div class="hero-cta" data-reveal>
+      <a class="btn btn-primary" href="https://genetropica2.streamlit.app/" target="_blank" rel="noopener" style="background:#7FC9A3;border-color:#7FC9A3;color:#1C1A17">Launch the dashboard <span class="arr">&rarr;</span></a>
+      <a class="btn btn-ghost" href="https://github.com/RyoungJKT/genetropica-v2" target="_blank" rel="noopener" style="border-color:#54514a;color:var(--paper)">View the source</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap colophon">
+    <div>GeneTropica · A computational drug-repurposing study · Russell Young, 2026</div>
+    <div class="stack">
+      <span>AutoDock Vina</span><span>RDKit</span><span>scikit-learn</span><span>GROMACS</span><span>Streamlit</span>
+    </div>
+    <div><a href="https://genetropica2.streamlit.app/" target="_blank" rel="noopener">Dashboard</a> · <a href="https://github.com/RyoungJKT/genetropica-v2" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  if(typeof gsap === 'undefined') return;   // no GSAP -> CSS keeps all content visible
+  gsap.registerPlugin(ScrollTrigger);
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setupCounts(animated){
+    gsap.utils.toArray('[data-count]').forEach(el=>{
+      const end=+el.dataset.count, suf=el.dataset.suffix||'';
+      const fmt=v=> end>=1e9 ? (v/1e9).toFixed(0)+'B' : Math.round(v).toLocaleString();
+      if(!animated){ el.textContent=fmt(end)+suf; return; }
+      const o={v:0};
+      gsap.to(o,{v:end,duration:1.8,ease:'power2.out',
+        scrollTrigger:{trigger:el,start:'top 88%'},
+        onUpdate:()=>{el.textContent=fmt(o.v)+(o.v>=end?suf:'');}});
+    });
+  }
+
+  function setupChrome(){
+    ScrollTrigger.create({start:'top -60',end:99999,
+      onUpdate:self=>{document.getElementById('top').classList.toggle('solid', self.scroll()>60);}});
+    ['hero','problem','idea','how','rigor','results'].forEach(id=>{
+      const sec=document.getElementById(id);if(!sec)return;
+      ScrollTrigger.create({trigger:sec,start:'top 55%',end:'bottom 55%',
+        onToggle:self=>{ if(self.isActive){
+          document.querySelectorAll('.rail a').forEach(a=>a.classList.remove('active'));
+          const link=document.querySelector('.rail a[data-rail="'+id+'"]'); if(link) link.classList.add('active');
+        }}});
+    });
+  }
+
+  let introPlayed=false;
+  function playIntro(){
+    if(introPlayed) return; introPlayed=true;
+    const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.from('.hero h1 .ln',{yPercent:115,duration:1.05,stagger:.11})
+      .from('[data-hero="eb"]',{y:16,opacity:0,duration:.7},.1)
+      .from('[data-hero="sf"]',{y:20,opacity:0,duration:.8},'-=.65')
+      .from('[data-hero="cta"]',{y:20,opacity:0,duration:.7},'-=.5');
+    gsap.set('.bond',{strokeDasharray:1,strokeDashoffset:1});
+    gsap.set('.node',{scale:0,transformOrigin:'center'});
+    gsap.set('.halo',{scale:.6,opacity:0,transformOrigin:'center'});
+    const ml=gsap.timeline({delay:.35});
+    ml.to('.halo',{scale:1,opacity:.35,duration:1.4,stagger:.15,ease:'power2.out'})
+      .to('.ring',{strokeDashoffset:0,duration:1.3,ease:'power2.inOut'},'-=1.1')
+      .to('.br',{strokeDashoffset:0,duration:.8,stagger:.07,ease:'power2.out'},'-=.5')
+      .to('.node',{scale:1,duration:.5,stagger:.04,ease:'back.out(2)'},'-=.9');
+    gsap.to('.figure svg',{y:-12,duration:4,ease:'sine.inOut',yoyo:true,repeat:-1});
+    gsap.to('.halo',{rotation:360,duration:80,repeat:-1,ease:'none',svgOrigin:'160 160'});
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      if(el.classList.contains('rule')){
+        gsap.from(el,{scaleX:0,duration:1.1,ease:'power3.inOut',scrollTrigger:{trigger:el,start:'top 88%'}}); return;
+      }
+      gsap.from(el,{y:44,opacity:0,duration:.95,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 84%'}});
+    });
+    ['.steps','.stats','.classes'].forEach(sel=>{
+      const c=document.querySelector(sel);if(!c)return;
+      gsap.from(c.children,{y:30,opacity:0,duration:.7,stagger:.07,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 80%'}});
+    });
+    ScrollTrigger.refresh();
+  }
+
+  setupChrome();
+  if(reduce){
+    setupCounts(false);
+  } else if(document.visibilityState === 'visible'){
+    setupCounts(true); playIntro();
+  } else {
+    // Loaded in a hidden/background tab: never leave content stuck invisible.
+    // Show everything now, and play the entrance the first time the tab is viewed.
+    setupCounts(false);
+    document.addEventListener('visibilitychange', function onVis(){
+      if(document.visibilityState === 'visible'){
+        document.removeEventListener('visibilitychange', onVis);
+        playIntro();
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
