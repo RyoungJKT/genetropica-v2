@@ -61,4 +61,14 @@ data/md_simulation/*/*.edr
 data/md_simulation/*/*.cpt
 data/md_simulation/*/*.tpr
 data/md_simulation/*/*.gro
+# Recursive guards: GROMACS outputs can nest deeper than one level (e.g. results/md_results_*/)
+data/md_simulation/**/results/
+data/md_simulation/**/*.xtc
+data/md_simulation/**/*.trr
+data/md_simulation/**/*.edr
+data/md_simulation/**/*.cpt
+data/md_simulation/**/*.tpr
+data/md_simulation/**/*.gro
+data/md_simulation/**/*.dcd
+data/md_simulation/**/*.trj
 !data/md_simulation/*/input/*.gro
