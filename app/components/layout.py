@@ -36,6 +36,10 @@ a:hover{color:var(--green-bright)!important;border-color:var(--green-bright);}
 [data-testid="stMainBlockContainer"],.block-container{animation:gtFade .55s ease-out;}
 @keyframes gtFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
+/* ---- chart entrance: charts gently grow/rise in (safe: visible if animation cannot run) ---- */
+[data-testid="stPlotlyChart"],[data-testid="stIFrame"]{animation:gtChartRise .7s cubic-bezier(.2,.7,.2,1);}
+@keyframes gtChartRise{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+
 /* ---- dividers -> hairline ---- */
 hr,[data-testid="stDivider"]{border-color:var(--line)!important;background:var(--line)!important;}
 
