@@ -99,9 +99,27 @@ hr,[data-testid="stDivider"]{border-color:var(--line)!important;background:var(-
 footer{visibility:hidden;}
 [data-testid="stToolbar"]{display:none;}
 
-/* ---- keep the sidebar expand control visible + on-brand (so a collapsed sidebar is easy to reopen) ---- */
-[data-testid="stSidebarCollapsedControl"],[data-testid="collapsedControl"]{visibility:visible!important;opacity:1!important;}
-[data-testid="stSidebarCollapsedControl"] button,[data-testid="collapsedControl"] button{color:var(--green)!important;border:1px solid var(--line)!important;background:var(--paper-2)!important;border-radius:8px!important;}
+/* ---- pin the sidebar open on all pages (desktop): remove the collapse affordance so it can never be accidentally hidden ---- */
+@media (min-width:768px){
+  section[data-testid="stSidebar"]{
+    position:relative!important;
+    transform:none!important;
+    margin-left:0!important;
+    left:0!important;
+    visibility:visible!important;
+    width:300px!important;
+    min-width:300px!important;
+    max-width:300px!important;
+  }
+  /* drop the collapse (<<) button and the reopen (>>) control: not needed when the sidebar is pinned open */
+  [data-testid="stSidebarCollapseButton"]{display:none!important;}
+  [data-testid="stSidebarCollapsedControl"],[data-testid="collapsedControl"]{display:none!important;}
+}
+/* ---- small screens keep Streamlit's collapsible sidebar, but the reopen control stays visible + on-brand so it can never get stuck ---- */
+@media (max-width:767.98px){
+  [data-testid="stSidebarCollapsedControl"],[data-testid="collapsedControl"]{visibility:visible!important;opacity:1!important;}
+  [data-testid="stSidebarCollapsedControl"] button,[data-testid="collapsedControl"] button{color:var(--green)!important;border:1px solid var(--line)!important;background:var(--paper-2)!important;border-radius:8px!important;}
+}
 </style>
 """
 
