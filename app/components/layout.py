@@ -98,6 +98,10 @@ hr,[data-testid="stDivider"]{border-color:var(--line)!important;background:var(-
 #MainMenu{visibility:hidden;}
 footer{visibility:hidden;}
 [data-testid="stToolbar"]{display:none;}
+
+/* ---- keep the sidebar expand control visible + on-brand (so a collapsed sidebar is easy to reopen) ---- */
+[data-testid="stSidebarCollapsedControl"],[data-testid="collapsedControl"]{visibility:visible!important;opacity:1!important;}
+[data-testid="stSidebarCollapsedControl"] button,[data-testid="collapsedControl"] button{color:var(--green)!important;border:1px solid var(--line)!important;background:var(--paper-2)!important;border-radius:8px!important;}
 </style>
 """
 

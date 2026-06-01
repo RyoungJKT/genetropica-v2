@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title="MD Simulation", layout="wide")
+st.set_page_config(page_title="MD Simulation", layout="wide", initial_sidebar_state="expanded")
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
