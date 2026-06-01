@@ -28,7 +28,7 @@ st.markdown(
 )
 
 # ─────────────────────────────────────────────────────────────
-# Section 1 — Disease Burden in Indonesia
+# Section 1, Disease Burden in Indonesia
 # ─────────────────────────────────────────────────────────────
 st.header("Disease Burden in Indonesia")
 
@@ -42,7 +42,7 @@ with col_d:
     periodic outbreaks causing thousands of hospitalizations.
 
     **Why repurposing matters:** No specific antiviral treatment exists. Current
-    care is supportive only — fluids, monitoring, and pain management.
+    care is supportive only, fluids, monitoring, and pain management.
     """)
 
 with col_c:
@@ -71,7 +71,7 @@ with col_l:
 st.divider()
 
 # ─────────────────────────────────────────────────────────────
-# Section 2 — Protein Target Cards
+# Section 2, Protein Target Cards
 # ─────────────────────────────────────────────────────────────
 st.header("Protein Targets")
 st.markdown(
@@ -84,7 +84,7 @@ st.markdown(
 TARGET_ROLES: dict[str, str] = {
     "DENV_NS3": (
         "Cleaves the viral polyprotein into functional components. "
-        "Essential for dengue virus replication — blocking this enzyme "
+        "Essential for dengue virus replication, blocking this enzyme "
         "halts the viral life cycle."
     ),
     "DENV_NS5": (
@@ -139,7 +139,7 @@ for disease_name, disease_info in DISEASES.items():
 st.divider()
 
 # ─────────────────────────────────────────────────────────────
-# Section 3 — Pipeline Overview
+# Section 3, Pipeline Overview
 # ─────────────────────────────────────────────────────────────
 st.header("Pipeline Overview")
 st.markdown(
@@ -172,5 +172,5 @@ for i, (title, icon, desc) in enumerate(stages):
 st.divider()
 st.caption("Data sources: RCSB PDB, DrugBank, ZINC15, PubMed, WHO, Indonesian Ministry of Health")
 st.caption(
-    "GeneTropica v2 — Disease Overview | Russell Young, British School Jakarta"
+    "GeneTropica v2, Disease Overview | Russell Young, British School Jakarta"
 )

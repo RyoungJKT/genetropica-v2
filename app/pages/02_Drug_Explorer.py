@@ -15,6 +15,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.components.layout import inject_theme
+
+inject_theme()
+
 from app.components.charts import (
     admet_radar,
     score_comparison_bar,
@@ -247,5 +251,5 @@ if selected_drug_id:
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Drug Candidate Explorer | Russell Young, British School Jakarta"
+    "GeneTropica v2, Drug Candidate Explorer | Russell Young, British School Jakarta"
 )

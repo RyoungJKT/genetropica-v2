@@ -15,6 +15,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.components.layout import inject_theme
+
+inject_theme()
+
 from app.components.mol_viewer import render_binding_complex, render_comparison
 from src.utils.config import DISEASES, TARGET_PROTEINS
 from src.utils.db import (
@@ -41,7 +45,7 @@ target_labels = {}
 for disease, info in DISEASES.items():
     for tid in info["targets"]:
         target_options.append(tid)
-        target_labels[tid] = f"{disease} — {TARGET_PROTEINS[tid]['name']}"
+        target_labels[tid] = f"{disease}, {TARGET_PROTEINS[tid]['name']}"
 
 target_id = st.sidebar.selectbox(
     "Protein Target",
@@ -117,7 +121,7 @@ if compare_mode:
     # Second drug selector
     other_options = [d for d in drug_options if d != selected_drug]
     if not other_options:
-        st.info("Only one drug available — cannot compare.")
+        st.info("Only one drug available, cannot compare.")
     else:
         drug2 = st.selectbox(
             "Compare with",
@@ -162,7 +166,7 @@ if compare_mode:
             st.metric("Vina Rank", f"#{int(drug2_row['vina_rank'])}")
 
 else:
-    st.subheader(f"{drug_name} — {target_info['name']}")
+    st.subheader(f"{drug_name}, {target_info['name']}")
 
     with st.spinner(f"Loading {pdb_id}..."):
         render_binding_complex(
@@ -178,7 +182,7 @@ else:
         )
 
 # ─────────────────────────────────────────────────────────────
-# Info panel — binding details
+# Info panel, binding details
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.subheader("Binding Details")
@@ -258,5 +262,5 @@ else:
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Binding Viewer | Russell Young, British School Jakarta"
+    "GeneTropica v2, Binding Viewer | Russell Young, British School Jakarta"
 )

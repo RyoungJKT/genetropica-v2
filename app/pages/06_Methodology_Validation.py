@@ -56,14 +56,14 @@ meta = summary.get("metadata", {})
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 1 — Why Validation Matters
+# Section 1, Why Validation Matters
 # ─────────────────────────────────────────────────────────────
 st.header("1. Why Validation Matters")
 st.markdown("""
 Any computational screening method must demonstrate that it works before
 its predictions can be trusted. A pipeline that simply assigns random
 scores could, by chance, place a few promising drugs at the top of the
-list — but it would fail to consistently separate known active compounds
+list, but it would fail to consistently separate known active compounds
 from inactive decoys.
 
 **Retrospective validation** tests the pipeline against molecules with
@@ -71,15 +71,15 @@ from inactive decoys.
 would the pipeline have flagged the correct ones?"
 
 The standard metrics are:
-- **ROC AUC** — area under the receiver operating characteristic curve
+- **ROC AUC**, area under the receiver operating characteristic curve
   (1.0 = perfect, 0.5 = random)
-- **Enrichment Factor** — how many times better than random chance the
+- **Enrichment Factor**, how many times better than random chance the
   top-ranked compounds contain known actives
 """)
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 2 — ROC Curves
+# Section 2, ROC Curves
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("2. ROC Curves")
@@ -123,7 +123,7 @@ with a4:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 3 — Enrichment Factors
+# Section 3, Enrichment Factors
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("3. Enrichment Factors")
@@ -152,7 +152,7 @@ st.dataframe(ef_table, use_container_width=True)
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 4 — Score Distributions
+# Section 4, Score Distributions
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("4. Score Distributions")
@@ -170,7 +170,7 @@ else:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 5 — Summary Verdict
+# Section 5, Summary Verdict
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("5. Validation Summary")
@@ -204,7 +204,7 @@ with col_v2:
     |--------|-----------|----------------|
     | Excellent | > 0.85 | Strong separation of actives from decoys |
     | Good | 0.70 – 0.85 | Reliable discrimination with some overlap |
-    | Acceptable | 0.60 – 0.70 | Marginal — worth investigating further |
+    | Acceptable | 0.60 – 0.70 | Marginal, worth investigating further |
     | Poor | < 0.60 | Pipeline cannot reliably identify actives |
     """)
 
@@ -230,7 +230,7 @@ else:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 6 — Validation Details
+# Section 6, Validation Details
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("6. Validation Details")
@@ -272,24 +272,24 @@ with st.expander("Methodology"):
     can distinguish known RdRp inhibitors from unrelated drugs within the
     same 100-drug library:
 
-    1. **Define actives** — 10 compounds from the A_RdRp_Inhibitors
+    1. **Define actives**, 10 compounds from the A_RdRp_Inhibitors
        category (sofosbuvir, remdesivir, favipiravir, ribavirin, etc.)
        with published RdRp inhibitory activity.
 
-    2. **Define decoys** — All remaining 89 library drugs, which include
+    2. **Define decoys**, All remaining 89 library drugs, which include
        negative controls (metformin, ibuprofen, gabapentin, etc.) and
        drugs targeting other mechanisms (protease inhibitors, kinase
        inhibitors, etc.).
 
-    3. **Use existing docking** — All compounds were already docked
+    3. **Use existing docking**, All compounds were already docked
        against 5CCV using identical parameters during the main screening
        campaign (AutoDock Vina, exhaustiveness=8, 25A grid box).
 
-    4. **Score and rank** — The same ML rescoring (2048-bit Morgan
+    4. **Score and rank**, The same ML rescoring (2048-bit Morgan
        fingerprints + Vina score) and consensus formula (0.4 x Vina_norm
        + 0.6 x ML) used throughout the pipeline.
 
-    5. **Evaluate** — Compute ROC curves, AUC, and enrichment factors.
+    5. **Evaluate**, Compute ROC curves, AUC, and enrichment factors.
        Note: Vina scoring shows negative correlation with RdRp inhibitor
        activity because these nucleoside analogs are small molecules that
        score weakly compared to larger protease inhibitors. This is a
@@ -298,5 +298,5 @@ with st.expander("Methodology"):
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Methodology Validation | Russell Young, British School Jakarta"
+    "GeneTropica v2, Methodology Validation | Russell Young, British School Jakarta"
 )

@@ -66,7 +66,7 @@ def render_protein(
         pdb_id: 4-character PDB identifier (e.g. '2VBC').
         width: Viewer width in pixels.
         height: Viewer height in pixels.
-        style: Visualization style — 'cartoon', 'stick', 'sphere', 'line'.
+        style: Visualization style, 'cartoon', 'stick', 'sphere', 'line'.
         color_scheme: Coloring method key from _COLOR_SCHEMES.
     """
     pdb_data = _fetch_pdb(pdb_id)
@@ -145,7 +145,7 @@ def render_binding_complex(
     if highlight_residues:
         resi_list = ",".join(str(r) for r in highlight_residues)
         resi_js = f"""
-        // Binding pocket residues — warm red/magenta to contrast with protein
+        // Binding pocket residues, warm red/magenta to contrast with protein
         viewer.setStyle(
             {{resi: [{resi_list}], chain: "{highlight_chain}"}},
             {{stick: {{color: "0xE74C3C", radius: 0.18}},
@@ -183,7 +183,7 @@ def render_binding_complex(
         var viewer = $3Dmol.createViewer("v_{uid}", {{backgroundColor: "white"}});
         viewer.addModel(`{safe}`, "pdb");
 
-        // Protein backbone — cool blue
+        // Protein backbone, cool blue
         viewer.setStyle({{}}, {{{style}: {{color: {protein_color}}}}});
 
         {resi_js}
@@ -206,7 +206,7 @@ def render_binding_complex(
         </span>
         <span style="display:inline-block; background:#FFF3CD; padding:2px 8px; border-radius:4px;
                      font-size:0.75em; color:#856404; margin-bottom:4px;">
-            Preview — docked poses will replace this view
+            Preview, docked poses will replace this view
         </span>
     </div>
     """

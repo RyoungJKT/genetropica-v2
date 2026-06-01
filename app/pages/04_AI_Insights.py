@@ -15,6 +15,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.components.layout import inject_theme
+
+inject_theme()
+
 from app.components.charts import (
     admet_overview_bars,
     admet_radar,
@@ -31,12 +35,12 @@ from src.utils.db import (
 
 st.title("AI Insights & Analysis")
 st.markdown(
-    "Explore how our AI scoring pipeline evaluates drug candidates — from "
+    "Explore how our AI scoring pipeline evaluates drug candidates, from "
     "molecular docking to safety profiling and literature validation."
 )
 
 # ─────────────────────────────────────────────────────────────
-# Target selector (sidebar) — visible list with active highlight
+# Target selector (sidebar), visible list with active highlight
 # ─────────────────────────────────────────────────────────────
 st.sidebar.header("Analysis Scope")
 
@@ -62,7 +66,7 @@ div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label {
 div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label:hover {
     background-color: rgba(151, 166, 195, 0.15) !important;
 }
-/* Selected / active state — use :has() to detect checked radio input */
+/* Selected / active state, use :has() to detect checked radio input */
 div[data-testid="stSidebar"] .stRadio [role="radiogroup"] label:has(input:checked) {
     background-color: rgba(80, 140, 250, 0.15) !important;
     border-left: 3px solid #508cfa !important;
@@ -79,7 +83,7 @@ target_labels = {}
 for disease, info in DISEASES.items():
     for tid in info["targets"]:
         target_options.append(tid)
-        target_labels[tid] = f"{disease} — {TARGET_PROTEINS[tid]['name']}"
+        target_labels[tid] = f"{disease}, {TARGET_PROTEINS[tid]['name']}"
 
 target_id = st.sidebar.radio(
     "Protein Target",
@@ -96,7 +100,7 @@ if df.empty:
     st.stop()
 
 # ─────────────────────────────────────────────────────────────
-# Section 1 — Scoring Method Comparison
+# Section 1, Scoring Method Comparison
 # ─────────────────────────────────────────────────────────────
 st.header("1. Scoring Method Comparison")
 st.markdown(
@@ -124,7 +128,7 @@ with s4:
     st.metric("Vina-ML Correlation", f"{corr:.2f}", help="Pearson correlation between scoring methods")
 
 # ─────────────────────────────────────────────────────────────
-# Section 2 — ADMET Safety Dashboard
+# Section 2, ADMET Safety Dashboard
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("2. ADMET Safety Dashboard")
@@ -150,7 +154,7 @@ for idx, (_, row) in enumerate(top5.iterrows()):
 
     with st.expander(
         f"{'🟢' if admet['overall_pass'] else '🔴'} "
-        f"**{drug_name}** — Vina rank #{int(row['vina_rank'])}"
+        f"**{drug_name}**, Vina rank #{int(row['vina_rank'])}"
     ):
         lip = admet["lipinski_pass"]
         hep = admet["hepatotoxicity_risk"]
@@ -164,22 +168,22 @@ for idx, (_, row) in enumerate(top5.iterrows()):
         t1, t2, t3 = st.columns(3)
 
         with t1:
-            st.markdown(f"{'🟢' if lip else '🔴'} **Lipinski** — {'Pass' if lip else 'Fail'}")
-            st.markdown(f"{'🟢' if hep_ok else '🔴'} **Hepatotox** — Risk {hep:.0%}")
+            st.markdown(f"{'🟢' if lip else '🔴'} **Lipinski**, {'Pass' if lip else 'Fail'}")
+            st.markdown(f"{'🟢' if hep_ok else '🔴'} **Hepatotox**, Risk {hep:.0%}")
 
         with t2:
-            st.markdown(f"{'🟢' if herg_ok else '🔴'} **hERG** — Risk {herg:.0%}")
-            st.markdown(f"{'🟢' if bio_ok else '🟡'} **Bioavail** — {bio:.0%}")
+            st.markdown(f"{'🟢' if herg_ok else '🔴'} **hERG**, Risk {herg:.0%}")
+            st.markdown(f"{'🟢' if bio_ok else '🟡'} **Bioavail**, {bio:.0%}")
 
         with t3:
-            st.markdown(f"{'🟢' if overall else '🔴'} **Overall** — {'Pass' if overall else 'Fail'}")
+            st.markdown(f"{'🟢' if overall else '🔴'} **Overall**, {'Pass' if overall else 'Fail'}")
 
         # Mini radar
         st.plotly_chart(admet_radar(drug_id), use_container_width=True, key=f"admet_radar_{idx}")
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 3 — Literature Evidence
+# Section 3, Literature Evidence
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("3. Literature Evidence")
@@ -275,7 +279,7 @@ else:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 4 — Methodology Explainer
+# Section 4, Methodology Explainer
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("4. Methodology")
@@ -284,18 +288,18 @@ st.markdown(
     "powering this drug repurposing pipeline."
 )
 
-with st.expander("AutoDock Vina — Physics-Based Molecular Docking"):
+with st.expander("AutoDock Vina, Physics-Based Molecular Docking"):
     st.markdown("""
 AutoDock Vina predicts how strongly a drug molecule binds to a protein
 target by simulating physical interactions. It evaluates thousands of
 possible orientations (poses) and calculates a binding energy in
-kcal/mol — **more negative values indicate stronger binding**.
+kcal/mol, **more negative values indicate stronger binding**.
 
 The scoring function accounts for:
-- **Van der Waals forces** — shape complementarity between drug and protein
-- **Hydrogen bonds** — directional interactions between polar groups
-- **Desolvation** — energy cost of displacing water molecules
-- **Torsional penalty** — flexibility cost of the drug molecule
+- **Van der Waals forces**, shape complementarity between drug and protein
+- **Hydrogen bonds**, directional interactions between polar groups
+- **Desolvation**, energy cost of displacing water molecules
+- **Torsional penalty**, flexibility cost of the drug molecule
 
 **Pipeline parameters:**
 - **Software:** AutoDock Vina v1.2.7
@@ -326,15 +330,15 @@ target-agnostic activity prior, not a per-target prediction.
 **Honest validation note:** An initial ROC against 8 known DENV NS5 RdRp
 inhibitors and only 78 weakly-matched decoys gave a suspicious AUC = 1.000.
 On a fairer, library-based test, Vina actually scored AUC = 0.37 for NS5
-(below random — a size-bias artifact). That failure is reported openly, and
+(below random, a size-bias artifact). That failure is reported openly, and
 it is why, for NS5, mechanism and published literature carry more weight
 than the docking score.
 """)
 
-with st.expander("ADMET Predictions — Safety Profiling"):
+with st.expander("ADMET Predictions, Safety Profiling"):
     st.markdown("""
 ADMET stands for **Absorption, Distribution, Metabolism, Excretion,
-and Toxicity** — the key pharmacokinetic properties that determine
+and Toxicity**, the key pharmacokinetic properties that determine
 whether a drug candidate is safe and effective in humans.
 
 Our pipeline evaluates four safety criteria using RDKit molecular
@@ -349,7 +353,7 @@ descriptors computed directly from each drug's SMILES structure:
 
 A drug must pass **all four** criteria to receive an overall ADMET pass.
 Since we use existing FDA-approved drugs, most already have favorable
-ADMET profiles — but repurposing for a new indication may reveal
+ADMET profiles, but repurposing for a new indication may reveal
 different safety considerations.
 """)
 
@@ -359,9 +363,9 @@ We use NLP (Natural Language Processing) to search PubMed for existing
 evidence linking our drug candidates to the target diseases. This helps
 distinguish between:
 
-- **Known connections** — drugs already studied for this indication
+- **Known connections**, drugs already studied for this indication
   (validates computational predictions)
-- **Novel discoveries** — computationally promising drugs with no prior
+- **Novel discoveries**, computationally promising drugs with no prior
   literature (potential new repurposing opportunities)
 
 The pipeline queries PubMed using drug names and disease terms, then
@@ -372,5 +376,5 @@ score based on the strength of the evidence.
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — AI Insights | Russell Young, British School Jakarta"
+    "GeneTropica v2, AI Insights | Russell Young, British School Jakarta"
 )

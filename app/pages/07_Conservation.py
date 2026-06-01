@@ -116,28 +116,28 @@ if aligned is None:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 1 — Why Conservation Matters
+# Section 1, Why Conservation Matters
 # ─────────────────────────────────────────────────────────────
 st.header("1. Why Conservation Matters")
 st.markdown("""
 A drug that targets a **highly conserved** region of a viral protein is
 valuable for two reasons:
 
-1. **Broad-spectrum potential** — if the binding site is conserved across
+1. **Broad-spectrum potential**, if the binding site is conserved across
    related viruses, a single drug may work against multiple diseases.
-2. **Resistance barrier** — conserved residues are under strong evolutionary
+2. **Resistance barrier**, conserved residues are under strong evolutionary
    pressure. Mutations at these sites typically cripple the enzyme, making
    it harder for the virus to evolve resistance.
 
 The RdRp (RNA-dependent RNA polymerase) is the core replication enzyme of
 all RNA viruses. Its active site contains the universally conserved GDD
 motif (Gly-Asp-Asp) that is essential for catalysis. Drugs targeting this
-region — like sofosbuvir for Hepatitis C — exploit this conservation.
+region, like sofosbuvir for Hepatitis C, exploit this conservation.
 """)
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 2 — Pairwise Identity Heatmap
+# Section 2, Pairwise Identity Heatmap
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("2. Pairwise Sequence Identity")
@@ -209,7 +209,7 @@ if identity_matrix:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 3 — Per-Position Conservation Plot
+# Section 3, Per-Position Conservation Plot
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("3. Per-Position Conservation")
@@ -231,7 +231,7 @@ if scores_df is not None:
         else:
             residue_numbers.append(None)
 
-    # Build plot data — only non-gap positions in DENV-2
+    # Build plot data, only non-gap positions in DENV-2
     plot_positions = []
     plot_grades = []
     for i, rnum in enumerate(residue_numbers):
@@ -300,7 +300,7 @@ if scores_df is not None:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 4 — Key Residue Conservation Table
+# Section 4, Key Residue Conservation Table
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("4. Key Residue Conservation")
@@ -357,13 +357,13 @@ if analysis and "key_residues" in analysis:
         "The catalytic GDD motif residues (Asp663, Asp664) are **100% conserved** "
         "across all 9 viruses, including the distantly related HCV. Arg737 is also "
         "100% conserved. This extreme conservation makes these residues ideal drug "
-        "targets — mutations here would abolish polymerase activity.",
+        "targets, mutations here would abolish polymerase activity.",
         icon="🧬",
     )
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 5 — 3D Conservation Viewer
+# Section 5, 3D Conservation Viewer
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("5. 3D Conservation Map")
@@ -391,10 +391,10 @@ else:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 6 — Statistical Test
+# Section 6, Statistical Test
 # ─────────────────────────────────────────────────────────────
 st.divider()
-st.header("6. Binding Site Conservation — Statistical Analysis")
+st.header("6. Binding Site Conservation, Statistical Analysis")
 st.markdown(
     "Mann-Whitney U test comparing conservation grades of binding site "
     "residues vs all other residues in the RdRp domain."
@@ -427,7 +427,7 @@ if analysis and "mann_whitney" in analysis:
             f"site mean conservation grade is {mw['binding_mean']:.1f} vs "
             f"{mw['nonbinding_mean']:.1f} for non-binding residues. The marginal "
             f"p-value reflects the small number of binding site residues (n={mw['n_binding']}), "
-            f"not a lack of biological signal — the GDD catalytic motif is 100% conserved "
+            f"not a lack of biological signal, the GDD catalytic motif is 100% conserved "
             f"across all 9 viruses."
         )
     else:
@@ -484,7 +484,7 @@ if analysis and "mann_whitney" in analysis:
 
 
 # ─────────────────────────────────────────────────────────────
-# Section 7 — Broad-Spectrum Narrative
+# Section 7, Broad-Spectrum Narrative
 # ─────────────────────────────────────────────────────────────
 st.divider()
 st.header("7. Implications for Broad-Spectrum Drug Repurposing")
@@ -501,7 +501,7 @@ conserved across all 9 viruses studied, including the distantly related HCV.
 **Pan-flavivirus potential.** Dengue serotypes share 66-72% NS5 sequence
 identity, and the broader flavivirus group (DENV, ZIKV, WNV, JEV, YFV)
 shares 52-62%. Despite this divergence, the RdRp active site architecture
-is highly conserved — drugs targeting this region could potentially inhibit
+is highly conserved, drugs targeting this region could potentially inhibit
 multiple flaviviruses.
 
 **Resistance barrier.** Residues with conservation grade 9 are under
@@ -540,5 +540,5 @@ with st.expander("Analysis Parameters"):
 
 st.divider()
 st.caption(
-    "GeneTropica v2 — Conservation Analysis | Russell Young, British School Jakarta"
+    "GeneTropica v2, Conservation Analysis | Russell Young, British School Jakarta"
 )

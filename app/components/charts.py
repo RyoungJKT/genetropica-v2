@@ -11,11 +11,29 @@ from src.utils.db import (
     get_drugs_for_target,
 )
 
-# Consistent color palette matching the Streamlit theme
-THEME_PRIMARY = "#1B4F72"
-THEME_SECONDARY = "#2E86C1"
-THEME_ACCENT = "#27AE60"
-THEME_DANGER = "#E74C3C"
+# Editorial palette matching the dashboard theme
+THEME_PRIMARY = "#1F5740"
+THEME_SECONDARY = "#A8742C"
+THEME_ACCENT = "#2E7D5B"
+THEME_DANGER = "#A8492B"
+
+# Apply an editorial Plotly template globally: transparent canvas so charts sit on
+# the paper background, brand fonts, and faint paper-toned gridlines.
+import plotly.io as pio
+
+pio.templates["genetropica"] = go.layout.Template(
+    layout=dict(
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Hanken Grotesk, system-ui, sans-serif", color="#1C1A17", size=13),
+        title=dict(font=dict(family="Fraunces, Georgia, serif", size=18, color="#1C1A17")),
+        xaxis=dict(gridcolor="#E2DAC8", linecolor="#D8D0BD", zerolinecolor="#E2DAC8"),
+        yaxis=dict(gridcolor="#E2DAC8", linecolor="#D8D0BD", zerolinecolor="#E2DAC8"),
+        colorway=["#1F5740", "#A8742C", "#2E7D5B", "#A8492B", "#544F45"],
+        polar=dict(bgcolor="rgba(0,0,0,0)"),
+    )
+)
+pio.templates.default = "genetropica"
 
 
 def score_comparison_bar(drug_id: str) -> go.Figure:
@@ -105,8 +123,8 @@ def admet_radar(drug_id: str) -> go.Figure:
         r=values,
         theta=categories,
         fill="toself",
-        fillcolor="rgba(46, 134, 193, 0.25)",
-        line_color=THEME_SECONDARY,
+        fillcolor="rgba(31, 87, 64, 0.16)",
+        line_color=THEME_PRIMARY,
         name="ADMET Profile",
     ))
     fig.update_layout(
@@ -242,7 +260,7 @@ def vina_vs_ml_scatter(target_id: str) -> go.Figure:
         hovertemplate="%{text}<br>Vina: %{x:.2f}<br>ML: %{y:.2f}<extra></extra>",
     ))
 
-    # Top 10 candidates — larger, outlined
+    # Top 10 candidates, larger, outlined
     top10 = df[df["is_top10"]]
     fig.add_trace(go.Scatter(
         x=top10["vina_score"],
@@ -269,7 +287,7 @@ def vina_vs_ml_scatter(target_id: str) -> go.Figure:
         x=[line_min, line_max],
         y=[line_min, line_max],
         mode="lines",
-        line=dict(dash="dash", color="#AAA", width=1),
+        line=dict(dash="dash", color="#C2BAA6", width=1),
         name="Perfect Correlation",
         showlegend=True,
     ))
@@ -370,7 +388,7 @@ def literature_bar(target_id: str, n: int = 15) -> go.Figure:
 def novel_discoveries_highlight(target_id: str, n: int = 10) -> go.Figure:
     """Highlight drug-like candidates with strong ligand efficiency but zero literature.
 
-    These represent potential novel leads — computationally promising,
+    These represent potential novel leads, computationally promising,
     drug-like candidates that have not been studied for this target.
     """
     df = get_drugs_for_target(target_id)
@@ -392,7 +410,7 @@ def novel_discoveries_highlight(target_id: str, n: int = 10) -> go.Figure:
         x=novels["ligand_efficiency"],
         orientation="h",
         marker_color=[
-            "#F39C12" if row["overall_pass"] else "#E67E22"
+            "#A8742C" if row["overall_pass"] else "#C99A5B"
             for _, row in novels.iterrows()
         ],
         text=[
@@ -415,9 +433,9 @@ def novel_discoveries_highlight(target_id: str, n: int = 10) -> go.Figure:
 # ---------------------------------------------------------------------------
 
 MD_DRUG_COLORS = {
-    "celecoxib": "#E74C3C",
-    "methotrexate": "#3498DB",
-    "dasabuvir": "#2ECC71",
+    "celecoxib": "#A8492B",
+    "methotrexate": "#A8742C",
+    "dasabuvir": "#1F5740",
 }
 
 MD_DRUG_LABELS = {
@@ -514,7 +532,7 @@ def _empty_figure(message: str) -> go.Figure:
         xref="paper", yref="paper",
         x=0.5, y=0.5,
         showarrow=False,
-        font=dict(size=14, color="#888"),
+        font=dict(size=14, color="#8A8273"),
     )
     fig.update_layout(
         xaxis=dict(visible=False),

@@ -102,7 +102,7 @@ low_abs = total - high_gi
 
 
 # =================================================================
-# Section 1 — Drug-Likeness Filter Summary
+# Section 1, Drug-Likeness Filter Summary
 # =================================================================
 st.divider()
 st.header("1. Drug-Likeness Filter Summary")
@@ -162,7 +162,7 @@ with st.expander("Filter Criteria Reference"):
 
 
 # =================================================================
-# Section 2 — Physicochemical Radar
+# Section 2, Physicochemical Radar
 # =================================================================
 st.divider()
 st.header("2. Physicochemical Radar")
@@ -262,7 +262,7 @@ st.markdown(badge_md)
 
 
 # =================================================================
-# Section 3 — BOILED-Egg Plot
+# Section 3, BOILED-Egg Plot
 # =================================================================
 st.divider()
 st.header("3. BOILED-Egg Absorption Plot")
@@ -362,7 +362,7 @@ with ec3:
 
 
 # =================================================================
-# Section 4 — Structural Alerts
+# Section 4, Structural Alerts
 # =================================================================
 st.divider()
 st.header("4. Structural Alerts")
@@ -399,7 +399,7 @@ with ac2:
 
 
 # =================================================================
-# Section 5 — ADMET Property Heatmap
+# Section 5, ADMET Property Heatmap
 # =================================================================
 st.divider()
 st.header("5. ADMET Property Heatmap")
@@ -462,7 +462,7 @@ st.plotly_chart(hm_fig, use_container_width=True)
 
 
 # =================================================================
-# Section 6 — Top Candidates Summary
+# Section 6, Top Candidates Summary
 # =================================================================
 st.divider()
 st.header("6. Top Candidates Summary")
@@ -567,5 +567,5 @@ properties for the intended therapeutic targets.
 # -----------------------------------------------------------------
 st.divider()
 st.caption(
-    "GeneTropica v2 — ADMET Profiling | Russell Young, British School Jakarta"
+    "GeneTropica v2, ADMET Profiling | Russell Young, British School Jakarta"
 )
