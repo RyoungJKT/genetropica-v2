@@ -25,4 +25,4 @@ python3 -m http.server 8700
 2. **Base directory:** `landing`. Leave the build command empty. **Publish directory:** `landing`.
 3. Deploy.
 
-The page links out to the live dashboard at https://genetropica2.streamlit.app/ and to the source on GitHub.
+The page links out to the live dashboard at https://genetropica-production.up.railway.app/ and to the source on GitHub.

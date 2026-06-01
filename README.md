@@ -2,22 +2,15 @@
 
 A computational drug repurposing platform I built to identify existing FDA-approved drugs that may be effective against neglected tropical diseases prevalent in Indonesia — primarily dengue, chikungunya, and leptospirosis.
 
+**Live dashboard:** [genetropica-production.up.railway.app](https://genetropica-production.up.railway.app/)
+
 ## Why This Project
 
 Neglected tropical diseases affect millions of people across Southeast Asia, yet drug development for these conditions is severely underfunded. Drug repurposing offers a faster, cheaper path: instead of developing new molecules from scratch, I screen existing FDA-approved drugs against disease protein targets to find new therapeutic uses.
 
 ## Screenshots
 
-> Screenshots will be added after deployment.
-
-| Page | Description |
-|------|-------------|
-| ![Home](docs/screenshots/home.png) | Landing page with pipeline summary |
-| ![Disease Overview](docs/screenshots/disease_overview.png) | Disease burden metrics and 3D protein targets |
-| ![Drug Explorer](docs/screenshots/drug_explorer.png) | Filterable drug candidate table with scores |
-| ![Binding Viewer](docs/screenshots/binding_viewer.png) | Interactive 3D protein-drug visualization |
-| ![AI Insights](docs/screenshots/ai_insights.png) | Scoring analysis and ADMET safety dashboard |
-| ![Methods](docs/screenshots/methods.png) | Pipeline diagram and CSV downloads |
+The dashboard is best experienced live at **https://genetropica-production.up.railway.app/**. Static page screenshots will be added here.
 
 ## Quick Start
 
@@ -34,7 +27,7 @@ conda activate genetropica
 python scripts/generate_mock_data.py
 
 # Launch the dashboard
-streamlit run app/app.py
+streamlit run app/Home.py
 ```
 
 The dashboard will be available at `http://localhost:8501`.
@@ -90,7 +83,7 @@ Full results are downloadable as CSV from the Methods page of the dashboard.
 - **Bioinformatics**: Biopython, ESMFold
 - **Dashboard**: Streamlit, Plotly, 3Dmol.js
 - **Database**: SQLite
-- **Deployment**: Streamlit Community Cloud (Docker-ready for AWS migration)
+- **Deployment**: Railway (Docker container); also Streamlit Community Cloud compatible
 
 ## Setup
 
@@ -104,7 +97,7 @@ conda env create -f environment.yml
 conda activate genetropica
 
 python -c "from src.utils.db import init_db; init_db()"
-streamlit run app/app.py
+streamlit run app/Home.py
 ```
 
 ### Option 2: Docker
