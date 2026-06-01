@@ -2,7 +2,7 @@
 
 ## Overview
 
-I built GeneTropica as a computational drug repurposing platform targeting neglected tropical diseases prevalent in Indonesia: dengue, chikungunya, and leptospirosis. The platform screens 50 FDA-approved drugs against 6 disease protein targets using a five-stage hybrid pipeline that combines physics-based molecular docking with machine-learning rescoring, ADMET safety profiling, and automated PubMed literature mining.
+I built GeneTropica as a computational drug repurposing platform targeting neglected tropical diseases prevalent in Indonesia: dengue, chikungunya, and leptospirosis. The platform screens 100 FDA-approved drugs against 6 disease protein targets using a five-stage hybrid pipeline that combines physics-based molecular docking with a machine-learning activity prior, ADMET safety profiling, and automated PubMed literature search.
 
 This document describes the full technical methodology in sufficient detail for reproducibility.
 
@@ -12,7 +12,7 @@ This document describes the full technical methodology in sufficient detail for 
 
 ### Drug Library
 
-I sourced 50 FDA-approved drugs from DrugBank and ZINC15, selecting compounds with known 3D structures and diverse pharmacological profiles. The selection prioritizes drugs with favorable safety records and oral bioavailability, since repurposing candidates with existing clinical data face lower regulatory barriers.
+I assembled a curated library of 100 FDA-approved drugs organized into 18 hypothesis-driven categories (positive controls, negative controls, and mechanism-based sets), with structures and properties from DrugBank and PubChem. The selection prioritizes drugs with favorable safety records and oral bioavailability, since repurposing candidates with existing clinical data face lower regulatory barriers.
 
 **Processing steps:**
 1. Download SDF/MOL2 3D conformers from ZINC15
@@ -62,7 +62,7 @@ I use AutoDock Vina 1.2.5 for molecular docking with the following parameters:
 |-----------|-------|-----------|
 | Search box dimensions | 25 x 25 x 25 A | Covers entire binding pocket with margin |
 | Box center | Known active site centroid | Derived from literature or co-crystal ligands |
-| Exhaustiveness | 32 | Balance between accuracy and speed |
+| Exhaustiveness | 8 | AutoDock Vina default; adequate for screening |
 | Number of poses | 3 | Top 3 poses retained per drug-target pair |
 | Energy range | 3 kcal/mol | Maximum difference from best pose |
 | Random seed | 42 | Reproducibility |
@@ -74,39 +74,29 @@ Each docking run produces:
 - 3D coordinates of the docked pose (PDBQT)
 - Protein-ligand interaction fingerprint
 
-**Total:** 900 docking results (50 drugs x 6 targets x 3 poses)
+**Total:** ~1,780 docking poses (100 drugs x 6 targets, 3 poses each; 594 of 600 drug-target pairs completed, 6 auranofin runs failed on its gold atom)
 
 ---
 
 ## 4. AI Scoring & Filtering
 
-### 4.1 ML Rescoring with DeepChem
+### 4.1 ML Rescoring with a RandomForest classifier
 
-I rescore the top docking poses using a Graph Neural Network (GCN) implemented in DeepChem 2.7.
+I score each drug with a scikit-learn RandomForest classifier. (An earlier design attempted a DeepChem graph neural network, but with a small, target-specific dataset a RandomForest proved the more reliable and reproducible choice, so it is what ships.)
 
 | Parameter | Value |
 |-----------|-------|
-| Architecture | Graph Convolutional Network |
-| Input representation | Molecular graph (atoms as nodes, bonds as edges) |
-| Node features | Atom type, degree, formal charge, hybridization, aromaticity |
-| Edge features | Bond type, conjugation, ring membership |
-| Training data | PDBbind v2020 refined set (~4,800 complexes) |
-| Test performance | Pearson r = 0.82, RMSE = 1.3 kcal/mol |
+| Model | RandomForest classifier (100 trees) |
+| Input representation | 2048-bit Morgan fingerprint (radius 2) + normalized Vina score |
+| Training data | 166 experimental binding measurements from ChEMBL (HCV NS5B, dengue NS5, influenza RdRp) |
+| Cross-validation | AUC 0.875 +/- 0.094 (5-fold stratified) |
+| Important limitation | Ligand-based and target-agnostic: a drug receives the same score for every target, so the ML score is used as a supporting activity prior, not a per-target binding prediction |
 
-### 4.2 Consensus Scoring
+### 4.2 Ranking (dual-metric, bias-aware)
 
-I combine Vina and ML scores using a weighted consensus formula:
+Docking-based scoring has well-documented biases, so I do not collapse everything into a single number. Raw AutoDock Vina favours larger molecules (a size bias); ligand efficiency (binding energy per heavy atom) corrects the size bias but over-rewards very small fragments; and the ML score above is target-agnostic. I therefore restrict candidate lists to a drug-like molecular-weight window (250-600 Da) and rank by BOTH raw Vina score and ligand efficiency, presented side by side.
 
-```
-Consensus = 0.4 * V_hat + 0.6 * M_hat
-```
-
-Where:
-- `V_hat` = min-max normalized Vina score (inverted so higher = better binding)
-- `M_hat` = min-max normalized ML score (inverted)
-- The 0.6 ML weight reflects the GNN's better correlation with experimental binding affinities on the PDBbind benchmark
-
-Drugs are ranked by consensus score per target. Lower consensus rank = better candidate.
+Retrospective ROC validation (known actives vs property-matched decoys) showed docking discriminated well for most targets but poorly for dengue NS5 (AUC 0.37, below random), so for NS5 the mechanistic and literature evidence carry more weight than the docking score. A legacy weighted consensus (0.4 x Vina + 0.6 x ML) is retained in the database for reference but is intentionally not the headline ranking, because weighting the target-agnostic ML term heavily made one molecule top nearly every target.
 
 ### 4.3 ADMET Safety Profiling
 
@@ -115,43 +105,43 @@ I evaluate four pharmacokinetic safety criteria:
 | Property | Method | Pass Threshold |
 |----------|--------|---------------|
 | Lipinski's Rule of 5 | Molecular descriptor check (MW < 500, LogP < 5, HBD < 5, HBA < 10) | All 4 rules satisfied |
-| Hepatotoxicity risk | Random Forest classifier trained on DILIrank dataset | Predicted risk < 0.5 |
-| hERG inhibition risk | SVM classifier trained on hERG patch-clamp data | Predicted risk < 0.5 |
-| Oral bioavailability | Regression model on %F data | Predicted score > 0.5 |
+| Hepatotoxicity flag | RDKit descriptors + structural-alert heuristics (PAINS/Brenk) | Low-risk flag |
+| hERG / cardiac flag | RDKit descriptor heuristics | Low-risk flag |
+| Oral bioavailability | Veber rules + BOILED-Egg absorption model (RDKit) | Pass |
 
 A drug must pass **all four** criteria to receive an overall ADMET pass.
 
-### 4.4 Literature Mining with PubMedBERT
+### 4.4 Literature Mining (automated PubMed search)
 
-I mine PubMed for existing evidence linking drug candidates to target diseases:
+I mine PubMed for existing evidence linking drug candidates to target diseases using the NCBI E-utilities API with keyword and synonym matching. (A PubMedBERT/scispaCy NLP layer was scoped as an optional upgrade, but the shipped pipeline uses keyword matching.)
 
-| Component | Tool/Model |
+| Component | Tool/Method |
 |-----------|-----------|
 | Search API | NCBI E-utilities (esearch + efetch) |
-| Named entity recognition | scispaCy (en_core_sci_lg model) |
-| Relationship extraction | PubMedBERT (microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract) |
-| Relationship types | Therapeutic, mechanistic, adverse, pharmacokinetic |
-| Confidence scoring | Softmax probability from fine-tuned classification head |
+| Matching | Drug-name and synonym keyword matching against disease/target terms |
+| Output | PubMed entries stored with PMIDs for traceability |
 
 **Process:**
-1. Construct search queries combining drug names with disease/target terms
-2. Retrieve matching PubMed abstracts via E-utilities API
-3. Extract drug-disease entities using scispaCy NER
-4. Classify relationship type and assign confidence using PubMedBERT
-5. Store results with PMIDs for traceability
+1. Construct search queries combining drug names (and synonyms) with disease/target terms
+2. Retrieve matching PubMed entries via the E-utilities API
+3. Deduplicate and store results with PMIDs for traceability
+4. Flag drug-target pairs with strong computational scores but no literature as candidate novel findings
 
 ---
 
 ## 5. Interactive Dashboard
 
-The results are presented through a Streamlit web application with 6 pages:
+The results are presented through a Streamlit web application with a Home landing page and 9 content pages:
 
-1. **Home** — Project overview and pipeline summary
-2. **Disease Overview** — Disease burden metrics and 3D protein target cards
-3. **Drug Explorer** — Filterable drug table with scoring details
-4. **Binding Visualization** — Interactive 3Dmol.js protein viewer with binding pocket highlighting
-5. **AI Insights** — Scoring method comparison, ADMET dashboard, literature evidence
-6. **Methods** — This methodology documentation with CSV download
+1. **Disease Overview** — Disease burden metrics and 3D protein target cards
+2. **Drug Explorer** — Filterable drug table with Vina and ligand-efficiency rankings
+3. **Binding Visualization** — Interactive 3Dmol.js protein viewer with binding pocket highlighting
+4. **AI Insights** — Scoring comparison, ADMET dashboard, literature evidence
+5. **Methods** — This methodology documentation with CSV download
+6. **Methodology Validation** — Retrospective ROC curves and enrichment factors
+7. **Conservation** — Multiple sequence alignment and per-residue conservation
+8. **ADMET Profiling** — Drug-likeness filters, BOILED-Egg, structural alerts
+9. **MD Simulation** — 50 ns trajectory stability analysis for selected candidates
 
 ### Key Technologies
 
@@ -172,7 +162,7 @@ The SQLite database contains 7 tables:
 - **drugs** — Drug library (drug_id, name, drugbank_id, indication, SMILES, MW, LogP)
 - **targets** — Protein targets (target_id, name, disease, PDB ID, UniProt ID)
 - **docking_results** — Vina scores and pose paths (drug_id, target_id, score, pose_rank)
-- **ml_scores** — DeepChem predictions and consensus rankings
+- **ml_scores** — RandomForest activity prior, ligand efficiency, and per-target Vina/LE ranks
 - **admet** — ADMET safety profiles per drug
 - **literature** — PubMed references with relationship types and confidence
 - **interactions** — Protein-ligand interaction fingerprints per docking pose
@@ -215,7 +205,7 @@ streamlit run app/app.py
 python scripts/generate_mock_data.py
 ```
 
-This generates realistic synthetic data with 50 drugs, 6 targets, and all derived results using a fixed random seed (42) for reproducibility.
+This generates realistic synthetic data (100 drugs, 6 targets) for local UI testing using a fixed random seed (42). The headline results come from the real pipeline, not this demonstration data.
 
 ---
 

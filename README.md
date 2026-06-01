@@ -50,18 +50,18 @@ GeneTropica implements a five-stage hybrid pipeline:
          |
  3. Molecular Docking    Physics-based binding simulation with AutoDock Vina
          |
- 4. AI Scoring           ML rescoring (DeepChem GNN) + ADMET + PubMed NLP mining
+ 4. AI Scoring           ML rescoring (RandomForest) + ADMET + PubMed search
          |
  5. Interactive Dashboard  Streamlit app with 3D visualization and ranked results
 ```
 
 ### Key numbers
 
-- **50** FDA-approved drugs screened
+- **100** FDA-approved drugs screened (18 hypothesis-driven categories)
 - **6** protein targets across 3 diseases
-- **900** docking results (3 poses per drug-target pair)
+- **~1,780** docking poses (100 drugs x 6 targets, 3 poses each)
 - **4** ADMET safety criteria evaluated per drug
-- Consensus scoring: `0.4 x Vina + 0.6 x ML`
+- Ranking: dual-metric (raw Vina + ligand efficiency) over drug-like candidates
 
 ## Target Diseases
 
@@ -73,9 +73,9 @@ GeneTropica implements a five-stage hybrid pipeline:
 
 ## Results
 
-The dashboard ranks drug candidates by consensus score for each target protein. Key findings include:
+The dashboard ranks drug-like candidates by both Vina score and ligand efficiency for each target protein. Key findings include:
 
-- **Top candidates** are identified per target based on combined Vina docking and DeepChem ML scores
+- **Top candidates** are identified per target by Vina docking and ligand efficiency, with a RandomForest activity prior as a supporting signal
 - **ADMET-safe hits** are filtered to only include drugs passing all four safety criteria (Lipinski, hepatotoxicity, hERG, oral bioavailability)
 - **Novel discovery candidates** — drugs with strong computational scores but zero prior literature for the target disease — represent potential new repurposing opportunities
 - **Literature-validated candidates** have existing PubMed evidence supporting the drug-disease connection
@@ -86,7 +86,7 @@ Full results are downloadable as CSV from the Methods page of the dashboard.
 
 - **Language**: Python 3.11
 - **Docking**: AutoDock Vina 1.2.5, Open Babel 3.1
-- **ML/AI**: DeepChem 2.7, RDKit, PubMedBERT (transformers), scispaCy
+- **ML/cheminformatics**: scikit-learn (RandomForest), RDKit
 - **Bioinformatics**: Biopython, ESMFold
 - **Dashboard**: Streamlit, Plotly, 3Dmol.js
 - **Database**: SQLite
