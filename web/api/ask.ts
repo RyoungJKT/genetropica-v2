@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
   if (!question) return res.status(400).json({ error: 'Please ask a question.' })
 
   const base = (process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com').replace(/\/$/, '')
-  const model = process.env.ANTHROPIC_MODEL || 'claude-3-5-haiku-latest'
+  const model = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6'
 
   try {
     const r = await fetch(`${base}/v1/messages`, {
