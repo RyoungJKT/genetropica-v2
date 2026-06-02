@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from 'react'
 import { useBindingIndex, useBinding, useTargets } from '../data/api'
 import { useRegister, say } from '../state/register'
-import { PocketViewer } from '../components/PocketViewer'
+import { Mol3DViewer } from '../components/Mol3DViewer'
 import type { Contact } from '../data/types'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
@@ -51,10 +51,14 @@ export default function Binding() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 24, alignItems: 'start' }}>
         <div>
-          {binding.isLoading || !binding.data ? (
+          {binding.isLoading || !binding.data || !cur ? (
             <div className="mono" style={{ padding: 40 }}>Loading pose...</div>
           ) : (
-            <PocketViewer data={binding.data} />
+            <Mol3DViewer
+              receptorUrl={`${import.meta.env.BASE_URL}structures/${tid}.pdb`}
+              ligandUrl={`${import.meta.env.BASE_URL}data/binding/${tid}__${cur}.mol`}
+              contacts={binding.data.contacts}
+            />
           )}
           <p style={{ fontSize: 12, color: 'var(--ink-faint)', fontStyle: 'italic', lineHeight: 1.5, marginTop: 12 }}>
             Predicted from the docked pose, not an experimental co-crystal structure. Contacts are detected geometrically and chemistry-aware (ionic only when the ligand carries an opposite-charge group); residue numbers follow the deposited PDB for this target.

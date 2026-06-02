@@ -13,48 +13,66 @@ ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / "data" / "database" / "genetropica.db"
 OUT = ROOT / "web" / "public" / "data"
 
-# covalent radii (Angstrom) and AutoDock atom-type -> element, for the binding viewer
-COVR = {"C": 0.76, "N": 0.71, "O": 0.66, "S": 1.05, "H": 0.31, "F": 0.57,
-        "CL": 1.02, "P": 1.07, "BR": 1.2, "I": 1.39}
-ADTYPE = {"A": "C", "C": "C", "N": "N", "NA": "N", "NS": "N", "OA": "O", "OS": "O",
-          "O": "O", "SA": "S", "S": "S", "HD": "H", "HS": "H", "H": "H", "F": "F",
-          "CL": "CL", "BR": "BR", "P": "P", "I": "I"}
+import subprocess
+import tempfile
+
+from rdkit import Chem
+from rdkit.Chem import AllChem
+from rdkit import RDLogger
+
+RDLogger.DisableLog("rdApp.*")
+
+AA = {"ALA", "ARG", "ASN", "ASP", "CYS", "GLN", "GLU", "GLY", "HIS", "ILE", "LEU",
+      "LYS", "MET", "PHE", "PRO", "SER", "THR", "TRP", "TYR", "VAL"}
 
 
-def parse_pose(path):
-    """Ligand atoms (element, x, y, z) from MODEL 1 of a Vina pdbqt pose."""
-    atoms, inside = [], False
-    for ln in Path(path).read_text().splitlines():
-        if ln.startswith("MODEL"):
-            if inside:
-                break
-            inside = True
-            continue
-        if ln.startswith("ENDMDL"):
-            break
+def pose_molblock(pose_path, smiles):
+    """All-atom, correct-bond-order ligand molblock in the docked pose. Uses the
+    canonical SMILES as the chemistry template (RDKit AssignBondOrdersFromTemplate),
+    transfers the docked heavy-atom coordinates onto that template, then adds explicit
+    hydrogens from its valid valence model. Returns None if it cannot be built cleanly."""
+    sdf = tempfile.mktemp(suffix=".sdf")
+    subprocess.run(["obabel", str(pose_path), "-O", sdf, "-f", "1", "-l", "1"], capture_output=True)
+    pose = Chem.MolFromMolFile(sdf, removeHs=True, sanitize=True)
+    ref = Chem.MolFromSmiles(smiles) if smiles else None
+    if pose is None or ref is None:
+        return None
+    try:
+        core = AllChem.AssignBondOrdersFromTemplate(ref, pose)
+        match = core.GetSubstructMatch(ref)
+        if len(match) != ref.GetNumAtoms():
+            return None
+        cc = core.GetConformer()
+        conf = Chem.Conformer(ref.GetNumAtoms())
+        for i in range(ref.GetNumAtoms()):
+            conf.SetAtomPosition(i, cc.GetAtomPosition(match[i]))
+        m = Chem.Mol(ref)
+        m.RemoveAllConformers()
+        m.AddConformer(conf, assignId=True)
+        m = Chem.AddHs(m, addCoords=True)
+        return Chem.MolToMolBlock(m)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def trim_pocket(pdb_text, center, radius=22.0):
+    """Keep whole protein residues that have any atom within `radius` of `center`."""
+    cx, cy, cz = center
+    rows, keep = [], set()
+    for ln in pdb_text.splitlines():
         if not ln.startswith(("ATOM", "HETATM")) or len(ln) < 54:
+            continue
+        if ln[17:20].strip() not in AA:
             continue
         try:
             x, y, z = float(ln[30:38]), float(ln[38:46]), float(ln[46:54])
         except ValueError:
             continue
-        ad = ln.split()[-1].upper()
-        atoms.append((ADTYPE.get(ad, ad[:1]), x, y, z))
-    return atoms
-
-
-def infer_bonds(atoms):
-    bonds = []
-    for i in range(len(atoms)):
-        ei, xi, yi, zi = atoms[i]
-        for j in range(i + 1, len(atoms)):
-            ej, xj, yj, zj = atoms[j]
-            if ei == "H" and ej == "H":
-                continue
-            d = ((xi - xj) ** 2 + (yi - yj) ** 2 + (zi - zj) ** 2) ** 0.5
-            if 0.4 < d < COVR.get(ei, 0.77) + COVR.get(ej, 0.77) + 0.45:
-                bonds.append([i, j])
-    return bonds
+        key = (ln[21], ln[22:26])
+        rows.append((key, ln))
+        if (x - cx) ** 2 + (y - cy) ** 2 + (z - cz) ** 2 <= radius * radius:
+            keep.add(key)
+    return "\n".join([ln for key, ln in rows if key in keep] + ["END"])
 
 
 def main():
@@ -120,40 +138,46 @@ def main():
         "a.oral_bioavailability, a.overall_pass FROM admet a JOIN drugs d ON d.drug_id=a.drug_id")}
     (OUT / "admet.json").write_text(json.dumps(admet, indent=2))
 
-    # binding/*.json: per drug-like complex, the docked ligand (atoms + bonds) +
-    # FIX-9 predicted contacts. The ligand is centred at the origin for the viewer.
-    bind_dir = OUT / "binding"
-    bind_dir.mkdir(exist_ok=True)
+    # binding viewer: a trimmed pocket PDB per target + per drug-like complex an
+    # all-atom, bond-order-correct ligand .mol (RDKit) and the FIX-9 predicted contacts.
+    bind_dir = OUT / "binding"; bind_dir.mkdir(exist_ok=True)
+    struct_dir = OUT.parent / "structures"; struct_dir.mkdir(exist_ok=True)
+    grid = {r["target_id"]: (r["grid_center_x"], r["grid_center_y"], r["grid_center_z"])
+            for r in cur.execute("SELECT target_id, grid_center_x, grid_center_y, grid_center_z FROM docking_parameters")}
+    pdb_by_target = {r["target_id"]: r["pdb_id"] for r in cur.execute("SELECT target_id, pdb_id FROM targets")}
+    for tid, center in grid.items():
+        recep = ROOT / f"data/structures/{pdb_by_target[tid]}_clean.pdbqt"
+        if not recep.exists():
+            continue
+        tmp = tempfile.mktemp(suffix=".pdb")
+        subprocess.run(["obabel", str(recep), "-O", tmp], capture_output=True)
+        if Path(tmp).exists():
+            (struct_dir / f"{tid}.pdb").write_text(trim_pocket(Path(tmp).read_text(), center))
+
     drug_id_by_name = {r["name"]: r["drug_id"] for r in cur.execute("SELECT drug_id, name FROM drugs")}
-    bind_index, n_bind = {}, 0
+    smiles_by_name = {r["name"]: r["smiles"] for r in cur.execute("SELECT name, smiles FROM drugs")}
     pose_rows = cur.execute(
         """SELECT dr.target_id tid, d.name dname, dr.pose_path pp
            FROM docking_results dr JOIN drugs d ON d.drug_id=dr.drug_id
            JOIN ml_scores m ON m.drug_id=dr.drug_id AND m.target_id=dr.target_id
            WHERE dr.pose_rank=1 AND m.is_druglike=1 AND dr.pose_path IS NOT NULL""").fetchall()
+    bind_index, n_bind = {}, 0
     for r in pose_rows:
         pp = r["pp"]
         path = Path(pp) if Path(pp).is_absolute() else ROOT / pp
         if not path.exists():
             continue
-        atoms = parse_pose(path)
-        if not atoms:
+        mb = pose_molblock(path, smiles_by_name.get(r["dname"]))
+        if mb is None:
             continue
-        cx = sum(a[1] for a in atoms) / len(atoms)
-        cy = sum(a[2] for a in atoms) / len(atoms)
-        cz = sum(a[3] for a in atoms) / len(atoms)
         contacts = [{"res": c["residue_name"], "num": c["residue_number"], "chain": c["chain"],
                      "type": c["interaction_type"], "dist": round(c["distance"], 2)}
                     for c in cur.execute(
                         "SELECT residue_name, residue_number, chain, interaction_type, distance "
                         "FROM interactions WHERE drug_id=? AND target_id=? AND pose_rank=1 "
-                        "ORDER BY distance", (drug_id_by_name[r["dname"]], r["tid"]))]
-        data = {
-            "ligand": [{"el": a[0], "x": round(a[1] - cx, 3), "y": round(a[2] - cy, 3), "z": round(a[3] - cz, 3)} for a in atoms],
-            "bonds": infer_bonds(atoms),
-            "contacts": contacts,
-        }
-        (bind_dir / f"{r['tid']}__{r['dname']}.json").write_text(json.dumps(data, separators=(",", ":")))
+                        "ORDER BY distance", (drug_id_by_name[r["dname"]], r["tid"])).fetchall()]
+        (bind_dir / f"{r['tid']}__{r['dname']}.mol").write_text(mb)
+        (bind_dir / f"{r['tid']}__{r['dname']}.json").write_text(json.dumps({"contacts": contacts}, separators=(",", ":")))
         bind_index.setdefault(r["tid"], []).append(r["dname"])
         n_bind += 1
     for tid in bind_index:

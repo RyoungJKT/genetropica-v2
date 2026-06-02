@@ -7,8 +7,15 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "web" / "public" / "data"
 
 
+_EXPORTED = False
+
+
 def _run():
+    global _EXPORTED
+    if _EXPORTED:
+        return
     subprocess.run([sys.executable, str(ROOT / "scripts" / "export_web_data.py")], check=True)
+    _EXPORTED = True
 
 
 def test_export_produces_core_files():
@@ -71,5 +78,7 @@ def test_binding_export():
     idx = json.loads((OUT / "binding" / "index.json").read_text())
     assert len(idx) == 6 and "dasabuvir" in idx["DENV_NS5"]
     d = json.loads((OUT / "binding" / "DENV_NS5__dasabuvir.json").read_text())
-    assert len(d["ligand"]) > 10 and len(d["bonds"]) > 0
     assert all("type" in c and "res" in c for c in d["contacts"])
+    mol = (OUT / "binding" / "DENV_NS5__dasabuvir.mol").read_text()
+    assert "V2000" in mol and " H " in mol  # all-atom molblock with hydrogens
+    assert (OUT.parent / "structures" / "DENV_NS5.pdb").exists()
