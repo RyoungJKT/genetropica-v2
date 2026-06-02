@@ -134,6 +134,27 @@ def main():
         field[tid].sort(key=lambda x: x["vina"])
     (OUT / "field.json").write_text(json.dumps(field, indent=2))
 
+    # _digest.json: compact grounding context for the optional "ask the data" assistant (web/api/ask.ts).
+    api_dir = ROOT / "web" / "api"
+    api_dir.mkdir(parents=True, exist_ok=True)
+    digest = {
+        "summary": summary,
+        "targets": [{"id": t["target_id"], "name": t["name"], "disease": t["disease"], "pdb": t["pdb_id"]} for t in targets],
+        "topCandidates": {
+            tid: [{"name": p["name"], "vina": p["vina"], "le": p["le"], "admetSafe": bool(p["admet"])}
+                  for p in sorted([q for q in pts if q["dl"] == 1 and q["le"] is not None], key=lambda q: -q["le"])[:12]]
+            for tid, pts in field.items()
+        },
+        "caveats": [
+            "The ML score is a target-agnostic activity prior (identical for a drug across all targets), not a per-target prediction.",
+            "Docking under-ranks the true small-molecule NS5 inhibitors: retrospective AUC 0.37 for NS5, below random.",
+            "Only dengue NS5 was retrospectively validated; the other targets have no equivalent test.",
+            "Sofosbuvir is included as a known-active positive control, not a discovery.",
+            "Drug-like means molecular weight 250-600 Da; the headline ranking uses Vina score plus ligand efficiency over drug-like candidates.",
+        ],
+    }
+    (api_dir / "_digest.json").write_text(json.dumps(digest))
+
     # admet.json: per-drug ADMET breakdown (risks are 0-1 scores; lipinski/pass are 0/1)
     admet = {r["name"]: {
         "lipinski": r["lipinski_pass"], "hepatotox": r["hepatotoxicity_risk"],
