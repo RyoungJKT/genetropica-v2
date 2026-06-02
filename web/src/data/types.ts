@@ -1,0 +1,27 @@
+export interface Summary {
+  drugs: number
+  targets: number
+  diseases: number
+  docking_runs: number
+}
+
+export interface Target {
+  target_id: string
+  name: string
+  disease: string
+  pdb_id: string
+  uniprot_id: string
+  structure_source: string
+  validation_status: string
+}
+
+export interface Drug {
+  name: string
+  category: string
+  indication: string
+  molecular_weight: number
+  heavy_atoms: number
+  logp: number
+  inchikey: string
+  structure_source: string
+}
