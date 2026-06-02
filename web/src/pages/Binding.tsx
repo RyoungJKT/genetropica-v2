@@ -41,13 +41,29 @@ export default function Binding() {
         {order.map((id) => <button key={id} onClick={() => { setDrug(null); setTid(id) }} style={pillBtn(tid === id)}>{tName(id)}</button>)}
       </div>
 
-      <select
-        value={cur ?? ''}
-        onChange={(e) => setDrug(e.target.value)}
-        style={{ fontFamily: 'var(--sans)', fontSize: 14, padding: '9px 14px', borderRadius: 100, border: '1px solid var(--line)', background: 'var(--paper)', color: 'var(--ink)', textTransform: 'capitalize', marginBottom: 18, minWidth: 240 }}
-      >
-        {drugs.map((d) => <option key={d} value={d}>{d.replace(/_/g, ' ')}</option>)}
-      </select>
+      <div style={{ marginBottom: 20 }}>
+        <label htmlFor="drugsel" style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 8 }}>
+          Choose a candidate{drugs.length ? ` (${drugs.length} drug-like)` : ''}
+        </label>
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+          <select
+            id="drugsel"
+            value={cur ?? ''}
+            onChange={(e) => setDrug(e.target.value)}
+            style={{
+              appearance: 'none', WebkitAppearance: 'none', MozAppearance: 'none',
+              fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 400,
+              padding: '12px 54px 12px 20px', borderRadius: 12,
+              border: '1.5px solid var(--green)', background: 'var(--paper)', color: 'var(--ink)',
+              textTransform: 'capitalize', minWidth: 320, cursor: 'pointer',
+              boxShadow: '0 6px 18px rgba(28,26,23,.07)',
+            }}
+          >
+            {drugs.map((d) => <option key={d} value={d}>{d.replace(/_/g, ' ')}</option>)}
+          </select>
+          <span style={{ position: 'absolute', right: 18, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--green)', fontSize: 13 }}>▼</span>
+        </div>
+      </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 24, alignItems: 'start' }}>
         <div>
