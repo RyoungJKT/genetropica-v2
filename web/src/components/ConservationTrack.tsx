@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ChartTooltip } from './ChartTooltip'
+import { useInView } from '../lib/anim'
 
 function gradeColor(g: number) {
   const t = (Math.max(1, Math.min(9, g)) - 1) / 8
@@ -10,6 +11,7 @@ function gradeColor(g: number) {
 
 export function ConservationTrack({ grades, keyResidues }: { grades: Record<string, number>; keyResidues: number[] }) {
   const [tip, setTip] = useState<{ cx: number; cy: number; i: number; resnum: number; grade: number } | null>(null)
+  const [ref, inView] = useInView<SVGSVGElement>()
   const entries = Object.entries(grades)
     .map(([k, v]) => [parseInt(k, 10), v] as [number, number])
     .sort((a, b) => a[0] - b[0])
@@ -24,9 +26,9 @@ export function ConservationTrack({ grades, keyResidues }: { grades: Record<stri
   const grLabel = (g: number) => (g <= 3 ? 'variable' : g >= 7 ? 'conserved' : 'intermediate')
   return (
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, background: 'var(--paper)', padding: '16px 16px 10px' }}>
-      <svg viewBox={`0 0 ${W} ${H + 34}`} width="100%" style={{ display: 'block' }}>
+      <svg ref={ref} viewBox={`0 0 ${W} ${H + 34}`} width="100%" style={{ display: 'block' }}>
         {entries.map(([resnum, g], i) => (
-          <rect key={resnum} x={i * bw} y={0} width={bw + 0.6} height={H} fill={gradeColor(g)} />
+          <rect key={resnum} x={i * bw} y={0} width={bw + 0.6} height={H} fill={gradeColor(g)} className="grow-y" style={{ transform: inView ? 'scaleY(1)' : 'scaleY(0)', transitionDelay: `${Math.round((i / n) * 450)}ms` }} />
         ))}
         {keyResidues.map((rn) => {
           const i = idxOf(rn)

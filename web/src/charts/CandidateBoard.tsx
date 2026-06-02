@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react'
 import type { FieldPoint } from '../data/types'
 import { bucketOf } from '../lib/buckets'
 import { ChartTooltip } from '../components/ChartTooltip'
+import { useInView } from '../lib/anim'
 
 type SortKey = 'binding' | 'efficiency'
 
@@ -17,6 +18,7 @@ export function CandidateBoard({ points }: { points: FieldPoint[] }) {
   const [sortKey, setSortKey] = useState<SortKey>('binding')
   const [hover, setHover] = useState<string | null>(null)
   const [tip, setTip] = useState<{ x: number; y: number; name: string; metric: string; cls: string } | null>(null)
+  const [boardRef, inView] = useInView<HTMLDivElement>()
   const sorted = [...points].sort((a, b) => (sortKey === 'binding' ? a.vina - b.vina : (b.le ?? 0) - (a.le ?? 0)))
   const vals = sorted.map((p) => (sortKey === 'binding' ? -p.vina : p.le ?? 0))
   const max = Math.max(...vals)
@@ -26,7 +28,7 @@ export function CandidateBoard({ points }: { points: FieldPoint[] }) {
     return max === min ? 100 : 10 + ((v - min) / (max - min)) * 90
   }
   return (
-    <div>
+    <div ref={boardRef}>
       <div style={{ display: 'inline-flex', border: '1px solid var(--line)', borderRadius: 100, overflow: 'hidden', fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '.06em', textTransform: 'uppercase', marginBottom: 16 }}>
         {(['binding', 'efficiency'] as const).map((k) => (
           <span key={k} onClick={() => setSortKey(k)} style={{ padding: '8px 14px', cursor: 'pointer', color: sortKey === k ? 'var(--paper)' : 'var(--ink-faint)', background: sortKey === k ? 'var(--green)' : 'transparent' }}>
@@ -54,7 +56,7 @@ export function CandidateBoard({ points }: { points: FieldPoint[] }) {
                   {!p.admet && <Tag color="var(--clay)">ADMET flag</Tag>}
                 </div>
                 <div style={{ height: 8, background: 'var(--paper-3)', borderRadius: 100, marginTop: 7, overflow: 'hidden' }}>
-                  <div className="bar" style={{ height: '100%', width: `${pct(p)}%`, background: b.color, borderRadius: 100, animationDelay: `${Math.min(i * 10, 500)}ms` }} />
+                  <div className="bar" style={{ height: '100%', width: inView ? `${pct(p)}%` : '0%', background: b.color, borderRadius: 100, transitionDelay: `${Math.min(i * 10, 500)}ms` }} />
                 </div>
               </div>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink)', textAlign: 'right' }}>

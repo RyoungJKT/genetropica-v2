@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { scaleLinear } from '@visx/scale'
 import { ChartTooltip } from './ChartTooltip'
+import { useInView } from '../lib/anim'
 
 export interface ChartLine { label: string; color: string; pts: [number, number][] }
 
@@ -14,6 +15,7 @@ const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(Math.abs
 
 export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLine[]; xLabel: string; yLabel: string; yMin?: number }) {
   const [hover, setHover] = useState<{ cx: number; cy: number; dataX: number } | null>(null)
+  const [ref, inView] = useInView<SVGSVGElement>()
   const all = lines.flatMap((l) => l.pts)
   if (!all.length) return <div className="mono" style={{ color: 'var(--ink-faint)', padding: 20 }}>No data.</div>
   const xs = all.map((p) => p[0])
@@ -43,7 +45,7 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLi
 
   return (
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, background: 'var(--paper)', padding: '14px 16px 8px' }}>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
+      <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
         <g transform={`translate(${M.left},${M.top})`}>
           {y.ticks(4).map((t, i) => (
             <g key={`y${i}`}>
@@ -55,7 +57,7 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLi
             <text key={`x${i}`} x={x(t)} y={IH + 15} textAnchor="middle" fontFamily="var(--mono)" fontSize={9} fill="var(--ink-faint)">{t}</text>
           ))}
           <line x1={0} y1={IH} x2={IW} y2={IH} stroke="var(--ink-faint)" strokeWidth={0.8} />
-          {lines.map((l) => (l.pts.length ? <path key={l.label} d={path(l.pts)} fill="none" stroke={l.color} strokeWidth={1.6} strokeLinejoin="round" /> : null))}
+          {lines.map((l, li) => (l.pts.length ? <path key={l.label} d={path(l.pts)} fill="none" stroke={l.color} strokeWidth={1.6} strokeLinejoin="round" className="draw-line" pathLength={1} strokeDasharray={1} strokeDashoffset={inView ? 0 : 1} style={{ transitionDelay: `${li * 120}ms` }} /> : null))}
           {hoverItems && hoverItems.length > 0 && (
             <>
               <line x1={guideX} y1={0} x2={guideX} y2={IH} stroke="var(--ink-faint)" strokeWidth={1} strokeDasharray="3 3" />
