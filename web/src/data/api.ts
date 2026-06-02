@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Summary, Target, Drug, Field, Admet } from './types'
+import type { Summary, Target, Drug, Field, Admet, BindingData, BindingIndex } from './types'
 
 const json = async <T>(path: string): Promise<T> => {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${path}`)
@@ -12,3 +12,6 @@ export const useTargets = () => useQuery({ queryKey: ['targets'], queryFn: () =>
 export const useDrugs = () => useQuery({ queryKey: ['drugs'], queryFn: () => json<Drug[]>('drugs.json') })
 export const useField = () => useQuery({ queryKey: ['field'], queryFn: () => json<Field>('field.json') })
 export const useAdmet = () => useQuery({ queryKey: ['admet'], queryFn: () => json<Admet>('admet.json') })
+export const useBindingIndex = () => useQuery({ queryKey: ['bindingIndex'], queryFn: () => json<BindingIndex>('binding/index.json') })
+export const useBinding = (target: string, drug: string | null) =>
+  useQuery({ queryKey: ['binding', target, drug], queryFn: () => json<BindingData>(`binding/${target}__${drug}.json`), enabled: !!drug })

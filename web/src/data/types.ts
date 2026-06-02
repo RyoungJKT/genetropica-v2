@@ -50,3 +50,8 @@ export interface AdmetRow {
 
 export type Admet = Record<string, AdmetRow>
 
+export interface LigAtom { el: string; x: number; y: number; z: number }
+export interface Contact { res: string; num: string; chain: string; type: string; dist: number }
+export interface BindingData { ligand: LigAtom[]; bonds: [number, number][]; contacts: Contact[] }
+export type BindingIndex = Record<string, string[]>
+
