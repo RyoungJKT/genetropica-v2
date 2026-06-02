@@ -245,7 +245,7 @@ def footer(canvas, doc):
     canvas.setStrokeColor(LINE); canvas.line(1.8 * cm, 1.35 * cm, 19.2 * cm, 1.35 * cm)
     canvas.restoreState()
 
-TARGETS = q("SELECT target_id, name, disease, pdb_id, uniprot_id, structure_source FROM targets")
+TARGETS = q("SELECT target_id, name, disease, pdb_id, uniprot_id, structure_source, validation_status FROM targets")
 TARGET_ROLES = {
     "DENV_NS3": "Cleaves the viral polyprotein into functional components. Essential for dengue virus replication; blocking this enzyme halts the viral life cycle.",
     "DENV_NS5": "RNA-dependent RNA polymerase that copies the viral genome. The primary replication engine of dengue virus and a high-priority drug target.",
@@ -298,6 +298,10 @@ for tid in ORDER:
     trows.append([t["disease"], t["name"], t["pdb_id"], t["uniprot_id"], t.get("structure_source", ""), TARGET_ROLES.get(tid, "")])
 table(["Disease", "Target", "PDB", "UniProt", "Structure", "Biological role"],
       trows, [2.2 * cm, 3.2 * cm, 1.3 * cm, 1.6 * cm, 1.7 * cm, 6.5 * cm], fontsize=7.4, wrapcols=(1, 5))
+P("Retrospective validation status", S_H2)
+P("Whether each target's docking has been checked against known actives and inactives. Only NS5 has been retrospectively validated, and it scored below random; every other target is unvalidated, so its rankings are hypothesis-generating only.", S_CAP)
+vrows = [[TGT[tid]["name"], TGT[tid].get("validation_status") or "not recorded"] for tid in ORDER]
+table(["Target", "Validation status"], vrows, [5.0 * cm, 11.8 * cm], fontsize=7.6, wrapcols=(1,))
 caveat("Honest framing on this page",
        "Disease burden figures are real public-health context. Repurposing is attractive here mainly because approved drugs already have established human safety, lowering the regulatory barrier; it does not imply any of these drugs is an effective treatment.")
 
@@ -337,7 +341,7 @@ for tid in ORDER:
 # ----- 3b. binding interactions (Binding Viewer tab)
 story.append(PageBreak())
 P("3b. Representative binding interactions", S_H1)
-P("The dashboard's 3D Binding Viewer shows each docked pose inside its protein pocket. A static PDF cannot carry the interactive 3D scene, so the underlying contact data is tabulated here: for the top-ranked drug-like candidate at each target, the protein residues its best pose contacts, with interaction type and distance.", S_BODY)
+P("The dashboard's 3D Binding Viewer shows each docked pose inside its protein pocket. A static PDF cannot carry the interactive 3D scene, so the underlying contact data is tabulated here: for the top-ranked drug-like candidate at each target, the protein residues its best pose is predicted to contact, with interaction type and distance. All contacts are predicted from the docked pose, not experimentally observed (see the note below the tables).", S_BODY)
 for tid in ORDER:
     t = TGT[tid]
     top = q("""SELECT d.drug_id, d.name,
@@ -360,8 +364,8 @@ for tid in ORDER:
               [3 * cm, 2.5 * cm, 2 * cm, 5 * cm, 4 * cm], fontsize=7.6, align_right=(1, 4))
     else:
         P("No tabulated interaction fingerprint recorded for this complex.", S_SMALL)
-caveat("Binding-interaction framing",
-       "These contacts are inferred from the docked pose, not from an experimental co-crystal structure. They describe where the predicted pose sits, and should be read together with the validation caveats (the docked pose for NS5 in particular may not reflect the true binding mode).")
+caveat("How these contacts were derived (read before interpreting)",
+       "All contacts are PREDICTED from the single best docked pose (MODEL 1), not observed in an experimental co-crystal structure. Detection is geometric and chemistry-aware: a contact is labelled ionic or salt bridge only when the ligand actually carries an ionizable group of the opposite charge to the residue, so neutral ligands correctly show none; hydrogen bonds require a polar residue atom (N, O, S) within 3.5 Angstrom, hydrophobic contacts a nonpolar carbon within 4.5 Angstrom, and pi-stacking an aromatic residue within 5.5 Angstrom. Residue numbers and chain IDs follow the deposited PDB structure for each target. Read these together with the validation caveats; the docked pose for NS5 in particular may not reflect the true binding mode.")
 
 # ----- 4. scoring + AI insights
 story.append(PageBreak())
@@ -372,7 +376,7 @@ caveat("The dengue NS5 validation failure, reported openly",
 # ADMET pass + novel candidates
 P("Library-wide ADMET and literature signal", S_H2)
 nlit = cur.execute("SELECT COUNT(DISTINCT drug_id) FROM literature").fetchone()[0]
-P(f"Of {n_drugs} drugs, {n_admet_pass} pass the overall ADMET safety filter. {nlit} drugs have at least one linked PubMed reference. Drugs that score well yet have no prior literature for a target are flagged in the dashboard as candidate (novel) repurposing ideas, to be read with the validation caveats above.", S_BODY)
+P(f"Of {n_drugs} drugs, {n_admet_pass} pass the overall ADMET safety filter. {nlit} drugs have at least one linked PubMed reference, though most of these links are weak or keyword-only tier and several have PMID title mismatches (every link's evidence tier and NCBI verification are listed in Appendix A, so weak references cannot quietly inflate a candidate's standing). Drugs that score well yet have no prior literature for a target are flagged in the dashboard as candidate (novel) repurposing ideas, to be read with the validation caveats above.", S_BODY)
 # category mean vina at NS5
 cs = q("SELECT category, mean_vina_score, mean_ml_score, drug_count FROM category_stats WHERE target_id='DENV_NS5' ORDER BY mean_vina_score ASC")
 if cs:
@@ -523,6 +527,20 @@ table(["Parameter", "Value"], [
     ["Poses per run", "3 (energy range 3 kcal/mol)"],
     ["Docking runs", "594 of 600 completed (auranofin failed: gold atom unsupported)"],
 ], [5 * cm, 11.8 * cm], fontsize=8.4, wrapcols=(1,))
+P("Per-target docking grid (reproducibility)", S_H2)
+GP = {r["target_id"]: r for r in q("SELECT * FROM docking_parameters")}
+grows = []
+for tid in ORDER:
+    g = GP.get(tid)
+    if not g:
+        continue
+    grows.append([TGT[tid]["name"],
+                  f"({g['grid_center_x']:.1f}, {g['grid_center_y']:.1f}, {g['grid_center_z']:.1f})",
+                  f"{g['grid_size_x']:.0f} x {g['grid_size_y']:.0f} x {g['grid_size_z']:.0f}",
+                  str(g["exhaustiveness"]), str(g["num_modes"])])
+table(["Target", "Grid center (x, y, z) Angstrom", "Box (Angstrom)", "Exhaust.", "Modes"],
+      grows, [4.4 * cm, 5.0 * cm, 3.4 * cm, 1.9 * cm, 1.7 * cm], fontsize=7.6, wrapcols=(0,))
+P("Grid centers sit on each target's catalytic or active-site region; the 25 Angstrom cubic box fully encloses the pocket. Publishing these coordinates makes every docking run reproducible.", S_CAP)
 P("Machine-learning prior", S_H2)
 table(["Parameter", "Value"], [
     ["Model", "scikit-learn RandomForest"],
@@ -550,12 +568,37 @@ caveat("Overall honest summary for the reviewer",
 # ----- appendix A: literature evidence
 story.append(PageBreak())
 P("Appendix A. Literature evidence (all linked references)", S_H1)
-lit = q("""SELECT d.name dn, l.target_id tid, l.pmid, l.relationship rel, l.confidence conf, l.title
+lit = q("""SELECT d.name dn, l.target_id tid, l.pmid, l.relationship rel, l.confidence conf, l.title,
+                  l.evidence_tier tier, l.verified ver, l.title_match tmatch
            FROM literature l JOIN drugs d ON d.drug_id=l.drug_id ORDER BY d.name, l.target_id""")
-P(f"{len(lit)} drug-target literature links, found by a keyword PubMed search (not a trained relation extractor). Confidence is the keyword-match score (0 to 1); relationship is the inferred drug-target link.", S_BODY)
-table(["Drug", "Target", "PMID", "Relationship", "Conf.", "Title"],
-      [[r["dn"], r["tid"], r["pmid"], r["rel"], f"{r['conf']:.2f}" if r["conf"] is not None else "", r["title"] or ""] for r in lit],
-      [2.6 * cm, 2.1 * cm, 1.8 * cm, 2.2 * cm, 1.1 * cm, 7.0 * cm], fontsize=6.6, wrapcols=(0, 3, 5), align_right=(4,))
+TIER_LABEL = {
+    "direct_target": "direct target evidence",
+    "mechanistic": "mechanistic",
+    "same_pathogen_phenotypic": "same-pathogen phenotypic",
+    "related_organism": "related-organism",
+    "computational_only": "computational only",
+    "weak_keyword": "weak / keyword-only",
+}
+tier_ct = {}
+for r in lit:
+    k = r["tier"] or "untiered"
+    tier_ct[k] = tier_ct.get(k, 0) + 1
+n_mismatch = sum(1 for r in lit if r["tmatch"] == 0)
+n_weak = tier_ct.get("weak_keyword", 0) + tier_ct.get("computational_only", 0)
+P(f"{len(lit)} drug-target literature links, found by a keyword PubMed search (not a trained relation extractor). Every PMID was checked against NCBI and assigned an evidence tier so weak references cannot inflate a candidate's standing. Of these, {n_weak} are weak/keyword-only or computational-only, and {n_mismatch} have a stored title that does not match the paper the PMID actually resolves to (flagged in the table). Confidence is the keyword-match score (0 to 1).", S_BODY)
+P("Evidence tiers (strongest to weakest): " + "; ".join(
+    f"{TIER_LABEL.get(k, k)} {tier_ct.get(k, 0)}"
+    for k in ["direct_target", "mechanistic", "same_pathogen_phenotypic", "related_organism", "computational_only", "weak_keyword"]
+    if tier_ct.get(k, 0)) + ".", S_CAP)
+def _litrow(r):
+    flag = "  [PMID title mismatch]" if r["tmatch"] == 0 else ""
+    return [r["dn"], r["tid"], str(r["pmid"]),
+            TIER_LABEL.get(r["tier"], r["tier"] or ""),
+            f"{r['conf']:.2f}" if r["conf"] is not None else "",
+            (r["title"] or "") + flag]
+table(["Drug", "Target", "PMID", "Evidence tier", "Conf.", "Title (stored)"],
+      [_litrow(r) for r in lit],
+      [2.5 * cm, 1.9 * cm, 1.5 * cm, 2.6 * cm, 0.9 * cm, 7.4 * cm], fontsize=6.6, wrapcols=(0, 3, 5), align_right=(4,))
 
 # ----- appendix B: full candidate rankings (all drugs, all targets)
 story.append(PageBreak())
