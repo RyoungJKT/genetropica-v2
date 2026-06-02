@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { ChartTooltip } from './ChartTooltip'
+import { useInView } from '../lib/anim'
 
 type Axis = { label: string; value: number }
 
-/** Lightweight polar radar (regular polygon). Values are clamped to 0..1. Hover a vertex for its value. */
+/** Lightweight polar radar (regular polygon). Values clamped to 0..1. Scales in on appear; hover a vertex for its value. */
 export function RadarChart({ axes, color = 'var(--green)' }: { axes: Axis[]; color?: string }) {
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
+  const [ref, inView] = useInView<SVGSVGElement>()
   const W = 480
   const H = 360
   const cx = W / 2
@@ -21,7 +23,7 @@ export function RadarChart({ axes, color = 'var(--green)' }: { axes: Axis[]; col
 
   return (
     <>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: 'visible', display: 'block' }} role="img" aria-label="ADMET safety radar">
+      <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: 'visible', display: 'block' }} role="img" aria-label="ADMET safety radar">
         {rings.map((f) => (
           <polygon key={f} points={ringPts(f)} fill="none" stroke="var(--line)" strokeWidth={1} />
         ))}
@@ -29,7 +31,23 @@ export function RadarChart({ axes, color = 'var(--green)' }: { axes: Axis[]; col
           const [x, y] = at(i, R)
           return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="var(--line)" strokeWidth={1} />
         })}
-        <polygon points={dataPts} fill={color} fillOpacity={0.16} stroke={color} strokeWidth={2} strokeLinejoin="round" />
+        <g className="reveal-scale" style={{ transform: inView ? 'scale(1)' : 'scale(0.3)', opacity: inView ? 1 : 0 }}>
+          <polygon points={dataPts} fill={color} fillOpacity={0.16} stroke={color} strokeWidth={2} strokeLinejoin="round" />
+          {axes.map((a, i) => {
+            const [x, y] = at(i, R * clamp(a.value))
+            return (
+              <g
+                key={a.label}
+                style={{ cursor: 'pointer' }}
+                onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: a.label, value: a.value.toFixed(2) })}
+                onMouseLeave={() => setTip(null)}
+              >
+                <circle cx={x} cy={y} r={12} fill="transparent" />
+                <circle cx={x} cy={y} r={3.5} fill={color} />
+              </g>
+            )
+          })}
+        </g>
         {rings.map((f) => {
           const [x, y] = at(0, R * f)
           return (
@@ -48,20 +66,6 @@ export function RadarChart({ axes, color = 'var(--green)' }: { axes: Axis[]; col
           )
         })}
         <text x={cx - 5} y={cy + 4} fontSize={9} fontFamily="var(--mono)" fill="var(--ink-faint)" textAnchor="end">0</text>
-        {axes.map((a, i) => {
-          const [x, y] = at(i, R * clamp(a.value))
-          return (
-            <g
-              key={a.label}
-              style={{ cursor: 'pointer' }}
-              onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: a.label, value: a.value.toFixed(2) })}
-              onMouseLeave={() => setTip(null)}
-            >
-              <circle cx={x} cy={y} r={12} fill="transparent" />
-              <circle cx={x} cy={y} r={3.5} fill={color} />
-            </g>
-          )
-        })}
       </svg>
       {tip && (
         <ChartTooltip x={tip.x} y={tip.y}>

@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import type { FieldPoint } from '../data/types'
 import { ChartTooltip } from './ChartTooltip'
+import { useInView, useCountUp } from '../lib/anim'
 
-function StatCard({ label, value, highlight }: { label: string; value: number; highlight?: boolean }) {
+function StatCard({ label, value, highlight, active }: { label: string; value: number; highlight?: boolean; active: boolean }) {
+  const n = useCountUp(value, active)
   return (
     <div style={{ border: `1px solid ${highlight ? 'var(--green)' : 'var(--line)'}`, borderRadius: 14, padding: '16px 18px', background: 'var(--paper)' }}>
       <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>{label}</div>
-      <div style={{ fontSize: 38, fontWeight: 380, marginTop: 6, lineHeight: 1 }}>{value}</div>
+      <div style={{ fontSize: 38, fontWeight: 380, marginTop: 6, lineHeight: 1 }}>{n}</div>
     </div>
   )
 }
@@ -14,6 +16,7 @@ function StatCard({ label, value, highlight }: { label: string; value: number; h
 /** Per-target overview: counts, ligand-efficiency distribution, and the top candidates by efficiency. */
 export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoint[]; targetName: string; shown: number }) {
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
+  const [secRef, inView] = useInView<HTMLElement>()
   const dl = points.filter((p) => p.dl === 1)
   const admetSafe = points.filter((p) => p.dl === 1 && p.admet === 1).length
   const le = dl.map((p) => p.le).filter((v): v is number => v != null)
@@ -45,13 +48,13 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
   const topMax = top10.reduce((m, p) => Math.max(m, p.le ?? 0), 0) || 1
 
   return (
-    <section style={{ margin: '8px 0 4px' }}>
+    <section ref={secRef} style={{ margin: '8px 0 4px' }}>
       <h2 style={{ fontSize: 26, fontWeight: 380 }}>Target: {targetName}</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginTop: 16 }}>
-        <StatCard label="Total screened" value={points.length} highlight />
-        <StatCard label="Drug-like (MW 250-600)" value={dl.length} />
-        <StatCard label="ADMET-safe drug-like" value={admetSafe} />
-        <StatCard label="Showing" value={shown} />
+        <StatCard label="Total screened" value={points.length} highlight active={inView} />
+        <StatCard label="Drug-like (MW 250-600)" value={dl.length} active={inView} />
+        <StatCard label="ADMET-safe drug-like" value={admetSafe} active={inView} />
+        <StatCard label="Showing" value={shown} active={inView} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 26 }}>
@@ -81,7 +84,15 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
                   onMouseLeave={() => setTip(null)}
                 >
                   <rect x={x} y={mT} width={w} height={ih} fill="transparent" />
-                  <rect x={x + 0.5} y={mT + ih - h} width={Math.max(1, w - 1)} height={h} fill="var(--green)" />
+                  <rect
+                    x={x + 0.5}
+                    y={mT + ih - h}
+                    width={Math.max(1, w - 1)}
+                    height={h}
+                    fill="var(--green)"
+                    className="grow-y"
+                    style={{ transform: inView ? 'scaleY(1)' : 'scaleY(0)', transitionDelay: `${i * 25}ms` }}
+                  />
                 </g>
               )
             })}
@@ -95,7 +106,7 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
         <div>
           <h3 style={{ fontSize: 15, marginBottom: 10 }}>Top 10 Drug-like Candidates by Ligand Efficiency</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-            {top10.map((p) => (
+            {top10.map((p, idx) => (
               <div
                 key={p.name}
                 style={{ display: 'grid', gridTemplateColumns: '110px 1fr 42px', gap: 8, alignItems: 'center', cursor: 'pointer' }}
@@ -104,7 +115,7 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
               >
                 <span style={{ fontSize: 12, color: 'var(--ink-soft)', textTransform: 'capitalize', textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name.replace(/_/g, ' ')}</span>
                 <div style={{ background: 'var(--paper-3)', borderRadius: 4, height: 14, overflow: 'hidden' }}>
-                  <div style={{ width: `${((p.le ?? 0) / topMax) * 100}%`, height: '100%', background: 'var(--green)', borderRadius: 4 }} />
+                  <div className="bar" style={{ width: inView ? `${((p.le ?? 0) / topMax) * 100}%` : '0%', height: '100%', background: 'var(--green)', borderRadius: 4, transitionDelay: `${idx * 35}ms` }} />
                 </div>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)' }}>{(p.le ?? 0).toFixed(3)}</span>
               </div>

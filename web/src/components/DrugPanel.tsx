@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import type { Drug, Field, AdmetRow } from '../data/types'
 import { RadarChart } from './RadarChart'
 import { ChartTooltip } from './ChartTooltip'
+import { useInView } from '../lib/anim'
 
 function Meta({ k, v }: { k: string; v: string }) {
   return (
@@ -26,6 +27,7 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
   }, [drug.name])
 
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
+  const [chartsRef, inView] = useInView<HTMLDivElement>()
   const bars = order.map((tid) => {
     const p = (field[tid] ?? []).find((x) => x.name === drug.name)
     return { tid, name: tName(tid), vina: p ? Math.abs(p.vina) : 0, raw: p ? p.vina : null }
@@ -62,14 +64,14 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
 
       <hr style={{ border: 0, borderTop: '1px solid var(--line)', margin: '28px 0' }} />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)', gap: 32, alignItems: 'start' }}>
+      <div ref={chartsRef} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)', gap: 32, alignItems: 'start' }}>
         <div>
           <h3 style={{ fontSize: 15, marginBottom: 4 }}>Binding Scores Across Targets</h3>
           <div style={{ display: 'flex', gap: 16, margin: '6px 0 14px', fontSize: 11, fontFamily: 'var(--mono)', color: 'var(--ink-soft)' }}>
             <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--green)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />Vina |score|</span>
             <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--gold)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />ML |score|</span>
           </div>
-          {bars.map((b) => (
+          {bars.map((b, i) => (
             <div
               key={b.tid}
               style={{ display: 'grid', gridTemplateColumns: '168px 1fr', gap: 10, alignItems: 'center', margin: '9px 0', cursor: 'pointer' }}
@@ -79,11 +81,11 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
               <span style={{ fontSize: 11.5, color: 'var(--ink-soft)', textAlign: 'right', lineHeight: 1.2 }}>{b.name}</span>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 9 }}>
-                  <div style={{ width: `${(ml / xMax) * 100}%`, height: 7, background: 'var(--gold)', borderRadius: 2, minWidth: ml > 0 ? 2 : 0 }} />
+                  <div className="bar" style={{ width: inView ? `${(ml / xMax) * 100}%` : '0%', height: 7, background: 'var(--gold)', borderRadius: 2, minWidth: inView && ml > 0 ? 2 : 0, transitionDelay: `${i * 40}ms` }} />
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: 'var(--ink-faint)' }}>{ml.toFixed(2)}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 13, marginTop: 2 }}>
-                  <div style={{ width: `${(b.vina / xMax) * 100}%`, height: 11, background: 'var(--green)', borderRadius: 2 }} />
+                  <div className="bar" style={{ width: inView ? `${(b.vina / xMax) * 100}%` : '0%', height: 11, background: 'var(--green)', borderRadius: 2, transitionDelay: `${i * 40}ms` }} />
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: 'var(--ink-soft)' }}>{b.raw != null ? b.raw.toFixed(2) : 'n/a'}</span>
                 </div>
               </div>
