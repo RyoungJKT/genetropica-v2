@@ -50,14 +50,14 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
   return (
     <section ref={secRef} style={{ margin: '8px 0 4px' }}>
       <h2 style={{ fontSize: 26, fontWeight: 380 }}>Target: {targetName}</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginTop: 16 }}>
+      <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginTop: 16 }}>
         <StatCard label="Total screened" value={points.length} highlight active={inView} />
         <StatCard label="Drug-like (MW 250-600)" value={dl.length} active={inView} />
         <StatCard label="ADMET-safe drug-like" value={admetSafe} active={inView} />
         <StatCard label="Showing" value={shown} active={inView} />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 26 }}>
+      <div className="rstack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 26 }}>
         <div>
           <h3 style={{ fontSize: 15, marginBottom: 10 }}>Ligand-Efficiency Distribution (drug-like)</h3>
           <svg viewBox={`0 0 ${HW} ${HH}`} width="100%" style={{ display: 'block' }}>

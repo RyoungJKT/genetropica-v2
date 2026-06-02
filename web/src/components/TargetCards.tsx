@@ -1,6 +1,7 @@
 import { useTargets } from '../data/api'
 import type { Target } from '../data/types'
 import { Reveal } from './Reveal'
+import { useIsMobile } from '../lib/useIsMobile'
 
 const ROLES: Record<string, string> = {
   DENV_NS5: 'The copy machine the virus uses to multiply. Jam it and the virus cannot replicate.',
@@ -17,6 +18,7 @@ function validated(vs: string) {
 
 export function TargetCards() {
   const { data } = useTargets()
+  const isMobile = useIsMobile()
   if (!data) return null
   const byDisease = new Map<string, Target[]>()
   for (const t of data) {
@@ -36,7 +38,7 @@ export function TargetCards() {
         {[...byDisease.entries()].map(([disease, targets]) => (
           <div key={disease} style={{ marginTop: 34 }}>
             <h3 style={{ fontSize: 26, marginBottom: 16, textTransform: 'capitalize' }}>{disease}</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: 20 }}>
               {targets.map((t) => (
                 <Reveal key={t.target_id}>
                   <div style={{ border: '1px solid var(--line)', borderRadius: 16, padding: 22, background: 'var(--paper)', height: '100%' }}>

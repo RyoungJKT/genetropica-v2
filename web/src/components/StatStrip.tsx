@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useInView, useReducedMotion } from 'framer-motion'
+import { useIsMobile } from '../lib/useIsMobile'
 
 function CountUp({ to }: { to: number }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -30,11 +31,12 @@ function CountUp({ to }: { to: number }) {
 }
 
 export function StatStrip({ items }: { items: { num: number; label: string }[] }) {
+  const isMobile = useIsMobile()
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${items.length},1fr)`,
+        gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : `repeat(${items.length},1fr)`,
         borderTop: '1px solid var(--line)',
         borderBottom: '1px solid var(--line)',
       }}

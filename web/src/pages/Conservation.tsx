@@ -34,7 +34,7 @@ function PairwiseSection({ matrix }: { matrix: Record<string, Record<string, num
       <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 14px', maxWidth: 760 }}>
         All-versus-all NS5 sequence identity. The four dengue serotypes are closely related; the broader flaviviruses share roughly half; hepatitis C is a distant outlier, which is why sofosbuvir is treated as a control rather than a candidate.
       </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,200px))', gap: 12, marginBottom: 18 }}>
+      <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,200px))', gap: 12, marginBottom: 18 }}>
         {cards.map(([label, v]) => (
           <div key={label} style={{ border: '1px solid var(--line)', borderRadius: 14, padding: '14px 16px', background: 'var(--paper)' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>{label}</div>

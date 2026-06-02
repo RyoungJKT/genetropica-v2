@@ -69,7 +69,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
 
       <hr style={{ border: 0, borderTop: '1px solid var(--line)', margin: '28px 0' }} />
 
-      <div ref={chartsRef} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)', gap: 32, alignItems: 'start' }}>
+      <div ref={chartsRef} className="rstack" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)', gap: 32, alignItems: 'start' }}>
         <div>
           <h3 style={{ fontSize: 15, marginBottom: 4 }}>Binding Scores Across Targets</h3>
           <div style={{ display: 'flex', gap: 16, margin: '6px 0 14px', fontSize: 11, fontFamily: 'var(--mono)', color: 'var(--ink-soft)' }}>
