@@ -24,6 +24,10 @@ export interface Drug {
   logp: number
   inchikey: string
   structure_source: string
+  smiles: string | null
+  drugbank_id: string | null
+  /** Target-agnostic ML activity prior (identical for a drug across every target). */
+  ml: number | null
 }
 
 export interface FieldPoint {

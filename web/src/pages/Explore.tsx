@@ -3,7 +3,8 @@ import { useField, useAdmet, useDrugs, useTargets } from '../data/api'
 import { useRegister, say } from '../state/register'
 import { BUCKETS, bucketOf } from '../lib/buckets'
 import { DrugTable } from '../components/DrugTable'
-import { DrugDetail } from '../components/DrugDetail'
+import { DrugPanel } from '../components/DrugPanel'
+import { TargetAnalysis } from '../components/TargetAnalysis'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 
@@ -42,7 +43,6 @@ export default function Explore() {
       (!admetOnly || p.admet === 1) &&
       (cls === 'all' || bucketOf(p).key === cls),
   )
-  const selPoint = sel ? all.find((p) => p.name === sel) ?? null : null
   const selDrug = sel ? drugs.data?.find((d) => d.name === sel) : undefined
   const selAdmet = sel && admet.data ? admet.data[sel] : undefined
 
@@ -62,7 +62,9 @@ export default function Explore() {
         ))}
       </div>
 
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', marginBottom: 16 }}>
+      {field.data && <TargetAnalysis points={all} targetName={tName(tid)} shown={filtered.length} />}
+
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', marginBottom: 16, marginTop: 36 }}>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search drug..." style={inputStyle} />
         <select value={cls} onChange={(e) => setCls(e.target.value)} style={selectStyle}>
           <option value="all">All classes</option>
@@ -79,9 +81,21 @@ export default function Explore() {
         <DrugTable points={filtered} onSelect={(p) => setSel(p.name)} selected={sel ?? undefined} />
       )}
 
-      {selPoint && field.data && (
-        <DrugDetail point={selPoint} drug={selDrug} admet={selAdmet} field={field.data} targetId={tid} onClose={() => setSel(null)} />
-      )}
+      <div style={{ marginTop: 52 }}>
+        <div className="eyebrow">Drug detail</div>
+        <label htmlFor="drugsel" style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--ink-faint)', margin: '12px 0 6px' }}>Select a drug to view details</label>
+        <select id="drugsel" value={sel ?? ''} onChange={(e) => setSel(e.target.value || null)} style={{ ...inputStyle, minWidth: 280, borderRadius: 12, textTransform: 'capitalize' }}>
+          <option value="">Select a drug...</option>
+          {[...(drugs.data ?? [])].sort((a, b) => a.name.localeCompare(b.name)).map((d) => (
+            <option key={d.name} value={d.name}>{d.name}</option>
+          ))}
+        </select>
+        {selDrug && field.data ? (
+          <DrugPanel drug={selDrug} field={field.data} admet={selAdmet} order={order} tName={tName} />
+        ) : (
+          <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>Choose a drug above, or click a row in the table, to see its cross-target binding and ADMET profile.</p>
+        )}
+      </div>
     </div>
   )
 }

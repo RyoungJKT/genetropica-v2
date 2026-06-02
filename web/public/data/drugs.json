@@ -7,7 +7,10 @@
     "heavy_atoms": 21,
     "logp": 0.1,
     "inchikey": "MCGSCOLBFJQGHM-SCZZXKLOSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CC1NC2=C3C(=NC(=N2)N)N(C=N3)[C@@H]4C[C@@H](C=C4)CO",
+    "drugbank_id": null,
+    "ml": 0.339
   },
   {
     "name": "acyclovir",
@@ -17,7 +20,10 @@
     "heavy_atoms": 16,
     "logp": -1.6,
     "inchikey": "MKUXAQIIEYXACX-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=NC2=C(N1COCCO)N=C(NC2=O)N",
+    "drugbank_id": "DB00039",
+    "ml": 0.262
   },
   {
     "name": "adefovir",
@@ -27,7 +33,10 @@
     "heavy_atoms": 18,
     "logp": -0.44,
     "inchikey": "SUPKOOSCJHTBAH-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=NC(=C2C(=N1)N(C=N2)CCOCP(=O)(O)O)N",
+    "drugbank_id": null,
+    "ml": 0.233
   },
   {
     "name": "albendazole",
@@ -37,7 +46,10 @@
     "heavy_atoms": 18,
     "logp": 2.7,
     "inchikey": "HXHWSAZORRCQMX-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCCSC1=CC2=C(C=C1)N=C(N2)NC(=O)OC",
+    "drugbank_id": "DB00027",
+    "ml": 0.277
   },
   {
     "name": "amantadine",
@@ -47,7 +59,10 @@
     "heavy_atoms": 11,
     "logp": 1.91,
     "inchikey": "DKNWSYNQZKUICI-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1C2CC3CC1CC(C2)(C3)N",
+    "drugbank_id": null,
+    "ml": 0.146
   },
   {
     "name": "amlodipine",
@@ -57,7 +72,10 @@
     "heavy_atoms": 28,
     "logp": 3.0,
     "inchikey": "HTIQEAQVCYTUBX-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCOC(=O)C1=C(NC(=C(C1C2=CC=CC=C2Cl)C(=O)OC)C)COCCN",
+    "drugbank_id": "DB00015",
+    "ml": 0.125
   },
   {
     "name": "artemisinin",
@@ -67,7 +85,10 @@
     "heavy_atoms": 20,
     "logp": 2.5,
     "inchikey": "BLUAFEHZUWYNDE-NNWCWBAJSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@@H]1CC[C@H]2[C@H](C(=O)O[C@H]3[C@@]24[C@H]1CC[C@](O3)(OO4)C)C",
+    "drugbank_id": "DB00029",
+    "ml": 0.196
   },
   {
     "name": "atazanavir",
@@ -77,7 +98,10 @@
     "heavy_atoms": 51,
     "logp": 3.94,
     "inchikey": "AXRYRYVKAWYZBR-GASGPIRDSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)(C)[C@@H](C(=O)N[C@@H](CC1=CC=CC=C1)[C@H](CN(CC2=CC=C(C=C2)C3=CC=CC=N3)NC(=O)[C@H](C(C)(C)C)NC(=O)OC)O)NC(=O)OC",
+    "drugbank_id": null,
+    "ml": 0.339
   },
   {
     "name": "atorvastatin",
@@ -87,7 +111,10 @@
     "heavy_atoms": 41,
     "logp": 4.1,
     "inchikey": "XUKUURHRXDUEBC-KAYWLYCHSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)C1=C(C(=C(N1CC[C@H](C[C@H](CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4",
+    "drugbank_id": "DB00017",
+    "ml": 0.287
   },
   {
     "name": "atovaquone",
@@ -97,7 +124,10 @@
     "heavy_atoms": 26,
     "logp": 5.78,
     "inchikey": "BSJMWHQBCZFXBR-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CC(CCC1C2=CC=C(C=C2)Cl)C3=C(C4=CC=CC=C4C(=O)C3=O)O",
+    "drugbank_id": null,
+    "ml": 0.361
   },
   {
     "name": "auranofin",
@@ -107,7 +137,10 @@
     "heavy_atoms": 32,
     "logp": 2.1,
     "inchikey": "AUJRCFUBUPVWSZ-XTZHGVARSA-M",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCP(CC)CC.CC(=O)OC[C@@H]1[C@H]([C@@H]([C@H]([C@@H](O1)[S-])OC(=O)C)OC(=O)C)OC(=O)C.[Au+]",
+    "drugbank_id": "DB00047",
+    "ml": null
   },
   {
     "name": "azathioprine",
@@ -117,7 +150,10 @@
     "heavy_atoms": 19,
     "logp": 1.15,
     "inchikey": "LMEKQMALGUDUQG-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN1C=NC(=C1SC2=NC=NC3=C2NC=N3)[N+](=O)[O-]",
+    "drugbank_id": null,
+    "ml": 0.186
   },
   {
     "name": "balapiravir",
@@ -127,7 +163,10 @@
     "heavy_atoms": 35,
     "logp": 1.34,
     "inchikey": "VKXWOLCNTHXCLF-DXEZIKHYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)C(=O)OC[C@@]1([C@H]([C@H]([C@@H](O1)N2C=CC(=NC2=O)N)OC(=O)C(C)C)OC(=O)C(C)C)N=[N+]=[N-]",
+    "drugbank_id": null,
+    "ml": 0.235
   },
   {
     "name": "baloxavir_marboxil",
@@ -137,7 +176,10 @@
     "heavy_atoms": 46,
     "logp": 3.41,
     "inchikey": "PSBXHOHLTRJZPO-XQEWPOGKSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@H](C#CC1=CC=C(S1)[C@@H](C2=CC=C(C=C2)F)O)N(C(=O)N)O.C[C@@H](C#CC1=CC=C(S1)[C@H](C2=CC=C(C=C2)F)O)N(C(=O)N)O",
+    "drugbank_id": null,
+    "ml": 0.416
   },
   {
     "name": "baricitinib",
@@ -147,7 +189,10 @@
     "heavy_atoms": 26,
     "logp": 1.2,
     "inchikey": "XUZMWHLSFXCVMG-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCS(=O)(=O)N1CC(C1)(CC#N)N2C=C(C=N2)C3=C4C=CNC4=NC=N3",
+    "drugbank_id": "DB00023",
+    "ml": 0.43
   },
   {
     "name": "benznidazole",
@@ -157,7 +202,10 @@
     "heavy_atoms": 19,
     "logp": 0.8,
     "inchikey": "CULUWZNBISUWAS-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=CC=C(C=C1)CNC(=O)CN2C=CN=C2[N+](=O)[O-]",
+    "drugbank_id": "DB00050",
+    "ml": 0.234
   },
   {
     "name": "boceprevir",
@@ -167,7 +215,10 @@
     "heavy_atoms": 37,
     "logp": -0.33,
     "inchikey": "LHHCSNFAOIFYRV-DOVBMPENSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1([C@@H]2[C@H]1[C@H](N(C2)C(=O)[C@H](C(C)(C)C)NC(=O)NC(C)(C)C)C(=O)NC(CC3CCC3)C(=O)C(=O)N)C",
+    "drugbank_id": null,
+    "ml": 0.358
   },
   {
     "name": "camostat",
@@ -177,7 +228,10 @@
     "heavy_atoms": 29,
     "logp": 1.39,
     "inchikey": "XASIMHXSUQUHLV-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN(C)C(=O)COC(=O)CC1=CC=C(C=C1)OC(=O)C2=CC=C(C=C2)N=C(N)N",
+    "drugbank_id": null,
+    "ml": 0.202
   },
   {
     "name": "celecoxib",
@@ -187,7 +241,10 @@
     "heavy_atoms": 26,
     "logp": 3.5,
     "inchikey": "RZEKVGVHFLEQIL-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",
+    "drugbank_id": "DB00014",
+    "ml": 0.703
   },
   {
     "name": "cetirizine",
@@ -197,7 +254,10 @@
     "heavy_atoms": 27,
     "logp": 3.18,
     "inchikey": "ZKLPARSLTMPFCP-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CN(CCN1CCOCC(=O)O)C(C2=CC=CC=C2)C3=CC=C(C=C3)Cl",
+    "drugbank_id": null,
+    "ml": 0.366
   },
   {
     "name": "chloroquine",
@@ -207,7 +267,10 @@
     "heavy_atoms": 22,
     "logp": 4.6,
     "inchikey": "WHTVZRBIWZFKQO-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)Cl",
+    "drugbank_id": "DB00004",
+    "ml": 0.276
   },
   {
     "name": "chlorpromazine",
@@ -217,7 +280,10 @@
     "heavy_atoms": 21,
     "logp": 4.89,
     "inchikey": "ZPEIMTDSQAKGNT-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN(C)CCCN1C2=CC=CC=C2SC3=C1C=C(C=C3)Cl",
+    "drugbank_id": null,
+    "ml": 0.322
   },
   {
     "name": "cladribine",
@@ -227,7 +293,10 @@
     "heavy_atoms": 19,
     "logp": -0.3,
     "inchikey": "PTOAARAWEBMLNO-KVQBGUIXSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1[C@@H]([C@H](O[C@H]1N2C=NC3=C(N=C(N=C32)Cl)N)CO)O",
+    "drugbank_id": null,
+    "ml": 0.338
   },
   {
     "name": "clevudine",
@@ -237,7 +306,10 @@
     "heavy_atoms": 18,
     "logp": -1.57,
     "inchikey": "GBBJCSTXCAQSSJ-XQXXSGGOSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CN(C(=O)NC1=O)[C@@H]2[C@@H]([C@H]([C@@H](O2)CO)O)F",
+    "drugbank_id": null,
+    "ml": 0.274
   },
   {
     "name": "colchicine",
@@ -247,7 +319,10 @@
     "heavy_atoms": 29,
     "logp": 1.0,
     "inchikey": "IAKHMKGGTNLKSZ-INIZCTEOSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(=O)N[C@H]1CCC2=CC(=C(C(=C2C3=CC=C(C(=O)C=C13)OC)OC)OC)OC",
+    "drugbank_id": "DB00022",
+    "ml": 0.26
   },
   {
     "name": "cyclosporine",
@@ -257,7 +332,10 @@
     "heavy_atoms": 85,
     "logp": 4.09,
     "inchikey": "PMATZTZNYRCHOR-CGLBZJNRSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC[C@H]1C(=O)N(CC(=O)N([C@H](C(=O)N[C@H](C(=O)N([C@H](C(=O)N[C@H](C(=O)N[C@@H](C(=O)N([C@H](C(=O)N([C@H](C(=O)N([C@H](C(=O)N([C@H](C(=O)N1)[C@@H]([C@H](C)C/C=C/C)O)C)C(C)C)C)CC(C)C)C)CC(C)C)C)C)C)CC(C)C)C)C(C)C)CC(C)C)C)C",
+    "drugbank_id": null,
+    "ml": 0.324
   },
   {
     "name": "cytarabine",
@@ -267,7 +345,10 @@
     "heavy_atoms": 17,
     "logp": -2.75,
     "inchikey": "UHDGCWIWMRVCDJ-CCXZUQQUSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=CN(C(=O)N=C1N)[C@H]2[C@H]([C@@H]([C@H](O2)CO)O)O",
+    "drugbank_id": null,
+    "ml": 0.135
   },
   {
     "name": "daclatasvir",
@@ -277,7 +358,10 @@
     "heavy_atoms": 54,
     "logp": 4.8,
     "inchikey": "FKRSSPOQAMALKA-CUPIEXAXSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)[C@@H](C(=O)N1CCC[C@H]1C2=NC=C(N2)C3=CC=C(C=C3)C4=CC=C(C=C4)C5=CN=C(N5)[C@@H]6CCCN6C(=O)[C@H](C(C)C)NC(=O)OC)NC(=O)OC",
+    "drugbank_id": "DB00043",
+    "ml": 0.521
   },
   {
     "name": "darunavir",
@@ -287,7 +371,10 @@
     "heavy_atoms": 38,
     "logp": 1.02,
     "inchikey": "CJBJHOAVZSMMDJ-HEXNFIEUSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)CN(C[C@H]([C@H](CC1=CC=CC=C1)NC(=O)O[C@H]2CO[C@@H]3[C@H]2CCO3)O)S(=O)(=O)C4=CC=C(C=C4)N",
+    "drugbank_id": null,
+    "ml": 0.341
   },
   {
     "name": "dasabuvir",
@@ -297,7 +384,10 @@
     "heavy_atoms": 35,
     "logp": 1.8,
     "inchikey": "NBRBXGKOEOGLOI-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)(C)C1=CC(=CC(=C1OC)C2=CC3=C(C=C2)C=C(C=C3)NS(=O)(=O)C)N4C=CC(=O)NC4=O",
+    "drugbank_id": null,
+    "ml": 0.339
   },
   {
     "name": "didanosine",
@@ -307,7 +397,10 @@
     "heavy_atoms": 17,
     "logp": -0.36,
     "inchikey": "BXZVVICBKDXVGW-NKWVEPMBSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1C[C@@H](O[C@@H]1CO)N2C=NC3=C2N=CNC3=O",
+    "drugbank_id": null,
+    "ml": 0.244
   },
   {
     "name": "doxycycline",
@@ -317,7 +410,10 @@
     "heavy_atoms": 32,
     "logp": -0.7,
     "inchikey": "SGKRLCUYIXIAHR-AKNGSSGZSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@@H]1[C@H]2[C@@H]([C@H]3[C@@H](C(=O)C(=C([C@]3(C(=O)C2=C(C4=C1C=CC=C4O)O)O)O)C(=O)N)N(C)C)O",
+    "drugbank_id": "DB00005",
+    "ml": 0.219
   },
   {
     "name": "elbasvir",
@@ -327,7 +423,10 @@
     "heavy_atoms": 65,
     "logp": 7.4,
     "inchikey": "BVAZQCUMNICBAQ-PZHYSIFUSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)[C@@H](C(=O)N1CCC[C@H]1C2=NC=C(N2)C3=CC4=C(C=C3)N5[C@@H](OC6=C(C5=C4)C=CC(=C6)C7=CN=C(N7)[C@@H]8CCCN8C(=O)[C@H](C(C)C)NC(=O)OC)C9=CC=CC=C9)NC(=O)OC",
+    "drugbank_id": null,
+    "ml": 0.326
   },
   {
     "name": "entecavir",
@@ -337,7 +436,10 @@
     "heavy_atoms": 20,
     "logp": -1.0,
     "inchikey": "QDGZDCVAUDNJFG-FXQIFTODSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C=C1[C@H](C[C@@H]([C@H]1CO)O)N2C=NC3=C2N=C(NC3=O)N",
+    "drugbank_id": "DB00042",
+    "ml": 0.26
   },
   {
     "name": "erlotinib",
@@ -347,7 +449,10 @@
     "heavy_atoms": 29,
     "logp": 3.41,
     "inchikey": "AAKJLRGGTJKAMG-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "COCCOC1=C(C=C2C(=C1)C(=NC=N2)NC3=CC=CC(=C3)C#C)OCCOC",
+    "drugbank_id": null,
+    "ml": 0.153
   },
   {
     "name": "favipiravir",
@@ -357,7 +462,10 @@
     "heavy_atoms": 11,
     "logp": -0.6,
     "inchikey": "ZCGNOVWYSGBHAU-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=C(N=C(C(=O)N1)C(=O)N)F",
+    "drugbank_id": "DB00010",
+    "ml": 0.298
   },
   {
     "name": "fenofibrate",
@@ -367,7 +475,10 @@
     "heavy_atoms": 25,
     "logp": 4.68,
     "inchikey": "YMTINGFKWWXKFG-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)OC(=O)C(C)(C)OC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)Cl",
+    "drugbank_id": null,
+    "ml": 0.32
   },
   {
     "name": "fludarabine",
@@ -377,7 +488,10 @@
     "heavy_atoms": 20,
     "logp": -1.84,
     "inchikey": "HBUBKKRHXORPQB-FJFJXFQQSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=NC2=C(N=C(N=C2N1[C@H]3[C@H]([C@@H]([C@H](O3)CO)O)O)F)N",
+    "drugbank_id": null,
+    "ml": 0.322
   },
   {
     "name": "gabapentin",
@@ -387,7 +501,10 @@
     "heavy_atoms": 12,
     "logp": 1.37,
     "inchikey": "UGJMXCAKCUNAIE-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CCC(CC1)(CC(=O)O)CN",
+    "drugbank_id": null,
+    "ml": 0.173
   },
   {
     "name": "galidesivir",
@@ -397,7 +514,10 @@
     "heavy_atoms": 19,
     "logp": -0.29,
     "inchikey": "AMFDITJFBUXZQN-KUBHLMPHSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=C(C2=C(N1)C(=NC=N2)N)[C@H]3[C@@H]([C@@H]([C@H](N3)CO)O)O",
+    "drugbank_id": null,
+    "ml": 0.32
   },
   {
     "name": "gemcitabine",
@@ -407,7 +527,10 @@
     "heavy_atoms": 18,
     "logp": -1.47,
     "inchikey": "SDUQYLNIPVEERB-QPPQHZFASA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=CN(C(=O)N=C1N)[C@H]2C([C@@H]([C@H](O2)CO)O)(F)F",
+    "drugbank_id": null,
+    "ml": 0.221
   },
   {
     "name": "glecaprevir",
@@ -417,7 +540,10 @@
     "heavy_atoms": 58,
     "logp": 3.02,
     "inchikey": "MLSQGNCUYAMAHD-ITNVBOSISA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1(CC1)S(=O)(=O)NC(=O)[C@]2(C[C@H]2C(F)F)NC(=O)[C@@H]3C[C@@H]4CN3C(=O)[C@@H](NC(=O)O[C@@H]5CCC[C@H]5OC/C=C/C(C6=NC7=CC=CC=C7N=C6O4)(F)F)C(C)(C)C",
+    "drugbank_id": null,
+    "ml": 0.372
   },
   {
     "name": "grazoprevir",
@@ -427,7 +553,10 @@
     "heavy_atoms": 54,
     "logp": 2.85,
     "inchikey": "OBMNJSNZOWALQB-NCQNOWPTSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)(C)[C@H]1C(=O)N2C[C@@H](C[C@H]2C(=O)N[C@@]3(C[C@H]3C=C)C(=O)NS(=O)(=O)C4CC4)OC5=NC6=C(C=CC(=C6)OC)N=C5CCCCC[C@@H]7C[C@H]7OC(=O)N1",
+    "drugbank_id": null,
+    "ml": 0.273
   },
   {
     "name": "hydroxychloroquine",
@@ -437,7 +566,10 @@
     "heavy_atoms": 23,
     "logp": 3.6,
     "inchikey": "XXSMGPRMXLTPCZ-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCN(CCCC(C)NC1=C2C=CC(=CC2=NC=C1)Cl)CCO",
+    "drugbank_id": "DB00003",
+    "ml": 0.268
   },
   {
     "name": "ibuprofen",
@@ -447,7 +579,10 @@
     "heavy_atoms": 15,
     "logp": 3.5,
     "inchikey": "HEFNNWSXXWATRW-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
+    "drugbank_id": "DB00002",
+    "ml": 0.355
   },
   {
     "name": "indomethacin",
@@ -457,7 +592,10 @@
     "heavy_atoms": 25,
     "logp": 4.26,
     "inchikey": "CGIGDMFJXJATDK-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C(C2=C(N1C(=O)C3=CC=C(C=C3)Cl)C=CC(=C2)OC)CC(=O)O",
+    "drugbank_id": null,
+    "ml": 0.383
   },
   {
     "name": "ivermectin",
@@ -467,7 +605,10 @@
     "heavy_atoms": 62,
     "logp": 4.1,
     "inchikey": "AZSNMRSAGSSBNP-XPNPUAGNSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC[C@H](C)[C@@H]1[C@H](CC[C@@]2(O1)C[C@@H]3C[C@H](O2)C/C=C(/[C@H]([C@H](/C=C/C=C/4\\CO[C@H]5[C@@]4([C@@H](C=C([C@H]5O)C)C(=O)O3)O)C)O[C@H]6C[C@@H]([C@H]([C@@H](O6)C)O[C@H]7C[C@@H]([C@H]([C@@H](O7)C)O)OC)OC)\\C)C",
+    "drugbank_id": "DB00006",
+    "ml": 0.249
   },
   {
     "name": "lamivudine",
@@ -477,7 +618,10 @@
     "heavy_atoms": 15,
     "logp": -0.78,
     "inchikey": "JTEGQNOMFQHVDC-NKWVEPMBSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1[C@H](O[C@H](S1)CO)N2C=CC(=NC2=O)N",
+    "drugbank_id": null,
+    "ml": 0.137
   },
   {
     "name": "ledipasvir",
@@ -487,7 +631,10 @@
     "heavy_atoms": 65,
     "logp": 7.45,
     "inchikey": "VRTWBAAJJOHBQU-KMWAZVGDSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)[C@@H](C(=O)N1CC2(CC2)C[C@H]1C3=NC=C(N3)C4=CC5=C(C=C4)C6=C(C5(F)F)C=C(C=C6)C7=CC8=C(C=C7)N=C(N8)[C@@H]9[C@H]1CC[C@H](C1)N9C(=O)[C@H](C(C)C)NC(=O)OC)NC(=O)OC",
+    "drugbank_id": null,
+    "ml": 0.193
   },
   {
     "name": "leflunomide",
@@ -497,7 +644,10 @@
     "heavy_atoms": 19,
     "logp": 3.25,
     "inchikey": "VHOGYURTWQBHIL-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C(C=NO1)C(=O)NC2=CC=C(C=C2)C(F)(F)F",
+    "drugbank_id": null,
+    "ml": 0.185
   },
   {
     "name": "levothyroxine",
@@ -507,7 +657,10 @@
     "heavy_atoms": 24,
     "logp": 3.66,
     "inchikey": "XUIIKFGFIJCVMT-LBPRGKRZSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=C(C=C(C(=C1I)OC2=CC(=C(C(=C2)I)O)I)I)C[C@@H](C(=O)O)N",
+    "drugbank_id": null,
+    "ml": 0.207
   },
   {
     "name": "lisinopril",
@@ -517,7 +670,10 @@
     "heavy_atoms": 29,
     "logp": -0.92,
     "inchikey": "RLAWWYSOJDYHDC-BZSNNMDCSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1C[C@H](N(C1)C(=O)[C@H](CCCCN)N[C@@H](CCC2=CC=CC=C2)C(=O)O)C(=O)O",
+    "drugbank_id": null,
+    "ml": 0.375
   },
   {
     "name": "lopinavir",
@@ -527,7 +683,10 @@
     "heavy_atoms": 46,
     "logp": 5.9,
     "inchikey": "KJHKTHWMRKYKJE-SUGCFTRWSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C(C(=CC=C1)C)OCC(=O)N[C@@H](CC2=CC=CC=C2)[C@H](C[C@H](CC3=CC=CC=C3)NC(=O)[C@H](C(C)C)N4CCCNC4=O)O",
+    "drugbank_id": "DB00012",
+    "ml": 0.281
   },
   {
     "name": "lovastatin",
@@ -537,7 +696,10 @@
     "heavy_atoms": 29,
     "logp": 3.72,
     "inchikey": "PCZOHLXUXFIOCF-BXMDZJJMSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC[C@H](C)C(=O)O[C@H]1C[C@H](C=C2[C@H]1[C@H]([C@H](C=C2)C)CC[C@@H]3C[C@H](CC(=O)O3)O)C",
+    "drugbank_id": null,
+    "ml": 0.2
   },
   {
     "name": "mefloquine",
@@ -547,7 +709,10 @@
     "heavy_atoms": 26,
     "logp": 4.45,
     "inchikey": "XEEQGYMUWCZPDN-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CCNC(C1)C(C2=CC(=NC3=C2C=CC=C3C(F)(F)F)C(F)(F)F)O",
+    "drugbank_id": null,
+    "ml": 0.239
   },
   {
     "name": "metformin",
@@ -557,7 +722,10 @@
     "heavy_atoms": 9,
     "logp": -1.4,
     "inchikey": "XZWYZXLIPXDOLR-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN(C)C(=N)N=C(N)N",
+    "drugbank_id": "DB00001",
+    "ml": 0.18
   },
   {
     "name": "methotrexate",
@@ -567,7 +735,10 @@
     "heavy_atoms": 33,
     "logp": -1.8,
     "inchikey": "FBOZXECLQNJBKD-ZDUSSCGKSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN(CC1=CN=C2C(=N1)C(=NC(=N2)N)N)C3=CC=C(C=C3)C(=O)N[C@@H](CCC(=O)O)C(=O)O",
+    "drugbank_id": "DB00018",
+    "ml": 0.483
   },
   {
     "name": "miltefosine",
@@ -577,7 +748,10 @@
     "heavy_atoms": 27,
     "logp": 5.5,
     "inchikey": "PQLXHQMOHUQAKB-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCCCCCCCCCCCCCCCOP(=O)([O-])OCC[N+](C)(C)C",
+    "drugbank_id": "DB00049",
+    "ml": 0.172
   },
   {
     "name": "minocycline",
@@ -587,7 +761,10 @@
     "heavy_atoms": 33,
     "logp": 0.19,
     "inchikey": "FFTVPQUHLQBXQZ-KVUCHLLUSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN(C)[C@H]1[C@@H]2C[C@@H]3CC4=C(C=CC(=C4C(=C3C(=O)[C@@]2(C(=C(C1=O)C(=O)N)O)O)O)O)N(C)C",
+    "drugbank_id": null,
+    "ml": 0.273
   },
   {
     "name": "molnupiravir",
@@ -597,7 +774,10 @@
     "heavy_atoms": 23,
     "logp": -2.8,
     "inchikey": "HTNPEHXGEKVIHG-QCNRFFRDSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)C(=O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=CC(=NC2=O)NO)O)O",
+    "drugbank_id": null,
+    "ml": 0.256
   },
   {
     "name": "mycophenolate_mofetil",
@@ -607,7 +787,10 @@
     "heavy_atoms": 31,
     "logp": 3.52,
     "inchikey": "RTGDFNSFWBGLEC-SYZQJQIISA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C2COC(=O)C2=C(C(=C1OC)C/C=C(\\C)/CCC(=O)OCCN3CCOCC3)O",
+    "drugbank_id": null,
+    "ml": 0.158
   },
   {
     "name": "nafamostat",
@@ -617,7 +800,10 @@
     "heavy_atoms": 26,
     "logp": 1.5,
     "inchikey": "MQQNFDZXWVTQEH-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=CC(=CC=C1C(=O)OC2=CC3=C(C=C2)C=C(C=C3)C(=N)N)N=C(N)N",
+    "drugbank_id": null,
+    "ml": 0.115
   },
   {
     "name": "naproxen",
@@ -627,7 +813,10 @@
     "heavy_atoms": 17,
     "logp": 3.04,
     "inchikey": "CMWTZPSULFXXJA-VIFPVBQESA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@@H](C1=CC2=C(C=C1)C=C(C=C2)OC)C(=O)O",
+    "drugbank_id": null,
+    "ml": 0.265
   },
   {
     "name": "nelfinavir",
@@ -637,7 +826,10 @@
     "heavy_atoms": 40,
     "logp": 4.5,
     "inchikey": "QAGYKUNXZHXKMR-HKWSIXNMSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C(C=CC=C1O)C(=O)N[C@@H](CSC2=CC=CC=C2)[C@@H](CN3C[C@H]4CCCC[C@H]4C[C@H]3C(=O)NC(C)(C)C)O",
+    "drugbank_id": null,
+    "ml": 0.334
   },
   {
     "name": "niclosamide",
@@ -647,7 +839,10 @@
     "heavy_atoms": 21,
     "logp": 3.9,
     "inchikey": "RJMUSRYZPJIFPJ-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=CC(=C(C=C1[N+](=O)[O-])Cl)NC(=O)C2=C(C=CC(=C2)Cl)O",
+    "drugbank_id": "DB00046",
+    "ml": 0.288
   },
   {
     "name": "nirmatrelvir",
@@ -657,7 +852,10 @@
     "heavy_atoms": 35,
     "logp": 1.07,
     "inchikey": "LIENCHBZNNMNKG-OJFNHCPVSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1([C@@H]2[C@H]1[C@H](N(C2)C(=O)[C@H](C(C)(C)C)NC(=O)C(F)(F)F)C(=O)N[C@@H](C[C@@H]3CCNC3=O)C#N)C",
+    "drugbank_id": null,
+    "ml": 0.317
   },
   {
     "name": "nitazoxanide",
@@ -667,7 +865,10 @@
     "heavy_atoms": 21,
     "logp": 2.3,
     "inchikey": "YQNQNVDNTFHQSW-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(=O)OC1=CC=CC=C1C(=O)NC2=NC=C(S2)[N+](=O)[O-]",
+    "drugbank_id": "DB00024",
+    "ml": 0.093
   },
   {
     "name": "ombitasvir",
@@ -677,7 +878,10 @@
     "heavy_atoms": 65,
     "logp": 7.45,
     "inchikey": "PIDFDZJZLOTZTM-KHVQSSSXSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C)[C@@H](C(=O)N1CCC[C@H]1C(=O)NC2=CC=C(C=C2)[C@@H]3CC[C@H](N3C4=CC=C(C=C4)C(C)(C)C)C5=CC=C(C=C5)NC(=O)[C@@H]6CCCN6C(=O)[C@H](C(C)C)NC(=O)OC)NC(=O)OC",
+    "drugbank_id": null,
+    "ml": 0.178
   },
   {
     "name": "omeprazole",
@@ -687,7 +891,10 @@
     "heavy_atoms": 24,
     "logp": 2.89,
     "inchikey": "SUBDBMMJDZJVOS-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC",
+    "drugbank_id": null,
+    "ml": 0.316
   },
   {
     "name": "oseltamivir",
@@ -697,7 +904,10 @@
     "heavy_atoms": 22,
     "logp": 1.0,
     "inchikey": "VSZGPKBBMSAYNT-RRFJBIMHSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCC(CC)O[C@@H]1C=C(C[C@@H]([C@H]1NC(=O)C)N)C(=O)OCC",
+    "drugbank_id": "DB00009",
+    "ml": 0.231
   },
   {
     "name": "pantoprazole",
@@ -707,7 +917,10 @@
     "heavy_atoms": 26,
     "logp": 2.88,
     "inchikey": "IQPSEEYGBUAQFF-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC",
+    "drugbank_id": null,
+    "ml": 0.306
   },
   {
     "name": "paritaprevir",
@@ -717,7 +930,10 @@
     "heavy_atoms": 55,
     "logp": 6.81,
     "inchikey": "UAUIUKWPKRJZJV-QPLHLKROSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CN=C(C=N1)C(=O)N[C@H]2CCCCC/C=C\\[C@@H]3C[C@]3(NC(=O)[C@@H]4C[C@H](CN4C2=O)OC5=NC6=CC=CC=C6C7=CC=CC=C75)C(=O)NS(=O)(=O)C8CC8",
+    "drugbank_id": null,
+    "ml": 0.325
   },
   {
     "name": "pentamidine",
@@ -727,7 +943,10 @@
     "heavy_atoms": 25,
     "logp": 2.88,
     "inchikey": "XDRYMKDFEDOLFX-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=CC(=CC=C1C(=N)N)OCCCCCOC2=CC=C(C=C2)C(=N)N",
+    "drugbank_id": null,
+    "ml": 0.158
   },
   {
     "name": "pentoxifylline",
@@ -737,7 +956,10 @@
     "heavy_atoms": 20,
     "logp": 0.19,
     "inchikey": "BYPFEZZEUUWMEJ-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(=O)CCCCN1C(=O)C2=C(N=CN2C)N(C1=O)C",
+    "drugbank_id": null,
+    "ml": 0.258
   },
   {
     "name": "pibrentasvir",
@@ -747,7 +969,10 @@
     "heavy_atoms": 80,
     "logp": 7.81,
     "inchikey": "VJYSBPDEJWLKKJ-NLIMODCCSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@H]([C@@H](C(=O)N1CCC[C@H]1C2=NC3=C(N2)C=C(C(=C3)F)[C@H]4CC[C@@H](N4C5=CC(=C(C(=C5)F)N6CCC(CC6)C7=CC=C(C=C7)F)F)C8=CC9=C(C=C8F)N=C(N9)[C@@H]1CCCN1C(=O)[C@H]([C@@H](C)OC)NC(=O)OC)NC(=O)OC)OC",
+    "drugbank_id": null,
+    "ml": 0.281
   },
   {
     "name": "praziquantel",
@@ -757,7 +982,10 @@
     "heavy_atoms": 23,
     "logp": 2.4,
     "inchikey": "FSVJFNAIGNNGKK-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CCC(CC1)C(=O)N2CC3C4=CC=CC=C4CCN3C(=O)C2",
+    "drugbank_id": "DB00026",
+    "ml": 0.192
   },
   {
     "name": "prednisolone",
@@ -767,7 +995,10 @@
     "heavy_atoms": 26,
     "logp": 2.68,
     "inchikey": "OIGNJSKKLXVSLS-VWUMJDOOSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@]12C[C@@H]([C@H]3[C@H]([C@@H]1CC[C@@]2(C(=O)CO)O)CCC4=CC(=O)C=C[C@]34C)O",
+    "drugbank_id": null,
+    "ml": 0.282
   },
   {
     "name": "primaquine",
@@ -777,7 +1008,10 @@
     "heavy_atoms": 19,
     "logp": 2.1,
     "inchikey": "INDBQLZJXZLFIT-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(CCCN)NC1=C2C(=CC(=C1)OC)C=CC=N2",
+    "drugbank_id": "DB00031",
+    "ml": 0.139
   },
   {
     "name": "prochlorperazine",
@@ -787,7 +1021,10 @@
     "heavy_atoms": 25,
     "logp": 4.58,
     "inchikey": "WIKYUJGCLQQFNW-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN1CCN(CC1)CCCN2C3=CC=CC=C3SC4=C2C=C(C=C4)Cl",
+    "drugbank_id": null,
+    "ml": 0.259
   },
   {
     "name": "pyrimethamine",
@@ -797,7 +1034,10 @@
     "heavy_atoms": 17,
     "logp": 2.52,
     "inchikey": "WKSAUQYGYAYLPV-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCC1=C(C(=NC(=N1)N)N)C2=CC=C(C=C2)Cl",
+    "drugbank_id": null,
+    "ml": 0.505
   },
   {
     "name": "remdesivir",
@@ -807,7 +1047,10 @@
     "heavy_atoms": 42,
     "logp": 1.9,
     "inchikey": "RWWYLEGWBNMMLJ-YSOARWBDSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCC(CC)COC(=O)[C@H](C)N[P@](=O)(OC[C@@H]1[C@H]([C@H]([C@](O1)(C#N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4",
+    "drugbank_id": "DB00011",
+    "ml": 0.247
   },
   {
     "name": "ribavirin",
@@ -817,7 +1060,10 @@
     "heavy_atoms": 17,
     "logp": -2.0,
     "inchikey": "IWUCXVSUMQZMFG-AFCXAGJDSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1=NC(=NN1[C@H]2[C@@H]([C@@H]([C@H](O2)CO)O)O)C(=O)N",
+    "drugbank_id": "DB00007",
+    "ml": 0.343
   },
   {
     "name": "rimantadine",
@@ -827,7 +1073,10 @@
     "heavy_atoms": 13,
     "logp": 2.16,
     "inchikey": "UBCHPRBFMUDMNC-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC(C12CC3CC(C1)CC(C3)C2)N",
+    "drugbank_id": null,
+    "ml": 0.169
   },
   {
     "name": "ruxolitinib",
@@ -837,7 +1086,10 @@
     "heavy_atoms": 23,
     "logp": 2.66,
     "inchikey": "HFNKQEVNSGCOJV-OAHLLOKOSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1CCC(C1)[C@@H](CC#N)N2C=C(C=N2)C3=C4C=CNC4=NC=N3",
+    "drugbank_id": null,
+    "ml": 0.287
   },
   {
     "name": "simeprevir",
@@ -847,7 +1099,10 @@
     "heavy_atoms": 52,
     "logp": 6.55,
     "inchikey": "JTZZSQYMACOLNN-VDWJNHBNSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C(C=CC2=C1N=C(C=C2O[C@@H]3C[C@@H]4[C@@H](C3)C(=O)N(CCCC/C=C\\[C@@H]5C[C@]5(NC4=O)C(=O)NS(=O)(=O)C6CC6)C)C7=NC(=CS7)C(C)C)OC",
+    "drugbank_id": null,
+    "ml": 0.246
   },
   {
     "name": "sirolimus",
@@ -857,7 +1112,10 @@
     "heavy_atoms": 65,
     "logp": 4.3,
     "inchikey": "QFJCIRLUMZQUOT-HPLJOQBZSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@@H]1CC[C@H]2C[C@@H](/C(=C/C=C/C=C/[C@H](C[C@H](C(=O)[C@@H]([C@@H](/C(=C/[C@H](C(=O)C[C@H](OC(=O)[C@@H]3CCCCN3C(=O)C(=O)[C@@]1(O2)O)[C@H](C)C[C@@H]4CC[C@H]([C@@H](C4)OC)O)C)/C)O)OC)C)C)/C)OC",
+    "drugbank_id": "DB00045",
+    "ml": 0.246
   },
   {
     "name": "sofosbuvir",
@@ -867,7 +1125,10 @@
     "heavy_atoms": 36,
     "logp": 1.6,
     "inchikey": "TTZHDVOVKQGIBA-IQWMDFIBSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@@H](C(=O)OC(C)C)N[P@](=O)(OC[C@@H]1[C@H]([C@@]([C@@H](O1)N2C=CC(=O)NC2=O)(C)F)O)OC3=CC=CC=C3",
+    "drugbank_id": "DB00008",
+    "ml": 0.214
   },
   {
     "name": "sorafenib",
@@ -877,7 +1138,10 @@
     "heavy_atoms": 32,
     "logp": 6.15,
     "inchikey": "MLDQJTXFUGDVEO-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CNC(=O)C1=NC=CC(=C1)OC2=CC=C(C=C2)NC(=O)NC3=CC(=C(C=C3)Cl)C(F)(F)F",
+    "drugbank_id": null,
+    "ml": 0.199
   },
   {
     "name": "stavudine",
@@ -887,7 +1151,10 @@
     "heavy_atoms": 16,
     "logp": -0.36,
     "inchikey": "XNKLLVCARDGLGL-JGVFFNPUSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CN(C(=O)NC1=O)[C@H]2C=C[C@H](O2)CO",
+    "drugbank_id": null,
+    "ml": 0.247
   },
   {
     "name": "sunitinib",
@@ -897,7 +1164,10 @@
     "heavy_atoms": 29,
     "logp": 3.93,
     "inchikey": "WINHZLLDWRZWRT-ATVHPVEESA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCN(CC)CCNC(=O)C1=C(NC(=C1C)/C=C\\2/C3=C(C=CC(=C3)F)NC2=O)C",
+    "drugbank_id": null,
+    "ml": 0.162
   },
   {
     "name": "suramin",
@@ -907,7 +1177,10 @@
     "heavy_atoms": 86,
     "logp": -2.0,
     "inchikey": "FIAFUQMPZJWCLV-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=C(C=C(C=C1)C(=O)NC2=C3C(=CC(=CC3=C(C=C2)S(=O)(=O)O)S(=O)(=O)O)S(=O)(=O)O)NC(=O)C4=CC(=CC=C4)NC(=O)NC5=CC=CC(=C5)C(=O)NC6=C(C=CC(=C6)C(=O)NC7=C8C(=CC(=CC8=C(C=C7)S(=O)(=O)O)S(=O)(=O)O)S(=O)(=O)O)C",
+    "drugbank_id": "DB00025",
+    "ml": 0.372
   },
   {
     "name": "telaprevir",
@@ -917,7 +1190,10 @@
     "heavy_atoms": 49,
     "logp": 1.23,
     "inchikey": "BBAWEDCPNXPBQM-GDEBMMAJSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCC[C@@H](C(=O)C(=O)NC1CC1)NC(=O)[C@@H]2[C@H]3CCC[C@H]3CN2C(=O)[C@H](C(C)(C)C)NC(=O)[C@H](C4CCCCC4)NC(=O)C5=NC=CN=C5",
+    "drugbank_id": null,
+    "ml": 0.332
   },
   {
     "name": "telbivudine",
@@ -927,7 +1203,10 @@
     "heavy_atoms": 17,
     "logp": -1.51,
     "inchikey": "IQFYYKKMVGJFEH-CSMHCCOUSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CN(C(=O)NC1=O)[C@@H]2C[C@H]([C@@H](O2)CO)O",
+    "drugbank_id": null,
+    "ml": 0.34
   },
   {
     "name": "tenofovir",
@@ -937,7 +1216,10 @@
     "heavy_atoms": 19,
     "logp": -1.6,
     "inchikey": "SGOIRFVFHAKUTI-ZCFIWIBFSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@H](CN1C=NC2=C(N=CN=C21)N)OCP(=O)(O)O",
+    "drugbank_id": "DB00041",
+    "ml": 0.243
   },
   {
     "name": "trifluridine",
@@ -947,7 +1229,10 @@
     "heavy_atoms": 20,
     "logp": -2.12,
     "inchikey": "VSQQQLOSPVPRAZ-RRKCRQDMSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C1[C@@H]([C@H](O[C@H]1N2C=C(C(=O)NC2=O)C(F)(F)F)CO)O",
+    "drugbank_id": null,
+    "ml": 0.345
   },
   {
     "name": "umifenovir",
@@ -957,7 +1242,10 @@
     "heavy_atoms": 29,
     "logp": 5.18,
     "inchikey": "KCFYEAOKVJSACF-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CCOC(=O)C1=C(N(C2=CC(=C(C(=C21)CN(C)C)O)Br)C)CSC3=CC=CC=C3",
+    "drugbank_id": null,
+    "ml": 0.459
   },
   {
     "name": "vandetanib",
@@ -967,7 +1255,10 @@
     "heavy_atoms": 30,
     "logp": 4.63,
     "inchikey": "UHTHHESEBZOYNR-UHFFFAOYSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CN1CCC(CC1)COC2=C(C=C3C(=C2)N=CN=C3NC4=C(C=C(C=C4)Br)F)OC",
+    "drugbank_id": null,
+    "ml": 0.264
   },
   {
     "name": "velpatasvir",
@@ -977,7 +1268,10 @@
     "heavy_atoms": 65,
     "logp": 8.45,
     "inchikey": "FHCUMDQMBHQXKK-CDIODLITSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "C[C@H]1CC[C@H](N1C(=O)[C@H](C(C)C)NC(=O)OC)C2=NC3=C(N2)C=CC4=CC5=C(C=C43)OCC6=C5C=CC(=C6)C7=CN=C(N7)[C@@H]8C[C@@H](CN8C(=O)[C@@H](C9=CC=CC=C9)NC(=O)OC)COC",
+    "drugbank_id": null,
+    "ml": 0.376
   },
   {
     "name": "voxilaprevir",
@@ -987,7 +1281,10 @@
     "heavy_atoms": 60,
     "logp": 2.89,
     "inchikey": "MZBLZLWXUBZHSL-FZNJKFJKSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC[C@@H]1[C@@H]2CN([C@@H]1C(=O)N[C@@]3(C[C@H]3C(F)F)C(=O)NS(=O)(=O)C4(CC4)C)C(=O)[C@@H](NC(=O)O[C@@H]5C[C@H]5CCCCC(C6=NC7=C(C=C(C=C7)OC)N=C6O2)(F)F)C(C)(C)C",
+    "drugbank_id": null,
+    "ml": 0.33
   },
   {
     "name": "zidovudine",
@@ -997,6 +1294,9 @@
     "heavy_atoms": 19,
     "logp": 0.1,
     "inchikey": "HBOMLICNUCNMMY-XLPZGREQSA-N",
-    "structure_source": "PubChem"
+    "structure_source": "PubChem",
+    "smiles": "CC1=CN(C(=O)NC1=O)[C@H]2C[C@@H]([C@H](O2)CO)N=[N+]=[N-]",
+    "drugbank_id": "DB00040",
+    "ml": 0.256
   }
 ]
