@@ -1,0 +1,702 @@
+{
+  "metformin": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.2,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "ibuprofen": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.15,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "hydroxychloroquine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.5,
+    "bioavail": 0.9,
+    "pass": 0
+  },
+  "chloroquine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.65,
+    "bioavail": 0.8,
+    "pass": 0
+  },
+  "doxycycline": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.25,
+    "bioavail": 0.55,
+    "pass": 1
+  },
+  "ivermectin": {
+    "lipinski": 0,
+    "hepatotox": 0.7,
+    "herg": 0.3,
+    "bioavail": 0.25,
+    "pass": 0
+  },
+  "ribavirin": {
+    "lipinski": 1,
+    "hepatotox": 0.35,
+    "herg": 0.1,
+    "bioavail": 0.5,
+    "pass": 1
+  },
+  "sofosbuvir": {
+    "lipinski": 1,
+    "hepatotox": 0.4,
+    "herg": 0.25,
+    "bioavail": 0.45,
+    "pass": 0
+  },
+  "oseltamivir": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.25,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "favipiravir": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.1,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "remdesivir": {
+    "lipinski": 0,
+    "hepatotox": 0.75,
+    "herg": 0.4,
+    "bioavail": 0.3,
+    "pass": 0
+  },
+  "lopinavir": {
+    "lipinski": 1,
+    "hepatotox": 0.3,
+    "herg": 0.7,
+    "bioavail": 0.4,
+    "pass": 0
+  },
+  "celecoxib": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.5,
+    "bioavail": 1.0,
+    "pass": 0
+  },
+  "amlodipine": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.25,
+    "bioavail": 0.85,
+    "pass": 1
+  },
+  "atorvastatin": {
+    "lipinski": 0,
+    "hepatotox": 0.55,
+    "herg": 0.65,
+    "bioavail": 0.3,
+    "pass": 0
+  },
+  "methotrexate": {
+    "lipinski": 1,
+    "hepatotox": 0.4,
+    "herg": 0.45,
+    "bioavail": 0.55,
+    "pass": 1
+  },
+  "colchicine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.25,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "baricitinib": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.35,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "nitazoxanide": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.25,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "suramin": {
+    "lipinski": 0,
+    "hepatotox": 0.65,
+    "herg": 0.7,
+    "bioavail": 0.1,
+    "pass": 0
+  },
+  "praziquantel": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.25,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "albendazole": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.35,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "artemisinin": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.0,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "primaquine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.3,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "acyclovir": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.2,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "zidovudine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.0,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "tenofovir": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.2,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "entecavir": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.2,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "daclatasvir": {
+    "lipinski": 0,
+    "hepatotox": 0.8,
+    "herg": 0.7,
+    "bioavail": 0.1,
+    "pass": 0
+  },
+  "sirolimus": {
+    "lipinski": 0,
+    "hepatotox": 0.7,
+    "herg": 0.4,
+    "bioavail": 0.35,
+    "pass": 0
+  },
+  "niclosamide": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.4,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "auranofin": {
+    "lipinski": 1,
+    "hepatotox": 0.35,
+    "herg": 0.0,
+    "bioavail": 0.65,
+    "pass": 1
+  },
+  "miltefosine": {
+    "lipinski": 1,
+    "hepatotox": 0.3,
+    "herg": 0.45,
+    "bioavail": 0.5,
+    "pass": 1
+  },
+  "benznidazole": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.2,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "molnupiravir": {
+    "lipinski": 1,
+    "hepatotox": 0.5,
+    "herg": 0.15,
+    "bioavail": 0.5,
+    "pass": 0
+  },
+  "galidesivir": {
+    "lipinski": 1,
+    "hepatotox": 0.35,
+    "herg": 0.3,
+    "bioavail": 0.5,
+    "pass": 1
+  },
+  "balapiravir": {
+    "lipinski": 1,
+    "hepatotox": 0.4,
+    "herg": 0.15,
+    "bioavail": 0.55,
+    "pass": 1
+  },
+  "dasabuvir": {
+    "lipinski": 1,
+    "hepatotox": 0.1,
+    "herg": 0.65,
+    "bioavail": 0.75,
+    "pass": 0
+  },
+  "ledipasvir": {
+    "lipinski": 0,
+    "hepatotox": 0.7,
+    "herg": 0.7,
+    "bioavail": 0.25,
+    "pass": 0
+  },
+  "lovastatin": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.35,
+    "bioavail": 0.85,
+    "pass": 1
+  },
+  "prochlorperazine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.65,
+    "bioavail": 0.9,
+    "pass": 0
+  },
+  "gemcitabine": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.1,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "cytarabine": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.1,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "cladribine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.2,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "fludarabine": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.2,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "trifluridine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.0,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "lamivudine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.1,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "ruxolitinib": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.4,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "mycophenolate_mofetil": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.15,
+    "bioavail": 0.85,
+    "pass": 1
+  },
+  "cyclosporine": {
+    "lipinski": 0,
+    "hepatotox": 0.45,
+    "herg": 0.35,
+    "bioavail": 0.3,
+    "pass": 0
+  },
+  "leflunomide": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.35,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "mefloquine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.55,
+    "bioavail": 0.9,
+    "pass": 0
+  },
+  "darunavir": {
+    "lipinski": 1,
+    "hepatotox": 0.5,
+    "herg": 0.35,
+    "bioavail": 0.3,
+    "pass": 0
+  },
+  "atazanavir": {
+    "lipinski": 1,
+    "hepatotox": 0.6,
+    "herg": 0.7,
+    "bioavail": 0.2,
+    "pass": 0
+  },
+  "nelfinavir": {
+    "lipinski": 1,
+    "hepatotox": 0.1,
+    "herg": 0.65,
+    "bioavail": 0.55,
+    "pass": 0
+  },
+  "vandetanib": {
+    "lipinski": 1,
+    "hepatotox": 0.3,
+    "herg": 0.75,
+    "bioavail": 0.75,
+    "pass": 0
+  },
+  "erlotinib": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.5,
+    "bioavail": 0.9,
+    "pass": 0
+  },
+  "sunitinib": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.5,
+    "bioavail": 1.0,
+    "pass": 0
+  },
+  "omeprazole": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.25,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "boceprevir": {
+    "lipinski": 1,
+    "hepatotox": 0.25,
+    "herg": 0.25,
+    "bioavail": 0.45,
+    "pass": 0
+  },
+  "telaprevir": {
+    "lipinski": 1,
+    "hepatotox": 0.45,
+    "herg": 0.2,
+    "bioavail": 0.3,
+    "pass": 0
+  },
+  "simeprevir": {
+    "lipinski": 0,
+    "hepatotox": 0.55,
+    "herg": 0.7,
+    "bioavail": 0.25,
+    "pass": 0
+  },
+  "grazoprevir": {
+    "lipinski": 0,
+    "hepatotox": 0.5,
+    "herg": 0.45,
+    "bioavail": 0.55,
+    "pass": 0
+  },
+  "glecaprevir": {
+    "lipinski": 0,
+    "hepatotox": 0.5,
+    "herg": 0.45,
+    "bioavail": 0.55,
+    "pass": 0
+  },
+  "paritaprevir": {
+    "lipinski": 1,
+    "hepatotox": 0.35,
+    "herg": 0.55,
+    "bioavail": 0.55,
+    "pass": 0
+  },
+  "voxilaprevir": {
+    "lipinski": 0,
+    "hepatotox": 0.5,
+    "herg": 0.6,
+    "bioavail": 0.35,
+    "pass": 0
+  },
+  "velpatasvir": {
+    "lipinski": 0,
+    "hepatotox": 0.8,
+    "herg": 0.7,
+    "bioavail": 0.1,
+    "pass": 0
+  },
+  "elbasvir": {
+    "lipinski": 0,
+    "hepatotox": 0.8,
+    "herg": 0.7,
+    "bioavail": 0.1,
+    "pass": 0
+  },
+  "pibrentasvir": {
+    "lipinski": 0,
+    "hepatotox": 0.8,
+    "herg": 0.7,
+    "bioavail": 0.1,
+    "pass": 0
+  },
+  "ombitasvir": {
+    "lipinski": 0,
+    "hepatotox": 0.8,
+    "herg": 0.7,
+    "bioavail": 0.1,
+    "pass": 0
+  },
+  "telbivudine": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.0,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "abacavir": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.3,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "didanosine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.1,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "stavudine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.0,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "clevudine": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.0,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "umifenovir": {
+    "lipinski": 1,
+    "hepatotox": 0.45,
+    "herg": 0.65,
+    "bioavail": 0.75,
+    "pass": 0
+  },
+  "baloxavir_marboxil": {
+    "lipinski": 0,
+    "hepatotox": 0.35,
+    "herg": 0.7,
+    "bioavail": 0.45,
+    "pass": 0
+  },
+  "nirmatrelvir": {
+    "lipinski": 1,
+    "hepatotox": 0.25,
+    "herg": 0.25,
+    "bioavail": 0.85,
+    "pass": 1
+  },
+  "adefovir": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.2,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "chlorpromazine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.65,
+    "bioavail": 0.9,
+    "pass": 0
+  },
+  "sorafenib": {
+    "lipinski": 1,
+    "hepatotox": 0.3,
+    "herg": 0.75,
+    "bioavail": 0.75,
+    "pass": 0
+  },
+  "fenofibrate": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.45,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "prednisolone": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.05,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "indomethacin": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.4,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "pentoxifylline": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.1,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "naproxen": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.25,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "camostat": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.35,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "nafamostat": {
+    "lipinski": 1,
+    "hepatotox": 0.3,
+    "herg": 0.45,
+    "bioavail": 0.7,
+    "pass": 1
+  },
+  "amantadine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.1,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "rimantadine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.1,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "azathioprine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.2,
+    "bioavail": 0.9,
+    "pass": 1
+  },
+  "minocycline": {
+    "lipinski": 1,
+    "hepatotox": 0.25,
+    "herg": 0.25,
+    "bioavail": 0.65,
+    "pass": 1
+  },
+  "lisinopril": {
+    "lipinski": 1,
+    "hepatotox": 0.25,
+    "herg": 0.25,
+    "bioavail": 0.6,
+    "pass": 1
+  },
+  "gabapentin": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.1,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "levothyroxine": {
+    "lipinski": 1,
+    "hepatotox": 0.35,
+    "herg": 0.5,
+    "bioavail": 0.75,
+    "pass": 0
+  },
+  "cetirizine": {
+    "lipinski": 1,
+    "hepatotox": 0.15,
+    "herg": 0.5,
+    "bioavail": 0.9,
+    "pass": 0
+  },
+  "pantoprazole": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.25,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "pyrimethamine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.3,
+    "bioavail": 1.0,
+    "pass": 1
+  },
+  "atovaquone": {
+    "lipinski": 1,
+    "hepatotox": 0.2,
+    "herg": 0.45,
+    "bioavail": 0.8,
+    "pass": 1
+  },
+  "pentamidine": {
+    "lipinski": 1,
+    "hepatotox": 0.0,
+    "herg": 0.35,
+    "bioavail": 0.8,
+    "pass": 1
+  }
+}

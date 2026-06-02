@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Summary, Target, Drug, Field } from './types'
+import type { Summary, Target, Drug, Field, Admet } from './types'
 
 const json = async <T>(path: string): Promise<T> => {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${path}`)
@@ -11,3 +11,4 @@ export const useSummary = () => useQuery({ queryKey: ['summary'], queryFn: () =>
 export const useTargets = () => useQuery({ queryKey: ['targets'], queryFn: () => json<Target[]>('targets.json') })
 export const useDrugs = () => useQuery({ queryKey: ['drugs'], queryFn: () => json<Drug[]>('drugs.json') })
 export const useField = () => useQuery({ queryKey: ['field'], queryFn: () => json<Field>('field.json') })
+export const useAdmet = () => useQuery({ queryKey: ['admet'], queryFn: () => json<Admet>('admet.json') })

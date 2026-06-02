@@ -56,3 +56,11 @@ def test_field_has_targets_and_corrected_ns5():
     assert top["name"] == "dasabuvir", f"expected dasabuvir as top drug-like NS5, got {top['name']}"
     names = {p["name"] for p in druglike}
     assert "velpatasvir" not in names and "grazoprevir" not in names
+
+
+def test_admet_export():
+    _run()
+    a = json.loads((OUT / "admet.json").read_text())
+    assert len(a) == 100
+    assert "dasabuvir" in a
+    assert all("pass" in v for v in a.values())

@@ -40,3 +40,13 @@ export interface FieldPoint {
 
 export type Field = Record<string, FieldPoint[]>
 
+export interface AdmetRow {
+  lipinski: number
+  hepatotox: number
+  herg: number
+  bioavail: number
+  pass: number
+}
+
+export type Admet = Record<string, AdmetRow>
+
