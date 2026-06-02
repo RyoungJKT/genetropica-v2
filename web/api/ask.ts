@@ -1,6 +1,6 @@
 // Vercel serverless function: a grounded "ask the data" assistant for GeneTropica.
-// Reads OPENAI_API_KEY (and optional LLM_BASE_URL / LLM_MODEL) from the server
-// environment; the key is never exposed to the browser. Answers strictly from a
+// Reads LLM_API_KEY (and optional LLM_BASE_URL / LLM_MODEL) from
+// the server environment; the key is never exposed to the browser. Answers strictly from a
 // compact data digest, so it cannot invent drugs, numbers, or claims.
 import digest from './_digest.json'
 
@@ -19,10 +19,10 @@ ${JSON.stringify(digest)}`
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Use POST.' })
 
-  const key = process.env.OPENAI_API_KEY
+  const key = process.env.LLM_API_KEY
   if (!key) {
     return res.status(200).json({
-      answer: "The assistant isn't switched on yet. The site owner needs to add an OPENAI_API_KEY in the Vercel project settings.",
+      answer: "The assistant isn't switched on yet. The site owner needs to add an LLM_API_KEY in the Vercel project settings.",
     })
   }
 
@@ -33,26 +33,31 @@ export default async function handler(req: any, res: any) {
   const question = String(body?.question ?? '').slice(0, 500).trim()
   if (!question) return res.status(400).json({ error: 'Please ask a question.' })
 
-  const base = (process.env.LLM_BASE_URL || 'https://api.openai.com/v1').replace(/\/$/, '')
+  const base = (process.env.LLM_BASE_URL || 'https://api.openai.com').replace(/\/$/, '')
   const model = process.env.LLM_MODEL || 'gpt-4o-mini'
 
   try {
-    const r = await fetch(`${base}/chat/completions`, {
+    const r = await fetch(`${base}/v1/messages`, {
       method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      headers: {
+        'x-api-key': key,
+        'x-api-version': '2023-06-01',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         model,
-        temperature: 0,
         max_tokens: 320,
-        messages: [
-          { role: 'system', content: SYSTEM },
-          { role: 'user', content: question },
-        ],
+        temperature: 0,
+        system: SYSTEM,
+        messages: [{ role: 'user', content: question }],
       }),
     })
     if (!r.ok) return res.status(502).json({ error: 'The model service returned an error.' })
     const data: any = await r.json()
-    return res.status(200).json({ answer: data?.choices?.[0]?.message?.content ?? '(no answer)' })
+    const answer = Array.isArray(data?.content)
+      ? data.content.map((b: any) => (b?.type === 'text' ? b.text : '')).join('').trim()
+      : ''
+    return res.status(200).json({ answer: answer || '(no answer)' })
   } catch {
     return res.status(502).json({ error: 'Could not reach the model service.' })
   }
