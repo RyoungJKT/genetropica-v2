@@ -89,6 +89,8 @@ export interface KeyResidue {
   residue_number: number
   reference_aa: string
   conservation_pct: number
+  /** Per-virus amino acid at this position (DENV-1, ZIKV, HCV, ...). */
+  [virus: string]: number | string
 }
 export interface MannWhitney {
   p_value: number
