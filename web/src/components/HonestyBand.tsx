@@ -13,7 +13,7 @@ export function HonestyBand() {
       <div className="wrap" style={{ padding: '90px 28px' }}>
         <Reveal>
           <div className="eyebrow" style={{ color: '#9ec7ad' }}>What this is, and is not</div>
-          <h2 style={{ color: 'var(--paper)', fontSize: 'clamp(28px,3.6vw,44px)', fontWeight: 380, maxWidth: '18ch', marginTop: 14 }}>Impressive only if it is honest.</h2>
+          <h2 style={{ color: 'var(--paper)', fontSize: 'clamp(28px,3.6vw,44px)', fontWeight: 380, maxWidth: '22ch', marginTop: 14 }}>Strong on what it is. Clear on what it isn't.</h2>
         </Reveal>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 26, marginTop: 42 }}>
           {ITEMS.map((it, i) => (
