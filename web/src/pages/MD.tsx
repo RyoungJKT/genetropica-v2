@@ -28,7 +28,7 @@ function TopContacts({ md }: { md: Md }) {
       <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.55, margin: '4px 0 14px', maxWidth: 760 }}>
         The protein residues each drug touches most over the run (percentage of frames in contact). Residues shared between drugs point to a common binding site.
       </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+      <div className="rstack" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
         {DRUGS.map((d) => {
           const contacts = md.series[d]?.contacts ?? []
           const max = contacts.length ? contacts[0][1] : 100

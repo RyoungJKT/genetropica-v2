@@ -10,6 +10,7 @@ import { Footer } from '../components/Footer'
 import { FieldPanel } from '../components/FieldPanel'
 import { HeroMolecule } from '../three/HeroMolecule'
 import { CandidateBoard } from '../charts/CandidateBoard'
+import { useIsMobile } from '../lib/useIsMobile'
 
 const TARGET_ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 
@@ -19,6 +20,7 @@ export default function Overview() {
   const targets = useTargets()
   const field = useField()
   const [sel, setSel] = useState('DENV_NS5')
+  const isMobile = useIsMobile()
 
   const targetName = (id: string) => targets.data?.find((t) => t.target_id === id)?.name ?? id
   const points = field.data?.[sel] ?? []
@@ -27,7 +29,7 @@ export default function Overview() {
   return (
     <>
       {/* hero */}
-      <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', alignItems: 'center', gap: 20, minHeight: '78vh', padding: '40px 0 30px' }}>
+      <div className="wrap" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.05fr .95fr', alignItems: 'center', gap: 20, minHeight: isMobile ? 'auto' : '78vh', padding: isMobile ? '26px 0 8px' : '40px 0 30px' }}>
         <div>
           <div className="eyebrow">Drug repurposing for neglected tropical diseases</div>
           <h1 style={{ fontSize: 'clamp(40px,6.4vw,84px)', fontWeight: 360, letterSpacing: '-.035em', marginTop: 18, lineHeight: 1.0 }}>
@@ -42,7 +44,7 @@ export default function Overview() {
             Explore the candidates
           </a>
         </div>
-        <div style={{ height: 460 }}><HeroMolecule /></div>
+        <div style={{ height: isMobile ? 260 : 460 }}><HeroMolecule /></div>
       </div>
 
       {/* stats */}
@@ -86,7 +88,7 @@ export default function Overview() {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 30, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 320px', gap: 30, alignItems: 'start' }}>
             {field.isLoading ? (
               <div className="mono" style={{ padding: 40 }}>Loading candidates...</div>
             ) : (

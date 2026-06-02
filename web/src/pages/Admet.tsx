@@ -35,7 +35,7 @@ function FilterSummary({ profiles }: { profiles: AdmetProfile[] }) {
   const counts = filters.map(([, f]) => profiles.filter(f).length)
   return (
     <div ref={ref}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 12 }}>
+      <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 12 }}>
         {filters.map(([label], i) => (
           <FilterCard key={label} label={label} value={counts[i]} total={total} active={inView} />
         ))}
@@ -336,7 +336,7 @@ export default function Admet() {
               {[...profs].sort((a, b) => a.name.localeCompare(b.name)).map((p) => <option key={p.name} value={p.name}>{p.name}</option>)}
             </select>
             {selProf && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,440px) 1fr', gap: 28, alignItems: 'center' }}>
+              <div className="rstack" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,440px) 1fr', gap: 28, alignItems: 'center' }}>
                 <PhysChemRadar p={selProf} />
                 <div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: '10px 22px', maxWidth: 360 }}>

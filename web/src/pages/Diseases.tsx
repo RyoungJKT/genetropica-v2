@@ -19,7 +19,7 @@ export default function Diseases() {
             'Three neglected tropical diseases endemic to Indonesia. They affect millions but attract little new drug funding, which is what makes repurposing safe, approved medicines worthwhile here.',
             'Three neglected tropical diseases endemic to Indonesia. Repurposing is attractive because approved drugs already have established human safety, lowering the regulatory barrier; it does not imply efficacy.')}
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20, marginTop: 28 }}>
+        <div className="rstack" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20, marginTop: 28 }}>
           {DISEASES.map((d) => (
             <div key={d.name} style={{ border: '1px solid var(--line)', borderRadius: 16, padding: 22, background: 'var(--paper)' }}>
               <h3 style={{ fontSize: 23, marginBottom: 4 }}>{d.name}</h3>

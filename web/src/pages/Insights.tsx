@@ -30,7 +30,7 @@ function LiteratureEvidence() {
           <button key={id} onClick={() => setTid(id)} style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase', padding: '8px 14px', borderRadius: 100, cursor: 'pointer', border: '1px solid var(--line)', background: tid === id ? 'var(--green)' : 'var(--paper)', color: tid === id ? 'var(--paper)' : 'var(--ink-soft)' }}>{tName(id)}</button>
         ))}
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
+      <div className="rstack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
         <div>
           <h4 style={{ fontSize: 14, marginBottom: 10 }}>References per drug</h4>
           {ranked.length ? ranked.map(([drug, c]) => (
