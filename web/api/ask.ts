@@ -2,7 +2,7 @@
 // Reads ANTHROPIC_API_KEY (and optional ANTHROPIC_BASE_URL / ANTHROPIC_MODEL) from
 // the server environment; the key is never exposed to the browser. Answers strictly from a
 // compact data digest, so it cannot invent drugs, numbers, or claims.
-import digest from './_digest'
+import digest from './_digest.mjs'
 
 const SYSTEM = `You are GeneTropica's data assistant for a computational drug-repurposing screen.
 Answer the user's question using ONLY the DATA JSON below.
