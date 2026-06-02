@@ -100,9 +100,14 @@ def main():
         "name": r["name"], "category": r["category"], "indication": r["original_indication"],
         "molecular_weight": r["molecular_weight"], "heavy_atoms": r["heavy_atoms"],
         "logp": r["logp"], "inchikey": r["inchikey"], "structure_source": r["structure_source"],
+        "smiles": r["smiles"], "drugbank_id": r["drugbank_id"],
+        # ml_binding_score is a target-agnostic ligand prior: identical for a drug across every target.
+        "ml": round(r["ml"], 3) if r["ml"] is not None else None,
     } for r in cur.execute(
         "SELECT name, category, original_indication, molecular_weight, heavy_atoms, logp, "
-        "inchikey, structure_source FROM drugs ORDER BY name")]
+        "inchikey, structure_source, smiles, drugbank_id, "
+        "(SELECT ml_binding_score FROM ml_scores m WHERE m.drug_id = drugs.drug_id LIMIT 1) ml "
+        "FROM drugs ORDER BY name")]
     (OUT / "drugs.json").write_text(json.dumps(drugs, indent=2))
 
     # field.json: per-target drug points for the 3D candidate field
