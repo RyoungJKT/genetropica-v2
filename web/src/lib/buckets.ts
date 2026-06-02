@@ -34,7 +34,7 @@ const CAT2BUCKET: Record<string, string> = {
   O_Entry_Inhibitors: 'control',
 }
 
-export const bucketOf = (p: FieldPoint): Bucket => BUCKETS[CAT2BUCKET[p.category] ?? 'repurpose']
+export const bucketOf = (p: { category: string }): Bucket => BUCKETS[CAT2BUCKET[p.category] ?? 'repurpose']
 
 export function insight(p: FieldPoint): string {
   if (p.name.toLowerCase() === 'sofosbuvir')
