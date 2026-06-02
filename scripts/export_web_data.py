@@ -239,11 +239,14 @@ def main():
 
     md = {"summary": _csv("comparison_summary.csv"), "series": {}}
     for d in md_drugs:
+        bp = _csv(f"binding_proxy_{d}.csv")
         md["series"][d] = {
             "rmsd": [[_num(r["time_ns"]), _num(r["protein_rmsd_A"]), _num(r["ligand_rmsd_A"])] for r in _csv(f"rmsd_{d}.csv")],
             "hbonds": [[_num(r["time_ns"]), _num(r["n_hbonds"])] for r in _csv(f"hbonds_{d}.csv")],
-            "mindist": [[_num(r["time_ns"]), _num(r["min_dist_A"])] for r in _csv(f"binding_proxy_{d}.csv")],
+            "mindist": [[_num(r["time_ns"]), _num(r["min_dist_A"])] for r in bp],
+            "ncontacts": [[_num(r["time_ns"]), _num(r["n_contacts"])] for r in bp],
             "rmsf": [[int(r["resid"]), _num(r["rmsf_A"])] for r in _csv(f"rmsf_{d}.csv")],
+            "contacts": [[int(r["resid"]), round(float(r["occupancy_pct"]), 1)] for r in _csv(f"contacts_{d}.csv")[:15]],
         }
     (OUT / "md.json").write_text(json.dumps(md, separators=(",", ":")))
 

@@ -2,7 +2,8 @@ import type { ReactNode, CSSProperties } from 'react'
 import { useMd } from '../data/api'
 import { useRegister, say } from '../state/register'
 import { MultiLineChart, type ChartLine } from '../components/MultiLineChart'
-import type { MdSeries } from '../data/types'
+import type { MdSeries, Md } from '../data/types'
+import { useInView } from '../lib/anim'
 
 const DRUGS = ['celecoxib', 'methotrexate', 'dasabuvir'] as const
 const COLOR: Record<string, string> = { celecoxib: '#1F5740', methotrexate: '#A8492B', dasabuvir: '#A8742C' }
@@ -15,6 +16,38 @@ function ChartBlock({ title, caption, children }: { title: string; caption: stri
       <h3 style={{ fontSize: 22 }}>{title}</h3>
       <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.55, margin: '4px 0 12px', maxWidth: 760 }}>{caption}</p>
       {children}
+    </div>
+  )
+}
+
+function TopContacts({ md }: { md: Md }) {
+  const [ref, inView] = useInView<HTMLDivElement>()
+  return (
+    <div ref={ref} style={{ marginTop: 34 }}>
+      <h3 style={{ fontSize: 22 }}>Top contact residues</h3>
+      <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.55, margin: '4px 0 14px', maxWidth: 760 }}>
+        The protein residues each drug touches most over the run (percentage of frames in contact). Residues shared between drugs point to a common binding site.
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+        {DRUGS.map((d) => {
+          const contacts = md.series[d]?.contacts ?? []
+          const max = contacts.length ? contacts[0][1] : 100
+          return (
+            <div key={d}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: COLOR[d], marginBottom: 8 }}>{LABEL[d]}</div>
+              {contacts.length ? contacts.map(([resid, occ], i) => (
+                <div key={resid} style={{ display: 'grid', gridTemplateColumns: '50px 1fr 42px', gap: 6, alignItems: 'center', margin: '4px 0' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', textAlign: 'right' }}>{resid}</span>
+                  <div style={{ background: 'var(--paper-3)', borderRadius: 3, height: 11, overflow: 'hidden' }}>
+                    <div className="bar" style={{ width: inView ? `${(occ / max) * 100}%` : '0%', height: '100%', background: COLOR[d], borderRadius: 3, transitionDelay: `${i * 25}ms` }} />
+                  </div>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-faint)' }}>{occ}%</span>
+                </div>
+              )) : <p style={{ fontSize: 12, color: 'var(--ink-faint)' }}>No sustained contacts.</p>}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -52,7 +85,7 @@ export default function MD() {
           <table style={{ borderCollapse: 'collapse', fontSize: 13, minWidth: 640 }}>
             <thead>
               <tr>
-                {['Drug', 'Protein RMSD (Å)', 'Ligand RMSD (Å)', 'Associates (ns)', 'H-bonds', 'Min dist (Å)'].map((h) => (
+                {['Drug', 'Protein RMSD (Å)', 'Ligand RMSD (Å)', 'Associates (ns)', 'Rg (Å)', 'H-bonds', 'Min dist (Å)', 'Contact res >50%', 'Avg contacts'].map((h) => (
                   <th key={h} style={{ textAlign: h === 'Drug' ? 'left' : 'right', padding: '8px 14px', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)', borderBottom: '1px solid var(--line)', whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
@@ -64,8 +97,11 @@ export default function MD() {
                   <td style={tdR}>{r.Prot_RMSD_avg} ± {r.Prot_RMSD_std}</td>
                   <td style={tdR}>{r.Lig_RMSD_avg === 'no stable pose' ? 'no stable pose' : `${r.Lig_RMSD_avg} ± ${r.Lig_RMSD_std}`}</td>
                   <td style={tdR}>{r.Assoc_ns}</td>
-                  <td style={tdR}>{r.HBonds_avg}</td>
+                  <td style={tdR}>{r.Rg_avg}</td>
+                  <td style={tdR}>{r.HBonds_avg} ± {r.HBonds_std}</td>
                   <td style={tdR}>{r.MinDist_avg}</td>
+                  <td style={tdR}>{r.ContactRes_gt50pct}</td>
+                  <td style={tdR}>{r.Contacts_avg}</td>
                 </tr>
               ))}
             </tbody>
@@ -90,6 +126,10 @@ export default function MD() {
           <ChartBlock title="Per-residue flexibility (RMSF)" caption="Which parts of the protein move most. Peaks are flexible loops, troughs the rigid core. Similar across the three runs, as expected for the same protein.">
             <MultiLineChart lines={series('rmsf', 1)} xLabel="residue" yLabel="RMSF (Å)" yMin={0} />
           </ChartBlock>
+          <ChartBlock title="Atom-atom contacts" caption="Close contacts (within 4.5 Å) between drug and protein over time. The jump from zero marks association; a sustained high count means a tight, persistent interface.">
+            <MultiLineChart lines={series('ncontacts', 1)} xLabel="time (ns)" yLabel="contacts (< 4.5 Å)" yMin={0} />
+          </ChartBlock>
+          <TopContacts md={md.data} />
         </>
       )}
     </div>

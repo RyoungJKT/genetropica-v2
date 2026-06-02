@@ -89,6 +89,8 @@ export interface MdSeries {
   hbonds: (number | null)[][]
   mindist: (number | null)[][]
   rmsf: (number | null)[][]
+  ncontacts: (number | null)[][]
+  contacts: number[][]
 }
 export interface Md {
   summary: MdRow[]
