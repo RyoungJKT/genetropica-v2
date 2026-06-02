@@ -165,6 +165,18 @@ def main():
     } for p in prof_src), key=lambda x: x["name"])
     (OUT / "admet_profiles.json").write_text(json.dumps(profiles, indent=2))
 
+    # literature.json: PubMed evidence per drug-target (keyword-mined; evidence tier included
+    # so weak keyword hits can be shown as such and never inflate a candidate).
+    lit = [{
+        "drug": r["drug"], "target": r["target"], "pmid": r["pmid"], "title": r["title"],
+        "rel": r["rel"], "conf": round(r["conf"], 2) if r["conf"] is not None else None, "tier": r["tier"],
+    } for r in cur.execute(
+        "SELECT d.name drug, l.target_id target, l.pmid, "
+        "COALESCE(NULLIF(l.canonical_title,''), l.title) title, l.relationship rel, "
+        "l.confidence conf, l.evidence_tier tier FROM literature l "
+        "JOIN drugs d ON d.drug_id=l.drug_id ORDER BY d.name, l.target_id, l.confidence DESC")]
+    (OUT / "literature.json").write_text(json.dumps(lit, indent=2))
+
     # binding viewer: a trimmed pocket PDB per target + per drug-like complex an
     # all-atom, bond-order-correct ligand .mol (RDKit) and the FIX-9 predicted contacts.
     bind_dir = OUT / "binding"; bind_dir.mkdir(exist_ok=True)

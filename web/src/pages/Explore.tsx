@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { useField, useAdmet, useDrugs, useTargets } from '../data/api'
+import { useField, useAdmet, useDrugs, useTargets, useLiterature } from '../data/api'
 import { useRegister, say } from '../state/register'
 import { BUCKETS, bucketOf } from '../lib/buckets'
 import { DrugTable } from '../components/DrugTable'
@@ -26,6 +26,7 @@ export default function Explore() {
   const admet = useAdmet()
   const drugs = useDrugs()
   const targets = useTargets()
+  const lit = useLiterature()
   const { reg } = useRegister()
   const [tid, setTid] = useState('DENV_NS5')
   const [q, setQ] = useState('')
@@ -92,7 +93,7 @@ export default function Explore() {
           ))}
         </select>
         {selDrug && field.data ? (
-          <DrugPanel drug={selDrug} field={field.data} admet={selAdmet} order={order} tName={tName} />
+          <DrugPanel drug={selDrug} field={field.data} admet={selAdmet} order={order} tName={tName} literature={(lit.data ?? []).filter((r) => r.drug === selDrug.name)} />
         ) : (
           <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>Choose a drug above, or click a row in the table, to see its cross-target binding and ADMET profile.</p>
         )}

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Summary, Target, Drug, Field, Admet, AdmetProfile, BindingData, BindingIndex, Md, Conservation, Validation, Methods } from './types'
+import type { Summary, Target, Drug, Field, Admet, AdmetProfile, LitRef, BindingData, BindingIndex, Md, Conservation, Validation, Methods } from './types'
 
 const json = async <T>(path: string): Promise<T> => {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${path}`)
@@ -13,6 +13,7 @@ export const useDrugs = () => useQuery({ queryKey: ['drugs'], queryFn: () => jso
 export const useField = () => useQuery({ queryKey: ['field'], queryFn: () => json<Field>('field.json') })
 export const useAdmet = () => useQuery({ queryKey: ['admet'], queryFn: () => json<Admet>('admet.json') })
 export const useAdmetProfiles = () => useQuery({ queryKey: ['admetProfiles'], queryFn: () => json<AdmetProfile[]>('admet_profiles.json') })
+export const useLiterature = () => useQuery({ queryKey: ['literature'], queryFn: () => json<LitRef[]>('literature.json') })
 export const useMd = () => useQuery({ queryKey: ['md'], queryFn: () => json<Md>('md.json') })
 export const useConservation = () => useQuery({ queryKey: ['conservation'], queryFn: () => json<Conservation>('conservation.json') })
 export const useValidation = () => useQuery({ queryKey: ['validation'], queryFn: () => json<Validation>('validation.json') })

@@ -1,5 +1,60 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useRegister, say } from '../state/register'
+import { useField, useLiterature, useTargets } from '../data/api'
+
+const LIT_ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
+
+function LiteratureEvidence() {
+  const lit = useLiterature()
+  const field = useField()
+  const targets = useTargets()
+  const [tid, setTid] = useState('DENV_NS5')
+  const tName = (id: string) => targets.data?.find((t) => t.target_id === id)?.name ?? id
+  if (!lit.data || !field.data) return null
+  const order = LIT_ORDER.filter((t) => field.data![t])
+  const refsHere = lit.data.filter((r) => r.target === tid)
+  const countByDrug: Record<string, number> = {}
+  for (const r of refsHere) countByDrug[r.drug] = (countByDrug[r.drug] ?? 0) + 1
+  const ranked = Object.entries(countByDrug).sort((a, b) => b[1] - a[1]).slice(0, 12)
+  const maxC = ranked.length ? ranked[0][1] : 1
+  const withRefs = new Set(refsHere.map((r) => r.drug))
+  const novel = [...(field.data[tid] ?? [])].filter((p) => p.dl === 1 && !withRefs.has(p.name)).sort((a, b) => a.vina - b.vina).slice(0, 6)
+  return (
+    <div style={{ marginTop: 30 }}>
+      <h3 style={{ fontSize: 22 }}>Literature evidence</h3>
+      <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.7, margin: '8px 0 14px', maxWidth: 760 }}>
+        PubMed references per drug for a target, found by keyword mining (so weak hits dominate and count only as a hint, not proof). Drugs that score well here yet have no prior literature are the more interesting, genuinely novel, leads.
+      </p>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18 }}>
+        {order.map((id) => (
+          <button key={id} onClick={() => setTid(id)} style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase', padding: '8px 14px', borderRadius: 100, cursor: 'pointer', border: '1px solid var(--line)', background: tid === id ? 'var(--green)' : 'var(--paper)', color: tid === id ? 'var(--paper)' : 'var(--ink-soft)' }}>{tName(id)}</button>
+        ))}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
+        <div>
+          <h4 style={{ fontSize: 14, marginBottom: 10 }}>References per drug</h4>
+          {ranked.length ? ranked.map(([drug, c]) => (
+            <div key={drug} style={{ display: 'grid', gridTemplateColumns: '120px 1fr 24px', gap: 8, alignItems: 'center', margin: '6px 0' }}>
+              <span style={{ fontSize: 12.5, color: 'var(--ink-soft)', textTransform: 'capitalize', textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{drug.replace(/_/g, ' ')}</span>
+              <div style={{ background: 'var(--paper-3)', borderRadius: 4, height: 13, overflow: 'hidden' }}><div className="bar" style={{ width: `${(c / maxC) * 100}%`, height: '100%', background: 'var(--teal)', borderRadius: 4 }} /></div>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 11 }}>{c}</span>
+            </div>
+          )) : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>No references for this target.</p>}
+        </div>
+        <div>
+          <h4 style={{ fontSize: 14, marginBottom: 10 }}>Novel-discovery candidates</h4>
+          <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 8px' }}>Drug-like, top binders here, with no prior literature.</p>
+          {novel.length ? novel.map((p) => (
+            <div key={p.name} style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', borderBottom: '1px solid var(--line)', fontSize: 13 }}>
+              <span style={{ textTransform: 'capitalize' }}>{p.name.replace(/_/g, ' ')}</span>
+              <span style={{ fontFamily: 'var(--mono)', color: 'var(--ink-soft)' }}>{p.vina} kcal/mol</span>
+            </div>
+          )) : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>None.</p>}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -40,6 +95,8 @@ export default function Insights() {
       <Block title="Why two metrics, not one">
         Raw Vina score favours large molecules; ligand efficiency (grip per atom) favours small ones. Reporting both, over drug-like candidates only, keeps either bias from dominating, which is exactly why the candidate ranking shows both side by side.
       </Block>
+
+      <LiteratureEvidence />
     </div>
   )
 }
