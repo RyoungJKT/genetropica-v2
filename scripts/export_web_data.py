@@ -5,6 +5,7 @@ Reproducible build step: reads data/database/genetropica.db (the cleaned,
 post-remediation DB) and writes web/public/data/*.json. Re-run whenever the
 database changes. Phase 0 emits summary, targets, and drugs.
 """
+import csv
 import json
 import sqlite3
 from pathlib import Path
@@ -183,6 +184,30 @@ def main():
     for tid in bind_index:
         bind_index[tid].sort()
     (bind_dir / "index.json").write_text(json.dumps(bind_index, indent=2))
+
+    # md.json: molecular-dynamics time series + summary (from the FIX-4 / FIX-14 CSVs)
+    md_dir = ROOT / "data" / "md_simulation" / "comparison"
+    md_drugs = ["celecoxib", "methotrexate", "dasabuvir"]
+
+    def _csv(name):
+        with open(md_dir / name) as f:
+            return list(csv.DictReader(f))
+
+    def _num(s):
+        try:
+            return round(float(s), 3)
+        except (TypeError, ValueError):
+            return None
+
+    md = {"summary": _csv("comparison_summary.csv"), "series": {}}
+    for d in md_drugs:
+        md["series"][d] = {
+            "rmsd": [[_num(r["time_ns"]), _num(r["protein_rmsd_A"]), _num(r["ligand_rmsd_A"])] for r in _csv(f"rmsd_{d}.csv")],
+            "hbonds": [[_num(r["time_ns"]), _num(r["n_hbonds"])] for r in _csv(f"hbonds_{d}.csv")],
+            "mindist": [[_num(r["time_ns"]), _num(r["min_dist_A"])] for r in _csv(f"binding_proxy_{d}.csv")],
+            "rmsf": [[int(r["resid"]), _num(r["rmsf_A"])] for r in _csv(f"rmsf_{d}.csv")],
+        }
+    (OUT / "md.json").write_text(json.dumps(md, separators=(",", ":")))
 
     con.close()
     print(f"wrote summary/targets/drugs/field/admet json + {n_bind} binding complexes "

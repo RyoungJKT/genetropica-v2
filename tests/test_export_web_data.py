@@ -82,3 +82,12 @@ def test_binding_export():
     mol = (OUT / "binding" / "DENV_NS5__dasabuvir.mol").read_text()
     assert "V2000" in mol and " H " in mol  # all-atom molblock with hydrogens
     assert (OUT.parent / "structures" / "DENV_NS5.pdb").exists()
+
+
+def test_md_export():
+    _run()
+    md = json.loads((OUT / "md.json").read_text())
+    assert len(md["summary"]) == 3
+    for d in ("celecoxib", "methotrexate", "dasabuvir"):
+        s = md["series"][d]
+        assert len(s["rmsd"]) > 50 and len(s["rmsf"]) > 100 and len(s["mindist"]) > 50

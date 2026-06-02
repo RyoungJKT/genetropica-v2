@@ -54,3 +54,15 @@ export interface Contact { res: string; num: string; chain: string; type: string
 export interface BindingData { contacts: Contact[] }
 export type BindingIndex = Record<string, string[]>
 
+export type MdRow = Record<string, string>
+export interface MdSeries {
+  rmsd: (number | null)[][]
+  hbonds: (number | null)[][]
+  mindist: (number | null)[][]
+  rmsf: (number | null)[][]
+}
+export interface Md {
+  summary: MdRow[]
+  series: Record<string, MdSeries>
+}
+
