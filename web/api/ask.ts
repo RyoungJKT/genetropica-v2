@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
   if (!question) return res.status(400).json({ error: 'Please ask a question.' })
 
   const base = (process.env.LLM_BASE_URL || 'https://api.openai.com').replace(/\/$/, '')
-  const model = process.env.LLM_MODEL || 'larger-model'
+  const model = process.env.LLM_MODEL || 'default-model'
 
   try {
     const r = await fetch(`${base}/v1/messages`, {
