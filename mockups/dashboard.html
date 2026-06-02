@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GeneTropica · Dashboard mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hanken+Grotesk:wght@300..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F0E6; --paper-2:#ECE6D8; --paper-3:#E4DCC9;
+  --ink:#1C1A17; --ink-soft:#544F45; --ink-faint:#8A8273;
+  --green:#1F5740; --green-bright:#2E7D5B; --clay:#A8492B; --gold:#A8742C; --line:#D8D0BD;
+  --teal:#2C6E6B; --slate:#5B5470;
+  --serif:'Fraunces',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'Spline Sans Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased;}
+/* subtle paper grain */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;position:relative;z-index:2;}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.04;margin:0;}
+a{color:var(--green);text-decoration:none;}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-faint);}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--clay);}
+
+/* ---------- top bar ---------- */
+header{position:sticky;top:0;z-index:30;backdrop-filter:blur(8px);background:rgba(244,240,230,.72);border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:21px;}
+.brand svg{display:block;}
+.brand b{font-weight:500;}
+.brand .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--green);border:1px solid var(--line);border-radius:100px;padding:3px 8px;text-transform:uppercase;}
+nav.links{display:flex;gap:26px;}
+nav.links a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);transition:color .2s;}
+nav.links a:hover{color:var(--green);}
+@media(max-width:820px){nav.links{display:none;}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:90vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:20px;padding:40px 0 30px;}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.hero .copy{position:relative;z-index:3;}
+.hero h1{font-size:clamp(40px,6.4vw,84px);font-weight:360;letter-spacing:-.035em;}
+.hero h1 em{font-style:italic;color:var(--green);}
+.hero .lede{font-size:clamp(16px,1.5vw,19px);color:var(--ink-soft);max-width:33ch;line-height:1.65;margin:22px 0 28px;}
+.cta{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:12px;border-radius:100px;padding:13px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:.25s;}
+.btn:hover{background:var(--green);border-color:var(--green);transform:translateY(-1px);}
+.btn.ghost{background:transparent;color:var(--ink);}
+.btn.ghost:hover{color:var(--green);background:transparent;}
+.hero .art{position:relative;z-index:2;height:520px;}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;}.hero .art{display:none;}}
+
+/* ---------- stats strip ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:6px;}
+.stat{padding:26px 20px;border-right:1px solid var(--line);}
+.stat:last-child{border-right:0;}
+.stat .num{font-family:var(--serif);font-size:clamp(34px,4vw,52px);font-weight:360;line-height:1;color:var(--ink);}
+.stat .lbl{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--ink-faint);margin-top:9px;}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr);}.stat:nth-child(2){border-right:0;}}
+
+/* ---------- section scaffolding ---------- */
+section{padding:92px 0;}
+.sec-head{max-width:720px;margin-bottom:46px;}
+.sec-head h2{font-size:clamp(28px,3.6vw,46px);font-weight:380;margin-top:14px;}
+.sec-head p{color:var(--ink-soft);font-size:17px;line-height:1.7;margin:18px 0 0;}
+
+/* ---------- how it works ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step{position:relative;padding:30px 26px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--paper-2),var(--paper));overflow:hidden;}
+.step .n{font-family:var(--serif);font-size:64px;color:var(--paper-3);position:absolute;top:6px;right:18px;line-height:1;}
+.step h3{font-size:23px;margin-bottom:10px;position:relative;}
+.step p{color:var(--ink-soft);line-height:1.65;font-size:15px;position:relative;}
+.step .chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);border:1px solid var(--line);border-radius:100px;padding:4px 10px;margin-top:16px;background:var(--paper);}
+@media(max-width:820px){.steps{grid-template-columns:1fr;}}
+
+/* ---------- candidate field (centerpiece) ---------- */
+.field{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.field-grid{display:grid;grid-template-columns:1fr 300px;gap:30px;align-items:stretch;}
+.scatter-shell{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:
+  radial-gradient(120% 90% at 30% 10%, #fbf8ef 0%, #efe9da 60%, #e7e0cf 100%);min-height:560px;}
+#fieldCanvas{width:100%;height:560px;display:block;cursor:grab;}
+#fieldCanvas:active{cursor:grabbing;}
+.axis-tag{position:absolute;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+.axis-x{bottom:14px;left:50%;transform:translateX(-50%);}
+.axis-y{top:50%;left:12px;transform:translateY(-50%) rotate(-90deg);transform-origin:left;}
+.field-hint{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;}
+.tooltip{position:absolute;pointer-events:none;z-index:8;min-width:200px;max-width:250px;background:var(--ink);color:var(--paper);border-radius:12px;padding:14px 15px;opacity:0;transform:translateY(6px);transition:opacity .15s,transform .15s;box-shadow:0 18px 40px rgba(28,26,23,.28);}
+.tooltip.on{opacity:1;transform:translateY(0);}
+.tooltip .tt-name{font-family:var(--serif);font-size:19px;text-transform:capitalize;margin-bottom:2px;}
+.tooltip .tt-class{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#cdbfae;}
+.tooltip .tt-row{font-size:12.5px;color:#e8e0d2;margin-top:8px;line-height:1.5;}
+.tooltip .tt-insight{font-size:13px;line-height:1.55;margin-top:10px;border-top:1px solid #3a352d;padding-top:9px;color:#f4f0e6;}
+.tooltip .tt-stat{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:#cdbfae;margin-top:5px;}
+.tooltip .tt-stat b{color:#fff;font-weight:500;}
+
+.panel{display:flex;flex-direction:column;gap:18px;}
+.panel .card{border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:20px;}
+.panel h4{font-size:20px;margin-bottom:8px;}
+.panel p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:0;}
+.legend{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+.legend .lg{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft);}
+.legend .dot{width:13px;height:13px;border-radius:50%;flex:none;box-shadow:0 0 0 3px rgba(0,0,0,.04);}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.toggle span{padding:8px 13px;color:var(--ink-faint);transition:.2s;}
+.toggle span.active{background:var(--green);color:var(--paper);}
+.read-note{font-size:12px;color:var(--ink-faint);font-style:italic;line-height:1.5;}
+
+/* ---------- targets ---------- */
+.disease-group{margin-bottom:34px;}
+.disease-group .dlabel{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.disease-group .dlabel h3{font-size:26px;}
+.disease-group .dlabel .ct{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tcard{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--paper);transition:.25s;}
+.tcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(28,26,23,.08);border-color:var(--green);}
+.tcard .pdb{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--clay);text-transform:uppercase;}
+.tcard h4{font-size:21px;margin:8px 0 10px;}
+.tcard p{font-size:14px;color:var(--ink-soft);line-height:1.6;margin:0;}
+.tcard .pred{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:100px;padding:3px 9px;}
+@media(max-width:820px){.tcards{grid-template-columns:1fr;}.field-grid{grid-template-columns:1fr;}}
+
+/* ---------- go deeper ---------- */
+.deep{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.dcard{border:1px solid var(--line);border-radius:16px;padding:24px;background:linear-gradient(180deg,var(--paper),var(--paper-2));transition:.25s;display:block;}
+.dcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(28,26,23,.08);border-color:var(--green);}
+.dcard .ic{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;}
+.dcard h4{font-size:20px;margin:10px 0 8px;color:var(--ink);}
+.dcard p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 12px;}
+.dcard .go{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);}
+@media(max-width:820px){.deep{grid-template-columns:1fr;}}
+
+/* ---------- honesty band ---------- */
+.rigor{background:linear-gradient(160deg,#16261d,#1b3327 60%,#13231a);color:var(--paper);border:0;}
+.rigor .wrap{padding-top:90px;padding-bottom:90px;}
+.rigor .eyebrow{color:#9ec7ad;}
+.rigor h2{color:var(--paper);font-size:clamp(28px,3.6vw,44px);font-weight:380;max-width:18ch;}
+.rigor .rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:42px;}
+.rigor .ritem{border-left:2px solid var(--green-bright);padding:6px 0 6px 20px;}
+.rigor .ritem h4{font-family:var(--serif);font-size:19px;color:#f4f0e6;margin-bottom:7px;}
+.rigor .ritem p{color:#cfe0d4;font-size:14.5px;line-height:1.65;margin:0;}
+@media(max-width:720px){.rigor .rgrid{grid-template-columns:1fr;}}
+
+/* ---------- footer ---------- */
+footer{padding:46px 0;border-top:1px solid var(--line);}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;}
+.foot .who{font-family:var(--serif);font-size:18px;}
+.foot .who span{color:var(--ink-faint);font-family:var(--sans);font-size:13px;}
+
+.mock-banner{background:var(--clay);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:8px;}
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);}
+.rv.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="mock-banner">Mockup · path B (overview that hands off to the Streamlit deep-dives) · real GeneTropica data, NS5 dengue target</div>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 64 64"><polygon points="32,14 48,23 48,41 32,50 16,41 16,23" fill="none" stroke="#1F5740" stroke-width="3"/><circle cx="32" cy="5" r="4" fill="#A8492B"/><line x1="32" y1="14" x2="32" y2="7" stroke="#1F5740" stroke-width="3"/></svg>
+      <span><b>GeneTropica</b></span>
+      <span class="tag">Live data</span>
+    </div>
+    <nav class="links">
+      <a href="#how">How it works</a>
+      <a href="#field">Candidates</a>
+      <a href="#targets">Targets</a>
+      <a href="#deep">Explore data</a>
+      <a href="#rigor">Honesty</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="copy">
+      <div class="eyebrow rv">Drug repurposing · neglected tropical diseases</div>
+      <h1 class="rv" style="margin-top:18px;">100 approved drugs,<br>tested against the<br>diseases we <em>forget</em>.</h1>
+      <p class="lede rv">Dengue, chikungunya and leptospirosis affect millions, yet attract little new drug funding. GeneTropica computationally screens medicines that are <b>already safe and approved</b> to see which could be repurposed, simulating how each one grips the proteins these pathogens depend on.</p>
+      <div class="cta rv">
+        <a class="btn" href="#field">Explore the candidates</a>
+        <a class="btn ghost" href="#how">How it works →</a>
+      </div>
+    </div>
+    <div class="art"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="wrap">
+  <div class="stats rv">
+    <div class="stat"><div class="num" data-count="100">0</div><div class="lbl">Approved drugs screened</div></div>
+    <div class="stat"><div class="num" data-count="6">0</div><div class="lbl">Protein targets</div></div>
+    <div class="stat"><div class="num" data-count="3">0</div><div class="lbl">Neglected diseases</div></div>
+    <div class="stat"><div class="num" data-count="1781">0</div><div class="lbl">Docking simulations</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how"><div class="wrap">
+  <div class="sec-head rv">
+    <div class="eyebrow">The idea in three steps</div>
+    <h2>Reusing medicine we already trust</h2>
+    <p>Inventing a new drug takes a decade and a billion dollars. Repurposing asks a faster question: could a medicine that is <b>already approved and known to be safe</b> also work against a neglected disease? Here is how GeneTropica looks for the answer.</p>
+  </div>
+  <div class="steps">
+    <div class="step rv"><div class="n">1</div><h3>Start with safe drugs</h3><p>Begin with 100 medicines that are already FDA-approved, so their safety in humans is established. No need to start from scratch.</p><span class="chip">FDA-approved library</span></div>
+    <div class="step rv"><div class="n">2</div><h3>Simulate the grip</h3><p>For each drug, simulate how tightly it latches onto a key protein the pathogen needs to survive. A tighter, well-fitted grip means more potential to disrupt the disease.</p><span class="chip">AutoDock Vina · 50 ns MD</span></div>
+    <div class="step rv"><div class="n">3</div><h3>Rank the realistic ones</h3><p>Score every candidate two ways to avoid bias, keep the drug-like, safe ones, and surface the most promising classes for a scientist to follow up.</p><span class="chip">Dual-metric ranking</span></div>
+  </div>
+</div></section>
+
+<!-- CANDIDATE FIELD -->
+<section id="field" class="field"><div class="wrap">
+  <div class="sec-head rv">
+    <div class="eyebrow">The candidate field · live data</div>
+    <h2>Every drug, plotted by how it binds</h2>
+    <p>Each sphere is one real drug docked against the dengue <b>NS5 polymerase</b>, the engine the virus uses to copy itself. Drag to rotate. Hover any sphere for a plain-English read. This single view carries the whole dataset, and the core insight, at once.</p>
+  </div>
+  <div class="field-grid">
+    <div class="scatter-shell rv">
+      <canvas id="fieldCanvas"></canvas>
+      <div class="field-hint" id="fieldHint">Drag to rotate · hover a sphere</div>
+      <div class="axis-tag axis-x" id="axisX">Binding strength →</div>
+      <div class="axis-tag axis-y" id="axisY">Efficiency per atom ↑</div>
+      <div class="tooltip" id="tip"></div>
+    </div>
+    <div class="panel">
+      <div class="card rv">
+        <h4>Read it like this</h4>
+        <div class="toggle" id="langToggle" style="margin:12px 0 6px;"><span class="active" data-lang="plain">Plain English</span><span data-lang="sci">Scientific</span></div>
+        <p id="readBody" style="margin-top:10px;">Further <b>right</b> = grips the protein harder. <b>Higher up</b> = more grip per atom (efficiency). <b>Depth</b> = molecule size. Bigger spheres are heavier molecules. The catch: the hardest grippers are often just the biggest molecules, which is exactly why we also score efficiency.</p>
+      </div>
+      <div class="card rv">
+        <h4>Drug class</h4>
+        <div class="legend" id="legend"></div>
+        <p class="read-note" style="margin-top:14px;">Faded spheres did not pass the safety (ADMET) filter. A green ring marks a drug-like candidate.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- TARGETS -->
+<section id="targets"><div class="wrap">
+  <div class="sec-head rv">
+    <div class="eyebrow">Six doors into three diseases</div>
+    <h2>The proteins we aim at</h2>
+    <p>A pathogen depends on a handful of proteins to enter cells, copy itself and mature. Block one and you can stop the disease. These are the six we screen against.</p>
+  </div>
+
+  <div class="disease-group rv">
+    <div class="dlabel"><h3>Dengue</h3><span class="ct">3 targets · ~390M infections / year</span></div>
+    <div class="tcards">
+      <div class="tcard"><div class="pdb">PDB 5CCV · headline</div><h4>NS5 polymerase</h4><p>The copy machine the virus uses to multiply. Jam it and the virus can't replicate.</p></div>
+      <div class="tcard"><div class="pdb">PDB 2VBC</div><h4>NS3 protease-helicase</h4><p>Molecular scissors and an unzipper the virus needs to mature its proteins.</p></div>
+      <div class="tcard"><div class="pdb">PDB 1OAN</div><h4>Envelope (E) protein</h4><p>The key the virus turns to enter a human cell in the first place.</p></div>
+    </div>
+  </div>
+
+  <div class="disease-group rv">
+    <div class="dlabel"><h3>Chikungunya</h3><span class="ct">2 targets · debilitating joint pain</span></div>
+    <div class="tcards">
+      <div class="tcard"><div class="pdb">PDB 3TRK</div><h4>nsP2 protease</h4><p>The enzyme that cuts the virus's freshly made proteins into working parts.</p></div>
+      <div class="tcard"><div class="pdb">PDB 6Z0V</div><h4>nsP1 capping enzyme</h4><p>Protects the virus's genetic messages so the cell will read them.<span class="pred">Structure predicted</span></p></div>
+      <div class="tcard" style="visibility:hidden;"></div>
+    </div>
+  </div>
+
+  <div class="disease-group rv">
+    <div class="dlabel"><h3>Leptospirosis</h3><span class="ct">1 target · bacterial, flood-linked</span></div>
+    <div class="tcards">
+      <div class="tcard"><div class="pdb">PDB 3FRH</div><h4>LipL32</h4><p>An abundant surface protein of the Leptospira bacterium, and a vaccine/drug target.</p></div>
+      <div class="tcard" style="visibility:hidden;"></div>
+      <div class="tcard" style="visibility:hidden;"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- GO DEEPER -->
+<section id="deep" class="field"><div class="wrap">
+  <div class="sec-head rv">
+    <div class="eyebrow">All the data, one click away</div>
+    <h2>Go as deep as you like</h2>
+    <p>This overview is the front door. Every number here opens into a full interactive tool, the same Streamlit pages you already have, kept for the heavy scientific lifting.</p>
+  </div>
+  <div class="deep">
+    <a class="dcard rv" href="#"><div class="ic">Tool 01</div><h4>Drug Explorer</h4><p>Filter and sort all 100 candidates per target, with the dual-metric ranking table and a per-drug profile.</p><span class="go">Open table →</span></a>
+    <a class="dcard rv" href="#"><div class="ic">Tool 02</div><h4>3D Binding Viewer</h4><p>See a chosen drug actually docked inside a protein pocket, rotate it, inspect the contact residues.</p><span class="go">Open viewer →</span></a>
+    <a class="dcard rv" href="#"><div class="ic">Tool 03</div><h4>MD Simulation</h4><p>50-nanosecond molecular-dynamics runs for celecoxib, methotrexate and dasabuvir: does the grip actually hold?</p><span class="go">Open analysis →</span></a>
+    <a class="dcard rv" href="#"><div class="ic">Tool 04</div><h4>ADMET Profiling</h4><p>Safety and drug-likeness: absorption, toxicity flags, Lipinski rules, per candidate.</p><span class="go">Open profiles →</span></a>
+    <a class="dcard rv" href="#"><div class="ic">Tool 05</div><h4>Conservation</h4><p>How conserved each target site is across strains, a proxy for how durable a hit might be.</p><span class="go">Open analysis →</span></a>
+    <a class="dcard rv" href="#"><div class="ic">Tool 06</div><h4>Methods &amp; Validation</h4><p>Exactly how it was run, what the ML prior is and isn't, and the honest accuracy caveats.</p><span class="go">Read methods →</span></a>
+  </div>
+</div></section>
+
+<!-- HONESTY BAND -->
+<section id="rigor" class="rigor"><div class="wrap">
+  <div class="eyebrow rv">What this is, and isn't</div>
+  <h2 class="rv">Impressive only if it's honest.</h2>
+  <div class="rgrid">
+    <div class="ritem rv"><h4>A prior, not a cure</h4><p>These are computational predictions that point a scientist toward promising candidates. They are a starting hypothesis, never a treatment.</p></div>
+    <div class="ritem rv"><h4>Sofosbuvir is a control</h4><p>The known-active hepatitis C drug is included on purpose to check the method, not presented as a discovery. It ranks mid-pack, as expected.</p></div>
+    <div class="ritem rv"><h4>Two metrics on purpose</h4><p>Raw binding favours big molecules. Efficiency favours tiny ones. Reporting both, over drug-like candidates, avoids fooling ourselves with size bias.</p></div>
+    <div class="ritem rv"><h4>Caveats stay visible</h4><p>Where validation was weak (the NS5 ROC AUC of 0.37), it's stated plainly rather than hidden. The ML score is a target-agnostic prior, not a per-target oracle.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap foot">
+  <div class="who">Russell Young<br><span>British School Jakarta · GeneTropica</span></div>
+  <div class="mono">Mockup for review · not yet wired to live backend</div>
+</div></footer>
+
+<!-- libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* ============ data (real GeneTropica · DENV_NS5) ============ */
+const DRUGS = [
+{name:"velpatasvir",category:"J_HCV_NS5A",indication:"Hepatitis C",mw:664,ha:50,le:0.175,dl:0,admet:0,vina:-8.75},
+{name:"grazoprevir",category:"I_HCV_NS3_Protease",indication:"Hepatitis C",mw:785,ha:56,le:0.154,dl:0,admet:0,vina:-8.64},
+{name:"voxilaprevir",category:"I_HCV_NS3_Protease",indication:"Hepatitis C",mw:607,ha:42,le:0.196,dl:0,admet:1,vina:-8.23},
+{name:"pibrentasvir",category:"J_HCV_NS5A",indication:"Hepatitis C",mw:597,ha:45,le:0.182,dl:1,admet:0,vina:-8.19},
+{name:"paritaprevir",category:"I_HCV_NS3_Protease",indication:"Hepatitis C",mw:587,ha:43,le:0.178,dl:1,admet:0,vina:-7.64},
+{name:"atazanavir",category:"F_Protease_Inhibitors",indication:"HIV",mw:610,ha:45,le:0.169,dl:0,admet:0,vina:-7.59},
+{name:"darunavir",category:"F_Protease_Inhibitors",indication:"HIV",mw:554,ha:38,le:0.195,dl:1,admet:1,vina:-7.42},
+{name:"ivermectin",category:"B_Published_Dengue",indication:"Parasitic infections",mw:875,ha:48,le:0.154,dl:0,admet:0,vina:-7.40},
+{name:"dasabuvir",category:"A_RdRp_Inhibitors",indication:"Hepatitis C",mw:412,ha:27,le:0.274,dl:1,admet:1,vina:-7.39},
+{name:"sorafenib",category:"M_Arbovirus_Activity",indication:"Cancer (renal/liver)",mw:464,ha:32,le:0.230,dl:1,admet:0,vina:-7.37},
+{name:"doxycycline",category:"B_Published_Dengue",indication:"Bacterial infections",mw:444,ha:30,le:0.245,dl:1,admet:1,vina:-7.34},
+{name:"nelfinavir",category:"F_Protease_Inhibitors",indication:"HIV",mw:503,ha:34,le:0.216,dl:1,admet:0,vina:-7.33},
+{name:"simeprevir",category:"I_HCV_NS3_Protease",indication:"Hepatitis C",mw:782,ha:56,le:0.131,dl:0,admet:0,vina:-7.32},
+{name:"ombitasvir",category:"J_HCV_NS5A",indication:"Hepatitis C",mw:436,ha:33,le:0.221,dl:1,admet:0,vina:-7.30},
+{name:"praziquantel",category:"E_Tropical_Disease",indication:"Schistosomiasis",mw:312,ha:25,le:0.290,dl:1,admet:0,vina:-7.24},
+{name:"ledipasvir",category:"B_Published_Dengue",indication:"Hepatitis C",mw:436,ha:33,le:0.216,dl:1,admet:0,vina:-7.12},
+{name:"elbasvir",category:"J_HCV_NS5A",indication:"Hepatitis C",mw:629,ha:47,le:0.151,dl:0,admet:0,vina:-7.08},
+{name:"atovaquone",category:"R_More_Tropical",indication:"Malaria/pneumocystis",mw:339,ha:24,le:0.293,dl:1,admet:1,vina:-7.04},
+{name:"suramin",category:"B_Published_Dengue",indication:"Trypanosomiasis",mw:1297,ha:28,le:0.250,dl:0,admet:0,vina:-7.00},
+{name:"daclatasvir",category:"B_Published_Dengue",indication:"Hepatitis C",mw:739,ha:37,le:0.185,dl:0,admet:0,vina:-6.85},
+{name:"methotrexate",category:"D_Host_Directed",indication:"Cancer and autoimmune",mw:454,ha:33,le:0.207,dl:1,admet:1,vina:-6.83},
+{name:"baloxavir_marboxil",category:"L_Broad_Antivirals",indication:"Influenza",mw:471,ha:33,le:0.207,dl:1,admet:1,vina:-6.82},
+{name:"telaprevir",category:"I_HCV_NS3_Protease",indication:"Hepatitis C",mw:766,ha:55,le:0.123,dl:0,admet:0,vina:-6.77},
+{name:"prednisolone",category:"N_Immune_Modulators",indication:"Inflammation",mw:429,ha:31,le:0.217,dl:1,admet:1,vina:-6.72},
+{name:"cetirizine",category:"Q_More_Negatives",indication:"Allergies",mw:419,ha:29,le:0.230,dl:1,admet:0,vina:-6.68},
+{name:"remdesivir",category:"A_RdRp_Inhibitors",indication:"Antiviral (broad-spectrum)",mw:603,ha:40,le:0.167,dl:0,admet:0,vina:-6.67},
+{name:"cyclosporine",category:"D_Host_Directed",indication:"Transplant rejection",mw:1110,ha:79,le:0.084,dl:0,admet:0,vina:-6.61},
+{name:"celecoxib",category:"M_Arbovirus_Activity",indication:"Pain and arthritis",mw:381,ha:26,le:0.252,dl:1,admet:0,vina:-6.56},
+{name:"sofosbuvir",category:"A_RdRp_Inhibitors",indication:"Hepatitis C",mw:529,ha:38,le:0.164,dl:1,admet:0,vina:-6.24,control:true}
+];
+
+/* class -> friendly bucket + colour */
+const BUCKETS = {
+  nucleoside:{label:"Nucleoside / polymerase blockers",color:"#2E7D5B"},
+  hcvdaa:{label:"HCV direct-acting antivirals",color:"#A8492B"},
+  protease:{label:"HIV protease inhibitors",color:"#A8742C"},
+  dengue:{label:"Published dengue leads",color:"#2C6E6B"},
+  repurpose:{label:"Other repurposing leads",color:"#5B5470"},
+  control:{label:"Controls / negatives",color:"#8A8273"}
+};
+const CAT2BUCKET = {
+  A_RdRp_Inhibitors:"nucleoside", C_Nucleoside_Analogs:"nucleoside", K_More_Nucleosides:"nucleoside",
+  I_HCV_NS3_Protease:"hcvdaa", J_HCV_NS5A:"hcvdaa",
+  F_Protease_Inhibitors:"protease",
+  B_Published_Dengue:"dengue",
+  M_Arbovirus_Activity:"repurpose", E_Tropical_Disease:"repurpose", R_More_Tropical:"repurpose",
+  D_Host_Directed:"repurpose", L_Broad_Antivirals:"repurpose", N_Immune_Modulators:"repurpose",
+  H_Negative_Controls:"control", Q_More_Negatives:"control", O_Entry_Inhibitors:"control"
+};
+const bucketOf = d => BUCKETS[CAT2BUCKET[d.category]||"repurpose"];
+
+function insight(d){
+  if(d.control) return "Included on purpose as a known-active control to test the method, not as a discovery. Lands mid-pack, just as it should.";
+  if(d.mw>=700) return "Binds hard, but it's a very large molecule, so its grip per atom is poor. Likely a size artefact more than a real lead.";
+  if(d.le>=0.27) return "Unusually efficient for its small size, even if its raw grip is modest. The kind of profile worth a closer look.";
+  if(d.dl===1 && d.admet===1 && d.vina<=-7) return "Drug-like, passes the safety filter, and binds well on both metrics. A genuine candidate.";
+  if(d.dl===1 && d.admet===1) return "Drug-like and safe-profiled, with balanced binding. A realistic lead to follow up.";
+  if(d.admet===0) return "Binds reasonably, but flags on the safety/ADMET filter, so it drops down the practical ranking.";
+  return "A mid-field candidate: worth noting, not a standout.";
+}
+
+/* ============ HERO molecule ============ */
+function initHero(){
+  const cv=document.getElementById('heroCanvas');
+  if(!window.THREE||!cv) return;
+  const sc=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(45,1,0.1,100); cam.position.set(0,0,15);
+  const rn=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+  function size(){const w=cv.clientWidth,h=cv.clientHeight;rn.setPixelRatio(Math.min(devicePixelRatio,2));rn.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
+  const grp=new THREE.Group(); sc.add(grp);
+  // abstract molecule: nodes + bonds
+  const nodes=[];const R=4.4;
+  const pts=[[0,0,0],[2.6,0.6,0.4],[-2.4,1.1,-0.6],[0.8,2.6,-1.2],[-0.9,-2.6,0.9],[2.0,-1.8,1.4],[-2.2,-1.4,-1.6],[0.3,1.2,3.0],[1.4,-0.4,-2.8]];
+  const matAtom=new THREE.MeshStandardMaterial({color:0x1F5740,roughness:.4,metalness:.1});
+  const matClay=new THREE.MeshStandardMaterial({color:0xA8492B,roughness:.4,metalness:.1});
+  pts.forEach((p,i)=>{const r=i===0?0.95:0.55+Math.random()*0.25;const g=new THREE.Mesh(new THREE.SphereGeometry(r,32,32),i%4===0?matClay:matAtom);g.position.set(...p);grp.add(g);nodes.push(g);});
+  const matBond=new THREE.MeshStandardMaterial({color:0x6f8a7c,roughness:.6});
+  for(let i=1;i<pts.length;i++){const a=new THREE.Vector3(...pts[0]),b=new THREE.Vector3(...pts[i]);const d=b.clone().sub(a);const len=d.length();const cyl=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,len,12),matBond);cyl.position.copy(a.clone().add(b).multiplyScalar(.5));cyl.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.clone().normalize());grp.add(cyl);}
+  // particle dust
+  const dustG=new THREE.BufferGeometry();const N=140;const arr=new Float32Array(N*3);
+  for(let i=0;i<N;i++){const r=7+Math.random()*6,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1);arr[i*3]=r*Math.sin(p)*Math.cos(t);arr[i*3+1]=r*Math.sin(p)*Math.sin(t);arr[i*3+2]=r*Math.cos(p);}
+  dustG.setAttribute('position',new THREE.BufferAttribute(arr,3));
+  const dust=new THREE.Points(dustG,new THREE.PointsMaterial({color:0x1F5740,size:0.06,transparent:true,opacity:.5}));sc.add(dust);
+  sc.add(new THREE.AmbientLight(0xffffff,.7));
+  const key=new THREE.DirectionalLight(0xffffff,.9);key.position.set(5,6,8);sc.add(key);
+  const warm=new THREE.DirectionalLight(0xA8742C,.4);warm.position.set(-6,-3,2);sc.add(warm);
+  size();addEventListener('resize',size);
+  let t=0;(function loop(){t+=0.004;grp.rotation.y=t*2;grp.rotation.x=Math.sin(t*1.3)*0.25;dust.rotation.y=-t;rn.render(sc,cam);requestAnimationFrame(loop);})();
+}
+
+/* ============ candidate field ============ */
+function initField(){
+  const cv=document.getElementById('fieldCanvas');
+  if(!window.THREE||!cv) return;
+  const sc=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(50,1,0.1,200);cam.position.set(9,7,16);
+  const rn=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+  rn.setPixelRatio(Math.min(devicePixelRatio,2));
+  let controls=null;
+  if(THREE.OrbitControls){controls=new THREE.OrbitControls(cam,rn.domElement);controls.enableDamping=true;controls.dampingFactor=.08;controls.enablePan=false;controls.minDistance=10;controls.maxDistance=30;controls.autoRotate=true;controls.autoRotateSpeed=0.7;controls.target.set(0,1.5,0);}
+  function size(){const w=cv.clientWidth,h=cv.clientHeight;rn.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
+  // scales: vina -9..-4 -> x -8..8 ; le 0.08..0.30 -> y -5..8 ; mw 150..1300 -> z -8..8
+  const sx=v=>((-v)-4)/(9-4)*16-8;           // stronger binding (more negative) -> right
+  const sy=v=>(v-0.08)/(0.30-0.08)*13-5;
+  const sz=v=>(v-150)/(1300-150)*16-8;
+  // floor grid
+  const grid=new THREE.GridHelper(20,20,0xcdbfae,0xddd3c0);grid.position.y=-5.4;grid.material.opacity=.5;grid.material.transparent=true;sc.add(grid);
+  sc.add(new THREE.AmbientLight(0xffffff,.85));
+  const dl=new THREE.DirectionalLight(0xffffff,.7);dl.position.set(6,12,8);sc.add(dl);
+  const group=new THREE.Group();sc.add(group);
+  const meshes=[];
+  DRUGS.forEach(d=>{
+    const b=bucketOf(d);
+    const rad=0.28+(d.ha/79)*0.85;
+    const col=new THREE.Color(b.color);
+    const mat=new THREE.MeshStandardMaterial({color:col,roughness:.35,metalness:.05,transparent:true,opacity:d.admet?0.96:0.42});
+    const m=new THREE.Mesh(new THREE.SphereGeometry(rad,28,28),mat);
+    m.position.set(sx(d.vina),sy(d.le),sz(d.mw));
+    m.userData=d;group.add(m);meshes.push(m);
+    if(d.dl===1){const ring=new THREE.Mesh(new THREE.TorusGeometry(rad+0.12,0.035,10,36),new THREE.MeshBasicMaterial({color:0x2E7D5B}));ring.position.copy(m.position);ring.userData={ringFor:d.name};group.add(ring);m.userData._ring=ring;}
+    if(d.control){const halo=new THREE.Mesh(new THREE.SphereGeometry(rad+0.22,24,24),new THREE.MeshBasicMaterial({color:0x1C1A17,wireframe:true,transparent:true,opacity:.35}));halo.position.copy(m.position);group.add(halo);}
+  });
+  size();addEventListener('resize',size);
+  // raycaster hover
+  const ray=new THREE.Raycaster();ray.params.Points={threshold:0.3};
+  const mouse=new THREE.Vector2();const tip=document.getElementById('tip');let hovered=null;
+  function onMove(e){
+    const r=cv.getBoundingClientRect();
+    mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+    ray.setFromCamera(mouse,cam);
+    const hit=ray.intersectObjects(meshes)[0];
+    if(hit){
+      const d=hit.object.userData;
+      if(hovered!==hit.object){hovered=hit.object;if(controls)controls.autoRotate=false;}
+      const b=bucketOf(d);
+      tip.innerHTML=`<div class="tt-name">${d.name.replace(/_/g,' ')}</div>
+        <div class="tt-class" style="color:${b.color}">${b.label}</div>
+        <div class="tt-row">Approved for: <b style="color:#fff">${d.indication}</b></div>
+        <div class="tt-stat"><span>Binding (Vina)</span><b>${d.vina} kcal/mol</b></div>
+        <div class="tt-stat"><span>Efficiency / atom</span><b>${d.le}</b></div>
+        <div class="tt-stat"><span>Size</span><b>${d.mw} Da · ${d.ha} atoms</b></div>
+        <div class="tt-stat"><span>Drug-like · Safe</span><b>${d.dl?'yes':'no'} · ${d.admet?'pass':'flag'}</b></div>
+        <div class="tt-insight">${insight(d)}</div>`;
+      let tx=e.clientX-r.left+16, ty=e.clientY-r.top+10;
+      if(tx>r.width-260)tx=e.clientX-r.left-256;
+      tip.style.left=tx+'px';tip.style.top=ty+'px';tip.classList.add('on');
+    } else {
+      tip.classList.remove('on');hovered=null;if(controls)controls.autoRotate=true;
+    }
+  }
+  cv.addEventListener('mousemove',onMove);
+  cv.addEventListener('mouseleave',()=>{tip.classList.remove('on');if(controls)controls.autoRotate=true;});
+  (function loop(){if(controls)controls.update();rn.render(sc,cam);requestAnimationFrame(loop);})();
+}
+
+/* legend + language toggle */
+function buildLegend(){
+  const el=document.getElementById('legend');if(!el)return;
+  el.innerHTML=Object.values(BUCKETS).map(b=>`<div class="lg"><span class="dot" style="background:${b.color}"></span>${b.label}</div>`).join('');
+}
+function langToggle(){
+  const t=document.getElementById('langToggle');if(!t)return;
+  const ax=document.getElementById('axisX'),ay=document.getElementById('axisY'),rb=document.getElementById('readBody');
+  const COPY={
+    plain:{x:"Binding strength →",y:"Efficiency per atom ↑",body:"Further <b>right</b> = grips the protein harder. <b>Higher up</b> = more grip per atom (efficiency). <b>Depth</b> = molecule size; bigger spheres are heavier molecules. The catch: the hardest grippers are often just the biggest molecules, which is exactly why we also score efficiency."},
+    sci:{x:"AutoDock Vina (kcal/mol) →",y:"Ligand efficiency (kcal/mol·atom⁻¹) ↑",body:"X = best AutoDock Vina docking score (more negative = stronger predicted binding). Y = ligand efficiency = |Vina| / heavy-atom count. Z (depth) = molecular weight. Marker radius scales with heavy-atom count. Opacity encodes ADMET overall_pass; the torus marks is_druglike (MW 250–600)."}
+  };
+  t.querySelectorAll('span').forEach(s=>s.addEventListener('click',()=>{
+    t.querySelectorAll('span').forEach(x=>x.classList.remove('active'));s.classList.add('active');
+    const c=COPY[s.dataset.lang];ax.textContent=c.x;ay.textContent=c.y;rb.innerHTML=c.body;
+  }));
+}
+
+/* reveals + counters */
+function initMotion(){
+  const rvs=[...document.querySelectorAll('.rv')];
+  if(window.gsap&&window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    rvs.forEach(el=>ScrollTrigger.create({trigger:el,start:"top 88%",once:true,onEnter:()=>el.classList.add('in')}));
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const end=+el.dataset.count;
+      ScrollTrigger.create({trigger:el,start:"top 90%",once:true,onEnter:()=>{
+        const o={v:0};gsap.to(o,{v:end,duration:1.4,ease:"power2.out",onUpdate:()=>{el.textContent=Math.round(o.v).toLocaleString();}});
+      }});
+    });
+  } else {
+    rvs.forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('[data-count]').forEach(el=>el.textContent=(+el.dataset.count).toLocaleString());
+  }
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  try{initHero();}catch(e){console.warn('hero',e);}
+  try{initField();}catch(e){console.warn('field',e);}
+  buildLegend();langToggle();initMotion();
+});
+</script>
+</body>
+</html>
