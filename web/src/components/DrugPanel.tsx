@@ -15,7 +15,13 @@ function Meta({ k, v }: { k: string; v: string }) {
 /** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), ADMET radar. */
 export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string }) {
   const ref = useRef<HTMLDivElement>(null)
+  const firstRender = useRef(true)
   useEffect(() => {
+    // Don't yank the page down on the initial default selection; only scroll on later picks.
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   }, [drug.name])
 

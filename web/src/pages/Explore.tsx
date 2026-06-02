@@ -7,6 +7,7 @@ import { DrugPanel } from '../components/DrugPanel'
 import { TargetAnalysis } from '../components/TargetAnalysis'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
+const DEFAULT_DRUG = 'celecoxib'
 
 const pillBtn = (active: boolean): CSSProperties => ({
   fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase',
@@ -31,7 +32,7 @@ export default function Explore() {
   const [dlOnly, setDlOnly] = useState(false)
   const [admetOnly, setAdmetOnly] = useState(false)
   const [cls, setCls] = useState('all')
-  const [sel, setSel] = useState<string | null>(null)
+  const [sel, setSel] = useState<string | null>(DEFAULT_DRUG)
 
   const tName = (id: string) => targets.data?.find((t) => t.target_id === id)?.name ?? id
   const all = field.data?.[tid] ?? []
@@ -58,7 +59,7 @@ export default function Explore() {
 
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18 }}>
         {order.map((id) => (
-          <button key={id} onClick={() => { setSel(null); setTid(id) }} style={pillBtn(tid === id)}>{tName(id)}</button>
+          <button key={id} onClick={() => setTid(id)} style={pillBtn(tid === id)}>{tName(id)}</button>
         ))}
       </div>
 
