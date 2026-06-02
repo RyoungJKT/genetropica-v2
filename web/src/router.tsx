@@ -28,4 +28,4 @@ export const router = createBrowserRouter([
       { path: 'diseases', element: <Diseases /> },
     ],
   },
-])
+], { basename: '/app' })
