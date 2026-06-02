@@ -17,7 +17,7 @@ export function Steps() {
             Inventing a new drug takes a decade and a billion dollars. Repurposing asks a faster question: could a medicine that is already approved and known to be safe also work against a neglected disease?
           </p>
         </Reveal>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 46 }}>
+        <div className="rstack" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 46 }}>
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.08}>
               <div style={{ position: 'relative', padding: '30px 26px', border: '1px solid var(--line)', borderRadius: 16, background: 'linear-gradient(180deg,var(--paper-2),var(--paper))', overflow: 'hidden', height: '100%' }}>
