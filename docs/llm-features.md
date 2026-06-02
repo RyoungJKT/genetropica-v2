@@ -5,8 +5,9 @@ read from an environment variable, is never committed, and never ships in the st
 site. The dashboard works fully without them; these only enrich it.
 
 Both features use the **hosted LLM API** (the native Messages endpoint). Set your
-key with `LLM_API_KEY`; the model defaults to `gpt-4o-mini` and can be
-changed with `LLM_MODEL` (any current model model).
+key with `LLM_API_KEY`. The chat assistant defaults to `default-model` and the
+offline literature script to `gpt-4o-mini`; either can be overridden with
+`LLM_MODEL` (any current model model).
 
 ---
 
@@ -48,7 +49,7 @@ invent drugs, numbers, or claims.
 Activate it in the Vercel project (Settings -> Environment Variables):
 
     LLM_API_KEY = sk-ant-...
-    # optional: LLM_MODEL (default gpt-4o-mini), LLM_BASE_URL
+    # optional: LLM_MODEL (default default-model), LLM_BASE_URL
 
 Redeploy. Until the key is set, the widget politely replies that the assistant is not switched on.
 
