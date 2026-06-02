@@ -64,3 +64,12 @@ def test_admet_export():
     assert len(a) == 100
     assert "dasabuvir" in a
     assert all("pass" in v for v in a.values())
+
+
+def test_binding_export():
+    _run()
+    idx = json.loads((OUT / "binding" / "index.json").read_text())
+    assert len(idx) == 6 and "dasabuvir" in idx["DENV_NS5"]
+    d = json.loads((OUT / "binding" / "DENV_NS5__dasabuvir.json").read_text())
+    assert len(d["ligand"]) > 10 and len(d["bonds"]) > 0
+    assert all("type" in c and "res" in c for c in d["contacts"])
