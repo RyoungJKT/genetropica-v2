@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import type { FieldPoint } from '../data/types'
-import { bucketOf, insight } from '../lib/buckets'
+import { bucketOf } from '../lib/buckets'
+import { ChartTooltip } from '../components/ChartTooltip'
 
 type SortKey = 'binding' | 'efficiency'
 
@@ -15,6 +16,7 @@ function Tag({ children, color }: { children: ReactNode; color?: string }) {
 export function CandidateBoard({ points }: { points: FieldPoint[] }) {
   const [sortKey, setSortKey] = useState<SortKey>('binding')
   const [hover, setHover] = useState<string | null>(null)
+  const [tip, setTip] = useState<{ x: number; y: number; name: string; metric: string; cls: string } | null>(null)
   const sorted = [...points].sort((a, b) => (sortKey === 'binding' ? a.vina - b.vina : (b.le ?? 0) - (a.le ?? 0)))
   const vals = sorted.map((p) => (sortKey === 'binding' ? -p.vina : p.le ?? 0))
   const max = Math.max(...vals)
@@ -38,9 +40,9 @@ export function CandidateBoard({ points }: { points: FieldPoint[] }) {
           return (
             <div
               key={p.name}
-              title={insight(p)}
               onMouseEnter={() => setHover(p.name)}
-              onMouseLeave={() => setHover(null)}
+              onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, name: p.name.replace(/_/g, ' '), metric: sortKey === 'binding' ? `Vina ${p.vina} kcal/mol` : `Ligand efficiency ${p.le != null ? p.le.toFixed(3) : 'n/a'}`, cls: b.label })}
+              onMouseLeave={() => { setHover(null); setTip(null) }}
               style={{ display: 'grid', gridTemplateColumns: '30px 1fr 116px', alignItems: 'center', gap: 14, padding: '11px 16px', borderBottom: i < sorted.length - 1 ? '1px solid var(--line)' : 'none', background: hover === p.name ? 'var(--paper-2)' : 'transparent', opacity: p.dl ? 1 : 0.6 }}
             >
               <div style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-faint)' }}>{i + 1}</div>
@@ -63,6 +65,13 @@ export function CandidateBoard({ points }: { points: FieldPoint[] }) {
           )
         })}
       </div>
+      {tip && (
+        <ChartTooltip x={tip.x} y={tip.y}>
+          <div style={{ fontWeight: 600, textTransform: 'capitalize' }}>{tip.name}</div>
+          <div style={{ opacity: 0.9 }}>{tip.metric}</div>
+          <div style={{ opacity: 0.7 }}>{tip.cls}</div>
+        </ChartTooltip>
+      )}
     </div>
   )
 }
