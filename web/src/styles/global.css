@@ -9,6 +9,5 @@ a{color:var(--green);text-decoration:none;}
 .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--clay);}
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-faint);}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
-@keyframes barIn{from{transform:scaleX(0);}to{transform:scaleX(1);}}
-.bar{transform-origin:left center;animation:barIn .7s cubic-bezier(.2,.7,.2,1) both;}
-@media(prefers-reduced-motion:reduce){.bar{animation:none;}}
+.bar{transition:width .5s cubic-bezier(.2,.7,.2,1);}
+@media(prefers-reduced-motion:reduce){.bar{transition:none;}}
