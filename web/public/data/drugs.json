@@ -1,0 +1,1002 @@
+[
+  {
+    "name": "abacavir",
+    "category": "K_More_Nucleosides",
+    "indication": "HIV",
+    "molecular_weight": 286.34,
+    "heavy_atoms": 21,
+    "logp": 0.1,
+    "inchikey": "MCGSCOLBFJQGHM-SCZZXKLOSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "acyclovir",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "Herpes simplex virus",
+    "molecular_weight": 225.21,
+    "heavy_atoms": 16,
+    "logp": -1.6,
+    "inchikey": "MKUXAQIIEYXACX-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "adefovir",
+    "category": "L_Broad_Antivirals",
+    "indication": "Hepatitis B",
+    "molecular_weight": 273.19,
+    "heavy_atoms": 18,
+    "logp": -0.44,
+    "inchikey": "SUPKOOSCJHTBAH-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "albendazole",
+    "category": "E_Tropical_Disease",
+    "indication": "Helminth infections",
+    "molecular_weight": 265.34,
+    "heavy_atoms": 18,
+    "logp": 2.7,
+    "inchikey": "HXHWSAZORRCQMX-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "amantadine",
+    "category": "O_Entry_Inhibitors",
+    "indication": "Influenza/Parkinson",
+    "molecular_weight": 151.25,
+    "heavy_atoms": 11,
+    "logp": 1.91,
+    "inchikey": "DKNWSYNQZKUICI-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "amlodipine",
+    "category": "H_Negative_Controls",
+    "indication": "Hypertension",
+    "molecular_weight": 408.88,
+    "heavy_atoms": 28,
+    "logp": 3.0,
+    "inchikey": "HTIQEAQVCYTUBX-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "artemisinin",
+    "category": "E_Tropical_Disease",
+    "indication": "Malaria",
+    "molecular_weight": 282.34,
+    "heavy_atoms": 20,
+    "logp": 2.5,
+    "inchikey": "BLUAFEHZUWYNDE-NNWCWBAJSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "atazanavir",
+    "category": "F_Protease_Inhibitors",
+    "indication": "HIV",
+    "molecular_weight": 704.87,
+    "heavy_atoms": 51,
+    "logp": 3.94,
+    "inchikey": "AXRYRYVKAWYZBR-GASGPIRDSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "atorvastatin",
+    "category": "Q_More_Negatives",
+    "indication": "Hyperlipidemia",
+    "molecular_weight": 558.65,
+    "heavy_atoms": 41,
+    "logp": 4.1,
+    "inchikey": "XUKUURHRXDUEBC-KAYWLYCHSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "atovaquone",
+    "category": "R_More_Tropical",
+    "indication": "Malaria/pneumocystis",
+    "molecular_weight": 366.84,
+    "heavy_atoms": 26,
+    "logp": 5.78,
+    "inchikey": "BSJMWHQBCZFXBR-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "auranofin",
+    "category": "P_More_Host_Directed",
+    "indication": "Rheumatoid arthritis",
+    "molecular_weight": 678.49,
+    "heavy_atoms": 32,
+    "logp": 2.1,
+    "inchikey": "AUJRCFUBUPVWSZ-XTZHGVARSA-M",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "azathioprine",
+    "category": "P_More_Host_Directed",
+    "indication": "Transplant/autoimmune",
+    "molecular_weight": 277.27,
+    "heavy_atoms": 19,
+    "logp": 1.15,
+    "inchikey": "LMEKQMALGUDUQG-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "balapiravir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Hepatitis C (discontinued)",
+    "molecular_weight": 494.51,
+    "heavy_atoms": 35,
+    "logp": 1.34,
+    "inchikey": "VKXWOLCNTHXCLF-DXEZIKHYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "baloxavir_marboxil",
+    "category": "L_Broad_Antivirals",
+    "indication": "Influenza",
+    "molecular_weight": 668.74,
+    "heavy_atoms": 46,
+    "logp": 3.41,
+    "inchikey": "PSBXHOHLTRJZPO-XQEWPOGKSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "baricitinib",
+    "category": "D_Host_Directed",
+    "indication": "Rheumatoid arthritis",
+    "molecular_weight": 371.43,
+    "heavy_atoms": 26,
+    "logp": 1.2,
+    "inchikey": "XUZMWHLSFXCVMG-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "benznidazole",
+    "category": "R_More_Tropical",
+    "indication": "Chagas disease",
+    "molecular_weight": 260.25,
+    "heavy_atoms": 19,
+    "logp": 0.8,
+    "inchikey": "CULUWZNBISUWAS-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "boceprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 519.69,
+    "heavy_atoms": 37,
+    "logp": -0.33,
+    "inchikey": "LHHCSNFAOIFYRV-DOVBMPENSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "camostat",
+    "category": "O_Entry_Inhibitors",
+    "indication": "Pancreatitis",
+    "molecular_weight": 398.42,
+    "heavy_atoms": 29,
+    "logp": 1.39,
+    "inchikey": "XASIMHXSUQUHLV-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "celecoxib",
+    "category": "M_Arbovirus_Activity",
+    "indication": "Pain and arthritis",
+    "molecular_weight": 381.38,
+    "heavy_atoms": 26,
+    "logp": 3.5,
+    "inchikey": "RZEKVGVHFLEQIL-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "cetirizine",
+    "category": "Q_More_Negatives",
+    "indication": "Allergies",
+    "molecular_weight": 388.9,
+    "heavy_atoms": 27,
+    "logp": 3.18,
+    "inchikey": "ZKLPARSLTMPFCP-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "chloroquine",
+    "category": "B_Published_Dengue",
+    "indication": "Malaria",
+    "molecular_weight": 319.88,
+    "heavy_atoms": 22,
+    "logp": 4.6,
+    "inchikey": "WHTVZRBIWZFKQO-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "chlorpromazine",
+    "category": "M_Arbovirus_Activity",
+    "indication": "Psychosis/nausea",
+    "molecular_weight": 318.87,
+    "heavy_atoms": 21,
+    "logp": 4.89,
+    "inchikey": "ZPEIMTDSQAKGNT-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "cladribine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "Cancer/multiple sclerosis",
+    "molecular_weight": 285.69,
+    "heavy_atoms": 19,
+    "logp": -0.3,
+    "inchikey": "PTOAARAWEBMLNO-KVQBGUIXSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "clevudine",
+    "category": "K_More_Nucleosides",
+    "indication": "Hepatitis B",
+    "molecular_weight": 260.22,
+    "heavy_atoms": 18,
+    "logp": -1.57,
+    "inchikey": "GBBJCSTXCAQSSJ-XQXXSGGOSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "colchicine",
+    "category": "N_Immune_Modulators",
+    "indication": "Gout",
+    "molecular_weight": 399.44,
+    "heavy_atoms": 29,
+    "logp": 1.0,
+    "inchikey": "IAKHMKGGTNLKSZ-INIZCTEOSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "cyclosporine",
+    "category": "D_Host_Directed",
+    "indication": "Transplant rejection",
+    "molecular_weight": 1202.63,
+    "heavy_atoms": 85,
+    "logp": 4.09,
+    "inchikey": "PMATZTZNYRCHOR-CGLBZJNRSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "cytarabine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "Cancer (leukemia)",
+    "molecular_weight": 243.22,
+    "heavy_atoms": 17,
+    "logp": -2.75,
+    "inchikey": "UHDGCWIWMRVCDJ-CCXZUQQUSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "daclatasvir",
+    "category": "B_Published_Dengue",
+    "indication": "Hepatitis C",
+    "molecular_weight": 738.89,
+    "heavy_atoms": 54,
+    "logp": 4.8,
+    "inchikey": "FKRSSPOQAMALKA-CUPIEXAXSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "darunavir",
+    "category": "F_Protease_Inhibitors",
+    "indication": "HIV",
+    "molecular_weight": 547.67,
+    "heavy_atoms": 38,
+    "logp": 1.02,
+    "inchikey": "CJBJHOAVZSMMDJ-HEXNFIEUSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "dasabuvir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Hepatitis C",
+    "molecular_weight": 493.59,
+    "heavy_atoms": 35,
+    "logp": 1.8,
+    "inchikey": "NBRBXGKOEOGLOI-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "didanosine",
+    "category": "K_More_Nucleosides",
+    "indication": "HIV",
+    "molecular_weight": 236.23,
+    "heavy_atoms": 17,
+    "logp": -0.36,
+    "inchikey": "BXZVVICBKDXVGW-NKWVEPMBSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "doxycycline",
+    "category": "B_Published_Dengue",
+    "indication": "Bacterial infections",
+    "molecular_weight": 444.44,
+    "heavy_atoms": 32,
+    "logp": -0.7,
+    "inchikey": "SGKRLCUYIXIAHR-AKNGSSGZSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "elbasvir",
+    "category": "J_HCV_NS5A",
+    "indication": "Hepatitis C",
+    "molecular_weight": 882.03,
+    "heavy_atoms": 65,
+    "logp": 7.4,
+    "inchikey": "BVAZQCUMNICBAQ-PZHYSIFUSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "entecavir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Hepatitis B",
+    "molecular_weight": 277.28,
+    "heavy_atoms": 20,
+    "logp": -1.0,
+    "inchikey": "QDGZDCVAUDNJFG-FXQIFTODSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "erlotinib",
+    "category": "G_Kinase_Inhibitors",
+    "indication": "Cancer (lung)",
+    "molecular_weight": 393.44,
+    "heavy_atoms": 29,
+    "logp": 3.41,
+    "inchikey": "AAKJLRGGTJKAMG-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "favipiravir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Influenza and viral infections",
+    "molecular_weight": 157.1,
+    "heavy_atoms": 11,
+    "logp": -0.6,
+    "inchikey": "ZCGNOVWYSGBHAU-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "fenofibrate",
+    "category": "M_Arbovirus_Activity",
+    "indication": "Hyperlipidemia",
+    "molecular_weight": 360.84,
+    "heavy_atoms": 25,
+    "logp": 4.68,
+    "inchikey": "YMTINGFKWWXKFG-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "fludarabine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "Cancer (leukemia)",
+    "molecular_weight": 285.24,
+    "heavy_atoms": 20,
+    "logp": -1.84,
+    "inchikey": "HBUBKKRHXORPQB-FJFJXFQQSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "gabapentin",
+    "category": "Q_More_Negatives",
+    "indication": "Epilepsy/neuropathic pain",
+    "molecular_weight": 171.24,
+    "heavy_atoms": 12,
+    "logp": 1.37,
+    "inchikey": "UGJMXCAKCUNAIE-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "galidesivir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Broad-spectrum antiviral",
+    "molecular_weight": 265.27,
+    "heavy_atoms": 19,
+    "logp": -0.29,
+    "inchikey": "AMFDITJFBUXZQN-KUBHLMPHSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "gemcitabine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "Cancer (pancreatic)",
+    "molecular_weight": 263.2,
+    "heavy_atoms": 18,
+    "logp": -1.47,
+    "inchikey": "SDUQYLNIPVEERB-QPPQHZFASA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "glecaprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 838.88,
+    "heavy_atoms": 58,
+    "logp": 3.02,
+    "inchikey": "MLSQGNCUYAMAHD-ITNVBOSISA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "grazoprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 766.92,
+    "heavy_atoms": 54,
+    "logp": 2.85,
+    "inchikey": "OBMNJSNZOWALQB-NCQNOWPTSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "hydroxychloroquine",
+    "category": "B_Published_Dengue",
+    "indication": "Malaria and lupus",
+    "molecular_weight": 335.88,
+    "heavy_atoms": 23,
+    "logp": 3.6,
+    "inchikey": "XXSMGPRMXLTPCZ-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "ibuprofen",
+    "category": "H_Negative_Controls",
+    "indication": "Pain and inflammation",
+    "molecular_weight": 206.28,
+    "heavy_atoms": 15,
+    "logp": 3.5,
+    "inchikey": "HEFNNWSXXWATRW-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "indomethacin",
+    "category": "N_Immune_Modulators",
+    "indication": "Pain/inflammation",
+    "molecular_weight": 357.79,
+    "heavy_atoms": 25,
+    "logp": 4.26,
+    "inchikey": "CGIGDMFJXJATDK-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "ivermectin",
+    "category": "B_Published_Dengue",
+    "indication": "Parasitic infections",
+    "molecular_weight": 875.11,
+    "heavy_atoms": 62,
+    "logp": 4.1,
+    "inchikey": "AZSNMRSAGSSBNP-XPNPUAGNSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "lamivudine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "HIV/HBV",
+    "molecular_weight": 229.26,
+    "heavy_atoms": 15,
+    "logp": -0.78,
+    "inchikey": "JTEGQNOMFQHVDC-NKWVEPMBSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "ledipasvir",
+    "category": "B_Published_Dengue",
+    "indication": "Hepatitis C",
+    "molecular_weight": 889.02,
+    "heavy_atoms": 65,
+    "logp": 7.45,
+    "inchikey": "VRTWBAAJJOHBQU-KMWAZVGDSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "leflunomide",
+    "category": "D_Host_Directed",
+    "indication": "Rheumatoid arthritis",
+    "molecular_weight": 270.21,
+    "heavy_atoms": 19,
+    "logp": 3.25,
+    "inchikey": "VHOGYURTWQBHIL-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "levothyroxine",
+    "category": "Q_More_Negatives",
+    "indication": "Hypothyroidism",
+    "molecular_weight": 776.87,
+    "heavy_atoms": 24,
+    "logp": 3.66,
+    "inchikey": "XUIIKFGFIJCVMT-LBPRGKRZSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "lisinopril",
+    "category": "Q_More_Negatives",
+    "indication": "Hypertension",
+    "molecular_weight": 405.5,
+    "heavy_atoms": 29,
+    "logp": -0.92,
+    "inchikey": "RLAWWYSOJDYHDC-BZSNNMDCSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "lopinavir",
+    "category": "F_Protease_Inhibitors",
+    "indication": "HIV protease inhibitor",
+    "molecular_weight": 628.81,
+    "heavy_atoms": 46,
+    "logp": 5.9,
+    "inchikey": "KJHKTHWMRKYKJE-SUGCFTRWSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "lovastatin",
+    "category": "B_Published_Dengue",
+    "indication": "Hyperlipidemia",
+    "molecular_weight": 404.55,
+    "heavy_atoms": 29,
+    "logp": 3.72,
+    "inchikey": "PCZOHLXUXFIOCF-BXMDZJJMSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "mefloquine",
+    "category": "E_Tropical_Disease",
+    "indication": "Malaria",
+    "molecular_weight": 378.32,
+    "heavy_atoms": 26,
+    "logp": 4.45,
+    "inchikey": "XEEQGYMUWCZPDN-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "metformin",
+    "category": "H_Negative_Controls",
+    "indication": "Diabetes mellitus type 2",
+    "molecular_weight": 129.17,
+    "heavy_atoms": 9,
+    "logp": -1.4,
+    "inchikey": "XZWYZXLIPXDOLR-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "methotrexate",
+    "category": "D_Host_Directed",
+    "indication": "Cancer and autoimmune",
+    "molecular_weight": 454.45,
+    "heavy_atoms": 33,
+    "logp": -1.8,
+    "inchikey": "FBOZXECLQNJBKD-ZDUSSCGKSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "miltefosine",
+    "category": "R_More_Tropical",
+    "indication": "Leishmaniasis",
+    "molecular_weight": 407.58,
+    "heavy_atoms": 27,
+    "logp": 5.5,
+    "inchikey": "PQLXHQMOHUQAKB-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "minocycline",
+    "category": "P_More_Host_Directed",
+    "indication": "Bacterial infections",
+    "molecular_weight": 457.48,
+    "heavy_atoms": 33,
+    "logp": 0.19,
+    "inchikey": "FFTVPQUHLQBXQZ-KVUCHLLUSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "molnupiravir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "COVID-19",
+    "molecular_weight": 329.31,
+    "heavy_atoms": 23,
+    "logp": -2.8,
+    "inchikey": "HTNPEHXGEKVIHG-QCNRFFRDSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "mycophenolate_mofetil",
+    "category": "D_Host_Directed",
+    "indication": "Transplant rejection",
+    "molecular_weight": 433.5,
+    "heavy_atoms": 31,
+    "logp": 3.52,
+    "inchikey": "RTGDFNSFWBGLEC-SYZQJQIISA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "nafamostat",
+    "category": "O_Entry_Inhibitors",
+    "indication": "Pancreatitis/DIC",
+    "molecular_weight": 347.38,
+    "heavy_atoms": 26,
+    "logp": 1.5,
+    "inchikey": "MQQNFDZXWVTQEH-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "naproxen",
+    "category": "N_Immune_Modulators",
+    "indication": "Pain/inflammation",
+    "molecular_weight": 230.26,
+    "heavy_atoms": 17,
+    "logp": 3.04,
+    "inchikey": "CMWTZPSULFXXJA-VIFPVBQESA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "nelfinavir",
+    "category": "F_Protease_Inhibitors",
+    "indication": "HIV",
+    "molecular_weight": 567.8,
+    "heavy_atoms": 40,
+    "logp": 4.5,
+    "inchikey": "QAGYKUNXZHXKMR-HKWSIXNMSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "niclosamide",
+    "category": "M_Arbovirus_Activity",
+    "indication": "Tapeworm infections",
+    "molecular_weight": 327.12,
+    "heavy_atoms": 21,
+    "logp": 3.9,
+    "inchikey": "RJMUSRYZPJIFPJ-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "nirmatrelvir",
+    "category": "L_Broad_Antivirals",
+    "indication": "COVID-19",
+    "molecular_weight": 499.53,
+    "heavy_atoms": 35,
+    "logp": 1.07,
+    "inchikey": "LIENCHBZNNMNKG-OJFNHCPVSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "nitazoxanide",
+    "category": "B_Published_Dengue",
+    "indication": "Parasitic diarrhea",
+    "molecular_weight": 307.29,
+    "heavy_atoms": 21,
+    "logp": 2.3,
+    "inchikey": "YQNQNVDNTFHQSW-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "ombitasvir",
+    "category": "J_HCV_NS5A",
+    "indication": "Hepatitis C",
+    "molecular_weight": 894.13,
+    "heavy_atoms": 65,
+    "logp": 7.45,
+    "inchikey": "PIDFDZJZLOTZTM-KHVQSSSXSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "omeprazole",
+    "category": "H_Negative_Controls",
+    "indication": "GERD/peptic ulcer",
+    "molecular_weight": 345.42,
+    "heavy_atoms": 24,
+    "logp": 2.89,
+    "inchikey": "SUBDBMMJDZJVOS-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "oseltamivir",
+    "category": "L_Broad_Antivirals",
+    "indication": "Influenza",
+    "molecular_weight": 312.41,
+    "heavy_atoms": 22,
+    "logp": 1.0,
+    "inchikey": "VSZGPKBBMSAYNT-RRFJBIMHSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "pantoprazole",
+    "category": "Q_More_Negatives",
+    "indication": "GERD",
+    "molecular_weight": 383.38,
+    "heavy_atoms": 26,
+    "logp": 2.88,
+    "inchikey": "IQPSEEYGBUAQFF-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "paritaprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 765.89,
+    "heavy_atoms": 55,
+    "logp": 6.81,
+    "inchikey": "UAUIUKWPKRJZJV-QPLHLKROSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "pentamidine",
+    "category": "R_More_Tropical",
+    "indication": "Trypanosomiasis/pneumocystis",
+    "molecular_weight": 340.43,
+    "heavy_atoms": 25,
+    "logp": 2.88,
+    "inchikey": "XDRYMKDFEDOLFX-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "pentoxifylline",
+    "category": "N_Immune_Modulators",
+    "indication": "Peripheral vascular disease",
+    "molecular_weight": 278.31,
+    "heavy_atoms": 20,
+    "logp": 0.19,
+    "inchikey": "BYPFEZZEUUWMEJ-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "pibrentasvir",
+    "category": "J_HCV_NS5A",
+    "indication": "Hepatitis C",
+    "molecular_weight": 1113.2,
+    "heavy_atoms": 80,
+    "logp": 7.81,
+    "inchikey": "VJYSBPDEJWLKKJ-NLIMODCCSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "praziquantel",
+    "category": "E_Tropical_Disease",
+    "indication": "Schistosomiasis",
+    "molecular_weight": 312.41,
+    "heavy_atoms": 23,
+    "logp": 2.4,
+    "inchikey": "FSVJFNAIGNNGKK-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "prednisolone",
+    "category": "N_Immune_Modulators",
+    "indication": "Inflammation",
+    "molecular_weight": 360.45,
+    "heavy_atoms": 26,
+    "logp": 2.68,
+    "inchikey": "OIGNJSKKLXVSLS-VWUMJDOOSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "primaquine",
+    "category": "E_Tropical_Disease",
+    "indication": "Malaria (P. vivax)",
+    "molecular_weight": 259.35,
+    "heavy_atoms": 19,
+    "logp": 2.1,
+    "inchikey": "INDBQLZJXZLFIT-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "prochlorperazine",
+    "category": "B_Published_Dengue",
+    "indication": "Nausea/psychosis",
+    "molecular_weight": 373.95,
+    "heavy_atoms": 25,
+    "logp": 4.58,
+    "inchikey": "WIKYUJGCLQQFNW-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "pyrimethamine",
+    "category": "R_More_Tropical",
+    "indication": "Malaria/toxoplasmosis",
+    "molecular_weight": 248.72,
+    "heavy_atoms": 17,
+    "logp": 2.52,
+    "inchikey": "WKSAUQYGYAYLPV-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "remdesivir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Antiviral (broad-spectrum)",
+    "molecular_weight": 602.59,
+    "heavy_atoms": 42,
+    "logp": 1.9,
+    "inchikey": "RWWYLEGWBNMMLJ-YSOARWBDSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "ribavirin",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Hepatitis C",
+    "molecular_weight": 244.21,
+    "heavy_atoms": 17,
+    "logp": -2.0,
+    "inchikey": "IWUCXVSUMQZMFG-AFCXAGJDSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "rimantadine",
+    "category": "O_Entry_Inhibitors",
+    "indication": "Influenza",
+    "molecular_weight": 179.31,
+    "heavy_atoms": 13,
+    "logp": 2.16,
+    "inchikey": "UBCHPRBFMUDMNC-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "ruxolitinib",
+    "category": "D_Host_Directed",
+    "indication": "Myelofibrosis",
+    "molecular_weight": 306.37,
+    "heavy_atoms": 23,
+    "logp": 2.66,
+    "inchikey": "HFNKQEVNSGCOJV-OAHLLOKOSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "simeprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 749.96,
+    "heavy_atoms": 52,
+    "logp": 6.55,
+    "inchikey": "JTZZSQYMACOLNN-VDWJNHBNSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "sirolimus",
+    "category": "P_More_Host_Directed",
+    "indication": "Immunosuppressant",
+    "molecular_weight": 914.19,
+    "heavy_atoms": 65,
+    "logp": 4.3,
+    "inchikey": "QFJCIRLUMZQUOT-HPLJOQBZSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "sofosbuvir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "Hepatitis C",
+    "molecular_weight": 529.46,
+    "heavy_atoms": 36,
+    "logp": 1.6,
+    "inchikey": "TTZHDVOVKQGIBA-IQWMDFIBSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "sorafenib",
+    "category": "M_Arbovirus_Activity",
+    "indication": "Cancer (renal/liver)",
+    "molecular_weight": 464.83,
+    "heavy_atoms": 32,
+    "logp": 6.15,
+    "inchikey": "MLDQJTXFUGDVEO-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "stavudine",
+    "category": "K_More_Nucleosides",
+    "indication": "HIV",
+    "molecular_weight": 224.22,
+    "heavy_atoms": 16,
+    "logp": -0.36,
+    "inchikey": "XNKLLVCARDGLGL-JGVFFNPUSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "sunitinib",
+    "category": "G_Kinase_Inhibitors",
+    "indication": "Cancer (renal)",
+    "molecular_weight": 398.48,
+    "heavy_atoms": 29,
+    "logp": 3.93,
+    "inchikey": "WINHZLLDWRZWRT-ATVHPVEESA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "suramin",
+    "category": "B_Published_Dengue",
+    "indication": "Trypanosomiasis",
+    "molecular_weight": 1297.3,
+    "heavy_atoms": 86,
+    "logp": -2.0,
+    "inchikey": "FIAFUQMPZJWCLV-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "telaprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 679.86,
+    "heavy_atoms": 49,
+    "logp": 1.23,
+    "inchikey": "BBAWEDCPNXPBQM-GDEBMMAJSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "telbivudine",
+    "category": "K_More_Nucleosides",
+    "indication": "Hepatitis B",
+    "molecular_weight": 242.23,
+    "heavy_atoms": 17,
+    "logp": -1.51,
+    "inchikey": "IQFYYKKMVGJFEH-CSMHCCOUSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "tenofovir",
+    "category": "A_RdRp_Inhibitors",
+    "indication": "HIV and hepatitis B",
+    "molecular_weight": 287.22,
+    "heavy_atoms": 19,
+    "logp": -1.6,
+    "inchikey": "SGOIRFVFHAKUTI-ZCFIWIBFSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "trifluridine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "Herpes (ophthalmic)",
+    "molecular_weight": 296.2,
+    "heavy_atoms": 20,
+    "logp": -2.12,
+    "inchikey": "VSQQQLOSPVPRAZ-RRKCRQDMSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "umifenovir",
+    "category": "L_Broad_Antivirals",
+    "indication": "Influenza",
+    "molecular_weight": 477.42,
+    "heavy_atoms": 29,
+    "logp": 5.18,
+    "inchikey": "KCFYEAOKVJSACF-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "vandetanib",
+    "category": "G_Kinase_Inhibitors",
+    "indication": "Cancer (thyroid)",
+    "molecular_weight": 475.36,
+    "heavy_atoms": 30,
+    "logp": 4.63,
+    "inchikey": "UHTHHESEBZOYNR-UHFFFAOYSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "velpatasvir",
+    "category": "J_HCV_NS5A",
+    "indication": "Hepatitis C",
+    "molecular_weight": 883.02,
+    "heavy_atoms": 65,
+    "logp": 8.45,
+    "inchikey": "FHCUMDQMBHQXKK-CDIODLITSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "voxilaprevir",
+    "category": "I_HCV_NS3_Protease",
+    "indication": "Hepatitis C",
+    "molecular_weight": 868.95,
+    "heavy_atoms": 60,
+    "logp": 2.89,
+    "inchikey": "MZBLZLWXUBZHSL-FZNJKFJKSA-N",
+    "structure_source": "PubChem"
+  },
+  {
+    "name": "zidovudine",
+    "category": "C_Nucleoside_Analogs",
+    "indication": "HIV",
+    "molecular_weight": 267.25,
+    "heavy_atoms": 19,
+    "logp": 0.1,
+    "inchikey": "HBOMLICNUCNMMY-XLPZGREQSA-N",
+    "structure_source": "PubChem"
+  }
+]

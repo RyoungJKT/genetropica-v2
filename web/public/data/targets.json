@@ -1,0 +1,56 @@
+[
+  {
+    "target_id": "CHIKV_nsP1",
+    "name": "nsP1 Capping Enzyme",
+    "disease": "Chikungunya",
+    "pdb_id": "6Z0V",
+    "uniprot_id": "Q8JUX5",
+    "structure_source": "experimental",
+    "validation_status": "not yet retrospectively validated; rankings are hypothesis-generating only"
+  },
+  {
+    "target_id": "CHIKV_nsP2",
+    "name": "nsP2 Protease",
+    "disease": "Chikungunya",
+    "pdb_id": "3TRK",
+    "uniprot_id": "Q8JUX6",
+    "structure_source": "experimental",
+    "validation_status": "not yet retrospectively validated; rankings are hypothesis-generating only"
+  },
+  {
+    "target_id": "DENV_E",
+    "name": "Envelope (E) Protein",
+    "disease": "Dengue",
+    "pdb_id": "1OAN",
+    "uniprot_id": "P09866",
+    "structure_source": "experimental",
+    "validation_status": "not yet retrospectively validated; rankings are hypothesis-generating only"
+  },
+  {
+    "target_id": "DENV_NS3",
+    "name": "NS3 Protease-Helicase",
+    "disease": "Dengue",
+    "pdb_id": "2VBC",
+    "uniprot_id": "P27909",
+    "structure_source": "experimental",
+    "validation_status": "not yet retrospectively validated; rankings are hypothesis-generating only"
+  },
+  {
+    "target_id": "DENV_NS5",
+    "name": "NS5 RNA-dependent RNA Polymerase",
+    "disease": "Dengue",
+    "pdb_id": "5CCV",
+    "uniprot_id": "P27909",
+    "structure_source": "experimental",
+    "validation_status": "retrospective validation performed; docking AUC 0.37 (below random)"
+  },
+  {
+    "target_id": "LEPTO_LipL32",
+    "name": "LipL32",
+    "disease": "Leptospirosis",
+    "pdb_id": "3FRH",
+    "uniprot_id": "Q8F8G2",
+    "structure_source": "experimental",
+    "validation_status": "not yet retrospectively validated; rankings are hypothesis-generating only"
+  }
+]
