@@ -32,19 +32,19 @@
 | Fix | Verdict (vs code/data) | Status |
 |-----|------------------------|--------|
 | FIX-1 wrong MW/structures | Confirmed; 53 drugs had wrong MW (not 8). Root cause: truncated SMILES + wrong CIDs from a second add-path. | DONE (DB rebuilt from PubChem by verified name resolution; 100/100; criticals correct; no duplicate structures) |
-| FIX-3 two MW sources | Confirmed (3 paths). | In progress (regenerate ADMET from canonical SMILES) |
-| FIX-2 ligand efficiency | Confirmed, depends on FIX-1 + re-dock. | Pending re-dock |
-| (re-dock) corrected drugs | 28 drug-like (250-600) re-docked; 25 now out-of-band flagged, not ranked. | Re-dock running |
-| FIX-4 MD RMSD/RMSF | Confirmed PBC/alignment artifact; trajectories on disk, re-analyzable. | Pending |
-| FIX-5 "GNN" label | Confirmed label bug; model is the ChEMBL RandomForest; validation scores are real (not synthetic). | Pending |
-| FIX-6 drug counts | Confirmed (100 / 99 / 50). | With FIX-3 |
-| FIX-7 6Z0V provenance | Confirmed (`predicted`; should be experimental cryo-EM). | Pending |
-| FIX-8 independence | Confirmed (Vina is a feature). Decision: reword. | Pending |
-| FIX-9 interaction types | Confirmed (neutral pibrentasvir shows 40 "Ionic"). | Pending |
-| FIX-10 PubMed verify | Confirmed (keyword, unverified). | Pending |
-| FIX-11 chains/residues | Confirmed (chain "X" on nsP1, C/D/E/F on NS5). | Pending |
-| FIX-12 grid coords/poses | Partial: grid centers already exist in `docking_parameters`; publish + pose validity. | Pending |
-| FIX-13 validation badges | Confirmed (no per-target field). | Pending |
+| FIX-3 two MW sources | Confirmed (3 paths). | DONE (single canonical structure source; MW + heavy atoms recomputed with RDKit from it) |
+| FIX-2 ligand efficiency | Confirmed, depends on FIX-1 + re-dock. | DONE (LE = -Vina / heavy_atoms recomputed; dual vina_rank + le_rank over the 250-600 band) |
+| (re-dock) corrected drugs | 28 drug-like (250-600) re-docked vs 6 targets; 25 now out-of-band flagged, not ranked. | DONE (168 dockings, 0 failures; dasabuvir now NS5 #1) |
+| FIX-4 MD RMSD/RMSF | Confirmed PBC/alignment artifact; trajectories on disk, re-analyzable. | DONE (NoJump + unwrap(protein) + align; protein RMSD 49 to ~2.8 Angstrom; ligand RMSD reported as n/a, min-distance used instead) |
+| FIX-5 "GNN" label | Confirmed label bug; model is the ChEMBL RandomForest; validation scores are real (not synthetic). | DONE (relabelled "ML (RandomForest)" throughout the export) |
+| FIX-6 drug counts | Confirmed (100 / 99 / 50). | DONE (counts computed at runtime) |
+| FIX-7 6Z0V provenance | Confirmed (`predicted`; should be experimental cryo-EM). | DONE (provenance corrected) |
+| FIX-8 independence | Confirmed (Vina is a feature). Decision: reword. | DONE (reworded to "complementary, partially overlapping"; model left unchanged per decision) |
+| FIX-9 interaction types | Confirmed (neutral pibrentasvir shows 40 "Ionic"). | DONE (chemistry-aware classifier; pibrentasvir 0 ionic; 609 ionic/salt-bridge total across all drugs; export labels contacts as predicted and states the detection method) |
+| FIX-10 PubMed verify | Confirmed (keyword, unverified). | DONE (NCBI esummary verify + evidence tiers; 12 PMID title mismatches and 103 weak/computational-tier links flagged; tiers shown in Appendix A) |
+| FIX-11 chains/residues | Confirmed (chain "X" on nsP1, C/D/E/F on NS5). | DONE (chains/residues valid by construction post-FIX-9; NS5 catalytic Asp663/Asp664/Arg737 present in 5CCV; export states numbering follows the deposited PDB) |
+| FIX-12 grid coords/poses | Partial: grid centers already exist in `docking_parameters`; publish + pose validity. | DONE (per-target grid center + box + exhaustiveness/modes published in the export methods section) |
+| FIX-13 validation badges | Confirmed (no per-target field). | DONE (`targets.validation_status` set; only NS5 validated, AUC 0.37; export shows a per-target validation-status table) |
 
 ## FIX-1 result detail
 - Rebuilt every drug from PubChem by **name** (stored CIDs were unreliable: e.g. pibrentasvir's CID pointed at a 430 Da compound). Stored per drug: canonical SMILES, InChIKey, source (PubChem), source CID, reference MW, fetch date. MW and heavy atoms recomputed with RDKit.
@@ -62,3 +62,12 @@
 7. publish grid coords + prep logs; pose-validity checks (FIX-12).
 8. per-target validation badges (FIX-13).
 9. regression suite; regenerate figures and the PDF export.
+
+## FIX-9 / 11 / 12 / 13 result detail (final batch)
+- **FIX-9 interactions** (`scripts/reanalyze_interactions.py`): re-extracts contacts from the best docked pose (MODEL 1) with a chemistry-aware classifier. Ionic / salt-bridge is gated on the ligand actually carrying an ionizable group (SMARTS) of the charge opposite to the residue; SMARTS exclude amide, sulfonamide, phosphoramide, imine/nitrile, aromatic and anilino nitrogens so neutral ligands score zero ionic contacts. H-bond <= 3.5 A (polar N/O/S), hydrophobic <= 4.5 A (nonpolar C), pi-stacking <= 5.5 A (aromatic residue). Distances vectorised with `MDAnalysis.lib.distances.distance_array`. Result: 594 complexes, 6827 contacts, 609 ionic/salt-bridge total; pibrentasvir went from 40 spurious "Ionic" to 0.
+- **FIX-11 chains/residues**: verified, not mutated. nsP1 carries chains A and X; NS5 carries C/D/E/F; the NS5 catalytic motif (Asp663, Asp664, Arg737) is present in 5CCV. Residue numbers and chain IDs in the export now state that they follow the deposited PDB for each target.
+- **FIX-12 grid/poses**: all six targets already had grid centers in `docking_parameters`; these (center x/y/z, 25 A cubic box, exhaustiveness 8, 3 modes) are now published in the export methods section so every docking run is reproducible.
+- **FIX-13 validation**: `targets.validation_status` is the single source. Only DENV_NS5 is retrospectively validated (docking AUC 0.37, below random); the other five read "not yet retrospectively validated; rankings are hypothesis-generating only". The export renders this as a per-target validation-status table.
+
+## Completion (2026-06-02)
+All 13 fixes plus the re-dock are DONE. 265 pytest tests pass. The professor-facing PDF (`~/Downloads/GeneTropica_Dashboard_Data_Export_<date>.pdf`, 45 pages) now surfaces: per-target validation badges, predicted-contact labelling with the detection method and PDB numbering note, the per-target docking grid, and per-link literature evidence tiers with PMID verification. The headline scientific change from the remediation: removing molecular-size bias dropped the oversized HCV direct-acting antivirals out of the NS5 top ranks (dasabuvir is now NS5 #1), and the NS5 AUC 0.37 honest-failure result is preserved throughout.
