@@ -65,7 +65,7 @@ export default function Binding() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 24, alignItems: 'start' }}>
+      <div className="rstack" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 24, alignItems: 'start' }}>
         <div>
           {binding.isLoading || !binding.data || !cur ? (
             <div className="mono" style={{ padding: 40 }}>Loading pose...</div>
