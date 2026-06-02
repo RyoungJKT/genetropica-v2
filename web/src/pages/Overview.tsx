@@ -87,13 +87,11 @@ export default function Overview() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 30, alignItems: 'start' }}>
-            <Reveal>
-              {field.isLoading ? (
-                <div className="mono" style={{ padding: 40 }}>Loading candidates...</div>
-              ) : (
-                <CandidateBoard key={sel} points={points} />
-              )}
-            </Reveal>
+            {field.isLoading ? (
+              <div className="mono" style={{ padding: 40 }}>Loading candidates...</div>
+            ) : (
+              <CandidateBoard key={sel} points={points} />
+            )}
             <FieldPanel />
           </div>
         </div>
