@@ -72,3 +72,4 @@ data/md_simulation/**/*.gro
 data/md_simulation/**/*.dcd
 data/md_simulation/**/*.trj
 !data/md_simulation/*/input/*.gro
+data/database/*.bak_pre_fix1

@@ -1,4 +1,4 @@
 Drug,Prot_RMSD_avg,Prot_RMSD_std,Lig_RMSD_avg,Lig_RMSD_std,Rg_avg,HBonds_avg,HBonds_std,ContactRes_gt50pct,MinDist_avg,Contacts_avg
-Celecoxib,48.91,5.96,2.18,3.55,43.81,0.4,0.7,9,2.91,200
-Methotrexate,49.72,1.08,73.85,8.76,40.17,0.1,0.4,10,10.15,187
-Dasabuvir,15.09,8.55,41.98,0.21,32.40,0.2,0.8,0,22.34,26
+Celecoxib,2.71,0.24,n/a,n/a,30.6,6.5,4.8,9,2.9,202
+Methotrexate,2.88,0.31,n/a,n/a,30.84,5.0,5.1,10,6.01,170
+Dasabuvir,2.89,0.21,n/a,n/a,30.49,1.0,2.7,0,16.23,27
