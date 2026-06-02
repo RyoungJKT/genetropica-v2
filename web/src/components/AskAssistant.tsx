@@ -6,6 +6,19 @@ const SUGGESTIONS = [
   'How well was the method validated?',
 ]
 
+function Thinking() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+      <span style={{ display: 'inline-flex', gap: 5 }}>
+        <span className="ask-dot" />
+        <span className="ask-dot" style={{ animationDelay: '0.16s' }} />
+        <span className="ask-dot" style={{ animationDelay: '0.32s' }} />
+      </span>
+      <span style={{ color: 'var(--ink-soft)', fontSize: 13 }}>Reading the data</span>
+    </div>
+  )
+}
+
 export function AskAssistant() {
   const [open, setOpen] = useState(false)
   const [q, setQ] = useState('')
@@ -46,7 +59,7 @@ export function AskAssistant() {
         {open ? 'Close' : 'Ask the data'}
       </button>
       {open && (
-        <div style={{ position: 'fixed', right: 22, bottom: 74, zIndex: 80, width: 'min(390px, 92vw)', background: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 16, boxShadow: '0 18px 50px rgba(28,26,23,.28)', padding: 18 }}>
+        <div style={{ position: 'fixed', right: 22, bottom: 74, zIndex: 80, width: 'min(390px, 92vw)', background: 'var(--paper)', border: '2px solid var(--ink)', borderRadius: 16, boxShadow: '0 20px 54px rgba(28,26,23,.32)', padding: 18 }}>
           <div className="eyebrow" style={{ marginBottom: 6 }}>Ask the data</div>
           <p style={{ fontSize: 12, color: 'var(--ink-faint)', lineHeight: 1.5, margin: '0 0 12px' }}>
             Answers come only from this dashboard's data, with the same honesty caveats. A research demo, not medical advice.
@@ -70,7 +83,7 @@ export function AskAssistant() {
           </div>
           {(answer || err || loading) && (
             <div style={{ marginTop: 14, fontSize: 13.5, lineHeight: 1.6, color: err ? 'var(--clay)' : 'var(--ink)', background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 10, padding: '12px 14px', maxHeight: 280, overflowY: 'auto', whiteSpace: 'pre-wrap' }}>
-              {loading ? 'Thinking...' : err || answer}
+              {loading ? <Thinking /> : err || answer}
             </div>
           )}
         </div>
