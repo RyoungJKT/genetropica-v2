@@ -11,7 +11,7 @@ export function FieldPanel() {
         <h4 style={{ fontSize: 20, marginBottom: 8 }}>Read it like this</h4>
         <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>{a.body}</p>
         <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)', marginTop: 12 }}>
-          X: {a.x} &rarr; &nbsp; Y: {a.y} &uarr; &nbsp; depth: size
+          X: {a.x} &rarr; &nbsp; Y: {a.y} &uarr; &nbsp; dot size: molecule size
         </div>
       </Card>
       <Card>
@@ -25,7 +25,7 @@ export function FieldPanel() {
           ))}
         </div>
         <p style={{ fontSize: 12, color: 'var(--ink-faint)', fontStyle: 'italic', lineHeight: 1.5, marginTop: 14 }}>
-          Faded spheres did not pass the safety (ADMET) filter. A green ring marks a drug-like candidate.
+          Faded dots did not pass the safety (ADMET) filter. A green ring marks a drug-like candidate.
         </p>
       </Card>
     </div>
