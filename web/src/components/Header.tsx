@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { RegisterToggle } from './RegisterToggle'
 
 const LINKS: [string, string][] = [
@@ -24,9 +24,10 @@ export function Header() {
         className="wrap"
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 62 }}
       >
-        <Link to="/" style={{ fontFamily: 'var(--serif)', fontSize: 21, color: 'var(--ink)' }}>
+        {/* Plain anchor (not router Link) so it leaves the /app SPA and lands on the static landing page at the site root. */}
+        <a href="/" style={{ fontFamily: 'var(--serif)', fontSize: 21, color: 'var(--ink)' }}>
           <b>GeneTropica</b>
-        </Link>
+        </a>
         <nav style={{ display: 'flex', gap: 22, alignItems: 'center' }}>
           {LINKS.map(([to, label]) => (
             <NavLink
