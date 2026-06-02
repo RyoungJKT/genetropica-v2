@@ -66,3 +66,24 @@ export interface Md {
   series: Record<string, MdSeries>
 }
 
+export interface KeyResidue {
+  residue_number: number
+  reference_aa: string
+  conservation_pct: number
+}
+export interface MannWhitney {
+  p_value: number
+  statistic: number
+  binding_mean: number
+  nonbinding_mean: number
+  n_binding: number
+  n_nonbinding: number
+  significant: boolean
+}
+export interface Conservation {
+  grades: Record<string, number>
+  identity: Record<string, Record<string, number>>
+  mann_whitney: MannWhitney
+  key_residues: KeyResidue[]
+}
+

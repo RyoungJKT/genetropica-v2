@@ -91,3 +91,11 @@ def test_md_export():
     for d in ("celecoxib", "methotrexate", "dasabuvir"):
         s = md["series"][d]
         assert len(s["rmsd"]) > 50 and len(s["rmsf"]) > 100 and len(s["mindist"]) > 50
+
+
+def test_conservation_export():
+    _run()
+    c = json.loads((OUT / "conservation.json").read_text())
+    assert len(c["grades"]) > 800
+    assert "DENV-2" in c["identity"] and "HCV" in c["identity"]
+    assert len(c["key_residues"]) > 0

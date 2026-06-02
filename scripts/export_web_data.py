@@ -209,6 +209,17 @@ def main():
         }
     (OUT / "md.json").write_text(json.dumps(md, separators=(",", ":")))
 
+    # conservation.json: ConSurf per-residue grades + cross-flavivirus identity + key residues
+    cons = ROOT / "data" / "conservation" / "consurf"
+    if (cons / "grades_by_residue.json").exists():
+        analysis = json.loads((cons / "analysis_results.json").read_text())
+        (OUT / "conservation.json").write_text(json.dumps({
+            "grades": json.loads((cons / "grades_by_residue.json").read_text()),
+            "identity": analysis.get("pairwise_identity", {}),
+            "mann_whitney": analysis.get("mann_whitney", {}),
+            "key_residues": analysis.get("key_residues", []),
+        }, separators=(",", ":")))
+
     con.close()
     print(f"wrote summary/targets/drugs/field/admet json + {n_bind} binding complexes "
           f"({n_drugs} drugs, {n_targets} targets, {n_runs} runs, "
