@@ -87,3 +87,23 @@ export interface Conservation {
   key_residues: KeyResidue[]
 }
 
+export interface Validation {
+  auc: Record<string, number>
+  ef: Record<string, { ef_1pct: number; ef_5pct: number; ef_10pct: number }>
+  roc: Record<string, [number, number][]>
+  metadata: Record<string, string | number>
+  fair_auc: number
+}
+export interface DockParam {
+  target_id: string
+  name: string
+  center: number[]
+  box: number
+  exhaustiveness: number
+  modes: number
+  vina: string
+}
+export interface Methods {
+  docking: DockParam[]
+}
+

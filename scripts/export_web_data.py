@@ -220,6 +220,36 @@ def main():
             "key_residues": analysis.get("key_residues", []),
         }, separators=(",", ":")))
 
+    # validation.json: retrospective ROC + enrichment. The initial small-decoy test was
+    # inflated (AUC ~1.0); the honest headline is the fair library-based AUC 0.37 for NS5.
+    val_dir = ROOT / "data" / "validation"
+    if (val_dir / "validation_summary.json").exists():
+        vs = json.loads((val_dir / "validation_summary.json").read_text())
+
+        def _roc(name):
+            p = val_dir / f"roc_{name}.csv"
+            if not p.exists():
+                return []
+            with open(p) as f:
+                return [[round(float(r["fpr"]), 4), round(float(r["tpr"]), 4)] for r in csv.DictReader(f)]
+
+        (OUT / "validation.json").write_text(json.dumps({
+            "auc": {k: vs[k]["auc"] for k in ("docking", "gnn", "consensus") if k in vs},
+            "ef": json.loads((val_dir / "enrichment_factors.json").read_text()),
+            "roc": {k: _roc(k) for k in ("docking", "gnn", "consensus")},
+            "metadata": vs.get("metadata", {}),
+            "fair_auc": 0.37,
+        }, separators=(",", ":")))
+
+    # methods.json: per-target docking grid (reproducibility)
+    tname2 = {r["target_id"]: r["name"] for r in cur.execute("SELECT target_id, name FROM targets")}
+    methods = {"docking": [
+        {"target_id": r["target_id"], "name": tname2.get(r["target_id"], r["target_id"]),
+         "center": [round(r["grid_center_x"], 1), round(r["grid_center_y"], 1), round(r["grid_center_z"], 1)],
+         "box": round(r["grid_size_x"]), "exhaustiveness": r["exhaustiveness"], "modes": r["num_modes"], "vina": r["vina_version"]}
+        for r in cur.execute("SELECT * FROM docking_parameters").fetchall()]}
+    (OUT / "methods.json").write_text(json.dumps(methods, separators=(",", ":")))
+
     con.close()
     print(f"wrote summary/targets/drugs/field/admet json + {n_bind} binding complexes "
           f"({n_drugs} drugs, {n_targets} targets, {n_runs} runs, "
