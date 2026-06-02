@@ -25,3 +25,18 @@ export interface Drug {
   inchikey: string
   structure_source: string
 }
+
+export interface FieldPoint {
+  name: string
+  category: string
+  indication: string
+  mw: number
+  ha: number
+  le: number | null
+  vina: number
+  dl: number
+  admet: number
+}
+
+export type Field = Record<string, FieldPoint[]>
+
