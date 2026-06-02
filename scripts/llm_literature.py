@@ -16,10 +16,10 @@ You supply your own LLM key. It is read from the environment, never printed, and
 never shipped in the static site.
 
 Setup:
-    export OPENAI_API_KEY=sk-...                      # required to call the LLM
-    export LLM_BASE_URL=https://api.openai.com/v1      # optional; any OpenAI-compatible endpoint
-    export LLM_MODEL=gpt-4o-mini                       # optional
-    export NCBI_API_KEY=...                            # optional; raises the PubMed rate limit
+    export ANTHROPIC_API_KEY=sk-ant-...                 # required to call the Claude API
+    export ANTHROPIC_MODEL=claude-3-5-haiku-latest      # optional; any current Claude model
+    export ANTHROPIC_BASE_URL=https://api.anthropic.com # optional
+    export NCBI_API_KEY=...                             # optional; raises the PubMed rate limit
 
 Usage:
     python scripts/llm_literature.py --dry-run     # fetch one abstract, print the prompt, no LLM call
@@ -29,6 +29,7 @@ Usage:
 import argparse
 import json
 import os
+import re
 import sqlite3
 import sys
 import time
@@ -39,6 +40,7 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "data" / "database" / "genetropica.db"
 CACHE = ROOT / "data" / "literature_llm.json"
+ANTHROPIC_VERSION = "2023-06-01"
 
 TARGET_CONTEXT = {
     "DENV_NS5": "dengue virus NS5 RNA-dependent RNA polymerase",
@@ -76,20 +78,35 @@ def build_prompt(drug, target_ctx, title, abstract):
     )
 
 
+def _extract_json(text):
+    """Claude returns prose-free JSON when asked, but tolerate stray fences or text."""
+    m = re.search(r"\{.*\}", text.strip(), re.DOTALL)
+    if not m:
+        raise ValueError(f"no JSON object in model response: {text[:200]}")
+    return json.loads(m.group(0))
+
+
 def call_llm(prompt, key, base_url, model):
     r = requests.post(
-        f"{base_url.rstrip('/')}/chat/completions",
-        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+        f"{base_url.rstrip('/')}/v1/messages",
+        headers={
+            "x-api-key": key,
+            "anthropic-version": ANTHROPIC_VERSION,
+            "Content-Type": "application/json",
+        },
         json={
             "model": model,
+            "max_tokens": 400,
             "temperature": 0,
-            "response_format": {"type": "json_object"},
+            "system": "You assess biomedical literature for a drug-repurposing screen. "
+            "Reply with a single strict JSON object and nothing else: no prose, no markdown fences.",
             "messages": [{"role": "user", "content": prompt}],
         },
         timeout=90,
     )
     r.raise_for_status()
-    return json.loads(r.json()["choices"][0]["message"]["content"])
+    text = "".join(b.get("text", "") for b in r.json().get("content", []) if b.get("type") == "text")
+    return _extract_json(text)
 
 
 def main():
@@ -108,12 +125,12 @@ def main():
 
     cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
     ncbi = os.environ.get("NCBI_API_KEY")
-    key = os.environ.get("OPENAI_API_KEY")
-    base = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")
-    model = os.environ.get("LLM_MODEL", "gpt-4o-mini")
+    key = os.environ.get("ANTHROPIC_API_KEY")
+    base = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com")
+    model = os.environ.get("ANTHROPIC_MODEL", "claude-3-5-haiku-latest")
 
     if not args.dry_run and not key:
-        sys.exit("Set OPENAI_API_KEY (or use --dry-run). The key is read from the environment and never stored.")
+        sys.exit("Set ANTHROPIC_API_KEY (or use --dry-run). The key is read from the environment and never stored.")
 
     todo = [r for r in rows if f"{r['drug']}|{r['target']}|{r['pmid']}" not in cache]
     if args.limit:

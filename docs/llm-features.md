@@ -4,8 +4,9 @@ Both features call a large language model through **your own API key**. The key 
 read from an environment variable, is never committed, and never ships in the static
 site. The dashboard works fully without them; these only enrich it.
 
-Provider-agnostic: anything with an OpenAI-compatible `/chat/completions` endpoint
-works (OpenAI, Together, Groq, a local server, ...). Defaults to OpenAI `gpt-4o-mini`.
+Both features use the **Anthropic Claude API** (the native Messages endpoint). Set your
+key with `ANTHROPIC_API_KEY`; the model defaults to `claude-3-5-haiku-latest` and can be
+changed with `ANTHROPIC_MODEL` (any current Claude model).
 
 ---
 
@@ -18,10 +19,10 @@ weak-keyword limitation (e.g. an unrelated immunology paper no longer counts as
 evidence).
 
 ```bash
-export OPENAI_API_KEY=sk-...                 # your key (required)
+export ANTHROPIC_API_KEY=sk-ant-...          # your key (required)
 # optional:
-export LLM_BASE_URL=https://api.openai.com/v1
-export LLM_MODEL=gpt-4o-mini
+export ANTHROPIC_MODEL=claude-3-5-haiku-latest
+export ANTHROPIC_BASE_URL=https://api.anthropic.com
 export NCBI_API_KEY=...                       # raises the PubMed fetch rate limit
 
 python scripts/llm_literature.py --dry-run    # inspect one prompt, no LLM call, no key needed
@@ -46,8 +47,8 @@ invent drugs, numbers, or claims.
 
 Activate it in the Vercel project (Settings -> Environment Variables):
 
-    OPENAI_API_KEY = sk-...
-    # optional: LLM_BASE_URL, LLM_MODEL   (defaults: OpenAI, gpt-4o-mini)
+    ANTHROPIC_API_KEY = sk-ant-...
+    # optional: ANTHROPIC_MODEL (default claude-3-5-haiku-latest), ANTHROPIC_BASE_URL
 
 Redeploy. Until the key is set, the widget politely replies that the assistant is not switched on.
 
