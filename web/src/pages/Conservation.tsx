@@ -1,6 +1,28 @@
 import { useConservation } from '../data/api'
 import { useRegister, say } from '../state/register'
 import { ConservationTrack } from '../components/ConservationTrack'
+import { useInView } from '../lib/anim'
+
+function IdentityBars({ identity, viruses }: { identity: Record<string, number>; viruses: string[] }) {
+  const [ref, inView] = useInView<HTMLDivElement>()
+  return (
+    <div ref={ref} style={{ marginTop: 36 }}>
+      <h3 style={{ fontSize: 22 }}>NS5 across the flavivirus family</h3>
+      <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 14px', maxWidth: 760 }}>
+        Sequence identity of dengue (DENV-2) NS5 to other viruses. The flaviviruses are 50 to 73% identical; hepatitis C (HCV) is only ~10%, a distant relative, which is exactly why sofosbuvir (an HCV drug) is used here as a control, not a candidate.
+      </p>
+      {viruses.map((v, vi) => (
+        <div key={v} style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '8px 0' }}>
+          <span style={{ width: 64, fontSize: 13, color: 'var(--ink-soft)' }}>{v}</span>
+          <div style={{ flex: 1, maxWidth: 520, height: 14, background: 'var(--paper-3)', borderRadius: 100, overflow: 'hidden' }}>
+            <div className="bar" style={{ height: '100%', width: inView ? `${identity[v]}%` : '0%', background: v === 'HCV' ? 'var(--clay)' : 'var(--green)', borderRadius: 100, transitionDelay: `${vi * 50}ms` }} />
+          </div>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 12, width: 48, textAlign: 'right' }}>{identity[v]}%</span>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function Conservation() {
   const c = useConservation()
@@ -33,21 +55,7 @@ export default function Conservation() {
             <ConservationTrack grades={data.grades} keyResidues={data.key_residues.map((k) => k.residue_number)} />
           </div>
 
-          <div style={{ marginTop: 36 }}>
-            <h3 style={{ fontSize: 22 }}>NS5 across the flavivirus family</h3>
-            <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 14px', maxWidth: 760 }}>
-              Sequence identity of dengue (DENV-2) NS5 to other viruses. The flaviviruses are 50 to 73% identical; hepatitis C (HCV) is only ~10%, a distant relative, which is exactly why sofosbuvir (an HCV drug) is used here as a control, not a candidate.
-            </p>
-            {viruses.map((v) => (
-              <div key={v} style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '8px 0' }}>
-                <span style={{ width: 64, fontSize: 13, color: 'var(--ink-soft)' }}>{v}</span>
-                <div style={{ flex: 1, maxWidth: 520, height: 14, background: 'var(--paper-3)', borderRadius: 100, overflow: 'hidden' }}>
-                  <div style={{ height: '100%', width: `${identity[v]}%`, background: v === 'HCV' ? 'var(--clay)' : 'var(--green)', borderRadius: 100 }} />
-                </div>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 12, width: 48, textAlign: 'right' }}>{identity[v]}%</span>
-              </div>
-            ))}
-          </div>
+          <IdentityBars identity={identity} viruses={viruses} />
 
           {mw && (
             <div style={{ marginTop: 36 }}>
