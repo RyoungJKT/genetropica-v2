@@ -57,9 +57,16 @@ def load_per_drug_csv(prefix: str) -> dict:
 # ---------------------------------------------------------------------------
 st.title("Molecular Dynamics Simulation")
 st.markdown(
-    "**50 ns all-atom MD** of three drug candidates bound to "
-    "**DENV NS5 RdRp** (PDB 5CCV, Chain A). "
-    "Force field: AMBER99SB-ILDN + GAFF2, TIP3P water, 300 K, 1 bar."
+    "**50 ns all-atom MD** of three drug candidates with **DENV NS5 RdRp** "
+    "(PDB 5CCV, Chain A). Force field: AMBER99SB-ILDN + GAFF2, TIP3P water, 300 K, 1 bar."
+)
+st.info(
+    "These are **unbiased association runs**: each ligand starts ~30 Å away in "
+    "solvent (the system build did not place it in the docked pose), so they test "
+    "whether a drug spontaneously finds and holds a binding site, not the stability "
+    "of the docked pose. Ligand RMSD is measured against each ligand's own mean bound "
+    "pose over its stable binding window; a drug that never settles has no defined "
+    "ligand RMSD. A single 50 ns run is anecdotal, not a measure of affinity."
 )
 
 # Check data availability
@@ -90,7 +97,11 @@ for idx, drug in enumerate(DRUGS):
             unsafe_allow_html=True,
         )
         c1, c2 = st.columns(2)
-        c1.metric("Ligand RMSD", f"{float(r['Lig_RMSD_avg']):.2f} \u00c5")
+        try:
+            _lr_disp = f"{float(r['Lig_RMSD_avg']):.2f} \u00c5"
+        except (TypeError, ValueError):
+            _lr_disp = str(r["Lig_RMSD_avg"])
+        c1.metric("Ligand RMSD", _lr_disp)
         c2.metric("Protein RMSD", f"{float(r['Prot_RMSD_avg']):.2f} \u00c5")
         c3, c4 = st.columns(2)
         c3.metric("Avg H-bonds", f"{float(r['HBonds_avg']):.1f}")
@@ -102,8 +113,9 @@ for idx, drug in enumerate(DRUGS):
 # Highlight best binder
 best_drug = summary.loc[summary["MinDist_avg"].astype(float).idxmin(), "Drug"]
 st.success(
-    f"**{best_drug}** shows the strongest binding, lowest minimum distance "
-    f"to the protein, indicating the most stable ligand-protein complex."
+    f"**{best_drug}** associated soonest and stayed closest to the protein "
+    f"(lowest average minimum distance) in this unbiased run, indicating spontaneous "
+    f"binding. This is not a measure of affinity, and a single 50 ns run is anecdotal."
 )
 
 st.divider()
@@ -113,8 +125,11 @@ st.divider()
 # ===================================================================
 st.header("2. RMSD Analysis")
 st.markdown(
-    "Root Mean Square Deviation measures structural drift from the starting "
-    "conformation. Low, stable RMSD = equilibrated system."
+    "Protein RMSD measures backbone drift from the start (low, stable = "
+    "equilibrated). Ligand RMSD here is measured against each ligand's own mean "
+    "bound pose over its stable binding window (not the solvent start), so it "
+    "reflects how tightly the bound pose is held once the drug associates. "
+    "Dasabuvir never forms a stable pose, so its ligand RMSD is undefined."
 )
 
 rmsd_data = load_per_drug_csv("rmsd")

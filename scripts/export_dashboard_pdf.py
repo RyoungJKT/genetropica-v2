@@ -269,7 +269,7 @@ P('Live dashboard: https://genetropica-production.up.railway.app/ · Source: git
 SP(18)
 caveat("How to read this report (scope and limits)",
        "This project screens 100 FDA-approved drugs against 6 protein targets from 3 neglected tropical diseases using AutoDock Vina docking, a ChEMBL-trained machine-learning prior, ADMET filtering, evolutionary conservation analysis, and 50 ns molecular dynamics. "
-       "These are <b>computational predictions, a starting hypothesis for a scientist, not treatments or clinical claims.</b> Key honesty points carried throughout: the machine-learning score is a <b>target-agnostic activity prior</b> (the same drug scores identically for every target), not a per-target predictor; candidates are ranked by <b>two metrics</b> (Vina score and ligand efficiency) over drug-like molecules to control for docking's size bias; sofosbuvir is included as a <b>known-active positive control</b>, not a discovery; retrospective validation for dengue NS5 gave a docking <b>AUC of 0.37 (below random)</b>, reported openly; and <b>MM-PBSA binding free energy was not computed</b> (the molecular dynamics shows stability, not absolute affinity).")
+       "These are <b>computational predictions, a starting hypothesis for a scientist, not treatments or clinical claims.</b> Key honesty points carried throughout: the machine-learning score is a <b>target-agnostic activity prior</b> (the same drug scores identically for every target), not a per-target predictor; candidates are ranked by <b>two metrics</b> (Vina score and ligand efficiency) over drug-like molecules to control for docking's size bias; sofosbuvir is included as a <b>known-active positive control</b>, not a discovery; retrospective validation for dengue NS5 gave a docking <b>AUC of 0.37 (below random)</b>, reported openly; and <b>MM-PBSA binding free energy was not computed</b> (the molecular dynamics are short unbiased runs that test spontaneous association, not absolute affinity).")
 SP(8)
 P("Contents: 1. Project overview  ·  2. Disease overview and targets  ·  3. Drug candidate explorer (per target)  ·  4. Scoring and AI insights  ·  5. Methodology validation  ·  6. Evolutionary conservation  ·  7. ADMET profiling  ·  8. Molecular dynamics  ·  9. Methods and reproducibility  ·  Appendices.", S_SMALL)
 
@@ -488,17 +488,16 @@ P("TPSA = topological polar surface area (Angstrom squared). HBD/HBA = hydrogen-
 # ----- 8. MD
 story.append(PageBreak())
 P("8. Molecular dynamics simulation", S_H1)
-P("50 ns all-atom molecular dynamics of three candidates bound to dengue NS5 RdRp (PDB 5CCV, chain A). Force field AMBER99SB-ILDN + GAFF2, TIP3P water, 300 K, 1 bar. Run with GROMACS 2024.4 (NVIDIA H100), analysed with MDAnalysis. These metrics describe binding-pose stability over time; they are proxies, not absolute binding free energies.", S_BODY)
+P("50 ns all-atom molecular dynamics of three candidates with dengue NS5 RdRp (PDB 5CCV, chain A). Force field AMBER99SB-ILDN + GAFF2, TIP3P water, 300 K, 1 bar. Run with GROMACS 2024.4 (NVIDIA H100), analysed with MDAnalysis.", S_BODY)
+P("Important framing: the simulation system was built without placing the ligand in the docked pose, so each drug starts about 30 Angstrom away in solvent. These are therefore unbiased association runs (does the drug spontaneously find and hold a binding site?), not docked-pose-stability runs. Celecoxib associates at about 3 ns and stays; methotrexate associates at about 14 ns and remains mobile; dasabuvir never forms a stable bound pose within 50 ns. A single short run is anecdotal and reports neither affinity nor binding free energy.", S_BODY)
 hdr, mrows = load_csv("data/md_simulation/comparison/comparison_summary.csv")
 if mrows := mrows if False else mrows:
     pass
 if mrows:
     table(hdr, mrows, [3.0 * cm] + [(13.5/(len(hdr)-1)) * cm] * (len(hdr) - 1), fontsize=7.0, align_right=tuple(range(1, len(hdr))))
-    P("Columns: Prot/Lig RMSD = average backbone/ligand root-mean-square deviation (Angstrom, with standard deviation); Rg = radius of gyration; HBonds = average hydrogen bonds; and contact metrics. A large ligand RMSD indicates the ligand drifted from its starting pose during the run.", S_CAP)
-for name in ["rmsd_comparison.png", "ligand_rmsd" ]:
-    pass
+    P("Columns: Prot RMSD = average backbone deviation; Lig RMSD = ligand deviation from its own mean bound pose over the stable binding window (Angstrom, with standard deviation; shown as 'no stable pose' when the drug never settles); Assoc = time the ligand first stably associates; Rg = radius of gyration; HBonds = average hydrogen bonds; plus contact metrics. Ligand RMSD is small only after the drug has bound, and is not referenced to the docked pose, which the run did not start from.", S_CAP)
 md_dir = "data/md_simulation/comparison"
-for png, cap in [("rmsd_comparison.png", "Backbone and ligand RMSD over the 50 ns trajectory for each drug."),
+for png, cap in [("rmsd_comparison.png", "Left: protein backbone RMSD. Right: ligand RMSD vs its bound pose; the high early values are the drug still in solvent before it associates."),
                  ("hbonds_comparison.png", "Hydrogen-bond count over time and average comparison."),
                  ("rmsf_comparison.png", "Per-residue flexibility (RMSF) along the protein."),
                  ("binding_proxy_comparison.png", "Ligand-protein minimum distance and atom-atom contacts over time.")]:
@@ -563,7 +562,7 @@ table(["Source", "Used for"], [
 P("Reproducibility", S_H2)
 P("Source code and full pipeline: github.com/RyoungJKT/genetropica-v2. Suggested citation: Russell Young (2026). GeneTropica: drug repurposing for neglected tropical diseases. British School Jakarta.", S_BODY)
 caveat("Overall honest summary for the reviewer",
-       "GeneTropica is an honest computational screen, not a discovery claim. Its strengths are breadth (100 approved drugs x 6 targets), a transparent two-metric ranking, and openly reported limitations. Its main documented weaknesses are: docking under-ranks the true small-molecule NS5 inhibitors (validated AUC 0.37); the ML prior is target-agnostic; only one target was retrospectively validated; literature linking is keyword-based; and the molecular dynamics reports stability, not binding free energy (no MM-PBSA). Sofosbuvir appears as a positive control, not a result.")
+       "GeneTropica is an honest computational screen, not a discovery claim. Its strengths are breadth (100 approved drugs x 6 targets), a transparent two-metric ranking, and openly reported limitations. Its main documented weaknesses are: docking under-ranks the true small-molecule NS5 inhibitors (validated AUC 0.37); the ML prior is target-agnostic; only one target was retrospectively validated; literature linking is keyword-based; and the molecular dynamics are short unbiased association runs (the ligand was not started in the docked pose) that report whether a drug spontaneously binds, not binding free energy (no MM-PBSA). Sofosbuvir appears as a positive control, not a result.")
 
 # ----- appendix A: literature evidence
 story.append(PageBreak())
