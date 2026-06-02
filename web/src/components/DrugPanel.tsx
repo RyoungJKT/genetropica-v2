@@ -49,6 +49,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
   const byTarget: Record<string, LitRef[]> = {}
   for (const r of literature) (byTarget[r.target] ??= []).push(r)
   const tierColor = (t: string) => (['direct_target', 'mechanistic', 'same_pathogen_phenotypic'].includes(t) ? 'var(--green)' : t === 'weak_keyword' ? 'var(--ink-faint)' : 'var(--gold)')
+  const verdictColor = (v?: string) => (v === 'supports' ? 'var(--green)' : v === 'related' ? 'var(--gold)' : v === 'adverse' ? 'var(--clay)' : 'var(--ink-faint)')
 
   return (
     <section ref={ref} style={{ marginTop: 36, scrollMarginTop: 80 }}>
@@ -118,7 +119,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
         <div style={{ marginTop: 32 }}>
           <h3 style={{ fontSize: 15, marginBottom: 4 }}>Literature evidence</h3>
           <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 12px', maxWidth: 720, lineHeight: 1.5 }}>
-            PubMed references linking this drug to each target, found by keyword mining. Most are weak keyword hits (tier shown), included for transparency, not as proof of activity.
+            PubMed references linking this drug to each target (keyword-mined, then language-model reviewed where an "AI" verdict is shown). Evidence is a hint, not proof of activity.
           </p>
           {Object.entries(byTarget).map(([tid, refs]) => (
             <div key={tid} style={{ marginBottom: 14 }}>
@@ -127,9 +128,13 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
                 <div key={r.pmid} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 12, padding: '7px 0', borderBottom: '1px solid var(--line)', alignItems: 'start' }}>
                   <div>
                     <a href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} target="_blank" rel="noopener" style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.4 }}>{r.title}</a>
-                    <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {r.rel} · <span style={{ color: tierColor(r.tier) }}>{r.tier.replace(/_/g, ' ')}</span></div>
+                    {r.llm_verdict ? (
+                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2, lineHeight: 1.45 }}>PMID {r.pmid} · <span style={{ color: verdictColor(r.llm_verdict), fontWeight: 600 }}>AI: {r.llm_verdict}</span>{r.llm_rel ? ` · ${r.llm_rel}` : ''}{r.llm_note ? <span style={{ color: 'var(--ink-soft)' }}> — {r.llm_note}</span> : null}</div>
+                    ) : (
+                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {r.rel} · <span style={{ color: tierColor(r.tier) }}>{r.tier.replace(/_/g, ' ')}</span></div>
+                    )}
                   </div>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', whiteSpace: 'nowrap' }}>{r.conf != null ? r.conf.toFixed(2) : ''}</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', whiteSpace: 'nowrap' }}>{r.llm_conf != null ? r.llm_conf.toFixed(2) : r.conf != null ? r.conf.toFixed(2) : ''}</span>
                 </div>
               ))}
             </div>

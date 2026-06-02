@@ -77,6 +77,11 @@ export interface LitRef {
   rel: string
   conf: number | null
   tier: string
+  /** Optional LLM review (present once scripts/llm_literature.py has been run). */
+  llm_verdict?: string
+  llm_rel?: string
+  llm_conf?: number
+  llm_note?: string
 }
 
 export interface Contact { res: string; num: string; chain: string; type: string; dist: number }

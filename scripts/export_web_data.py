@@ -175,6 +175,17 @@ def main():
         "COALESCE(NULLIF(l.canonical_title,''), l.title) title, l.relationship rel, "
         "l.confidence conf, l.evidence_tier tier FROM literature l "
         "JOIN drugs d ON d.drug_id=l.drug_id ORDER BY d.name, l.target_id, l.confidence DESC")]
+    # Merge LLM relation-extraction results if scripts/llm_literature.py has been run.
+    llm_path = ROOT / "data" / "literature_llm.json"
+    if llm_path.exists():
+        llm_cache = json.loads(llm_path.read_text())
+        for e in lit:
+            c = llm_cache.get(f"{e['drug']}|{e['target']}|{e['pmid']}")
+            if c:
+                e["llm_verdict"] = c.get("verdict")
+                e["llm_rel"] = c.get("rel")
+                e["llm_conf"] = c.get("conf")
+                e["llm_note"] = c.get("note")
     (OUT / "literature.json").write_text(json.dumps(lit, indent=2))
 
     # binding viewer: a trimmed pocket PDB per target + per drug-like complex an
