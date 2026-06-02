@@ -69,6 +69,16 @@ export interface AdmetProfile {
   dl: number
 }
 
+export interface LitRef {
+  drug: string
+  target: string
+  pmid: string
+  title: string
+  rel: string
+  conf: number | null
+  tier: string
+}
+
 export interface Contact { res: string; num: string; chain: string; type: string; dist: number }
 export interface BindingData { contacts: Contact[] }
 export type BindingIndex = Record<string, string[]>

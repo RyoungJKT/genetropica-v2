@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
-import type { Drug, Field, AdmetRow } from '../data/types'
+import type { Drug, Field, AdmetRow, LitRef } from '../data/types'
 import { RadarChart } from './RadarChart'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
@@ -14,7 +14,7 @@ function Meta({ k, v }: { k: string; v: string }) {
 }
 
 /** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), ADMET radar. */
-export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string }) {
+export function DrugPanel({ drug, field, admet, order, tName, literature = [] }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string; literature?: LitRef[] }) {
   const ref = useRef<HTMLDivElement>(null)
   const firstRender = useRef(true)
   useEffect(() => {
@@ -45,6 +45,10 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
         { label: 'Hepato Safety', value: 1 - admet.hepatotox },
       ]
     : []
+
+  const byTarget: Record<string, LitRef[]> = {}
+  for (const r of literature) (byTarget[r.target] ??= []).push(r)
+  const tierColor = (t: string) => (['direct_target', 'mechanistic', 'same_pathogen_phenotypic'].includes(t) ? 'var(--green)' : t === 'weak_keyword' ? 'var(--ink-faint)' : 'var(--gold)')
 
   return (
     <section ref={ref} style={{ marginTop: 36, scrollMarginTop: 80 }}>
@@ -109,6 +113,31 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
           {admet ? <RadarChart axes={radarAxes} /> : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>No ADMET record for this drug.</p>}
         </div>
       </div>
+
+      {Object.keys(byTarget).length > 0 ? (
+        <div style={{ marginTop: 32 }}>
+          <h3 style={{ fontSize: 15, marginBottom: 4 }}>Literature evidence</h3>
+          <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 12px', maxWidth: 720, lineHeight: 1.5 }}>
+            PubMed references linking this drug to each target, found by keyword mining. Most are weak keyword hits (tier shown), included for transparency, not as proof of activity.
+          </p>
+          {Object.entries(byTarget).map(([tid, refs]) => (
+            <div key={tid} style={{ marginBottom: 14 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 6 }}>{tName(tid)} · {refs.length} ref{refs.length === 1 ? '' : 's'}</div>
+              {refs.map((r) => (
+                <div key={r.pmid} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 12, padding: '7px 0', borderBottom: '1px solid var(--line)', alignItems: 'start' }}>
+                  <div>
+                    <a href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} target="_blank" rel="noopener" style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.4 }}>{r.title}</a>
+                    <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {r.rel} · <span style={{ color: tierColor(r.tier) }}>{r.tier.replace(/_/g, ' ')}</span></div>
+                  </div>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', whiteSpace: 'nowrap' }}>{r.conf != null ? r.conf.toFixed(2) : ''}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p style={{ marginTop: 28, fontSize: 13, color: 'var(--ink-faint)' }}>No literature references found for this drug.</p>
+      )}
       {tip && (
         <ChartTooltip x={tip.x} y={tip.y}>
           <div style={{ fontWeight: 600 }}>{tip.title}</div>

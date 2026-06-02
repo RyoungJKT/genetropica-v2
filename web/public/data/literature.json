@@ -1,0 +1,1172 @@
+[
+  {
+    "drug": "abacavir",
+    "target": "DENV_E",
+    "pmid": "41264236",
+    "title": "High-throughput screening for class I peptide MHC binding via yeast surface display.",
+    "rel": "mechanistic",
+    "conf": 0.5,
+    "tier": "mechanistic"
+  },
+  {
+    "drug": "acyclovir",
+    "target": "DENV_NS3",
+    "pmid": "38992553",
+    "title": "Exploring the antiviral inhibitory activity of Niloticin against the NS2B/NS3 protease of Dengue virus (DENV2).",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "acyclovir",
+    "target": "DENV_NS5",
+    "pmid": "33128910",
+    "title": "Synthesis and biological evaluation of novel flexible nucleoside analogues that inhibit flavivirus replication in vitro.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "albendazole",
+    "target": "CHIKV_nsP2",
+    "pmid": "38947813",
+    "title": "In Silico Drug Repurposing Uncovered the Antiviral Potential of the Antiparasitic Drug Oxibendazole Against the Chikungunya Virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "atorvastatin",
+    "target": "DENV_NS3",
+    "pmid": "38034354",
+    "title": "An ivermectin\u00a0- atorvastatin combination impairs nuclear transport inhibiting dengue infection in\u00a0vitro and in\u00a0vivo.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "atorvastatin",
+    "target": "DENV_NS5",
+    "pmid": "38034354",
+    "title": "An ivermectin\u00a0- atorvastatin combination impairs nuclear transport inhibiting dengue infection in\u00a0vitro and in\u00a0vivo.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "atovaquone",
+    "target": "DENV_E",
+    "pmid": "33371476",
+    "title": "The Antimalarial Compound Atovaquone Inhibits Zika and Dengue Virus Infection by Blocking E Protein-Mediated Membrane Fusion.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "balapiravir",
+    "target": "DENV_E",
+    "pmid": "29425203",
+    "title": "Neutralization of antibody-enhanced dengue infection by VIS513, a pan serotype reactive monoclonal antibody targeting domain III of the dengue E protein.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "balapiravir",
+    "target": "DENV_NS3",
+    "pmid": "32546117",
+    "title": "Implementation of ensemble methods on QSAR Study of NS3 inhibitor activity as anti-dengue agent.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "balapiravir",
+    "target": "DENV_NS3",
+    "pmid": "39776767",
+    "title": "Machine learning and molecular docking prediction of potential inhibitors against dengue virus.",
+    "rel": "pharmacokinetic",
+    "conf": 0.4,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "balapiravir",
+    "target": "DENV_NS5",
+    "pmid": "24076358",
+    "title": "Ten years of dengue drug discovery: progress and prospects.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "balapiravir",
+    "target": "DENV_NS5",
+    "pmid": "40924582",
+    "title": "Assessing the Design of Pyrimidine-Based Nucleoside Analogs Targeting Dengue and Zika RNA-Dependent RNA Polymerase: What are the Rules?",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "baloxavir_marboxil",
+    "target": "DENV_NS3",
+    "pmid": "40642016",
+    "title": "i-DENV: development of QSAR based regression models for predicting inhibitors targeting non-structural (NS) proteins of dengue virus.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "baloxavir_marboxil",
+    "target": "DENV_NS5",
+    "pmid": "40642016",
+    "title": "i-DENV: development of QSAR based regression models for predicting inhibitors targeting non-structural (NS) proteins of dengue virus.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "baricitinib",
+    "target": "DENV_E",
+    "pmid": "30397906",
+    "title": "The effect of isocapnic hyperventilation on early recovery after remifentanil/sevoflurane anesthesia in O(2) /air: A randomized trial.",
+    "rel": "blocks substrate binding",
+    "conf": 0.78,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "boceprevir",
+    "target": "DENV_NS3",
+    "pmid": "21473061",
+    "title": "[Inhibitors of hepatitis C virus--therapeutic possibilities].",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "boceprevir",
+    "target": "DENV_NS3",
+    "pmid": "25961497",
+    "title": "Simultaneously Targeting the NS3 Protease and Helicase Activities for More Effective Hepatitis C Virus Therapy.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "boceprevir",
+    "target": "DENV_NS3",
+    "pmid": "29297305",
+    "title": "Pharmacophore anchor models of flaviviral NS3 proteases lead to drug repurposing for DENV infection.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "celecoxib",
+    "target": "DENV_NS3",
+    "pmid": "28578155",
+    "title": "Prefrontal-parietal effective connectivity during working memory in older adults.",
+    "rel": "inhibits viral replication",
+    "conf": 0.72,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "celecoxib",
+    "target": "DENV_NS5",
+    "pmid": "28666323",
+    "title": "Exploring the in vitro potential of celecoxib derivative AR-12 as an effective antiviral compound against four dengue virus serotypes.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_E",
+    "pmid": "20482777",
+    "title": "Spawning seasons of Rasbora tawarensis (Pisces: Cyprinidae) in Lake Laut Tawar, Aceh province, Indonesia.",
+    "rel": "inhibits viral replication",
+    "conf": 0.85,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_E",
+    "pmid": "16014657",
+    "title": "Self-reported heart symptoms are strongly linked to past and present poverty in Russia: evidence from the 1998 Taganrog interview survey.",
+    "rel": "blocks substrate binding",
+    "conf": 0.78,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_E",
+    "pmid": "29425203",
+    "title": "Neutralization of antibody-enhanced dengue infection by VIS513, a pan serotype reactive monoclonal antibody targeting domain III of the dengue E protein.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_E",
+    "pmid": "27815736",
+    "title": "Magnetic nanoparticles are highly toxic to chloroquine-resistant Plasmodium falciparum, dengue virus (DEN-2), and their mosquito vectors.",
+    "rel": "adverse",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_NS3",
+    "pmid": "24680954",
+    "title": "Amodiaquine, an antimalarial drug, inhibits dengue virus type 2 replication and infectivity.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_NS5",
+    "pmid": "40317563",
+    "title": "mTOR Signalling in Arbovirus Infections: Molecular Mechanisms and Therapeutic Opportunities.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_NS5",
+    "pmid": "25664975",
+    "title": "Antiviral activity of chloroquine against dengue virus type 2 replication in Aotus monkeys.",
+    "rel": "therapeutic",
+    "conf": 0.8,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_NS5",
+    "pmid": "32858540",
+    "title": "One-step Multiplex Real-time RT-PCR for Molecular Detection and Typing of Dengue Virus Infection From Paraffin-embedded Tissues During the Brazilian 2019 Outbreak.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_NS5",
+    "pmid": "37272795",
+    "title": "Analytical and Clinical Evaluation of a TaqMan Real-Time PCR Assay for the Detection of Chikungunya Virus.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "DENV_NS5",
+    "pmid": "40824966",
+    "title": "Direct real-time RT-PCR for the detection of dengue virus from patient serum in Lao PDR.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chloroquine",
+    "target": "LEPTO_LipL32",
+    "pmid": "29092789",
+    "title": "A comparison of two molecular methods for diagnosing leptospirosis from three different sample types in patients presenting with fever in Laos.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "chlorpromazine",
+    "target": "DENV_E",
+    "pmid": "18198378",
+    "title": "Functional entry of dengue virus into Aedes albopictus mosquito cells is dependent on clathrin-mediated endocytosis.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "colchicine",
+    "target": "DENV_E",
+    "pmid": "18198378",
+    "title": "Functional entry of dengue virus into Aedes albopictus mosquito cells is dependent on clathrin-mediated endocytosis.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "colchicine",
+    "target": "DENV_NS3",
+    "pmid": "35372666",
+    "title": "Seawater fungi-derived compound screening to identify novel small molecules against dengue virus NS5 methyltransferase and NS2B/NS3 protease.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "cyclosporine",
+    "target": "DENV_NS5",
+    "pmid": "30333168",
+    "title": "Human MxB Inhibits the Replication of Hepatitis C Virus.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "daclatasvir",
+    "target": "DENV_NS5",
+    "pmid": "27884884",
+    "title": "Existing evidence is insufficient to justify metformin or other agents as first-line therapy for type 2 diabetes.",
+    "rel": "binds active site",
+    "conf": 0.8,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "darunavir",
+    "target": "DENV_E",
+    "pmid": "40024350",
+    "title": "Darunavir inhibits dengue virus replication by targeting the hydrophobic pocket of the envelope protein.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "darunavir",
+    "target": "DENV_NS3",
+    "pmid": "40024350",
+    "title": "Darunavir inhibits dengue virus replication by targeting the hydrophobic pocket of the envelope protein.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "dasabuvir",
+    "target": "DENV_NS5",
+    "pmid": "37632595",
+    "title": "Repurposing of approved antivirals against dengue virus serotypes: an in silico and in vitro mechanistic study.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "doxycycline",
+    "target": "DENV_E",
+    "pmid": "29494575",
+    "title": "Exponential scaling of single-cell RNA-seq in the past decade.",
+    "rel": "blocks substrate binding",
+    "conf": 0.8,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "doxycycline",
+    "target": "DENV_NS3",
+    "pmid": "24142271",
+    "title": "Inhibitory effect of doxycycline against dengue virus replication in vitro.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "doxycycline",
+    "target": "DENV_NS3",
+    "pmid": "24522138",
+    "title": "Study the antiviral activity of some derivatives of tetracycline and non-steroid anti inflammatory drugs towards dengue virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "doxycycline",
+    "target": "DENV_NS3",
+    "pmid": "39274895",
+    "title": "Orthoflaviviral Inhibitors in Clinical Trials, Preclinical In Vivo Efficacy Targeting NS2B-NS3 and Cellular Antiviral Activity via Competitive Protease Inhibition.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "doxycycline",
+    "target": "LEPTO_LipL32",
+    "pmid": "41101900",
+    "title": "Leptospira interrogans biofilms in acute canine infection and their in vitro interactions with antibiotics and p-coumaric acid.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "favipiravir",
+    "target": "CHIKV_nsP1",
+    "pmid": "30135220",
+    "title": "Differential Transmission of Antiviral Drug-Resistant Chikungunya Viruses by Aedes Mosquitoes.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "favipiravir",
+    "target": "DENV_NS5",
+    "pmid": "24825779",
+    "title": "Dose finding with drug combinations in cancer phase I clinical trials using conditional escalation with overdose control.",
+    "rel": "inhibits viral replication",
+    "conf": 0.85,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "galidesivir",
+    "target": "DENV_NS3",
+    "pmid": "40300391",
+    "title": "Drug repositioning: Identification of potent inhibitors of NS3 protease and NS5 RdRp for control of DENV infection.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "galidesivir",
+    "target": "DENV_NS5",
+    "pmid": "40300391",
+    "title": "Drug repositioning: Identification of potent inhibitors of NS3 protease and NS5 RdRp for control of DENV infection.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "galidesivir",
+    "target": "DENV_NS5",
+    "pmid": "37488090",
+    "title": "Galidesivir Triphosphate Promotes Stalling of Dengue-2 Virus Polymerase Immediately Prior to Incorporation.",
+    "rel": "therapeutic",
+    "conf": 0.4,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "grazoprevir",
+    "target": "DENV_NS3",
+    "pmid": "25961497",
+    "title": "Simultaneously Targeting the NS3 Protease and Helicase Activities for More Effective Hepatitis C Virus Therapy.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "hydroxychloroquine",
+    "target": "DENV_E",
+    "pmid": "20482771",
+    "title": "Ecological and genetic divergence between two lineages of middle American t\u00fangara frogs Physalaemus (= Engystomops) pustulosus.",
+    "rel": "inhibits viral replication",
+    "conf": 0.76,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "ivermectin",
+    "target": "DENV_NS3",
+    "pmid": "22417684",
+    "title": "Ivermectin is a specific inhibitor of importin \u03b1/\u03b2-mediated nuclear import able to inhibit replication of HIV-1 and dengue virus.",
+    "rel": "inhibits viral replication",
+    "conf": 0.9,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "ivermectin",
+    "target": "DENV_NS3",
+    "pmid": "32251768",
+    "title": "The FDA-approved drug ivermectin inhibits the replication of SARS-CoV-2 in vitro.",
+    "rel": "inhibits viral replication",
+    "conf": 0.75,
+    "tier": "related_organism"
+  },
+  {
+    "drug": "ivermectin",
+    "target": "DENV_NS3",
+    "pmid": "38034354",
+    "title": "An ivermectin\u00a0- atorvastatin combination impairs nuclear transport inhibiting dengue infection in\u00a0vitro and in\u00a0vivo.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ivermectin",
+    "target": "DENV_NS3",
+    "pmid": "22535622",
+    "title": "Ivermectin is a potent inhibitor of flavivirus replication specifically targeting NS3 helicase activity: new prospects for an old drug.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ivermectin",
+    "target": "DENV_NS5",
+    "pmid": "32135219",
+    "title": "The broad spectrum antiviral ivermectin targets the host nuclear transport importin \u03b1/\u03b21 heterodimer.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ivermectin",
+    "target": "DENV_NS5",
+    "pmid": "38034354",
+    "title": "An ivermectin\u00a0- atorvastatin combination impairs nuclear transport inhibiting dengue infection in\u00a0vitro and in\u00a0vivo.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "leflunomide",
+    "target": "DENV_E",
+    "pmid": "21845515",
+    "title": "Immunosuppressive effects and mechanisms of leflunomide in dengue virus infection of human dendritic cells.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "lopinavir",
+    "target": "DENV_NS3",
+    "pmid": "28878025",
+    "title": "Gallbladder-derived surfactant protein D regulates gut commensal bacteria for maintaining intestinal homeostasis.",
+    "rel": "binds active site",
+    "conf": 0.78,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "lopinavir",
+    "target": "DENV_NS3",
+    "pmid": "40758162",
+    "title": "Exploring Phytochemicals from Nigella sativa as novel NS2B/NS3 protease inhibitors of dengue virus: A Pharmacoinformatic Study.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "lovastatin",
+    "target": "DENV_E",
+    "pmid": "29425203",
+    "title": "Neutralization of antibody-enhanced dengue infection by VIS513, a pan serotype reactive monoclonal antibody targeting domain III of the dengue E protein.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "lovastatin",
+    "target": "DENV_NS3",
+    "pmid": "28384260",
+    "title": "DENV up-regulates the HMG-CoA reductase activity through the impairment of AMPK phosphorylation: A potential antiviral target.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "metformin",
+    "target": "DENV_NS3",
+    "pmid": "28384260",
+    "title": "DENV up-regulates the HMG-CoA reductase activity through the impairment of AMPK phosphorylation: A potential antiviral target.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "molnupiravir",
+    "target": "DENV_NS5",
+    "pmid": "40900943",
+    "title": "Mechanism and spectrum of inhibition of viral polymerases by 2'-deoxy-2'-\u03b2-fluoro-4'-azidocytidine or azvudine.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "molnupiravir",
+    "target": "DENV_NS5",
+    "pmid": "36764470",
+    "title": "Synthesis and biological evaluation of new \u03b2-D-N(4)-hydroxycytidine analogs against SARS-CoV-2, influenza viruses and DENV-2.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "mycophenolate_mofetil",
+    "target": "DENV_E",
+    "pmid": "35864917",
+    "title": "Seropositive Neuromyelitis Optica in a Case of Undiagnosed Ankylosing Spondylitis: A Neuro-Rheumatological Conundrum.",
+    "rel": "unknown",
+    "conf": 0.3,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "niclosamide",
+    "target": "DENV_E",
+    "pmid": "25036357",
+    "title": "Anesthesia treatment in cases of infant epiglottis cyst emergency extirpation operations.",
+    "rel": "inhibits viral replication",
+    "conf": 0.88,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "niclosamide",
+    "target": "DENV_E",
+    "pmid": "31213630",
+    "title": "Neutralization of Acidic Intracellular Vesicles by Niclosamide Inhibits Multiple Steps of the Dengue Virus Life Cycle In Vitro.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "niclosamide",
+    "target": "DENV_NS3",
+    "pmid": "32866370",
+    "title": "JMX0207, a Niclosamide Derivative with Improved Pharmacokinetics, Suppresses Zika Virus Infection Both In Vitro and In Vivo.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "niclosamide",
+    "target": "DENV_NS3",
+    "pmid": "24504137",
+    "title": "Characterization and classification of Bo4 as a cluster G mycobacteriophage that can infect and lyse M. tuberculosis.",
+    "rel": "inhibits viral replication",
+    "conf": 0.82,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "niclosamide",
+    "target": "DENV_NS5",
+    "pmid": "40317563",
+    "title": "mTOR Signalling in Arbovirus Infections: Molecular Mechanisms and Therapeutic Opportunities.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "oseltamivir",
+    "target": "DENV_NS5",
+    "pmid": "38792846",
+    "title": "Sodium Polyoxotungstate Inhibits the Replication of Influenza Virus by Blocking the Nuclear Import of vRNP.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "oseltamivir",
+    "target": "DENV_NS5",
+    "pmid": "22374988",
+    "title": "Inhibition of influenza A virus replication by antagonism of a PI3K-AKT-mTOR pathway member identified by gene-trap insertional mutagenesis.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "paritaprevir",
+    "target": "DENV_NS3",
+    "pmid": "40248436",
+    "title": "Paritaprevir as a pan-antiviral against different flaviviruses.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "primaquine",
+    "target": "DENV_NS3",
+    "pmid": "24680954",
+    "title": "Amodiaquine, an antimalarial drug, inhibits dengue virus type 2 replication and infectivity.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "primaquine",
+    "target": "DENV_NS5",
+    "pmid": "24680954",
+    "title": "Amodiaquine, an antimalarial drug, inhibits dengue virus type 2 replication and infectivity.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "prochlorperazine",
+    "target": "DENV_NS3",
+    "pmid": "27729840",
+    "title": "Virtual Screening for Potential Inhibitors of NS3 Protein of Zika Virus.",
+    "rel": "mechanistic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "pyrimethamine",
+    "target": "DENV_E",
+    "pmid": "34833913",
+    "title": "Diterpenes/Diterpenoids and Their Derivatives as Potential Bioactive Leads against Dengue Virus: A Computational and Network Pharmacology Study.",
+    "rel": "adverse",
+    "conf": 0.4,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "pyrimethamine",
+    "target": "DENV_NS3",
+    "pmid": "34833913",
+    "title": "Diterpenes/Diterpenoids and Their Derivatives as Potential Bioactive Leads against Dengue Virus: A Computational and Network Pharmacology Study.",
+    "rel": "adverse",
+    "conf": 0.4,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "pyrimethamine",
+    "target": "DENV_NS5",
+    "pmid": "34833913",
+    "title": "Diterpenes/Diterpenoids and Their Derivatives as Potential Bioactive Leads against Dengue Virus: A Computational and Network Pharmacology Study.",
+    "rel": "adverse",
+    "conf": 0.4,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "39102385",
+    "title": "Structure based screening and molecular docking with dynamic simulation of natural secondary metabolites to target RNA-dependent RNA polymerase of five different retroviruses.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "40900943",
+    "title": "Mechanism and spectrum of inhibition of viral polymerases by 2'-deoxy-2'-\u03b2-fluoro-4'-azidocytidine or azvudine.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "27027923",
+    "title": "Repairing Peripheral Nerves: Is there a Role for Carbon Nanotubes?",
+    "rel": "inhibits viral replication",
+    "conf": 0.88,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "28124907",
+    "title": "Discovery and Synthesis of a Phosphoramidate Prodrug of a Pyrrolo[2,1-f][triazin-4-amino] Adenine C-Nucleoside (GS-5734) for the Treatment of Ebola and Emerging Viruses.",
+    "rel": "inhibits viral replication",
+    "conf": 0.82,
+    "tier": "related_organism"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "32763313",
+    "title": "Remdesivir triphosphate can efficiently inhibit the RNA-dependent RNA polymerase from various flaviviruses.",
+    "rel": "therapeutic",
+    "conf": 0.8,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "41754600",
+    "title": "1'- and 4'-Cyano Modified Adenosine Analogs Against Prototypic Flavivirus RNA-Dependent RNA Polymerases.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "remdesivir",
+    "target": "DENV_NS5",
+    "pmid": "36764470",
+    "title": "Synthesis and biological evaluation of new \u03b2-D-N(4)-hydroxycytidine analogs against SARS-CoV-2, influenza viruses and DENV-2.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "CHIKV_nsP1",
+    "pmid": "25135884",
+    "title": "An in vitro assay to study chikungunya virus RNA synthesis and the mode of action of inhibitors.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "CHIKV_nsP1",
+    "pmid": "29958924",
+    "title": "Development of an ELISA assay for screening inhibitors against divalent metal ion dependent alphavirus capping enzyme.",
+    "rel": "mechanistic",
+    "conf": 0.5,
+    "tier": "mechanistic"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "CHIKV_nsP1",
+    "pmid": "32750467",
+    "title": "Mutations on VEEV nsP1 relate RNA capping efficiency to ribavirin susceptibility.",
+    "rel": "therapeutic",
+    "conf": 0.4,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "CHIKV_nsP2",
+    "pmid": "40056839",
+    "title": "Exploring the potential of direct-acting antivirals against Chikungunya virus through structure-based drug repositioning and molecular dynamic simulations.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_E",
+    "pmid": "31654671",
+    "title": "A novel flavivirus entry inhibitor, BP34610, discovered through high-throughput screening with dengue reporter viruses.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS3",
+    "pmid": "26724382",
+    "title": "Resistance analysis and characterization of NITD008 as an adenosine analog inhibitor against hepatitis C virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS3",
+    "pmid": "26039671",
+    "title": "Discovery of Multitarget Antivirals Acting on Both the Dengue Virus NS5-NS3 Interaction and the Host Src/Fyn Kinases.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS3",
+    "pmid": "17662475",
+    "title": "Construction and characterization of a stable subgenomic dengue virus type 2 replicon system for antiviral compound and siRNA testing.",
+    "rel": "therapeutic",
+    "conf": 0.8,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS3",
+    "pmid": "31678478",
+    "title": "Identification of inhibitors of dengue viral replication using replicon cells expressing secretory luciferase.",
+    "rel": "therapeutic",
+    "conf": 0.6,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "15074713",
+    "title": "Synthesis and evaluation of ATP-binding site directed potential inhibitors of nucleoside triphosphatases/helicases and polymerases of hepatitis C and other selected Flaviviridae viruses.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "39452899",
+    "title": "Non-Nucleoside Lycorine-Based Analogs as Potential DENV/ZIKV NS5 Dual Inhibitors: Structure-Based Virtual Screening and Chemoinformatic Analysis.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "10655776",
+    "title": "Infections with flaviviridae.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "16760396",
+    "title": "Inhibition of dengue virus replication by mycophenolic acid and ribavirin.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "26039671",
+    "title": "Discovery of Multitarget Antivirals Acting on Both the Dengue Virus NS5-NS3 Interaction and the Host Src/Fyn Kinases.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "16940486",
+    "title": "Radiographic assessment of impacted mandibular third molar sockets filled with composite xenogenic bone graft.",
+    "rel": "inhibits viral replication",
+    "conf": 0.88,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "ribavirin",
+    "target": "DENV_NS5",
+    "pmid": "24807961",
+    "title": "Sparse Bayesian extreme learning machine for multi-classification.",
+    "rel": "reduces viral titer in vitro",
+    "conf": 0.82,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "simeprevir",
+    "target": "CHIKV_nsP2",
+    "pmid": "40056839",
+    "title": "Exploring the potential of direct-acting antivirals against Chikungunya virus through structure-based drug repositioning and molecular dynamic simulations.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "simeprevir",
+    "target": "DENV_NS3",
+    "pmid": "41571221",
+    "title": "Repurposing of FDA-approved drugs to identify potential ns2b/ns3 protease inhibitors against dengue virus: In silico and in vitro evaluation.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "sirolimus",
+    "target": "DENV_NS5",
+    "pmid": "40317563",
+    "title": "mTOR Signalling in Arbovirus Infections: Molecular Mechanisms and Therapeutic Opportunities.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "sirolimus",
+    "target": "DENV_NS5",
+    "pmid": "21115818",
+    "title": "microRNA miR-275 is indispensable for blood digestion and egg development in the mosquito Aedes aegypti.",
+    "rel": "mechanistic",
+    "conf": 0.5,
+    "tier": "mechanistic"
+  },
+  {
+    "drug": "sirolimus",
+    "target": "DENV_NS5",
+    "pmid": "22374988",
+    "title": "Inhibition of influenza A virus replication by antagonism of a PI3K-AKT-mTOR pathway member identified by gene-trap insertional mutagenesis.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS3",
+    "pmid": "26724382",
+    "title": "Resistance analysis and characterization of NITD008 as an adenosine analog inhibitor against hepatitis C virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS3",
+    "pmid": "29875124",
+    "title": "Tailoring the American College of Medical Genetics and Genomics and the Association for Molecular Pathology Guidelines for the Interpretation of Sequenced Variants in the FBN1 Gene for Marfan Syndrome: Proposal for a Disease- and Gene-Specific Guideline.",
+    "rel": "competitive inhibitor",
+    "conf": 0.72,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS5",
+    "pmid": "26724382",
+    "title": "Resistance analysis and characterization of NITD008 as an adenosine analog inhibitor against hepatitis C virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS5",
+    "pmid": "28834304",
+    "title": "Sofosbuvir as treatment against dengue?",
+    "rel": "binds active site",
+    "conf": 0.94,
+    "tier": "direct_target"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS5",
+    "pmid": "28740124",
+    "title": "Evaluation of Sofosbuvir (\u03b2-D-2'-deoxy-2'-\u03b1-fluoro-2'-\u03b2-C-methyluridine) as an inhibitor of Dengue virus replication<sup/>.",
+    "rel": "inhibits viral replication",
+    "conf": 0.92,
+    "tier": "same_pathogen_phenotypic"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS5",
+    "pmid": "28098253",
+    "title": "The clinically approved antiviral drug sofosbuvir inhibits Zika virus replication.",
+    "rel": "inhibits viral replication",
+    "conf": 0.9,
+    "tier": "related_organism"
+  },
+  {
+    "drug": "sofosbuvir",
+    "target": "DENV_NS5",
+    "pmid": "28041959",
+    "title": "Substrate selectivity of Dengue and Zika virus NS5 polymerase towards 2'-modified nucleotide analogues.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "sunitinib",
+    "target": "DENV_E",
+    "pmid": "31720911",
+    "title": "Suppression of \u00b51 subunit of the adaptor protein complex 2 reduces dengue virus release.",
+    "rel": "therapeutic",
+    "conf": 0.7,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "suramin",
+    "target": "DENV_E",
+    "pmid": "9256277",
+    "title": "Dengue virus infectivity depends on envelope protein binding to target cell heparan sulfate.",
+    "rel": "mechanistic",
+    "conf": 0.95,
+    "tier": "mechanistic"
+  },
+  {
+    "drug": "suramin",
+    "target": "DENV_NS3",
+    "pmid": "25281902",
+    "title": "Suramin inhibits helicase activity of NS3 protein of dengue virus in a fluorescence-based high throughput assay format.",
+    "rel": "therapeutic",
+    "conf": 0.8,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "suramin",
+    "target": "DENV_NS3",
+    "pmid": "35203378",
+    "title": "High Throughput Screening Targeting the Dengue NS3-NS5 Interface Identifies Antivirals against Dengue, Zika and West Nile Viruses.",
+    "rel": "mechanistic",
+    "conf": 0.8,
+    "tier": "mechanistic"
+  },
+  {
+    "drug": "suramin",
+    "target": "DENV_NS5",
+    "pmid": "10022794",
+    "title": "Suramin blocks hepatitis C binding to human hepatoma cells in vitro.",
+    "rel": "mechanistic",
+    "conf": 0.8,
+    "tier": "mechanistic"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS3",
+    "pmid": "18285474",
+    "title": "The hepatitis C virus replicon presents a higher barrier to resistance to nucleoside analogs than to nonnucleoside polymerase or protease inhibitors.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS3",
+    "pmid": "21473061",
+    "title": "[Inhibitors of hepatitis C virus--therapeutic possibilities].",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS3",
+    "pmid": "26724382",
+    "title": "Resistance analysis and characterization of NITD008 as an adenosine analog inhibitor against hepatitis C virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS3",
+    "pmid": "25961497",
+    "title": "Simultaneously Targeting the NS3 Protease and Helicase Activities for More Effective Hepatitis C Virus Therapy.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS3",
+    "pmid": "29297305",
+    "title": "Pharmacophore anchor models of flaviviral NS3 proteases lead to drug repurposing for DENV infection.",
+    "rel": "therapeutic",
+    "conf": 0.5,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS5",
+    "pmid": "18285474",
+    "title": "The hepatitis C virus replicon presents a higher barrier to resistance to nucleoside analogs than to nonnucleoside polymerase or protease inhibitors.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "telaprevir",
+    "target": "DENV_NS5",
+    "pmid": "26724382",
+    "title": "Resistance analysis and characterization of NITD008 as an adenosine analog inhibitor against hepatitis C virus.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "voxilaprevir",
+    "target": "CHIKV_nsP2",
+    "pmid": "40056839",
+    "title": "Exploring the potential of direct-acting antivirals against Chikungunya virus through structure-based drug repositioning and molecular dynamic simulations.",
+    "rel": "therapeutic",
+    "conf": 0.95,
+    "tier": "weak_keyword"
+  },
+  {
+    "drug": "zidovudine",
+    "target": "DENV_NS3",
+    "pmid": "41393362",
+    "title": "Molecular docking analysis of zidovudine triphosphate with conserved residues from NS3 protein.",
+    "rel": "mechanistic",
+    "conf": 0.95,
+    "tier": "computational_only"
+  },
+  {
+    "drug": "zidovudine",
+    "target": "DENV_NS3",
+    "pmid": "35372666",
+    "title": "Seawater fungi-derived compound screening to identify novel small molecules against dengue virus NS5 methyltransferase and NS2B/NS3 protease.",
+    "rel": "therapeutic",
+    "conf": 0.9,
+    "tier": "weak_keyword"
+  }
+]
