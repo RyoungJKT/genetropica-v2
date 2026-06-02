@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { ChartTooltip } from './ChartTooltip'
+
 function gradeColor(g: number) {
   const t = (Math.max(1, Math.min(9, g)) - 1) / 8
   const l = (a: number, b: number) => Math.round(a + (b - a) * t)
@@ -6,6 +9,7 @@ function gradeColor(g: number) {
 }
 
 export function ConservationTrack({ grades, keyResidues }: { grades: Record<string, number>; keyResidues: number[] }) {
+  const [tip, setTip] = useState<{ cx: number; cy: number; i: number; resnum: number; grade: number } | null>(null)
   const entries = Object.entries(grades)
     .map(([k, v]) => [parseInt(k, 10), v] as [number, number])
     .sort((a, b) => a[0] - b[0])
@@ -16,6 +20,8 @@ export function ConservationTrack({ grades, keyResidues }: { grades: Record<stri
   const bw = W / n
   const idxOf = (resnum: number) => entries.findIndex((e) => e[0] === resnum)
   const ticks = [1, 150, 300, 450, 600, 750, entries[n - 1][0]]
+  const keySet = new Set(keyResidues)
+  const grLabel = (g: number) => (g <= 3 ? 'variable' : g >= 7 ? 'conserved' : 'intermediate')
   return (
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, background: 'var(--paper)', padding: '16px 16px 10px' }}>
       <svg viewBox={`0 0 ${W} ${H + 34}`} width="100%" style={{ display: 'block' }}>
@@ -33,6 +39,23 @@ export function ConservationTrack({ grades, keyResidues }: { grades: Record<stri
           const cx = i >= 0 ? i * bw + bw / 2 : (t / entries[n - 1][0]) * W
           return <text key={t} x={cx} y={H + 26} textAnchor="middle" fontFamily="var(--mono)" fontSize={9} fill="var(--ink-faint)">{t}</text>
         })}
+        {tip && <rect x={tip.i * bw} y={0} width={Math.max(1.5, bw)} height={H} fill="none" stroke="var(--ink)" strokeWidth={1.4} />}
+        <rect
+          x={0}
+          y={0}
+          width={W}
+          height={H}
+          fill="transparent"
+          style={{ cursor: 'crosshair' }}
+          onMouseMove={(e) => {
+            const r = e.currentTarget.getBoundingClientRect()
+            const fx = Math.max(0, Math.min(0.9999, (e.clientX - r.left) / r.width))
+            const i = Math.min(n - 1, Math.max(0, Math.floor(fx * n)))
+            const [resnum, grade] = entries[i]
+            setTip({ cx: e.clientX, cy: e.clientY, i, resnum, grade })
+          }}
+          onMouseLeave={() => setTip(null)}
+        />
       </svg>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 8, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>
         <span>Variable</span>
@@ -40,6 +63,13 @@ export function ConservationTrack({ grades, keyResidues }: { grades: Record<stri
         <span>Conserved</span>
         <span style={{ marginLeft: 16, color: 'var(--ink-soft)', textTransform: 'none', letterSpacing: 0 }}>▲ catalytic residue</span>
       </div>
+      {tip && (
+        <ChartTooltip x={tip.cx} y={tip.cy}>
+          <div style={{ fontWeight: 600 }}>Residue {tip.resnum}</div>
+          <div style={{ opacity: 0.9 }}>Grade {tip.grade}/9 ({grLabel(tip.grade)})</div>
+          {keySet.has(tip.resnum) && <div style={{ color: '#e0a98f' }}>Catalytic residue</div>}
+        </ChartTooltip>
+      )}
     </div>
   )
 }

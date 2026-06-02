@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { scaleLinear } from '@visx/scale'
+import { ChartTooltip } from './ChartTooltip'
 
 export interface ChartLine { label: string; color: string; pts: [number, number][] }
 
@@ -8,7 +10,10 @@ const M = { top: 16, right: 22, bottom: 40, left: 52 }
 const IW = W - M.left - M.right
 const IH = H - M.top - M.bottom
 
+const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(Math.abs(n) < 1 ? 3 : 2))
+
 export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLine[]; xLabel: string; yLabel: string; yMin?: number }) {
+  const [hover, setHover] = useState<{ cx: number; cy: number; dataX: number } | null>(null)
   const all = lines.flatMap((l) => l.pts)
   if (!all.length) return <div className="mono" style={{ color: 'var(--ink-faint)', padding: 20 }}>No data.</div>
   const xs = all.map((p) => p[0])
@@ -16,6 +21,26 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLi
   const x = scaleLinear({ domain: [Math.min(...xs), Math.max(...xs)], range: [0, IW] })
   const y = scaleLinear({ domain: [yMin ?? Math.min(...ys), Math.max(...ys)], range: [IH, 0], nice: true })
   const path = (pts: [number, number][]) => pts.map((p, i) => `${i ? 'L' : 'M'}${x(p[0]).toFixed(1)} ${y(p[1]).toFixed(1)}`).join(' ')
+
+  const hoverItems = hover
+    ? lines
+        .filter((l) => l.pts.length)
+        .map((l) => {
+          let best = l.pts[0]
+          let bd = Infinity
+          for (const p of l.pts) {
+            const d = Math.abs(p[0] - hover.dataX)
+            if (d < bd) {
+              bd = d
+              best = p
+            }
+          }
+          return { label: l.label, color: l.color, px: x(best[0]), py: y(best[1]), val: best[1], dataX: best[0] }
+        })
+    : null
+  const guideX = hoverItems && hoverItems.length ? hoverItems[0].px : 0
+  const nearX = hoverItems && hoverItems.length ? hoverItems[0].dataX : 0
+
   return (
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, background: 'var(--paper)', padding: '14px 16px 8px' }}>
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
@@ -31,6 +56,28 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLi
           ))}
           <line x1={0} y1={IH} x2={IW} y2={IH} stroke="var(--ink-faint)" strokeWidth={0.8} />
           {lines.map((l) => (l.pts.length ? <path key={l.label} d={path(l.pts)} fill="none" stroke={l.color} strokeWidth={1.6} strokeLinejoin="round" /> : null))}
+          {hoverItems && hoverItems.length > 0 && (
+            <>
+              <line x1={guideX} y1={0} x2={guideX} y2={IH} stroke="var(--ink-faint)" strokeWidth={1} strokeDasharray="3 3" />
+              {hoverItems.map((it) => (
+                <circle key={it.label} cx={it.px} cy={it.py} r={3.6} fill={it.color} stroke="var(--paper)" strokeWidth={1} />
+              ))}
+            </>
+          )}
+          <rect
+            x={0}
+            y={0}
+            width={IW}
+            height={IH}
+            fill="transparent"
+            style={{ cursor: 'crosshair' }}
+            onMouseMove={(e) => {
+              const r = e.currentTarget.getBoundingClientRect()
+              const fx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width))
+              setHover({ cx: e.clientX, cy: e.clientY, dataX: x.invert(fx * IW) })
+            }}
+            onMouseLeave={() => setHover(null)}
+          />
         </g>
         <text x={M.left + IW / 2} y={H - 4} textAnchor="middle" fontFamily="var(--mono)" fontSize={10} fill="var(--ink-soft)">{xLabel}</text>
         <text transform={`translate(13,${M.top + IH / 2}) rotate(-90)`} textAnchor="middle" fontFamily="var(--mono)" fontSize={10} fill="var(--ink-soft)">{yLabel}</text>
@@ -43,6 +90,17 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLi
           </span>
         ))}
       </div>
+      {hover && hoverItems && hoverItems.length > 0 && (
+        <ChartTooltip x={hover.cx} y={hover.cy}>
+          <div style={{ fontWeight: 600 }}>{xLabel}: {fmt(nearX)}</div>
+          {hoverItems.map((it) => (
+            <div key={it.label} style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: 0.9 }}>
+              <span style={{ width: 8, height: 8, background: it.color, borderRadius: 2, display: 'inline-block' }} />
+              {it.label}: {fmt(it.val)}
+            </div>
+          ))}
+        </ChartTooltip>
+      )}
     </div>
   )
 }
