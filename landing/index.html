@@ -179,6 +179,25 @@
 
   [data-reveal]{will-change:transform,opacity}
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---- mobile and iOS / Android browser robustness ---- */
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{-webkit-tap-highlight-color:transparent}
+  /* use the dynamic small-viewport unit on mobile so the iOS Safari address bar cannot crop the hero */
+  .hero{min-height:100svh}
+  /* keep the fixed header and the content clear of the camera notch in landscape */
+  @supports (padding:max(0px)){
+    header.top{padding-left:max(clamp(22px,5vw,72px),env(safe-area-inset-left));padding-right:max(clamp(22px,5vw,72px),env(safe-area-inset-right))}
+    .wrap{padding-left:max(clamp(22px,5vw,72px),env(safe-area-inset-left));padding-right:max(clamp(22px,5vw,72px),env(safe-area-inset-right))}
+  }
+  /* phone tuning: tighter section rhythm, comfortable tap target on the header button */
+  @media(max-width:520px){
+    section{padding:clamp(60px,10vh,104px) 0}
+    .hero{padding-top:104px}
+    .top .launch{padding:9px 15px}
+    .standfirst{margin-top:24px}
+    .hero-cta{margin-top:30px;gap:12px}
+  }
 </style>
 </head>
 <body>
