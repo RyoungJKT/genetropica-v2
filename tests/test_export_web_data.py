@@ -41,3 +41,18 @@ def test_drugs_shape_and_corrected_data():
     assert d["dasabuvir"]["heavy_atoms"] > 0
     # corrected structures: pibrentasvir's real MW is ~1113 Da, not the stale 597
     assert d["pibrentasvir"]["molecular_weight"] > 1000
+
+
+def test_field_has_targets_and_corrected_ns5():
+    _run()
+    f = json.loads((OUT / "field.json").read_text())
+    assert len(f) == 6 and "DENV_NS5" in f
+    ns5 = f["DENV_NS5"]
+    keys = ("name", "category", "indication", "mw", "ha", "le", "vina", "dl", "admet")
+    assert all(all(k in p for k in keys) for p in ns5)
+    druglike = [p for p in ns5 if p["dl"] == 1]
+    assert druglike, "expected drug-like NS5 points"
+    top = min(druglike, key=lambda p: p["vina"])
+    assert top["name"] == "dasabuvir", f"expected dasabuvir as top drug-like NS5, got {top['name']}"
+    names = {p["name"] for p in druglike}
+    assert "velpatasvir" not in names and "grazoprevir" not in names

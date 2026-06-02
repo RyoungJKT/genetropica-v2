@@ -43,9 +43,34 @@ def main():
         "inchikey, structure_source FROM drugs ORDER BY name")]
     (OUT / "drugs.json").write_text(json.dumps(drugs, indent=2))
 
+    # field.json: per-target drug points for the 3D candidate field
+    field = {}
+    rows = cur.execute(
+        """SELECT m.target_id tid, d.name, d.category, d.original_indication ind,
+                  d.molecular_weight mw, d.heavy_atoms ha,
+                  m.ligand_efficiency le, m.is_druglike dl, a.overall_pass admet,
+                  (SELECT MIN(vina_score) FROM docking_results dr
+                   WHERE dr.drug_id=d.drug_id AND dr.target_id=m.target_id) vina
+           FROM ml_scores m JOIN drugs d ON d.drug_id=m.drug_id
+           LEFT JOIN admet a ON a.drug_id=d.drug_id""").fetchall()
+    for r in rows:
+        if r["vina"] is None:
+            continue
+        field.setdefault(r["tid"], []).append({
+            "name": r["name"], "category": r["category"], "indication": r["ind"],
+            "mw": r["mw"], "ha": r["ha"],
+            "le": round(r["le"], 3) if r["le"] is not None else None,
+            "vina": round(r["vina"], 2),
+            "dl": int(r["dl"] or 0), "admet": int(r["admet"] or 0),
+        })
+    for tid in field:
+        field[tid].sort(key=lambda x: x["vina"])
+    (OUT / "field.json").write_text(json.dumps(field, indent=2))
+
     con.close()
-    print(f"wrote {OUT}/summary.json targets.json drugs.json "
-          f"({n_drugs} drugs, {n_targets} targets, {n_runs} runs)")
+    print(f"wrote {OUT}/summary.json targets.json drugs.json field.json "
+          f"({n_drugs} drugs, {n_targets} targets, {n_runs} runs, "
+          f"{sum(len(v) for v in field.values())} field points)")
 
 
 if __name__ == "__main__":
