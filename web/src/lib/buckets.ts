@@ -56,11 +56,11 @@ export const AXIS = {
   plain: {
     x: 'Binding strength',
     y: 'Efficiency per atom',
-    body: 'Further right grips the protein harder. Higher up means more grip per atom. Bigger spheres are heavier molecules. The catch: the hardest grippers are often just the biggest molecules, which is exactly why we also score efficiency.',
+    body: 'Further right grips the protein harder. Higher up means more grip per atom. Bigger dots are heavier molecules. The catch: the hardest grippers are often just the biggest molecules, which is exactly why we also score efficiency.',
   },
   sci: {
     x: 'AutoDock Vina (kcal/mol)',
     y: 'Ligand efficiency',
-    body: 'X = best AutoDock Vina score (more negative is stronger). Y = ligand efficiency (|Vina| / heavy atoms). Sphere depth encodes molecular weight; radius scales with heavy-atom count. Opacity encodes ADMET pass; the green ring marks drug-like (MW 250 to 600).',
+    body: 'X = best AutoDock Vina score (more negative is stronger). Y = ligand efficiency (|Vina| / heavy atoms). Dot size scales with heavy-atom count, so heavier molecules are bigger. Opacity encodes ADMET pass; the green ring marks drug-like (MW 250 to 600).',
   },
 }

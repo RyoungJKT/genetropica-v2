@@ -9,7 +9,7 @@ import { HonestyBand } from '../components/HonestyBand'
 import { Footer } from '../components/Footer'
 import { FieldPanel } from '../components/FieldPanel'
 import { HeroMolecule } from '../three/HeroMolecule'
-import { CandidateField } from '../three/CandidateField'
+import { CandidateScatter } from '../charts/CandidateScatter'
 
 const TARGET_ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 
@@ -66,7 +66,7 @@ export default function Overview() {
             <div className="eyebrow">The candidate field, live data</div>
             <h2 style={{ fontSize: 'clamp(28px,3.6vw,46px)', marginTop: 14 }}>Every drug, plotted by how it binds</h2>
             <p style={{ color: 'var(--ink-soft)', fontSize: 17, lineHeight: 1.7, margin: '18px 0 0', maxWidth: 760 }}>
-              Each sphere is one real drug docked against a chosen protein target. Drag to rotate, hover any sphere for a plain-English read. Switch the target to see the whole cloud rearrange.
+              Each dot is one real drug docked against a chosen protein target. Hover any dot for a plain-English read, and switch the target to replot the whole field.
             </p>
           </Reveal>
 
@@ -91,7 +91,7 @@ export default function Overview() {
               {field.isLoading ? (
                 <div className="mono" style={{ padding: 40 }}>Loading candidates...</div>
               ) : (
-                <CandidateField key={sel} points={points} />
+                <CandidateScatter key={sel} points={points} />
               )}
             </Reveal>
             <FieldPanel />
