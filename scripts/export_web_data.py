@@ -67,10 +67,20 @@ def main():
         field[tid].sort(key=lambda x: x["vina"])
     (OUT / "field.json").write_text(json.dumps(field, indent=2))
 
+    # admet.json: per-drug ADMET breakdown (risks are 0-1 scores; lipinski/pass are 0/1)
+    admet = {r["name"]: {
+        "lipinski": r["lipinski_pass"], "hepatotox": r["hepatotoxicity_risk"],
+        "herg": r["herg_inhibition_risk"], "bioavail": r["oral_bioavailability"],
+        "pass": r["overall_pass"],
+    } for r in cur.execute(
+        "SELECT d.name, a.lipinski_pass, a.hepatotoxicity_risk, a.herg_inhibition_risk, "
+        "a.oral_bioavailability, a.overall_pass FROM admet a JOIN drugs d ON d.drug_id=a.drug_id")}
+    (OUT / "admet.json").write_text(json.dumps(admet, indent=2))
+
     con.close()
-    print(f"wrote {OUT}/summary.json targets.json drugs.json field.json "
+    print(f"wrote summary/targets/drugs/field/admet json "
           f"({n_drugs} drugs, {n_targets} targets, {n_runs} runs, "
-          f"{sum(len(v) for v in field.values())} field points)")
+          f"{sum(len(v) for v in field.values())} field points, {len(admet)} admet)")
 
 
 if __name__ == "__main__":
