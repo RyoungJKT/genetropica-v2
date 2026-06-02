@@ -144,6 +144,27 @@ def main():
         "a.oral_bioavailability, a.overall_pass FROM admet a JOIN drugs d ON d.drug_id=a.drug_id")}
     (OUT / "admet.json").write_text(json.dumps(admet, indent=2))
 
+    # admet_profiles.json: rich SwissADME-style profiles (drug-likeness filters,
+    # BOILED-Egg absorption, structural alerts, descriptors, 0-5 drug-likeness score).
+    prof_src = json.loads((ROOT / "data" / "admet" / "profiles.json").read_text())
+
+    def _passed(p, k):
+        v = p.get(k)
+        return bool(v.get("pass")) if isinstance(v, dict) else bool(v)
+
+    profiles = sorted(({
+        "name": p["name"],
+        "desc": {"mw": round(p["descriptors"]["mw"], 1), "logp": round(p["descriptors"]["logp"], 2),
+                 "tpsa": round(p["descriptors"]["tpsa"], 1), "hbd": p["descriptors"]["hbd"],
+                 "hba": p["descriptors"]["hba"], "rot": p["descriptors"]["rotatable_bonds"]},
+        "lipinski": _passed(p, "lipinski"), "veber": _passed(p, "veber"),
+        "ghose": _passed(p, "ghose"), "egan": _passed(p, "egan"),
+        "esol": round(p["esol"], 2), "gi": p["gi_absorption"], "bbb": p["bbb_permeant"],
+        "pains": p.get("pains_alerts", []), "brenk": p.get("brenk_alerts", []),
+        "dl": p["drug_likeness_score"],
+    } for p in prof_src), key=lambda x: x["name"])
+    (OUT / "admet_profiles.json").write_text(json.dumps(profiles, indent=2))
+
     # binding viewer: a trimmed pocket PDB per target + per drug-like complex an
     # all-atom, bond-order-correct ligand .mol (RDKit) and the FIX-9 predicted contacts.
     bind_dir = OUT / "binding"; bind_dir.mkdir(exist_ok=True)

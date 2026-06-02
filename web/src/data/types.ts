@@ -54,6 +54,21 @@ export interface AdmetRow {
 
 export type Admet = Record<string, AdmetRow>
 
+export interface AdmetProfile {
+  name: string
+  desc: { mw: number; logp: number; tpsa: number; hbd: number; hba: number; rot: number }
+  lipinski: boolean
+  veber: boolean
+  ghose: boolean
+  egan: boolean
+  esol: number
+  gi: string
+  bbb: string
+  pains: string[]
+  brenk: string[]
+  dl: number
+}
+
 export interface Contact { res: string; num: string; chain: string; type: string; dist: number }
 export interface BindingData { contacts: Contact[] }
 export type BindingIndex = Record<string, string[]>

@@ -1,0 +1,2232 @@
+[
+  {
+    "name": "abacavir",
+    "desc": {
+      "mw": 286.3,
+      "logp": 1.09,
+      "tpsa": 101.9,
+      "hbd": 3,
+      "hba": 6,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -2.36,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "acyclovir",
+    "desc": {
+      "mw": 225.2,
+      "logp": -1.33,
+      "tpsa": 119.0,
+      "hbd": 3,
+      "hba": 6,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -0.55,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "adefovir",
+    "desc": {
+      "mw": 273.2,
+      "logp": -0.44,
+      "tpsa": 136.4,
+      "hbd": 3,
+      "hba": 6,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": false,
+    "esol": -1.3,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain",
+      "phosphor"
+    ],
+    "dl": 3
+  },
+  {
+    "name": "albendazole",
+    "desc": {
+      "mw": 265.3,
+      "logp": 3.24,
+      "tpsa": 67.0,
+      "hbd": 2,
+      "hba": 4,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.63,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "amantadine",
+    "desc": {
+      "mw": 151.3,
+      "logp": 1.91,
+      "tpsa": 26.0,
+      "hbd": 1,
+      "hba": 1,
+      "rot": 0
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.98,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "amlodipine",
+    "desc": {
+      "mw": 408.9,
+      "logp": 2.27,
+      "tpsa": 99.9,
+      "hbd": 2,
+      "hba": 7,
+      "rot": 8
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.43,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "artemisinin",
+    "desc": {
+      "mw": 282.3,
+      "logp": 2.39,
+      "tpsa": 54.0,
+      "hbd": 0,
+      "hba": 5,
+      "rot": 0
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.1,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [
+      "peroxide"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "atazanavir",
+    "desc": {
+      "mw": 704.9,
+      "logp": 4.21,
+      "tpsa": 171.2,
+      "hbd": 5,
+      "hba": 9,
+      "rot": 14
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -6.2,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "atorvastatin",
+    "desc": {
+      "mw": 558.7,
+      "logp": 6.31,
+      "tpsa": 111.8,
+      "hbd": 4,
+      "hba": 4,
+      "rot": 12
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -6.9,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "atovaquone",
+    "desc": {
+      "mw": 366.8,
+      "logp": 5.35,
+      "tpsa": 54.4,
+      "hbd": 1,
+      "hba": 3,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -5.69,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [
+      "imine_one_A(321)",
+      "quinone_D(2)"
+    ],
+    "brenk": [
+      "diketo_group"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "auranofin",
+    "desc": {
+      "mw": 678.5,
+      "logp": 2.14,
+      "tpsa": 114.4,
+      "hbd": 0,
+      "hba": 10,
+      "rot": 8
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -4.87,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      ">_2_ester_groups",
+      "phosphor",
+      "thiol_1"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "azathioprine",
+    "desc": {
+      "mw": 277.3,
+      "logp": 1.15,
+      "tpsa": 115.4,
+      "hbd": 1,
+      "hba": 7,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -2.63,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "balapiravir",
+    "desc": {
+      "mw": 494.5,
+      "logp": 1.7,
+      "tpsa": 197.8,
+      "hbd": 1,
+      "hba": 11,
+      "rot": 9
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -3.51,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [
+      "azo_A(324)"
+    ],
+    "brenk": [
+      ">_2_ester_groups",
+      "Azido_group",
+      "diazo_group",
+      "quaternary_nitrogen_3"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "baloxavir_marboxil",
+    "desc": {
+      "mw": 668.7,
+      "logp": 4.96,
+      "tpsa": 173.6,
+      "hbd": 6,
+      "hba": 8,
+      "rot": 6
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -7.07,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "hydroxamic_acid",
+      "Oxygen-nitrogen_single_bond",
+      "triple_bond"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "baricitinib",
+    "desc": {
+      "mw": 371.4,
+      "logp": 1.1,
+      "tpsa": 120.6,
+      "hbd": 1,
+      "hba": 6,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -2.9,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "benznidazole",
+    "desc": {
+      "mw": 260.3,
+      "logp": 1.11,
+      "tpsa": 90.1,
+      "hbd": 1,
+      "hba": 4,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -2.25,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "boceprevir",
+    "desc": {
+      "mw": 519.7,
+      "logp": 1.71,
+      "tpsa": 150.7,
+      "hbd": 4,
+      "hba": 5,
+      "rot": 8
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -3.61,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "diketo_group"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "camostat",
+    "desc": {
+      "mw": 398.4,
+      "logp": 0.98,
+      "tpsa": 137.3,
+      "hbd": 2,
+      "hba": 6,
+      "rot": 7
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": false,
+    "esol": -2.77,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "imine_1",
+      "imine_2",
+      "phenol_ester"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "celecoxib",
+    "desc": {
+      "mw": 381.4,
+      "logp": 3.51,
+      "tpsa": 78.0,
+      "hbd": 1,
+      "hba": 3,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.7,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "cetirizine",
+    "desc": {
+      "mw": 388.9,
+      "logp": 3.15,
+      "tpsa": 53.0,
+      "hbd": 1,
+      "hba": 4,
+      "rot": 8
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.04,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "chloroquine",
+    "desc": {
+      "mw": 319.9,
+      "logp": 4.81,
+      "tpsa": 28.2,
+      "hbd": 1,
+      "hba": 3,
+      "rot": 8
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.66,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "chlorpromazine",
+    "desc": {
+      "mw": 318.9,
+      "logp": 4.89,
+      "tpsa": 6.5,
+      "hbd": 0,
+      "hba": 3,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -5.06,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "cladribine",
+    "desc": {
+      "mw": 285.7,
+      "logp": -0.3,
+      "tpsa": 119.3,
+      "hbd": 3,
+      "hba": 7,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.64,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "clevudine",
+    "desc": {
+      "mw": 260.2,
+      "logp": -1.57,
+      "tpsa": 104.6,
+      "hbd": 3,
+      "hba": 5,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -0.58,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "colchicine",
+    "desc": {
+      "mw": 399.4,
+      "logp": 2.87,
+      "tpsa": 83.1,
+      "hbd": 1,
+      "hba": 6,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.13,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "cyclosporine",
+    "desc": {
+      "mw": 1202.6,
+      "logp": 3.27,
+      "tpsa": 278.8,
+      "hbd": 5,
+      "hba": 12,
+      "rot": 15
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -8.37,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "cytarabine",
+    "desc": {
+      "mw": 243.2,
+      "logp": -2.56,
+      "tpsa": 130.8,
+      "hbd": 4,
+      "hba": 7,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": 0.14,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "daclatasvir",
+    "desc": {
+      "mw": 738.9,
+      "logp": 6.22,
+      "tpsa": 174.6,
+      "hbd": 4,
+      "hba": 8,
+      "rot": 11
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -7.92,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "darunavir",
+    "desc": {
+      "mw": 547.7,
+      "logp": 2.38,
+      "tpsa": 140.4,
+      "hbd": 3,
+      "hba": 8,
+      "rot": 11
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -4.24,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "aniline"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "dasabuvir",
+    "desc": {
+      "mw": 493.6,
+      "logp": 4.02,
+      "tpsa": 110.3,
+      "hbd": 2,
+      "hba": 5,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -5.57,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "didanosine",
+    "desc": {
+      "mw": 236.2,
+      "logp": -0.21,
+      "tpsa": 93.0,
+      "hbd": 2,
+      "hba": 5,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.43,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "doxycycline",
+    "desc": {
+      "mw": 444.4,
+      "logp": -0.5,
+      "tpsa": 181.6,
+      "hbd": 6,
+      "hba": 9,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -2.28,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Michael_acceptor_4"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "elbasvir",
+    "desc": {
+      "mw": 882.0,
+      "logp": 8.12,
+      "tpsa": 188.8,
+      "hbd": 4,
+      "hba": 9,
+      "rot": 11
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -10.05,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "entecavir",
+    "desc": {
+      "mw": 277.3,
+      "logp": -0.83,
+      "tpsa": 130.1,
+      "hbd": 4,
+      "hba": 6,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.24,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "erlotinib",
+    "desc": {
+      "mw": 393.4,
+      "logp": 3.41,
+      "tpsa": 74.7,
+      "hbd": 1,
+      "hba": 7,
+      "rot": 10
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.17,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain",
+      "triple_bond"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "favipiravir",
+    "desc": {
+      "mw": 157.1,
+      "logp": -0.99,
+      "tpsa": 88.8,
+      "hbd": 2,
+      "hba": 3,
+      "rot": 1
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -0.53,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "fenofibrate",
+    "desc": {
+      "mw": 360.8,
+      "logp": 4.68,
+      "tpsa": 52.6,
+      "hbd": 0,
+      "hba": 4,
+      "rot": 6
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.98,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "fludarabine",
+    "desc": {
+      "mw": 285.2,
+      "logp": -1.84,
+      "tpsa": 139.5,
+      "hbd": 4,
+      "hba": 8,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": false,
+    "esol": -0.65,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 3
+  },
+  {
+    "name": "gabapentin",
+    "desc": {
+      "mw": 171.2,
+      "logp": 1.37,
+      "tpsa": 63.3,
+      "hbd": 2,
+      "hba": 2,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.57,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "galidesivir",
+    "desc": {
+      "mw": 265.3,
+      "logp": -1.73,
+      "tpsa": 140.3,
+      "hbd": 6,
+      "hba": 7,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -0.61,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 2
+  },
+  {
+    "name": "gemcitabine",
+    "desc": {
+      "mw": 263.2,
+      "logp": -1.29,
+      "tpsa": 110.6,
+      "hbd": 3,
+      "hba": 6,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -0.77,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "glecaprevir",
+    "desc": {
+      "mw": 838.9,
+      "logp": 3.86,
+      "tpsa": 195.2,
+      "hbd": 3,
+      "hba": 11,
+      "rot": 6
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -7.2,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "grazoprevir",
+    "desc": {
+      "mw": 766.9,
+      "logp": 3.3,
+      "tpsa": 195.2,
+      "hbd": 3,
+      "hba": 11,
+      "rot": 7
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -6.35,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "hydroxychloroquine",
+    "desc": {
+      "mw": 335.9,
+      "logp": 3.78,
+      "tpsa": 48.4,
+      "hbd": 2,
+      "hba": 4,
+      "rot": 9
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.03,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "ibuprofen",
+    "desc": {
+      "mw": 206.3,
+      "logp": 3.07,
+      "tpsa": 37.3,
+      "hbd": 1,
+      "hba": 1,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.09,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "indomethacin",
+    "desc": {
+      "mw": 357.8,
+      "logp": 3.93,
+      "tpsa": 68.5,
+      "hbd": 1,
+      "hba": 3,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.71,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "ivermectin",
+    "desc": {
+      "mw": 875.1,
+      "logp": 5.6,
+      "tpsa": 170.1,
+      "hbd": 3,
+      "hba": 14,
+      "rot": 8
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -8.27,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "lamivudine",
+    "desc": {
+      "mw": 229.3,
+      "logp": -0.59,
+      "tpsa": 90.4,
+      "hbd": 2,
+      "hba": 6,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.05,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "ledipasvir",
+    "desc": {
+      "mw": 889.0,
+      "logp": 8.61,
+      "tpsa": 174.6,
+      "hbd": 4,
+      "hba": 8,
+      "rot": 10
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -10.41,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "leflunomide",
+    "desc": {
+      "mw": 270.2,
+      "logp": 3.25,
+      "tpsa": 55.1,
+      "hbd": 1,
+      "hba": 3,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.86,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "levothyroxine",
+    "desc": {
+      "mw": 776.9,
+      "logp": 4.56,
+      "tpsa": 92.8,
+      "hbd": 3,
+      "hba": 4,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -7.57,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "iodine"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "lisinopril",
+    "desc": {
+      "mw": 405.5,
+      "logp": 1.24,
+      "tpsa": 133.0,
+      "hbd": 4,
+      "hba": 5,
+      "rot": 12
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": true,
+    "egan": false,
+    "esol": -2.49,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain"
+    ],
+    "dl": 3
+  },
+  {
+    "name": "lopinavir",
+    "desc": {
+      "mw": 628.8,
+      "logp": 4.33,
+      "tpsa": 120.0,
+      "hbd": 4,
+      "hba": 5,
+      "rot": 15
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": true,
+    "esol": -5.76,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 3
+  },
+  {
+    "name": "lovastatin",
+    "desc": {
+      "mw": 404.5,
+      "logp": 4.2,
+      "tpsa": 72.8,
+      "hbd": 1,
+      "hba": 5,
+      "rot": 6
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.6,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "mefloquine",
+    "desc": {
+      "mw": 378.3,
+      "logp": 4.45,
+      "tpsa": 45.2,
+      "hbd": 2,
+      "hba": 3,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -5.14,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "metformin",
+    "desc": {
+      "mw": 129.2,
+      "logp": -1.24,
+      "tpsa": 91.5,
+      "hbd": 3,
+      "hba": 1,
+      "rot": 0
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": 0.14,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "imine_1",
+      "imine_2"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "methotrexate",
+    "desc": {
+      "mw": 454.4,
+      "logp": 0.27,
+      "tpsa": 210.5,
+      "hbd": 5,
+      "hba": 10,
+      "rot": 9
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": true,
+    "egan": false,
+    "esol": -2.59,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 3
+  },
+  {
+    "name": "miltefosine",
+    "desc": {
+      "mw": 407.6,
+      "logp": 5.68,
+      "tpsa": 58.6,
+      "hbd": 0,
+      "hba": 4,
+      "rot": 20
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": true,
+    "esol": -4.62,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain",
+      "phosphor",
+      "quaternary_nitrogen_2"
+    ],
+    "dl": 3
+  },
+  {
+    "name": "minocycline",
+    "desc": {
+      "mw": 457.5,
+      "logp": 0.03,
+      "tpsa": 164.6,
+      "hbd": 5,
+      "hba": 9,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": true,
+    "egan": false,
+    "esol": -2.63,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Michael_acceptor_4"
+    ],
+    "dl": 3
+  },
+  {
+    "name": "molnupiravir",
+    "desc": {
+      "mw": 329.3,
+      "logp": -1.14,
+      "tpsa": 143.1,
+      "hbd": 4,
+      "hba": 9,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -1.03,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "mycophenolate_mofetil",
+    "desc": {
+      "mw": 433.5,
+      "logp": 2.52,
+      "tpsa": 94.5,
+      "hbd": 1,
+      "hba": 8,
+      "rot": 9
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.67,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "nafamostat",
+    "desc": {
+      "mw": 347.4,
+      "logp": 2.25,
+      "tpsa": 140.6,
+      "hbd": 4,
+      "hba": 4,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": true,
+    "egan": false,
+    "esol": -3.6,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "imine_1",
+      "imine_2",
+      "phenol_ester"
+    ],
+    "dl": 3
+  },
+  {
+    "name": "naproxen",
+    "desc": {
+      "mw": 230.3,
+      "logp": 3.04,
+      "tpsa": 46.5,
+      "hbd": 1,
+      "hba": 2,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.42,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "nelfinavir",
+    "desc": {
+      "mw": 567.8,
+      "logp": 4.75,
+      "tpsa": 101.9,
+      "hbd": 4,
+      "hba": 6,
+      "rot": 9
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -5.98,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "niclosamide",
+    "desc": {
+      "mw": 327.1,
+      "logp": 3.86,
+      "tpsa": 92.5,
+      "hbd": 2,
+      "hba": 4,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.52,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "nirmatrelvir",
+    "desc": {
+      "mw": 499.5,
+      "logp": 1.1,
+      "tpsa": 131.4,
+      "hbd": 3,
+      "hba": 5,
+      "rot": 6
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.23,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "nitazoxanide",
+    "desc": {
+      "mw": 307.3,
+      "logp": 2.23,
+      "tpsa": 111.4,
+      "hbd": 1,
+      "hba": 7,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.27,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "nitro_group",
+      "Oxygen-nitrogen_single_bond",
+      "phenol_ester"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "ombitasvir",
+    "desc": {
+      "mw": 894.1,
+      "logp": 7.69,
+      "tpsa": 178.7,
+      "hbd": 4,
+      "hba": 9,
+      "rot": 13
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -9.57,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "omeprazole",
+    "desc": {
+      "mw": 345.4,
+      "logp": 2.9,
+      "tpsa": 77.1,
+      "hbd": 1,
+      "hba": 5,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.94,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "oseltamivir",
+    "desc": {
+      "mw": 312.4,
+      "logp": 1.29,
+      "tpsa": 90.6,
+      "hbd": 2,
+      "hba": 5,
+      "rot": 7
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -2.12,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "pantoprazole",
+    "desc": {
+      "mw": 383.4,
+      "logp": 2.88,
+      "tpsa": 86.3,
+      "hbd": 1,
+      "hba": 6,
+      "rot": 7
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.0,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "paritaprevir",
+    "desc": {
+      "mw": 765.9,
+      "logp": 3.64,
+      "tpsa": 189.6,
+      "hbd": 3,
+      "hba": 10,
+      "rot": 7
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -6.69,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene",
+      "Polycyclic_aromatic_hydrocarbon_3"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "pentamidine",
+    "desc": {
+      "mw": 340.4,
+      "logp": 2.88,
+      "tpsa": 118.2,
+      "hbd": 4,
+      "hba": 4,
+      "rot": 10
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.46,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain",
+      "imine_1",
+      "imine_2"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "pentoxifylline",
+    "desc": {
+      "mw": 278.3,
+      "logp": 0.19,
+      "tpsa": 78.9,
+      "hbd": 0,
+      "hba": 4,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -1.69,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [
+      "Aliphatic_long_chain"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "pibrentasvir",
+    "desc": {
+      "mw": 1113.2,
+      "logp": 9.45,
+      "tpsa": 199.6,
+      "hbd": 4,
+      "hba": 12,
+      "rot": 15
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -11.98,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [
+      "anil_di_alk_A(478)"
+    ],
+    "brenk": [],
+    "dl": 0
+  },
+  {
+    "name": "praziquantel",
+    "desc": {
+      "mw": 312.4,
+      "logp": 2.53,
+      "tpsa": 40.6,
+      "hbd": 0,
+      "hba": 2,
+      "rot": 1
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -3.5,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "prednisolone",
+    "desc": {
+      "mw": 360.5,
+      "logp": 1.56,
+      "tpsa": 94.8,
+      "hbd": 3,
+      "hba": 5,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -2.92,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "primaquine",
+    "desc": {
+      "mw": 259.4,
+      "logp": 2.78,
+      "tpsa": 60.2,
+      "hbd": 2,
+      "hba": 4,
+      "rot": 6
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.19,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "prochlorperazine",
+    "desc": {
+      "mw": 374.0,
+      "logp": 4.58,
+      "tpsa": 9.7,
+      "hbd": 0,
+      "hba": 4,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -5.14,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "pyrimethamine",
+    "desc": {
+      "mw": 248.7,
+      "logp": 2.52,
+      "tpsa": 77.8,
+      "hbd": 2,
+      "hba": 4,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -3.36,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "remdesivir",
+    "desc": {
+      "mw": 602.6,
+      "logp": 2.31,
+      "tpsa": 203.5,
+      "hbd": 4,
+      "hba": 12,
+      "rot": 13
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -4.44,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "phosphor"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "ribavirin",
+    "desc": {
+      "mw": 244.2,
+      "logp": -3.01,
+      "tpsa": 143.7,
+      "hbd": 4,
+      "hba": 7,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": 0.52,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 2
+  },
+  {
+    "name": "rimantadine",
+    "desc": {
+      "mw": 179.3,
+      "logp": 2.55,
+      "tpsa": 26.0,
+      "hbd": 1,
+      "hba": 1,
+      "rot": 1
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -2.49,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "ruxolitinib",
+    "desc": {
+      "mw": 306.4,
+      "logp": 3.47,
+      "tpsa": 83.2,
+      "hbd": 1,
+      "hba": 4,
+      "rot": 4
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.11,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "simeprevir",
+    "desc": {
+      "mw": 750.0,
+      "logp": 5.25,
+      "tpsa": 156.9,
+      "hbd": 2,
+      "hba": 10,
+      "rot": 8
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -7.49,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "sirolimus",
+    "desc": {
+      "mw": 914.2,
+      "logp": 6.18,
+      "tpsa": 195.4,
+      "hbd": 3,
+      "hba": 13,
+      "rot": 6
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -9.01,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "diketo_group",
+      "isolated_alkene"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "sofosbuvir",
+    "desc": {
+      "mw": 529.5,
+      "logp": 1.66,
+      "tpsa": 158.2,
+      "hbd": 3,
+      "hba": 9,
+      "rot": 10
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -3.75,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "phosphor"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "sorafenib",
+    "desc": {
+      "mw": 464.8,
+      "logp": 5.55,
+      "tpsa": 92.3,
+      "hbd": 3,
+      "hba": 4,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -6.3,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "stavudine",
+    "desc": {
+      "mw": 224.2,
+      "logp": -0.71,
+      "tpsa": 84.3,
+      "hbd": 2,
+      "hba": 4,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -0.93,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "isolated_alkene"
+    ],
+    "dl": 4
+  },
+  {
+    "name": "sunitinib",
+    "desc": {
+      "mw": 398.5,
+      "logp": 3.33,
+      "tpsa": 77.2,
+      "hbd": 3,
+      "hba": 3,
+      "rot": 7
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -4.23,
+    "gi": "High",
+    "bbb": "Yes",
+    "pains": [],
+    "brenk": [
+      "Michael_acceptor_1"
+    ],
+    "dl": 5
+  },
+  {
+    "name": "suramin",
+    "desc": {
+      "mw": 1297.3,
+      "logp": 6.74,
+      "tpsa": 483.7,
+      "hbd": 12,
+      "hba": 17,
+      "rot": 16
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -11.45,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "Sulfonic_acid_2"
+    ],
+    "dl": 1
+  },
+  {
+    "name": "telaprevir",
+    "desc": {
+      "mw": 679.9,
+      "logp": 2.45,
+      "tpsa": 179.6,
+      "hbd": 4,
+      "hba": 8,
+      "rot": 13
+    },
+    "lipinski": true,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -4.83,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "diketo_group"
+    ],
+    "dl": 2
+  },
+  {
+    "name": "telbivudine",
+    "desc": {
+      "mw": 242.2,
+      "logp": -1.51,
+      "tpsa": 104.6,
+      "hbd": 3,
+      "hba": 5,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -0.52,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "tenofovir",
+    "desc": {
+      "mw": 287.2,
+      "logp": -0.05,
+      "tpsa": 136.4,
+      "hbd": 3,
+      "hba": 6,
+      "rot": 5
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": false,
+    "esol": -1.61,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [
+      "phosphor"
+    ],
+    "dl": 3
+  },
+  {
+    "name": "trifluridine",
+    "desc": {
+      "mw": 296.2,
+      "logp": -0.8,
+      "tpsa": 104.6,
+      "hbd": 3,
+      "hba": 5,
+      "rot": 2
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": true,
+    "esol": -1.26,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "umifenovir",
+    "desc": {
+      "mw": 477.4,
+      "logp": 5.18,
+      "tpsa": 54.7,
+      "hbd": 1,
+      "hba": 5,
+      "rot": 7
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -5.98,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [
+      "mannich_A(296)"
+    ],
+    "brenk": [],
+    "dl": 4
+  },
+  {
+    "name": "vandetanib",
+    "desc": {
+      "mw": 475.4,
+      "logp": 5.0,
+      "tpsa": 59.5,
+      "hbd": 1,
+      "hba": 6,
+      "rot": 6
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": true,
+    "egan": true,
+    "esol": -5.94,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 5
+  },
+  {
+    "name": "velpatasvir",
+    "desc": {
+      "mw": 883.0,
+      "logp": 7.73,
+      "tpsa": 193.1,
+      "hbd": 4,
+      "hba": 10,
+      "rot": 11
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -9.8,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "voxilaprevir",
+    "desc": {
+      "mw": 868.9,
+      "logp": 4.96,
+      "tpsa": 195.2,
+      "hbd": 3,
+      "hba": 11,
+      "rot": 8
+    },
+    "lipinski": false,
+    "veber": false,
+    "ghose": false,
+    "egan": false,
+    "esol": -7.95,
+    "gi": "Low",
+    "bbb": "No",
+    "pains": [],
+    "brenk": [],
+    "dl": 1
+  },
+  {
+    "name": "zidovudine",
+    "desc": {
+      "mw": 267.2,
+      "logp": -0.2,
+      "tpsa": 133.1,
+      "hbd": 2,
+      "hba": 5,
+      "rot": 3
+    },
+    "lipinski": true,
+    "veber": true,
+    "ghose": false,
+    "egan": false,
+    "esol": -1.41,
+    "gi": "High",
+    "bbb": "No",
+    "pains": [
+      "azo_A(324)"
+    ],
+    "brenk": [
+      "Azido_group",
+      "diazo_group",
+      "quaternary_nitrogen_3"
+    ],
+    "dl": 2
+  }
+]
