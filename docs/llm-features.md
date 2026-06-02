@@ -5,7 +5,7 @@ read from an environment variable, is never committed, and never ships in the st
 site. The dashboard works fully without them; these only enrich it.
 
 Both features use the **Anthropic Claude API** (the native Messages endpoint). Set your
-key with `ANTHROPIC_API_KEY`. The chat assistant defaults to `claude-opus-4-8` and the
+key with `ANTHROPIC_API_KEY`. The chat assistant defaults to `claude-sonnet-4-6` and the
 offline literature script to `claude-3-5-haiku-latest`; either can be overridden with
 `ANTHROPIC_MODEL` (any current Claude model).
 
@@ -49,7 +49,7 @@ invent drugs, numbers, or claims.
 Activate it in the Vercel project (Settings -> Environment Variables):
 
     ANTHROPIC_API_KEY = sk-ant-...
-    # optional: ANTHROPIC_MODEL (default claude-opus-4-8), ANTHROPIC_BASE_URL
+    # optional: ANTHROPIC_MODEL (default claude-sonnet-4-6), ANTHROPIC_BASE_URL
 
 Redeploy. Until the key is set, the widget politely replies that the assistant is not switched on.
 
