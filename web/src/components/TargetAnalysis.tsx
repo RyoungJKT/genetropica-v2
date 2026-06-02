@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import type { FieldPoint } from '../data/types'
+import { ChartTooltip } from './ChartTooltip'
 
 function StatCard({ label, value, highlight }: { label: string; value: number; highlight?: boolean }) {
   return (
@@ -11,6 +13,7 @@ function StatCard({ label, value, highlight }: { label: string; value: number; h
 
 /** Per-target overview: counts, ligand-efficiency distribution, and the top candidates by efficiency. */
 export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoint[]; targetName: string; shown: number }) {
+  const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
   const dl = points.filter((p) => p.dl === 1)
   const admetSafe = points.filter((p) => p.dl === 1 && p.admet === 1).length
   const le = dl.map((p) => p.le).filter((v): v is number => v != null)
@@ -66,8 +69,21 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
             })}
             {counts.map((c, i) => {
               const x = mL + (i / NB) * iw
+              const w = iw / NB
               const h = (c / maxCount) * ih
-              return <rect key={i} x={x + 0.5} y={mT + ih - h} width={Math.max(1, iw / NB - 1)} height={h} fill="var(--green)" />
+              const bLo = lo + (i / NB) * span
+              const bHi = lo + ((i + 1) / NB) * span
+              return (
+                <g
+                  key={i}
+                  style={{ cursor: 'pointer' }}
+                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `LE ${bLo.toFixed(3)} to ${bHi.toFixed(3)}`, value: `${c} drug${c === 1 ? '' : 's'}` })}
+                  onMouseLeave={() => setTip(null)}
+                >
+                  <rect x={x} y={mT} width={w} height={ih} fill="transparent" />
+                  <rect x={x + 0.5} y={mT + ih - h} width={Math.max(1, w - 1)} height={h} fill="var(--green)" />
+                </g>
+              )
             })}
             {[lo, (lo + hi) / 2, hi].map((v, i) => (
               <text key={i} x={xOf(v)} y={HH - 14} fontSize={9} fontFamily="var(--mono)" fill="var(--ink-faint)" textAnchor="middle">{v.toFixed(2)}</text>
@@ -80,7 +96,12 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
           <h3 style={{ fontSize: 15, marginBottom: 10 }}>Top 10 Drug-like Candidates by Ligand Efficiency</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
             {top10.map((p) => (
-              <div key={p.name} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 42px', gap: 8, alignItems: 'center' }}>
+              <div
+                key={p.name}
+                style={{ display: 'grid', gridTemplateColumns: '110px 1fr 42px', gap: 8, alignItems: 'center', cursor: 'pointer' }}
+                onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: p.name.replace(/_/g, ' '), value: `Ligand efficiency ${(p.le ?? 0).toFixed(3)}` })}
+                onMouseLeave={() => setTip(null)}
+              >
                 <span style={{ fontSize: 12, color: 'var(--ink-soft)', textTransform: 'capitalize', textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name.replace(/_/g, ' ')}</span>
                 <div style={{ background: 'var(--paper-3)', borderRadius: 4, height: 14, overflow: 'hidden' }}>
                   <div style={{ width: `${((p.le ?? 0) / topMax) * 100}%`, height: '100%', background: 'var(--green)', borderRadius: 4 }} />
@@ -92,6 +113,12 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
           </div>
         </div>
       </div>
+      {tip && (
+        <ChartTooltip x={tip.x} y={tip.y}>
+          <div style={{ fontWeight: 600 }}>{tip.title}</div>
+          <div style={{ opacity: 0.85 }}>{tip.value}</div>
+        </ChartTooltip>
+      )}
     </section>
   )
 }

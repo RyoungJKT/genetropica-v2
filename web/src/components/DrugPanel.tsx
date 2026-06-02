@@ -1,6 +1,7 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import type { Drug, Field, AdmetRow } from '../data/types'
 import { RadarChart } from './RadarChart'
+import { ChartTooltip } from './ChartTooltip'
 
 function Meta({ k, v }: { k: string; v: string }) {
   return (
@@ -18,6 +19,7 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   }, [drug.name])
 
+  const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
   const bars = order.map((tid) => {
     const p = (field[tid] ?? []).find((x) => x.name === drug.name)
     return { tid, name: tName(tid), vina: p ? Math.abs(p.vina) : 0, raw: p ? p.vina : null }
@@ -62,7 +64,12 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
             <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--gold)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />ML |score|</span>
           </div>
           {bars.map((b) => (
-            <div key={b.tid} style={{ display: 'grid', gridTemplateColumns: '168px 1fr', gap: 10, alignItems: 'center', margin: '9px 0' }}>
+            <div
+              key={b.tid}
+              style={{ display: 'grid', gridTemplateColumns: '168px 1fr', gap: 10, alignItems: 'center', margin: '9px 0', cursor: 'pointer' }}
+              onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: b.name, value: `Vina ${b.raw != null ? b.raw.toFixed(2) : 'n/a'} kcal/mol  •  ML ${ml.toFixed(2)}` })}
+              onMouseLeave={() => setTip(null)}
+            >
               <span style={{ fontSize: 11.5, color: 'var(--ink-soft)', textAlign: 'right', lineHeight: 1.2 }}>{b.name}</span>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 9 }}>
@@ -94,6 +101,12 @@ export function DrugPanel({ drug, field, admet, order, tName }: { drug: Drug; fi
           {admet ? <RadarChart axes={radarAxes} /> : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>No ADMET record for this drug.</p>}
         </div>
       </div>
+      {tip && (
+        <ChartTooltip x={tip.x} y={tip.y}>
+          <div style={{ fontWeight: 600 }}>{tip.title}</div>
+          <div style={{ opacity: 0.85 }}>{tip.value}</div>
+        </ChartTooltip>
+      )}
     </section>
   )
 }
