@@ -134,7 +134,7 @@ def main():
         field[tid].sort(key=lambda x: x["vina"])
     (OUT / "field.json").write_text(json.dumps(field, indent=2))
 
-    # _digest.json: compact grounding context for the optional "ask the data" assistant (web/api/ask.ts).
+    # _digest.ts: compact grounding context for the optional "ask the data" assistant (web/api/ask.ts).
     api_dir = ROOT / "web" / "api"
     api_dir.mkdir(parents=True, exist_ok=True)
     digest = {
@@ -153,7 +153,9 @@ def main():
             "Drug-like means molecular weight 250-600 Da; the headline ranking uses Vina score plus ligand efficiency over drug-like candidates.",
         ],
     }
-    (api_dir / "_digest.json").write_text(json.dumps(digest))
+    # Emitted as a TS module (not .json): the Vercel serverless function bundles it as code,
+    # whereas a bare JSON import crashes the function at load under the ESM runtime.
+    (api_dir / "_digest.ts").write_text("export default " + json.dumps(digest) + "\n")
 
     # admet.json: per-drug ADMET breakdown (risks are 0-1 scores; lipinski/pass are 0/1)
     admet = {r["name"]: {
