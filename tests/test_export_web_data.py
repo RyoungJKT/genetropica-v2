@@ -99,3 +99,11 @@ def test_conservation_export():
     assert len(c["grades"]) > 800
     assert "DENV-2" in c["identity"] and "HCV" in c["identity"]
     assert len(c["key_residues"]) > 0
+
+
+def test_validation_methods_export():
+    _run()
+    v = json.loads((OUT / "validation.json").read_text())
+    assert v["fair_auc"] == 0.37 and "metadata" in v and v["auc"].get("docking")
+    m = json.loads((OUT / "methods.json").read_text())
+    assert len(m["docking"]) == 6 and all("center" in d for d in m["docking"])
