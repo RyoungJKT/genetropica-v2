@@ -6,7 +6,6 @@ export function Footer() {
           Russell Young<br />
           <span style={{ color: 'var(--ink-faint)', fontFamily: 'var(--sans)', fontSize: 13 }}>British School Jakarta, GeneTropica</span>
         </div>
-        <div className="mono">An honest computational screen, not a discovery claim</div>
       </div>
     </footer>
   )
