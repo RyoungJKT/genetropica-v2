@@ -28,13 +28,6 @@ export default function Validation() {
           'Retrospective enrichment test on dengue NS5: can the scoring separate known actives from decoys? Reported with both the inflated initial result and the fair one.')}
       </p>
 
-      <div style={{ marginTop: 22, background: 'linear-gradient(160deg,#2a1a14,#3a241b 60%,#241410)', color: 'var(--paper)', borderRadius: 14, padding: '22px 24px', maxWidth: 820 }}>
-        <div className="eyebrow" style={{ color: '#e0a98f' }}>The honest headline</div>
-        <p style={{ fontSize: 15.5, lineHeight: 1.65, marginTop: 10, color: '#f0e6df' }}>
-          An initial test against 8 known inhibitors and only 78 weakly-matched decoys gave a near-perfect score (docking AUC {data?.auc.docking ?? '0.95'}, ML AUC {data?.auc.gnn ?? '1.00'}). That is <b>too good to trust</b>: too few, too-easy decoys. On a fairer, library-based test, Vina scored <b>AUC {data?.fair_auc ?? 0.37} for NS5, below random</b>. The real inhibitors are small nucleoside analogues that dock weakly versus large molecules. We show the inflated curve below for transparency, not as a result.
-        </p>
-      </div>
-
       {data && rocLines.length > 0 && (
         <div style={{ marginTop: 30 }}>
           <h3 style={{ fontSize: 22 }}>ROC curve, initial small-decoy test (inflated)</h3>
@@ -49,7 +42,7 @@ export default function Validation() {
         <div style={{ marginTop: 30 }}>
           <h3 style={{ fontSize: 22 }}>Enrichment factors (same initial test)</h3>
           <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 12px', maxWidth: 760 }}>
-            How many more actives appear in the top X% than by chance. Also from the inflated test, so read alongside the fair AUC {data.fair_auc} above.
+            How many more actives appear in the top X% than by chance. Also from the inflated test, so read alongside the fair AUC of {data.fair_auc} for NS5 from the library-based test.
           </p>
           <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'hidden', maxWidth: 520, background: 'var(--paper)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>
