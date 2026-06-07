@@ -10,6 +10,7 @@ import Insights from './pages/Insights'
 import Methods from './pages/Methods'
 import Validation from './pages/Validation'
 import Diseases from './pages/Diseases'
+import Escape from './pages/Escape'
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: 'md', element: <MD /> },
       { path: 'admet', element: <Admet /> },
       { path: 'conservation', element: <Conservation /> },
+      { path: 'escape', element: <Escape /> },
       { path: 'insights', element: <Insights /> },
       { path: 'methods', element: <Methods /> },
       { path: 'validation', element: <Validation /> },

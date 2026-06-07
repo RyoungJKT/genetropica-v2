@@ -145,3 +145,40 @@ export interface Methods {
   docking: DockParam[]
 }
 
+export interface EscapeResidue {
+  num: number
+  res: string
+  grade: number
+  cls: 'conserved' | 'intermediate' | 'variable'
+  key: boolean
+}
+export interface EscapeDrug {
+  name: string
+  durability: number
+  meanGrade: number
+  nContacts: number
+  conserved: number
+  intermediate: number
+  variable: number
+  keyContacts: number
+  vina: number | null
+  dl: number
+  contacts: EscapeResidue[]
+}
+export interface EscapeContacted {
+  num: number
+  grade: number
+  cls: 'conserved' | 'intermediate' | 'variable'
+  key: boolean
+  nDrugs: number
+}
+export interface Escape {
+  target: string
+  bindingMean: number | null
+  nonbindingMean: number | null
+  mwP: number | null
+  mwSignificant: boolean | null
+  contacted: EscapeContacted[]
+  drugs: EscapeDrug[]
+}
+
