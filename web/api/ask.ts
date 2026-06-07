@@ -34,7 +34,7 @@ async function ask(base: string, key: string, model: string, question: string, t
       safetySettings: SAFETY,
     }),
   })
-  if (!r.ok) { const detail = await r.text().catch(() => ''); return { error: true as const, detail: r.status + ': ' + detail.slice(0, 400) } }
+  if (!r.ok) return { error: true as const }
   const data: any = await r.json()
   const cand = data?.candidates?.[0]
   const parts = cand?.content?.parts
@@ -61,15 +61,15 @@ export default async function handler(req: any, res: any) {
   if (!question) return res.status(400).json({ error: 'Please ask a question.' })
 
   const base = (process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com').replace(/\/$/, '')
-  const model = process.env.GEMINI_MODEL || 'gemini-3.1-pro-preview'
+  const model = process.env.GEMINI_MODEL || 'gemini-3.5-flash'
 
   try {
     let out = await ask(base, key, model, question, 0)
-    if (out.error) return res.status(502).json({ error: 'The model service returned an error.', _debug: (out as any).detail })
+    if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
     if (!out.answer) {
       // The model occasionally returns an empty completion; retry once with a little temperature.
       out = await ask(base, key, model, question, 0.4)
-      if (out.error) return res.status(502).json({ error: 'The model service returned an error.', _debug: (out as any).detail })
+      if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
     }
     return res.status(200).json({ answer: out.answer || (out.blocked ? BLOCKED_FALLBACK : '(no answer)') })
   } catch {
