@@ -4,10 +4,12 @@ Both features call a large language model through **your own API key**. The key 
 read from an environment variable, is never committed, and never ships in the static
 site. The dashboard works fully without them; these only enrich it.
 
-Both features use the **hosted LLM API** (the native Messages endpoint). Set your
-key with `LLM_API_KEY`. The chat assistant defaults to `default-model` and the
-offline literature script to `gpt-4o-mini`; either can be overridden with
-`LLM_MODEL` (any current model model).
+The two features use different providers. The offline **literature script** uses the
+**hosted LLM API** (`LLM_API_KEY`, default `gpt-4o-mini`). The
+runtime **chat assistant** uses the **Google Gemini API** (`GEMINI_API_KEY`, default
+`gemini-3.5-flash`), chosen because Gemini lets us relax the safety thresholds that
+otherwise block legitimate "which candidate scores best" questions on this benign,
+fully grounded research data.
 
 ---
 
@@ -48,12 +50,13 @@ invent drugs, numbers, or claims.
 
 Activate it in the Vercel project (Settings -> Environment Variables):
 
-    LLM_API_KEY = sk-ant-...
-    # optional: LLM_MODEL (default default-model), LLM_BASE_URL
+    GEMINI_API_KEY = ...            # a free key from Google AI Studio (aistudio.google.com)
+    # optional: GEMINI_MODEL (default gemini-3.5-flash), GEMINI_BASE_URL
 
 Redeploy. Until the key is set, the widget politely replies that the assistant is not switched on.
 
-Guardrails: POST only, question capped at 500 characters, output capped (max_tokens 320,
-temperature 0), and a strict grounded system prompt. The endpoint is still public, so each
-question spends a small amount of credit; for higher traffic add rate limiting (e.g. Vercel KV)
-or gate the widget behind a password.
+Guardrails: POST only, question capped at 500 characters, output capped (maxOutputTokens 600,
+temperature 0), a strict grounded system prompt, and relaxed content-safety thresholds (the
+data is benign and fully grounded, so the defaults wrongly blocked legitimate ranking
+questions). The endpoint is still public, so each question spends a small amount of credit;
+for higher traffic add rate limiting (e.g. Vercel KV) or gate the widget behind a password.
