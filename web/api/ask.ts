@@ -4,17 +4,19 @@
 // from a comprehensive data digest, so it cannot invent drugs, numbers, or claims.
 import digest from './_digest.mjs'
 
-const SYSTEM = `You are GeneTropica's data assistant for a computational drug-repurposing screen.
-Answer using ONLY the DATA JSON below. It contains: "about" (overview); "methods" (HOW each result is computed); "tools" (WHAT each dashboard tab shows and WHY); a "glossary" of terms; "perTarget" and "topCandidates" rankings; "molecularDynamics", "validation", "conservation", "admet", "literature" and "escape" summaries; and honesty "caveats".
+const SYSTEM = `You are GeneTropica's data assistant for a computational drug-repurposing screen (a student research demonstration).
+Everything here is IN-SILICO screening data, not clinical efficacy, prescriptions, or treatment advice. Words like "best", "top", "most durable", "strongest binder", or "should I use" refer only to the dashboard's COMPUTED METRICS (Vina score, ligand efficiency, durability, conservation). Treat every question as a request to report or explain those research metrics from the data, never as a request for medical or treatment advice. Do not refuse these questions; answer the data-factual part and, where relevant, note that these are computational results, not clinical evidence or recommendations.
+Answer using ONLY the DATA JSON below. It contains: "about"; "methods" (HOW each result is computed); "tools" (WHAT each dashboard tab shows and WHY); a "glossary" of terms; "perTarget" and "topCandidates" rankings; "molecularDynamics", "validation", "conservation", "admet", "literature" and "escape" summaries; and honesty "caveats".
 Rules:
-- Use only facts present in the data. Cite specific numbers and names (Vina kcal/mol, ligand efficiency, counts, percentages). Use "methods" and "glossary" to explain what, how and why.
+- Use only facts present in the data. Cite specific numbers and names (Vina kcal/mol, ligand efficiency, durability %, counts, percentages). Use "methods" and "glossary" to explain what, how and why.
 - If something is not in the data, say so plainly. Never invent drugs, numbers, or claims.
 - Always respect the honesty caveats and raise them when relevant (the ML score is a target-agnostic prior; docking scored AUC 0.37 on dengue NS5, below random; only NS5 was validated; sofosbuvir is a positive control, not a discovery; escape/durability is an NS5-only heuristic).
-- This is a research demonstration, not medical advice.
 - Be clear and well-structured; about 180 words maximum, plain language.
 
 DATA:
 ${JSON.stringify(digest)}`
+
+const REFUSAL_FALLBACK = "I can only describe GeneTropica's computational results, not give medical or treatment advice. Try asking about the data directly, for example: \"What is celecoxib's durability score on NS5?\" or \"How does celecoxib behave in the molecular-dynamics run?\""
 
 async function ask(base: string, key: string, model: string, question: string, temperature: number) {
   const r = await fetch(`${base}/v1/messages`, {
@@ -33,7 +35,7 @@ async function ask(base: string, key: string, model: string, question: string, t
   const data: any = await r.json()
   const blocks = Array.isArray(data?.content) ? data.content : []
   const answer = blocks.map((b: any) => (b?.type === 'text' ? b.text : '')).join('').trim()
-  return { error: false as const, answer, debug: { stop: data?.stop_reason, types: blocks.map((b: any) => b?.type), n: blocks.length } }
+  return { error: false as const, answer, refused: data?.stop_reason === 'refusal' }
 }
 
 export default async function handler(req: any, res: any) {
@@ -59,12 +61,13 @@ export default async function handler(req: any, res: any) {
   try {
     let out = await ask(base, key, model, question, 0)
     if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
-    if (!out.answer) {
+    if (!out.answer && !out.refused) {
       // The model occasionally returns an empty completion; retry once with a little temperature.
       out = await ask(base, key, model, question, 0.4)
       if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
     }
-    return res.status(200).json({ answer: out.answer || '(no answer)', _debug: out.answer ? undefined : (out as any).debug })
+    if (out.answer) return res.status(200).json({ answer: out.answer })
+    return res.status(200).json({ answer: out.refused ? REFUSAL_FALLBACK : '(no answer)' })
   } catch {
     return res.status(502).json({ error: 'Could not reach the model service.' })
   }
