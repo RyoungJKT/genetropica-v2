@@ -3,7 +3,7 @@ import { useState } from 'react'
 const SUGGESTIONS = [
   'Which drug-like candidates bind NS5 best?',
   'Is the ML score per-target?',
-  'How well was the method validated?',
+  'How rigorous and honest is the method?',
 ]
 
 function Thinking() {
