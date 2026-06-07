@@ -31,10 +31,9 @@ async function ask(base: string, key: string, model: string, question: string, t
   })
   if (!r.ok) return { error: true as const }
   const data: any = await r.json()
-  const answer = Array.isArray(data?.content)
-    ? data.content.map((b: any) => (b?.type === 'text' ? b.text : '')).join('').trim()
-    : ''
-  return { error: false as const, answer }
+  const blocks = Array.isArray(data?.content) ? data.content : []
+  const answer = blocks.map((b: any) => (b?.type === 'text' ? b.text : '')).join('').trim()
+  return { error: false as const, answer, debug: { stop: data?.stop_reason, types: blocks.map((b: any) => b?.type), n: blocks.length } }
 }
 
 export default async function handler(req: any, res: any) {
@@ -65,7 +64,7 @@ export default async function handler(req: any, res: any) {
       out = await ask(base, key, model, question, 0.4)
       if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
     }
-    return res.status(200).json({ answer: out.answer || '(no answer)' })
+    return res.status(200).json({ answer: out.answer || '(no answer)', _debug: out.answer ? undefined : (out as any).debug })
   } catch {
     return res.status(502).json({ error: 'Could not reach the model service.' })
   }
