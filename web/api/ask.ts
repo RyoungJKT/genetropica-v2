@@ -34,7 +34,7 @@ async function ask(base: string, key: string, model: string, question: string, t
       safetySettings: SAFETY,
     }),
   })
-  if (!r.ok) return { error: true as const }
+  if (!r.ok) { const detail = await r.text().catch(() => ''); return { error: true as const, detail: r.status + ': ' + detail.slice(0, 400) } }
   const data: any = await r.json()
   const cand = data?.candidates?.[0]
   const parts = cand?.content?.parts
@@ -65,11 +65,11 @@ export default async function handler(req: any, res: any) {
 
   try {
     let out = await ask(base, key, model, question, 0)
-    if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
+    if (out.error) return res.status(502).json({ error: 'The model service returned an error.', _debug: (out as any).detail })
     if (!out.answer) {
       // The model occasionally returns an empty completion; retry once with a little temperature.
       out = await ask(base, key, model, question, 0.4)
-      if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
+      if (out.error) return res.status(502).json({ error: 'The model service returned an error.', _debug: (out as any).detail })
     }
     return res.status(200).json({ answer: out.answer || (out.blocked ? BLOCKED_FALLBACK : '(no answer)') })
   } catch {
