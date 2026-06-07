@@ -14,7 +14,7 @@ Use ONLY the DATA JSON below. It contains: "about"; "methods" (how each result i
 DATA:
 ${JSON.stringify(digest)}`
 
-const REFUSAL_FALLBACK = "I can only describe GeneTropica's computational results, not give medical or treatment advice. Try asking about the data directly, for example: \"What is celecoxib's durability score on NS5?\" or \"How does celecoxib behave in the molecular-dynamics run?\""
+const REFUSAL_FALLBACK = "I had trouble with that exact phrasing. I answer best when you ask about the data or methods directly, for example: \"How is the durability score on the Escape tab calculated?\", \"How does celecoxib behave in the molecular-dynamics run?\", or \"What is the bestByVina entry for NS5?\" You can also see the full rankings on the Candidates and Escape tabs."
 
 // Some benign questions trip the safety classifier on certain phrasings (rankings, the word
 // "escape", etc.). On a refused/empty reply we re-ask with this neutral data-framing wrapper.
