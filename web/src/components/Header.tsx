@@ -10,6 +10,7 @@ const LINKS: [string, string][] = [
   ['/md', 'Dynamics'],
   ['/admet', 'ADMET'],
   ['/conservation', 'Conservation'],
+  ['/escape', 'Escape'],
   ['/insights', 'Insights'],
   ['/methods', 'Methods'],
   ['/validation', 'Validation'],
