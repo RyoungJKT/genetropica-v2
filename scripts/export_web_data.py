@@ -10,6 +10,8 @@ import json
 import sqlite3
 from pathlib import Path
 
+from build_escape import build_escape
+
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / "data" / "database" / "genetropica.db"
 OUT = ROOT / "web" / "public" / "data"
@@ -295,6 +297,10 @@ def main():
             "mann_whitney": analysis.get("mann_whitney", {}),
             "key_residues": analysis.get("key_residues", []),
         }, separators=(",", ":")))
+
+    # escape.json: per-drug NS5 evolutionary escape / durability, derived from the
+    # conservation grades + predicted contacts just written (scripts/build_escape.py).
+    build_escape(OUT)
 
     # validation.json: retrospective ROC + enrichment. The initial small-decoy test was
     # inflated (AUC ~1.0); the honest headline is the fair library-based AUC 0.37 for NS5.

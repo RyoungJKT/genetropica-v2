@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GeneTropica · Bleeding-edge directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380;9..144,400;9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F4F0E6; --paper-2:#ECE6D8; --paper-3:#E4DCC9;
+    --ink:#1C1A17; --ink-soft:#544F45; --ink-faint:#8A8273;
+    --green:#1F5740; --green-bright:#2E7D5B; --clay:#A8492B; --gold:#A8742C;
+    --line:#D8D0BD; --teal:#2C6E6B; --slate:#5B5470;
+    --serif:'Fraunces',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'Spline Sans Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.05;margin:0;}
+  .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--clay);}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:10.5px;color:var(--ink-faint);}
+  header.top{padding:48px 0 14px;}
+  header.top h1{font-size:clamp(30px,4.4vw,50px);margin-top:12px;}
+  header.top p{color:var(--ink-soft);max-width:720px;font-size:16px;margin:14px 0 0;}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:10;background:rgba(244,240,230,.86);backdrop-filter:blur(8px);padding:14px 0;border-bottom:1px solid var(--line);}
+  .tab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:9px 13px;border-radius:100px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);cursor:pointer;transition:all .15s;white-space:nowrap;}
+  .tab:hover{border-color:var(--ink-faint);}
+  .tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .tab .pick{color:var(--green-bright);font-weight:500;}
+  .tab.active .pick{color:#9ec7ad;}
+
+  .panel{display:none;padding:34px 0 60px;animation:fade .4s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .phead{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+  .phead h2{font-size:clamp(24px,3.2vw,38px);margin-top:8px;}
+  .phead .approach{color:var(--ink-soft);font-size:15.5px;max-width:600px;margin-top:10px;line-height:1.6;}
+  .frontier{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);border-radius:100px;padding:5px 11px;margin-top:14px;background:rgba(46,125,91,.06);}
+  .frontier::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-bright);}
+
+  .feas{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:7px;white-space:nowrap;}
+  .feas.high{background:#e7efe7;color:var(--green);}
+  .feas.med{background:#f3ebdd;color:var(--gold);}
+
+  .viz{margin-top:24px;border:1px solid var(--line);border-radius:16px;background:var(--paper-2);padding:22px;overflow:hidden;}
+  .viz-title{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px;}
+  svg{display:block;width:100%;height:auto;font-family:var(--mono);}
+
+  .notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:22px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .note{background:var(--paper);padding:16px 18px;}
+  .note h4{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);margin:0 0 8px;font-weight:400;}
+  .note p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+  .note b{color:var(--ink);font-weight:600;}
+
+  .pickbar{margin:30px 0 0;background:linear-gradient(160deg,#16261d,#1b3327 60%,#13231a);color:var(--paper);border-radius:16px;padding:24px 26px;}
+  .pickbar .eyebrow{color:#9ec7ad;}
+  .pickbar h3{color:var(--paper);font-size:24px;margin-top:8px;}
+  .pickbar p{color:#e9efe9;font-size:15px;line-height:1.65;margin:10px 0 0;max-width:760px;}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+  .legend i{width:11px;height:11px;border-radius:3px;display:inline-block;}
+  @media(max-width:720px){.notes{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">GeneTropica · Prototype gallery · 5 directions</div>
+    <h1>What to build next, at the edge of biology</h1>
+    <p>Five genuinely different additions, each styled to match the dashboard and framed for a science-literate reviewer. Every one names what it shows, why it is frontier work, and which existing GeneTropica data it is built from. Tap through, then see the recommended pick.</p>
+  </header>
+</div>
+
+<div class="wrap">
+  <nav class="tabs">
+    <button class="tab active" data-i="1">01 · Escape &amp; Durability <span class="pick">· pick</span></button>
+    <button class="tab" data-i="2">02 · AI Structure + Pockets</button>
+    <button class="tab" data-i="3">03 · Generative Designer</button>
+    <button class="tab" data-i="4">04 · Network Medicine</button>
+    <button class="tab" data-i="5">05 · Protein-LM Atlas</button>
+  </nav>
+
+  <!-- ============ OPTION 1 ============ -->
+  <section class="panel active" data-i="1">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Direction 01 · Evolutionary medicine</div>
+        <h2>Evolutionary Escape &amp; Durability Predictor</h2>
+        <p class="approach">Score every drug-target pairing by how hard it would be for the virus to <b>mutate its way out</b>. A drug that grips highly conserved residues is durable; one that grips variable residues is fragile. Turns the dashboard's conservation data into a forward-looking resistance forecast.</p>
+        <div class="frontier">Frontier: anticipating viral evolution, not just binding</div>
+      </div>
+      <span class="feas high">Build: high · uses data you already have</span>
+    </div>
+
+    <div class="viz">
+      <div class="viz-title">Per-residue escape map · DENV NS5 binding site (mock)</div>
+      <svg viewBox="0 0 900 150" role="img" aria-label="Residue escape heatmap">
+        <!-- 36 residue cells colored conserved(green) -> variable(clay) -->
+        <g id="escape-cells"></g>
+        <text x="0" y="120" fill="#544F45" font-size="11">R737</text>
+        <text x="820" y="120" fill="#544F45" font-size="11">G810</text>
+        <!-- binding-site markers -->
+        <g id="escape-marks"></g>
+        <text x="0" y="142" fill="#8A8273" font-size="10">▲ drug-contact residue · low cell = conserved (durable) · high cell = variable (escape-prone)</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#1F5740"></i>Conserved · durable</span>
+        <span><i style="background:#A8742C"></i>Intermediate</span>
+        <span><i style="background:#A8492C"></i>Variable · escape-prone</span>
+      </div>
+      <div class="viz-title" style="margin-top:22px">Durability leaderboard · which target resists mutation best (mock)</div>
+      <svg viewBox="0 0 900 150" role="img" aria-label="Durability bars">
+        <g id="dura-bars"></g>
+      </svg>
+    </div>
+
+    <div class="notes">
+      <div class="note"><h4>What it shows</h4><p>A per-residue <b>escape-risk</b> map and a target <b>durability score</b> = how conserved the residues a drug actually touches are. Flags drugs whose grip sits on mutation-tolerant positions.</p></div>
+      <div class="note"><h4>Why it is frontier</h4><p>"Resistance by design" is a live research front: binding-site conservation predicts a <b>high barrier to escape</b>. You forecast viral evolution, the way bnAb and protease-inhibitor work now does.</p></div>
+      <div class="note"><h4>Built from your data</h4><p><b>Already computed:</b> ConSurf grades per residue + chemistry-aware binding contacts per drug. One new derived score, zero fabrication, fully defensible.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 2 ============ -->
+  <section class="panel" data-i="2">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Direction 02 · AI structural biology</div>
+        <h2>AI Structure Confidence + Cryptic-Pocket Finder</h2>
+        <p class="approach">Overlay <b>AlphaFold-grade per-residue confidence</b> (pLDDT) on each target and surface <b>cryptic pockets</b> the static crystal structure hides. Shows reviewers you know where a model is trustworthy and where new druggable sites may open.</p>
+        <div class="frontier">Frontier: AlphaFold 3 / IsoDDE-style pocket discovery</div>
+      </div>
+      <span class="feas med">Build: medium · fetch AlphaFold DB + pLDDT</span>
+    </div>
+
+    <div class="viz">
+      <div class="viz-title">Predicted backbone, colored by model confidence + a flagged cryptic pocket (mock)</div>
+      <svg viewBox="0 0 900 240" role="img" aria-label="Structure confidence ribbon">
+        <path d="M40 180 C 120 60, 200 60, 260 140 S 380 220, 460 150 S 600 60, 690 130 S 820 200, 870 120" fill="none" stroke="#3A6BD6" stroke-width="13" stroke-linecap="round"/>
+        <path d="M40 180 C 120 60, 200 60, 260 140" fill="none" stroke="#3A6BD6" stroke-width="13" stroke-linecap="round"/>
+        <path d="M260 140 S 380 220, 460 150" fill="none" stroke="#2C9CC9" stroke-width="13" stroke-linecap="round"/>
+        <path d="M460 150 S 600 60, 690 130" fill="none" stroke="#C9A22C" stroke-width="13" stroke-linecap="round"/>
+        <path d="M690 130 S 820 200, 870 120" fill="none" stroke="#A8492B" stroke-width="13" stroke-linecap="round"/>
+        <circle cx="500" cy="150" r="46" fill="none" stroke="#1C1A17" stroke-width="2" stroke-dasharray="5 5"/>
+        <text x="500" y="225" text-anchor="middle" fill="#1C1A17" font-size="12">cryptic pocket · druggable when loop opens</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#3A6BD6"></i>Very high pLDDT &gt;90</span>
+        <span><i style="background:#2C9CC9"></i>Confident 70-90</span>
+        <span><i style="background:#C9A22C"></i>Low 50-70</span>
+        <span><i style="background:#A8492B"></i>Disordered &lt;50</span>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div class="note"><h4>What it shows</h4><p>Confidence-shaded 3D structures so a viewer trusts the well-modeled core and discounts floppy loops, plus <b>transient pockets</b> beyond the crystal.</p></div>
+      <div class="note"><h4>Why it is frontier</h4><p>2026's flagship engines find <b>novel pockets from sequence alone</b>. Confidence-aware modeling is now table-stakes for credible structural claims.</p></div>
+      <div class="note"><h4>Built from your data</h4><p>Pull AlphaFold DB structures + pLDDT for your six targets; render b-factor coloring in the existing 3Dmol viewer. Pocket flags from a geometric scan.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 3 ============ -->
+  <section class="panel" data-i="3">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Direction 03 · Generative chemistry</div>
+        <h2>Generative De Novo Analogue Designer</h2>
+        <p class="approach">Take a top hit and let a generative model propose <b>novel analogues</b> that keep the scaffold but improve predicted properties. Each suggestion carries property deltas and an explicit <b>hypothesis-only</b> label, in keeping with the project's honesty rule.</p>
+        <div class="frontier">Frontier: diffusion / transformer de novo design</div>
+      </div>
+      <span class="feas med">Build: medium · honesty guardrails required</span>
+    </div>
+
+    <div class="viz">
+      <div class="viz-title">Seed hit → AI-proposed analogues with predicted deltas (mock, hypothetical)</div>
+      <svg viewBox="0 0 900 220" role="img" aria-label="Generative analogues">
+        <!-- seed -->
+        <g transform="translate(60,40)">
+          <polygon points="50,0 93,25 93,75 50,100 7,75 7,25" fill="none" stroke="#1F5740" stroke-width="3"/>
+          <circle cx="50" cy="50" r="7" fill="#1F5740"/>
+          <text x="50" y="130" text-anchor="middle" fill="#1C1A17" font-size="12">Celecoxib (seed)</text>
+        </g>
+        <text x="200" y="95" fill="#8A8273" font-size="26">→</text>
+        <!-- 3 analogues -->
+        <g transform="translate(250,30)">
+          <polygon points="45,0 84,22 84,68 45,90 6,68 6,22" fill="none" stroke="#2C6E6B" stroke-width="3"/>
+          <circle cx="84" cy="22" r="6" fill="#A8492B"/>
+          <rect x="-6" y="104" width="102" height="20" rx="5" fill="#e7efe7"/>
+          <text x="45" y="118" text-anchor="middle" fill="#1F5740" font-size="10">affinity +0.7</text>
+        </g>
+        <g transform="translate(470,30)">
+          <polygon points="45,0 84,22 84,68 45,90 6,68 6,22" fill="none" stroke="#A8742C" stroke-width="3"/>
+          <circle cx="6" cy="68" r="6" fill="#2C6E6B"/>
+          <rect x="-6" y="104" width="102" height="20" rx="5" fill="#f3ebdd"/>
+          <text x="45" y="118" text-anchor="middle" fill="#A8742C" font-size="10">QED +0.12</text>
+        </g>
+        <g transform="translate(690,30)">
+          <polygon points="45,0 84,22 84,68 45,90 6,68 6,22" fill="none" stroke="#5B5470" stroke-width="3"/>
+          <circle cx="45" cy="90" r="6" fill="#1F5740"/>
+          <rect x="-6" y="104" width="102" height="20" rx="5" fill="#e7efe7"/>
+          <text x="45" y="118" text-anchor="middle" fill="#1F5740" font-size="10">SA 3.1 (easy)</text>
+        </g>
+        <text x="450" y="200" text-anchor="middle" fill="#A8492B" font-size="11">⚠ generated hypotheses for a chemist to test, never synthesized or validated</text>
+      </svg>
+    </div>
+
+    <div class="notes">
+      <div class="note"><h4>What it shows</h4><p>Scaffold-preserving novel analogues with predicted <b>affinity / drug-likeness / synthesizability</b> deltas versus the seed, ranked.</p></div>
+      <div class="note"><h4>Why it is frontier</h4><p>De novo generative design is the headline of 2026 platforms. It shows you can <b>create</b> chemistry, not just rank an existing library.</p></div>
+      <div class="note"><h4>Built from your data</h4><p>Seed from your top hits; generate via a model and re-score with your existing ADMET filters. <b>Caveat:</b> needs strict "hypothetical" framing to protect the honesty canon.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 4 ============ -->
+  <section class="panel" data-i="4">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Direction 04 · Network pharmacology</div>
+        <h2>Network Medicine Knowledge Graph</h2>
+        <p class="approach">Render the whole screen as an interactive graph of <b>drugs ↔ targets ↔ diseases ↔ pathways</b>, then rank repurposing candidates by <b>network proximity</b> to a disease module. The view experts immediately recognize as systems-level thinking.</p>
+        <div class="frontier">Frontier: TxGNN / NetMedGPT zero-shot repurposing</div>
+      </div>
+      <span class="feas high">Build: high · graph from existing relations</span>
+    </div>
+
+    <div class="viz">
+      <div class="viz-title">Drug-target-disease graph · highlighted proximity path (mock)</div>
+      <svg viewBox="0 0 900 260" role="img" aria-label="Network graph">
+        <g stroke="#C9BFA8" stroke-width="1.5">
+          <line x1="160" y1="70" x2="320" y2="130"/><line x1="160" y1="190" x2="320" y2="130"/>
+          <line x1="320" y1="130" x2="500" y2="80"/><line x1="320" y1="130" x2="500" y2="180"/>
+          <line x1="500" y1="80" x2="680" y2="130"/><line x1="500" y1="180" x2="680" y2="130"/>
+          <line x1="680" y1="130" x2="820" y2="70"/><line x1="680" y1="130" x2="820" y2="190"/>
+        </g>
+        <line x1="160" y1="70" x2="320" y2="130" stroke="#1F5740" stroke-width="3"/>
+        <line x1="320" y1="130" x2="500" y2="80" stroke="#1F5740" stroke-width="3"/>
+        <line x1="500" y1="80" x2="680" y2="130" stroke="#1F5740" stroke-width="3"/>
+        <g font-size="10" fill="#1C1A17" text-anchor="middle">
+          <circle cx="160" cy="70" r="15" fill="#1F5740"/><text x="160" y="50">drug</text>
+          <circle cx="160" cy="190" r="12" fill="#1F5740" opacity=".5"/>
+          <circle cx="320" cy="130" r="17" fill="#2C6E6B"/><text x="320" y="105">target</text>
+          <circle cx="500" cy="80" r="13" fill="#5B5470"/><text x="500" y="60">pathway</text>
+          <circle cx="500" cy="180" r="11" fill="#5B5470" opacity=".6"/>
+          <circle cx="680" cy="130" r="17" fill="#A8492B"/><text x="680" y="105">disease</text>
+          <circle cx="820" cy="70" r="12" fill="#A8492B" opacity=".55"/>
+          <circle cx="820" cy="190" r="12" fill="#A8492B" opacity=".55"/>
+        </g>
+        <rect x="600" y="205" width="280" height="40" rx="7" fill="#fff" stroke="#D8D0BD"/>
+        <text x="616" y="222" fill="#544F45" font-size="11">network proximity z = -2.4</text>
+        <text x="616" y="238" fill="#1F5740" font-size="11">significant · closer than chance</text>
+      </svg>
+    </div>
+
+    <div class="notes">
+      <div class="note"><h4>What it shows</h4><p>An explorable map of every relationship in the screen, with <b>proximity / centrality</b> scores surfacing polypharmacology hubs and the best-connected repurposing candidates.</p></div>
+      <div class="note"><h4>Why it is frontier</h4><p>Network medicine + graph ML is <b>the</b> NTD-repurposing paradigm (most leishmaniasis drugs are repurposed). Foundation models now do this zero-shot.</p></div>
+      <div class="note"><h4>Built from your data</h4><p>Your drug-target-disease links already form a graph; add pathway annotations and a force layout. High visual wow, fully grounded.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 5 ============ -->
+  <section class="panel" data-i="5">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Direction 05 · Protein language models</div>
+        <h2>Protein-Language-Model Target Atlas</h2>
+        <p class="approach">Embed the targets with a <b>protein language model (ESM)</b> to map their relationships, and show an <b>AlphaMissense-style</b> variant-effect heatmap of which mutations the model thinks break each protein. Reframes proteins as something a language model "reads."</p>
+        <div class="frontier">Frontier: ESM-2 / AlphaMissense zero-shot effects</div>
+      </div>
+      <span class="feas med">Build: medium · precompute embeddings offline</span>
+    </div>
+
+    <div class="viz">
+      <div class="viz-title">PLM embedding map of targets + variant-effect heatmap (mock)</div>
+      <svg viewBox="0 0 900 230" role="img" aria-label="Embedding scatter and variant heatmap">
+        <g id="plm-scatter"></g>
+        <text x="20" y="222" fill="#8A8273" font-size="10">ESM embedding (2D projection) · clusters = protein families</text>
+        <g id="plm-heat" transform="translate(560,18)"></g>
+        <text x="560" y="222" fill="#8A8273" font-size="10">variant effect · rows = positions, cols = amino acids</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#1F5740"></i>tolerated</span>
+        <span><i style="background:#A8742C"></i>uncertain</span>
+        <span><i style="background:#A8492B"></i>likely damaging</span>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div class="note"><h4>What it shows</h4><p>A similarity atlas of the targets and a per-position <b>mutation-tolerance</b> heatmap, predicting which residues are essential without any lab work.</p></div>
+      <div class="note"><h4>Why it is frontier</h4><p>Protein LMs are "the new microscope." AlphaMissense-style zero-shot variant calls are a 2024-2026 leap experts will recognize instantly.</p></div>
+      <div class="note"><h4>Built from your data</h4><p>Run ESM on the six target sequences offline, ship the embeddings + scores as JSON. Heavier precompute; overlaps with Direction 01's conservation story.</p></div>
+    </div>
+  </section>
+
+  <div class="pickbar">
+    <div class="eyebrow">Recommended pick</div>
+    <h3>Direction 01 — Evolutionary Escape &amp; Durability Predictor</h3>
+    <p>It is the only option that turns data you have <b>already computed</b> (conservation grades + binding contacts) into a genuinely new, defensible result with zero fabrication, so it survives a professor's scrutiny. It is squarely "future of biology" (designing drugs against the virus's next move), it deepens the project's existing honesty story instead of risking it, and it ships fast. Network Medicine (04) is the strongest runner-up for pure visual impact and is a natural second build.</p>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    const i = t.dataset.i;
+    tabs.forEach(x => x.classList.toggle('active', x.dataset.i === i));
+    panels.forEach(p => p.classList.toggle('active', p.dataset.i === i));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+
+  // Option 1: escape heatmap cells
+  const cons = [9,8,9,7,6,9,8,4,3,9,9,7,2,3,8,9,6,5,9,8,3,2,7,9,8,9,4,3,9,7,8,9,6,2,8,9];
+  const contacts = new Set([7,12,13,20,21,26,27,33]);
+  const cellW = 22, gap = 2;
+  const colFor = g => g>=7 ? '#1F5740' : g>=4 ? '#A8742C' : '#A8492B';
+  let cells='', marks='';
+  cons.forEach((g,i)=>{
+    const x = i*(cellW+gap);
+    const h = 30 + (9-g)*5;
+    cells += `<rect x="${x}" y="${95-h}" width="${cellW}" height="${h}" rx="2" fill="${colFor(g)}" opacity="${contacts.has(i)?1:.5}"/>`;
+    if(contacts.has(i)) marks += `<text x="${x+cellW/2}" y="${108}" text-anchor="middle" fill="#1C1A17" font-size="11">▲</text>`;
+  });
+  document.getElementById('escape-cells').innerHTML = cells;
+  document.getElementById('escape-marks').innerHTML = marks;
+
+  // Option 1: durability bars
+  const dura = [['DENV NS5',88,'#1F5740'],['CHIKV nsP2',74,'#1F5740'],['DENV NS3',61,'#A8742C'],['DENV E',39,'#A8492C']];
+  let bars='';
+  dura.forEach((d,i)=>{
+    const y = i*34+8; const w = d[1]/100*620;
+    bars += `<text x="0" y="${y+18}" fill="#544F45" font-size="12">${d[0]}</text>`;
+    bars += `<rect x="150" y="${y}" width="620" height="22" rx="4" fill="#E4DCC9"/>`;
+    bars += `<rect x="150" y="${y}" width="${w}" height="22" rx="4" fill="${d[2]}"/>`;
+    bars += `<text x="${150+w+8}" y="${y+16}" fill="#1C1A17" font-size="12">${d[1]}% durable</text>`;
+  });
+  document.getElementById('dura-bars').innerHTML = bars;
+
+  // Option 5: scatter clusters
+  const clusters = [[200,90,'#1F5740'],[360,150,'#2C6E6B'],[280,60,'#5B5470']];
+  let dots='';
+  clusters.forEach(c=>{
+    for(let k=0;k<10;k++){
+      const a = k/10*6.28, r = 18+(k%3)*14;
+      const x = c[0]+Math.cos(a)*r + (k*7%23) - 11;
+      const y = c[1]+Math.sin(a)*r + (k*5%19) - 9;
+      dots += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="5" fill="${c[2]}" opacity="${.45+(k%4)*.15}"/>`;
+    }
+  });
+  document.getElementById('plm-scatter').innerHTML = dots;
+
+  // Option 5: variant heatmap
+  const cols=10, rows=7; let heat='';
+  const hc=['#1F5740','#A8742C','#A8492B'];
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+    const v=(r*7+c*3)%3;
+    heat += `<rect x="${c*22}" y="${r*22}" width="20" height="20" rx="2" fill="${hc[v]}" opacity="${.5+v*.2}"/>`;
+  }
+  document.getElementById('plm-heat').innerHTML = heat;
+</script>
+</body>
+</html>
