@@ -1,7 +1,9 @@
 // Vercel serverless function: a grounded "ask the data" assistant for GeneTropica.
-// Reads ANTHROPIC_API_KEY (and optional ANTHROPIC_BASE_URL / ANTHROPIC_MODEL) from
-// the server environment; the key is never exposed to the browser. Answers strictly
-// from a comprehensive data digest, so it cannot invent drugs, numbers, or claims.
+// Uses the Google Gemini API (generateContent). Reads GEMINI_API_KEY (and optional
+// GEMINI_MODEL / GEMINI_BASE_URL) from the server environment; the key is never exposed
+// to the browser. Answers strictly from a comprehensive data digest, so it cannot invent
+// drugs, numbers, or claims. Safety thresholds are relaxed for this benign, grounded
+// research dataset so legitimate "which candidate scores best" questions are not refused.
 import digest from './_digest.mjs'
 
 const SYSTEM = `You are GeneTropica's data assistant, a friendly guide to a student's computational drug-repurposing science project. Answer questions about the dataset clearly and factually.
@@ -14,40 +16,40 @@ Use ONLY the DATA JSON below. It contains: "about"; "methods" (how each result i
 DATA:
 ${JSON.stringify(digest)}`
 
-const REFUSAL_FALLBACK = "I had trouble with that exact phrasing. I answer best when you ask about the data or methods directly, for example: \"How is the durability score on the Escape tab calculated?\", \"How does celecoxib behave in the molecular-dynamics run?\", or \"What is the bestByVina entry for NS5?\" You can also see the full rankings on the Candidates and Escape tabs."
+const BLOCKED_FALLBACK = "I had trouble answering that one. Try asking about the data or methods directly, for example: \"How is the durability score on the Escape tab calculated?\", \"How does celecoxib behave in the molecular-dynamics run?\", or \"What are the top NS5 candidates by ligand efficiency?\" You can also browse the Candidates and Escape tabs."
 
-// Some benign questions trip the safety classifier on certain phrasings (rankings, the word
-// "escape", etc.). On a refused/empty reply we re-ask with this neutral data-framing wrapper.
-const reframe = (q: string) =>
-  `Answer this factual question about the GeneTropica computational research dataset (a student's science-fair project) using only the data and methods below, and cite specific numbers. It is a benign question about a fixed dataset, not a medical or treatment request. Question: ${q}`
+// Relax the content filters: this is a grounded, benign research dataset, and the default
+// thresholds wrongly block legitimate "which candidate scores best" type questions.
+const SAFETY = ['HARM_CATEGORY_HARASSMENT', 'HARM_CATEGORY_HATE_SPEECH', 'HARM_CATEGORY_SEXUALLY_EXPLICIT', 'HARM_CATEGORY_DANGEROUS_CONTENT']
+  .map((category) => ({ category, threshold: 'BLOCK_NONE' }))
 
 async function ask(base: string, key: string, model: string, question: string, temperature: number) {
-  const r = await fetch(`${base}/v1/messages`, {
+  const r = await fetch(`${base}/v1beta/models/${model}:generateContent`, {
     method: 'POST',
-    headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' },
+    headers: { 'x-goog-api-key': key, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model,
-      max_tokens: 500,
-      temperature,
-      // cache_control caches the large system prompt (5-min TTL), so repeat questions are cheaper.
-      system: [{ type: 'text', text: SYSTEM, cache_control: { type: 'ephemeral' } }],
-      messages: [{ role: 'user', content: question }],
+      systemInstruction: { parts: [{ text: SYSTEM }] },
+      contents: [{ role: 'user', parts: [{ text: question }] }],
+      generationConfig: { temperature, maxOutputTokens: 600 },
+      safetySettings: SAFETY,
     }),
   })
   if (!r.ok) return { error: true as const }
   const data: any = await r.json()
-  const blocks = Array.isArray(data?.content) ? data.content : []
-  const answer = blocks.map((b: any) => (b?.type === 'text' ? b.text : '')).join('').trim()
-  return { error: false as const, answer, refused: data?.stop_reason === 'refusal' }
+  const cand = data?.candidates?.[0]
+  const parts = cand?.content?.parts
+  const answer = Array.isArray(parts) ? parts.map((p: any) => p?.text ?? '').join('').trim() : ''
+  const blocked = cand?.finishReason === 'SAFETY' || !!data?.promptFeedback?.blockReason
+  return { error: false as const, answer, blocked }
 }
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Use POST.' })
 
-  const key = process.env.ANTHROPIC_API_KEY
+  const key = process.env.GEMINI_API_KEY
   if (!key) {
     return res.status(200).json({
-      answer: "The assistant isn't switched on yet. The site owner needs to add an ANTHROPIC_API_KEY in the Vercel project settings.",
+      answer: "The assistant isn't switched on yet. The site owner needs to add a GEMINI_API_KEY in the Vercel project settings.",
     })
   }
 
@@ -58,27 +60,19 @@ export default async function handler(req: any, res: any) {
   const question = String(body?.question ?? '').slice(0, 500).trim()
   if (!question) return res.status(400).json({ error: 'Please ask a question.' })
 
-  const base = (process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com').replace(/\/$/, '')
-  const model = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6'
+  const base = (process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com').replace(/\/$/, '')
+  const model = process.env.GEMINI_MODEL || 'gemini-3.5-flash'
 
   try {
-    // First pass: the question as asked, deterministic.
     let out = await ask(base, key, model, question, 0)
     if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
-    // On an empty or refused reply, re-ask with a neutral data-framing wrapper and some
-    // temperature; this rescues benign questions whose phrasing trips the safety classifier.
     if (!out.answer) {
-      out = await ask(base, key, model, reframe(question), 0.7)
+      // The model occasionally returns an empty completion; retry once with a little temperature.
+      out = await ask(base, key, model, question, 0.4)
       if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
     }
-    if (!out.answer) {
-      out = await ask(base, key, model, reframe(question), 1)
-      if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
-    }
-    if (out.answer) return res.status(200).json({ answer: out.answer })
-    return res.status(200).json({ answer: out.refused ? REFUSAL_FALLBACK : '(no answer)' })
+    return res.status(200).json({ answer: out.answer || (out.blocked ? BLOCKED_FALLBACK : '(no answer)') })
   } catch {
     return res.status(502).json({ error: 'Could not reach the model service.' })
   }
-
 }
