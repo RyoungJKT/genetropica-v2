@@ -19,6 +19,8 @@ ${JSON.stringify(digest)}`
 
 const BLOCKED_FALLBACK = "I had trouble answering that one. Try asking about the data or methods directly, for example: \"How is the durability score on the Escape tab calculated?\", \"How does celecoxib behave in the molecular-dynamics run?\", or \"What are the top NS5 candidates by ligand efficiency?\" You can also browse the Candidates and Escape tabs."
 
+const RATE_LIMIT = "I'm getting a lot of questions right now, and the free tier limits how many I can answer per minute. Please wait a few seconds and ask again."
+
 // Relax the content filters: this is a grounded, benign research dataset, and the default
 // thresholds wrongly block legitimate "which candidate scores best" type questions.
 const SAFETY = ['HARM_CATEGORY_HARASSMENT', 'HARM_CATEGORY_HATE_SPEECH', 'HARM_CATEGORY_SEXUALLY_EXPLICIT', 'HARM_CATEGORY_DANGEROUS_CONTENT']
@@ -37,7 +39,7 @@ async function ask(base: string, key: string, model: string, question: string, t
       safetySettings: SAFETY,
     }),
   })
-  if (!r.ok) return { error: true as const }
+  if (!r.ok) return { error: true as const, status: r.status }
   const data: any = await r.json()
   const cand = data?.candidates?.[0]
   const parts = cand?.content?.parts
@@ -66,13 +68,20 @@ export default async function handler(req: any, res: any) {
   const base = (process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com').replace(/\/$/, '')
   const model = process.env.GEMINI_MODEL || 'gemini-3.5-flash'
 
+  // A 429 is a free-tier rate limit, not a real failure: answer with a friendly wait-and-retry
+  // message (HTTP 200) so the widget shows it as a reply instead of an error.
+  const fail = (o: any) =>
+    o.status === 429
+      ? res.status(200).json({ answer: RATE_LIMIT })
+      : res.status(502).json({ error: 'The model service returned an error.' })
+
   try {
     let out = await ask(base, key, model, question, 0)
-    if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
+    if (out.error) return fail(out)
     if (!out.answer) {
       // The model occasionally returns an empty completion; retry once with a little temperature.
       out = await ask(base, key, model, question, 0.4)
-      if (out.error) return res.status(502).json({ error: 'The model service returned an error.' })
+      if (out.error) return fail(out)
     }
     return res.status(200).json({ answer: out.answer || (out.blocked ? BLOCKED_FALLBACK : '(no answer)') })
   } catch {
