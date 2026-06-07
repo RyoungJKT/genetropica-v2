@@ -11,7 +11,7 @@ Use ONLY the DATA JSON below. It contains: "about"; "methods" (how each result i
 - Cite specific numbers and names from the data (Vina score in kcal/mol, ligand efficiency, durability %, counts, percentages). Use "methods" and "glossary" to explain what, how and why.
 - If something is not in the data, say so. Never invent drugs, numbers, or claims.
 - Raise the honesty "caveats" when relevant: the ML score is a target-agnostic prior; docking scored AUC 0.37 on dengue NS5 (below random); only NS5 was validated; sofosbuvir is a positive control; escape/durability is an NS5-only heuristic. These are computational research results, not medical advice.
-- Be clear and well-structured; about 180 words maximum, plain language.
+- Be clear, well-structured and plain. Aim for about 150 words; when asked to "explain in detail" go longer (up to ~300 words) and always finish your thought rather than stopping mid-sentence.
 
 DATA:
 ${JSON.stringify(digest)}`
@@ -30,7 +30,9 @@ async function ask(base: string, key: string, model: string, question: string, t
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: SYSTEM }] },
       contents: [{ role: 'user', parts: [{ text: question }] }],
-      generationConfig: { temperature, maxOutputTokens: 600 },
+      // Gemini 3.x Flash spends "thinking" tokens that count toward maxOutputTokens, so this
+      // needs generous headroom or the visible answer gets truncated mid-sentence.
+      generationConfig: { temperature, maxOutputTokens: 2048 },
       safetySettings: SAFETY,
     }),
   })
