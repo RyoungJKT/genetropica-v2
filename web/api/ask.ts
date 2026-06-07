@@ -61,7 +61,7 @@ export default async function handler(req: any, res: any) {
   if (!question) return res.status(400).json({ error: 'Please ask a question.' })
 
   const base = (process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com').replace(/\/$/, '')
-  const model = process.env.GEMINI_MODEL || 'gemini-3.5-flash'
+  const model = process.env.GEMINI_MODEL || 'gemini-3.1-pro-preview'
 
   try {
     let out = await ask(base, key, model, question, 0)

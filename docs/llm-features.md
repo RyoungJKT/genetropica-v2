@@ -7,7 +7,7 @@ site. The dashboard works fully without them; these only enrich it.
 The two features use different providers. The offline **literature script** uses the
 **Anthropic Claude API** (`ANTHROPIC_API_KEY`, default `claude-3-5-haiku-latest`). The
 runtime **chat assistant** uses the **Google Gemini API** (`GEMINI_API_KEY`, default
-`gemini-3.5-flash`), chosen because Gemini lets us relax the safety thresholds that
+`gemini-3.1-pro-preview`), chosen because Gemini lets us relax the safety thresholds that
 otherwise block legitimate "which candidate scores best" questions on this benign,
 fully grounded research data.
 
@@ -51,7 +51,7 @@ invent drugs, numbers, or claims.
 Activate it in the Vercel project (Settings -> Environment Variables):
 
     GEMINI_API_KEY = ...            # a free key from Google AI Studio (aistudio.google.com)
-    # optional: GEMINI_MODEL (default gemini-3.5-flash), GEMINI_BASE_URL
+    # optional: GEMINI_MODEL (default gemini-3.1-pro-preview), GEMINI_BASE_URL
 
 Redeploy. Until the key is set, the widget politely replies that the assistant is not switched on.
 
