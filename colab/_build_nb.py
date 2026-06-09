@@ -15,7 +15,7 @@ Re-validates the dengue **NS5** docking on a **standard, property-matched (DUD-E
 
 **What it does:** loads the 8 known NS5 inhibitors, pulls a drug-like pool from ChEMBL, picks decoys matched to each active on size/logP/H-bonding/charge but topologically dissimilar (true decoys, not analogues), docks everything with AutoDock Vina, and reports ROC-AUC + enrichment factors.
 
-**Runtime:** AutoDock Vina runs on CPU (no GPU needed), ~1-2 h for the ~60 ligands (8 actives + property-matched decoys) at exhaustiveness 8. Docking is **checkpointed/resumable** within a session. At the end it **prints the full result JSON into the cell output, copy that.** It also saves and tries to download a file as a backup, but the printed text is the reliable path: it stays on screen even if the Colab runtime resets afterwards.
+**Runtime:** AutoDock Vina runs on CPU (no GPU needed), ~1-2 h for the ~60 ligands (8 actives + property-matched decoys) at exhaustiveness 8. The docking checkpoint and the result are saved to your **Google Drive** (a `genetropica_ns5` folder), so a runtime reset doesn't lose progress: just re-run and it resumes from where it stopped. At the end it also **prints the full result JSON into the cell output, copy that** as the simplest path back.
 
 Run via **Runtime > Run all**.""")
 
@@ -38,6 +38,20 @@ EXHAUSTIVENESS    = 8        # matches the original screen exactly (rigorous); s
 DECOYS_PER_ACTIVE = 25       # DUD-E uses 50; 25 keeps free-Colab runtime sane
 DECOY_POOL_SIZE   = 4000     # drug-like molecules pulled from ChEMBL to match against
 os.makedirs('lig', exist_ok=True)""")
+
+md("## Save location (Google Drive, so a reset can't lose progress)")
+code("""# Mount Google Drive so the docking checkpoint and the result JSON survive a runtime reset.
+# 'Run all' PAUSES here once: click through the 'Connect to Google Drive' popup, then it continues.
+WORKDIR = '.'
+try:
+    from google.colab import drive
+    drive.mount('/content/drive')
+    WORKDIR = '/content/drive/MyDrive/genetropica_ns5'
+    os.makedirs(WORKDIR, exist_ok=True)
+    print('Saving checkpoint + result to Google Drive:', WORKDIR)
+except Exception as e:
+    print('Drive not mounted, using local disk (lost on reset):', repr(e))
+print('WORKDIR =', WORKDIR)""")
 
 md("## 1. The 8 known DENV NS5 / RdRp inhibitors (the actives)")
 code("""# Nucleoside analogues + prodrugs with reported anti-NS5 activity (the original validation set).
@@ -141,7 +155,7 @@ print('receptor.pdbqt:', os.path.getsize('receptor.pdbqt'), 'bytes')""")
 
 md("## 6. Dock everything (checkpointed / resumable)")
 code("""import csv
-CKPT = 'scores.csv'
+CKPT = os.path.join(WORKDIR, 'scores.csv')   # on Google Drive, so it survives a runtime reset
 done = {}
 if os.path.exists(CKPT):
     for row in csv.reader(open(CKPT)):
@@ -201,11 +215,13 @@ code("""res = {'target': 'DENV_NS5', 'method': 'property-matched DUD-E-style dec
        'ef': {'1pct': round(float(ef1), 2), '5pct': round(float(ef5), 2), '10pct': round(float(ef10), 2)},
        'roc': [[round(float(a), 4), round(float(b), 4)] for a, b in zip(fpr, tpr)],
        'scores': {n: round(done[n][0], 2) for n in names}}
-json.dump(res, open('ns5_enrichment_result.json', 'w'), indent=2)
+RESULT = os.path.join(WORKDIR, 'ns5_enrichment_result.json')   # also saved to Google Drive
+json.dump(res, open(RESULT, 'w'), indent=2)
+print('Saved to', RESULT)
 # Best-effort browser download (often flaky); the printed JSON below is the reliable copy.
 try:
     from google.colab import files
-    files.download('ns5_enrichment_result.json')
+    files.download(RESULT)
 except Exception:
     pass
 print('\\n===================== COPY EVERYTHING BELOW THIS LINE =====================\\n')
