@@ -15,7 +15,7 @@ Re-validates the dengue **NS5** docking on a **standard, property-matched (DUD-E
 
 **What it does:** loads the 8 known NS5 inhibitors, pulls a drug-like pool from ChEMBL, picks decoys matched to each active on size/logP/H-bonding/charge but topologically dissimilar (true decoys, not analogues), docks everything with AutoDock Vina, and reports ROC-AUC + enrichment factors.
 
-**Runtime:** AutoDock Vina runs on CPU (no GPU needed), ~30-60 min for the ~60 ligands (8 actives + property-matched decoys) at exhaustiveness 4. Docking is **checkpointed/resumable** within a session. At the end it **prints the full result JSON into the cell output, copy that.** It also saves and tries to download a file as a backup, but the printed text is the reliable path: it stays on screen even if the Colab runtime resets afterwards.
+**Runtime:** AutoDock Vina runs on CPU (no GPU needed), ~1-2 h for the ~60 ligands (8 actives + property-matched decoys) at exhaustiveness 8. Docking is **checkpointed/resumable** within a session. At the end it **prints the full result JSON into the cell output, copy that.** It also saves and tries to download a file as a backup, but the printed text is the reliable path: it stays on screen even if the Colab runtime resets afterwards.
 
 Run via **Runtime > Run all**.""")
 
@@ -34,7 +34,7 @@ code("""RAW = 'https://raw.githubusercontent.com/RyoungJKT/genetropica-v2/main'
 RECEPTOR_URL      = RAW + '/colab/5CCV_clean.pdbqt'   # the project's exact NS5 receptor
 GRID_CENTER       = [-118.9, 60.8, 40.2]              # methods.json (DENV_NS5)
 BOX               = 25
-EXHAUSTIVENESS    = 4        # faster search (~half the time of 8); set back to 8 to match the original screen exactly
+EXHAUSTIVENESS    = 8        # matches the original screen exactly (rigorous); set 4 to roughly halve the runtime
 DECOYS_PER_ACTIVE = 25       # DUD-E uses 50; 25 keeps free-Colab runtime sane
 DECOY_POOL_SIZE   = 4000     # drug-like molecules pulled from ChEMBL to match against
 os.makedirs('lig', exist_ok=True)""")
