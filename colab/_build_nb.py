@@ -15,7 +15,7 @@ Re-validates the dengue **NS5** docking on a **standard, property-matched (DUD-E
 
 **What it does:** loads the 8 known NS5 inhibitors, pulls a drug-like pool from ChEMBL, picks decoys matched to each active on size/logP/H-bonding/charge but topologically dissimilar (true decoys, not analogues), docks everything with AutoDock Vina, and reports ROC-AUC + enrichment factors.
 
-**Runtime:** AutoDock Vina runs on CPU (no GPU needed), ~1-3 h for ~200 ligands. Docking is **checkpointed/resumable**, so a Colab disconnect won't lose progress, just re-run the docking cell. Then it downloads a results JSON to send back for dashboard integration.
+**Runtime:** AutoDock Vina runs on CPU (no GPU needed), ~30-60 min for the ~60 ligands (8 actives + property-matched decoys) at exhaustiveness 4. Docking is **checkpointed/resumable** within a session. At the end it **prints the full result JSON into the cell output, copy that.** It also saves and tries to download a file as a backup, but the printed text is the reliable path: it stays on screen even if the Colab runtime resets afterwards.
 
 Run via **Runtime > Run all**.""")
 
@@ -34,7 +34,7 @@ code("""RAW = 'https://raw.githubusercontent.com/RyoungJKT/genetropica-v2/main'
 RECEPTOR_URL      = RAW + '/colab/5CCV_clean.pdbqt'   # the project's exact NS5 receptor
 GRID_CENTER       = [-118.9, 60.8, 40.2]              # methods.json (DENV_NS5)
 BOX               = 25
-EXHAUSTIVENESS    = 8        # matches the original screen; lower (e.g. 4) to go faster
+EXHAUSTIVENESS    = 4        # faster search (~half the time of 8); set back to 8 to match the original screen exactly
 DECOYS_PER_ACTIVE = 25       # DUD-E uses 50; 25 keeps free-Colab runtime sane
 DECOY_POOL_SIZE   = 4000     # drug-like molecules pulled from ChEMBL to match against
 os.makedirs('lig', exist_ok=True)""")
@@ -193,7 +193,7 @@ plt.title('NS5 enrichment (property-matched decoys)'); plt.legend(); plt.show()
 print(f'AUC {auc:.3f} | EF1% {ef1:.1f} | EF5% {ef5:.1f} | EF10% {ef10:.1f} '
       f'| {int(y.sum())} actives, {int((1 - y).sum())} decoys')""")
 
-md("## 8. Export the result (send this JSON back for dashboard integration)")
+md("## 8. Result, copy the printed JSON below")
 code("""res = {'target': 'DENV_NS5', 'method': 'property-matched DUD-E-style decoys', 'receptor': '5CCV',
        'n_actives': int(y.sum()), 'n_decoys': int((1 - y).sum()),
        'decoys_per_active': DECOYS_PER_ACTIVE, 'exhaustiveness': EXHAUSTIVENESS,
@@ -202,13 +202,17 @@ code("""res = {'target': 'DENV_NS5', 'method': 'property-matched DUD-E-style dec
        'roc': [[round(float(a), 4), round(float(b), 4)] for a, b in zip(fpr, tpr)],
        'scores': {n: round(done[n][0], 2) for n in names}}
 json.dump(res, open('ns5_enrichment_result.json', 'w'), indent=2)
+# Best-effort browser download (often flaky); the printed JSON below is the reliable copy.
 try:
     from google.colab import files
     files.download('ns5_enrichment_result.json')
 except Exception:
     pass
-print('Saved ns5_enrichment_result.json - send it back to add a property-matched benchmark to the Validation tab.')
-print('Report the AUC honestly, whatever it is - this is NS5-only (the one target with protein-specific actives).')""")
+print('\\n===================== COPY EVERYTHING BELOW THIS LINE =====================\\n')
+print(json.dumps(res, indent=2))
+print('\\n===================== COPY EVERYTHING ABOVE THIS LINE =====================\\n')
+print('Paste the JSON above back to add a property-matched benchmark to the Validation tab.')
+print('NS5-only (the one target with protein-specific actives); report the AUC honestly, whatever it is.')""")
 
 # ---- assemble + validate ----
 cells = []
