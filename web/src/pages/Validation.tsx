@@ -1,6 +1,7 @@
 import { useValidation } from '../data/api'
 import { useRegister, say } from '../state/register'
 import { MultiLineChart, type ChartLine } from '../components/MultiLineChart'
+import { Ns5EnrichmentBenchmark } from '../components/Ns5EnrichmentBenchmark'
 
 const LABEL: Record<string, string> = { docking: 'Docking (Vina)', gnn: 'ML (RandomForest)', consensus: 'Consensus' }
 const COLOR: Record<string, string> = { docking: '#1F5740', gnn: '#A8492B', consensus: '#A8742C' }
@@ -24,9 +25,11 @@ export default function Validation() {
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>Methodology Validation</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
         {say(reg,
-          'Does the method actually pick out known-good drugs? We checked it against dengue NS5, and the honest answer is mixed.',
-          'Retrospective enrichment test on dengue NS5: can the scoring separate known actives from decoys? Reported with both the inflated initial result and the fair one.')}
+          'Does the method actually pick out known-good drugs? We checked it against dengue NS5 with both a strict decoy test and an easier one. The honest answer, from the strict test shown first, is no better than chance.',
+          'Retrospective enrichment on dengue NS5: can the scoring separate known actives from decoys? The rigorous property-matched (DUD-E-style) test is shown first; the earlier inflated easy-decoy test follows for transparency.')}
       </p>
+
+      <Ns5EnrichmentBenchmark />
 
       {data && rocLines.length > 0 && (
         <div style={{ marginTop: 30 }}>
