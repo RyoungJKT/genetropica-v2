@@ -132,6 +132,19 @@ export interface Validation {
   metadata: Record<string, string | number>
   fair_auc: number
 }
+export interface Ns5Enrichment {
+  target: string
+  method: string
+  receptor: string
+  n_actives: number
+  n_decoys: number
+  decoys_per_active: number
+  exhaustiveness: number
+  auc: number
+  ef: { '1pct': number; '5pct': number; '10pct': number }
+  roc: [number, number][]
+  scores: Record<string, number>
+}
 export interface DockParam {
   target_id: string
   name: string

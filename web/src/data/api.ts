@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Summary, Target, Drug, Field, Admet, AdmetProfile, LitRef, BindingData, BindingIndex, Md, Conservation, Validation, Methods, Escape } from './types'
+import type { Summary, Target, Drug, Field, Admet, AdmetProfile, LitRef, BindingData, BindingIndex, Md, Conservation, Validation, Methods, Escape, Ns5Enrichment } from './types'
 
 const json = async <T>(path: string): Promise<T> => {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${path}`)
@@ -17,6 +17,7 @@ export const useLiterature = () => useQuery({ queryKey: ['literature'], queryFn:
 export const useMd = () => useQuery({ queryKey: ['md'], queryFn: () => json<Md>('md.json') })
 export const useConservation = () => useQuery({ queryKey: ['conservation'], queryFn: () => json<Conservation>('conservation.json') })
 export const useValidation = () => useQuery({ queryKey: ['validation'], queryFn: () => json<Validation>('validation.json') })
+export const useNs5Enrichment = () => useQuery({ queryKey: ['ns5Enrichment'], queryFn: () => json<Ns5Enrichment>('ns5_enrichment.json') })
 export const useMethods = () => useQuery({ queryKey: ['methods'], queryFn: () => json<Methods>('methods.json') })
 export const useEscape = () => useQuery({ queryKey: ['escape'], queryFn: () => json<Escape>('escape.json') })
 export const useBindingIndex = () => useQuery({ queryKey: ['bindingIndex'], queryFn: () => json<BindingIndex>('binding/index.json') })
