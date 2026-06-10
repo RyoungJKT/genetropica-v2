@@ -1,4 +1,6 @@
 import type { ReactNode, CSSProperties } from 'react'
+import { useState } from 'react'
+import { MdAnimator } from '../components/md/MdAnimator'
 import { useMd } from '../data/api'
 import { useRegister, say } from '../state/register'
 import { MultiLineChart, type ChartLine } from '../components/MultiLineChart'
@@ -55,6 +57,7 @@ function TopContacts({ md }: { md: Md }) {
 export default function MD() {
   const md = useMd()
   const { reg } = useRegister()
+  const [playheadNs, setPlayheadNs] = useState(0)
 
   const series = (metric: keyof MdSeries, yi: number): ChartLine[] =>
     DRUGS.map((d) => ({
@@ -77,6 +80,7 @@ export default function MD() {
       <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '14px 18px', margin: '18px 0 8px', fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, maxWidth: 760 }}>
         Celecoxib associates at about 3 ns and stays; methotrexate associates at about 14 ns and remains mobile; dasabuvir never forms a stable bound pose within 50 ns.
       </div>
+      <MdAnimator onTime={setPlayheadNs} />
 
       {!md.data && <p className="mono" style={{ marginTop: 20 }}>Loading simulation data...</p>}
 
@@ -112,22 +116,22 @@ export default function MD() {
       {md.data && (
         <>
           <ChartBlock title="Protein backbone RMSD" caption="How far the protein drifts from its starting shape over time. A low, flat line means the protein stayed stable through the run.">
-            <MultiLineChart lines={series('rmsd', 1)} xLabel="time (ns)" yLabel="RMSD (Å)" yMin={0} />
+            <MultiLineChart lines={series('rmsd', 1)} xLabel="time (ns)" yLabel="RMSD (Å)" yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title="Ligand RMSD vs its bound pose" caption="Once a drug settles into a site, how much its pose wobbles, measured against that drug's own bound pose. Dasabuvir never settles, so it has none.">
-            <MultiLineChart lines={series('rmsd', 2)} xLabel="time (ns)" yLabel="RMSD (Å)" yMin={0} />
+            <MultiLineChart lines={series('rmsd', 2)} xLabel="time (ns)" yLabel="RMSD (Å)" yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title="Ligand-protein minimum distance" caption="The headline of these runs: each drug starts about 30 Å away and either finds the protein (distance drops toward 2 Å) or does not. Celecoxib and methotrexate associate; dasabuvir stays far.">
-            <MultiLineChart lines={series('mindist', 1)} xLabel="time (ns)" yLabel="min distance (Å)" yMin={0} />
+            <MultiLineChart lines={series('mindist', 1)} xLabel="time (ns)" yLabel="min distance (Å)" yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title="Drug-protein hydrogen bonds" caption="Hydrogen bonds between the drug and the protein over time. More sustained bonds indicate a tighter grip once bound.">
-            <MultiLineChart lines={series('hbonds', 1)} xLabel="time (ns)" yLabel="H-bonds" yMin={0} />
+            <MultiLineChart lines={series('hbonds', 1)} xLabel="time (ns)" yLabel="H-bonds" yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title="Per-residue flexibility (RMSF)" caption="Which parts of the protein move most. Peaks are flexible loops, troughs the rigid core. Similar across the three runs, as expected for the same protein.">
             <MultiLineChart lines={series('rmsf', 1)} xLabel="residue" yLabel="RMSF (Å)" yMin={0} />
           </ChartBlock>
           <ChartBlock title="Atom-atom contacts" caption="Close contacts (within 4.5 Å) between drug and protein over time. The jump from zero marks association; a sustained high count means a tight, persistent interface.">
-            <MultiLineChart lines={series('ncontacts', 1)} xLabel="time (ns)" yLabel="contacts (< 4.5 Å)" yMin={0} />
+            <MultiLineChart lines={series('ncontacts', 1)} xLabel="time (ns)" yLabel="contacts (< 4.5 Å)" yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <TopContacts md={md.data} />
         </>
