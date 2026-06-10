@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import type { MutableRefObject } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -95,12 +95,23 @@ function HBonds({ series, tNsRef, nodes, pocketIdx }: {
   nodes: ResidueNode[]
   pocketIdx: Set<number>
 }) {
-  const ref = useRef<THREE.LineSegments>(null)
-  const positions = useMemo(() => new Float32Array(MAX_HB * 2 * 3), [])
+  const geoRef = useRef<THREE.BufferGeometry>(null)
+  // A mutable scratch buffer updated in place each frame. Kept in a ref so it is never read
+  // during render: the react-hooks rules forbid mutating useMemo values and reading refs in render.
+  const positionsRef = useRef(new Float32Array(MAX_HB * 2 * 3))
   const pocketArr = useMemo(() => [...pocketIdx], [pocketIdx])
+
+  useEffect(() => {
+    const geo = geoRef.current
+    if (!geo) return
+    geo.setAttribute('position', new THREE.BufferAttribute(positionsRef.current, 3))
+    geo.setDrawRange(0, 0)
+  }, [])
+
   useFrame(() => {
-    const ls = ref.current
-    if (!ls || pocketArr.length === 0) return
+    const geo = geoRef.current
+    if (!geo || pocketArr.length === 0) return
+    const positions = positionsRef.current
     const tNs = tNsRef.current
     const dist = distanceAt(series, tNs)
     const lp = ligandPos(dist)
@@ -114,16 +125,14 @@ function HBonds({ series, tNsRef, nodes, pocketIdx }: {
       positions[i * 6 + 4] = node.pos[1]
       positions[i * 6 + 5] = node.pos[2]
     }
-    const geom = ls.geometry as THREE.BufferGeometry
-    geom.setDrawRange(0, n * 2)
-    const attr = geom.getAttribute('position') as THREE.BufferAttribute
+    geo.setDrawRange(0, n * 2)
+    const attr = geo.getAttribute('position') as THREE.BufferAttribute
     if (attr) attr.needsUpdate = true
   })
+
   return (
-    <lineSegments ref={ref}>
-      <bufferGeometry drawRange={{ start: 0, count: 0 }}>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
+    <lineSegments>
+      <bufferGeometry ref={geoRef} />
       <lineBasicMaterial color="#6b8a7d" transparent opacity={0.7} />
     </lineSegments>
   )
