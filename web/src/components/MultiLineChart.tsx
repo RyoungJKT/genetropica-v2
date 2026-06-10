@@ -13,7 +13,7 @@ const IH = H - M.top - M.bottom
 
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(Math.abs(n) < 1 ? 3 : 2))
 
-export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLine[]; xLabel: string; yLabel: string; yMin?: number }) {
+export function MultiLineChart({ lines, xLabel, yLabel, yMin, playheadX }: { lines: ChartLine[]; xLabel: string; yLabel: string; yMin?: number; playheadX?: number }) {
   const [hover, setHover] = useState<{ cx: number; cy: number; dataX: number } | null>(null)
   const [ref, inView] = useInView<SVGSVGElement>()
   const all = lines.flatMap((l) => l.pts)
@@ -58,6 +58,17 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin }: { lines: ChartLi
           ))}
           <line x1={0} y1={IH} x2={IW} y2={IH} stroke="var(--ink-faint)" strokeWidth={0.8} />
           {lines.map((l, li) => (l.pts.length ? <path key={l.label} d={path(l.pts)} fill="none" stroke={l.color} strokeWidth={1.6} strokeLinejoin="round" className="draw-line" pathLength={1} strokeDasharray={1} strokeDashoffset={inView ? 0 : 1} style={{ transitionDelay: `${li * 120}ms` }} /> : null))}
+          {playheadX != null && (
+            <line
+              x1={x(playheadX)}
+              y1={0}
+              x2={x(playheadX)}
+              y2={IH}
+              stroke="var(--ink)"
+              strokeWidth={1}
+              opacity={0.45}
+            />
+          )}
           {hoverItems && hoverItems.length > 0 && (
             <>
               <line x1={guideX} y1={0} x2={guideX} y2={IH} stroke="var(--ink-faint)" strokeWidth={1} strokeDasharray="3 3" />
