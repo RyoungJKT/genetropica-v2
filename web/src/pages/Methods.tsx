@@ -32,6 +32,10 @@ const SOURCES = [
   ['ConSurf', 'Per-residue evolutionary conservation'],
   ['NCBI E-utilities / PubMed', 'Keyword literature evidence'],
 ]
+const COMPUTE = [
+  ['Molecular dynamics (GROMACS, 50 ns)', 'NVIDIA A100 GPU, on Google Colab'],
+  ['Docking, machine learning, ADMET, conservation', 'CPU, on Google Colab'],
+]
 
 export default function Methods() {
   const m = useMethods()
@@ -83,6 +87,23 @@ export default function Methods() {
             <tbody>{SOURCES.map(([k, v]) => (<tr key={k}><td style={{ ...td, fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink)', whiteSpace: 'nowrap' }}>{k}</td><td style={td}>{v}</td></tr>))}</tbody>
           </table>
         </div>
+      </Block>
+
+      <Block title="Compute environment">
+        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '0 0 12px', maxWidth: 760 }}>
+          Every figure on this dashboard is a computed result, not a placeholder. The runs were executed on Google Colab: the heavy molecular dynamics on an NVIDIA A100 GPU, and the docking and analysis on CPUs.
+        </p>
+        <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'hidden', maxWidth: 640, background: 'var(--paper)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <tbody>{COMPUTE.map(([k, v]) => (<tr key={k}><td style={{ ...td, fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink)' }}>{k}</td><td style={td}>{v}</td></tr>))}</tbody>
+          </table>
+        </div>
+        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '14px 0 0', maxWidth: 760 }}>
+          The pipeline is open source and the dengue NS5 validation can be re-run by anyone in the browser:{' '}
+          <a href="https://colab.research.google.com/github/RyoungJKT/genetropica-v2/blob/main/colab/ns5_enrichment_validation.ipynb" target="_blank" rel="noopener" style={{ color: '#1F5740', borderBottom: '1px solid var(--line)', textDecoration: 'none' }}>reproduce the NS5 validation in Colab</a>
+          {' · '}
+          <a href="https://github.com/RyoungJKT/genetropica-v2" target="_blank" rel="noopener" style={{ color: '#1F5740', borderBottom: '1px solid var(--line)', textDecoration: 'none' }}>view the source</a>.
+        </p>
       </Block>
 
       <Block title="Documented limitations">
