@@ -52,6 +52,20 @@ DECOY_POOL_SIZE   = 4000
 RUN_VINA          = True     # set False to skip the classical baseline and reuse the known AUC ~0.32
 os.makedirs('lig', exist_ok=True)""")
 
+md("## Save location (Google Drive, so a reset can't lose this long run)")
+code("""# Mount Google Drive so every checkpoint and the result survive a runtime reset.
+# 'Run all' PAUSES here once: click through the 'Connect to Google Drive' popup, then it continues.
+WORKDIR = '.'
+try:
+    from google.colab import drive
+    drive.mount('/content/drive')
+    WORKDIR = '/content/drive/MyDrive/genetropica_ns5_ai'
+    os.makedirs(WORKDIR, exist_ok=True)
+    print('Checkpoints + result -> Google Drive:', WORKDIR)
+except Exception as e:
+    print('Drive not mounted, using local disk (lost on reset):', repr(e))
+print('WORKDIR =', WORKDIR)""")
+
 md("## 1. The 8 known DENV NS5 / RdRp inhibitors (the actives)")
 code("""ACTIVES = {
  '2_c_methyladenosine': 'C[C@@]1(O)[C@H](CO)O[C@@H](n2cnc3c(N)ncnc32)[C@@H]1O',
@@ -133,7 +147,7 @@ print('NS5 sequence length:', len(NS5_SEQ))""")
 
 md("## 6. Classical baseline: AutoDock Vina (checkpointed)")
 code("""import csv
-VINA_CKPT = 'vina_scores.csv'
+VINA_CKPT = os.path.join(WORKDIR, 'vina_scores.csv')   # on Drive, survives a reset
 def prep(name, smiles):
     m = Chem.MolFromSmiles(smiles)
     if m is None: return None
@@ -185,13 +199,14 @@ for n, (smi, lab) in LIGANDS.items():
             'properties': [{'affinity': {'binder': 'B'}}]}
     yaml.safe_dump(spec, open(f'boltz_in/{n}.yaml', 'w'))
 # Resumable by default (Boltz skips inputs already predicted). The protein MSA is fetched per run via the server.
+BOLTZ_OUT = os.path.join(WORKDIR, 'boltz_out')   # on Drive; Boltz skips already-predicted inputs, so a reset resumes
 print('running Boltz-2 on', len(LIGANDS), 'complexes (this is the slow GPU step; safe to re-run if it disconnects)...')
-subprocess.run(['boltz', 'predict', 'boltz_in', '--use_msa_server', '--out_dir', 'boltz_out',
+subprocess.run(['boltz', 'predict', 'boltz_in', '--use_msa_server', '--out_dir', BOLTZ_OUT,
                 '--devices', '1', '--accelerator', 'gpu'])
 # Collect affinity_probability_binary for each ligand.
 boltz = {}
 for n in LIGANDS:
-    hits = glob.glob(f'boltz_out/**/affinity_{n}.json', recursive=True)
+    hits = glob.glob(f'{BOLTZ_OUT}/**/affinity_{n}.json', recursive=True)
     if hits:
         try: boltz[n] = json.load(open(hits[0])).get('affinity_probability_binary')
         except Exception: pass
@@ -204,13 +219,21 @@ replicates and a defensive confidence parser; if a cell errors, confirm the exac
 confidence field names from the OpenFold3 docs / Hugging Face examples and adjust the two marked lines.
 This section is wrapped so a failure here does not affect the Vina or Boltz-2 results above.
 Docs: https://openfold-3.readthedocs.io  |  examples: https://huggingface.co/OpenFold/OpenFold3""")
-code("""of3 = {}
+code("""import csv as _csv
+OF3_OUT = os.path.join(WORKDIR, 'of3_out')
+OF3_CKPT = os.path.join(WORKDIR, 'of3_scores.csv')   # on Drive, survives a reset
+of3 = {}
+if os.path.exists(OF3_CKPT):
+    for r in _csv.reader(open(OF3_CKPT)):
+        if len(r) == 2:
+            try: of3[r[0]] = float(r[1])
+            except Exception: pass
 RUN_OPENFOLD3 = True   # set False to skip
 if RUN_OPENFOLD3:
   try:
     !pip -q install openfold3 -U >/dev/null 2>&1
     subprocess.run(['setup_openfold'])   # downloads weights (a few GB; one time)
-    os.makedirs('of3_in', exist_ok=True); os.makedirs('of3_out', exist_ok=True)
+    os.makedirs('of3_in', exist_ok=True); os.makedirs(OF3_OUT, exist_ok=True)
     from tqdm.auto import tqdm
     def of3_confidence(d):
         for k in ('ranking_score', 'ranking_confidence', 'iptm', 'ptm'):
@@ -218,6 +241,7 @@ if RUN_OPENFOLD3:
         pl = d.get('plddt') if isinstance(d, dict) else None        # fall back to mean pLDDT
         if isinstance(pl, list) and pl: return sum(pl) / len(pl)
         return None
+    w3 = open(OF3_CKPT, 'a', newline='')
     for n, (smi, lab) in tqdm(LIGANDS.items(), desc='openfold3'):
         if n in of3: continue
         # ---- query schema (AF3-style); ADJUST if the preview differs ----
@@ -227,12 +251,16 @@ if RUN_OPENFOLD3:
         json.dump(q, open(f'of3_in/{n}.json', 'w'))
         try:
             subprocess.run(['run_openfold', 'predict', f'--query_json=of3_in/{n}.json',
-                            '--output_dir=of3_out', '--use_msa_server'], capture_output=True, text=True, timeout=1200)
+                            f'--output_dir={OF3_OUT}', '--use_msa_server'], capture_output=True, text=True, timeout=1200)
             import glob as _g
-            cj = _g.glob(f'of3_out/**/*{n}*conf*.json', recursive=True) or _g.glob(f'of3_out/**/*{n}*.json', recursive=True)
-            of3[n] = of3_confidence(json.load(open(cj[0]))) if cj else None
-        except Exception as e:
-            of3[n] = None
+            cj = _g.glob(f'{OF3_OUT}/**/*{n}*conf*.json', recursive=True) or _g.glob(f'{OF3_OUT}/**/*{n}*.json', recursive=True)
+            sc = of3_confidence(json.load(open(cj[0]))) if cj else None
+        except Exception:
+            sc = None
+        of3[n] = sc
+        if sc is not None:
+            _csv.writer(w3).writerow([n, sc]); w3.flush()
+    w3.close()
     print('openfold3 scored:', sum(1 for v in of3.values() if v is not None), 'of', len(LIGANDS))
   except Exception as e:
     print('OpenFold3 section did not run cleanly (preview):', repr(e))
@@ -278,9 +306,11 @@ plt.title('NS5: classical docking vs AI co-folding'); plt.legend(); plt.show()
 
 out = {'target': 'DENV_NS5', 'comparison': 'classical docking vs AI co-folding',
        'receptor': '5CCV', 'decoys_per_active': DECOYS_PER_ACTIVE, 'methods': results}
-json.dump(out, open('ns5_ai_headtohead_result.json', 'w'), indent=2)
+RESULT = os.path.join(WORKDIR, 'ns5_ai_headtohead_result.json')
+json.dump(out, open(RESULT, 'w'), indent=2)
+print('saved to', RESULT)
 try:
-    from google.colab import files; files.download('ns5_ai_headtohead_result.json')
+    from google.colab import files; files.download(RESULT)
 except Exception: pass
 print('\\n===================== COPY EVERYTHING BELOW THIS LINE =====================\\n')
 print(json.dumps(out, indent=2))
