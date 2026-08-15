@@ -61,8 +61,11 @@
     background:rgba(244,240,230,.86);backdrop-filter:blur(8px);
     mix-blend-mode:normal;border-bottom:1px solid var(--line);padding-top:14px;padding-bottom:14px;
   }
-  .brand{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em}
-  .brand span{color:var(--green)}
+  .brand{font-family:var(--serif);font-weight:600;font-size:25px;letter-spacing:-.01em;display:flex;flex-direction:column;line-height:1.05}
+  .brand .accent{color:var(--green)}
+  .brand .by{font-family:var(--mono);font-weight:400;font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);margin-top:4px}
+  /* the connecting word sits in small caps so the name carries the line */
+  .brand .by-w{text-transform:none;font-variant-caps:small-caps}
   .top nav{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.13em}
   .top nav a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
   .top nav a:hover{color:var(--green)}
@@ -199,13 +202,20 @@
     .standfirst{margin-top:24px}
     .hero-cta{margin-top:30px;gap:12px}
   }
+  /* 320px phones only: at 25px the wordmark alone is 135px, which would push the button off */
+  @media(max-width:340px){
+    .top .launch{font-size:9.5px;letter-spacing:.06em;padding:8px 11px}
+  }
 </style>
 </head>
 <body>
 <div class="grain"></div>
 
 <header class="top" id="top">
-  <div class="brand">Gene<span>Tropica</span></div>
+  <div class="brand">
+    <span class="name">Gene<span class="accent">Tropica</span></span>
+    <span class="by"><span class="by-w">by</span> Russell Young</span>
+  </div>
   <nav>
     <a href="#problem" class="nlink">The Problem</a>
     <a href="#how" class="nlink">How It Works</a>
@@ -229,7 +239,7 @@
   <section class="hero" id="hero">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow" data-hero="eb">A computational drug-repurposing study · Russell Young · 2026</div>
+        <div class="eyebrow" data-hero="eb">A computational drug-repurposing study · 2026</div>
         <h1>
           <span class="lwrap"><span class="ln">Finding new</span></span>
           <span class="lwrap"><span class="ln">medicines <em>hidden</em></span></span>

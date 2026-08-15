@@ -33,8 +33,12 @@ export function Header() {
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 30, backdropFilter: 'blur(8px)', background: 'rgba(244,240,230,.72)', borderBottom: '1px solid var(--line)' }}>
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, minHeight: 62, padding: '8px 0', flexWrap: isMobile ? 'nowrap' : 'wrap' }}>
-        <a href="/" style={{ fontFamily: 'var(--serif)', fontSize: 21, color: 'var(--ink)' }}>
+        <a href="/" style={{ fontFamily: 'var(--serif)', fontSize: 25, color: 'var(--ink)', display: 'flex', flexDirection: 'column', lineHeight: 1.05 }}>
           <b>GeneTropica</b>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 400, textTransform: 'uppercase', letterSpacing: '.16em', color: 'var(--ink-soft)', marginTop: 4 }}>
+            {/* the connecting word sits in small caps so the name carries the line */}
+            <span style={{ textTransform: 'none', fontVariantCaps: 'small-caps' }}>by</span> Russell Young
+          </span>
         </a>
         {isMobile ? (
           <button onClick={() => setOpen((o) => !o)} aria-label="Menu" aria-expanded={open} style={{ background: 'transparent', border: '1px solid var(--line)', borderRadius: 10, padding: '7px 12px', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 15, color: 'var(--ink)', lineHeight: 1 }}>
