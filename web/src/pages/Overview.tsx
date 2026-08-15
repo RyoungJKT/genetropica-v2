@@ -32,7 +32,7 @@ export default function Overview() {
       <div className="wrap" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.05fr .95fr', alignItems: 'center', gap: 20, minHeight: isMobile ? 'auto' : '78vh', padding: isMobile ? '26px 0 8px' : '40px 0 30px' }}>
         <div>
           <div className="eyebrow">Drug repurposing for neglected tropical diseases</div>
-          <h1 style={{ fontSize: 'clamp(40px,6.4vw,84px)', fontWeight: 360, letterSpacing: '-.035em', marginTop: 18, lineHeight: 1.0 }}>
+          <h1 style={{ fontSize: 'clamp(36px,4.9vw,72px)', fontWeight: 380, letterSpacing: '-.03em', marginTop: 18, lineHeight: 1.05 }}>
             100 approved drugs,<br />tested against the<br />diseases we <em style={{ fontStyle: 'italic', color: 'var(--green)' }}>forget</em>.
           </h1>
           <p style={{ fontSize: 'clamp(16px,1.5vw,19px)', color: 'var(--ink-soft)', maxWidth: '34ch', lineHeight: 1.65, margin: '22px 0 28px' }}>

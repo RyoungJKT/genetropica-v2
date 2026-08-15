@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hanken+Grotesk:wght@300..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Hanken+Grotesk:wght@300..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -22,7 +22,7 @@
     --green-bright:#2E7D5B;
     --clay:#A8492B;
     --line:#D8D0BD;
-    --serif:'Fraunces',Georgia,serif;
+    --serif:'Newsreader',Georgia,serif;
     --sans:'Hanken Grotesk',system-ui,sans-serif;
     --mono:'Spline Sans Mono',ui-monospace,monospace;
   }
@@ -89,7 +89,7 @@
   .eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.22em;color:var(--green);margin-bottom:30px}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
   @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:18px}}
-  .hero h1{font-family:var(--serif);font-weight:560;font-size:clamp(44px,7.4vw,104px);line-height:.96;letter-spacing:-.02em}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.022em}
   .hero h1 .lwrap{display:block;overflow:hidden}
   .hero h1 em{font-style:italic;color:var(--green)}
   .hero h1 .small{font-size:.52em;font-weight:300}
@@ -151,7 +151,8 @@
   .band h2 em{color:#7FC9A3}
   .band p.body{color:#C9C3B5}
   .band p.body b{color:var(--paper)}
-  .pullquote{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(28px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;color:var(--paper);max-width:20ch;margin-top:50px}
+  /* light on dark optically thins, so this sits a touch heavier than the ink-on-paper ledes */
+  .pullquote{font-family:var(--serif);font-weight:350;font-style:italic;font-size:clamp(28px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;color:var(--paper);max-width:20ch;margin-top:50px}
   .pullquote .mark{color:#7FC9A3}
 
   /* stats grid */
