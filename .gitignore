@@ -74,6 +74,5 @@ data/md_simulation/**/*.trj
 !data/md_simulation/*/input/*.gro
 data/database/*.bak_pre_fix1
 
-# local editor/agent tooling and scratch output
-.model/
+# local scratch output
 brag-output/
