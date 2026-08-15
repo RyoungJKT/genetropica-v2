@@ -100,9 +100,7 @@ export default function Methods() {
         </div>
         <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '14px 0 0', maxWidth: 760 }}>
           The pipeline is open source and the dengue NS5 validation can be re-run by anyone in the browser:{' '}
-          <a href="https://colab.research.google.com/github/RyoungJKT/genetropica-v2/blob/main/colab/ns5_enrichment_validation.ipynb" target="_blank" rel="noopener" style={{ color: '#1F5740', borderBottom: '1px solid var(--line)', textDecoration: 'none' }}>reproduce the NS5 validation in Colab</a>
-          {' · '}
-          <a href="https://github.com/RyoungJKT/genetropica-v2" target="_blank" rel="noopener" style={{ color: '#1F5740', borderBottom: '1px solid var(--line)', textDecoration: 'none' }}>view the source</a>.
+          <a href="https://colab.research.google.com/github/RyoungJKT/genetropica-v2/blob/main/colab/ns5_enrichment_validation.ipynb" target="_blank" rel="noopener" style={{ color: '#1F5740', borderBottom: '1px solid var(--line)', textDecoration: 'none' }}>reproduce the NS5 validation in Colab</a>.
         </p>
       </Block>
 
