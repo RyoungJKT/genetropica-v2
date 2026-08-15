@@ -35,10 +35,15 @@ export function Header() {
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, minHeight: 62, padding: '8px 0', flexWrap: isMobile ? 'nowrap' : 'wrap' }}>
         <a href="/" style={{ fontFamily: 'var(--serif)', fontSize: 25, color: 'var(--ink)', display: 'flex', flexDirection: 'column', lineHeight: 1.05 }}>
           <b>GeneTropica</b>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 400, textTransform: 'uppercase', letterSpacing: '.16em', color: 'var(--ink-soft)', marginTop: 4 }}>
-            {/* the connecting word sits in small caps so the name carries the line */}
-            <span style={{ textTransform: 'none', fontVariantCaps: 'small-caps' }}>by</span> Russell Young
-          </span>
+          {/* title-page convention: the credit in the wordmark's own serif, italic and sentence
+              case, right-aligned so its final glyph sits under the final a of Tropica. opsz is
+              pinned to the small-text drawing so the browser does not use the display cut. */}
+          <span style={{
+            fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 11, fontWeight: 500,
+            fontOpticalSizing: 'none', fontVariationSettings: '"opsz" 8, "wght" 500',
+            letterSpacing: '.015em', marginRight: '-.015em', lineHeight: 1,
+            color: 'var(--ink-soft)', marginTop: 5, textAlign: 'right',
+          }}>by Russell Young</span>
         </a>
         {isMobile ? (
           <button onClick={() => setOpen((o) => !o)} aria-label="Menu" aria-expanded={open} style={{ background: 'transparent', border: '1px solid var(--line)', borderRadius: 10, padding: '7px 12px', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 15, color: 'var(--ink)', lineHeight: 1 }}>

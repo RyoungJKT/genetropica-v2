@@ -63,9 +63,13 @@
   }
   .brand{font-family:var(--serif);font-weight:600;font-size:25px;letter-spacing:-.01em;display:flex;flex-direction:column;line-height:1.05}
   .brand .accent{color:var(--green)}
-  .brand .by{font-family:var(--mono);font-weight:400;font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);margin-top:4px}
-  /* the connecting word sits in small caps so the name carries the line */
-  .brand .by-w{text-transform:none;font-variant-caps:small-caps}
+  /* title-page convention: the credit set in the wordmark's own serif, italic and sentence
+     case, right-aligned so its final glyph sits under the final a of Tropica. opsz is pinned
+     to the small-text drawing so the browser does not use the display cut at 11px. */
+  .brand .by{font-family:var(--serif);font-style:italic;font-weight:500;font-size:11px;
+    font-optical-sizing:none;font-variation-settings:'opsz' 8,'wght' 500;
+    letter-spacing:.015em;margin-right:-.015em;line-height:1;
+    color:var(--ink-soft);margin-top:5px;text-align:right}
   .top nav{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.13em}
   .top nav a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
   .top nav a:hover{color:var(--green)}
@@ -214,7 +218,7 @@
 <header class="top" id="top">
   <div class="brand">
     <span class="name">Gene<span class="accent">Tropica</span></span>
-    <span class="by"><span class="by-w">by</span> Russell Young</span>
+    <span class="by">by Russell Young</span>
   </div>
   <nav>
     <a href="#problem" class="nlink">The Problem</a>
