@@ -4,8 +4,9 @@ Both features call a large language model through **your own API key**. The key 
 read from an environment variable, is never committed, and never ships in the static
 site. The dashboard works fully without them; these only enrich it.
 
-The two features use different providers. The offline **literature script** uses the
-**hosted LLM API** (`LLM_API_KEY`, default `gpt-4o-mini`). The
+The two features use different providers. The offline **literature script** talks to any
+**OpenAI-compatible chat-completions endpoint** (`LLM_API_KEY`, default model
+`gpt-4o-mini`), so it works with a hosted provider or a local server unchanged. The
 runtime **chat assistant** uses the **Google Gemini API** (`GEMINI_API_KEY`, default
 `gemini-3.5-flash`), chosen because Gemini lets us relax the safety thresholds that
 otherwise block legitimate "which candidate scores best" questions on this benign,
@@ -22,10 +23,10 @@ weak-keyword limitation (e.g. an unrelated immunology paper no longer counts as
 evidence).
 
 ```bash
-export LLM_API_KEY=sk-ant-...          # your key (required)
+export LLM_API_KEY=...                        # your key (required)
 # optional:
 export LLM_MODEL=gpt-4o-mini
-export LLM_BASE_URL=https://api.openai.com
+export LLM_BASE_URL=https://api.openai.com    # any OpenAI-compatible endpoint
 export NCBI_API_KEY=...                       # raises the PubMed fetch rate limit
 
 python scripts/llm_literature.py --dry-run    # inspect one prompt, no LLM call, no key needed

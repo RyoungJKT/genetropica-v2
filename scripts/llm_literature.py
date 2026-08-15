@@ -15,10 +15,13 @@ cheap and resumable.
 You supply your own LLM key. It is read from the environment, never printed, and
 never shipped in the static site.
 
+Any OpenAI-compatible chat-completions endpoint works, so you can point it at a
+hosted provider or a local server without changing the code.
+
 Setup:
-    export LLM_API_KEY=sk-ant-...                 # required to call the model API
-    export LLM_MODEL=gpt-4o-mini      # optional; any current model model
-    export LLM_BASE_URL=https://api.openai.com # optional
+    export LLM_API_KEY=...                              # required to call the model
+    export LLM_MODEL=gpt-4o-mini                        # optional; any chat model
+    export LLM_BASE_URL=https://api.openai.com          # optional; any compatible endpoint
     export NCBI_API_KEY=...                             # optional; raises the PubMed rate limit
 
 Usage:
@@ -40,7 +43,6 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "data" / "database" / "genetropica.db"
 CACHE = ROOT / "data" / "literature_llm.json"
-LLM_API_VERSION = "2023-06-01"
 
 TARGET_CONTEXT = {
     "DENV_NS5": "dengue virus NS5 RNA-dependent RNA polymerase",
@@ -79,7 +81,7 @@ def build_prompt(drug, target_ctx, title, abstract):
 
 
 def _extract_json(text):
-    """model returns prose-free JSON when asked, but tolerate stray fences or text."""
+    """Models return prose-free JSON when asked, but tolerate stray fences or text."""
     m = re.search(r"\{.*\}", text.strip(), re.DOTALL)
     if not m:
         raise ValueError(f"no JSON object in model response: {text[:200]}")
@@ -88,24 +90,28 @@ def _extract_json(text):
 
 def call_llm(prompt, key, base_url, model):
     r = requests.post(
-        f"{base_url.rstrip('/')}/v1/messages",
+        f"{base_url.rstrip('/')}/v1/chat/completions",
         headers={
-            "x-api-key": key,
-            "x-api-version": LLM_API_VERSION,
+            "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
         },
         json={
             "model": model,
             "max_tokens": 400,
             "temperature": 0,
-            "system": "You assess biomedical literature for a drug-repurposing screen. "
-            "Reply with a single strict JSON object and nothing else: no prose, no markdown fences.",
-            "messages": [{"role": "user", "content": prompt}],
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You assess biomedical literature for a drug-repurposing screen. "
+                    "Reply with a single strict JSON object and nothing else: no prose, no markdown fences.",
+                },
+                {"role": "user", "content": prompt},
+            ],
         },
         timeout=90,
     )
     r.raise_for_status()
-    text = "".join(b.get("text", "") for b in r.json().get("content", []) if b.get("type") == "text")
+    text = r.json()["choices"][0]["message"].get("content", "") or ""
     return _extract_json(text)
 
 
