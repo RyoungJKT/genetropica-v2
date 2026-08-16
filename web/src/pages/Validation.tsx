@@ -25,7 +25,7 @@ export default function Validation() {
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>Methodology Validation</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
         {say(reg,
-          'Does the method actually pick out known-good drugs? We checked it against dengue NS5 with both a strict decoy test and an easier one. The honest answer, from the strict test shown first, is no better than chance.',
+          'Does the method actually pick out known-good drugs? We checked whether the scoring can separate known inhibitors from look-alike decoys on dengue NS5. The strict, properly matched test is shown first; the earlier, easier decoy test follows for transparency.',
           'Retrospective enrichment on dengue NS5: can the scoring separate known actives from decoys? The rigorous property-matched (DUD-E-style) test is shown first; the earlier inflated easy-decoy test follows for transparency.')}
       </p>
 

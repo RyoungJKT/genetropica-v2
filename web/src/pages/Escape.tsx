@@ -116,7 +116,7 @@ export default function Escape() {
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>Evolutionary Escape &amp; Durability</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
         {say(reg,
-          'Which of these drugs would dengue find hardest to dodge by mutating? A drug that latches onto parts of the protein the virus cannot change without harming itself is durable; one that grips changeable parts is easy to escape. Each candidate is scored by how conserved the residues it touches are.',
+          'Which of these drugs would dengue find hardest to dodge by mutating? A drug that latches onto parts of the protein the virus cannot change without harming itself should be harder to escape; one that grips changeable parts should be easier. This is an estimate, not a measurement: each candidate is scored by how conserved the residues are where its predicted pose settles.',
           'A per-drug resistance-barrier estimate for DENV NS5: the mean ConSurf conservation grade (1 variable, 9 conserved) of the residues each docked pose contacts. Highly conserved contact sets imply a higher barrier to escape mutation; variable contact sets imply low-cost viral escape.')}
       </p>
 

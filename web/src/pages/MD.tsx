@@ -74,7 +74,7 @@ export default function MD() {
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>Molecular Dynamics</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 720, lineHeight: 1.65, margin: '14px 0 0' }}>
         {say(reg,
-          '50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts about 30 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs.',
+          '50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts about 30 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs. One 50 ns run is a single anecdote, not a measurement of how strongly a drug binds.',
           '50 ns all-atom MD (AMBER99SB-ILDN + GAFF2, TIP3P, 300 K) of three candidates with DENV NS5 (PDB 5CCV). The ligand was not started in the docked pose; it begins ~30 A away in solvent, so these are unbiased association simulations. A single 50 ns run is anecdotal, not a measure of affinity.')}
       </p>
       <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '14px 18px', margin: '18px 0 8px', fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, maxWidth: 760 }}>
