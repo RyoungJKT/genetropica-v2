@@ -474,6 +474,57 @@
     ScrollTrigger.refresh();
   }
 
+  /* Safety net for the scroll reveals.
+     The entrances are gsap.from tweens, so their targets sit at opacity 0 from the
+     moment the tween is created and only come back when it actually runs. If one is
+     interrupted (tab backgrounded mid-stagger, a trigger that never fires, an anchor
+     jump that puts a whole list on screen at once) the remaining items stay invisible
+     for good. Anything the reader has already scrolled past is forced visible here.
+     Deliberately plain DOM writes, so this still works if GSAP itself failed to load. */
+  var GROUPS = ['.steps', '.stats', '.classes'];
+  // a zero or missing innerHeight would make every guard below reject, silently
+  // disabling the rescue, so fall back rather than trust one source
+  function vh(){
+    return Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0, 480);
+  }
+  function show(el){
+    if(parseFloat(getComputedStyle(el).opacity) < 1){
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }
+  }
+  function rescueStranded(){
+    // Grouped staggers are triggered by the CONTAINER, not by each child, so once
+    // that container has been passed every child was meant to be revealed however
+    // far down the list it sits. Judging children by their own position would skip
+    // exactly the ones that get stranded, which are the lowest in a tall list.
+    GROUPS.forEach(function(sel){
+      var c = document.querySelector(sel);
+      if(!c || c.getBoundingClientRect().top > vh() * .8) return;
+      Array.prototype.forEach.call(c.children, show);
+    });
+    // Individually triggered elements are judged on their own position.
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      if(el.getBoundingClientRect().top > vh() * .84) return;
+      // the hairline rules animate scaleX rather than opacity
+      if(el.classList.contains('rule')){ el.style.transform = 'none'; return; }
+      show(el);
+    });
+  }
+  var rescueTimer;
+  function scheduleRescue(delay){
+    clearTimeout(rescueTimer);
+    // longer than the ~1.12s reveal (0.07s stagger x 6 + 0.7s), so a healthy
+    // animation is never cut short
+    rescueTimer = setTimeout(rescueStranded, delay);
+  }
+  addEventListener('scroll', function(){ scheduleRescue(1600); }, {passive:true});
+  addEventListener('resize', function(){ scheduleRescue(1600); });
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') scheduleRescue(1600);
+  });
+  scheduleRescue(2600);
+
   setupChrome();
   if(reduce){
     setupCounts(false);
