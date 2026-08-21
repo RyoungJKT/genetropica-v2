@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useConservation } from '../data/api'
-import { useRegister, say } from '../state/register'
 import { ConservationTrack } from '../components/ConservationTrack'
 import { ChartTooltip } from '../components/ChartTooltip'
 import { useInView } from '../lib/anim'
+import { useT } from '../i18n'
 
 const VIRUSES = ['DENV-1', 'DENV-2', 'DENV-3', 'DENV-4', 'ZIKV', 'WNV', 'JEV', 'YFV', 'HCV']
 const idColor = (p: number) => {
@@ -13,6 +13,7 @@ const idColor = (p: number) => {
 }
 
 function PairwiseSection({ matrix }: { matrix: Record<string, Record<string, number>> }) {
+  const { t } = useT()
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
   const vs = VIRUSES.filter((v) => matrix[v])
   const meanPairs = (g: string[]) => {
@@ -30,14 +31,14 @@ function PairwiseSection({ matrix }: { matrix: Record<string, Record<string, num
   const cols = `66px repeat(${vs.length}, minmax(34px,1fr))`
   return (
     <div style={{ marginTop: 36 }}>
-      <h3 style={{ fontSize: 22 }}>Pairwise identity across the family</h3>
+      <h3 style={{ fontSize: 22 }}>{t('Pairwise identity across the family')}</h3>
       <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 14px', maxWidth: 760 }}>
-        All-versus-all NS5 sequence identity. The four dengue serotypes are closely related; the broader flaviviruses share roughly half; hepatitis C is a distant outlier, which is why sofosbuvir is treated as a control rather than a candidate.
+        {t('All-versus-all NS5 sequence identity. The four dengue serotypes are closely related; the broader flaviviruses share roughly half; hepatitis C is a distant outlier, which is why sofosbuvir is treated as a control rather than a candidate.')}
       </p>
       <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,200px))', gap: 12, marginBottom: 18 }}>
         {cards.map(([label, v]) => (
           <div key={label} style={{ border: '1px solid var(--line)', borderRadius: 14, padding: '14px 16px', background: 'var(--paper)' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>{label}</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>{t(label)}</div>
             <div style={{ fontSize: 28, fontWeight: 380, marginTop: 6, lineHeight: 1 }}>{Math.round(v)}%</div>
           </div>
         ))}
@@ -52,7 +53,7 @@ function PairwiseSection({ matrix }: { matrix: Record<string, Record<string, num
               const val = r === c ? 100 : (matrix[r]?.[c] ?? matrix[c]?.[r] ?? 0)
               return (
                 <div key={r + c} style={{ background: idColor(val), color: val / 100 > 0.52 ? 'var(--paper)' : 'var(--ink)', fontFamily: 'var(--mono)', fontSize: 9.5, textAlign: 'center', padding: '7px 0', borderRadius: 3, cursor: 'pointer' }}
-                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `${r} vs ${c}`, value: `${Math.round(val)}% identity` })}
+                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `${r} vs ${c}`, value: `${Math.round(val)}% ${t('identity')}` })}
                   onMouseLeave={() => setTip(null)}>{Math.round(val)}</div>
               )
             }),
@@ -65,12 +66,13 @@ function PairwiseSection({ matrix }: { matrix: Record<string, Record<string, num
 }
 
 function IdentityBars({ identity, viruses }: { identity: Record<string, number>; viruses: string[] }) {
+  const { t } = useT()
   const [ref, inView] = useInView<HTMLDivElement>()
   return (
     <div ref={ref} style={{ marginTop: 36 }}>
-      <h3 style={{ fontSize: 22 }}>NS5 across the flavivirus family</h3>
+      <h3 style={{ fontSize: 22 }}>{t('NS5 across the flavivirus family')}</h3>
       <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 14px', maxWidth: 760 }}>
-        Sequence identity of dengue (DENV-2) NS5 to other viruses. The flaviviruses are 50 to 73% identical; hepatitis C (HCV) is only ~10%, a distant relative, which is exactly why sofosbuvir (an HCV drug) is used here as a control, not a candidate.
+        {t('Sequence identity of dengue (DENV-2) NS5 to other viruses. The flaviviruses are 50 to 73% identical; hepatitis C (HCV) is only ~10%, a distant relative, which is exactly why sofosbuvir (an HCV drug) is used here as a control, not a candidate.')}
       </p>
       {viruses.map((v, vi) => (
         <div key={v} style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '8px 0' }}>
@@ -86,8 +88,8 @@ function IdentityBars({ identity, viruses }: { identity: Record<string, number>;
 }
 
 export default function Conservation() {
+  const { t } = useT()
   const c = useConservation()
-  const { reg } = useRegister()
   const data = c.data
   const ref = 'DENV-2'
   const identity = data?.identity?.[ref] ?? {}
@@ -96,22 +98,20 @@ export default function Conservation() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">Tool 05</div>
-      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>Conservation</h1>
+      <div className="eyebrow">{t('Tool 05')}</div>
+      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Conservation')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 720, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {say(reg,
-          'How conserved the dengue NS5 polymerase is, position by position and across related viruses. A site that stays the same across many viruses is harder for the virus to mutate away, so a drug aimed there may be more durable.',
-          'ConSurf conservation grades (1 = variable, 9 = conserved) along DENV NS5, plus cross-flavivirus sequence identity. Higher conservation at a target site suggests lower mutational escape and broader-spectrum potential.')}
+        {t('How conserved the dengue NS5 polymerase is, position by position and across related viruses. A site that stays the same across many viruses is harder for the virus to mutate away, so a drug aimed there may be more durable.')}
       </p>
 
-      {!data && <p className="mono" style={{ marginTop: 20 }}>Loading conservation data...</p>}
+      {!data && <p className="mono" style={{ marginTop: 20 }}>{t('Loading conservation data...')}</p>}
 
       {data && (
         <>
           <div style={{ marginTop: 32 }}>
-            <h3 style={{ fontSize: 22 }}>Conservation along the protein</h3>
+            <h3 style={{ fontSize: 22 }}>{t('Conservation along the protein')}</h3>
             <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 12px', maxWidth: 760 }}>
-              Each position of NS5, shaded from variable to conserved. The catalytic residues (marked) sit in highly conserved regions.
+              {t('Each position of NS5, shaded from variable to conserved. The catalytic residues (marked) sit in highly conserved regions.')}
             </p>
             <ConservationTrack grades={data.grades} keyResidues={data.key_residues.map((k) => k.residue_number)} />
           </div>
@@ -122,23 +122,23 @@ export default function Conservation() {
 
           {mw && (
             <div style={{ marginTop: 36 }}>
-              <h3 style={{ fontSize: 22 }}>Are the binding-site residues more conserved?</h3>
+              <h3 style={{ fontSize: 22 }}>{t('Are the binding-site residues more conserved?')}</h3>
               <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '16px 18px', marginTop: 10, maxWidth: 760, fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6 }}>
-                The {mw.n_binding} binding-site residues average a conservation grade of <b>{mw.binding_mean}</b>, versus <b>{mw.nonbinding_mean}</b> for the rest of the protein, so they are more conserved. But the difference is <b>not statistically significant</b> (Mann-Whitney p = {mw.p_value}), reported honestly given the small number of binding residues.
+                {t('The')} {mw.n_binding} {t('binding-site residues average a conservation grade of')} <b>{mw.binding_mean}</b>, {t('versus')} <b>{mw.nonbinding_mean}</b> {t('for the rest of the protein, so they are more conserved. But the difference is')} <b>{t('not statistically significant')}</b> (Mann-Whitney p = {mw.p_value}), {t('reported honestly given the small number of binding residues.')}
               </div>
             </div>
           )}
 
           <div style={{ marginTop: 36 }}>
-            <h3 style={{ fontSize: 22 }}>Key catalytic residues across viruses</h3>
+            <h3 style={{ fontSize: 22 }}>{t('Key catalytic residues across viruses')}</h3>
             <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 12px', maxWidth: 760 }}>
-              The catalytic and active-site residues, and the amino acid each virus carries there. Differences from the dengue (DENV-2) reference are highlighted; near-total conservation across the family is what makes these sites attractive, durable drug targets.
+              {t('The catalytic and active-site residues, and the amino acid each virus carries there. Differences from the dengue (DENV-2) reference are highlighted; near-total conservation across the family is what makes these sites attractive, durable drug targets.')}
             </p>
             <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'auto', background: 'var(--paper)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12.5, minWidth: 720 }}>
                 <thead>
                   <tr>
-                    {['Residue', 'Ref', ...VIRUSES, 'Conserved'].map((h, i) => (
+                    {[t('Residue'), t('Ref'), ...VIRUSES, t('Conserved')].map((h, i) => (
                       <th key={h + i} style={{ textAlign: i === 0 ? 'left' : i === VIRUSES.length + 2 ? 'right' : 'center', padding: '9px 8px', fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--ink-faint)', borderBottom: '1px solid var(--line)', whiteSpace: 'nowrap', position: 'sticky', top: 0, background: 'var(--paper-2)' }}>{h}</th>
                     ))}
                   </tr>

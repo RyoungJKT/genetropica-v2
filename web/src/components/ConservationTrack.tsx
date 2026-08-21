@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
+import { useT } from '../i18n'
 
 function gradeColor(g: number) {
   const t = (Math.max(1, Math.min(9, g)) - 1) / 8
@@ -10,6 +11,7 @@ function gradeColor(g: number) {
 }
 
 export function ConservationTrack({ grades, keyResidues }: { grades: Record<string, number>; keyResidues: number[] }) {
+  const { t } = useT()
   const [tip, setTip] = useState<{ cx: number; cy: number; i: number; resnum: number; grade: number } | null>(null)
   const [ref, inView] = useInView<SVGSVGElement>()
   const entries = Object.entries(grades)
@@ -23,7 +25,7 @@ export function ConservationTrack({ grades, keyResidues }: { grades: Record<stri
   const idxOf = (resnum: number) => entries.findIndex((e) => e[0] === resnum)
   const ticks = [1, 150, 300, 450, 600, 750, entries[n - 1][0]]
   const keySet = new Set(keyResidues)
-  const grLabel = (g: number) => (g <= 3 ? 'variable' : g >= 7 ? 'conserved' : 'intermediate')
+  const grLabel = (g: number) => (g <= 3 ? t('variable') : g >= 7 ? t('conserved') : t('intermediate'))
   return (
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, background: 'var(--paper)', padding: '16px 16px 10px' }}>
       <svg ref={ref} viewBox={`0 0 ${W} ${H + 34}`} width="100%" style={{ display: 'block' }}>
@@ -60,16 +62,16 @@ export function ConservationTrack({ grades, keyResidues }: { grades: Record<stri
         />
       </svg>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 8, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>
-        <span>Variable</span>
+        <span>{t('Variable')}</span>
         <span style={{ flex: 1, maxWidth: 200, height: 8, borderRadius: 100, background: `linear-gradient(90deg, ${gradeColor(1)}, ${gradeColor(5)}, ${gradeColor(9)})` }} />
-        <span>Conserved</span>
-        <span style={{ marginLeft: 16, color: 'var(--ink-soft)', textTransform: 'none', letterSpacing: 0 }}>▲ catalytic residue</span>
+        <span>{t('Conserved')}</span>
+        <span style={{ marginLeft: 16, color: 'var(--ink-soft)', textTransform: 'none', letterSpacing: 0 }}>▲ {t('catalytic residue')}</span>
       </div>
       {tip && (
         <ChartTooltip x={tip.cx} y={tip.cy}>
-          <div style={{ fontWeight: 600 }}>Residue {tip.resnum}</div>
-          <div style={{ opacity: 0.9 }}>Grade {tip.grade}/9 ({grLabel(tip.grade)})</div>
-          {keySet.has(tip.resnum) && <div style={{ color: '#e0a98f' }}>Catalytic residue</div>}
+          <div style={{ fontWeight: 600 }}>{t('Residue')} {tip.resnum}</div>
+          <div style={{ opacity: 0.9 }}>{t('Grade')} {tip.grade}/9 ({grLabel(tip.grade)})</div>
+          {keySet.has(tip.resnum) && <div style={{ color: '#e0a98f' }}>{t('Catalytic residue')}</div>}
         </ChartTooltip>
       )}
     </div>

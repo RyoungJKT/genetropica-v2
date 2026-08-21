@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useMd } from '../../data/api'
 import { MdScene } from './MdScene'
 import { frameReadout, DURATION_NS } from '../../lib/mdMotion'
+import { useT } from '../../i18n'
 
 const DRUGS = ['celecoxib', 'methotrexate', 'dasabuvir'] as const
 type Drug = (typeof DRUGS)[number]
@@ -14,6 +15,7 @@ function prefersReducedMotion(): boolean {
 }
 
 export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
+  const { t } = useT()
   const md = useMd()
   const reduced = prefersReducedMotion()
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 760
@@ -54,7 +56,7 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
   if (!md.data || !series) {
     return (
       <div className="mono" style={{ height: 360, display: 'grid', placeItems: 'center', color: 'var(--ink-faint)' }}>
-        Loading simulation...
+        {t('Loading simulation...')}
       </div>
     )
   }
@@ -84,8 +86,8 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
         <MdScene series={series} tNsRef={tNsRef} accent={ACCENT[drug]} reducedNodes={isMobile} />
         <div style={{ position: 'absolute', left: 14, bottom: 12, fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', lineHeight: 1.5, background: 'color-mix(in srgb, var(--paper) 72%, transparent)', borderRadius: 8, padding: '6px 10px' }}>
           <div>t = {readout.tNs.toFixed(1)} ns</div>
-          <div>min dist = {Number.isFinite(readout.distance) ? `${readout.distance.toFixed(1)} A` : '-'}</div>
-          <div>H-bonds = {readout.hbonds} &nbsp; contacts = {readout.ncontacts}</div>
+          <div>{t('min dist')} = {Number.isFinite(readout.distance) ? `${readout.distance.toFixed(1)} A` : '-'}</div>
+          <div>{t('H-bonds')} = {readout.hbonds} &nbsp; {t('contacts')} = {readout.ncontacts}</div>
         </div>
       </div>
 
@@ -94,12 +96,12 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
           onClick={() => setPlaying((p) => !p)}
           style={{ fontFamily: 'var(--mono)', fontSize: 12, padding: '6px 14px', borderRadius: 8, border: '1px solid var(--line)', background: 'var(--paper-2)', cursor: 'pointer', color: 'var(--ink)' }}
         >
-          {playing ? 'Pause' : 'Play'}
+          {playing ? t('Pause') : t('Play')}
         </button>
         <input
           type="range" min={0} max={DURATION_NS} step={0.25} value={tNs}
           onChange={(e) => { setPlaying(false); setTNs(parseFloat(e.target.value)) }}
-          aria-label="Scrub simulation time"
+          aria-label={t('Scrub simulation time')}
           style={{ flex: 1, accentColor: ACCENT[drug] }}
         />
         <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-faint)', minWidth: 70, textAlign: 'right' }}>
@@ -108,7 +110,7 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
       </div>
 
       <p style={{ fontSize: 12, color: 'var(--ink-faint)', lineHeight: 1.55, margin: 0, padding: '0 14px 14px' }}>
-        Stylized view. The approach distance and timing, per-residue flexibility, H-bonds and contacts are taken frame-by-frame from the real 50 ns simulation. The protein's shape and the drug's exact 3D path are illustrative; the full atomic trajectory was not stored. Schematic, not to scale.
+        {t("Stylized view. The approach distance and timing, per-residue flexibility, H-bonds and contacts are taken frame-by-frame from the real 50 ns simulation. The protein's shape and the drug's exact 3D path are illustrative; the full atomic trajectory was not stored. Schematic, not to scale.")}
       </p>
     </div>
   )

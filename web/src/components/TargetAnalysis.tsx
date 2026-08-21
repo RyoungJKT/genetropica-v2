@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FieldPoint } from '../data/types'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView, useCountUp } from '../lib/anim'
+import { useT } from '../i18n'
 
 function StatCard({ label, value, highlight, active }: { label: string; value: number; highlight?: boolean; active: boolean }) {
   const n = useCountUp(value, active)
@@ -15,6 +16,7 @@ function StatCard({ label, value, highlight, active }: { label: string; value: n
 
 /** Per-target overview: counts, ligand-efficiency distribution, and the top candidates by efficiency. */
 export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoint[]; targetName: string; shown: number }) {
+  const { t } = useT()
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
   const [secRef, inView] = useInView<HTMLElement>()
   const dl = points.filter((p) => p.dl === 1)
@@ -49,17 +51,17 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
 
   return (
     <section ref={secRef} style={{ margin: '8px 0 4px' }}>
-      <h2 style={{ fontSize: 26, fontWeight: 380 }}>Target: {targetName}</h2>
+      <h2 style={{ fontSize: 26, fontWeight: 380 }}>{t('Target:')} {targetName}</h2>
       <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginTop: 16 }}>
-        <StatCard label="Total screened" value={points.length} highlight active={inView} />
-        <StatCard label="Drug-like (MW 250-600)" value={dl.length} active={inView} />
-        <StatCard label="ADMET-safe drug-like" value={admetSafe} active={inView} />
-        <StatCard label="Showing" value={shown} active={inView} />
+        <StatCard label={t('Total screened')} value={points.length} highlight active={inView} />
+        <StatCard label={t('Drug-like (MW 250-600)')} value={dl.length} active={inView} />
+        <StatCard label={t('ADMET-safe drug-like')} value={admetSafe} active={inView} />
+        <StatCard label={t('Showing')} value={shown} active={inView} />
       </div>
 
       <div className="rstack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 26 }}>
         <div>
-          <h3 style={{ fontSize: 15, marginBottom: 10 }}>Ligand-Efficiency Distribution (drug-like)</h3>
+          <h3 style={{ fontSize: 15, marginBottom: 10 }}>{t('Ligand-Efficiency Distribution (drug-like)')}</h3>
           <svg viewBox={`0 0 ${HW} ${HH}`} width="100%" style={{ display: 'block' }}>
             {yTicks.map((t) => {
               const y = mT + ih - (t / maxCount) * ih
@@ -99,18 +101,18 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
             {[lo, (lo + hi) / 2, hi].map((v, i) => (
               <text key={i} x={xOf(v)} y={HH - 14} fontSize={9} fontFamily="var(--mono)" fill="var(--ink-faint)" textAnchor="middle">{v.toFixed(2)}</text>
             ))}
-            <text x={mL + iw / 2} y={HH - 1} fontSize={10} fill="var(--ink-soft)" textAnchor="middle">Ligand Efficiency</text>
+            <text x={mL + iw / 2} y={HH - 1} fontSize={10} fill="var(--ink-soft)" textAnchor="middle">{t('Ligand Efficiency')}</text>
           </svg>
         </div>
 
         <div>
-          <h3 style={{ fontSize: 15, marginBottom: 10 }}>Top 10 Drug-like Candidates by Ligand Efficiency</h3>
+          <h3 style={{ fontSize: 15, marginBottom: 10 }}>{t('Top 10 Drug-like Candidates by Ligand Efficiency')}</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
             {top10.map((p, idx) => (
               <div
                 key={p.name}
                 style={{ display: 'grid', gridTemplateColumns: '110px 1fr 42px', gap: 8, alignItems: 'center', cursor: 'pointer' }}
-                onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: p.name.replace(/_/g, ' '), value: `Ligand efficiency ${(p.le ?? 0).toFixed(3)}` })}
+                onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: p.name.replace(/_/g, ' '), value: `${t('Ligand efficiency')} ${(p.le ?? 0).toFixed(3)}` })}
                 onMouseLeave={() => setTip(null)}
               >
                 <span style={{ fontSize: 12, color: 'var(--ink-soft)', textTransform: 'capitalize', textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name.replace(/_/g, ' ')}</span>
@@ -120,7 +122,7 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)' }}>{(p.le ?? 0).toFixed(3)}</span>
               </div>
             ))}
-            {!top10.length && <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>No drug-like candidates with a ligand-efficiency value.</p>}
+            {!top10.length && <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>{t('No drug-like candidates with a ligand-efficiency value.')}</p>}
           </div>
         </div>
       </div>

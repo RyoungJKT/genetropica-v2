@@ -3,6 +3,7 @@ import type { Drug, Field, AdmetRow, LitRef } from '../data/types'
 import { RadarChart } from './RadarChart'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
+import { useT } from '../i18n'
 
 function Meta({ k, v }: { k: string; v: string }) {
   return (
@@ -15,6 +16,7 @@ function Meta({ k, v }: { k: string; v: string }) {
 
 /** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), ADMET radar. */
 export function DrugPanel({ drug, field, admet, order, tName, literature = [] }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string; literature?: LitRef[] }) {
+  const { t } = useT()
   const ref = useRef<HTMLDivElement>(null)
   const firstRender = useRef(true)
   useEffect(() => {
@@ -38,11 +40,11 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
 
   const radarAxes = admet
     ? [
-        { label: 'Lipinski Compliance', value: admet.lipinski },
-        { label: 'Oral Bioavailability', value: admet.bioavail },
-        { label: 'Overall Safety', value: admet.pass },
-        { label: 'hERG Safety', value: 1 - admet.herg },
-        { label: 'Hepato Safety', value: 1 - admet.hepatotox },
+        { label: t('Lipinski Compliance'), value: admet.lipinski },
+        { label: t('Oral Bioavailability'), value: admet.bioavail },
+        { label: t('Overall Safety'), value: admet.pass },
+        { label: t('hERG Safety'), value: 1 - admet.herg },
+        { label: t('Hepato Safety'), value: 1 - admet.hepatotox },
       ]
     : []
 
@@ -55,9 +57,9 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
     <section ref={ref} style={{ marginTop: 36, scrollMarginTop: 80 }}>
       <h2 style={{ fontSize: 32, textTransform: 'capitalize', fontWeight: 380 }}>{drug.name.replace(/_/g, ' ')}</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 18, marginTop: 16 }}>
-        <Meta k="DrugBank ID" v={drug.drugbank_id ?? 'None'} />
-        <Meta k="Indication" v={drug.indication ?? '-'} />
-        <Meta k="Molecular Weight" v={`${Math.round(drug.molecular_weight)} Da`} />
+        <Meta k={t('DrugBank ID')} v={drug.drugbank_id ?? t('None')} />
+        <Meta k={t('Indication')} v={drug.indication ?? '-'} />
+        <Meta k={t('Molecular Weight')} v={`${Math.round(drug.molecular_weight)} Da`} />
         <Meta k="LogP" v={drug.logp != null ? drug.logp.toFixed(2) : '-'} />
       </div>
       {drug.smiles && (
@@ -71,10 +73,10 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
 
       <div ref={chartsRef} className="rstack" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)', gap: 32, alignItems: 'start' }}>
         <div>
-          <h3 style={{ fontSize: 15, marginBottom: 4 }}>Binding Scores Across Targets</h3>
+          <h3 style={{ fontSize: 15, marginBottom: 4 }}>{t('Binding Scores Across Targets')}</h3>
           <div style={{ display: 'flex', gap: 16, margin: '6px 0 14px', fontSize: 11, fontFamily: 'var(--mono)', color: 'var(--ink-soft)' }}>
-            <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--green)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />Vina |score|</span>
-            <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--gold)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />ML |score|</span>
+            <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--green)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />{t('Vina |score|')}</span>
+            <span><span style={{ display: 'inline-block', width: 10, height: 10, background: 'var(--gold)', borderRadius: 2, marginRight: 6, verticalAlign: 'middle' }} />{t('ML |score|')}</span>
           </div>
           {bars.map((b, i) => (
             <div
@@ -105,31 +107,31 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
             </div>
           </div>
           <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', marginTop: 16, lineHeight: 1.5 }}>
-            Absolute Vina binding score (kcal/mol) per target. The ML score is a target-agnostic activity prior, so it is identical across every target.
+            {t('Absolute Vina binding score (kcal/mol) per target. The ML score is a target-agnostic activity prior, so it is identical across every target.')}
           </p>
         </div>
 
         <div>
-          <h3 style={{ fontSize: 15, marginBottom: 10 }}>ADMET Safety Profile</h3>
-          {admet ? <RadarChart axes={radarAxes} /> : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>No ADMET record for this drug.</p>}
+          <h3 style={{ fontSize: 15, marginBottom: 10 }}>{t('ADMET Safety Profile')}</h3>
+          {admet ? <RadarChart axes={radarAxes} /> : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>{t('No ADMET record for this drug.')}</p>}
         </div>
       </div>
 
       {Object.keys(byTarget).length > 0 ? (
         <div style={{ marginTop: 32 }}>
-          <h3 style={{ fontSize: 15, marginBottom: 4 }}>Literature evidence</h3>
+          <h3 style={{ fontSize: 15, marginBottom: 4 }}>{t('Literature evidence')}</h3>
           <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 12px', maxWidth: 720, lineHeight: 1.5 }}>
-            PubMed references linking this drug to each target (keyword-mined, then language-model reviewed where an "AI" verdict is shown). Evidence is a hint, not proof of activity.
+            {t('PubMed references linking this drug to each target (keyword-mined, then language-model reviewed where an "AI" verdict is shown). Evidence is a hint, not proof of activity.')}
           </p>
           {Object.entries(byTarget).map(([tid, refs]) => (
             <div key={tid} style={{ marginBottom: 14 }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 6 }}>{tName(tid)} · {refs.length} ref{refs.length === 1 ? '' : 's'}</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 6 }}>{tName(tid)} · {refs.length} {refs.length === 1 ? t('ref') : t('refs')}</div>
               {refs.map((r) => (
                 <div key={r.pmid} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 12, padding: '7px 0', borderBottom: '1px solid var(--line)', alignItems: 'start' }}>
                   <div>
                     <a href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} target="_blank" rel="noopener" style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.4 }}>{r.title}</a>
                     {r.llm_verdict ? (
-                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2, lineHeight: 1.45 }}>PMID {r.pmid} · <span style={{ color: verdictColor(r.llm_verdict), fontWeight: 600 }}>AI: {r.llm_verdict}</span>{r.llm_rel ? ` · ${r.llm_rel}` : ''}{r.llm_note ? <span style={{ color: 'var(--ink-soft)' }}> — {r.llm_note}</span> : null}</div>
+                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2, lineHeight: 1.45 }}>PMID {r.pmid} · <span style={{ color: verdictColor(r.llm_verdict), fontWeight: 600 }}>{t('AI:')} {r.llm_verdict}</span>{r.llm_rel ? ` · ${r.llm_rel}` : ''}{r.llm_note ? <span style={{ color: 'var(--ink-soft)' }}> — {r.llm_note}</span> : null}</div>
                     ) : (
                       <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {r.rel} · <span style={{ color: tierColor(r.tier) }}>{r.tier.replace(/_/g, ' ')}</span></div>
                     )}
@@ -141,7 +143,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
           ))}
         </div>
       ) : (
-        <p style={{ marginTop: 28, fontSize: 13, color: 'var(--ink-faint)' }}>No literature references found for this drug.</p>
+        <p style={{ marginTop: 28, fontSize: 13, color: 'var(--ink-faint)' }}>{t('No literature references found for this drug.')}</p>
       )}
       {tip && (
         <ChartTooltip x={tip.x} y={tip.y}>

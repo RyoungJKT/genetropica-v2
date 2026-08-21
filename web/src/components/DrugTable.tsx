@@ -1,6 +1,7 @@
 import { useState, type ReactNode, type CSSProperties } from 'react'
 import type { FieldPoint } from '../data/types'
 import { bucketOf } from '../lib/buckets'
+import { useT } from '../i18n'
 
 type Col = 'vina' | 'le' | 'mw' | 'name'
 
@@ -17,6 +18,7 @@ function Pill({ children, color }: { children: ReactNode; color: string }) {
 }
 
 export function DrugTable({ points, onSelect, selected }: { points: FieldPoint[]; onSelect: (p: FieldPoint) => void; selected?: string }) {
+  const { t } = useT()
   const [col, setCol] = useState<Col>('vina')
   const [dir, setDir] = useState<1 | -1>(1)
   const [hov, setHov] = useState<string | null>(null)
@@ -40,7 +42,7 @@ export function DrugTable({ points, onSelect, selected }: { points: FieldPoint[]
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'auto', maxHeight: 640, background: 'var(--paper)' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>
         <thead>
-          <tr>{th('#')}{th('Drug', 'name')}{th('MW', 'mw', true)}{th('Vina', 'vina', true)}{th('Lig. eff.', 'le', true)}{th('Drug-like')}{th('ADMET')}</tr>
+          <tr>{th('#')}{th(t('Drug'), 'name')}{th(t('MW'), 'mw', true)}{th('Vina', 'vina', true)}{th(t('Lig. eff.'), 'le', true)}{th(t('Drug-like'))}{th('ADMET')}</tr>
         </thead>
         <tbody>
           {sorted.map((p, i) => {
@@ -58,8 +60,8 @@ export function DrugTable({ points, onSelect, selected }: { points: FieldPoint[]
                 <td style={cell('var(--ink-soft)', 'right', true)}>{Math.round(p.mw)}</td>
                 <td style={cell('var(--ink)', 'right', true)}>{p.vina}</td>
                 <td style={cell('var(--ink-soft)', 'right', true)}>{p.le !== null ? p.le.toFixed(3) : '-'}</td>
-                <td style={{ padding: '9px 12px' }}>{p.dl ? <Pill color="var(--green)">yes</Pill> : <span style={{ color: 'var(--ink-faint)', fontFamily: 'var(--mono)', fontSize: 10 }}>no</span>}</td>
-                <td style={{ padding: '9px 12px' }}>{p.admet ? <Pill color="var(--green)">pass</Pill> : <Pill color="var(--clay)">flag</Pill>}</td>
+                <td style={{ padding: '9px 12px' }}>{p.dl ? <Pill color="var(--green)">{t('yes')}</Pill> : <span style={{ color: 'var(--ink-faint)', fontFamily: 'var(--mono)', fontSize: 10 }}>{t('no')}</span>}</td>
+                <td style={{ padding: '9px 12px' }}>{p.admet ? <Pill color="var(--green)">{t('pass')}</Pill> : <Pill color="var(--clay)">{t('flag')}</Pill>}</td>
               </tr>
             )
           })}

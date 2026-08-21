@@ -1,8 +1,8 @@
 import { useState, type CSSProperties } from 'react'
 import { useBindingIndex, useBinding, useTargets } from '../data/api'
-import { useRegister, say } from '../state/register'
 import { Mol3DViewer } from '../components/Mol3DViewer'
 import type { Contact } from '../data/types'
+import { useT } from '../i18n'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 const TYPE_COLOR: Record<string, string> = {
@@ -12,9 +12,9 @@ const tcol = (t: string) => TYPE_COLOR[t] ?? '#5B5470'
 const pillBtn = (active: boolean): CSSProperties => ({ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase', padding: '8px 14px', borderRadius: 100, cursor: 'pointer', border: '1px solid var(--line)', background: active ? 'var(--green)' : 'var(--paper)', color: active ? 'var(--paper)' : 'var(--ink-soft)' })
 
 export default function Binding() {
+  const { t } = useT()
   const idx = useBindingIndex()
   const targets = useTargets()
-  const { reg } = useRegister()
   const [tid, setTid] = useState('DENV_NS5')
   const [drug, setDrug] = useState<string | null>(null)
   const order = idx.data ? ORDER.filter((t) => idx.data![t]) : []
@@ -29,12 +29,10 @@ export default function Binding() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">Tool 02</div>
-      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>3D Binding Viewer</h1>
+      <div className="eyebrow">{t('Tool 02')}</div>
+      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('3D Binding Viewer')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 700, lineHeight: 1.65, margin: '14px 0 24px' }}>
-        {say(reg,
-          'The docked shape of a drug-like candidate; drag to rotate it, with the protein residues its pose is predicted to touch listed alongside.',
-          'The best docked pose (MODEL 1) of a drug-like candidate as ball-and-stick, with the chemistry-aware predicted contact residues. Drag to rotate, scroll to zoom.')}
+        {t('The docked shape of a drug-like candidate; drag to rotate it, with the protein residues its pose is predicted to touch listed alongside.')}
       </p>
 
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 14 }}>
@@ -43,7 +41,7 @@ export default function Binding() {
 
       <div style={{ marginBottom: 20 }}>
         <label htmlFor="drugsel" style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 8 }}>
-          Choose a candidate{drugs.length ? ` (${drugs.length} drug-like)` : ''}
+          {t('Choose a candidate')}{drugs.length ? ` (${drugs.length} ${t('drug-like')})` : ''}
         </label>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <select
@@ -68,7 +66,7 @@ export default function Binding() {
       <div className="rstack" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 24, alignItems: 'start' }}>
         <div>
           {binding.isLoading || !binding.data || !cur ? (
-            <div className="mono" style={{ padding: 40 }}>Loading pose...</div>
+            <div className="mono" style={{ padding: 40 }}>{t('Loading pose...')}</div>
           ) : (
             <Mol3DViewer
               receptorUrl={`${import.meta.env.BASE_URL}structures/${tid}.pdb`}
@@ -77,14 +75,14 @@ export default function Binding() {
             />
           )}
           <p style={{ fontSize: 12, color: 'var(--ink-faint)', fontStyle: 'italic', lineHeight: 1.5, marginTop: 12 }}>
-            Predicted from the docked pose, not an experimental co-crystal structure. Contacts are detected geometrically and chemistry-aware (ionic only when the ligand carries an opposite-charge group); residue numbers follow the deposited PDB for this target.
+            {t('Predicted from the docked pose, not an experimental co-crystal structure. Contacts are detected geometrically and chemistry-aware (ionic only when the ligand carries an opposite-charge group); residue numbers follow the deposited PDB for this target.')}
           </p>
         </div>
 
         <div style={{ border: '1px solid var(--line)', borderRadius: 16, background: 'var(--paper)', padding: 20 }}>
-          <h4 style={{ fontSize: 20, marginBottom: 4 }}>Predicted contacts</h4>
-          <p style={{ fontSize: 12.5, color: 'var(--ink-faint)', margin: '0 0 14px' }}>{contacts.length} residues contacted by the best pose</p>
-          {Object.keys(byType).length === 0 && <p className="mono" style={{ color: 'var(--ink-faint)' }}>No contacts recorded.</p>}
+          <h4 style={{ fontSize: 20, marginBottom: 4 }}>{t('Predicted contacts')}</h4>
+          <p style={{ fontSize: 12.5, color: 'var(--ink-faint)', margin: '0 0 14px' }}>{contacts.length} {t('residues contacted by the best pose')}</p>
+          {Object.keys(byType).length === 0 && <p className="mono" style={{ color: 'var(--ink-faint)' }}>{t('No contacts recorded.')}</p>}
           {Object.entries(byType).map(([type, list]) => (
             <div key={type} style={{ marginBottom: 14 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '.06em', textTransform: 'uppercase', color: tcol(type), marginBottom: 6 }}>
@@ -92,7 +90,7 @@ export default function Binding() {
               </div>
               {list.map((c, i) => (
                 <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--ink-soft)', padding: '3px 0 3px 17px' }}>
-                  <span style={{ textTransform: 'capitalize' }}>{c.res.toLowerCase()} {c.num}<span style={{ color: 'var(--ink-faint)' }}> · chain {c.chain}</span></span>
+                  <span style={{ textTransform: 'capitalize' }}>{c.res.toLowerCase()} {c.num}<span style={{ color: 'var(--ink-faint)' }}> · {t('chain')} {c.chain}</span></span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 12 }}>{c.dist} Å</span>
                 </div>
               ))}

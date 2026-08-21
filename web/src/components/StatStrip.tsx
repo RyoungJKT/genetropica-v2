@@ -25,7 +25,7 @@ function CountUp({ to }: { to: number }) {
   }, [inView, reduce, to])
   return (
     <div ref={ref} style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(34px,4vw,52px)', lineHeight: 1 }}>
-      {n.toLocaleString()}
+      {n.toLocaleString('en-US')}
     </div>
   )
 }

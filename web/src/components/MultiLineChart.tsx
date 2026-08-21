@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { scaleLinear } from '@visx/scale'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
+import { useT } from '../i18n'
 
 export interface ChartLine { label: string; color: string; pts: [number, number][] }
 
@@ -14,10 +15,11 @@ const IH = H - M.top - M.bottom
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(Math.abs(n) < 1 ? 3 : 2))
 
 export function MultiLineChart({ lines, xLabel, yLabel, yMin, playheadX }: { lines: ChartLine[]; xLabel: string; yLabel: string; yMin?: number; playheadX?: number }) {
+  const { t } = useT()
   const [hover, setHover] = useState<{ cx: number; cy: number; dataX: number } | null>(null)
   const [ref, inView] = useInView<SVGSVGElement>()
   const all = lines.flatMap((l) => l.pts)
-  if (!all.length) return <div className="mono" style={{ color: 'var(--ink-faint)', padding: 20 }}>No data.</div>
+  if (!all.length) return <div className="mono" style={{ color: 'var(--ink-faint)', padding: 20 }}>{t('No data.')}</div>
   const xs = all.map((p) => p[0])
   const ys = all.map((p) => p[1])
   const x = scaleLinear({ domain: [Math.min(...xs), Math.max(...xs)], range: [0, IW] })
@@ -99,7 +101,7 @@ export function MultiLineChart({ lines, xLabel, yLabel, yMin, playheadX }: { lin
         {lines.map((l) => (
           <span key={l.label} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, color: l.pts.length ? 'var(--ink-soft)' : 'var(--ink-faint)' }}>
             <span style={{ width: 16, height: 3, background: l.color, borderRadius: 2, opacity: l.pts.length ? 1 : 0.4 }} />
-            {l.label}{l.pts.length ? '' : ' (no stable pose)'}
+            {l.label}{l.pts.length ? '' : ' ' + t('(no stable pose)')}
           </span>
         ))}
       </div>

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useSummary, useTargets, useField } from '../data/api'
-import { useRegister, say } from '../state/register'
 import { StatStrip } from '../components/StatStrip'
 import { Reveal } from '../components/Reveal'
 import { Steps } from '../components/Steps'
@@ -11,11 +10,12 @@ import { FieldPanel } from '../components/FieldPanel'
 import { HeroMolecule } from '../three/HeroMolecule'
 import { CandidateBoard } from '../charts/CandidateBoard'
 import { useIsMobile } from '../lib/useIsMobile'
+import { useT } from '../i18n'
 
 const TARGET_ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 
 export default function Overview() {
-  const { reg } = useRegister()
+  const { t } = useT()
   const summary = useSummary()
   const targets = useTargets()
   const field = useField()
@@ -31,17 +31,15 @@ export default function Overview() {
       {/* hero */}
       <div className="wrap" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.05fr .95fr', alignItems: 'center', gap: 20, minHeight: isMobile ? 'auto' : '78vh', padding: isMobile ? '26px 0 8px' : '40px 0 30px' }}>
         <div>
-          <div className="eyebrow">Drug repurposing for neglected tropical diseases</div>
+          <div className="eyebrow">{t('Drug repurposing for neglected tropical diseases')}</div>
           <h1 style={{ fontSize: 'clamp(36px,4.9vw,72px)', fontWeight: 380, letterSpacing: '-.03em', marginTop: 18, lineHeight: 1.05 }}>
-            100 approved drugs,<br />tested against the<br />diseases we <em style={{ fontStyle: 'italic', color: 'var(--green)' }}>forget</em>.
+            {t('100 approved drugs,')}<br />{t('tested against the')}<br />{t('diseases we')} <em style={{ fontStyle: 'italic', color: 'var(--green)' }}>{t('forget')}</em>.
           </h1>
           <p style={{ fontSize: 'clamp(16px,1.5vw,19px)', color: 'var(--ink-soft)', maxWidth: '34ch', lineHeight: 1.65, margin: '22px 0 28px' }}>
-            {say(reg,
-              'Dengue, chikungunya and leptospirosis affect millions, yet attract little new drug funding. GeneTropica screens medicines that are already safe and approved to see which could be repurposed.',
-              'A docking plus ML-prior repurposing screen of 100 approved drugs against 6 targets, ranked by Vina score and ligand efficiency over drug-like candidates.')}
+            {t('Dengue, chikungunya and leptospirosis affect millions, yet attract little new drug funding. GeneTropica screens medicines that are already safe and approved to see which could be repurposed.')}
           </p>
           <a href="#field" style={{ fontFamily: 'var(--mono)', textTransform: 'uppercase', letterSpacing: '.12em', fontSize: 12, borderRadius: 100, padding: '13px 22px', border: '1px solid var(--ink)', background: 'var(--ink)', color: 'var(--paper)' }}>
-            Explore the candidates
+            {t('Explore the candidates')}
           </a>
         </div>
         <div style={{ height: isMobile ? 260 : 460 }}><HeroMolecule /></div>
@@ -51,10 +49,10 @@ export default function Overview() {
       <div className="wrap">
         {summary.data && (
           <StatStrip items={[
-            { num: summary.data.drugs, label: 'Approved drugs screened' },
-            { num: summary.data.targets, label: 'Protein targets' },
-            { num: summary.data.diseases, label: 'Neglected diseases' },
-            { num: summary.data.docking_runs, label: 'Docking runs' },
+            { num: summary.data.drugs, label: t('Approved drugs screened') },
+            { num: summary.data.targets, label: t('Protein targets') },
+            { num: summary.data.diseases, label: t('Neglected diseases') },
+            { num: summary.data.docking_runs, label: t('Docking runs') },
           ]} />
         )}
       </div>
@@ -65,10 +63,10 @@ export default function Overview() {
       <section id="field" style={{ background: 'var(--paper-2)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '92px 0' }}>
         <div className="wrap">
           <Reveal>
-            <div className="eyebrow">The candidate field, live data</div>
-            <h2 style={{ fontSize: 'clamp(28px,3.6vw,46px)', marginTop: 14 }}>Every drug, ranked by how it binds</h2>
+            <div className="eyebrow">{t('The candidate field, live data')}</div>
+            <h2 style={{ fontSize: 'clamp(28px,3.6vw,46px)', marginTop: 14 }}>{t('Every drug, ranked by how it binds')}</h2>
             <p style={{ color: 'var(--ink-soft)', fontSize: 17, lineHeight: 1.7, margin: '18px 0 0', maxWidth: 760 }}>
-              Every drug ranked by how strongly it binds the chosen target. Switch the target to re-rank, sort by efficiency, or hover a row for a plain-English read.
+              {t('Every drug ranked by how strongly it binds the chosen target. Switch the target to re-rank, sort by efficiency, or hover a row for a plain-English read.')}
             </p>
           </Reveal>
 
@@ -90,7 +88,7 @@ export default function Overview() {
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 320px', gap: 30, alignItems: 'start' }}>
             {field.isLoading ? (
-              <div className="mono" style={{ padding: 40 }}>Loading candidates...</div>
+              <div className="mono" style={{ padding: 40 }}>{t('Loading candidates...')}</div>
             ) : (
               <CandidateBoard key={sel} points={points} />
             )}

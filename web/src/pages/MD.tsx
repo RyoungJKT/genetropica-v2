@@ -2,10 +2,10 @@ import type { ReactNode, CSSProperties } from 'react'
 import { useState } from 'react'
 import { MdAnimator } from '../components/md/MdAnimator'
 import { useMd } from '../data/api'
-import { useRegister, say } from '../state/register'
 import { MultiLineChart, type ChartLine } from '../components/MultiLineChart'
 import type { MdSeries, Md } from '../data/types'
 import { useInView } from '../lib/anim'
+import { useT } from '../i18n'
 
 const DRUGS = ['celecoxib', 'methotrexate', 'dasabuvir'] as const
 const COLOR: Record<string, string> = { celecoxib: '#1F5740', methotrexate: '#A8492B', dasabuvir: '#A8742C' }
@@ -23,12 +23,13 @@ function ChartBlock({ title, caption, children }: { title: string; caption: stri
 }
 
 function TopContacts({ md }: { md: Md }) {
+  const { t } = useT()
   const [ref, inView] = useInView<HTMLDivElement>()
   return (
     <div ref={ref} style={{ marginTop: 34 }}>
-      <h3 style={{ fontSize: 22 }}>Top contact residues</h3>
+      <h3 style={{ fontSize: 22 }}>{t('Top contact residues')}</h3>
       <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.55, margin: '4px 0 14px', maxWidth: 760 }}>
-        The protein residues each drug touches most over the run (percentage of frames in contact). Residues shared between drugs point to a common binding site.
+        {t('The protein residues each drug touches most over the run (percentage of frames in contact). Residues shared between drugs point to a common binding site.')}
       </p>
       <div className="rstack" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
         {DRUGS.map((d) => {
@@ -45,7 +46,7 @@ function TopContacts({ md }: { md: Md }) {
                   </div>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-faint)' }}>{occ}%</span>
                 </div>
-              )) : <p style={{ fontSize: 12, color: 'var(--ink-faint)' }}>No sustained contacts.</p>}
+              )) : <p style={{ fontSize: 12, color: 'var(--ink-faint)' }}>{t('No sustained contacts.')}</p>}
             </div>
           )
         })}
@@ -55,8 +56,8 @@ function TopContacts({ md }: { md: Md }) {
 }
 
 export default function MD() {
+  const { t } = useT()
   const md = useMd()
-  const { reg } = useRegister()
   const [playheadNs, setPlayheadNs] = useState(0)
 
   const series = (metric: keyof MdSeries, yi: number): ChartLine[] =>
@@ -70,19 +71,17 @@ export default function MD() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">Tool 03</div>
-      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>Molecular Dynamics</h1>
+      <div className="eyebrow">{t('Tool 03')}</div>
+      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Molecular Dynamics')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 720, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {say(reg,
-          '50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts about 30 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs. One 50 ns run is a single anecdote, not a measurement of how strongly a drug binds.',
-          '50 ns all-atom MD (AMBER99SB-ILDN + GAFF2, TIP3P, 300 K) of three candidates with DENV NS5 (PDB 5CCV). The ligand was not started in the docked pose; it begins ~30 A away in solvent, so these are unbiased association simulations. A single 50 ns run is anecdotal, not a measure of affinity.')}
+        {t('50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts about 30 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs. One 50 ns run is a single anecdote, not a measurement of how strongly a drug binds.')}
       </p>
       <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '14px 18px', margin: '18px 0 8px', fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, maxWidth: 760 }}>
-        Celecoxib associates at about 3 ns and stays; methotrexate associates at about 14 ns and remains mobile; dasabuvir never forms a stable bound pose within 50 ns.
+        {t('Celecoxib associates at about 3 ns and stays; methotrexate associates at about 14 ns and remains mobile; dasabuvir never forms a stable bound pose within 50 ns.')}
       </div>
       <MdAnimator onTime={setPlayheadNs} />
 
-      {!md.data && <p className="mono" style={{ marginTop: 20 }}>Loading simulation data...</p>}
+      {!md.data && <p className="mono" style={{ marginTop: 20 }}>{t('Loading simulation data...')}</p>}
 
       {md.data && (
         <div style={{ overflowX: 'auto', marginTop: 18 }}>
@@ -90,7 +89,7 @@ export default function MD() {
             <thead>
               <tr>
                 {['Drug', 'Protein RMSD (Å)', 'Ligand RMSD (Å)', 'Associates (ns)', 'Rg (Å)', 'H-bonds', 'Min dist (Å)', 'Contact res >50%', 'Avg contacts'].map((h) => (
-                  <th key={h} style={{ textAlign: h === 'Drug' ? 'left' : 'right', padding: '8px 14px', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)', borderBottom: '1px solid var(--line)', whiteSpace: 'nowrap' }}>{h}</th>
+                  <th key={h} style={{ textAlign: h === 'Drug' ? 'left' : 'right', padding: '8px 14px', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--ink-faint)', borderBottom: '1px solid var(--line)', whiteSpace: 'nowrap' }}>{t(h)}</th>
                 ))}
               </tr>
             </thead>
@@ -99,7 +98,7 @@ export default function MD() {
                 <tr key={r.Drug} style={{ borderBottom: '1px solid var(--line)' }}>
                   <td style={{ padding: '9px 14px', fontFamily: 'var(--serif)', fontSize: 16 }}>{r.Drug}</td>
                   <td style={tdR}>{r.Prot_RMSD_avg} ± {r.Prot_RMSD_std}</td>
-                  <td style={tdR}>{r.Lig_RMSD_avg === 'no stable pose' ? 'no stable pose' : `${r.Lig_RMSD_avg} ± ${r.Lig_RMSD_std}`}</td>
+                  <td style={tdR}>{r.Lig_RMSD_avg === 'no stable pose' ? t('no stable pose') : `${r.Lig_RMSD_avg} ± ${r.Lig_RMSD_std}`}</td>
                   <td style={tdR}>{r.Assoc_ns}</td>
                   <td style={tdR}>{r.Rg_avg}</td>
                   <td style={tdR}>{r.HBonds_avg} ± {r.HBonds_std}</td>
@@ -115,23 +114,23 @@ export default function MD() {
 
       {md.data && (
         <>
-          <ChartBlock title="Protein backbone RMSD" caption="How far the protein drifts from its starting shape over time. A low, flat line means the protein stayed stable through the run.">
-            <MultiLineChart lines={series('rmsd', 1)} xLabel="time (ns)" yLabel="RMSD (Å)" yMin={0} playheadX={playheadNs} />
+          <ChartBlock title={t('Protein backbone RMSD')} caption={t('How far the protein drifts from its starting shape over time. A low, flat line means the protein stayed stable through the run.')}>
+            <MultiLineChart lines={series('rmsd', 1)} xLabel={t('time (ns)')} yLabel={t('RMSD (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title="Ligand RMSD vs its bound pose" caption="Once a drug settles into a site, how much its pose wobbles, measured against that drug's own bound pose. Dasabuvir never settles, so it has none.">
-            <MultiLineChart lines={series('rmsd', 2)} xLabel="time (ns)" yLabel="RMSD (Å)" yMin={0} playheadX={playheadNs} />
+          <ChartBlock title={t('Ligand RMSD vs its bound pose')} caption={t("Once a drug settles into a site, how much its pose wobbles, measured against that drug's own bound pose. Dasabuvir never settles, so it has none.")}>
+            <MultiLineChart lines={series('rmsd', 2)} xLabel={t('time (ns)')} yLabel={t('RMSD (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title="Ligand-protein minimum distance" caption="The headline of these runs: each drug starts about 30 Å away and either finds the protein (distance drops toward 2 Å) or does not. Celecoxib and methotrexate associate; dasabuvir stays far.">
-            <MultiLineChart lines={series('mindist', 1)} xLabel="time (ns)" yLabel="min distance (Å)" yMin={0} playheadX={playheadNs} />
+          <ChartBlock title={t('Ligand-protein minimum distance')} caption={t('The headline of these runs: each drug starts about 30 Å away and either finds the protein (distance drops toward 2 Å) or does not. Celecoxib and methotrexate associate; dasabuvir stays far.')}>
+            <MultiLineChart lines={series('mindist', 1)} xLabel={t('time (ns)')} yLabel={t('min distance (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title="Drug-protein hydrogen bonds" caption="Hydrogen bonds between the drug and the protein over time. More sustained bonds indicate a tighter grip once bound.">
-            <MultiLineChart lines={series('hbonds', 1)} xLabel="time (ns)" yLabel="H-bonds" yMin={0} playheadX={playheadNs} />
+          <ChartBlock title={t('Drug-protein hydrogen bonds')} caption={t('Hydrogen bonds between the drug and the protein over time. More sustained bonds indicate a tighter grip once bound.')}>
+            <MultiLineChart lines={series('hbonds', 1)} xLabel={t('time (ns)')} yLabel={t('H-bonds')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title="Per-residue flexibility (RMSF)" caption="Which parts of the protein move most. Peaks are flexible loops, troughs the rigid core. Similar across the three runs, as expected for the same protein.">
-            <MultiLineChart lines={series('rmsf', 1)} xLabel="residue" yLabel="RMSF (Å)" yMin={0} />
+          <ChartBlock title={t('Per-residue flexibility (RMSF)')} caption={t('Which parts of the protein move most. Peaks are flexible loops, troughs the rigid core. Similar across the three runs, as expected for the same protein.')}>
+            <MultiLineChart lines={series('rmsf', 1)} xLabel={t('residue')} yLabel={t('RMSF (Å)')} yMin={0} />
           </ChartBlock>
-          <ChartBlock title="Atom-atom contacts" caption="Close contacts (within 4.5 Å) between drug and protein over time. The jump from zero marks association; a sustained high count means a tight, persistent interface.">
-            <MultiLineChart lines={series('ncontacts', 1)} xLabel="time (ns)" yLabel="contacts (< 4.5 Å)" yMin={0} playheadX={playheadNs} />
+          <ChartBlock title={t('Atom-atom contacts')} caption={t('Close contacts (within 4.5 Å) between drug and protein over time. The jump from zero marks association; a sustained high count means a tight, persistent interface.')}>
+            <MultiLineChart lines={series('ncontacts', 1)} xLabel={t('time (ns)')} yLabel={t('contacts (< 4.5 Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <TopContacts md={md.data} />
         </>

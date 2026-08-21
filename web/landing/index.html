@@ -79,7 +79,16 @@
     transition:all .3s;
   }
   .top .launch:hover{background:var(--ink);color:var(--paper)}
+  /* language switch, sized to sit level with the Launch pill next to it */
+  .langsel{display:inline-flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+  .langsel button{padding:8px 13px;border:0;cursor:pointer;font:inherit;letter-spacing:inherit;
+    text-transform:inherit;color:var(--ink-faint);background:transparent;transition:color .25s,background .25s}
+  .langsel button:hover{color:var(--green)}
+  .langsel button[aria-pressed="true"]{color:var(--paper);background:var(--green)}
+  .langsel button[aria-pressed="true"]:hover{color:var(--paper)}
   @media(max-width:760px){.top nav .nlink{display:none}}
+  @media(max-width:340px){.langsel button{padding:7px 10px;font-size:9.5px}}
 
   /* ---- section index rail ---- */
   .rail{position:fixed;left:clamp(14px,2.6vw,34px);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:14px}
@@ -224,6 +233,10 @@
     <a href="#problem" class="nlink">The Problem</a>
     <a href="#how" class="nlink">How It Works</a>
     <a href="#rigor" class="nlink">Rigor</a>
+    <div class="langsel" role="group" aria-label="Language">
+      <button type="button" lang="en" data-lang="en" title="English">EN</button>
+      <button type="button" lang="id" data-lang="id" title="Bahasa Indonesia">ID</button>
+    </div>
     <a class="launch" href="/app/">Launch Dashboard</a>
   </nav>
 </header>
@@ -410,6 +423,182 @@
   </div>
 </footer>
 
+<script>
+/* Bahasa Indonesia layer for the landing page.
+   Keyed by each element's own English innerHTML rather than by invented ids, so the
+   markup needs no translation attributes and anything missing from the dictionary
+   simply stays in English instead of rendering a raw key. Runs before GSAP loads, so
+   the hero lines are already at their final length when the entrance is measured. */
+(function(){
+  var KEY = 'gt-locale';          // shared with the dashboard, same origin
+  var SCOPE = [
+    '.top nav a.nlink', '.top .launch', '.rail .rlabel',
+    '.eyebrow', '.hero h1 .ln', '.standfirst', '.hero-cta a', '.fig-cap',
+    '.sec-num', 'h2', '.body', '.bignum-sub',
+    '.step h3', '.step p', '.chip', '.pullquote', '.stat .k',
+    '.colophon > div:first-child', '.colophon a'
+  ].join(', ');
+
+  var ID = {
+    /* header + rail */
+    'The Problem':'Masalahnya',
+    'How It Works':'Cara Kerjanya',
+    'Rigor':'Ketelitian',
+    'Launch Dashboard':'Buka Dasbor',
+    'Cover':'Sampul',
+    '01 Problem':'01 Masalah',
+    '02 Idea':'02 Gagasan',
+    '03 Method':'03 Metode',
+    '04 Rigor':'04 Ketelitian',
+    '05 Results':'05 Hasil',
+
+    /* hero */
+    'A computational drug-repurposing study':'Studi komputasi penggunaan ulang obat',
+    'Finding new':'Obat baru yang',
+    'medicines <em>hidden</em>':'<em>tersembunyi</em> di',
+    'in old ones.':'dalam obat lama.',
+    'A search for forgotten cures: screening <b>100 approved drugs</b> against the proteins behind <b>dengue</b> and other neglected tropical diseases, using physics, chemistry, and a measured dose of machine learning.':
+      'Pencarian obat yang terlupakan: menguji <b>100 obat yang telah disetujui</b> terhadap protein di balik <b>demam berdarah</b> dan penyakit tropis terabaikan lainnya, dengan fisika, kimia, dan takaran pembelajaran mesin yang terukur.',
+    'Read how it works':'Baca cara kerjanya',
+    'Fig. 1, a candidate ligand, abstracted':'Gbr. 1, ligan kandidat, dalam bentuk abstrak',
+
+    /* 01 problem */
+    '01 / The problem':'01 / Masalahnya',
+    'A billion people, and <em>almost no new drugs.</em>':'Satu miliar orang, dan <em>nyaris tanpa obat baru.</em>',
+    'Neglected tropical diseases like <b>dengue</b>, chikungunya, and leptospirosis affect more than a billion people, and Indonesia carries a disproportionate share of that burden.':
+      'Penyakit tropis terabaikan seperti <b>demam berdarah</b>, chikungunya, dan leptospirosis menyerang lebih dari satu miliar orang, dan Indonesia menanggung beban yang jauh lebih besar dari semestinya.',
+    "Yet building a brand-new drug takes well over a decade and a billion dollars. For diseases that mostly affect the world's poorest, that investment rarely comes. The pipeline is, in practice, empty.":
+      'Namun membuat obat yang benar-benar baru butuh lebih dari satu dekade dan satu miliar dolar. Untuk penyakit yang sebagian besar menimpa kelompok termiskin di dunia, investasi itu jarang datang. Pada praktiknya, alur obatnya kosong.',
+    'people at risk worldwide':'orang berisiko di seluruh dunia',
+
+    /* 02 idea */
+    '02 / The idea':'02 / Gagasannya',
+    'What if the cure <em>already exists?</em>':'Bagaimana jika obatnya <em>sudah ada?</em>',
+    '<b>Drug repurposing</b> asks a simple question: instead of inventing a new molecule, could a medicine we already trust, already proven safe in millions of people, work against a disease it was never designed for?':
+      '<b>Penggunaan ulang obat</b> mengajukan satu pertanyaan sederhana: alih-alih menciptakan molekul baru, mungkinkah obat yang sudah kita percaya, yang sudah terbukti aman pada jutaan orang, bekerja melawan penyakit yang tidak pernah menjadi sasarannya?',
+    'It is faster, cheaper, and safer at the starting line, because the hardest question, "is this safe for humans," already has an answer. GeneTropica screens a curated library of approved drugs to find those hidden second lives.':
+      'Cara ini lebih cepat, lebih murah, dan lebih aman sejak garis awal, karena pertanyaan tersulit, "apakah ini aman bagi manusia," sudah punya jawaban. GeneTropica menyaring pustaka terkurasi berisi obat yang telah disetujui untuk menemukan kehidupan kedua yang tersembunyi itu.',
+
+    /* 03 method */
+    '03 / The method':'03 / Metodenya',
+    'Seven stages, from <em>molecule</em> to candidate.':'Tujuh tahap, dari <em>molekul</em> ke kandidat.',
+    'A curated library':'Pustaka terkurasi',
+    '100 FDA-approved drugs, chosen to span chemical space, become the search pool.':
+      '100 obat yang disetujui FDA, dipilih agar mencakup ruang kimia yang luas, menjadi kumpulan pencarian.',
+    'Six disease targets':'Enam target penyakit',
+    'Key proteins from dengue, chikungunya, and leptospirosis, the machinery each disease depends on to survive.':
+      'Protein kunci dari demam berdarah, chikungunya, dan leptospirosis, yaitu mesin yang diandalkan tiap penyakit untuk bertahan hidup.',
+    '~1,800 docking simulations':'~1.800 simulasi penambatan',
+    'AutoDock Vina computes how snugly every drug fits into every target, like testing keys against a lock.':
+      'AutoDock Vina menghitung seberapa pas tiap obat masuk ke tiap target, seperti mencoba anak kunci pada sebuah gembok.',
+    'Two honest rankings':'Dua peringkat yang jujur',
+    'Candidates are scored both by raw binding strength and by ligand efficiency, the binding earned per atom, shown side by side.':
+      'Kandidat dinilai dari kekuatan ikatan mentah sekaligus dari efisiensi ligan, yaitu ikatan yang diperoleh per atom, dan keduanya ditampilkan berdampingan.',
+    'A machine-learning prior':'Dugaan awal dari pembelajaran mesin',
+    'A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.':
+      'Model yang dilatih pada senyawa aktif yang sudah dikenal menambahkan petunjuk kemungkinan aktivitas. Ini diperlakukan sebagai petunjuk, tidak pernah sebagai keputusan.',
+    'Safety screening':'Penyaringan keamanan',
+    'ADMET filters keep only drug-like, tolerable molecules, the ones a body could plausibly absorb and clear.':
+      'Filter ADMET hanya menyisakan molekul yang mirip obat dan dapat ditoleransi, yaitu yang masuk akal diserap dan dibuang oleh tubuh.',
+    'Molecular dynamics':'Dinamika molekuler',
+    'The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.':
+      'Kandidat terkuat diuji ketahanannya dengan simulasi 50 nanodetik untuk melihat apakah kecocokannya benar-benar bertahan.',
+    '<b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, ADMET, and conservation analysis on CPUs. Every step of the pipeline is public, and the dengue NS5 validation can be re-run by anyone in the browser.':
+      '<b>Ini hasil perhitungan nyata, bukan ilustrasi.</b> Setiap proses dijalankan di Google Colab: simulasi dinamika molekuler 50 nanodetik pada <b>GPU NVIDIA A100</b>, sedangkan penambatan, pembelajaran mesin, ADMET, dan analisis konservasi pada CPU. Setiap tahap alur kerjanya terbuka untuk umum, dan validasi NS5 demam berdarah dapat dijalankan ulang oleh siapa pun langsung di peramban.',
+    'Reproduce the NS5 validation in Colab →':'Jalankan ulang validasi NS5 di Colab →',
+
+    /* 04 rigor */
+    '04 / Rigor':'04 / Ketelitian',
+    'Built to be <em>doubted.</em>':'Dibangun untuk <em>diragukan.</em>',
+    'Good science earns trust by showing its limits, not hiding them. GeneTropica is built around that idea.':
+      'Sains yang baik memperoleh kepercayaan dengan menunjukkan batasnya, bukan menyembunyikannya. GeneTropica dibangun di atas gagasan itu.',
+    'A known antiviral, <b>sofosbuvir</b>, is included as a positive control: if the method is sound, it should recognise a drug we already know works. Where the model is weak, that weakness is published openly, including a validation score of <b>0.37</b> on one dengue target. The machine learning is a prior, not a proof.':
+      'Sebuah antivirus yang sudah dikenal, <b>sofosbuvir</b>, disertakan sebagai kontrol positif: jika metodenya benar, ia semestinya mengenali obat yang sudah kita tahu manjur. Di titik model ini lemah, kelemahan tersebut diterbitkan secara terbuka, termasuk skor validasi <b>0.37</b> pada salah satu target demam berdarah. Pembelajaran mesin di sini adalah dugaan awal, bukan bukti.',
+    'A result you <span class="mark">can\'t question</span> isn\'t science.':
+      'Hasil yang <span class="mark">tidak bisa dipertanyakan</span> bukanlah sains.',
+
+    /* 05 results */
+    '05 / Results':'05 / Hasil',
+    'What the search <em>turned up.</em>':'Apa yang <em>ditemukan</em> pencarian ini.',
+    'approved drugs<br>screened':'obat disetujui<br>yang disaring',
+    'protein targets<br>across 3 diseases':'target protein<br>di 3 penyakit',
+    'docking<br>simulations':'simulasi<br>penambatan',
+    'drug-like<br>candidates':'kandidat<br>mirip obat',
+    'ADMET-safe<br>candidates':'kandidat<br>aman ADMET',
+    'dynamics per<br>finalist':'dinamika per<br>finalis',
+    "Against dengue's replication machinery, two families of drug rose to the top: <b>nucleoside analogues</b> and <b>hepatitis-C antivirals</b>, classes that already disrupt viral copying in other diseases. Promising leads, openly caveated, ready for a wet lab to test.":
+      'Terhadap mesin replikasi demam berdarah, dua keluarga obat menempati posisi teratas: <b>analog nukleosida</b> dan <b>antivirus hepatitis C</b>, golongan yang memang sudah mengganggu penyalinan virus pada penyakit lain. Petunjuk yang menjanjikan, dengan catatan yang disampaikan terbuka, siap diuji di laboratorium basah.',
+    '<b>Nucleoside</b> analogues':'Analog <b>nukleosida</b>',
+    '<b>Hepatitis-C</b> antivirals':'Antivirus <b>hepatitis C</b>',
+    'Dengue <b>NS3</b> &amp; <b>NS5</b>':'<b>NS3</b> &amp; <b>NS5</b> demam berdarah',
+
+    /* closing call to action + footer */
+    'The interactive study':'Studi interaktifnya',
+    'Explore every drug, target, and 3D binding pose <em>yourself.</em>':
+      'Jelajahi sendiri setiap obat, target, dan <em>pose ikatan 3D.</em>',
+    'Launch the dashboard <span class="arr">→</span>':'Buka dasbornya <span class="arr">→</span>',
+    'GeneTropica · A computational drug-repurposing study · Russell Young, 2026':
+      'GeneTropica · Studi komputasi penggunaan ulang obat · Russell Young, 2026',
+    'Dashboard':'Dasbor'
+  };
+
+  var META = {
+    en: {
+      title: 'GeneTropica. Finding new medicines hidden in old ones',
+      desc: 'A computational drug-repurposing study screening 100 approved drugs against the proteins behind dengue and other neglected tropical diseases.'
+    },
+    id: {
+      title: 'GeneTropica. Menemukan obat baru yang tersembunyi di dalam obat lama',
+      desc: 'Studi komputasi penggunaan ulang obat yang menguji 100 obat yang telah disetujui terhadap protein di balik demam berdarah dan penyakit tropis terabaikan lainnya.'
+    }
+  };
+
+  /* Cache the English exactly once, before anything is swapped, so switching back is
+     lossless even for entries the dictionary does not cover. */
+  var nodes = [];
+  Array.prototype.forEach.call(document.querySelectorAll(SCOPE), function(el){
+    nodes.push({ el: el, en: el.innerHTML.trim() });
+  });
+
+  function read(){
+    try {
+      var s = localStorage.getItem(KEY);
+      if (s === 'en' || s === 'id') return s;
+    } catch (e) { /* storage can throw in private browsing */ }
+    return /^id\b/i.test(navigator.language || '') ? 'id' : 'en';
+  }
+
+  var loc = read();
+  window.GT_LOCALE = loc;
+
+  function apply(next){
+    loc = next;
+    window.GT_LOCALE = next;
+    nodes.forEach(function(n){
+      var out = next === 'id' ? (ID[n.en] || n.en) : n.en;
+      if (n.el.innerHTML.trim() !== out) n.el.innerHTML = out;
+    });
+    var m = META[next] || META.en;
+    document.title = m.title;
+    var d = document.querySelector('meta[name="description"]');
+    if (d) d.setAttribute('content', m.desc);
+    document.documentElement.lang = next;
+    document.querySelectorAll('.langsel button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.lang === next));
+    });
+    try { localStorage.setItem(KEY, next); } catch (e) { /* ignore */ }
+    // line lengths change with the language, so every scroll trigger needs remeasuring
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    if (typeof window.GT_RECOUNT === 'function') window.GT_RECOUNT();
+  }
+
+  document.querySelectorAll('.langsel button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.lang); });
+  });
+
+  apply(loc);
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -418,15 +607,39 @@
   gsap.registerPlugin(ScrollTrigger);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Only the magnitude WORD is localised. Digit grouping stays international in both
+     languages, because every figure on this site is a measurement reproduced from the
+     pipeline output and the dashboard prints those straight from the data; switching
+     separators here would put two conventions on one page.
+     The locale is read per call rather than captured: a counter further down the page is
+     only tweened when it scrolls into view, which can be long after the reader switched. */
+  function fmtFor(end){
+    return v => end>=1e9
+      ? (v/1e9).toFixed(0)+(window.GT_LOCALE === 'id' ? ' miliar' : 'B')
+      : Math.round(v).toLocaleString('en-US');
+  }
+  /* Re-render on a language switch, but only counters that have already finished. A
+     counter still below the fold has not been tweened yet; rewriting it would strand it
+     at its final value and rob the reader of the count-up when they reach it. */
+  window.GT_RECOUNT=function(){
+    document.querySelectorAll('[data-count][data-counted]').forEach(el=>{
+      const end=+el.dataset.count;
+      el.textContent=fmtFor(end)(end)+(el.dataset.suffix||'');
+    });
+  };
+
   function setupCounts(animated){
     gsap.utils.toArray('[data-count]').forEach(el=>{
       const end=+el.dataset.count, suf=el.dataset.suffix||'';
-      const fmt=v=> end>=1e9 ? (v/1e9).toFixed(0)+'B' : Math.round(v).toLocaleString();
-      if(!animated){ el.textContent=fmt(end)+suf; return; }
+      const fmt=fmtFor(end);
+      if(!animated){ el.textContent=fmt(end)+suf; el.dataset.counted='1'; return; }
       const o={v:0};
       gsap.to(o,{v:end,duration:1.8,ease:'power2.out',
         scrollTrigger:{trigger:el,start:'top 88%'},
-        onUpdate:()=>{el.textContent=fmt(o.v)+(o.v>=end?suf:'');}});
+        onUpdate:()=>{
+          el.textContent=fmt(o.v)+(o.v>=end?suf:'');
+          if(o.v>=end) el.dataset.counted='1';
+        }});
     });
   }
 

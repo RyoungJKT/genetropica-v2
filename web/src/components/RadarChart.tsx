@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
+import { useT } from '../i18n'
 
 type Axis = { label: string; value: number }
 
 /** Lightweight polar radar (regular polygon). Values clamped to 0..1. Scales in on appear; hover a vertex for its value. */
 export function RadarChart({ axes, color = 'var(--green)' }: { axes: Axis[]; color?: string }) {
+  const { t } = useT()
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
   const [ref, inView] = useInView<SVGSVGElement>()
   const W = 480
@@ -23,7 +25,7 @@ export function RadarChart({ axes, color = 'var(--green)' }: { axes: Axis[]; col
 
   return (
     <>
-      <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: 'visible', display: 'block' }} role="img" aria-label="ADMET safety radar">
+      <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: 'visible', display: 'block' }} role="img" aria-label={t('ADMET safety radar')}>
         {rings.map((f) => (
           <polygon key={f} points={ringPts(f)} fill="none" stroke="var(--line)" strokeWidth={1} />
         ))}

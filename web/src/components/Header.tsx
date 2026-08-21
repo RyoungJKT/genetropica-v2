@@ -1,7 +1,8 @@
 import { useState, type CSSProperties } from 'react'
 import { NavLink } from 'react-router-dom'
-import { RegisterToggle } from './RegisterToggle'
+import { LanguageToggle } from './LanguageToggle'
 import { useIsMobile } from '../lib/useIsMobile'
+import { useT } from '../i18n'
 
 const LINKS: [string, string][] = [
   ['/diseases', 'Diseases'],
@@ -27,6 +28,7 @@ const linkStyle = (isActive: boolean): CSSProperties => ({
 })
 
 export function Header() {
+  const { t } = useT()
   const isMobile = useIsMobile()
   const [open, setOpen] = useState(false)
 
@@ -43,18 +45,18 @@ export function Header() {
             fontOpticalSizing: 'none', fontVariationSettings: '"opsz" 8, "wght" 500',
             letterSpacing: '.015em', marginRight: '-.015em', lineHeight: 1,
             color: 'var(--ink-soft)', marginTop: 5, textAlign: 'right',
-          }}>by Russell Young</span>
+          }}>{t('by Russell Young')}</span>
         </a>
         {isMobile ? (
-          <button onClick={() => setOpen((o) => !o)} aria-label="Menu" aria-expanded={open} style={{ background: 'transparent', border: '1px solid var(--line)', borderRadius: 10, padding: '7px 12px', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 15, color: 'var(--ink)', lineHeight: 1 }}>
+          <button onClick={() => setOpen((o) => !o)} aria-label={t('Menu')} aria-expanded={open} style={{ background: 'transparent', border: '1px solid var(--line)', borderRadius: 10, padding: '7px 12px', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 15, color: 'var(--ink)', lineHeight: 1 }}>
             {open ? '✕' : '☰'}
           </button>
         ) : (
           <nav style={{ display: 'flex', gap: 13, rowGap: 6, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
             {LINKS.map(([to, label]) => (
-              <NavLink key={to} to={to} style={({ isActive }) => linkStyle(isActive)}>{label}</NavLink>
+              <NavLink key={to} to={to} style={({ isActive }) => linkStyle(isActive)}>{t(label)}</NavLink>
             ))}
-            <RegisterToggle />
+            <LanguageToggle />
           </nav>
         )}
       </div>
@@ -62,10 +64,10 @@ export function Header() {
         <nav style={{ borderTop: '1px solid var(--line)', background: 'var(--paper)', padding: '6px 16px 16px', display: 'flex', flexDirection: 'column' }}>
           {LINKS.map(([to, label]) => (
             <NavLink key={to} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({ ...linkStyle(isActive), fontSize: 13, padding: '11px 2px', borderBottom: '1px solid var(--line)' })}>
-              {label}
+              {t(label)}
             </NavLink>
           ))}
-          <div style={{ marginTop: 14 }}><RegisterToggle /></div>
+          <div style={{ marginTop: 14 }}><LanguageToggle /></div>
         </nav>
       )}
     </header>
