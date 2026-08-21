@@ -43,7 +43,7 @@ export function AskAssistant() {
         body: JSON.stringify({ question: text }),
       })
       const data = await r.json().catch(() => ({}))
-      if (!r.ok) setErr(data?.error || t('Something went wrong.'))
+      if (!r.ok) setErr(data?.error ? t(data.error) : t('Something went wrong.'))
       else setAnswer(data?.answer || t('(no answer)'))
     } catch {
       setErr(t('Could not reach the assistant. It runs on the deployed site, which needs the serverless function and an API key.'))

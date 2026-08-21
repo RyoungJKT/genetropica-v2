@@ -14,7 +14,7 @@ export default function Validation() {
     ? [
         ...(['docking', 'gnn', 'consensus'] as const)
           .filter((k) => data.roc[k]?.length)
-          .map((k) => ({ label: LABEL[k], color: COLOR[k], pts: data.roc[k] })),
+          .map((k) => ({ label: t(LABEL[k]), color: COLOR[k], pts: data.roc[k] })),
         { label: t('Random'), color: '#c9bfa8', pts: [[0, 0], [1, 1]] as [number, number][] },
       ]
     : []
@@ -53,7 +53,7 @@ export default function Validation() {
               <tbody>
                 {Object.entries(data.ef).map(([k, e]) => (
                   <tr key={k} style={{ borderBottom: '1px solid var(--line)' }}>
-                    <td style={{ padding: '9px 14px' }}>{LABEL[k] ?? k}</td>
+                    <td style={{ padding: '9px 14px' }}>{t(LABEL[k] ?? k)}</td>
                     <td style={{ padding: '9px 14px', textAlign: 'right', fontFamily: 'var(--mono)' }}>{e.ef_1pct}x</td>
                     <td style={{ padding: '9px 14px', textAlign: 'right', fontFamily: 'var(--mono)' }}>{e.ef_5pct}x</td>
                     <td style={{ padding: '9px 14px', textAlign: 'right', fontFamily: 'var(--mono)' }}>{e.ef_10pct}x</td>

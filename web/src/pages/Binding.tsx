@@ -86,7 +86,7 @@ export default function Binding() {
           {Object.entries(byType).map(([type, list]) => (
             <div key={type} style={{ marginBottom: 14 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '.06em', textTransform: 'uppercase', color: tcol(type), marginBottom: 6 }}>
-                <span style={{ width: 9, height: 9, borderRadius: '50%', background: tcol(type) }} />{type} ({list.length})
+                <span style={{ width: 9, height: 9, borderRadius: '50%', background: tcol(type) }} />{t(type)} ({list.length})
               </div>
               {list.map((c, i) => (
                 <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--ink-soft)', padding: '3px 0 3px 17px' }}>

@@ -6,11 +6,11 @@ const OPTIONS: [Locale, string, string][] = [
 ]
 
 export function LanguageToggle() {
-  const { loc, setLoc } = useT()
+  const { loc, setLoc, t } = useT()
   return (
     <div
       role="group"
-      aria-label="Language"
+      aria-label={t('Language')}
       style={{
         display: 'inline-flex',
         border: '1px solid var(--line)',

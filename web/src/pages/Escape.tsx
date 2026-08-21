@@ -80,7 +80,7 @@ function GripDetail({ d }: { d: EscapeDrug }) {
             onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, node: (
               <>
                 <div style={{ fontWeight: 600 }}>{c.res} {c.num}{c.key ? ` · ${t('catalytic')}` : ''}</div>
-                <div style={{ opacity: 0.85 }}>{t('conservation grade')} {c.grade}/9 · {c.cls}</div>
+                <div style={{ opacity: 0.85 }}>{t('conservation grade')} {c.grade}/9 · {t(c.cls)}</div>
               </>
             ) })}
             onMouseLeave={() => setTip(null)}>

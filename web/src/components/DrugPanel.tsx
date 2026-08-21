@@ -82,7 +82,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
             <div
               key={b.tid}
               style={{ display: 'grid', gridTemplateColumns: '168px 1fr', gap: 10, alignItems: 'center', margin: '9px 0', cursor: 'pointer' }}
-              onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: b.name, value: `Vina ${b.raw != null ? b.raw.toFixed(2) : 'n/a'} kcal/mol  •  ML ${ml.toFixed(2)}` })}
+              onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: b.name, value: `Vina ${b.raw != null ? b.raw.toFixed(2) : t('n/a')} kcal/mol  •  ML ${ml.toFixed(2)}` })}
               onMouseLeave={() => setTip(null)}
             >
               <span style={{ fontSize: 11.5, color: 'var(--ink-soft)', textAlign: 'right', lineHeight: 1.2 }}>{b.name}</span>
@@ -93,7 +93,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 13, marginTop: 2 }}>
                   <div className="bar" style={{ width: inView ? `${(b.vina / xMax) * 100}%` : '0%', height: 11, background: 'var(--green)', borderRadius: 2, transitionDelay: `${i * 40}ms` }} />
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: 'var(--ink-soft)' }}>{b.raw != null ? b.raw.toFixed(2) : 'n/a'}</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: 'var(--ink-soft)' }}>{b.raw != null ? b.raw.toFixed(2) : t('n/a')}</span>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
                     {r.llm_verdict ? (
                       <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2, lineHeight: 1.45 }}>PMID {r.pmid} · <span style={{ color: verdictColor(r.llm_verdict), fontWeight: 600 }}>{t('AI:')} {r.llm_verdict}</span>{r.llm_rel ? ` · ${r.llm_rel}` : ''}{r.llm_note ? <span style={{ color: 'var(--ink-soft)' }}> — {r.llm_note}</span> : null}</div>
                     ) : (
-                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {r.rel} · <span style={{ color: tierColor(r.tier) }}>{r.tier.replace(/_/g, ' ')}</span></div>
+                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {t(r.rel)} · <span style={{ color: tierColor(r.tier) }}>{t(r.tier.replace(/_/g, ' '))}</span></div>
                     )}
                   </div>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', whiteSpace: 'nowrap' }}>{r.llm_conf != null ? r.llm_conf.toFixed(2) : r.conf != null ? r.conf.toFixed(2) : ''}</span>

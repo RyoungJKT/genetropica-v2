@@ -221,7 +221,7 @@ function PropertyHeatmap({ profiles }: { profiles: AdmetProfile[] }) {
       <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'auto', maxHeight: 540, background: 'var(--paper)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: cols, position: 'sticky', top: 0, background: 'var(--paper-2)', zIndex: 1, borderBottom: '1px solid var(--line)' }}>
           <div style={{ padding: '8px 12px', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.05em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>{t('Drug')}</div>
-          {HM_COLS.map((c) => <div key={c.label} style={{ padding: '8px 4px', fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--ink-faint)', textAlign: 'center' }}>{c.label}</div>)}
+          {HM_COLS.map((c) => <div key={c.label} style={{ padding: '8px 4px', fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--ink-faint)', textAlign: 'center' }}>{t(c.label)}</div>)}
         </div>
         {profiles.map((p) => (
           <div key={p.name} style={{ display: 'grid', gridTemplateColumns: cols, alignItems: 'stretch' }}>
@@ -230,7 +230,7 @@ function PropertyHeatmap({ profiles }: { profiles: AdmetProfile[] }) {
               const pass = c.ok(p)
               return (
                 <div key={c.label} style={{ borderBottom: '1px solid var(--line)', borderLeft: '1px solid var(--line)', minHeight: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `${p.name.replace(/_/g, ' ')} · ${c.label}`, value: pass ? t('pass') : t('fail') })}
+                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `${p.name.replace(/_/g, ' ')} · ${t(c.label)}`, value: pass ? t('pass') : t('fail') })}
                   onMouseLeave={() => setTip(null)}>
                   <span style={{ width: '78%', height: 14, borderRadius: 3, background: pass ? 'var(--green)' : 'var(--clay)', opacity: inView ? (pass ? 0.85 : 0.7) : 0, transition: 'opacity .5s ease' }} />
                 </div>
@@ -256,7 +256,7 @@ function TopCandidates({ profiles, avgLe }: { profiles: AdmetProfile[]; avgLe: R
         <thead><tr>
           <th style={{ ...th, textAlign: 'left' }}>{t('Drug')}</th>
           <th style={{ ...th, textAlign: 'left', width: 130 }}>{t('DL score')}</th>
-          {['MW', 'LogP', 'TPSA', 'ESOL', 'GI', 'BBB', t('Alerts'), 'Avg LE'].map((h) => <th key={h} style={th}>{h}</th>)}
+          {['MW', 'LogP', 'TPSA', 'ESOL', 'GI', 'BBB', 'Alerts', 'Avg LE'].map((h) => <th key={h} style={th}>{t(h)}</th>)}
         </tr></thead>
         <tbody>
           {rows.map((p) => (

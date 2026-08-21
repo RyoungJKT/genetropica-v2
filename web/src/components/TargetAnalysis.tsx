@@ -82,7 +82,7 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
                 <g
                   key={i}
                   style={{ cursor: 'pointer' }}
-                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `LE ${bLo.toFixed(3)} to ${bHi.toFixed(3)}`, value: `${c} drug${c === 1 ? '' : 's'}` })}
+                  onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, title: `LE ${bLo.toFixed(3)} ${t('to')} ${bHi.toFixed(3)}`, value: `${c} ${c === 1 ? t('drug') : t('drugs')}` })}
                   onMouseLeave={() => setTip(null)}
                 >
                   <rect x={x} y={mT} width={w} height={ih} fill="transparent" />
