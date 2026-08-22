@@ -25,7 +25,10 @@ export function initialLocale(): Locale {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved === 'en' || saved === 'id') return saved
-    if (typeof navigator !== 'undefined' && /^id\b/i.test(navigator.language || '')) return 'id'
+    /* Deliberately English-first: no navigator.language sniffing. The site is read by
+       international and Indonesian audiences alike, and a machine that happens to be set
+       to Indonesian is not a statement of preference. Indonesian is one click away and
+       persists once chosen. */
   } catch {
     /* private browsing can throw on storage access */
   }

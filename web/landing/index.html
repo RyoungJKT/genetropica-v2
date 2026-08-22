@@ -565,7 +565,8 @@
       var s = localStorage.getItem(KEY);
       if (s === 'en' || s === 'id') return s;
     } catch (e) { /* storage can throw in private browsing */ }
-    return /^id\b/i.test(navigator.language || '') ? 'id' : 'en';
+    /* English-first by choice; see the note in src/i18n/index.ts. No language sniffing. */
+    return 'en';
   }
 
   var loc = read();
