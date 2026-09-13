@@ -120,6 +120,8 @@ DECOY_POOL_SIZE   = 4000     # drug-like molecules pulled from ChEMBL to match a
 SEED              = 42       # fixed so the run is reproducible
 MIN_ATOMS_IN_BOX  = 400      # guard: a box on a real pocket holds far more than this
 MAX_CENTER_GAP    = 4.0      # guard: a box centre in a cavity is within a few A of protein
+MIN_POOL          = 2000     # refuse to build decoys from a truncated ChEMBL pool
+MIN_DECOYS_PER_ACTIVE = 5    # refuse to benchmark on too few decoys
 os.makedirs('lig', exist_ok=True)""")
 
 md("""## Receptors
@@ -204,22 +206,67 @@ ACTIVES = {
 }
 print(len(ACTIVES), 'actives')""")
 
-md("## 2. Drug-like pool from ChEMBL (to draw decoys from)")
-code("""from rdkit import Chem, RDLogger
+md("""## 2. Drug-like pool from ChEMBL (to draw decoys from)
+
+Fetched once and **cached to Drive**, so a re-run loads the cache instead of calling ChEMBL
+again. That makes the run immune to a second outage and keeps the decoy set identical between
+runs.
+
+ChEMBL occasionally answers a burst of requests with an HTML error page or an empty body rather
+than JSON. Calling `.json()` on that raises `JSONDecodeError`, so each request is status-checked
+and retried with backoff. If the pool still comes back short, the cell **stops** rather than
+quietly building a benchmark on a truncated dataset.""")
+code("""import time
+from rdkit import Chem, RDLogger
 RDLogger.DisableLog('rdApp.*')
-pool, offset = [], 0
-while len(pool) < DECOY_POOL_SIZE:
-    u = ('https://www.ebi.ac.uk/chembl/api/data/molecule.json'
-         '?molecule_properties__full_mwt__gte=250&molecule_properties__full_mwt__lte=600'
-         f'&limit=1000&offset={offset}')
-    mols = requests.get(u, timeout=90).json().get('molecules', [])
-    if not mols:
-        break
-    for m in mols:
-        s = (m.get('molecule_structures') or {}).get('canonical_smiles')
-        if s and '.' not in s:
-            pool.append(s)
-    offset += 1000
+POOL_CACHE = os.path.join(WORKDIR, 'chembl_pool.json')
+
+def fetch_json(url, tries=5):
+    \"\"\"GET and parse JSON, retrying transient ChEMBL failures instead of crashing.\"\"\"
+    hdrs = {'User-Agent': 'genetropica-ns5-benchmark/1.0', 'Accept': 'application/json'}
+    last = None
+    for attempt in range(1, tries + 1):
+        try:
+            r = requests.get(url, headers=hdrs, timeout=120)
+            if r.status_code != 200:
+                last = f'HTTP {r.status_code}'
+            elif 'json' not in r.headers.get('Content-Type', '').lower():
+                last = f"non-JSON response ({r.headers.get('Content-Type')!r}): {r.text[:80]!r}"
+            else:
+                return r.json()
+        except Exception as e:
+            last = f'{type(e).__name__}: {e}'
+        if attempt < tries:
+            wait = 2 ** attempt
+            print(f'   attempt {attempt}/{tries} failed ({last}); retrying in {wait}s')
+            time.sleep(wait)
+    raise SystemExit(f'ChEMBL failed after {tries} attempts.\\n  url: {url}\\n  last error: {last}')
+
+if os.path.exists(POOL_CACHE):
+    pool = json.load(open(POOL_CACHE))
+    print(f'loaded cached pool: {len(pool)} SMILES from {POOL_CACHE}')
+else:
+    pool = []
+    url = ('https://www.ebi.ac.uk/chembl/api/data/molecule.json'
+           '?molecule_properties__full_mwt__gte=250&molecule_properties__full_mwt__lte=600'
+           '&limit=1000&offset=0')
+    while url and len(pool) < DECOY_POOL_SIZE:
+        d = fetch_json(url)
+        for m in d.get('molecules', []):
+            s = (m.get('molecule_structures') or {}).get('canonical_smiles')
+            if s and '.' not in s:
+                pool.append(s)
+        print(f'   pool: {len(pool)}/{DECOY_POOL_SIZE}')
+        nxt = (d.get('page_meta') or {}).get('next')
+        url = 'https://www.ebi.ac.uk' + nxt if nxt else None
+    json.dump(pool, open(POOL_CACHE, 'w'))
+    print(f'fetched pool: {len(pool)} SMILES, cached to {POOL_CACHE}')
+
+if len(pool) < MIN_POOL:
+    raise SystemExit(
+        f'Pool is only {len(pool)} SMILES, below MIN_POOL={MIN_POOL}. Refusing to continue: '
+        'a truncated pool yields too few property-matched decoys and would silently produce '
+        f'an underpowered benchmark. Delete {POOL_CACHE} and re-run to try again.')
 print('pool SMILES:', len(pool))""")
 
 md("## 3. Property-matched, topologically-dissimilar decoys (DUD-E logic)")
@@ -257,8 +304,12 @@ for n, a in act.items():
     for j, i in enumerate(picked):
         decoys[f'decoy_{n}_{j:02d}'] = poolf[i][0]
 print('property-matched decoys:', len(decoys))
-if len(decoys) < 5 * len(ACTIVES):
-    print('NOTE: few decoys found - consider raising DECOY_POOL_SIZE or loosening tolerances.')""")
+need = MIN_DECOYS_PER_ACTIVE * len(ACTIVES)
+if len(decoys) < need:
+    raise SystemExit(
+        f'Only {len(decoys)} decoys for {len(ACTIVES)} actives, below the required {need}. '
+        'Refusing to continue, since too few decoys makes the AUC meaningless. Raise '
+        'DECOY_POOL_SIZE, or loosen the property-matching tolerances deliberately.')""")
 
 md("## 4. 3D prep (RDKit embed -> pdbqt via OpenBabel)")
 code("""def prep(name, smiles):
