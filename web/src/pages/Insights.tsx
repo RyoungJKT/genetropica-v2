@@ -71,7 +71,7 @@ export default function Insights() {
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
       <div className="eyebrow">{t('Tool 06')}</div>
-      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('AI Insights')}</h1>
+      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Insights')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
         {t('Alongside the docking, a machine-learning model gives each drug a score. It is best understood as a sanity nudge, a prior, not a verdict on any one target.')}
       </p>

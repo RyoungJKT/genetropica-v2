@@ -47,7 +47,6 @@ export const ID: Record<string, string> = {
   "ADMET-safe drug-like": "Mirip obat & aman ADMET",
   "adverse": "merugikan",
   "Against": "Diuji terhadap",
-  "AI Insights": "Wawasan AI",
   "AI:": "AI:",
   "Alerts": "Peringatan",
   "All classes": "Semua kelas",
