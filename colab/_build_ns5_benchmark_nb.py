@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
-"""Generate colab/ns5_box_fix_validation.ipynb.
+"""Generate colab/ns5_receptor_benchmark.ipynb.
 
-Re-runs the NS5 retrospective enrichment after a docking-setup defect was found:
-the original run used the full 8-chain 5CCV crystal and a grid box centred in a
-crystal-packing void (12 residues from 4 different chains within 12 A, nearest
-atom 7.9 A, only 278 receptor atoms in the box). The ligands were effectively
-docked into empty space, which explains an AUC of 0.32 without any appeal to
-ligand mechanism.
+A retrospective enrichment benchmark for dengue NS5: 8 known RdRp inhibitors against
+property-matched (DUD-E-style) decoys, docked with AutoDock Vina into two independently
+prepared receptors so that receptor choice is the only variable.
 
-This notebook docks the SAME actives and the SAME property-matched decoys against
-two corrected receptors so the box is the only thing that changed:
+  Arm A  5CCV chain A, box on the RdRp catalytic site (motif A D533 + motif C GDD)
+  Arm B  4V0R at 2.40 A, box on motif C GDD + the catalytic Mg
 
-  Arm A  5CCV chain A only, box on the RdRp catalytic site (motif A D533 + motif C GDD)
-  Arm B  4V0R (2.40 A, single chain), box on motif C GDD + the catalytic Mg
+Receptors are read from Google Drive, so the notebook needs no access to any code host.
 
-Run: python3 colab/_build_box_fix_nb.py
+Run: python3 colab/_build_ns5_benchmark_nb.py
 """
 import json
 from pathlib import Path
@@ -23,33 +19,42 @@ CELLS = []
 def md(src): CELLS.append(("markdown", src))
 def code(src): CELLS.append(("code", src))
 
-md("""# GeneTropica - NS5 enrichment, corrected docking box
+md("""# Dengue NS5, retrospective enrichment benchmark
 
-**Why this notebook exists.** The earlier NS5 benchmark reported **AUC 0.32** (worse than
-a coin flip). Auditing the setup showed the cause was not ligand mechanism but the docking
-box itself:
+Does AutoDock Vina rank **known** NS5 polymerase inhibitors above look-alike molecules that
+are not known to work? That is the only fair way to find out whether a docking score means
+anything for this target before trusting it on untested drugs.
 
-| | original run | this run (Arm A) | this run (Arm B) |
-|---|---|---|---|
-| receptor | 5CCV, **all 8 chains** (64,264 atoms) | 5CCV **chain A** (8,384 atoms) | **4V0R** chain A, 2.40 A (8,417 atoms) |
-| box centre | (-118.9, 60.8, 40.2) | (-48.3, 35.4, 36.9) | (-11.3, 19.2, -7.8) |
-| what is there | crystal-packing void: 12 residues from **4 different chains**, nearest atom **7.9 A** | RdRp catalytic site (D533 + GDD) | RdRp catalytic site (GDD + catalytic Mg) |
-| receptor atoms in box | 278 | 669 | 723 |
+**Design.** 8 published NS5 / RdRp inhibitors are hidden among property-matched decoys:
+each decoy is matched to an active on molecular weight, logP, hydrogen-bond donors and
+acceptors, rotatable bonds and formal charge, while being topologically dissimilar
+(Morgan-fingerprint Tanimoto below 0.35). Everything is docked and ranked by score. A method
+that works puts the real inhibitors near the top.
 
-The catalytic motifs sat **33 to 84 A outside** the original box in every chain, so the real
-binding site was never searched.
+**Two receptors, because receptor preparation matters as much as the scoring function:**
 
-**What is held constant:** the same 8 known NS5 inhibitors, the same property-matched
-(DUD-E-style) decoy construction, the same exhaustiveness (8) and the same box size (25 A).
-Only the receptor and the box move, so the comparison isolates the defect.
+| | Arm A | Arm B |
+|---|---|---|
+| structure | 5CCV, chain A | 4V0R |
+| resolution | 3.60 A | **2.40 A** |
+| box centre | (-48.3, 35.4, 36.9) | (-11.3, 19.2, -7.8) |
+| centred on | motif A D533 with motif C GDD | motif C GDD with the catalytic Mg |
 
-**A hard guard runs before any docking.** It refuses to dock unless the catalytic site is
-inside the box and the box actually contains protein. The original setup fails that guard,
-which is the point of adding it.
+Both arms dock the **same ligands** with the same box size and the same exhaustiveness, so any
+difference is attributable to the receptor.
 
-**Runtime.** AutoDock Vina is CPU-only. Roughly 2 to 4 h for two arms of about 58 ligands at
-exhaustiveness 8. Checkpoints and results are written to **Google Drive**, so a runtime reset
-resumes instead of starting over. The final JSON is also printed into the cell output.
+**A box guard runs before any docking.** It refuses to proceed unless the catalytic site is
+actually inside the search box and the box actually contains protein. Docking into a pocket
+that does not contain the catalytic machinery produces confident, meaningless scores, so this
+is checked rather than assumed.
+
+**Reporting.** An AUC computed from 8 actives is imprecise, so each arm reports a bootstrap
+95% interval and a Mann-Whitney p-value against the 0.5 null. A result is only meaningful if
+the interval separates from random.
+
+**Runtime.** AutoDock Vina is CPU-only, no GPU needed. Roughly 2 to 4 hours for two arms of
+about 58 ligands at exhaustiveness 8. Docking checkpoints and the final result are written to
+**Google Drive**, so a runtime reset resumes instead of starting over.
 
 Run via **Runtime > Run all**.""")
 
@@ -63,62 +68,130 @@ if not os.path.exists('vina'):
     os.chmod('vina', 0o755)
 print('vina:', subprocess.run(['./vina', '--version'], capture_output=True, text=True).stdout.strip())""")
 
-md("## Parameters")
-code("""RAW = 'https://raw.githubusercontent.com/RyoungJKT/genetropica-v2/main'
+md("""## Google Drive
 
-# Two corrected receptors. 'catalytic' lists points that MUST fall inside the grid box.
-# Arm A keeps the deposited numbering, so its catalytic atoms are located by residue id.
-# Arm B was re-numbered by the preparation step, so its catalytic points are given as
-# coordinates taken from the original 4V0R deposition (GDD centroid, and the catalytic Mg).
-RECEPTORS = [
+Checkpoints and results are saved here so a runtime reset does not lose progress. The two
+receptor files are also read from here, so this notebook does not depend on any code host.""")
+code("""# 'Run all' PAUSES here once: click through the 'Connect to Google Drive' popup, then it continues.
+DRIVE_DIR = '/content/drive/MyDrive/genetropica_ns5_benchmark'
+WORKDIR, RECEPTOR_DIR = '.', 'receptors'
+try:
+    from google.colab import drive
+    drive.mount('/content/drive')
+    WORKDIR = DRIVE_DIR
+    RECEPTOR_DIR = os.path.join(DRIVE_DIR, 'receptors')
+    os.makedirs(RECEPTOR_DIR, exist_ok=True)
+    print('Drive mounted.')
+except Exception as e:
+    os.makedirs(RECEPTOR_DIR, exist_ok=True)
+    print('Drive not mounted, using local disk (lost on reset):', repr(e))
+print('WORKDIR      =', WORKDIR)
+print('RECEPTOR_DIR =', RECEPTOR_DIR)""")
+
+md("""## Parameters
+
+`EXHAUSTIVENESS` is Vina's sampling effort. 8 is the default; raising it costs linear time and
+makes scores more reproducible.""")
+code("""RECEPTORS = [
     {
         'arm': 'A',
-        'label': '5CCV chain A, catalytic box',
+        'label': '5CCV chain A, 3.60 A',
         'pdb': '5CCV',
-        'url': RAW + '/colab/5CCV_chainA.pdbqt',
+        'filename': '5CCV_chainA.pdbqt',
         'center': [-48.3, 35.4, 36.9],
         'catalytic_resids': [533, 662, 663, 664],   # motif A D533, motif C G662-D663-D664
         'catalytic_points': [],
     },
     {
         'arm': 'B',
-        'label': '4V0R 2.40 A, catalytic box',
+        'label': '4V0R, 2.40 A',
         'pdb': '4V0R',
-        'url': RAW + '/colab/4V0R_chainA.pdbqt',
+        'filename': '4V0R_chainA.pdbqt',
         'center': [-11.3, 19.2, -7.8],
-        'catalytic_resids': [],
+        'catalytic_resids': [],                      # renumbered during preparation
         'catalytic_points': [[-13.0, 20.2, -5.5], [-9.6, 18.2, -10.1]],  # GDD centroid, catalytic Mg
     },
 ]
 
-# The defective original setup, kept only so the guard can be shown to reject it.
-ORIGINAL = {'arm': 'original', 'label': '5CCV all 8 chains, void box',
-            'center': [-118.9, 60.8, 40.2], 'auc_reported': 0.32}
-
-BOX               = 25       # A, same as the original run
-EXHAUSTIVENESS    = 8        # same as the original run, so the numbers stay comparable
+BOX               = 25       # A, cube side
+EXHAUSTIVENESS    = 8        # Vina default
 DECOYS_PER_ACTIVE = 25       # DUD-E uses 50; 25 keeps free-Colab runtime sane
 DECOY_POOL_SIZE   = 4000     # drug-like molecules pulled from ChEMBL to match against
-MIN_ATOMS_IN_BOX  = 400      # guard: the void box had only 278
-MAX_CENTER_GAP    = 4.0      # guard: the void box centre was 7.9 A from any atom
+SEED              = 42       # fixed so the run is reproducible
+MIN_ATOMS_IN_BOX  = 400      # guard: a box on a real pocket holds far more than this
+MAX_CENTER_GAP    = 4.0      # guard: a box centre in a cavity is within a few A of protein
 os.makedirs('lig', exist_ok=True)""")
 
-md("## Save location (Google Drive, so a reset cannot lose progress)")
-code("""# Mount Google Drive so the docking checkpoints and the result JSON survive a runtime reset.
-# 'Run all' PAUSES here once: click through the 'Connect to Google Drive' popup, then it continues.
-WORKDIR = '.'
-try:
-    from google.colab import drive
-    drive.mount('/content/drive')
-    WORKDIR = '/content/drive/MyDrive/genetropica_ns5_boxfix'
-    os.makedirs(WORKDIR, exist_ok=True)
-    print('Saving checkpoints + result to Google Drive:', WORKDIR)
-except Exception as e:
-    print('Drive not mounted, using local disk (lost on reset):', repr(e))
-print('WORKDIR =', WORKDIR)""")
+md("""## Receptors
+
+Upload the two prepared receptor files to the `receptors` folder shown above, once. If they
+are not found there, the next cell offers a direct upload instead.""")
+code("""from pathlib import Path
+missing = [r['filename'] for r in RECEPTORS
+           if not os.path.exists(os.path.join(RECEPTOR_DIR, r['filename']))]
+if missing:
+    print('Not found in', RECEPTOR_DIR)
+    for m in missing:
+        print('   missing:', m)
+    print('\\nUpload them now (or copy them into that Drive folder and re-run this cell).')
+    try:
+        from google.colab import files
+        up = files.upload()
+        for name, blob in up.items():
+            open(os.path.join(RECEPTOR_DIR, name), 'wb').write(blob)
+            print('saved to Drive:', name)
+    except Exception as e:
+        print('upload unavailable:', repr(e))
+
+for r in RECEPTORS:
+    r['file'] = os.path.join(RECEPTOR_DIR, r['filename'])
+    size = os.path.getsize(r['file']) if os.path.exists(r['file']) else 0
+    print(f"arm {r['arm']}  {r['filename']}  {size/1024:.0f} KB  ({r['label']})")
+    if not size:
+        raise SystemExit(f"Receptor missing for arm {r['arm']}: {r['file']}")""")
+
+md("""## Box guard
+
+Checks, for each receptor, that the catalytic site falls inside the search box, that the box
+holds a sensible amount of protein, and that the box centre is not sitting in open solvent.
+It raises rather than docking if any check fails.""")
+code("""def read_pdbqt(path):
+    atoms = []
+    for l in open(path):
+        if l.startswith(('ATOM', 'HETATM')):
+            try:
+                atoms.append((float(l[30:38]), float(l[38:46]), float(l[46:54]), l[22:27].strip()))
+            except ValueError:
+                pass
+    return atoms
+
+def inside(p, center, half):
+    return all(abs(p[i] - center[i]) <= half for i in range(3))
+
+half = BOX / 2.0
+for r in RECEPTORS:
+    atoms = read_pdbqt(r['file'])
+    pts = list(r['catalytic_points'])
+    if r['catalytic_resids']:
+        want = {str(x) for x in r['catalytic_resids']}
+        pts += [a[:3] for a in atoms if a[3] in want]
+    cat_in = sum(1 for p in pts if inside(p, r['center'], half))
+    n_in = sum(1 for a in atoms if inside(a, r['center'], half))
+    nearest = min(math.dist(a[:3], r['center']) for a in atoms)
+    ok = (len(pts) > 0 and cat_in == len(pts)
+          and n_in >= MIN_ATOMS_IN_BOX and nearest <= MAX_CENTER_GAP)
+    r['n_atoms'] = len(atoms)
+    print(f"arm {r['arm']} ({r['label']}): {len(atoms)} atoms")
+    print(f"   catalytic reference points inside box : {cat_in}/{len(pts)}")
+    print(f"   receptor atoms inside box             : {n_in}  (need >= {MIN_ATOMS_IN_BOX})")
+    print(f"   nearest atom to box centre            : {nearest:.1f} A  (need <= {MAX_CENTER_GAP})")
+    print(f"   VERDICT                               : {'PASS' if ok else 'FAIL'}")
+    if not ok:
+        raise SystemExit(f"Box guard FAILED for arm {r['arm']}: refusing to dock.")
+print('\\nBoth receptors passed the box guard.')""")
 
 md("## 1. The 8 known DENV NS5 / RdRp inhibitors (the actives)")
-code("""# Nucleoside analogues + prodrugs with reported anti-NS5 activity (the original validation set).
+code("""# Nucleoside analogues and prodrugs with reported anti-NS5 activity.
 ACTIVES = {
  '2_c_methyladenosine': 'C[C@@]1(O)[C@H](CO)O[C@@H](n2cnc3c(N)ncnc32)[C@@H]1O',
  '7_deaza_2_c_methyladenosine': 'C[C@@]1(O)[C@H](CO)O[C@@H](n2ccc3c(N)ncnc32)[C@@H]1O',
@@ -213,73 +286,7 @@ for n, s in tqdm({**ACTIVES, **decoys}.items(), desc='prep'):
         ligs[n] = (pq, 1 if n in ACTIVES else 0)
 print('prepared:', len(ligs), '|', sum(v[1] for v in ligs.values()), 'actives')""")
 
-md("""## 5. Receptors and the BOX GUARD
-
-This is the cell that would have caught the original defect. For each receptor it checks that
-the catalytic site is inside the grid box, that the box holds enough protein, and that the box
-centre is not floating in a void. It raises instead of docking if any check fails.""")
-code("""def read_pdbqt(path):
-    atoms = []
-    for l in open(path):
-        if l.startswith(('ATOM', 'HETATM')):
-            try:
-                atoms.append((float(l[30:38]), float(l[38:46]), float(l[46:54]), l[22:27].strip()))
-            except ValueError:
-                pass
-    return atoms
-
-def inside(p, center, half):
-    return all(abs(p[i] - center[i]) <= half for i in range(3))
-
-def check_box(atoms, center, half, cat_points, label):
-    cat_in = sum(1 for p in cat_points if inside(p, center, half))
-    n_in = sum(1 for a in atoms if inside(a, center, half))
-    nearest = min(math.dist(a[:3], center) for a in atoms)
-    ok = (cat_in == len(cat_points) and len(cat_points) > 0
-          and n_in >= MIN_ATOMS_IN_BOX and nearest <= MAX_CENTER_GAP)
-    print(f"  {label}")
-    print(f"    catalytic reference points inside box : {cat_in}/{len(cat_points)}")
-    print(f"    receptor atoms inside box             : {n_in}  (need >= {MIN_ATOMS_IN_BOX})")
-    print(f"    nearest atom to box centre            : {nearest:.1f} A  (need <= {MAX_CENTER_GAP})")
-    print(f"    VERDICT                               : {'PASS' if ok else 'FAIL'}")
-    return ok
-
-half = BOX / 2.0
-for r in RECEPTORS:
-    r['file'] = f"receptor_{r['arm']}.pdbqt"
-    open(r['file'], 'wb').write(requests.get(r['url'], timeout=300).content)
-    atoms = read_pdbqt(r['file'])
-    pts = list(r['catalytic_points'])
-    if r['catalytic_resids']:
-        want = {str(x) for x in r['catalytic_resids']}
-        pts += [a[:3] for a in atoms if a[3] in want]
-    r['n_atoms'] = len(atoms)
-    print(f"{r['file']}: {len(atoms)} atoms  ({r['label']})")
-    if not check_box(atoms, r['center'], half, pts, f"guard, arm {r['arm']}"):
-        raise SystemExit(f"Box guard FAILED for arm {r['arm']}: refusing to dock.")
-print('\\nAll receptors passed the box guard.')""")
-
-md("""### The guard applied to the original, defective setup
-
-For the record, the same guard is run against the box the first benchmark used. It is expected
-to FAIL. Nothing is docked here; this cell only documents the defect.""")
-code("""try:
-    open('receptor_original.pdbqt', 'wb').write(
-        requests.get(RAW + '/colab/5CCV_clean.pdbqt', timeout=600).content)
-    atoms_o = read_pdbqt('receptor_original.pdbqt')
-    print(f"receptor_original.pdbqt: {len(atoms_o)} atoms (all 8 chains)")
-    # Catalytic points cannot be located unambiguously in an 8-copy file, so this reports
-    # only the density and void checks, which are what the original box fails on.
-    n_in = sum(1 for a in atoms_o if inside(a, ORIGINAL['center'], half))
-    nearest = min(math.dist(a[:3], ORIGINAL['center']) for a in atoms_o)
-    print(f"  receptor atoms inside the original box : {n_in}  (need >= {MIN_ATOMS_IN_BOX})")
-    print(f"  nearest atom to the original centre    : {nearest:.1f} A  (need <= {MAX_CENTER_GAP})")
-    print(f"  VERDICT                                : "
-          f"{'PASS' if (n_in >= MIN_ATOMS_IN_BOX and nearest <= MAX_CENTER_GAP) else 'FAIL (as expected)'}")
-except Exception as e:
-    print('skipped (could not fetch the original 4.9 MB receptor):', repr(e))""")
-
-md("## 6. Dock both arms (checkpointed per arm, resumable)")
+md("## 5. Dock both arms (checkpointed per arm, resumable)")
 code("""import csv
 def dock(receptor, pq, center):
     out = pq.replace('.pdbqt', '_out.pdbqt')
@@ -287,7 +294,7 @@ def dock(receptor, pq, center):
                     '--center_x', str(center[0]), '--center_y', str(center[1]), '--center_z', str(center[2]),
                     '--size_x', str(BOX), '--size_y', str(BOX), '--size_z', str(BOX),
                     '--exhaustiveness', str(EXHAUSTIVENESS), '--num_modes', '3', '--cpu', '2',
-                    '--seed', '42', '--out', out],
+                    '--seed', str(SEED), '--out', out],
                    capture_output=True, text=True)
     if os.path.exists(out):
         for ln in open(out):
@@ -314,11 +321,11 @@ for r in RECEPTORS:
     r['scores'] = done
     print(f"arm {r['arm']}: docked {len(done)} of {len(ligs)}  ->  {ckpt}")""")
 
-md("""## 7. Enrichment, with uncertainty
+md("""## 6. Enrichment, with uncertainty
 
-An AUC from 8 actives is imprecise, so each arm reports a bootstrap 95% interval and a
-Mann-Whitney p-value against the 0.5 null. Do not read a difference as real unless the
-intervals separate.""")
+AUC is the chance that a randomly chosen active outranks a randomly chosen decoy. 1.0 is
+perfect, 0.5 is a coin flip. With only 8 actives the estimate is imprecise, so read the
+interval, not the point estimate.""")
 code("""import numpy as np, matplotlib.pyplot as plt
 from sklearn.metrics import roc_auc_score, roc_curve
 rng = np.random.default_rng(0)
@@ -358,24 +365,20 @@ for r in RECEPTORS:
     print(f"arm {r['arm']} ({r['label']}): AUC {auc:.3f}  95% CI {lo:.2f}-{hi:.2f}  p={p:.3f}  "
           f"EF1% {r['stats']['ef']['1pct']}  ({int(y.sum())} actives, {int((1-y).sum())} decoys)")
 plt.xlabel('false positive rate'); plt.ylabel('true positive rate')
-plt.title('NS5 enrichment with a corrected docking box'); plt.legend(); plt.show()
-print(f"\\nfor reference, the original void-box run reported AUC {ORIGINAL['auc_reported']}")""")
+plt.title('Dengue NS5 retrospective enrichment'); plt.legend(); plt.show()""")
 
-md("## 8. Result, copy the printed JSON below")
+md("## 7. Result, copy the printed JSON below")
 code("""res = {
     'target': 'DENV_NS5',
-    'method': 'property-matched DUD-E-style decoys, corrected docking box',
-    'box_size': BOX, 'exhaustiveness': EXHAUSTIVENESS, 'decoys_per_active': DECOYS_PER_ACTIVE,
-    'supersedes': {'label': ORIGINAL['label'], 'center': ORIGINAL['center'],
-                   'auc_reported': ORIGINAL['auc_reported'],
-                   'defect': 'grid box centred in a crystal-packing void of the 8-chain crystal; '
-                             'catalytic motifs 33-84 A outside the box'},
+    'method': 'retrospective enrichment, property-matched DUD-E-style decoys',
+    'box_size': BOX, 'exhaustiveness': EXHAUSTIVENESS,
+    'decoys_per_active': DECOYS_PER_ACTIVE, 'seed': SEED,
     'arms': [{'arm': r['arm'], 'label': r['label'], 'pdb': r['pdb'], 'center': r['center'],
               'receptor_atoms': r['n_atoms'], 'stats': r['stats'], 'roc': r['roc'],
               'scores': {n: round(v[0], 2) for n, v in r['scores'].items()}}
              for r in RECEPTORS],
 }
-RESULT = os.path.join(WORKDIR, 'ns5_box_fix_result.json')
+RESULT = os.path.join(WORKDIR, 'ns5_receptor_benchmark_result.json')
 json.dump(res, open(RESULT, 'w'), indent=2)
 print('Saved to', RESULT)
 try:
@@ -386,8 +389,7 @@ except Exception:
 print('\\n===================== COPY EVERYTHING BELOW THIS LINE =====================\\n')
 print(json.dumps(res, indent=2))
 print('\\n===================== COPY EVERYTHING ABOVE THIS LINE =====================\\n')
-print('Paste the JSON above back to update the Validation tab.')
-print('Report whatever the AUC turns out to be, including if it is still at or below random.')""")
+print('Report the AUC that comes out, including if it is at or below random.')""")
 
 # ---- assemble + validate ----
 cells = []
@@ -409,6 +411,6 @@ nb = {"cells": cells,
                    "language_info": {"name": "python"}},
       "nbformat": 4, "nbformat_minor": 0}
 
-out = Path(__file__).resolve().parent / "ns5_box_fix_validation.ipynb"
+out = Path(__file__).resolve().parent / "ns5_receptor_benchmark.ipynb"
 json.dump(nb, open(out, "w"), indent=1)
 print(f"wrote {out} ({len(cells)} cells, all code cells compiled OK)")
