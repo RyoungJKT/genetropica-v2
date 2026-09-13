@@ -18,6 +18,9 @@ env/
 
 # Molecular data files
 *.pdbqt
+# Exception: the small single-chain receptors the Colab notebooks fetch by raw URL.
+# Bulk docking/structure pdbqt files stay ignored.
+!colab/*.pdbqt
 *.sdf
 
 # Docking output logs
