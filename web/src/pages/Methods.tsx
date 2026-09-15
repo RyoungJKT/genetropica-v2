@@ -100,10 +100,6 @@ export default function Methods() {
             <tbody>{COMPUTE.map(([k, v]) => (<tr key={k}><td style={{ ...td, fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink)' }}>{t(k)}</td><td style={td}>{t(v)}</td></tr>))}</tbody>
           </table>
         </div>
-        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '14px 0 0', maxWidth: 760 }}>
-          {t('Every step of the pipeline is public and the dengue NS5 validation can be re-run by anyone in the browser:')}{' '}
-          <a href="https://colab.research.google.com/github/RyoungJKT/genetropica-v2/blob/main/colab/ns5_enrichment_validation.ipynb" target="_blank" rel="noopener" style={{ color: '#1F5740', borderBottom: '1px solid var(--line)', textDecoration: 'none' }}>{t('reproduce the NS5 validation in Colab')}</a>.
-        </p>
       </Block>
 
       <Block title={t('Documented limitations')}>
