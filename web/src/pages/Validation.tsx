@@ -6,6 +6,14 @@ import { useT } from '../i18n'
 const LABEL: Record<string, string> = { docking: 'Docking (Vina)', gnn: 'ML (RandomForest)', consensus: 'Consensus' }
 const COLOR: Record<string, string> = { docking: '#1F5740', gnn: '#A8492B', consensus: '#A8742C' }
 
+// Russell's reflection on auditing the NS5 benchmark, verbatim.
+const REFLECTION = [
+  'Auditing my initial results changed how I judge computational evidence. I identified problems in both the docking setup and the construction of the comparison set. These problems meant that the earlier scores could not support the biological conclusions I had attached to them.',
+  'To address these findings, I added checks that stop the workflow when the intended binding site is not properly represented. I also required complete and balanced decoy assignments and reported uncertainty alongside the performance estimate. I also added an analysis comparing each active compound with its own matched decoys.',
+  'The corrected run produced an AUC of 0.49, with a confidence interval spanning 0.50. It therefore did not demonstrate useful discrimination in this evaluation. I learned that correcting an experiment can make its conclusions more defensible even when the result remains inconclusive.',
+  'This experience shifted my attention toward the assumptions behind each output: which molecular species I was testing, whether the receptor setup represented the intended question, and whether the benchmark supported the interpretation. My next priorities are expanding the evaluation set and checking that the machine-learning training data match the intended biological target.',
+]
+
 export default function Validation() {
   const { t } = useT()
   const v = useValidation()
@@ -24,8 +32,18 @@ export default function Validation() {
       <div className="eyebrow">{t('Tool 08')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Methodology Validation')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('Does the method actually pick out known-good drugs? We checked whether the scoring can separate known inhibitors from look-alike decoys on dengue NS5. The strict, properly matched test is shown first; the earlier, easier decoy test follows for transparency.')}
+        {t('This page documents the evaluation of GeneTropica’s screening workflow, the methodological issues identified during an audit, and the subsequent corrections. The current evaluation appears first. Earlier evaluations are retained below with explanations of why they were withdrawn.')}
       </p>
+
+      <section style={{ marginTop: 40, borderTop: '1px solid var(--line)', paddingTop: 30 }}>
+        <h3 style={{ fontSize: 26, fontWeight: 400 }}>{t('What I learned from auditing the results')}</h3>
+        <div className="eyebrow" style={{ marginTop: 8 }}>{t('Research reflection by Russell Young')}</div>
+        {REFLECTION.map((para) => (
+          <p key={para} style={{ color: 'var(--ink-soft)', maxWidth: 780, lineHeight: 1.65, margin: '14px 0 0', fontSize: 15 }}>
+            {t(para)}
+          </p>
+        ))}
+      </section>
 
       <Ns5EnrichmentBenchmark />
 

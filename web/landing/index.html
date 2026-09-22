@@ -168,8 +168,6 @@
   .band p.body{color:#C9C3B5}
   .band p.body b{color:var(--paper)}
   /* light on dark optically thins, so this sits a touch heavier than the ink-on-paper ledes */
-  .pullquote{font-family:var(--serif);font-weight:350;font-style:italic;font-size:clamp(28px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;color:var(--paper);max-width:20ch;margin-top:50px}
-  .pullquote .mark{color:#7FC9A3}
 
   /* stats grid */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:54px}
@@ -371,7 +369,6 @@
         <p class="body" data-reveal>A known antiviral, <b>sofosbuvir</b>, is included as a positive control: if the method is sound, it should recognise a drug we already know works. Where the model is weak, that weakness is published openly, including a validation score of <b>0.37</b> on one dengue target. The machine learning is a prior, not a proof.</p>
       </div>
     </div>
-    <p class="pullquote" data-reveal>A result you <span class="mark">can't question</span> isn't science.</p>
   </div>
 </section>
 
@@ -432,7 +429,7 @@
     '.top nav a.nlink', '.top .launch', '.rail .rlabel',
     '.eyebrow', '.hero h1 .ln', '.standfirst', '.hero-cta a', '.fig-cap',
     '.sec-num', 'h2', '.body', '.bignum-sub',
-    '.step h3', '.step p', '.chip', '.pullquote', '.stat .k',
+    '.step h3', '.step p', '.chip', '.stat .k',
     '.colophon > div:first-child', '.colophon a'
   ].join(', ');
 
@@ -510,8 +507,6 @@
       'Sains yang baik memperoleh kepercayaan dengan menunjukkan batasnya, bukan menyembunyikannya. GeneTropica dibangun di atas gagasan itu.',
     'A known antiviral, <b>sofosbuvir</b>, is included as a positive control: if the method is sound, it should recognise a drug we already know works. Where the model is weak, that weakness is published openly, including a validation score of <b>0.37</b> on one dengue target. The machine learning is a prior, not a proof.':
       'Sebuah antivirus yang sudah dikenal, <b>sofosbuvir</b>, disertakan sebagai kontrol positif: jika metodenya benar, ia semestinya mengenali obat yang sudah kita tahu manjur. Di titik model ini lemah, kelemahan tersebut diterbitkan secara terbuka, termasuk skor validasi <b>0.37</b> pada salah satu target demam berdarah. Pembelajaran mesin di sini adalah dugaan awal, bukan bukti.',
-    'A result you <span class="mark">can\'t question</span> isn\'t science.':
-      'Hasil yang <span class="mark">tidak bisa dipertanyakan</span> bukanlah sains.',
 
     /* 05 results */
     '05 / Results':'05 / Hasil',

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { useMd } from '../../data/api'
+import { useMd, useMdTraj } from '../../data/api'
 import { MdScene } from './MdScene'
-import { frameReadout, DURATION_NS } from '../../lib/mdMotion'
+import { DURATION_NS } from '../../lib/mdMotion'
+import { trajReadout } from '../../lib/mdTraj'
 import { useT } from '../../i18n'
 
 const DRUGS = ['celecoxib', 'methotrexate', 'dasabuvir'] as const
@@ -20,6 +21,7 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
   const reduced = prefersReducedMotion()
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 760
   const [drug, setDrug] = useState<Drug>('celecoxib')
+  const traj = useMdTraj(drug)
   const [playing, setPlaying] = useState(!reduced)
   const [tNs, setTNs] = useState(reduced ? DURATION_NS * 0.5 : 0)
   const tNsRef = useRef(tNs)
@@ -60,7 +62,7 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
       </div>
     )
   }
-  const readout = frameReadout(series, tNs)
+  const readout = traj.data ? trajReadout(traj.data, tNs) : null
 
   return (
     <div style={{ marginTop: 18, border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', background: 'var(--paper)' }}>
@@ -83,12 +85,20 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
       </div>
 
       <div style={{ position: 'relative', height: isMobile ? 300 : 420, background: 'radial-gradient(circle at 50% 38%, var(--paper-2), var(--paper))' }}>
-        <MdScene series={series} tNsRef={tNsRef} accent={ACCENT[drug]} reducedNodes={isMobile} />
-        <div style={{ position: 'absolute', left: 14, bottom: 12, fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', lineHeight: 1.5, background: 'color-mix(in srgb, var(--paper) 72%, transparent)', borderRadius: 8, padding: '6px 10px' }}>
-          <div>t = {readout.tNs.toFixed(1)} ns</div>
-          <div>{t('min dist')} = {Number.isFinite(readout.distance) ? `${readout.distance.toFixed(1)} A` : '-'}</div>
-          <div>{t('H-bonds')} = {readout.hbonds} &nbsp; {t('contacts')} = {readout.ncontacts}</div>
-        </div>
+        {traj.data ? (
+          <MdScene traj={traj.data} series={series} tNsRef={tNsRef} accent={ACCENT[drug]} />
+        ) : (
+          <div className="mono" style={{ height: '100%', display: 'grid', placeItems: 'center', color: 'var(--ink-faint)', fontSize: 12 }}>
+            {traj.isError ? t('Could not load the trajectory.') : t('Loading simulation...')}
+          </div>
+        )}
+        {readout && (
+          <div style={{ position: 'absolute', left: 14, bottom: 12, fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', lineHeight: 1.5, background: 'color-mix(in srgb, var(--paper) 72%, transparent)', borderRadius: 8, padding: '6px 10px', pointerEvents: 'none' }}>
+            <div>t = {readout.tNs.toFixed(1)} ns</div>
+            <div>{t('min dist')} = {readout.distance.toFixed(1)} A</div>
+            <div>{t('H-bonds')} = {readout.hbonds} &nbsp; {t('contacts')} = {readout.ncontacts}</div>
+          </div>
+        )}
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderTop: '1px solid var(--line)' }}>
@@ -110,7 +120,7 @@ export function MdAnimator({ onTime }: { onTime?: (tNs: number) => void }) {
       </div>
 
       <p style={{ fontSize: 12, color: 'var(--ink-faint)', lineHeight: 1.55, margin: 0, padding: '0 14px 14px' }}>
-        {t("Stylized view. The approach distance and timing, per-residue flexibility, H-bonds and contacts are taken frame-by-frame from the real 50 ns simulation. The protein's shape and the drug's exact 3D path are illustrative; the full atomic trajectory was not stored. Schematic, not to scale.")}
+        {t('The real simulation, replayed. The ribbon is the actual NS5 backbone (5CCV chain A, 849 residues) and the drug is drawn atom by atom where the simulation put it, every 0.25 ns across the 50 ns run; motion between those snapshots is smoothed. The protein is held still so you can watch the drug move relative to it, and the faint line is its path so far. Darker ribbon means a more rigid residue in this run. Residues touching the drug light up in its colour, and dashed blue lines are hydrogen bonds. Hydrogen atoms are hidden. Drag to rotate, scroll to zoom.')}
       </p>
     </div>
   )

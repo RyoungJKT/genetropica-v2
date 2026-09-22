@@ -46,7 +46,7 @@ export default function Methods() {
       <div className="eyebrow">{t('Tool 07')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Methods')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('Exactly how the screen was run, so it is reproducible. 100 approved drugs were docked against six targets, rescored with a machine-learning prior, and filtered for drug-likeness and ADMET.')}
+        {t('How the screen was run. 100 approved drugs were docked against six targets, rescored with a machine-learning prior, and filtered for drug-likeness and ADMET.')}
       </p>
 
       <Block title={t('Pipeline parameters')}>
@@ -62,7 +62,7 @@ export default function Methods() {
       </Block>
 
       <Block title={t('Per-target docking grid')}>
-        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '0 0 12px', maxWidth: 760 }}>{t("Grid centres sit on each target's catalytic or active site; the 25 Angstrom cubic box encloses the pocket. Publishing these makes every run reproducible.")}</p>
+        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '0 0 12px', maxWidth: 760 }}>{t("Grid centres sit on each target's catalytic or active site; the 25 Angstrom cubic box encloses the pocket.")}</p>
         {m.data && (
           <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'auto', background: 'var(--paper)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
