@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import { Header } from './components/Header'
-import { AskAssistant } from './components/AskAssistant'
 import { useT } from './i18n'
 
 export default function App() {
@@ -16,7 +15,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-      <AskAssistant />
     </>
   )
 }

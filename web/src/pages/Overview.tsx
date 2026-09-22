@@ -11,6 +11,7 @@ import { HeroMolecule } from '../three/HeroMolecule'
 import { CandidateBoard } from '../charts/CandidateBoard'
 import { useIsMobile } from '../lib/useIsMobile'
 import { useT } from '../i18n'
+import { Ns5DockingNote } from '../components/Ns5DockingNote'
 
 const TARGET_ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 
@@ -19,7 +20,7 @@ export default function Overview() {
   const summary = useSummary()
   const targets = useTargets()
   const field = useField()
-  const [sel, setSel] = useState('DENV_NS5')
+  const [sel, setSel] = useState('DENV_NS3')
   const isMobile = useIsMobile()
 
   const targetName = (id: string) => targets.data?.find((t) => t.target_id === id)?.name ?? id
@@ -85,6 +86,7 @@ export default function Overview() {
               </button>
             ))}
           </div>
+          {sel === 'DENV_NS5' && <Ns5DockingNote />}
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 320px', gap: 30, alignItems: 'start' }}>
             {field.isLoading ? (

@@ -3,6 +3,7 @@ import { useBindingIndex, useBinding, useTargets } from '../data/api'
 import { Mol3DViewer } from '../components/Mol3DViewer'
 import type { Contact } from '../data/types'
 import { useT } from '../i18n'
+import { Ns5DockingNote } from '../components/Ns5DockingNote'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 const TYPE_COLOR: Record<string, string> = {
@@ -15,7 +16,7 @@ export default function Binding() {
   const { t } = useT()
   const idx = useBindingIndex()
   const targets = useTargets()
-  const [tid, setTid] = useState('DENV_NS5')
+  const [tid, setTid] = useState('DENV_NS3')
   const [drug, setDrug] = useState<string | null>(null)
   const order = idx.data ? ORDER.filter((t) => idx.data![t]) : []
   const drugs = idx.data?.[tid] ?? []
@@ -38,6 +39,7 @@ export default function Binding() {
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 14 }}>
         {order.map((id) => <button key={id} onClick={() => { setDrug(null); setTid(id) }} style={pillBtn(tid === id)}>{tName(id)}</button>)}
       </div>
+      {tid === 'DENV_NS5' && <Ns5DockingNote />}
 
       <div style={{ marginBottom: 20 }}>
         <label htmlFor="drugsel" style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 8 }}>

@@ -62,7 +62,7 @@ export default function Methods() {
       </Block>
 
       <Block title={t('Per-target docking grid')}>
-        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '0 0 12px', maxWidth: 760 }}>{t("Grid centres sit on each target's catalytic or active site; the 25 Angstrom cubic box encloses the pocket.")}</p>
+        <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '0 0 12px', maxWidth: 760 }}>{t("The 25 Angstrom cubic box encloses the search region at each grid centre below. The dengue NS5 centre is superseded: it does not sit on the catalytic site.")}</p>
         {m.data && (
           <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'auto', background: 'var(--paper)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
@@ -104,7 +104,7 @@ export default function Methods() {
 
       <Block title={t('Documented limitations')}>
         <ul style={{ fontSize: 14.5, color: 'var(--ink-soft)', lineHeight: 1.7, maxWidth: 760, paddingLeft: 20 }}>
-          <li>{t('Docking under-ranks the true small-molecule NS5 inhibitors (retrospective AUC 0.37, below random).')}</li>
+          <li>{t('Docking did not separate known NS5 inhibitors from matched decoys (AUC 0.49, 95% CI 0.31 to 0.68).')}</li>
           <li>{t('The machine-learning score is a target-agnostic prior, not a per-target prediction.')}</li>
           <li>{t('Only dengue NS5 was retrospectively validated; the other five targets have no equivalent test.')}</li>
           <li>{t('Literature links are keyword-based, not a trained relation extractor; weak links are tiered so they cannot inflate a candidate.')}</li>

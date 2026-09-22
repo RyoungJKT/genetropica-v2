@@ -14,7 +14,7 @@ const ROLES: Record<string, string> = {
 }
 
 function validated(vs: string) {
-  return /auc|0\.37|retrospective validation performed/i.test(vs || '')
+  return /auc|retrospective (test|validation) performed/i.test(vs || '')
 }
 
 export function TargetCards() {
@@ -48,7 +48,7 @@ export function TargetCards() {
                     <h4 style={{ fontSize: 21, margin: '8px 0 10px' }}>{target.name}</h4>
                     <p style={{ fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>{ROLES[target.target_id] ? t(ROLES[target.target_id]) : ''}</p>
                     <span style={{ display: 'inline-block', marginTop: 12, fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.06em', textTransform: 'uppercase', borderRadius: 100, padding: '3px 9px', border: '1px solid var(--line)', color: validated(target.validation_status) ? 'var(--clay)' : 'var(--ink-faint)' }}>
-                      {validated(target.validation_status) ? t('Validated: AUC 0.37 (below random)') : t('Not yet validated, hypothesis only')}
+                      {validated(target.validation_status) ? t('Tested: AUC 0.49 (inconclusive)') : t('Not yet validated, hypothesis only')}
                     </span>
                   </div>
                 </Reveal>

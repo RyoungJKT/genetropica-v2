@@ -4,6 +4,7 @@ import { RadarChart } from './RadarChart'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
 import { useT } from '../i18n'
+import { Ns5DockingNote } from './Ns5DockingNote'
 
 function Meta({ k, v }: { k: string; v: string }) {
   return (
@@ -15,7 +16,7 @@ function Meta({ k, v }: { k: string; v: string }) {
 }
 
 /** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), ADMET radar. */
-export function DrugPanel({ drug, field, admet, order, tName, literature = [] }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string; literature?: LitRef[] }) {
+export function DrugPanel({ drug, field, admet, order, tName, literature = [], ns5NoteShown = false }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string; literature?: LitRef[]; ns5NoteShown?: boolean }) {
   const { t } = useT()
   const ref = useRef<HTMLDivElement>(null)
   const firstRender = useRef(true)
@@ -109,6 +110,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [] }:
           <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', marginTop: 16, lineHeight: 1.5 }}>
             {t('Absolute Vina binding score (kcal/mol) per target. The ML score is a target-agnostic activity prior, so it is identical across every target.')}
           </p>
+          {!ns5NoteShown && <Ns5DockingNote style={{ fontSize: 11.5, margin: '8px 0 0', padding: '7px 11px' }} />}
         </div>
 
         <div>

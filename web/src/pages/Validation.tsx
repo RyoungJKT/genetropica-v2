@@ -1,6 +1,7 @@
 import { useValidation } from '../data/api'
 import { MultiLineChart, type ChartLine } from '../components/MultiLineChart'
 import { Ns5EnrichmentBenchmark } from '../components/Ns5EnrichmentBenchmark'
+import { Ns5CurrentEvaluation } from '../components/Ns5CurrentEvaluation'
 import { useT } from '../i18n'
 
 const LABEL: Record<string, string> = { docking: 'Docking (Vina)', gnn: 'ML (RandomForest)', consensus: 'Consensus' }
@@ -45,11 +46,14 @@ export default function Validation() {
         ))}
       </section>
 
+      <Ns5CurrentEvaluation />
+
       <Ns5EnrichmentBenchmark />
 
       {data && rocLines.length > 0 && (
         <div style={{ marginTop: 30 }}>
-          <h3 style={{ fontSize: 22 }}>{t('ROC curve, initial small-decoy test (inflated)')}</h3>
+          <div className="eyebrow" style={{ color: 'var(--ink-faint)' }}>{t('Superseded')}</div>
+          <h3 style={{ fontSize: 22, marginTop: 6 }}>{t('ROC curve, initial small-decoy test (inflated)')}</h3>
           <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 12px', maxWidth: 760 }}>
             {t('Against')} {String(data.metadata.n_actives ?? 8)} {t('actives and')} {String(data.metadata.n_decoys ?? 78)} {t('decoys. Curves hugging the top-left look excellent, but with so few easy decoys this overstates real performance. The diagonal is random.')}
           </p>
@@ -59,9 +63,10 @@ export default function Validation() {
 
       {data && (
         <div style={{ marginTop: 30 }}>
-          <h3 style={{ fontSize: 22 }}>{t('Enrichment factors (same initial test)')}</h3>
+          <div className="eyebrow" style={{ color: 'var(--ink-faint)' }}>{t('Superseded')}</div>
+          <h3 style={{ fontSize: 22, marginTop: 6 }}>{t('Enrichment factors (same initial test)')}</h3>
           <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 12px', maxWidth: 760 }}>
-            {t('How many more actives appear in the top X% than by chance. Also from the inflated test, so read alongside the fair AUC of')} {data.fair_auc} {t('for NS5 from the library-based test.')}
+            {t('How many more actives appear in the top X% than by chance, from the same small-decoy test, so these values are inflated too.')}
           </p>
           <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'hidden', maxWidth: 520, background: 'var(--paper)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>

@@ -5,7 +5,7 @@ const ITEMS = [
   { h: 'A prior, not a cure', p: 'These are computational predictions that point a scientist toward promising candidates. They are a starting hypothesis, never a treatment.' },
   { h: 'Sofosbuvir is a control', p: 'The known-active hepatitis C drug is included on purpose to check the method, not presented as a discovery.' },
   { h: 'Two metrics on purpose', p: 'Raw binding favours big molecules; efficiency favours tiny ones. Reporting both, over drug-like candidates, avoids fooling ourselves with size bias.' },
-  { h: 'Caveats stay visible', p: 'Where validation was weak (the dengue NS5 docking AUC of 0.37, below random), it is stated plainly rather than hidden. The ML score is a target-agnostic prior, not a per-target oracle.' },
+  { h: 'Caveats stay visible', p: 'Where validation was weak (the dengue NS5 docking test was inconclusive), it is stated plainly rather than hidden. The ML score is a target-agnostic prior, not a per-target oracle.' },
 ]
 
 export function HonestyBand() {

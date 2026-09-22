@@ -5,6 +5,7 @@ import { DrugTable } from '../components/DrugTable'
 import { DrugPanel } from '../components/DrugPanel'
 import { TargetAnalysis } from '../components/TargetAnalysis'
 import { useT } from '../i18n'
+import { Ns5DockingNote } from '../components/Ns5DockingNote'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 const DEFAULT_DRUG = 'celecoxib'
@@ -28,7 +29,7 @@ export default function Explore() {
   const drugs = useDrugs()
   const targets = useTargets()
   const lit = useLiterature()
-  const [tid, setTid] = useState('DENV_NS5')
+  const [tid, setTid] = useState('DENV_NS3')
   const [q, setQ] = useState('')
   const [dlOnly, setDlOnly] = useState(false)
   const [admetOnly, setAdmetOnly] = useState(false)
@@ -61,6 +62,7 @@ export default function Explore() {
           <button key={id} onClick={() => setTid(id)} style={pillBtn(tid === id)}>{tName(id)}</button>
         ))}
       </div>
+      {tid === 'DENV_NS5' && <Ns5DockingNote />}
 
       {field.data && <TargetAnalysis points={all} targetName={tName(tid)} shown={filtered.length} />}
 
@@ -91,7 +93,7 @@ export default function Explore() {
           ))}
         </select>
         {selDrug && field.data ? (
-          <DrugPanel drug={selDrug} field={field.data} admet={selAdmet} order={order} tName={tName} literature={(lit.data ?? []).filter((r) => r.drug === selDrug.name)} />
+          <DrugPanel drug={selDrug} field={field.data} admet={selAdmet} order={order} tName={tName} literature={(lit.data ?? []).filter((r) => r.drug === selDrug.name)} ns5NoteShown={tid === 'DENV_NS5'} />
         ) : (
           <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>{t('Choose a drug above, or click a row in the table, to see its cross-target binding and ADMET profile.')}</p>
         )}

@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { useField, useLiterature, useTargets } from '../data/api'
 import { useT } from '../i18n'
+import { Ns5DockingNote } from '../components/Ns5DockingNote'
 
 const LIT_ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 
@@ -9,7 +10,7 @@ function LiteratureEvidence() {
   const lit = useLiterature()
   const field = useField()
   const targets = useTargets()
-  const [tid, setTid] = useState('DENV_NS5')
+  const [tid, setTid] = useState('DENV_NS3')
   const tName = (id: string) => targets.data?.find((t) => t.target_id === id)?.name ?? id
   if (!lit.data || !field.data) return null
   const order = LIT_ORDER.filter((t) => field.data![t])
@@ -31,6 +32,7 @@ function LiteratureEvidence() {
           <button key={id} onClick={() => setTid(id)} style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase', padding: '8px 14px', borderRadius: 100, cursor: 'pointer', border: '1px solid var(--line)', background: tid === id ? 'var(--green)' : 'var(--paper)', color: tid === id ? 'var(--paper)' : 'var(--ink-soft)' }}>{tName(id)}</button>
         ))}
       </div>
+      {tid === 'DENV_NS5' && <Ns5DockingNote />}
       <div className="rstack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
         <div>
           <h4 style={{ fontSize: 14, marginBottom: 10 }}>{t('References per drug')}</h4>
@@ -85,9 +87,9 @@ export default function Insights() {
       </Block>
 
       <div style={{ marginTop: 30, background: 'linear-gradient(160deg,#16261d,#1b3327 60%,#13231a)', color: 'var(--paper)', borderRadius: 14, padding: '22px 24px', maxWidth: 820 }}>
-        <div className="eyebrow" style={{ color: '#9ec7ad' }}>{t('The honest result for NS5')}</div>
+        <div className="eyebrow" style={{ color: '#9ec7ad' }}>{t('The NS5 result')}</div>
         <p style={{ fontSize: 15.5, lineHeight: 1.65, marginTop: 10, color: '#e9efe9' }}>
-          {t('On a fair retrospective test, docking scored')} <b>{t('AUC 0.37 for dengue NS5, below random')}</b>{t('. The genuine small-molecule inhibitors are nucleoside analogues that dock weakly compared with large molecules, a size-bias artefact. We report this openly: for NS5, mechanism and published literature should carry more weight than the docking or ML score. Only NS5 was retrospectively validated; the other five targets have no equivalent test.')}
+          {t('On the corrected retrospective test, docking scored')} <b>{t('AUC 0.49 for dengue NS5')}</b>{t(', so it did not separate known inhibitors from decoys. For NS5, mechanism and published literature should carry more weight than the docking or ML score. Only NS5 was tested this way; the other five targets have no equivalent test.')}
         </p>
       </div>
 

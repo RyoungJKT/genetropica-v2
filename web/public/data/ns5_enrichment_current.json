@@ -1,0 +1,205 @@
+{
+ "target": "DENV_NS5",
+ "method": "retrospective enrichment, balanced property-matched decoys, single seed",
+ "receptor": "4V0R 2.40 A chain A, catalytic Mg2+ retained",
+ "center": [
+  -11.3,
+  19.2,
+  -7.8
+ ],
+ "box_size": 25,
+ "exhaustiveness": 8,
+ "seed": 42,
+ "ligand_set_fingerprint": "b05a73a214",
+ "n_actives": 8,
+ "n_decoys": 80,
+ "decoys_per_active": 10,
+ "auc": 0.494,
+ "ci95": [
+  0.306,
+  0.684
+ ],
+ "p": 0.9595,
+ "stratified_auc": 0.487,
+ "ef": {
+  "1%": 0.0,
+  "5%": 0.0,
+  "10%": 0.0
+ },
+ "roc": [
+  [
+   0.0,
+   0.0
+  ],
+  [
+   0.0125,
+   0.0
+  ],
+  [
+   0.15,
+   0.0
+  ],
+  [
+   0.15,
+   0.125
+  ],
+  [
+   0.1875,
+   0.125
+  ],
+  [
+   0.1875,
+   0.25
+  ],
+  [
+   0.35,
+   0.25
+  ],
+  [
+   0.35,
+   0.375
+  ],
+  [
+   0.525,
+   0.375
+  ],
+  [
+   0.525,
+   0.5
+  ],
+  [
+   0.575,
+   0.5
+  ],
+  [
+   0.575,
+   0.625
+  ],
+  [
+   0.625,
+   0.625
+  ],
+  [
+   0.625,
+   0.75
+  ],
+  [
+   0.725,
+   0.75
+  ],
+  [
+   0.725,
+   0.875
+  ],
+  [
+   0.8375,
+   0.875
+  ],
+  [
+   0.8625,
+   0.875
+  ],
+  [
+   0.9125,
+   0.875
+  ],
+  [
+   0.9125,
+   1.0
+  ],
+  [
+   1.0,
+   1.0
+  ]
+ ],
+ "scores": {
+  "2_c_methyladenosine": -6.62,
+  "7_deaza_2_c_methyladenosine": -6.67,
+  "balapiravir": -7.29,
+  "galidesivir": -6.41,
+  "gs_461203": -8.05,
+  "nitd008": -6.15,
+  "ribavirin": -5.74,
+  "sofosbuvir": -7.76,
+  "decoy_ribavirin_00": -5.94,
+  "decoy_ribavirin_01": -6.01,
+  "decoy_ribavirin_02": -5.76,
+  "decoy_ribavirin_03": -5.73,
+  "decoy_ribavirin_04": -6.05,
+  "decoy_ribavirin_05": -6.79,
+  "decoy_ribavirin_06": -6.19,
+  "decoy_ribavirin_07": -6.29,
+  "decoy_ribavirin_08": -5.95,
+  "decoy_ribavirin_09": -6.71,
+  "decoy_gs_461203_00": -7.52,
+  "decoy_gs_461203_01": -8.19,
+  "decoy_gs_461203_02": -7.64,
+  "decoy_gs_461203_03": -7.57,
+  "decoy_gs_461203_04": -7.36,
+  "decoy_gs_461203_05": -7.64,
+  "decoy_gs_461203_06": -7.59,
+  "decoy_gs_461203_07": -7.61,
+  "decoy_gs_461203_08": -8.27,
+  "decoy_gs_461203_09": -8.07,
+  "decoy_balapiravir_00": -8.04,
+  "decoy_balapiravir_01": -7.81,
+  "decoy_balapiravir_02": -8.73,
+  "decoy_balapiravir_03": -8.17,
+  "decoy_balapiravir_04": -8.46,
+  "decoy_balapiravir_05": -8.11,
+  "decoy_balapiravir_06": -8.31,
+  "decoy_balapiravir_07": -8.08,
+  "decoy_balapiravir_08": -8.67,
+  "decoy_balapiravir_09": -8.01,
+  "decoy_2_c_methyladenosine_00": -5.65,
+  "decoy_2_c_methyladenosine_01": -6.26,
+  "decoy_2_c_methyladenosine_02": -7.13,
+  "decoy_2_c_methyladenosine_03": -7.25,
+  "decoy_2_c_methyladenosine_04": -6.38,
+  "decoy_2_c_methyladenosine_05": -6.84,
+  "decoy_2_c_methyladenosine_06": -6.66,
+  "decoy_2_c_methyladenosine_07": -7.59,
+  "decoy_2_c_methyladenosine_08": -6.56,
+  "decoy_2_c_methyladenosine_09": -6.54,
+  "decoy_galidesivir_00": -5.79,
+  "decoy_galidesivir_01": -5.67,
+  "decoy_galidesivir_02": -5.79,
+  "decoy_galidesivir_03": -5.58,
+  "decoy_galidesivir_04": -6.41,
+  "decoy_galidesivir_05": -6.85,
+  "decoy_galidesivir_06": -6.7,
+  "decoy_galidesivir_07": -5.94,
+  "decoy_galidesivir_08": -5.34,
+  "decoy_galidesivir_09": -5.81,
+  "decoy_7_deaza_2_c_methyladenosine_00": -6.49,
+  "decoy_7_deaza_2_c_methyladenosine_01": -5.96,
+  "decoy_7_deaza_2_c_methyladenosine_02": -6.62,
+  "decoy_7_deaza_2_c_methyladenosine_03": -5.99,
+  "decoy_7_deaza_2_c_methyladenosine_04": -5.72,
+  "decoy_7_deaza_2_c_methyladenosine_05": -7.04,
+  "decoy_7_deaza_2_c_methyladenosine_06": -6.85,
+  "decoy_7_deaza_2_c_methyladenosine_07": -6.85,
+  "decoy_7_deaza_2_c_methyladenosine_08": -6.04,
+  "decoy_7_deaza_2_c_methyladenosine_09": -6.07,
+  "decoy_sofosbuvir_00": -8.82,
+  "decoy_sofosbuvir_01": -6.93,
+  "decoy_sofosbuvir_02": -7.47,
+  "decoy_sofosbuvir_03": -7.33,
+  "decoy_sofosbuvir_04": -7.65,
+  "decoy_sofosbuvir_05": -7.7,
+  "decoy_sofosbuvir_06": -8.15,
+  "decoy_sofosbuvir_07": -7.31,
+  "decoy_sofosbuvir_08": -6.59,
+  "decoy_sofosbuvir_09": -6.9,
+  "decoy_nitd008_00": -6.3,
+  "decoy_nitd008_01": -6.32,
+  "decoy_nitd008_02": -6.64,
+  "decoy_nitd008_03": -6.09,
+  "decoy_nitd008_04": -6.29,
+  "decoy_nitd008_05": -7.18,
+  "decoy_nitd008_06": -5.59,
+  "decoy_nitd008_07": -6.91,
+  "decoy_nitd008_08": -6.03,
+  "decoy_nitd008_09": -6.64
+ }
+}

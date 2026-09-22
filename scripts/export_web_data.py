@@ -11,7 +11,6 @@ import sqlite3
 from pathlib import Path
 
 from build_escape import build_escape
-from build_digest import build_digest
 
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / "data" / "database" / "genetropica.db"
@@ -136,9 +135,6 @@ def main():
     for tid in field:
         field[tid].sort(key=lambda x: x["vina"])
     (OUT / "field.json").write_text(json.dumps(field, indent=2))
-
-    # _digest.mjs (assistant grounding) is written last by build_digest(OUT), once
-    # escape.json and the other inputs exist. See scripts/build_digest.py.
 
     # admet.json: per-drug ADMET breakdown (risks are 0-1 scores; lipinski/pass are 0/1)
     admet = {r["name"]: {
@@ -282,11 +278,8 @@ def main():
     # conservation grades + predicted contacts just written (scripts/build_escape.py).
     build_escape(OUT)
 
-    # _digest.mjs: assistant grounding, built last so it can include the escape summary.
-    build_digest(OUT)
-
-    # validation.json: retrospective ROC + enrichment. The initial small-decoy test was
-    # inflated (AUC ~1.0); the honest headline is the fair library-based AUC 0.37 for NS5.
+    # validation.json: retrospective ROC + enrichment from the initial small-decoy test,
+    # which was inflated (AUC ~1.0). The current NS5 result is ns5_enrichment_current.json.
     val_dir = ROOT / "data" / "validation"
     if (val_dir / "validation_summary.json").exists():
         vs = json.loads((val_dir / "validation_summary.json").read_text())
@@ -303,7 +296,6 @@ def main():
             "ef": json.loads((val_dir / "enrichment_factors.json").read_text()),
             "roc": {k: _roc(k) for k in ("docking", "gnn", "consensus")},
             "metadata": vs.get("metadata", {}),
-            "fair_auc": 0.37,
         }, separators=(",", ":")))
 
     # methods.json: per-target docking grid (reproducibility)

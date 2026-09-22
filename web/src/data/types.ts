@@ -130,7 +130,6 @@ export interface Validation {
   ef: Record<string, { ef_1pct: number; ef_5pct: number; ef_10pct: number }>
   roc: Record<string, [number, number][]>
   metadata: Record<string, string | number>
-  fair_auc: number
 }
 export interface Ns5Enrichment {
   target: string
@@ -142,6 +141,27 @@ export interface Ns5Enrichment {
   exhaustiveness: number
   auc: number
   ef: { '1pct': number; '5pct': number; '10pct': number }
+  roc: [number, number][]
+  scores: Record<string, number>
+}
+// The corrected NS5 benchmark (Colab run, ligand set b05a73a214), copied from its result file.
+export interface Ns5EnrichmentCurrent {
+  target: string
+  method: string
+  receptor: string
+  center: [number, number, number]
+  box_size: number
+  exhaustiveness: number
+  seed: number
+  ligand_set_fingerprint: string
+  n_actives: number
+  n_decoys: number
+  decoys_per_active: number
+  auc: number
+  ci95: [number, number]
+  p: number
+  stratified_auc: number
+  ef: Record<'1%' | '5%' | '10%', number>
   roc: [number, number][]
   scores: Record<string, number>
 }
