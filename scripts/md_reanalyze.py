@@ -13,7 +13,7 @@ and correcting a system-setup discovery:
   The MD system was built by combining a protein and a docked ligand that were in
   different coordinate frames (the docked .mol2 sits in the original 5CCV crystal
   frame near the docking grid centre; the MD protein was renumbered and recentred),
-  so the ligand starts ~30 A away in solvent. These are therefore unbiased
+  so the ligand starts 21 to 39 A away in solvent. These are therefore unbiased
   association simulations, not bound-pose-stability runs. We report them as such.
 
   Ligand RMSD: because the ligand starts in solvent, RMSD against frame 0 is
@@ -22,6 +22,16 @@ and correcting a system-setup discovery:
   ligand never forms a stable bound pose, the RMSD is left undefined (NaN) rather
   than fabricated. The ligand is made whole and placed in its true minimum-image
   position relative to the protein (triclinic-aware) before alignment.
+
+Distances and hydrogen bonds (2026-09-23 fix): every distance is measured in the aligned
+frame WITHOUT the periodic box. Passing the original box to distance_array after AlignTraj
+has rotated the coordinates applies an invalid minimum-image correction, which produced
+false short distances whenever the drug was far from the protein (dasabuvir, 25 frames).
+The ligand is therefore placed in whichever of the 27 neighbouring periodic images is truly
+closest to the protein before alignment, so plain distances in the aligned frame are exact
+(scripts/export_md_trajectory.py checks this against the raw trajectory). Hydrogen bonds
+use nitrogen or oxygen donors with a real bonded hydrogen and nitrogen or oxygen acceptors;
+the earlier whole-residue selections counted carbons and hydrogens as partners.
 
 Minimum-image distances drive the association timeline (PBC-robust). Regenerates
 the comparison CSVs and figures consumed by the dashboard and PDF export. Does NOT
@@ -79,6 +89,24 @@ def place_ligand(lig, prot):
     return wrapped
 
 
+def nearest_image(lig, prot):
+    """Transformation, after place_ligand: move the whole ligand to whichever of the 27
+    neighbouring periodic images has the smallest ligand-protein distance. Whole-box
+    translations only, so it never changes the ligand's shape or its true position. The
+    anchor in place_ligand can pick a slightly farther copy when the drug is out in solvent."""
+    la = lig.atoms
+    pa = prot.atoms
+    shifts = np.array([(i, j, k) for i in (-1, 0, 1) for j in (-1, 0, 1) for k in (-1, 0, 1)])
+
+    def wrapped(ts):
+        vecs = shifts @ ts.triclinic_dimensions
+        pos = la.positions
+        best = min(vecs, key=lambda v: distance_array(pos + v, pa.positions).min())
+        la.translate(best)
+        return ts
+    return wrapped
+
+
 def load(drug):
     d = ROOT / f"data/md_simulation/{drug}/results"
     tpr = glob.glob(str(d / "*/md.tpr"))[0]
@@ -93,7 +121,7 @@ def load(drug):
     u.trajectory.add_transformations(
         NoJump(), trans.unwrap(prot), trans.unwrap(lig),
         trans.center_in_box(prot, center="mass"),
-        place_ligand(lig, prot),
+        place_ligand(lig, prot), nearest_image(lig, prot),
     )
     u.transfer_to_memory(step=5)  # stride: NoJump valid at 250 ps, unwrap runs on ~200 frames not 1001
     align.AlignTraj(u, u, select="protein and backbone", ref_frame=0, in_memory=True).run()
@@ -113,13 +141,15 @@ for drug in DRUGS:
     arr = R.results.rmsd
     time_ns, prot_rmsd = arr[:, 1] / 1000.0, arr[:, 2]
 
-    # Single pass: protein-aligned ligand positions + PBC-correct min-distance/contacts.
+    # Single pass: protein-aligned ligand positions + min-distance/contacts. No box here:
+    # the coordinates are rotated by the alignment, so a box correction would be invalid,
+    # and nearest_image already put the ligand next to the right copy of the protein.
     ligpos = np.zeros((n, len(lig), 3))
     mind = np.zeros(n)
     ncont = np.zeros(n, dtype=int)
     for i, ts in enumerate(u.trajectory):
         ligpos[i] = lig.positions
-        da = distance_array(lig.positions, prot.positions, box=ts.dimensions)
+        da = distance_array(lig.positions, prot.positions)
         mind[i] = float(da.min())
         ncont[i] = int((da < 4.5).sum())
 
@@ -155,17 +185,23 @@ for drug in DRUGS:
     rg = np.array([prot.radius_of_gyration() for _ in u.trajectory])
     rg_d[drug] = rg
 
+    # N/O donors with a bonded H, N/O acceptors. HBA applies the (rotated, invalid) box, so
+    # each pair is re-measured in the aligned frame and kept only if truly within 3.5 A.
+    polar = "(name N* or name O*)"
+    pairs = [[] for _ in range(n)]
+    for don, hyd, acc in [
+        (f"protein and {polar}", "protein and name H*", f"resname LIG and {polar}"),
+        (f"resname LIG and {polar}", "resname LIG and name H*", f"protein and {polar}"),
+    ]:
+        h = HBA(universe=u, donors_sel=don, hydrogens_sel=hyd, acceptors_sel=acc,
+                d_a_cutoff=3.5, d_h_a_angle_cutoff=120)
+        h.run()
+        for hb in h.results.hbonds:
+            pairs[int(hb[0])].append((int(hb[1]), int(hb[3])))
     counts = np.zeros(n)
-    for don, acc in [("protein", "resname LIG"), ("resname LIG", "protein")]:
-        try:
-            h = HBA(universe=u, donors_sel=don, acceptors_sel=acc, d_a_cutoff=3.5, d_h_a_angle_cutoff=120)
-            h.run()
-            for hb in h.results.hbonds:
-                fi = int(hb[0])
-                if fi < n:
-                    counts[fi] += 1
-        except Exception as e:
-            print(f"  hbond ({don}) warn: {e}", flush=True)
+    for i, _ in enumerate(u.trajectory):
+        pos = u.atoms.positions
+        counts[i] = sum(1 for d_ix, a_ix in pairs[i] if np.linalg.norm(pos[d_ix] - pos[a_ix]) <= 3.5)
     hb_d[drug] = {"time": np.arange(n) * DT_NS, "counts": counts}
     pd.DataFrame({"time_ns": np.arange(n) * DT_NS, "n_hbonds": counts}).to_csv(OUT / f"hbonds_{drug}.csv", index=False)
 
@@ -174,7 +210,7 @@ for drug in DRUGS:
         if i % SAMPLE:
             continue
         nsamp += 1
-        for r in set(u.select_atoms("protein and around 4.5 (resname LIG)").resids):
+        for r in set(u.select_atoms("protein and around 4.5 (resname LIG)", periodic=False).resids):
             rescount[r] = rescount.get(r, 0) + 1
     occ = sorted(((r, c / nsamp * 100) for r, c in rescount.items()), key=lambda x: -x[1])
     pd.DataFrame(occ, columns=["resid", "occupancy_pct"]).to_csv(OUT / f"contacts_{drug}.csv", index=False)
@@ -204,7 +240,7 @@ ax[0].set_title("Protein backbone RMSD"); ax[0].set_ylabel("RMSD (Å)")
 ax[1].set_title("Ligand RMSD vs its bound pose"); ax[1].set_ylabel("RMSD (Å)")
 for a in ax:
     a.set_xlabel("Time (ns)"); a.legend(fontsize=8); a.grid(alpha=.3)
-fig.suptitle("Protein stability and ligand association (unbiased MD: ligand starts ~30 Å away in solvent)",
+fig.suptitle("Protein stability and ligand association (unbiased MD: ligand starts 21 to 39 Å away in solvent)",
              y=1.02, fontweight="bold")
 fig.tight_layout(); fig.savefig(OUT / "rmsd_comparison.png", dpi=150, bbox_inches="tight"); plt.close(fig)
 

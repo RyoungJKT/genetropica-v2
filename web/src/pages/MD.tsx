@@ -74,7 +74,7 @@ export default function MD() {
       <div className="eyebrow">{t('Tool 03')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Molecular Dynamics')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 720, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts about 30 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs. One 50 ns run is a single anecdote, not a measurement of how strongly a drug binds.')}
+        {t('50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts 21 to 39 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs. One 50 ns run is a single anecdote, not a measurement of how strongly a drug binds.')}
       </p>
       <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '14px 18px', margin: '18px 0 8px', fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, maxWidth: 760 }}>
         {t('Celecoxib associates at about 3 ns and stays; methotrexate associates at about 14 ns and remains mobile; dasabuvir never forms a stable bound pose within 50 ns.')}
@@ -120,7 +120,7 @@ export default function MD() {
           <ChartBlock title={t('Ligand RMSD vs its bound pose')} caption={t("Once a drug settles into a site, how much its pose wobbles, measured against that drug's own bound pose. Dasabuvir never settles, so it has none.")}>
             <MultiLineChart lines={series('rmsd', 2)} xLabel={t('time (ns)')} yLabel={t('RMSD (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title={t('Ligand-protein minimum distance')} caption={t('The headline of these runs: each drug starts about 30 Å away and either finds the protein (distance drops toward 2 Å) or does not. Celecoxib and methotrexate associate; dasabuvir stays far.')}>
+          <ChartBlock title={t('Ligand-protein minimum distance')} caption={t('The headline of these runs: each drug starts 21 to 39 Å away and either finds the protein (distance drops toward 2 Å) or does not. Celecoxib and methotrexate associate; dasabuvir stays far.')}>
             <MultiLineChart lines={series('mindist', 1)} xLabel={t('time (ns)')} yLabel={t('min distance (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title={t('Drug-protein hydrogen bonds')} caption={t('Hydrogen bonds between the drug and the protein over time. More sustained bonds indicate a tighter grip once bound.')}>

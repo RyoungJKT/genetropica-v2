@@ -55,7 +55,6 @@ export function CandidateBoard({ points }: { points: FieldPoint[] }) {
                   <span style={{ fontFamily: 'var(--serif)', fontSize: 17, textTransform: 'capitalize' }}>{p.name.replace(/_/g, ' ')}</span>
                   {p.dl === 1 ? <Tag color="var(--green)">{t('drug-like')}</Tag> : <Tag>{t('outside drug-like range')}</Tag>}
                   {p.name.toLowerCase() === 'sofosbuvir' && <Tag color="var(--ink-soft)">{t('control')}</Tag>}
-                  {!p.admet && <Tag color="var(--clay)">{t('ADMET flag')}</Tag>}
                 </div>
                 <div style={{ height: 8, background: 'var(--paper-3)', borderRadius: 100, marginTop: 7, overflow: 'hidden' }}>
                   <div className="bar" style={{ height: '100%', width: inView ? `${pct(p)}%` : '0%', background: b.color, borderRadius: 100, transitionDelay: `${Math.min(i * 10, 500)}ms` }} />

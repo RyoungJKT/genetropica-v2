@@ -39,35 +39,9 @@ export interface FieldPoint {
   le: number | null
   vina: number
   dl: number
-  admet: number
 }
 
 export type Field = Record<string, FieldPoint[]>
-
-export interface AdmetRow {
-  lipinski: number
-  hepatotox: number
-  herg: number
-  bioavail: number
-  pass: number
-}
-
-export type Admet = Record<string, AdmetRow>
-
-export interface AdmetProfile {
-  name: string
-  desc: { mw: number; logp: number; tpsa: number; hbd: number; hba: number; rot: number }
-  lipinski: boolean
-  veber: boolean
-  ghose: boolean
-  egan: boolean
-  esol: number
-  gi: string
-  bbb: string
-  pains: string[]
-  brenk: string[]
-  dl: number
-}
 
 export interface LitRef {
   drug: string

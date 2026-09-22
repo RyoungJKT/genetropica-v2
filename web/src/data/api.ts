@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { decodeTraj, type MdTrajMeta } from '../lib/mdTraj'
-import type { Summary, Target, Drug, Field, Admet, AdmetProfile, LitRef, BindingData, BindingIndex, Md, Conservation, Validation, Methods, Escape, Ns5Enrichment, Ns5EnrichmentCurrent } from './types'
+import type { Summary, Target, Drug, Field, LitRef, BindingData, BindingIndex, Md, Conservation, Validation, Methods, Escape, Ns5Enrichment, Ns5EnrichmentCurrent } from './types'
 
 const json = async <T>(path: string): Promise<T> => {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${path}`)
@@ -12,8 +12,6 @@ export const useSummary = () => useQuery({ queryKey: ['summary'], queryFn: () =>
 export const useTargets = () => useQuery({ queryKey: ['targets'], queryFn: () => json<Target[]>('targets.json') })
 export const useDrugs = () => useQuery({ queryKey: ['drugs'], queryFn: () => json<Drug[]>('drugs.json') })
 export const useField = () => useQuery({ queryKey: ['field'], queryFn: () => json<Field>('field.json') })
-export const useAdmet = () => useQuery({ queryKey: ['admet'], queryFn: () => json<Admet>('admet.json') })
-export const useAdmetProfiles = () => useQuery({ queryKey: ['admetProfiles'], queryFn: () => json<AdmetProfile[]>('admet_profiles.json') })
 export const useLiterature = () => useQuery({ queryKey: ['literature'], queryFn: () => json<LitRef[]>('literature.json') })
 export const useMd = () => useQuery({ queryKey: ['md'], queryFn: () => json<Md>('md.json') })
 export const useMdTraj = (drug: string) =>

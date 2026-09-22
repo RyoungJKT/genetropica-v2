@@ -23,7 +23,7 @@ export function FieldPanel() {
           ))}
         </div>
         <p style={{ fontSize: 12, color: 'var(--ink-faint)', fontStyle: 'italic', lineHeight: 1.5, marginTop: 14 }}>
-          {t('Faded rows did not pass the safety (ADMET) filter. The drug-like badge marks candidates in the 250 to 600 Da range.')}
+          {t('The drug-like badge marks candidates in the 250 to 600 Da range.')}
         </p>
       </Card>
     </div>

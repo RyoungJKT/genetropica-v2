@@ -8,8 +8,7 @@
       "ha": 65,
       "le": 0.135,
       "vina": -8.75,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "grazoprevir",
@@ -19,8 +18,7 @@
       "ha": 54,
       "le": 0.16,
       "vina": -8.64,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "voxilaprevir",
@@ -30,8 +28,7 @@
       "ha": 60,
       "le": 0.137,
       "vina": -8.23,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "pibrentasvir",
@@ -41,8 +38,7 @@
       "ha": 80,
       "le": 0.102,
       "vina": -8.19,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "paritaprevir",
@@ -52,8 +48,7 @@
       "ha": 55,
       "le": 0.139,
       "vina": -7.64,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "atazanavir",
@@ -63,8 +58,7 @@
       "ha": 51,
       "le": 0.149,
       "vina": -7.59,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "dasabuvir",
@@ -74,8 +68,7 @@
       "ha": 35,
       "le": 0.216,
       "vina": -7.57,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "darunavir",
@@ -85,8 +78,7 @@
       "ha": 38,
       "le": 0.195,
       "vina": -7.42,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ivermectin",
@@ -96,8 +88,7 @@
       "ha": 62,
       "le": 0.119,
       "vina": -7.4,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nelfinavir",
@@ -107,8 +98,7 @@
       "ha": 40,
       "le": 0.184,
       "vina": -7.37,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "sorafenib",
@@ -118,8 +108,7 @@
       "ha": 32,
       "le": 0.23,
       "vina": -7.37,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "simeprevir",
@@ -129,8 +118,7 @@
       "ha": 52,
       "le": 0.141,
       "vina": -7.32,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "ombitasvir",
@@ -140,8 +128,7 @@
       "ha": 65,
       "le": 0.112,
       "vina": -7.3,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nafamostat",
@@ -151,8 +138,7 @@
       "ha": 26,
       "le": 0.279,
       "vina": -7.25,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atovaquone",
@@ -162,8 +148,7 @@
       "ha": 26,
       "le": 0.277,
       "vina": -7.21,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "doxycycline",
@@ -173,8 +158,7 @@
       "ha": 32,
       "le": 0.223,
       "vina": -7.13,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ledipasvir",
@@ -184,8 +168,7 @@
       "ha": 65,
       "le": 0.11,
       "vina": -7.12,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "elbasvir",
@@ -195,8 +178,7 @@
       "ha": 65,
       "le": 0.109,
       "vina": -7.08,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "suramin",
@@ -206,8 +188,7 @@
       "ha": 86,
       "le": 0.081,
       "vina": -7.0,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "daclatasvir",
@@ -217,8 +198,7 @@
       "ha": 54,
       "le": 0.127,
       "vina": -6.85,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "vandetanib",
@@ -228,8 +208,7 @@
       "ha": 30,
       "le": 0.228,
       "vina": -6.84,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "methotrexate",
@@ -239,8 +218,7 @@
       "ha": 33,
       "le": 0.207,
       "vina": -6.83,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baloxavir_marboxil",
@@ -250,8 +228,7 @@
       "ha": 46,
       "le": 0.148,
       "vina": -6.82,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "telaprevir",
@@ -261,8 +238,7 @@
       "ha": 49,
       "le": 0.138,
       "vina": -6.77,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "remdesivir",
@@ -272,8 +248,7 @@
       "ha": 42,
       "le": 0.159,
       "vina": -6.67,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nirmatrelvir",
@@ -283,8 +258,7 @@
       "ha": 35,
       "le": 0.19,
       "vina": -6.66,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "omeprazole",
@@ -294,8 +268,7 @@
       "ha": 24,
       "le": 0.276,
       "vina": -6.63,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cyclosporine",
@@ -305,8 +278,7 @@
       "ha": 85,
       "le": 0.078,
       "vina": -6.61,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "celecoxib",
@@ -316,8 +288,7 @@
       "ha": 26,
       "le": 0.252,
       "vina": -6.56,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "sirolimus",
@@ -327,8 +298,7 @@
       "ha": 65,
       "le": 0.101,
       "vina": -6.54,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "minocycline",
@@ -338,8 +308,7 @@
       "ha": 33,
       "le": 0.198,
       "vina": -6.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atorvastatin",
@@ -349,8 +318,7 @@
       "ha": 41,
       "le": 0.159,
       "vina": -6.51,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "glecaprevir",
@@ -360,8 +328,7 @@
       "ha": 58,
       "le": 0.112,
       "vina": -6.46,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "prednisolone",
@@ -371,8 +338,7 @@
       "ha": 26,
       "le": 0.243,
       "vina": -6.32,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "artemisinin",
@@ -382,8 +348,7 @@
       "ha": 20,
       "le": 0.316,
       "vina": -6.31,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sofosbuvir",
@@ -393,8 +358,7 @@
       "ha": 36,
       "le": 0.174,
       "vina": -6.26,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "fenofibrate",
@@ -404,8 +368,7 @@
       "ha": 25,
       "le": 0.249,
       "vina": -6.24,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "camostat",
@@ -415,8 +378,7 @@
       "ha": 29,
       "le": 0.215,
       "vina": -6.22,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lopinavir",
@@ -426,8 +388,7 @@
       "ha": 46,
       "le": 0.135,
       "vina": -6.22,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "mefloquine",
@@ -437,8 +398,7 @@
       "ha": 26,
       "le": 0.239,
       "vina": -6.22,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "lisinopril",
@@ -448,8 +408,7 @@
       "ha": 29,
       "le": 0.214,
       "vina": -6.21,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "balapiravir",
@@ -459,8 +418,7 @@
       "ha": 35,
       "le": 0.177,
       "vina": -6.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "praziquantel",
@@ -470,8 +428,7 @@
       "ha": 23,
       "le": 0.269,
       "vina": -6.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentamidine",
@@ -481,8 +438,7 @@
       "ha": 25,
       "le": 0.246,
       "vina": -6.15,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ruxolitinib",
@@ -492,8 +448,7 @@
       "ha": 23,
       "le": 0.267,
       "vina": -6.15,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fludarabine",
@@ -503,8 +458,7 @@
       "ha": 20,
       "le": 0.307,
       "vina": -6.13,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "niclosamide",
@@ -514,8 +468,7 @@
       "ha": 21,
       "le": 0.291,
       "vina": -6.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pantoprazole",
@@ -525,8 +478,7 @@
       "ha": 26,
       "le": 0.235,
       "vina": -6.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baricitinib",
@@ -536,8 +488,7 @@
       "ha": 26,
       "le": 0.233,
       "vina": -6.07,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "molnupiravir",
@@ -547,8 +498,7 @@
       "ha": 23,
       "le": 0.263,
       "vina": -6.05,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "sunitinib",
@@ -558,8 +508,7 @@
       "ha": 29,
       "le": 0.208,
       "vina": -6.05,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "gemcitabine",
@@ -569,8 +518,7 @@
       "ha": 18,
       "le": 0.336,
       "vina": -6.04,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "leflunomide",
@@ -580,8 +528,7 @@
       "ha": 19,
       "le": 0.315,
       "vina": -5.98,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lovastatin",
@@ -591,8 +538,7 @@
       "ha": 29,
       "le": 0.206,
       "vina": -5.98,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "levothyroxine",
@@ -602,8 +548,7 @@
       "ha": 24,
       "le": 0.246,
       "vina": -5.91,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "mycophenolate_mofetil",
@@ -613,8 +558,7 @@
       "ha": 31,
       "le": 0.19,
       "vina": -5.89,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "benznidazole",
@@ -624,8 +568,7 @@
       "ha": 19,
       "le": 0.31,
       "vina": -5.88,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "boceprevir",
@@ -635,8 +578,7 @@
       "ha": 37,
       "le": 0.158,
       "vina": -5.83,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "colchicine",
@@ -646,8 +588,7 @@
       "ha": 29,
       "le": 0.201,
       "vina": -5.82,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "indomethacin",
@@ -657,8 +598,7 @@
       "ha": 25,
       "le": 0.232,
       "vina": -5.81,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "abacavir",
@@ -668,8 +608,7 @@
       "ha": 21,
       "le": 0.276,
       "vina": -5.79,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "trifluridine",
@@ -679,8 +618,7 @@
       "ha": 20,
       "le": 0.286,
       "vina": -5.73,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "zidovudine",
@@ -690,8 +628,7 @@
       "ha": 19,
       "le": 0.299,
       "vina": -5.68,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "entecavir",
@@ -701,8 +638,7 @@
       "ha": 20,
       "le": 0.283,
       "vina": -5.65,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "tenofovir",
@@ -712,8 +648,7 @@
       "ha": 19,
       "le": 0.297,
       "vina": -5.65,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "clevudine",
@@ -723,8 +658,7 @@
       "ha": 18,
       "le": 0.313,
       "vina": -5.63,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nitazoxanide",
@@ -734,8 +668,7 @@
       "ha": 21,
       "le": 0.265,
       "vina": -5.57,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "galidesivir",
@@ -745,8 +678,7 @@
       "ha": 19,
       "le": 0.291,
       "vina": -5.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cladribine",
@@ -756,8 +688,7 @@
       "ha": 19,
       "le": 0.29,
       "vina": -5.52,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "primaquine",
@@ -767,8 +698,7 @@
       "ha": 19,
       "le": 0.289,
       "vina": -5.5,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "albendazole",
@@ -778,8 +708,7 @@
       "ha": 18,
       "le": 0.302,
       "vina": -5.43,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "naproxen",
@@ -789,8 +718,7 @@
       "ha": 17,
       "le": 0.319,
       "vina": -5.42,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "umifenovir",
@@ -800,8 +728,7 @@
       "ha": 29,
       "le": 0.186,
       "vina": -5.4,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "prochlorperazine",
@@ -811,8 +738,7 @@
       "ha": 25,
       "le": 0.216,
       "vina": -5.39,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "cytarabine",
@@ -822,8 +748,7 @@
       "ha": 17,
       "le": 0.315,
       "vina": -5.35,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "erlotinib",
@@ -833,8 +758,7 @@
       "ha": 29,
       "le": 0.184,
       "vina": -5.33,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "hydroxychloroquine",
@@ -844,8 +768,7 @@
       "ha": 23,
       "le": 0.232,
       "vina": -5.33,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "cetirizine",
@@ -855,8 +778,7 @@
       "ha": 27,
       "le": 0.196,
       "vina": -5.3,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "stavudine",
@@ -866,8 +788,7 @@
       "ha": 16,
       "le": 0.33,
       "vina": -5.28,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "telbivudine",
@@ -877,8 +798,7 @@
       "ha": 17,
       "le": 0.309,
       "vina": -5.26,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "azathioprine",
@@ -888,8 +808,7 @@
       "ha": 19,
       "le": 0.276,
       "vina": -5.24,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pyrimethamine",
@@ -899,8 +818,7 @@
       "ha": 17,
       "le": 0.308,
       "vina": -5.23,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "ibuprofen",
@@ -910,8 +828,7 @@
       "ha": 15,
       "le": 0.346,
       "vina": -5.19,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "acyclovir",
@@ -921,8 +838,7 @@
       "ha": 16,
       "le": 0.324,
       "vina": -5.18,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "adefovir",
@@ -932,8 +848,7 @@
       "ha": 18,
       "le": 0.286,
       "vina": -5.15,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "didanosine",
@@ -943,8 +858,7 @@
       "ha": 17,
       "le": 0.303,
       "vina": -5.14,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "ribavirin",
@@ -954,8 +868,7 @@
       "ha": 17,
       "le": 0.3,
       "vina": -5.11,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "amlodipine",
@@ -965,8 +878,7 @@
       "ha": 28,
       "le": 0.177,
       "vina": -4.96,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "chloroquine",
@@ -976,8 +888,7 @@
       "ha": 22,
       "le": 0.225,
       "vina": -4.94,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "lamivudine",
@@ -987,8 +898,7 @@
       "ha": 15,
       "le": 0.327,
       "vina": -4.91,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "pentoxifylline",
@@ -998,8 +908,7 @@
       "ha": 20,
       "le": 0.245,
       "vina": -4.89,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "amantadine",
@@ -1009,8 +918,7 @@
       "ha": 11,
       "le": 0.444,
       "vina": -4.88,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "chlorpromazine",
@@ -1020,8 +928,7 @@
       "ha": 21,
       "le": 0.23,
       "vina": -4.83,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "oseltamivir",
@@ -1031,8 +938,7 @@
       "ha": 22,
       "le": 0.216,
       "vina": -4.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "metformin",
@@ -1042,8 +948,7 @@
       "ha": 9,
       "le": 0.519,
       "vina": -4.67,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "rimantadine",
@@ -1053,8 +958,7 @@
       "ha": 13,
       "le": 0.357,
       "vina": -4.65,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gabapentin",
@@ -1064,8 +968,7 @@
       "ha": 12,
       "le": 0.368,
       "vina": -4.42,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "favipiravir",
@@ -1075,8 +978,7 @@
       "ha": 11,
       "le": 0.386,
       "vina": -4.25,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "miltefosine",
@@ -1086,8 +988,7 @@
       "ha": 27,
       "le": 0.154,
       "vina": -4.17,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     }
   ],
   "DENV_NS3": [
@@ -1099,8 +1000,7 @@
       "ha": 54,
       "le": 0.195,
       "vina": -10.55,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "voxilaprevir",
@@ -1110,8 +1010,7 @@
       "ha": 60,
       "le": 0.157,
       "vina": -9.44,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "elbasvir",
@@ -1121,8 +1020,7 @@
       "ha": 65,
       "le": 0.144,
       "vina": -9.36,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nafamostat",
@@ -1132,8 +1030,7 @@
       "ha": 26,
       "le": 0.357,
       "vina": -9.28,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ombitasvir",
@@ -1143,8 +1040,7 @@
       "ha": 65,
       "le": 0.139,
       "vina": -9.02,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "paritaprevir",
@@ -1154,8 +1050,7 @@
       "ha": 55,
       "le": 0.162,
       "vina": -8.89,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "pibrentasvir",
@@ -1165,8 +1060,7 @@
       "ha": 80,
       "le": 0.109,
       "vina": -8.7,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "camostat",
@@ -1176,8 +1070,7 @@
       "ha": 29,
       "le": 0.3,
       "vina": -8.69,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "velpatasvir",
@@ -1187,8 +1080,7 @@
       "ha": 65,
       "le": 0.134,
       "vina": -8.69,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "darunavir",
@@ -1198,8 +1090,7 @@
       "ha": 38,
       "le": 0.228,
       "vina": -8.65,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "sofosbuvir",
@@ -1209,8 +1100,7 @@
       "ha": 36,
       "le": 0.24,
       "vina": -8.63,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "methotrexate",
@@ -1220,8 +1110,7 @@
       "ha": 33,
       "le": 0.258,
       "vina": -8.52,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sorafenib",
@@ -1231,8 +1120,7 @@
       "ha": 32,
       "le": 0.265,
       "vina": -8.47,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "atazanavir",
@@ -1242,8 +1130,7 @@
       "ha": 51,
       "le": 0.166,
       "vina": -8.46,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "remdesivir",
@@ -1253,8 +1140,7 @@
       "ha": 42,
       "le": 0.195,
       "vina": -8.2,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "glecaprevir",
@@ -1264,8 +1150,7 @@
       "ha": 58,
       "le": 0.141,
       "vina": -8.16,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sunitinib",
@@ -1275,8 +1160,7 @@
       "ha": 29,
       "le": 0.281,
       "vina": -8.14,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nelfinavir",
@@ -1286,8 +1170,7 @@
       "ha": 40,
       "le": 0.203,
       "vina": -8.13,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "suramin",
@@ -1297,8 +1180,7 @@
       "ha": 86,
       "le": 0.093,
       "vina": -8.03,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "pantoprazole",
@@ -1308,8 +1190,7 @@
       "ha": 26,
       "le": 0.309,
       "vina": -8.02,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lovastatin",
@@ -1319,8 +1200,7 @@
       "ha": 29,
       "le": 0.275,
       "vina": -7.99,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baloxavir_marboxil",
@@ -1330,8 +1210,7 @@
       "ha": 46,
       "le": 0.172,
       "vina": -7.93,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "boceprevir",
@@ -1341,8 +1220,7 @@
       "ha": 37,
       "le": 0.214,
       "vina": -7.93,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "telaprevir",
@@ -1352,8 +1230,7 @@
       "ha": 49,
       "le": 0.162,
       "vina": -7.91,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nirmatrelvir",
@@ -1363,8 +1240,7 @@
       "ha": 35,
       "le": 0.225,
       "vina": -7.88,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "doxycycline",
@@ -1374,8 +1250,7 @@
       "ha": 32,
       "le": 0.245,
       "vina": -7.86,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lopinavir",
@@ -1385,8 +1260,7 @@
       "ha": 46,
       "le": 0.169,
       "vina": -7.75,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "niclosamide",
@@ -1396,8 +1270,7 @@
       "ha": 21,
       "le": 0.369,
       "vina": -7.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentamidine",
@@ -1407,8 +1280,7 @@
       "ha": 25,
       "le": 0.31,
       "vina": -7.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "trifluridine",
@@ -1418,8 +1290,7 @@
       "ha": 20,
       "le": 0.387,
       "vina": -7.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "mefloquine",
@@ -1429,8 +1300,7 @@
       "ha": 26,
       "le": 0.297,
       "vina": -7.73,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "clevudine",
@@ -1440,8 +1310,7 @@
       "ha": 18,
       "le": 0.423,
       "vina": -7.62,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "leflunomide",
@@ -1451,8 +1320,7 @@
       "ha": 19,
       "le": 0.401,
       "vina": -7.62,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "simeprevir",
@@ -1462,8 +1330,7 @@
       "ha": 52,
       "le": 0.146,
       "vina": -7.6,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "benznidazole",
@@ -1473,8 +1340,7 @@
       "ha": 19,
       "le": 0.398,
       "vina": -7.57,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "molnupiravir",
@@ -1484,8 +1350,7 @@
       "ha": 23,
       "le": 0.329,
       "vina": -7.57,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ruxolitinib",
@@ -1495,8 +1360,7 @@
       "ha": 23,
       "le": 0.328,
       "vina": -7.54,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "zidovudine",
@@ -1506,8 +1370,7 @@
       "ha": 19,
       "le": 0.394,
       "vina": -7.48,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atovaquone",
@@ -1517,8 +1380,7 @@
       "ha": 26,
       "le": 0.287,
       "vina": -7.46,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "omeprazole",
@@ -1528,8 +1390,7 @@
       "ha": 24,
       "le": 0.311,
       "vina": -7.46,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ledipasvir",
@@ -1539,8 +1400,7 @@
       "ha": 65,
       "le": 0.114,
       "vina": -7.42,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "entecavir",
@@ -1550,8 +1410,7 @@
       "ha": 20,
       "le": 0.366,
       "vina": -7.32,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "galidesivir",
@@ -1561,8 +1420,7 @@
       "ha": 19,
       "le": 0.382,
       "vina": -7.26,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nitazoxanide",
@@ -1572,8 +1430,7 @@
       "ha": 21,
       "le": 0.346,
       "vina": -7.26,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "celecoxib",
@@ -1583,8 +1440,7 @@
       "ha": 26,
       "le": 0.278,
       "vina": -7.22,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "balapiravir",
@@ -1594,8 +1450,7 @@
       "ha": 35,
       "le": 0.206,
       "vina": -7.2,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fenofibrate",
@@ -1605,8 +1460,7 @@
       "ha": 25,
       "le": 0.287,
       "vina": -7.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cladribine",
@@ -1616,8 +1470,7 @@
       "ha": 19,
       "le": 0.374,
       "vina": -7.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fludarabine",
@@ -1627,8 +1480,7 @@
       "ha": 20,
       "le": 0.355,
       "vina": -7.1,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "abacavir",
@@ -1638,8 +1490,7 @@
       "ha": 21,
       "le": 0.338,
       "vina": -7.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "tenofovir",
@@ -1649,8 +1500,7 @@
       "ha": 19,
       "le": 0.373,
       "vina": -7.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "vandetanib",
@@ -1660,8 +1510,7 @@
       "ha": 30,
       "le": 0.236,
       "vina": -7.07,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "mycophenolate_mofetil",
@@ -1671,8 +1520,7 @@
       "ha": 31,
       "le": 0.226,
       "vina": -7.0,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "minocycline",
@@ -1682,8 +1530,7 @@
       "ha": 33,
       "le": 0.212,
       "vina": -6.99,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baricitinib",
@@ -1693,8 +1540,7 @@
       "ha": 26,
       "le": 0.269,
       "vina": -6.98,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "erlotinib",
@@ -1704,8 +1550,7 @@
       "ha": 29,
       "le": 0.239,
       "vina": -6.95,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "telbivudine",
@@ -1715,8 +1560,7 @@
       "ha": 17,
       "le": 0.405,
       "vina": -6.88,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "atorvastatin",
@@ -1726,8 +1570,7 @@
       "ha": 41,
       "le": 0.168,
       "vina": -6.87,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "cetirizine",
@@ -1737,8 +1580,7 @@
       "ha": 27,
       "le": 0.254,
       "vina": -6.86,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "didanosine",
@@ -1748,8 +1590,7 @@
       "ha": 17,
       "le": 0.404,
       "vina": -6.86,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "praziquantel",
@@ -1759,8 +1600,7 @@
       "ha": 23,
       "le": 0.298,
       "vina": -6.86,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cytarabine",
@@ -1770,8 +1610,7 @@
       "ha": 17,
       "le": 0.401,
       "vina": -6.82,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "dasabuvir",
@@ -1781,8 +1620,7 @@
       "ha": 35,
       "le": 0.195,
       "vina": -6.82,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "prochlorperazine",
@@ -1792,8 +1630,7 @@
       "ha": 25,
       "le": 0.272,
       "vina": -6.8,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "albendazole",
@@ -1803,8 +1640,7 @@
       "ha": 18,
       "le": 0.377,
       "vina": -6.78,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "metformin",
@@ -1814,8 +1650,7 @@
       "ha": 9,
       "le": 0.75,
       "vina": -6.75,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "adefovir",
@@ -1825,8 +1660,7 @@
       "ha": 18,
       "le": 0.373,
       "vina": -6.71,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ribavirin",
@@ -1836,8 +1670,7 @@
       "ha": 17,
       "le": 0.392,
       "vina": -6.67,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "azathioprine",
@@ -1847,8 +1680,7 @@
       "ha": 19,
       "le": 0.347,
       "vina": -6.6,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lisinopril",
@@ -1858,8 +1690,7 @@
       "ha": 29,
       "le": 0.227,
       "vina": -6.58,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "naproxen",
@@ -1869,8 +1700,7 @@
       "ha": 17,
       "le": 0.387,
       "vina": -6.58,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "acyclovir",
@@ -1880,8 +1710,7 @@
       "ha": 16,
       "le": 0.41,
       "vina": -6.56,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gemcitabine",
@@ -1891,8 +1720,7 @@
       "ha": 18,
       "le": 0.364,
       "vina": -6.56,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "levothyroxine",
@@ -1902,8 +1730,7 @@
       "ha": 24,
       "le": 0.27,
       "vina": -6.47,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "stavudine",
@@ -1913,8 +1740,7 @@
       "ha": 16,
       "le": 0.403,
       "vina": -6.46,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "miltefosine",
@@ -1924,8 +1750,7 @@
       "ha": 27,
       "le": 0.238,
       "vina": -6.43,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "artemisinin",
@@ -1935,8 +1760,7 @@
       "ha": 20,
       "le": 0.319,
       "vina": -6.38,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "hydroxychloroquine",
@@ -1946,8 +1770,7 @@
       "ha": 23,
       "le": 0.276,
       "vina": -6.34,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "pyrimethamine",
@@ -1957,8 +1780,7 @@
       "ha": 17,
       "le": 0.37,
       "vina": -6.29,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "amlodipine",
@@ -1968,8 +1790,7 @@
       "ha": 28,
       "le": 0.224,
       "vina": -6.27,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "chloroquine",
@@ -1979,8 +1800,7 @@
       "ha": 22,
       "le": 0.284,
       "vina": -6.25,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ivermectin",
@@ -1990,8 +1810,7 @@
       "ha": 62,
       "le": 0.099,
       "vina": -6.16,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "daclatasvir",
@@ -2001,8 +1820,7 @@
       "ha": 54,
       "le": 0.113,
       "vina": -6.12,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "umifenovir",
@@ -2012,8 +1830,7 @@
       "ha": 29,
       "le": 0.21,
       "vina": -6.08,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "lamivudine",
@@ -2023,8 +1840,7 @@
       "ha": 15,
       "le": 0.404,
       "vina": -6.05,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "ibuprofen",
@@ -2034,8 +1850,7 @@
       "ha": 15,
       "le": 0.4,
       "vina": -6.0,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "pentoxifylline",
@@ -2045,8 +1860,7 @@
       "ha": 20,
       "le": 0.299,
       "vina": -5.99,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "chlorpromazine",
@@ -2056,8 +1870,7 @@
       "ha": 21,
       "le": 0.28,
       "vina": -5.88,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "rimantadine",
@@ -2067,8 +1880,7 @@
       "ha": 13,
       "le": 0.449,
       "vina": -5.84,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "prednisolone",
@@ -2078,8 +1890,7 @@
       "ha": 26,
       "le": 0.223,
       "vina": -5.79,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "oseltamivir",
@@ -2089,8 +1900,7 @@
       "ha": 22,
       "le": 0.261,
       "vina": -5.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "primaquine",
@@ -2100,8 +1910,7 @@
       "ha": 19,
       "le": 0.3,
       "vina": -5.7,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "indomethacin",
@@ -2111,8 +1920,7 @@
       "ha": 25,
       "le": 0.228,
       "vina": -5.69,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "colchicine",
@@ -2122,8 +1930,7 @@
       "ha": 29,
       "le": 0.193,
       "vina": -5.61,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "favipiravir",
@@ -2133,8 +1940,7 @@
       "ha": 11,
       "le": 0.506,
       "vina": -5.57,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gabapentin",
@@ -2144,8 +1950,7 @@
       "ha": 12,
       "le": 0.457,
       "vina": -5.48,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "amantadine",
@@ -2155,8 +1960,7 @@
       "ha": 11,
       "le": 0.467,
       "vina": -5.13,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "sirolimus",
@@ -2166,8 +1970,7 @@
       "ha": 65,
       "le": null,
       "vina": 5.2,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "cyclosporine",
@@ -2177,8 +1980,7 @@
       "ha": 85,
       "le": null,
       "vina": 21.61,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     }
   ],
   "DENV_E": [
@@ -2190,8 +1992,7 @@
       "ha": 65,
       "le": 0.141,
       "vina": -9.19,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "elbasvir",
@@ -2201,8 +2002,7 @@
       "ha": 65,
       "le": 0.134,
       "vina": -8.73,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "simeprevir",
@@ -2212,8 +2012,7 @@
       "ha": 52,
       "le": 0.167,
       "vina": -8.66,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "glecaprevir",
@@ -2223,8 +2022,7 @@
       "ha": 58,
       "le": 0.149,
       "vina": -8.62,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "grazoprevir",
@@ -2234,8 +2032,7 @@
       "ha": 54,
       "le": 0.16,
       "vina": -8.62,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "ombitasvir",
@@ -2245,8 +2042,7 @@
       "ha": 65,
       "le": 0.124,
       "vina": -8.09,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "voxilaprevir",
@@ -2256,8 +2052,7 @@
       "ha": 60,
       "le": 0.133,
       "vina": -7.95,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "atovaquone",
@@ -2267,8 +2062,7 @@
       "ha": 26,
       "le": 0.301,
       "vina": -7.82,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "paritaprevir",
@@ -2278,8 +2072,7 @@
       "ha": 55,
       "le": 0.141,
       "vina": -7.72,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sorafenib",
@@ -2289,8 +2082,7 @@
       "ha": 32,
       "le": 0.241,
       "vina": -7.72,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "suramin",
@@ -2300,8 +2092,7 @@
       "ha": 86,
       "le": 0.089,
       "vina": -7.68,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "dasabuvir",
@@ -2311,8 +2102,7 @@
       "ha": 35,
       "le": 0.217,
       "vina": -7.59,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "mefloquine",
@@ -2322,8 +2112,7 @@
       "ha": 26,
       "le": 0.281,
       "vina": -7.29,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "pibrentasvir",
@@ -2333,8 +2122,7 @@
       "ha": 80,
       "le": 0.09,
       "vina": -7.17,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nafamostat",
@@ -2344,8 +2132,7 @@
       "ha": 26,
       "le": 0.275,
       "vina": -7.15,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ivermectin",
@@ -2355,8 +2142,7 @@
       "ha": 62,
       "le": 0.113,
       "vina": -7.0,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "praziquantel",
@@ -2366,8 +2152,7 @@
       "ha": 23,
       "le": 0.304,
       "vina": -7.0,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "darunavir",
@@ -2377,8 +2162,7 @@
       "ha": 38,
       "le": 0.182,
       "vina": -6.93,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "methotrexate",
@@ -2388,8 +2172,7 @@
       "ha": 33,
       "le": 0.21,
       "vina": -6.93,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "daclatasvir",
@@ -2399,8 +2182,7 @@
       "ha": 54,
       "le": 0.128,
       "vina": -6.91,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "camostat",
@@ -2410,8 +2192,7 @@
       "ha": 29,
       "le": 0.238,
       "vina": -6.9,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atazanavir",
@@ -2421,8 +2202,7 @@
       "ha": 51,
       "le": 0.134,
       "vina": -6.84,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sofosbuvir",
@@ -2432,8 +2212,7 @@
       "ha": 36,
       "le": 0.189,
       "vina": -6.81,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "artemisinin",
@@ -2443,8 +2222,7 @@
       "ha": 20,
       "le": 0.337,
       "vina": -6.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "celecoxib",
@@ -2454,8 +2232,7 @@
       "ha": 26,
       "le": 0.256,
       "vina": -6.66,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "baloxavir_marboxil",
@@ -2465,8 +2242,7 @@
       "ha": 46,
       "le": 0.144,
       "vina": -6.63,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nelfinavir",
@@ -2476,8 +2252,7 @@
       "ha": 40,
       "le": 0.165,
       "vina": -6.62,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nirmatrelvir",
@@ -2487,8 +2262,7 @@
       "ha": 35,
       "le": 0.186,
       "vina": -6.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "prochlorperazine",
@@ -2498,8 +2272,7 @@
       "ha": 25,
       "le": 0.26,
       "vina": -6.51,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "remdesivir",
@@ -2509,8 +2282,7 @@
       "ha": 42,
       "le": 0.152,
       "vina": -6.38,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "vandetanib",
@@ -2520,8 +2292,7 @@
       "ha": 30,
       "le": 0.213,
       "vina": -6.38,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "minocycline",
@@ -2531,8 +2302,7 @@
       "ha": 33,
       "le": 0.193,
       "vina": -6.37,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "mycophenolate_mofetil",
@@ -2542,8 +2312,7 @@
       "ha": 31,
       "le": 0.205,
       "vina": -6.34,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cetirizine",
@@ -2553,8 +2322,7 @@
       "ha": 27,
       "le": 0.234,
       "vina": -6.33,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "boceprevir",
@@ -2564,8 +2332,7 @@
       "ha": 37,
       "le": 0.169,
       "vina": -6.26,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "sunitinib",
@@ -2575,8 +2342,7 @@
       "ha": 29,
       "le": 0.216,
       "vina": -6.25,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "abacavir",
@@ -2586,8 +2352,7 @@
       "ha": 21,
       "le": 0.296,
       "vina": -6.22,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "niclosamide",
@@ -2597,8 +2362,7 @@
       "ha": 21,
       "le": 0.296,
       "vina": -6.22,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fenofibrate",
@@ -2608,8 +2372,7 @@
       "ha": 25,
       "le": 0.248,
       "vina": -6.2,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pantoprazole",
@@ -2619,8 +2382,7 @@
       "ha": 26,
       "le": 0.238,
       "vina": -6.19,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lovastatin",
@@ -2630,8 +2392,7 @@
       "ha": 29,
       "le": 0.213,
       "vina": -6.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "prednisolone",
@@ -2641,8 +2402,7 @@
       "ha": 26,
       "le": 0.238,
       "vina": -6.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "benznidazole",
@@ -2652,8 +2412,7 @@
       "ha": 19,
       "le": 0.325,
       "vina": -6.17,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "zidovudine",
@@ -2663,8 +2422,7 @@
       "ha": 19,
       "le": 0.324,
       "vina": -6.15,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ledipasvir",
@@ -2674,8 +2432,7 @@
       "ha": 65,
       "le": 0.094,
       "vina": -6.14,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "telaprevir",
@@ -2685,8 +2442,7 @@
       "ha": 49,
       "le": 0.125,
       "vina": -6.14,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "lopinavir",
@@ -2696,8 +2452,7 @@
       "ha": 46,
       "le": 0.133,
       "vina": -6.13,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "galidesivir",
@@ -2707,8 +2462,7 @@
       "ha": 19,
       "le": 0.322,
       "vina": -6.12,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "leflunomide",
@@ -2718,8 +2472,7 @@
       "ha": 19,
       "le": 0.319,
       "vina": -6.06,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "levothyroxine",
@@ -2729,8 +2482,7 @@
       "ha": 24,
       "le": 0.251,
       "vina": -6.02,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "omeprazole",
@@ -2740,8 +2492,7 @@
       "ha": 24,
       "le": 0.25,
       "vina": -6.01,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lisinopril",
@@ -2751,8 +2502,7 @@
       "ha": 29,
       "le": 0.206,
       "vina": -5.97,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "entecavir",
@@ -2762,8 +2512,7 @@
       "ha": 20,
       "le": 0.297,
       "vina": -5.95,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "molnupiravir",
@@ -2773,8 +2522,7 @@
       "ha": 23,
       "le": 0.259,
       "vina": -5.95,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "trifluridine",
@@ -2784,8 +2532,7 @@
       "ha": 20,
       "le": 0.297,
       "vina": -5.94,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "naproxen",
@@ -2795,8 +2542,7 @@
       "ha": 17,
       "le": 0.347,
       "vina": -5.91,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "didanosine",
@@ -2806,8 +2552,7 @@
       "ha": 17,
       "le": 0.344,
       "vina": -5.86,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "colchicine",
@@ -2817,8 +2562,7 @@
       "ha": 29,
       "le": 0.201,
       "vina": -5.82,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baricitinib",
@@ -2828,8 +2572,7 @@
       "ha": 26,
       "le": 0.223,
       "vina": -5.8,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "erlotinib",
@@ -2839,8 +2582,7 @@
       "ha": 29,
       "le": 0.2,
       "vina": -5.8,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ibuprofen",
@@ -2850,8 +2592,7 @@
       "ha": 15,
       "le": 0.386,
       "vina": -5.79,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "azathioprine",
@@ -2861,8 +2602,7 @@
       "ha": 19,
       "le": 0.303,
       "vina": -5.76,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ruxolitinib",
@@ -2872,8 +2612,7 @@
       "ha": 23,
       "le": 0.25,
       "vina": -5.76,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "doxycycline",
@@ -2883,8 +2622,7 @@
       "ha": 32,
       "le": 0.179,
       "vina": -5.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pyrimethamine",
@@ -2894,8 +2632,7 @@
       "ha": 17,
       "le": 0.338,
       "vina": -5.75,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "stavudine",
@@ -2905,8 +2642,7 @@
       "ha": 16,
       "le": 0.359,
       "vina": -5.75,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "atorvastatin",
@@ -2916,8 +2652,7 @@
       "ha": 41,
       "le": 0.14,
       "vina": -5.72,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "tenofovir",
@@ -2927,8 +2662,7 @@
       "ha": 19,
       "le": 0.301,
       "vina": -5.72,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "umifenovir",
@@ -2938,8 +2672,7 @@
       "ha": 29,
       "le": 0.197,
       "vina": -5.72,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "balapiravir",
@@ -2949,8 +2682,7 @@
       "ha": 35,
       "le": 0.163,
       "vina": -5.71,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fludarabine",
@@ -2960,8 +2692,7 @@
       "ha": 20,
       "le": 0.285,
       "vina": -5.7,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "clevudine",
@@ -2971,8 +2702,7 @@
       "ha": 18,
       "le": 0.316,
       "vina": -5.69,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cladribine",
@@ -2982,8 +2712,7 @@
       "ha": 19,
       "le": 0.299,
       "vina": -5.68,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nitazoxanide",
@@ -2993,8 +2722,7 @@
       "ha": 21,
       "le": 0.268,
       "vina": -5.64,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "gemcitabine",
@@ -3004,8 +2732,7 @@
       "ha": 18,
       "le": 0.312,
       "vina": -5.61,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lamivudine",
@@ -3015,8 +2742,7 @@
       "ha": 15,
       "le": 0.372,
       "vina": -5.59,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "telbivudine",
@@ -3026,8 +2752,7 @@
       "ha": 17,
       "le": 0.327,
       "vina": -5.56,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "primaquine",
@@ -3037,8 +2762,7 @@
       "ha": 19,
       "le": 0.291,
       "vina": -5.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "adefovir",
@@ -3048,8 +2772,7 @@
       "ha": 18,
       "le": 0.307,
       "vina": -5.52,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "indomethacin",
@@ -3059,8 +2782,7 @@
       "ha": 25,
       "le": 0.219,
       "vina": -5.49,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "albendazole",
@@ -3070,8 +2792,7 @@
       "ha": 18,
       "le": 0.304,
       "vina": -5.47,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentamidine",
@@ -3081,8 +2802,7 @@
       "ha": 25,
       "le": 0.219,
       "vina": -5.46,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "acyclovir",
@@ -3092,8 +2812,7 @@
       "ha": 16,
       "le": 0.337,
       "vina": -5.4,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "ribavirin",
@@ -3103,8 +2822,7 @@
       "ha": 17,
       "le": 0.313,
       "vina": -5.33,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "cytarabine",
@@ -3114,8 +2832,7 @@
       "ha": 17,
       "le": 0.31,
       "vina": -5.28,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "sirolimus",
@@ -3125,8 +2842,7 @@
       "ha": 65,
       "le": 0.081,
       "vina": -5.27,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "chlorpromazine",
@@ -3136,8 +2852,7 @@
       "ha": 21,
       "le": 0.251,
       "vina": -5.26,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "pentoxifylline",
@@ -3147,8 +2862,7 @@
       "ha": 20,
       "le": 0.26,
       "vina": -5.21,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "chloroquine",
@@ -3158,8 +2872,7 @@
       "ha": 22,
       "le": 0.236,
       "vina": -5.19,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "hydroxychloroquine",
@@ -3169,8 +2882,7 @@
       "ha": 23,
       "le": 0.225,
       "vina": -5.17,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "oseltamivir",
@@ -3180,8 +2892,7 @@
       "ha": 22,
       "le": 0.231,
       "vina": -5.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "amlodipine",
@@ -3191,8 +2902,7 @@
       "ha": 28,
       "le": 0.179,
       "vina": -5.0,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "metformin",
@@ -3202,8 +2912,7 @@
       "ha": 9,
       "le": 0.553,
       "vina": -4.98,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "amantadine",
@@ -3213,8 +2922,7 @@
       "ha": 11,
       "le": 0.432,
       "vina": -4.75,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "favipiravir",
@@ -3224,8 +2932,7 @@
       "ha": 11,
       "le": 0.427,
       "vina": -4.7,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gabapentin",
@@ -3235,8 +2942,7 @@
       "ha": 12,
       "le": 0.384,
       "vina": -4.61,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "rimantadine",
@@ -3246,8 +2952,7 @@
       "ha": 13,
       "le": 0.354,
       "vina": -4.6,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "miltefosine",
@@ -3257,8 +2962,7 @@
       "ha": 27,
       "le": 0.165,
       "vina": -4.46,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cyclosporine",
@@ -3268,8 +2972,7 @@
       "ha": 85,
       "le": 0.028,
       "vina": -2.33,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     }
   ],
   "CHIKV_nsP2": [
@@ -3281,8 +2984,7 @@
       "ha": 65,
       "le": 0.161,
       "vina": -10.44,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "elbasvir",
@@ -3292,8 +2994,7 @@
       "ha": 65,
       "le": 0.157,
       "vina": -10.21,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "simeprevir",
@@ -3303,8 +3004,7 @@
       "ha": 52,
       "le": 0.193,
       "vina": -10.04,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "glecaprevir",
@@ -3314,8 +3014,7 @@
       "ha": 58,
       "le": 0.171,
       "vina": -9.91,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "dasabuvir",
@@ -3325,8 +3024,7 @@
       "ha": 35,
       "le": 0.281,
       "vina": -9.84,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "atovaquone",
@@ -3336,8 +3034,7 @@
       "ha": 26,
       "le": 0.378,
       "vina": -9.82,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "paritaprevir",
@@ -3347,8 +3044,7 @@
       "ha": 55,
       "le": 0.177,
       "vina": -9.72,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "daclatasvir",
@@ -3358,8 +3054,7 @@
       "ha": 54,
       "le": 0.178,
       "vina": -9.61,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sorafenib",
@@ -3369,8 +3064,7 @@
       "ha": 32,
       "le": 0.291,
       "vina": -9.3,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ledipasvir",
@@ -3380,8 +3074,7 @@
       "ha": 65,
       "le": 0.143,
       "vina": -9.28,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "ivermectin",
@@ -3391,8 +3084,7 @@
       "ha": 62,
       "le": 0.148,
       "vina": -9.19,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "mefloquine",
@@ -3402,8 +3094,7 @@
       "ha": 26,
       "le": 0.353,
       "vina": -9.18,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "suramin",
@@ -3413,8 +3104,7 @@
       "ha": 86,
       "le": 0.107,
       "vina": -9.18,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "atazanavir",
@@ -3424,8 +3114,7 @@
       "ha": 51,
       "le": 0.178,
       "vina": -9.09,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "ombitasvir",
@@ -3435,8 +3124,7 @@
       "ha": 65,
       "le": 0.139,
       "vina": -9.04,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "voxilaprevir",
@@ -3446,8 +3134,7 @@
       "ha": 60,
       "le": 0.15,
       "vina": -8.98,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "baloxavir_marboxil",
@@ -3457,8 +3144,7 @@
       "ha": 46,
       "le": 0.194,
       "vina": -8.92,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "grazoprevir",
@@ -3468,8 +3154,7 @@
       "ha": 54,
       "le": 0.165,
       "vina": -8.91,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "telaprevir",
@@ -3479,8 +3164,7 @@
       "ha": 49,
       "le": 0.18,
       "vina": -8.81,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "vandetanib",
@@ -3490,8 +3174,7 @@
       "ha": 30,
       "le": 0.294,
       "vina": -8.81,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "celecoxib",
@@ -3501,8 +3184,7 @@
       "ha": 26,
       "le": 0.337,
       "vina": -8.77,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "praziquantel",
@@ -3512,8 +3194,7 @@
       "ha": 23,
       "le": 0.373,
       "vina": -8.59,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atorvastatin",
@@ -3523,8 +3204,7 @@
       "ha": 41,
       "le": 0.208,
       "vina": -8.55,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nafamostat",
@@ -3534,8 +3214,7 @@
       "ha": 26,
       "le": 0.329,
       "vina": -8.55,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nirmatrelvir",
@@ -3545,8 +3224,7 @@
       "ha": 35,
       "le": 0.244,
       "vina": -8.54,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "remdesivir",
@@ -3556,8 +3234,7 @@
       "ha": 42,
       "le": 0.203,
       "vina": -8.53,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "lovastatin",
@@ -3567,8 +3244,7 @@
       "ha": 29,
       "le": 0.292,
       "vina": -8.47,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sofosbuvir",
@@ -3578,8 +3254,7 @@
       "ha": 36,
       "le": 0.234,
       "vina": -8.41,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "pibrentasvir",
@@ -3589,8 +3264,7 @@
       "ha": 80,
       "le": 0.104,
       "vina": -8.35,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "doxycycline",
@@ -3600,8 +3274,7 @@
       "ha": 32,
       "le": 0.259,
       "vina": -8.3,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "darunavir",
@@ -3611,8 +3284,7 @@
       "ha": 38,
       "le": 0.218,
       "vina": -8.29,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "lopinavir",
@@ -3622,8 +3294,7 @@
       "ha": 46,
       "le": 0.18,
       "vina": -8.29,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sunitinib",
@@ -3633,8 +3304,7 @@
       "ha": 29,
       "le": 0.286,
       "vina": -8.29,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "artemisinin",
@@ -3644,8 +3314,7 @@
       "ha": 20,
       "le": 0.412,
       "vina": -8.23,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "methotrexate",
@@ -3655,8 +3324,7 @@
       "ha": 33,
       "le": 0.249,
       "vina": -8.22,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "minocycline",
@@ -3666,8 +3334,7 @@
       "ha": 33,
       "le": 0.247,
       "vina": -8.16,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baricitinib",
@@ -3677,8 +3344,7 @@
       "ha": 26,
       "le": 0.312,
       "vina": -8.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "prednisolone",
@@ -3688,8 +3354,7 @@
       "ha": 26,
       "le": 0.312,
       "vina": -8.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fenofibrate",
@@ -3699,8 +3364,7 @@
       "ha": 25,
       "le": 0.324,
       "vina": -8.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "indomethacin",
@@ -3710,8 +3374,7 @@
       "ha": 25,
       "le": 0.324,
       "vina": -8.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "levothyroxine",
@@ -3721,8 +3384,7 @@
       "ha": 24,
       "le": 0.336,
       "vina": -8.07,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "camostat",
@@ -3732,8 +3394,7 @@
       "ha": 29,
       "le": 0.277,
       "vina": -8.02,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "molnupiravir",
@@ -3743,8 +3404,7 @@
       "ha": 23,
       "le": 0.348,
       "vina": -8.01,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nelfinavir",
@@ -3754,8 +3414,7 @@
       "ha": 40,
       "le": 0.2,
       "vina": -7.98,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "prochlorperazine",
@@ -3765,8 +3424,7 @@
       "ha": 25,
       "le": 0.318,
       "vina": -7.96,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ruxolitinib",
@@ -3776,8 +3434,7 @@
       "ha": 23,
       "le": 0.343,
       "vina": -7.88,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cetirizine",
@@ -3787,8 +3444,7 @@
       "ha": 27,
       "le": 0.289,
       "vina": -7.82,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "umifenovir",
@@ -3798,8 +3454,7 @@
       "ha": 29,
       "le": 0.267,
       "vina": -7.75,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "pentamidine",
@@ -3809,8 +3464,7 @@
       "ha": 25,
       "le": 0.309,
       "vina": -7.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "abacavir",
@@ -3820,8 +3474,7 @@
       "ha": 21,
       "le": 0.365,
       "vina": -7.66,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "omeprazole",
@@ -3831,8 +3484,7 @@
       "ha": 24,
       "le": 0.318,
       "vina": -7.64,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "niclosamide",
@@ -3842,8 +3494,7 @@
       "ha": 21,
       "le": 0.363,
       "vina": -7.63,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "erlotinib",
@@ -3853,8 +3504,7 @@
       "ha": 29,
       "le": 0.263,
       "vina": -7.62,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "mycophenolate_mofetil",
@@ -3864,8 +3514,7 @@
       "ha": 31,
       "le": 0.244,
       "vina": -7.56,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "zidovudine",
@@ -3875,8 +3524,7 @@
       "ha": 19,
       "le": 0.398,
       "vina": -7.56,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "balapiravir",
@@ -3886,8 +3534,7 @@
       "ha": 35,
       "le": 0.215,
       "vina": -7.52,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "leflunomide",
@@ -3897,8 +3544,7 @@
       "ha": 19,
       "le": 0.394,
       "vina": -7.49,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "trifluridine",
@@ -3908,8 +3554,7 @@
       "ha": 20,
       "le": 0.372,
       "vina": -7.45,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pantoprazole",
@@ -3919,8 +3564,7 @@
       "ha": 26,
       "le": 0.282,
       "vina": -7.32,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "boceprevir",
@@ -3930,8 +3574,7 @@
       "ha": 37,
       "le": 0.194,
       "vina": -7.17,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "amlodipine",
@@ -3941,8 +3584,7 @@
       "ha": 28,
       "le": 0.256,
       "vina": -7.16,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "entecavir",
@@ -3952,8 +3594,7 @@
       "ha": 20,
       "le": 0.357,
       "vina": -7.14,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "galidesivir",
@@ -3963,8 +3604,7 @@
       "ha": 19,
       "le": 0.373,
       "vina": -7.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lisinopril",
@@ -3974,8 +3614,7 @@
       "ha": 29,
       "le": 0.245,
       "vina": -7.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cladribine",
@@ -3985,8 +3624,7 @@
       "ha": 19,
       "le": 0.372,
       "vina": -7.07,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nitazoxanide",
@@ -3996,8 +3634,7 @@
       "ha": 21,
       "le": 0.336,
       "vina": -7.06,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "primaquine",
@@ -4007,8 +3644,7 @@
       "ha": 19,
       "le": 0.371,
       "vina": -7.05,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "fludarabine",
@@ -4018,8 +3654,7 @@
       "ha": 20,
       "le": 0.352,
       "vina": -7.04,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "albendazole",
@@ -4029,8 +3664,7 @@
       "ha": 18,
       "le": 0.389,
       "vina": -7.01,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "clevudine",
@@ -4040,8 +3674,7 @@
       "ha": 18,
       "le": 0.389,
       "vina": -7.0,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "colchicine",
@@ -4051,8 +3684,7 @@
       "ha": 29,
       "le": 0.241,
       "vina": -6.98,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pyrimethamine",
@@ -4062,8 +3694,7 @@
       "ha": 17,
       "le": 0.408,
       "vina": -6.94,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "benznidazole",
@@ -4073,8 +3704,7 @@
       "ha": 19,
       "le": 0.36,
       "vina": -6.85,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "chlorpromazine",
@@ -4084,8 +3714,7 @@
       "ha": 21,
       "le": 0.325,
       "vina": -6.82,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "azathioprine",
@@ -4095,8 +3724,7 @@
       "ha": 19,
       "le": 0.359,
       "vina": -6.81,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "naproxen",
@@ -4106,8 +3734,7 @@
       "ha": 17,
       "le": 0.401,
       "vina": -6.81,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "stavudine",
@@ -4117,8 +3744,7 @@
       "ha": 16,
       "le": 0.424,
       "vina": -6.79,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "oseltamivir",
@@ -4128,8 +3754,7 @@
       "ha": 22,
       "le": 0.303,
       "vina": -6.67,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sirolimus",
@@ -4139,8 +3764,7 @@
       "ha": 65,
       "le": 0.103,
       "vina": -6.67,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "pentoxifylline",
@@ -4150,8 +3774,7 @@
       "ha": 20,
       "le": 0.331,
       "vina": -6.63,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "gemcitabine",
@@ -4161,8 +3784,7 @@
       "ha": 18,
       "le": 0.365,
       "vina": -6.56,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "telbivudine",
@@ -4172,8 +3794,7 @@
       "ha": 17,
       "le": 0.384,
       "vina": -6.53,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "ibuprofen",
@@ -4183,8 +3804,7 @@
       "ha": 15,
       "le": 0.431,
       "vina": -6.47,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "adefovir",
@@ -4194,8 +3814,7 @@
       "ha": 18,
       "le": 0.357,
       "vina": -6.42,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "hydroxychloroquine",
@@ -4205,8 +3824,7 @@
       "ha": 23,
       "le": 0.279,
       "vina": -6.41,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ribavirin",
@@ -4216,8 +3834,7 @@
       "ha": 17,
       "le": 0.377,
       "vina": -6.41,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "chloroquine",
@@ -4227,8 +3844,7 @@
       "ha": 22,
       "le": 0.288,
       "vina": -6.33,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "acyclovir",
@@ -4238,8 +3854,7 @@
       "ha": 16,
       "le": 0.39,
       "vina": -6.25,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "cytarabine",
@@ -4249,8 +3864,7 @@
       "ha": 17,
       "le": 0.366,
       "vina": -6.22,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "tenofovir",
@@ -4260,8 +3874,7 @@
       "ha": 19,
       "le": 0.326,
       "vina": -6.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "didanosine",
@@ -4271,8 +3884,7 @@
       "ha": 17,
       "le": 0.361,
       "vina": -6.14,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "lamivudine",
@@ -4282,8 +3894,7 @@
       "ha": 15,
       "le": 0.378,
       "vina": -5.67,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "metformin",
@@ -4293,8 +3904,7 @@
       "ha": 9,
       "le": 0.629,
       "vina": -5.66,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "rimantadine",
@@ -4304,8 +3914,7 @@
       "ha": 13,
       "le": 0.412,
       "vina": -5.35,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "favipiravir",
@@ -4315,8 +3924,7 @@
       "ha": 11,
       "le": 0.473,
       "vina": -5.2,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "miltefosine",
@@ -4326,8 +3934,7 @@
       "ha": 27,
       "le": 0.188,
       "vina": -5.08,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "amantadine",
@@ -4337,8 +3944,7 @@
       "ha": 11,
       "le": 0.459,
       "vina": -5.05,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gabapentin",
@@ -4348,8 +3954,7 @@
       "ha": 12,
       "le": 0.42,
       "vina": -5.04,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "cyclosporine",
@@ -4359,8 +3964,7 @@
       "ha": 85,
       "le": 0.043,
       "vina": -3.66,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     }
   ],
   "CHIKV_nsP1": [
@@ -4372,8 +3976,7 @@
       "ha": 54,
       "le": 0.215,
       "vina": -11.63,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "glecaprevir",
@@ -4383,8 +3986,7 @@
       "ha": 58,
       "le": 0.196,
       "vina": -11.39,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "elbasvir",
@@ -4394,8 +3996,7 @@
       "ha": 65,
       "le": 0.172,
       "vina": -11.21,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "voxilaprevir",
@@ -4405,8 +4006,7 @@
       "ha": 60,
       "le": 0.184,
       "vina": -11.05,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "pibrentasvir",
@@ -4416,8 +4016,7 @@
       "ha": 80,
       "le": 0.136,
       "vina": -10.88,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "simeprevir",
@@ -4427,8 +4026,7 @@
       "ha": 52,
       "le": 0.205,
       "vina": -10.64,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "dasabuvir",
@@ -4438,8 +4036,7 @@
       "ha": 35,
       "le": 0.293,
       "vina": -10.25,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "atazanavir",
@@ -4449,8 +4046,7 @@
       "ha": 51,
       "le": 0.2,
       "vina": -10.19,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nafamostat",
@@ -4460,8 +4056,7 @@
       "ha": 26,
       "le": 0.391,
       "vina": -10.16,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sorafenib",
@@ -4471,8 +4066,7 @@
       "ha": 32,
       "le": 0.314,
       "vina": -10.04,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "suramin",
@@ -4482,8 +4076,7 @@
       "ha": 86,
       "le": 0.116,
       "vina": -9.99,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "daclatasvir",
@@ -4493,8 +4086,7 @@
       "ha": 54,
       "le": 0.184,
       "vina": -9.93,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "atovaquone",
@@ -4504,8 +4096,7 @@
       "ha": 26,
       "le": 0.379,
       "vina": -9.86,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ombitasvir",
@@ -4515,8 +4106,7 @@
       "ha": 65,
       "le": 0.152,
       "vina": -9.86,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "ledipasvir",
@@ -4526,8 +4116,7 @@
       "ha": 65,
       "le": 0.15,
       "vina": -9.78,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "praziquantel",
@@ -4537,8 +4126,7 @@
       "ha": 23,
       "le": 0.425,
       "vina": -9.77,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "darunavir",
@@ -4548,8 +4136,7 @@
       "ha": 38,
       "le": 0.254,
       "vina": -9.66,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "camostat",
@@ -4559,8 +4146,7 @@
       "ha": 29,
       "le": 0.332,
       "vina": -9.63,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "paritaprevir",
@@ -4570,8 +4156,7 @@
       "ha": 55,
       "le": 0.171,
       "vina": -9.41,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "baloxavir_marboxil",
@@ -4581,8 +4166,7 @@
       "ha": 46,
       "le": 0.203,
       "vina": -9.35,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sofosbuvir",
@@ -4592,8 +4176,7 @@
       "ha": 36,
       "le": 0.26,
       "vina": -9.35,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "mefloquine",
@@ -4603,8 +4186,7 @@
       "ha": 26,
       "le": 0.354,
       "vina": -9.2,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "methotrexate",
@@ -4614,8 +4196,7 @@
       "ha": 33,
       "le": 0.277,
       "vina": -9.13,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "velpatasvir",
@@ -4625,8 +4206,7 @@
       "ha": 65,
       "le": 0.139,
       "vina": -9.02,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "artemisinin",
@@ -4636,8 +4216,7 @@
       "ha": 20,
       "le": 0.45,
       "vina": -8.99,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "doxycycline",
@@ -4647,8 +4226,7 @@
       "ha": 32,
       "le": 0.28,
       "vina": -8.96,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sunitinib",
@@ -4658,8 +4236,7 @@
       "ha": 29,
       "le": 0.307,
       "vina": -8.89,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "vandetanib",
@@ -4669,8 +4246,7 @@
       "ha": 30,
       "le": 0.294,
       "vina": -8.81,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nelfinavir",
@@ -4680,8 +4256,7 @@
       "ha": 40,
       "le": 0.22,
       "vina": -8.79,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "lopinavir",
@@ -4691,8 +4266,7 @@
       "ha": 46,
       "le": 0.19,
       "vina": -8.76,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "fenofibrate",
@@ -4702,8 +4276,7 @@
       "ha": 25,
       "le": 0.35,
       "vina": -8.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ruxolitinib",
@@ -4713,8 +4286,7 @@
       "ha": 23,
       "le": 0.379,
       "vina": -8.71,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lovastatin",
@@ -4724,8 +4296,7 @@
       "ha": 29,
       "le": 0.297,
       "vina": -8.62,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cetirizine",
@@ -4735,8 +4306,7 @@
       "ha": 27,
       "le": 0.319,
       "vina": -8.6,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "prednisolone",
@@ -4746,8 +4316,7 @@
       "ha": 26,
       "le": 0.33,
       "vina": -8.59,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "remdesivir",
@@ -4757,8 +4326,7 @@
       "ha": 42,
       "le": 0.203,
       "vina": -8.55,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "abacavir",
@@ -4768,8 +4336,7 @@
       "ha": 21,
       "le": 0.406,
       "vina": -8.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "minocycline",
@@ -4779,8 +4346,7 @@
       "ha": 33,
       "le": 0.258,
       "vina": -8.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "naproxen",
@@ -4790,8 +4356,7 @@
       "ha": 17,
       "le": 0.496,
       "vina": -8.44,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "lisinopril",
@@ -4801,8 +4366,7 @@
       "ha": 29,
       "le": 0.291,
       "vina": -8.43,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "omeprazole",
@@ -4812,8 +4376,7 @@
       "ha": 24,
       "le": 0.351,
       "vina": -8.43,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "mycophenolate_mofetil",
@@ -4823,8 +4386,7 @@
       "ha": 31,
       "le": 0.272,
       "vina": -8.42,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "indomethacin",
@@ -4834,8 +4396,7 @@
       "ha": 25,
       "le": 0.336,
       "vina": -8.4,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "niclosamide",
@@ -4845,8 +4406,7 @@
       "ha": 21,
       "le": 0.396,
       "vina": -8.32,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "baricitinib",
@@ -4856,8 +4416,7 @@
       "ha": 26,
       "le": 0.318,
       "vina": -8.27,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "leflunomide",
@@ -4867,8 +4426,7 @@
       "ha": 19,
       "le": 0.434,
       "vina": -8.25,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "celecoxib",
@@ -4878,8 +4436,7 @@
       "ha": 26,
       "le": 0.315,
       "vina": -8.19,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "colchicine",
@@ -4889,8 +4446,7 @@
       "ha": 29,
       "le": 0.282,
       "vina": -8.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "prochlorperazine",
@@ -4900,8 +4456,7 @@
       "ha": 25,
       "le": 0.327,
       "vina": -8.16,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "entecavir",
@@ -4911,8 +4466,7 @@
       "ha": 20,
       "le": 0.406,
       "vina": -8.12,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pantoprazole",
@@ -4922,8 +4476,7 @@
       "ha": 26,
       "le": 0.312,
       "vina": -8.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pyrimethamine",
@@ -4933,8 +4486,7 @@
       "ha": 17,
       "le": 0.477,
       "vina": -8.11,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "levothyroxine",
@@ -4944,8 +4496,7 @@
       "ha": 24,
       "le": 0.335,
       "vina": -8.04,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "nirmatrelvir",
@@ -4955,8 +4506,7 @@
       "ha": 35,
       "le": 0.229,
       "vina": -8.03,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentamidine",
@@ -4966,8 +4516,7 @@
       "ha": 25,
       "le": 0.319,
       "vina": -7.98,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "erlotinib",
@@ -4977,8 +4526,7 @@
       "ha": 29,
       "le": 0.271,
       "vina": -7.87,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nitazoxanide",
@@ -4988,8 +4536,7 @@
       "ha": 21,
       "le": 0.37,
       "vina": -7.76,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "benznidazole",
@@ -4999,8 +4546,7 @@
       "ha": 19,
       "le": 0.408,
       "vina": -7.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "zidovudine",
@@ -5010,8 +4556,7 @@
       "ha": 19,
       "le": 0.407,
       "vina": -7.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "telaprevir",
@@ -5021,8 +4566,7 @@
       "ha": 49,
       "le": 0.156,
       "vina": -7.66,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "molnupiravir",
@@ -5032,8 +4576,7 @@
       "ha": 23,
       "le": 0.331,
       "vina": -7.62,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "chloroquine",
@@ -5043,8 +4586,7 @@
       "ha": 22,
       "le": 0.345,
       "vina": -7.59,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "trifluridine",
@@ -5054,8 +4596,7 @@
       "ha": 20,
       "le": 0.377,
       "vina": -7.53,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "balapiravir",
@@ -5065,8 +4606,7 @@
       "ha": 35,
       "le": 0.215,
       "vina": -7.52,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "azathioprine",
@@ -5076,8 +4616,7 @@
       "ha": 19,
       "le": 0.39,
       "vina": -7.42,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "galidesivir",
@@ -5087,8 +4626,7 @@
       "ha": 19,
       "le": 0.386,
       "vina": -7.33,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "cladribine",
@@ -5098,8 +4636,7 @@
       "ha": 19,
       "le": 0.379,
       "vina": -7.21,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ivermectin",
@@ -5109,8 +4646,7 @@
       "ha": 62,
       "le": 0.116,
       "vina": -7.19,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "albendazole",
@@ -5120,8 +4656,7 @@
       "ha": 18,
       "le": 0.399,
       "vina": -7.18,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "telbivudine",
@@ -5131,8 +4666,7 @@
       "ha": 17,
       "le": 0.422,
       "vina": -7.18,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "fludarabine",
@@ -5142,8 +4676,7 @@
       "ha": 20,
       "le": 0.358,
       "vina": -7.17,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "umifenovir",
@@ -5153,8 +4686,7 @@
       "ha": 29,
       "le": 0.246,
       "vina": -7.15,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "primaquine",
@@ -5164,8 +4696,7 @@
       "ha": 19,
       "le": 0.372,
       "vina": -7.07,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "clevudine",
@@ -5175,8 +4706,7 @@
       "ha": 18,
       "le": 0.391,
       "vina": -7.03,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "oseltamivir",
@@ -5186,8 +4716,7 @@
       "ha": 22,
       "le": 0.319,
       "vina": -7.02,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ibuprofen",
@@ -5197,8 +4726,7 @@
       "ha": 15,
       "le": 0.468,
       "vina": -7.01,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "tenofovir",
@@ -5208,8 +4736,7 @@
       "ha": 19,
       "le": 0.369,
       "vina": -7.0,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "gemcitabine",
@@ -5219,8 +4746,7 @@
       "ha": 18,
       "le": 0.387,
       "vina": -6.96,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentoxifylline",
@@ -5230,8 +4756,7 @@
       "ha": 20,
       "le": 0.346,
       "vina": -6.91,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "amlodipine",
@@ -5241,8 +4766,7 @@
       "ha": 28,
       "le": 0.245,
       "vina": -6.85,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "chlorpromazine",
@@ -5252,8 +4776,7 @@
       "ha": 21,
       "le": 0.326,
       "vina": -6.84,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ribavirin",
@@ -5263,8 +4786,7 @@
       "ha": 17,
       "le": 0.402,
       "vina": -6.84,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "boceprevir",
@@ -5274,8 +4796,7 @@
       "ha": 37,
       "le": 0.184,
       "vina": -6.8,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "adefovir",
@@ -5285,8 +4806,7 @@
       "ha": 18,
       "le": 0.378,
       "vina": -6.79,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "stavudine",
@@ -5296,8 +4816,7 @@
       "ha": 16,
       "le": 0.423,
       "vina": -6.77,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "didanosine",
@@ -5307,8 +4826,7 @@
       "ha": 17,
       "le": 0.393,
       "vina": -6.68,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "acyclovir",
@@ -5318,8 +4836,7 @@
       "ha": 16,
       "le": 0.415,
       "vina": -6.64,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "atorvastatin",
@@ -5329,8 +4846,7 @@
       "ha": 41,
       "le": 0.16,
       "vina": -6.56,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "cytarabine",
@@ -5340,8 +4856,7 @@
       "ha": 17,
       "le": 0.377,
       "vina": -6.41,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "hydroxychloroquine",
@@ -5351,8 +4866,7 @@
       "ha": 23,
       "le": 0.278,
       "vina": -6.39,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "metformin",
@@ -5362,8 +4876,7 @@
       "ha": 9,
       "le": 0.7,
       "vina": -6.3,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "lamivudine",
@@ -5373,8 +4886,7 @@
       "ha": 15,
       "le": 0.407,
       "vina": -6.11,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "miltefosine",
@@ -5384,8 +4896,7 @@
       "ha": 27,
       "le": 0.225,
       "vina": -6.07,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "rimantadine",
@@ -5395,8 +4906,7 @@
       "ha": 13,
       "le": 0.452,
       "vina": -5.88,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "amantadine",
@@ -5406,8 +4916,7 @@
       "ha": 11,
       "le": 0.522,
       "vina": -5.74,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "favipiravir",
@@ -5417,8 +4926,7 @@
       "ha": 11,
       "le": 0.508,
       "vina": -5.59,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gabapentin",
@@ -5428,8 +4936,7 @@
       "ha": 12,
       "le": 0.446,
       "vina": -5.35,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "sirolimus",
@@ -5439,8 +4946,7 @@
       "ha": 65,
       "le": null,
       "vina": 23.23,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "cyclosporine",
@@ -5450,8 +4956,7 @@
       "ha": 85,
       "le": null,
       "vina": 91.13,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     }
   ],
   "LEPTO_LipL32": [
@@ -5463,8 +4968,7 @@
       "ha": 55,
       "le": 0.221,
       "vina": -12.15,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "glecaprevir",
@@ -5474,8 +4978,7 @@
       "ha": 58,
       "le": 0.189,
       "vina": -10.94,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "voxilaprevir",
@@ -5485,8 +4988,7 @@
       "ha": 60,
       "le": 0.177,
       "vina": -10.65,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "velpatasvir",
@@ -5496,8 +4998,7 @@
       "ha": 65,
       "le": 0.158,
       "vina": -10.24,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "mefloquine",
@@ -5507,8 +5008,7 @@
       "ha": 26,
       "le": 0.385,
       "vina": -10.01,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nafamostat",
@@ -5518,8 +5018,7 @@
       "ha": 26,
       "le": 0.385,
       "vina": -10.0,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "dasabuvir",
@@ -5529,8 +5028,7 @@
       "ha": 35,
       "le": 0.285,
       "vina": -9.98,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "elbasvir",
@@ -5540,8 +5038,7 @@
       "ha": 65,
       "le": 0.152,
       "vina": -9.89,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "cetirizine",
@@ -5551,8 +5048,7 @@
       "ha": 27,
       "le": 0.364,
       "vina": -9.83,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "atazanavir",
@@ -5562,8 +5058,7 @@
       "ha": 51,
       "le": 0.191,
       "vina": -9.71,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "celecoxib",
@@ -5573,8 +5068,7 @@
       "ha": 26,
       "le": 0.371,
       "vina": -9.65,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "pibrentasvir",
@@ -5584,8 +5078,7 @@
       "ha": 80,
       "le": 0.12,
       "vina": -9.6,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "ruxolitinib",
@@ -5595,8 +5088,7 @@
       "ha": 23,
       "le": 0.409,
       "vina": -9.41,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atovaquone",
@@ -5606,8 +5098,7 @@
       "ha": 26,
       "le": 0.359,
       "vina": -9.34,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "suramin",
@@ -5617,8 +5108,7 @@
       "ha": 86,
       "le": 0.107,
       "vina": -9.21,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "sorafenib",
@@ -5628,8 +5118,7 @@
       "ha": 32,
       "le": 0.284,
       "vina": -9.1,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "sunitinib",
@@ -5639,8 +5128,7 @@
       "ha": 29,
       "le": 0.313,
       "vina": -9.07,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "ombitasvir",
@@ -5650,8 +5138,7 @@
       "ha": 65,
       "le": 0.137,
       "vina": -8.91,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "abacavir",
@@ -5661,8 +5148,7 @@
       "ha": 21,
       "le": 0.423,
       "vina": -8.88,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nelfinavir",
@@ -5672,8 +5158,7 @@
       "ha": 40,
       "le": 0.219,
       "vina": -8.75,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "methotrexate",
@@ -5683,8 +5168,7 @@
       "ha": 33,
       "le": 0.265,
       "vina": -8.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "niclosamide",
@@ -5694,8 +5178,7 @@
       "ha": 21,
       "le": 0.416,
       "vina": -8.74,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "telaprevir",
@@ -5705,8 +5188,7 @@
       "ha": 49,
       "le": 0.177,
       "vina": -8.69,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "vandetanib",
@@ -5716,8 +5198,7 @@
       "ha": 30,
       "le": 0.289,
       "vina": -8.68,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "simeprevir",
@@ -5727,8 +5208,7 @@
       "ha": 52,
       "le": 0.166,
       "vina": -8.65,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "leflunomide",
@@ -5738,8 +5218,7 @@
       "ha": 19,
       "le": 0.455,
       "vina": -8.64,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "camostat",
@@ -5749,8 +5228,7 @@
       "ha": 29,
       "le": 0.296,
       "vina": -8.6,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "prochlorperazine",
@@ -5760,8 +5238,7 @@
       "ha": 25,
       "le": 0.34,
       "vina": -8.5,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "naproxen",
@@ -5771,8 +5248,7 @@
       "ha": 17,
       "le": 0.499,
       "vina": -8.48,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "lopinavir",
@@ -5782,8 +5258,7 @@
       "ha": 46,
       "le": 0.183,
       "vina": -8.44,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "levothyroxine",
@@ -5793,8 +5268,7 @@
       "ha": 24,
       "le": 0.351,
       "vina": -8.42,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "chloroquine",
@@ -5804,8 +5278,7 @@
       "ha": 22,
       "le": 0.377,
       "vina": -8.28,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "fludarabine",
@@ -5815,8 +5288,7 @@
       "ha": 20,
       "le": 0.411,
       "vina": -8.22,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "sofosbuvir",
@@ -5826,8 +5298,7 @@
       "ha": 36,
       "le": 0.228,
       "vina": -8.22,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "entecavir",
@@ -5837,8 +5308,7 @@
       "ha": 20,
       "le": 0.41,
       "vina": -8.2,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lovastatin",
@@ -5848,8 +5318,7 @@
       "ha": 29,
       "le": 0.28,
       "vina": -8.11,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "benznidazole",
@@ -5859,8 +5328,7 @@
       "ha": 19,
       "le": 0.426,
       "vina": -8.1,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "mycophenolate_mofetil",
@@ -5870,8 +5338,7 @@
       "ha": 31,
       "le": 0.261,
       "vina": -8.09,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pantoprazole",
@@ -5881,8 +5348,7 @@
       "ha": 26,
       "le": 0.31,
       "vina": -8.05,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "erlotinib",
@@ -5892,8 +5358,7 @@
       "ha": 29,
       "le": 0.277,
       "vina": -8.04,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "amlodipine",
@@ -5903,8 +5368,7 @@
       "ha": 28,
       "le": 0.287,
       "vina": -8.02,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentamidine",
@@ -5914,8 +5378,7 @@
       "ha": 25,
       "le": 0.32,
       "vina": -7.99,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "artemisinin",
@@ -5925,8 +5388,7 @@
       "ha": 20,
       "le": 0.397,
       "vina": -7.95,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "grazoprevir",
@@ -5936,8 +5398,7 @@
       "ha": 54,
       "le": 0.147,
       "vina": -7.92,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "lisinopril",
@@ -5947,8 +5408,7 @@
       "ha": 29,
       "le": 0.273,
       "vina": -7.92,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "galidesivir",
@@ -5958,8 +5418,7 @@
       "ha": 19,
       "le": 0.416,
       "vina": -7.91,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "molnupiravir",
@@ -5969,8 +5428,7 @@
       "ha": 23,
       "le": 0.344,
       "vina": -7.91,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "nitazoxanide",
@@ -5980,8 +5438,7 @@
       "ha": 21,
       "le": 0.377,
       "vina": -7.91,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "remdesivir",
@@ -5991,8 +5448,7 @@
       "ha": 42,
       "le": 0.188,
       "vina": -7.89,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "fenofibrate",
@@ -6002,8 +5458,7 @@
       "ha": 25,
       "le": 0.314,
       "vina": -7.86,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pyrimethamine",
@@ -6013,8 +5468,7 @@
       "ha": 17,
       "le": 0.456,
       "vina": -7.76,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "primaquine",
@@ -6024,8 +5478,7 @@
       "ha": 19,
       "le": 0.404,
       "vina": -7.68,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "zidovudine",
@@ -6035,8 +5488,7 @@
       "ha": 19,
       "le": 0.404,
       "vina": -7.68,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "albendazole",
@@ -6046,8 +5498,7 @@
       "ha": 18,
       "le": 0.425,
       "vina": -7.66,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "omeprazole",
@@ -6057,8 +5508,7 @@
       "ha": 24,
       "le": 0.319,
       "vina": -7.66,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "tenofovir",
@@ -6068,8 +5518,7 @@
       "ha": 19,
       "le": 0.403,
       "vina": -7.65,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "hydroxychloroquine",
@@ -6079,8 +5528,7 @@
       "ha": 23,
       "le": 0.331,
       "vina": -7.61,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "cladribine",
@@ -6090,8 +5538,7 @@
       "ha": 19,
       "le": 0.4,
       "vina": -7.6,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ibuprofen",
@@ -6101,8 +5548,7 @@
       "ha": 15,
       "le": 0.507,
       "vina": -7.6,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "daclatasvir",
@@ -6112,8 +5558,7 @@
       "ha": 54,
       "le": 0.141,
       "vina": -7.59,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "indomethacin",
@@ -6123,8 +5568,7 @@
       "ha": 25,
       "le": 0.301,
       "vina": -7.52,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "praziquantel",
@@ -6134,8 +5578,7 @@
       "ha": 23,
       "le": 0.327,
       "vina": -7.51,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "stavudine",
@@ -6145,8 +5588,7 @@
       "ha": 16,
       "le": 0.464,
       "vina": -7.43,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "baloxavir_marboxil",
@@ -6156,8 +5598,7 @@
       "ha": 46,
       "le": 0.16,
       "vina": -7.33,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "darunavir",
@@ -6167,8 +5608,7 @@
       "ha": 38,
       "le": 0.192,
       "vina": -7.31,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "trifluridine",
@@ -6178,8 +5618,7 @@
       "ha": 20,
       "le": 0.364,
       "vina": -7.29,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "clevudine",
@@ -6189,8 +5628,7 @@
       "ha": 18,
       "le": 0.404,
       "vina": -7.27,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ledipasvir",
@@ -6200,8 +5638,7 @@
       "ha": 65,
       "le": 0.112,
       "vina": -7.25,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "adefovir",
@@ -6211,8 +5648,7 @@
       "ha": 18,
       "le": 0.399,
       "vina": -7.19,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "azathioprine",
@@ -6222,8 +5658,7 @@
       "ha": 19,
       "le": 0.377,
       "vina": -7.16,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "pentoxifylline",
@@ -6233,8 +5668,7 @@
       "ha": 20,
       "le": 0.355,
       "vina": -7.1,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "didanosine",
@@ -6244,8 +5678,7 @@
       "ha": 17,
       "le": 0.415,
       "vina": -7.06,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "telbivudine",
@@ -6255,8 +5688,7 @@
       "ha": 17,
       "le": 0.413,
       "vina": -7.03,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "metformin",
@@ -6266,8 +5698,7 @@
       "ha": 9,
       "le": 0.778,
       "vina": -7.0,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "ivermectin",
@@ -6277,8 +5708,7 @@
       "ha": 62,
       "le": 0.113,
       "vina": -6.99,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "oseltamivir",
@@ -6288,8 +5718,7 @@
       "ha": 22,
       "le": 0.314,
       "vina": -6.92,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "ribavirin",
@@ -6299,8 +5728,7 @@
       "ha": 17,
       "le": 0.402,
       "vina": -6.83,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "chlorpromazine",
@@ -6310,8 +5738,7 @@
       "ha": 21,
       "le": 0.325,
       "vina": -6.82,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "acyclovir",
@@ -6321,8 +5748,7 @@
       "ha": 16,
       "le": 0.423,
       "vina": -6.77,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "gemcitabine",
@@ -6332,8 +5758,7 @@
       "ha": 18,
       "le": 0.375,
       "vina": -6.75,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "nirmatrelvir",
@@ -6343,8 +5768,7 @@
       "ha": 35,
       "le": 0.19,
       "vina": -6.66,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "atorvastatin",
@@ -6354,8 +5778,7 @@
       "ha": 41,
       "le": 0.159,
       "vina": -6.53,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "cytarabine",
@@ -6365,8 +5788,7 @@
       "ha": 17,
       "le": 0.384,
       "vina": -6.53,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "doxycycline",
@@ -6376,8 +5798,7 @@
       "ha": 32,
       "le": 0.202,
       "vina": -6.46,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "prednisolone",
@@ -6387,8 +5808,7 @@
       "ha": 26,
       "le": 0.246,
       "vina": -6.39,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "balapiravir",
@@ -6398,8 +5818,7 @@
       "ha": 35,
       "le": 0.182,
       "vina": -6.38,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "minocycline",
@@ -6409,8 +5828,7 @@
       "ha": 33,
       "le": 0.187,
       "vina": -6.17,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "lamivudine",
@@ -6420,8 +5838,7 @@
       "ha": 15,
       "le": 0.41,
       "vina": -6.16,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "baricitinib",
@@ -6431,8 +5848,7 @@
       "ha": 26,
       "le": 0.236,
       "vina": -6.14,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "rimantadine",
@@ -6442,8 +5858,7 @@
       "ha": 13,
       "le": 0.469,
       "vina": -6.1,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "boceprevir",
@@ -6453,8 +5868,7 @@
       "ha": 37,
       "le": 0.163,
       "vina": -6.05,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "miltefosine",
@@ -6464,8 +5878,7 @@
       "ha": 27,
       "le": 0.224,
       "vina": -6.05,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "colchicine",
@@ -6475,8 +5888,7 @@
       "ha": 29,
       "le": 0.204,
       "vina": -5.91,
-      "dl": 1,
-      "admet": 1
+      "dl": 1
     },
     {
       "name": "umifenovir",
@@ -6486,8 +5898,7 @@
       "ha": 29,
       "le": 0.203,
       "vina": -5.89,
-      "dl": 1,
-      "admet": 0
+      "dl": 1
     },
     {
       "name": "gabapentin",
@@ -6497,8 +5908,7 @@
       "ha": 12,
       "le": 0.452,
       "vina": -5.42,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "favipiravir",
@@ -6508,8 +5918,7 @@
       "ha": 11,
       "le": 0.487,
       "vina": -5.36,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "amantadine",
@@ -6519,8 +5928,7 @@
       "ha": 11,
       "le": 0.436,
       "vina": -4.79,
-      "dl": 0,
-      "admet": 1
+      "dl": 0
     },
     {
       "name": "sirolimus",
@@ -6530,8 +5938,7 @@
       "ha": 65,
       "le": 0.049,
       "vina": -3.17,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     },
     {
       "name": "cyclosporine",
@@ -6541,8 +5948,7 @@
       "ha": 85,
       "le": null,
       "vina": 5.75,
-      "dl": 0,
-      "admet": 0
+      "dl": 0
     }
   ]
 }

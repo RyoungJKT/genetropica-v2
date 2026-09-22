@@ -20,7 +20,6 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
   const [tip, setTip] = useState<{ x: number; y: number; title: string; value: string } | null>(null)
   const [secRef, inView] = useInView<HTMLElement>()
   const dl = points.filter((p) => p.dl === 1)
-  const admetSafe = points.filter((p) => p.dl === 1 && p.admet === 1).length
   const le = dl.map((p) => p.le).filter((v): v is number => v != null)
   const top10 = [...dl].filter((p) => p.le != null).sort((a, b) => (b.le ?? 0) - (a.le ?? 0)).slice(0, 10)
 
@@ -52,10 +51,9 @@ export function TargetAnalysis({ points, targetName, shown }: { points: FieldPoi
   return (
     <section ref={secRef} style={{ margin: '8px 0 4px' }}>
       <h2 style={{ fontSize: 26, fontWeight: 380 }}>{t('Target:')} {targetName}</h2>
-      <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginTop: 16 }}>
+      <div className="rstats" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14, marginTop: 16 }}>
         <StatCard label={t('Total screened')} value={points.length} highlight active={inView} />
         <StatCard label={t('Drug-like (MW 250-600)')} value={dl.length} active={inView} />
-        <StatCard label={t('ADMET-safe drug-like')} value={admetSafe} active={inView} />
         <StatCard label={t('Showing')} value={shown} active={inView} />
       </div>
 

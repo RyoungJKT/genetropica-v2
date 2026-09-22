@@ -35,7 +35,7 @@ const SOURCES = [
 ]
 const COMPUTE = [
   ['Molecular dynamics (GROMACS, 50 ns)', 'NVIDIA A100 GPU, on Google Colab'],
-  ['Docking, machine learning, ADMET, conservation', 'CPU, on Google Colab'],
+  ['Docking, machine learning, conservation', 'CPU, on Google Colab'],
 ]
 
 export default function Methods() {
@@ -46,7 +46,7 @@ export default function Methods() {
       <div className="eyebrow">{t('Tool 07')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Methods')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('How the screen was run. 100 approved drugs were docked against six targets, rescored with a machine-learning prior, and filtered for drug-likeness and ADMET.')}
+        {t('How the screen was run. 100 approved drugs were docked against six targets, rescored with a machine-learning prior, and filtered for drug-likeness.')}
       </p>
 
       <Block title={t('Pipeline parameters')}>

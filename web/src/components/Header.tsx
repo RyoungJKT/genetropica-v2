@@ -9,7 +9,6 @@ const LINKS: [string, string][] = [
   ['/explore', 'Candidates'],
   ['/binding', 'Binding'],
   ['/md', 'Dynamics'],
-  ['/admet', 'ADMET'],
   ['/conservation', 'Conservation'],
   ['/escape', 'Escape'],
   ['/insights', 'Insights'],

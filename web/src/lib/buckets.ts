@@ -43,12 +43,10 @@ export function insight(p: FieldPoint): string {
     return "Binds hard, but it is a very large molecule, so its grip per atom is poor. Likely a size artefact more than a real lead."
   if (p.le !== null && p.le >= 0.27)
     return 'Unusually efficient for its small size, even if its raw grip is modest. The kind of profile worth a closer look.'
-  if (p.dl === 1 && p.admet === 1 && p.vina <= -7)
-    return 'Drug-like, passes the safety filter, and binds well. A genuine candidate to follow up.'
-  if (p.dl === 1 && p.admet === 1)
-    return 'Drug-like and safe-profiled, with balanced binding. A realistic lead.'
-  if (p.admet === 0)
-    return 'Binds reasonably, but flags on the safety filter, so it drops down the practical ranking.'
+  if (p.dl === 1 && p.vina <= -7)
+    return 'Drug-like and binds well. A candidate worth following up.'
+  if (p.dl === 1)
+    return 'Drug-like, with balanced binding. A realistic lead.'
   return 'A mid-field candidate: worth noting, not a standout.'
 }
 
@@ -61,6 +59,6 @@ export const AXIS = {
   sci: {
     x: 'AutoDock Vina (kcal/mol)',
     y: 'Ligand efficiency',
-    body: 'X = best AutoDock Vina score (more negative is stronger). Y = ligand efficiency (|Vina| / heavy atoms). Dot size scales with heavy-atom count, so heavier molecules are bigger. Opacity encodes ADMET pass; the green ring marks drug-like (MW 250 to 600).',
+    body: 'X = best AutoDock Vina score (more negative is stronger). Y = ligand efficiency (|Vina| / heavy atoms). Dot size scales with heavy-atom count, so heavier molecules are bigger. The green ring marks drug-like (MW 250 to 600).',
   },
 }

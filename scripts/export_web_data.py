@@ -78,6 +78,36 @@ def trim_pocket(pdb_text, center, radius=22.0):
     return "\n".join([ln for key, ln in rows if key in keep] + ["END"])
 
 
+def write_md_json(out):
+    """md.json: molecular-dynamics time series + summary, from the CSVs written by
+    scripts/md_reanalyze.py. Standalone so it can be rerun after that script alone."""
+    md_dir = ROOT / "data" / "md_simulation" / "comparison"
+    md_drugs = ["celecoxib", "methotrexate", "dasabuvir"]
+
+    def _csv(name):
+        with open(md_dir / name) as f:
+            return list(csv.DictReader(f))
+
+    def _num(s):
+        try:
+            return round(float(s), 3)
+        except (TypeError, ValueError):
+            return None
+
+    md = {"summary": _csv("comparison_summary.csv"), "series": {}}
+    for d in md_drugs:
+        bp = _csv(f"binding_proxy_{d}.csv")
+        md["series"][d] = {
+            "rmsd": [[_num(r["time_ns"]), _num(r["protein_rmsd_A"]), _num(r["ligand_rmsd_A"])] for r in _csv(f"rmsd_{d}.csv")],
+            "hbonds": [[_num(r["time_ns"]), _num(r["n_hbonds"])] for r in _csv(f"hbonds_{d}.csv")],
+            "mindist": [[_num(r["time_ns"]), _num(r["min_dist_A"])] for r in bp],
+            "ncontacts": [[_num(r["time_ns"]), _num(r["n_contacts"])] for r in bp],
+            "rmsf": [[int(r["resid"]), _num(r["rmsf_A"])] for r in _csv(f"rmsf_{d}.csv")],
+            "contacts": [[int(r["resid"]), round(float(r["occupancy_pct"]), 1)] for r in _csv(f"contacts_{d}.csv")[:15]],
+        }
+    (out / "md.json").write_text(json.dumps(md, separators=(",", ":")))
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(DB)
@@ -117,11 +147,10 @@ def main():
     rows = cur.execute(
         """SELECT m.target_id tid, d.name, d.category, d.original_indication ind,
                   d.molecular_weight mw, d.heavy_atoms ha,
-                  m.ligand_efficiency le, m.is_druglike dl, a.overall_pass admet,
+                  m.ligand_efficiency le, m.is_druglike dl,
                   (SELECT MIN(vina_score) FROM docking_results dr
                    WHERE dr.drug_id=d.drug_id AND dr.target_id=m.target_id) vina
-           FROM ml_scores m JOIN drugs d ON d.drug_id=m.drug_id
-           LEFT JOIN admet a ON a.drug_id=d.drug_id""").fetchall()
+           FROM ml_scores m JOIN drugs d ON d.drug_id=m.drug_id""").fetchall()
     for r in rows:
         if r["vina"] is None:
             continue
@@ -130,42 +159,13 @@ def main():
             "mw": r["mw"], "ha": r["ha"],
             "le": round(r["le"], 3) if r["le"] is not None else None,
             "vina": round(r["vina"], 2),
-            "dl": int(r["dl"] or 0), "admet": int(r["admet"] or 0),
+            "dl": int(r["dl"] or 0),
         })
     for tid in field:
         field[tid].sort(key=lambda x: x["vina"])
     (OUT / "field.json").write_text(json.dumps(field, indent=2))
 
-    # admet.json: per-drug ADMET breakdown (risks are 0-1 scores; lipinski/pass are 0/1)
-    admet = {r["name"]: {
-        "lipinski": r["lipinski_pass"], "hepatotox": r["hepatotoxicity_risk"],
-        "herg": r["herg_inhibition_risk"], "bioavail": r["oral_bioavailability"],
-        "pass": r["overall_pass"],
-    } for r in cur.execute(
-        "SELECT d.name, a.lipinski_pass, a.hepatotoxicity_risk, a.herg_inhibition_risk, "
-        "a.oral_bioavailability, a.overall_pass FROM admet a JOIN drugs d ON d.drug_id=a.drug_id")}
-    (OUT / "admet.json").write_text(json.dumps(admet, indent=2))
-
-    # admet_profiles.json: rich SwissADME-style profiles (drug-likeness filters,
-    # BOILED-Egg absorption, structural alerts, descriptors, 0-5 drug-likeness score).
-    prof_src = json.loads((ROOT / "data" / "admet" / "profiles.json").read_text())
-
-    def _passed(p, k):
-        v = p.get(k)
-        return bool(v.get("pass")) if isinstance(v, dict) else bool(v)
-
-    profiles = sorted(({
-        "name": p["name"],
-        "desc": {"mw": round(p["descriptors"]["mw"], 1), "logp": round(p["descriptors"]["logp"], 2),
-                 "tpsa": round(p["descriptors"]["tpsa"], 1), "hbd": p["descriptors"]["hbd"],
-                 "hba": p["descriptors"]["hba"], "rot": p["descriptors"]["rotatable_bonds"]},
-        "lipinski": _passed(p, "lipinski"), "veber": _passed(p, "veber"),
-        "ghose": _passed(p, "ghose"), "egan": _passed(p, "egan"),
-        "esol": round(p["esol"], 2), "gi": p["gi_absorption"], "bbb": p["bbb_permeant"],
-        "pains": p.get("pains_alerts", []), "brenk": p.get("brenk_alerts", []),
-        "dl": p["drug_likeness_score"],
-    } for p in prof_src), key=lambda x: x["name"])
-    (OUT / "admet_profiles.json").write_text(json.dumps(profiles, indent=2))
+    # ADMET (admet.json, admet_profiles.json) was removed from the site on 2026-09-23.
 
     # literature.json: PubMed evidence per drug-target (keyword-mined; evidence tier included
     # so weak keyword hits can be shown as such and never inflate a candidate).
@@ -236,32 +236,7 @@ def main():
         bind_index[tid].sort()
     (bind_dir / "index.json").write_text(json.dumps(bind_index, indent=2))
 
-    # md.json: molecular-dynamics time series + summary (from the FIX-4 / FIX-14 CSVs)
-    md_dir = ROOT / "data" / "md_simulation" / "comparison"
-    md_drugs = ["celecoxib", "methotrexate", "dasabuvir"]
-
-    def _csv(name):
-        with open(md_dir / name) as f:
-            return list(csv.DictReader(f))
-
-    def _num(s):
-        try:
-            return round(float(s), 3)
-        except (TypeError, ValueError):
-            return None
-
-    md = {"summary": _csv("comparison_summary.csv"), "series": {}}
-    for d in md_drugs:
-        bp = _csv(f"binding_proxy_{d}.csv")
-        md["series"][d] = {
-            "rmsd": [[_num(r["time_ns"]), _num(r["protein_rmsd_A"]), _num(r["ligand_rmsd_A"])] for r in _csv(f"rmsd_{d}.csv")],
-            "hbonds": [[_num(r["time_ns"]), _num(r["n_hbonds"])] for r in _csv(f"hbonds_{d}.csv")],
-            "mindist": [[_num(r["time_ns"]), _num(r["min_dist_A"])] for r in bp],
-            "ncontacts": [[_num(r["time_ns"]), _num(r["n_contacts"])] for r in bp],
-            "rmsf": [[int(r["resid"]), _num(r["rmsf_A"])] for r in _csv(f"rmsf_{d}.csv")],
-            "contacts": [[int(r["resid"]), round(float(r["occupancy_pct"]), 1)] for r in _csv(f"contacts_{d}.csv")[:15]],
-        }
-    (OUT / "md.json").write_text(json.dumps(md, separators=(",", ":")))
+    write_md_json(OUT)
 
     # conservation.json: ConSurf per-residue grades + cross-flavivirus identity + key residues
     cons = ROOT / "data" / "conservation" / "consurf"
@@ -308,9 +283,9 @@ def main():
     (OUT / "methods.json").write_text(json.dumps(methods, separators=(",", ":")))
 
     con.close()
-    print(f"wrote summary/targets/drugs/field/admet json + {n_bind} binding complexes "
+    print(f"wrote summary/targets/drugs/field json + {n_bind} binding complexes "
           f"({n_drugs} drugs, {n_targets} targets, {n_runs} runs, "
-          f"{sum(len(v) for v in field.values())} field points, {len(admet)} admet)")
+          f"{sum(len(v) for v in field.values())} field points)")
 
 
 if __name__ == "__main__":

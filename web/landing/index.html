@@ -171,7 +171,8 @@
 
   /* stats grid */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:54px}
-  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat:last-child:nth-child(3n+2){grid-column:span 2}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}.stat:last-child:nth-child(3n+2){grid-column:auto}.stat:last-child:nth-child(odd){grid-column:span 2}}
   .stat{background:var(--paper);padding:34px 26px}
   .stat .v{font-family:var(--serif);font-weight:320;font-size:clamp(40px,6vw,68px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
   .stat .v .pre{color:var(--clay)}
@@ -339,17 +340,16 @@
   <!-- 03 HOW -->
   <section id="how">
     <span class="sec-num">03 / The method</span>
-    <h2 data-reveal>Seven stages, from <em>molecule</em> to candidate.</h2>
+    <h2 data-reveal>Six stages, from <em>molecule</em> to candidate.</h2>
     <div class="steps">
       <div class="step" data-reveal><div class="n">i</div><div><h3>A curated library</h3><p>100 FDA-approved drugs, chosen to span chemical space, become the search pool.</p></div></div>
       <div class="step" data-reveal><div class="n">ii</div><div><h3>Six disease targets</h3><p>Key proteins from dengue, chikungunya, and leptospirosis, the machinery each disease depends on to survive.</p></div></div>
       <div class="step" data-reveal><div class="n">iii</div><div><h3>~1,800 docking simulations</h3><p>AutoDock Vina computes how snugly every drug fits into every target, like testing keys against a lock.</p></div></div>
       <div class="step" data-reveal><div class="n">iv</div><div><h3>Two honest rankings</h3><p>Candidates are scored both by raw binding strength and by ligand efficiency, the binding earned per atom, shown side by side.</p></div></div>
       <div class="step" data-reveal><div class="n">v</div><div><h3>A machine-learning prior</h3><p>A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.</p></div></div>
-      <div class="step" data-reveal><div class="n">vi</div><div><h3>Safety screening</h3><p>ADMET filters keep only drug-like, tolerable molecules, the ones a body could plausibly absorb and clear.</p></div></div>
-      <div class="step" data-reveal><div class="n">vii</div><div><h3>Molecular dynamics</h3><p>The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.</p></div></div>
+      <div class="step" data-reveal><div class="n">vi</div><div><h3>Molecular dynamics</h3><p>The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.</p></div></div>
     </div>
-    <p class="body" data-reveal style="margin-top:44px"><b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, ADMET, and conservation analysis on CPUs.</p>
+    <p class="body" data-reveal style="margin-top:44px"><b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, and conservation analysis on CPUs.</p>
   </section>
 
   <div class="rule" data-reveal></div>
@@ -383,7 +383,6 @@
       <div class="stat" data-reveal><div class="v"><span data-count="6">0</span></div><div class="k">protein targets<br>across 3 diseases</div></div>
       <div class="stat" data-reveal><div class="v"><span class="pre">~</span><span data-count="1800">0</span></div><div class="k">docking<br>simulations</div></div>
       <div class="stat" data-reveal><div class="v"><span data-count="65">0</span></div><div class="k">drug-like<br>candidates</div></div>
-      <div class="stat" data-reveal><div class="v"><span data-count="42">0</span></div><div class="k">ADMET-safe<br>candidates</div></div>
       <div class="stat" data-reveal><div class="v"><span data-count="50">0</span><span class="pre"> ns</span></div><div class="k">dynamics per<br>finalist</div></div>
     </div>
     <p class="body" data-reveal style="margin-top:46px">Against dengue's replication machinery, two families of drug rose to the top: <b>nucleoside analogues</b> and <b>hepatitis-C antivirals</b>, classes that already disrupt viral copying in other diseases. Promising leads, openly caveated, ready for a wet lab to test.</p>
@@ -475,7 +474,7 @@
 
     /* 03 method */
     '03 / The method':'03 / Metodenya',
-    'Seven stages, from <em>molecule</em> to candidate.':'Tujuh tahap, dari <em>molekul</em> ke kandidat.',
+    'Six stages, from <em>molecule</em> to candidate.':'Enam tahap, dari <em>molekul</em> ke kandidat.',
     'A curated library':'Pustaka terkurasi',
     '100 FDA-approved drugs, chosen to span chemical space, become the search pool.':
       '100 obat yang disetujui FDA, dipilih agar mencakup ruang kimia yang luas, menjadi kumpulan pencarian.',
@@ -491,14 +490,11 @@
     'A machine-learning prior':'Dugaan awal dari pembelajaran mesin',
     'A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.':
       'Model yang dilatih pada senyawa aktif yang sudah dikenal menambahkan petunjuk kemungkinan aktivitas. Ini diperlakukan sebagai petunjuk, tidak pernah sebagai keputusan.',
-    'Safety screening':'Penyaringan keamanan',
-    'ADMET filters keep only drug-like, tolerable molecules, the ones a body could plausibly absorb and clear.':
-      'Filter ADMET hanya menyisakan molekul yang mirip obat dan dapat ditoleransi, yaitu yang masuk akal diserap dan dibuang oleh tubuh.',
     'Molecular dynamics':'Dinamika molekuler',
     'The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.':
       'Kandidat terkuat diuji ketahanannya dengan simulasi 50 nanodetik untuk melihat apakah kecocokannya benar-benar bertahan.',
-    '<b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, ADMET, and conservation analysis on CPUs.':
-      '<b>Ini hasil perhitungan nyata, bukan ilustrasi.</b> Setiap proses dijalankan di Google Colab: simulasi dinamika molekuler 50 nanodetik pada <b>GPU NVIDIA A100</b>, sedangkan penambatan, pembelajaran mesin, ADMET, dan analisis konservasi pada CPU.',
+    '<b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, and conservation analysis on CPUs.':
+      '<b>Ini hasil perhitungan nyata, bukan ilustrasi.</b> Setiap proses dijalankan di Google Colab: simulasi dinamika molekuler 50 nanodetik pada <b>GPU NVIDIA A100</b>, sedangkan penambatan, pembelajaran mesin, dan analisis konservasi pada CPU.',
 
     /* 04 rigor */
     '04 / Rigor':'04 / Ketelitian',
@@ -515,7 +511,6 @@
     'protein targets<br>across 3 diseases':'target protein<br>di 3 penyakit',
     'docking<br>simulations':'simulasi<br>penambatan',
     'drug-like<br>candidates':'kandidat<br>mirip obat',
-    'ADMET-safe<br>candidates':'kandidat<br>aman ADMET',
     'dynamics per<br>finalist':'dinamika per<br>finalis',
     "Against dengue's replication machinery, two families of drug rose to the top: <b>nucleoside analogues</b> and <b>hepatitis-C antivirals</b>, classes that already disrupt viral copying in other diseases. Promising leads, openly caveated, ready for a wet lab to test.":
       'Terhadap mesin replikasi demam berdarah, dua keluarga obat menempati posisi teratas: <b>analog nukleosida</b> dan <b>antivirus hepatitis C</b>, golongan yang memang sudah mengganggu penyalinan virus pada penyakit lain. Petunjuk yang menjanjikan, dengan catatan yang disampaikan terbuka, siap diuji di laboratorium basah.',

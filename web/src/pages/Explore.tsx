@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { useField, useAdmet, useDrugs, useTargets, useLiterature } from '../data/api'
+import { useField, useDrugs, useTargets, useLiterature } from '../data/api'
 import { BUCKETS, bucketOf } from '../lib/buckets'
 import { DrugTable } from '../components/DrugTable'
 import { DrugPanel } from '../components/DrugPanel'
@@ -25,14 +25,12 @@ function Toggle({ on, set, label }: { on: boolean; set: (v: boolean) => void; la
 export default function Explore() {
   const { t } = useT()
   const field = useField()
-  const admet = useAdmet()
   const drugs = useDrugs()
   const targets = useTargets()
   const lit = useLiterature()
   const [tid, setTid] = useState('DENV_NS3')
   const [q, setQ] = useState('')
   const [dlOnly, setDlOnly] = useState(false)
-  const [admetOnly, setAdmetOnly] = useState(false)
   const [cls, setCls] = useState('all')
   const [sel, setSel] = useState<string | null>(DEFAULT_DRUG)
 
@@ -43,11 +41,9 @@ export default function Explore() {
     (p) =>
       (!q || p.name.toLowerCase().includes(q.toLowerCase())) &&
       (!dlOnly || p.dl === 1) &&
-      (!admetOnly || p.admet === 1) &&
       (cls === 'all' || bucketOf(p).key === cls),
   )
   const selDrug = sel ? drugs.data?.find((d) => d.name === sel) : undefined
-  const selAdmet = sel && admet.data ? admet.data[sel] : undefined
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
@@ -73,7 +69,6 @@ export default function Explore() {
           {Object.values(BUCKETS).map((b) => <option key={b.key} value={b.key}>{t(b.label)}</option>)}
         </select>
         <Toggle on={dlOnly} set={setDlOnly} label={t('Drug-like only')} />
-        <Toggle on={admetOnly} set={setAdmetOnly} label={t('ADMET pass only')} />
         <span className="mono" style={{ color: 'var(--ink-faint)' }}>{filtered.length} {t('of')} {all.length}</span>
       </div>
 
@@ -93,9 +88,9 @@ export default function Explore() {
           ))}
         </select>
         {selDrug && field.data ? (
-          <DrugPanel drug={selDrug} field={field.data} admet={selAdmet} order={order} tName={tName} literature={(lit.data ?? []).filter((r) => r.drug === selDrug.name)} ns5NoteShown={tid === 'DENV_NS5'} />
+          <DrugPanel drug={selDrug} field={field.data} order={order} tName={tName} literature={(lit.data ?? []).filter((r) => r.drug === selDrug.name)} ns5NoteShown={tid === 'DENV_NS5'} />
         ) : (
-          <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>{t('Choose a drug above, or click a row in the table, to see its cross-target binding and ADMET profile.')}</p>
+          <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>{t('Choose a drug above, or click a row in the table, to see its cross-target binding and literature.')}</p>
         )}
       </div>
     </div>

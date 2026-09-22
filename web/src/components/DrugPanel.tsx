@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
-import type { Drug, Field, AdmetRow, LitRef } from '../data/types'
-import { RadarChart } from './RadarChart'
+import type { Drug, Field, LitRef } from '../data/types'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
 import { useT } from '../i18n'
@@ -15,8 +14,8 @@ function Meta({ k, v }: { k: string; v: string }) {
   )
 }
 
-/** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), ADMET radar. */
-export function DrugPanel({ drug, field, admet, order, tName, literature = [], ns5NoteShown = false }: { drug: Drug; field: Field; admet?: AdmetRow; order: string[]; tName: (id: string) => string; literature?: LitRef[]; ns5NoteShown?: boolean }) {
+/** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), literature. */
+export function DrugPanel({ drug, field, order, tName, literature = [], ns5NoteShown = false }: { drug: Drug; field: Field; order: string[]; tName: (id: string) => string; literature?: LitRef[]; ns5NoteShown?: boolean }) {
   const { t } = useT()
   const ref = useRef<HTMLDivElement>(null)
   const firstRender = useRef(true)
@@ -38,16 +37,6 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [], n
   const ml = drug.ml ?? 0
   const xMax = Math.max(10, ...bars.map((b) => b.vina), ml)
   const ticks = [0, 2, 4, 6, 8, 10].filter((t) => t <= xMax)
-
-  const radarAxes = admet
-    ? [
-        { label: t('Lipinski Compliance'), value: admet.lipinski },
-        { label: t('Oral Bioavailability'), value: admet.bioavail },
-        { label: t('Overall Safety'), value: admet.pass },
-        { label: t('hERG Safety'), value: 1 - admet.herg },
-        { label: t('Hepato Safety'), value: 1 - admet.hepatotox },
-      ]
-    : []
 
   const byTarget: Record<string, LitRef[]> = {}
   for (const r of literature) (byTarget[r.target] ??= []).push(r)
@@ -72,7 +61,7 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [], n
 
       <hr style={{ border: 0, borderTop: '1px solid var(--line)', margin: '28px 0' }} />
 
-      <div ref={chartsRef} className="rstack" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)', gap: 32, alignItems: 'start' }}>
+      <div ref={chartsRef} style={{ maxWidth: 760 }}>
         <div>
           <h3 style={{ fontSize: 15, marginBottom: 4 }}>{t('Binding Scores Across Targets')}</h3>
           <div style={{ display: 'flex', gap: 16, margin: '6px 0 14px', fontSize: 11, fontFamily: 'var(--mono)', color: 'var(--ink-soft)' }}>
@@ -111,11 +100,6 @@ export function DrugPanel({ drug, field, admet, order, tName, literature = [], n
             {t('Absolute Vina binding score (kcal/mol) per target. The ML score is a target-agnostic activity prior, so it is identical across every target.')}
           </p>
           {!ns5NoteShown && <Ns5DockingNote style={{ fontSize: 11.5, margin: '8px 0 0', padding: '7px 11px' }} />}
-        </div>
-
-        <div>
-          <h3 style={{ fontSize: 15, marginBottom: 10 }}>{t('ADMET Safety Profile')}</h3>
-          {admet ? <RadarChart axes={radarAxes} /> : <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>{t('No ADMET record for this drug.')}</p>}
         </div>
       </div>
 

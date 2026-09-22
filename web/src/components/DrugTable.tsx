@@ -42,7 +42,7 @@ export function DrugTable({ points, onSelect, selected }: { points: FieldPoint[]
     <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'auto', maxHeight: 640, background: 'var(--paper)' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>
         <thead>
-          <tr>{th('#')}{th(t('Drug'), 'name')}{th(t('MW'), 'mw', true)}{th('Vina', 'vina', true)}{th(t('Lig. eff.'), 'le', true)}{th(t('Drug-like'))}{th('ADMET')}</tr>
+          <tr>{th('#')}{th(t('Drug'), 'name')}{th(t('MW'), 'mw', true)}{th('Vina', 'vina', true)}{th(t('Lig. eff.'), 'le', true)}{th(t('Drug-like'))}</tr>
         </thead>
         <tbody>
           {sorted.map((p, i) => {
@@ -61,7 +61,6 @@ export function DrugTable({ points, onSelect, selected }: { points: FieldPoint[]
                 <td style={cell('var(--ink)', 'right', true)}>{p.vina}</td>
                 <td style={cell('var(--ink-soft)', 'right', true)}>{p.le !== null ? p.le.toFixed(3) : '-'}</td>
                 <td style={{ padding: '9px 12px' }}>{p.dl ? <Pill color="var(--green)">{t('yes')}</Pill> : <span style={{ color: 'var(--ink-faint)', fontFamily: 'var(--mono)', fontSize: 10 }}>{t('no')}</span>}</td>
-                <td style={{ padding: '9px 12px' }}>{p.admet ? <Pill color="var(--green)">{t('pass')}</Pill> : <Pill color="var(--clay)">{t('flag')}</Pill>}</td>
               </tr>
             )
           })}
