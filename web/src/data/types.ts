@@ -43,19 +43,25 @@ export interface FieldPoint {
 
 export type Field = Record<string, FieldPoint[]>
 
-export interface LitRef {
-  drug: string
-  target: string
+/** One verified dengue paper: PubMed metadata plus a verdict read from its abstract. */
+export interface DengueRef {
   pmid: string
+  year: string
+  journal: string
   title: string
-  rel: string
-  conf: number | null
-  tier: string
-  /** Optional LLM review (present once scripts/llm_literature.py has been run). */
-  llm_verdict?: string
-  llm_rel?: string
-  llm_conf?: number
-  llm_note?: string
+  /** Study type, strongest first when sorted: trial, cohort, animal, lab. */
+  kind: 'trial' | 'cohort' | 'animal' | 'lab'
+  /** What the paper found for this drug against dengue. */
+  finding: 'inhibits' | 'no benefit' | 'mixed' | 'mechanism'
+  note: string
+}
+
+export interface DengueLiterature {
+  disease: string
+  generated: string
+  method: string
+  excluded: Record<string, string>
+  drugs: Record<string, DengueRef[]>
 }
 
 export interface Contact { res: string; num: string; chain: string; type: string; dist: number }

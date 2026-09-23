@@ -31,7 +31,7 @@ const SOURCES = [
   ['ChEMBL', 'Activity data for the machine-learning prior'],
   ['RCSB PDB', 'The six protein target structures'],
   ['ConSurf', 'Per-residue evolutionary conservation'],
-  ['NCBI E-utilities / PubMed', 'Keyword literature evidence'],
+  ['NCBI E-utilities / PubMed', 'Published dengue papers, title-matched then read'],
 ]
 const COMPUTE = [
   ['Molecular dynamics (GROMACS, 50 ns)', 'NVIDIA A100 GPU, on Google Colab'],
@@ -46,7 +46,7 @@ export default function Methods() {
       <div className="eyebrow">{t('Tool 07')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Methods')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('How the screen was run. 100 approved drugs were docked against six targets, rescored with a machine-learning prior, and filtered for drug-likeness.')}
+        {t('How the screen was run. 100 approved or clinical-stage drugs were screened against six targets. 99 docked successfully (auranofin contains a gold atom that AutoDock Vina cannot model), giving 594 docking runs, which were rescored with a machine-learning prior and filtered for drug-likeness.')}
       </p>
 
       <Block title={t('Pipeline parameters')}>
@@ -107,8 +107,8 @@ export default function Methods() {
           <li>{t('Docking did not separate known NS5 inhibitors from matched decoys (AUC 0.49, 95% CI 0.31 to 0.68).')}</li>
           <li>{t('The machine-learning score is a target-agnostic prior, not a per-target prediction.')}</li>
           <li>{t('Only dengue NS5 was retrospectively validated; the other five targets have no equivalent test.')}</li>
-          <li>{t('Literature links are keyword-based, not a trained relation extractor; weak links are tiered so they cannot inflate a candidate.')}</li>
           <li>{t('The molecular dynamics are short unbiased association runs (the ligand was not started in the docked pose), reporting whether a drug binds, not binding free energy. No MM-PBSA.')}</li>
+          <li>{t('Dengue papers were found by title match and their abstracts read; the full texts were not. They cover dengue only, so the chikungunya and leptospirosis targets have none, and they describe published work rather than supporting this screen.')}</li>
           <li>{t('Sofosbuvir is included as a known-active positive control, not a discovery.')}</li>
         </ul>
       </Block>

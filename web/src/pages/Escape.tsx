@@ -114,7 +114,7 @@ export default function Escape() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">{t('Tool 09')}</div>
+      <div className="eyebrow">{t('Tool 06')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Evolutionary Escape & Durability')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
         {t('Which of these drugs would dengue find hardest to dodge by mutating? A drug that latches onto parts of the protein the virus cannot change without harming itself should be harder to escape; one that grips changeable parts should be easier. This is an estimate, not a measurement: each candidate is scored by how conserved the residues are where its predicted pose settles.')}

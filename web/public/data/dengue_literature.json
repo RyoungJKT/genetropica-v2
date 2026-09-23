@@ -1,0 +1,727 @@
+{
+ "disease": "Dengue",
+ "generated": "2026-09-23",
+ "method": "PubMed searched via NCBI E-utilities for papers with both the drug name and dengue (or DENV/flavivirus) in the title. Every abstract was then read and papers that were not a test of the drug against dengue were excluded. Findings are summarised from the abstract only; the full texts were not read.",
+ "excluded": {
+  "28860870": "about malaria treatment failure in a co-infected patient, not artemisinin against dengue",
+  "26709910": "case report of a child on azathioprine who caught dengue; not a test of activity",
+  "27815736": "about chloroquine-resistant malaria and nanoparticles, not chloroquine against dengue",
+  "27893666": "a hepatitis C patient who caught dengue mid-treatment; not a dengue drug study",
+  "32326119": "tested Zika, West Nile and tick-borne encephalitis; dengue was not among the viruses tested",
+  "28336346": "tested West Nile and tick-borne flaviviruses; dengue was not tested",
+  "29642580": "tested Zika, West Nile and tick-borne encephalitis; dengue was not tested",
+  "35460703": "efficacy shown for Zika; dengue not separately demonstrated",
+  "39315833": "a genome-sequence report from a trial, with no drug result",
+  "35015758": "an Expression of Concern notice, not a study",
+  "30452439": "the mosquito study that the 2022 Expression of Concern was issued against",
+  "33124646": "an editorial comment with no original data",
+  "6615730": "a 1983 lymphocyte-response letter, not a test of antiviral activity",
+  "23114081": "a trial protocol published before any results",
+  "33083561": "a trial protocol published before any results",
+  "39194045": "a review of nanoengineered formulations, not an original test",
+  "40881003": "a single-author clinical opinion piece proposing a protocol",
+  "20307577": "a replicon methods paper; ribavirin appears only as an assay control",
+  "12543691": "tested Modoc virus encephalitis, not dengue",
+  "23413698": "tested virus levels in mosquitoes, not treatment of infection",
+  "41246530": "no abstract available to verify the finding",
+  "39948816": "no abstract available to verify the finding",
+  "21530348": "no abstract available to verify the finding",
+  "40708402": "a safety comparison for fever management, not a test of antiviral activity",
+  "36133864": "tests a quantum-dot conjugate delivery platform rather than the drug as given to patients",
+  "41308480": "tests a graphene-oxide hybrid material rather than the drug as given to patients"
+ },
+ "drugs": {
+  "amantadine": [
+   {
+    "pmid": "27920420",
+    "year": "2016",
+    "journal": "Am J Case Rep",
+    "title": "Treatment Effectiveness of Amantadine Against Dengue Virus Infection.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Uncontrolled 34-patient case series from one clinic; authors call for a proper trial."
+   },
+   {
+    "pmid": "7416739",
+    "year": "1980",
+    "journal": "Antimicrob Agents Chemother",
+    "title": "Inhibition of dengue virus replication by amantadine hydrochloride.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Cut titres of all four dengue serotypes >90% in cell culture."
+   }
+  ],
+  "artemisinin": [
+   {
+    "pmid": "32360948",
+    "year": "2020",
+    "journal": "Antiviral Res",
+    "title": "Artemisinin inhibits the replication of flaviviruses by promoting the type I interferon production.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Suppressed DENV, Zika and JEV by boosting host interferon response."
+   }
+  ],
+  "atorvastatin": [
+   {
+    "pmid": "38034354",
+    "year": "2023",
+    "journal": "iScience",
+    "title": "An ivermectin\u00a0- atorvastatin combination impairs nuclear transport inhibiting dengue infection in\u00a0vitro and in\u00a0vivo.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "With ivermectin, blocked nuclear transport of NS3/NS5 and cut infection in cells and mice."
+   },
+   {
+    "pmid": "41189711",
+    "year": "2025",
+    "journal": "Front Cell Infect Microbiol",
+    "title": "Effects of dengue virus type-2 serotype (DENV-2) on the expression profile of matrix metalloproteinases in THP-1, monocyte cells and their roles in endothelial dysfunctions: protective effect of atorvastatin.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Reversed dengue-induced MMP expression in monocytes."
+   },
+   {
+    "pmid": "36108401",
+    "year": "2022",
+    "journal": "Int Immunopharmacol",
+    "title": "Atorvastatin attenuates NS1 (Non-structural protein-1) of dengue type-2 serotype-induced expressions of matrix metalloproteinases in HL-60 cells, differentiated to neutrophils: Implications for the immunopathogenesis of dengue viral disease.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Reduced NS1-driven matrix metalloproteinase release; a host effect, not direct antiviral."
+   }
+  ],
+  "atovaquone": [
+   {
+    "pmid": "33371476",
+    "year": "2020",
+    "journal": "Viruses",
+    "title": "The Antimalarial Compound Atovaquone Inhibits Zika and Dengue Virus Infection by Blocking E Protein-Mediated Membrane Fusion.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Blocked envelope-protein membrane fusion for Zika and dengue."
+   }
+  ],
+  "balapiravir": [
+   {
+    "pmid": "22807519",
+    "year": "2013",
+    "journal": "J Infect Dis",
+    "title": "A randomized, double-blind placebo controlled trial of balapiravir, a polymerase inhibitor, in adult dengue patients.",
+    "kind": "trial",
+    "finding": "no benefit",
+    "note": "Randomized placebo-controlled trial: no change in viraemia, NS1 or fever clearance. Authors state it does not support balapiravir."
+   },
+   {
+    "pmid": "24257621",
+    "year": "2014",
+    "journal": "J Virol",
+    "title": "Activation of peripheral blood mononuclear cells by dengue virus infection depotentiates balapiravir.",
+    "kind": "lab",
+    "finding": "no benefit",
+    "note": "Explains the trial failure: potency dropped 125-fold in infected blood cells."
+   }
+  ],
+  "celecoxib": [
+   {
+    "pmid": "28666323",
+    "year": "2017",
+    "journal": "J Antimicrob Chemother",
+    "title": "Exploring the in vitro potential of celecoxib derivative AR-12 as an effective antiviral compound against four dengue virus serotypes.",
+    "kind": "lab",
+    "finding": "mixed",
+    "note": "Tests AR-12, a celecoxib derivative, not celecoxib itself."
+   }
+  ],
+  "chloroquine": [
+   {
+    "pmid": "23903975",
+    "year": "2013",
+    "journal": "Mem Inst Oswaldo Cruz",
+    "title": "Chloroquine use improves dengue-related symptoms.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Randomized trial: no change in illness duration or fever; patients reported less pain."
+   },
+   {
+    "pmid": "20706626",
+    "year": "2010",
+    "journal": "PLoS Negl Trop Dis",
+    "title": "A randomized controlled trial of chloroquine for the treatment of dengue in Vietnamese adults.",
+    "kind": "trial",
+    "finding": "no benefit",
+    "note": "Randomized trial in 307 adults: no reduction in viraemia or NS1, and more vomiting."
+   },
+   {
+    "pmid": "25664975",
+    "year": "2015",
+    "journal": "Viral Immunol",
+    "title": "Antiviral activity of chloroquine against dengue virus type 2 replication in Aotus monkeys.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Antiviral activity against DENV-2 in Aotus monkeys."
+   },
+   {
+    "pmid": "24773578",
+    "year": "2014",
+    "journal": "Microbiol Immunol",
+    "title": "Chloroquine interferes with dengue-2 virus replication in U937 cells.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Reduced DENV-2 production in U937 cells."
+   },
+   {
+    "pmid": "23431254",
+    "year": "2013",
+    "journal": "ScientificWorldJournal",
+    "title": "Chloroquine inhibits dengue virus type 2 replication in Vero cells but not in C6/36 cells.",
+    "kind": "lab",
+    "finding": "mixed",
+    "note": "Inhibited DENV-2 in Vero cells but not in mosquito C6/36 cells."
+   }
+  ],
+  "cyclosporine": [
+   {
+    "pmid": "19451286",
+    "year": "2009",
+    "journal": "Antimicrob Agents Chemother",
+    "title": "Cyclosporine inhibits flavivirus replication through blocking the interaction between host cyclophilins and viral NS5 protein.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Blocked the cyclophilin-NS5 interaction flaviviruses depend on."
+   }
+  ],
+  "darunavir": [
+   {
+    "pmid": "40024350",
+    "year": "2025",
+    "journal": "Biochem Pharmacol",
+    "title": "Darunavir inhibits dengue virus replication by targeting the hydrophobic pocket of the envelope protein.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "EC50 below 1 uM against three DENV serotypes; blocks envelope attachment."
+   }
+  ],
+  "doxycycline": [
+   {
+    "pmid": "36119216",
+    "year": "2022",
+    "journal": "J Family Med Prim Care",
+    "title": "Effect of doxycycline and doxycycline with carica papaya on thrombocytopenia and leucopenia in acute dengue fever patients.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Small case-control study; better platelet and leukocyte recovery."
+   },
+   {
+    "pmid": "25858261",
+    "year": "2015",
+    "journal": "Recent Pat Antiinfect Drug Discov",
+    "title": "Dengue Patients Treated with Doxycycline Showed Lower Mortality Associated to a Reduction in IL-6 and TNF Levels.",
+    "kind": "trial",
+    "finding": "inhibits",
+    "note": "Randomized: 46% lower mortality (11.2% vs 20.9%, p=0.05) with lower TNF and IL-6."
+   },
+   {
+    "pmid": "21461372",
+    "year": "2011",
+    "journal": "Clin Dev Immunol",
+    "title": "Modulation of cytokine and cytokine receptor/antagonist by treatment with doxycycline and tetracycline in patients with dengue fever.",
+    "kind": "trial",
+    "finding": "mechanism",
+    "note": "Lowered IL-6, IL-1B and TNF in dengue patients versus supportive care."
+   },
+   {
+    "pmid": "24142271",
+    "year": "2014",
+    "journal": "Arch Virol",
+    "title": "Inhibitory effect of doxycycline against dengue virus replication in vitro.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Inhibited the DENV2 NS2B-NS3 protease (IC50 52 uM) and cut virus titre."
+   }
+  ],
+  "erlotinib": [
+   {
+    "pmid": "29753658",
+    "year": "2018",
+    "journal": "Antiviral Res",
+    "title": "Feasibility and biological rationale of repurposing sunitinib and erlotinib for dengue treatment.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Sunitinib/erlotinib combination suppressed infection in DENV-infected mice."
+   }
+  ],
+  "galidesivir": [
+   {
+    "pmid": "37488090",
+    "year": "2023",
+    "journal": "ACS Infect Dis",
+    "title": "Galidesivir Triphosphate Promotes Stalling of Dengue-2 Virus Polymerase Immediately Prior to Incorporation.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Its triphosphate stalls the dengue-2 polymerase directly."
+   }
+  ],
+  "hydroxychloroquine": [
+   {
+    "pmid": "25321315",
+    "year": "2015",
+    "journal": "J Interferon Cytokine Res",
+    "title": "Hydroxychloroquine-inhibited dengue virus is associated with host defense machinery.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Inhibited DENV 1-4 in vitro via host interferon signalling."
+   }
+  ],
+  "ivermectin": [
+   {
+    "pmid": "39308445",
+    "year": "2024",
+    "journal": "CPT Pharmacometrics Syst Pharmacol",
+    "title": "In-host modeling of dengue virus and non-structural protein 1 and the effects of ivermectin in patients with acute dengue fever.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Modelling of two trials: no effect on viraemia, but NS1 reduced."
+   },
+   {
+    "pmid": "33462580",
+    "year": "2021",
+    "journal": "Clin Infect Dis",
+    "title": "Ivermectin Accelerates Circulating Nonstructural Protein 1 (NS1) Clearance in Adult Dengue Patients: A Combined Phase 2/3 Randomized Double-blinded Placebo Controlled Trial.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Phase 2/3 randomized: faster NS1 clearance, but no clinical efficacy at this dose."
+   },
+   {
+    "pmid": "37702492",
+    "year": "2023",
+    "journal": "mBio",
+    "title": "Dengue virus NS1 secretion is regulated via importin-subunit \u03b21 controlling expression of the chaperone GRp78 and targeted by the clinical drug ivermectin.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Blocks nuclear transport needed for NS1 folding and secretion."
+   },
+   {
+    "pmid": "23769930",
+    "year": "2013",
+    "journal": "Antiviral Res",
+    "title": "Nuclear localization of dengue virus (DENV) 1-4 non-structural protein 5; protection against all 4 DENV serotypes by the inhibitor Ivermectin.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Inhibited NS5 nuclear import and protected against all four serotypes."
+   },
+   {
+    "pmid": "22535622",
+    "year": "2012",
+    "journal": "J Antimicrob Chemother",
+    "title": "Ivermectin is a potent inhibitor of flavivirus replication specifically targeting NS3 helicase activity: new prospects for an old drug.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Targets NS3 helicase activity in flaviviruses."
+   },
+   {
+    "pmid": "22417684",
+    "year": "2012",
+    "journal": "Biochem J",
+    "title": "Ivermectin is a specific inhibitor of importin \u03b1/\u03b2-mediated nuclear import able to inhibit replication of HIV-1 and dengue virus.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Importin alpha/beta inhibitor; blocks dengue replication."
+   }
+  ],
+  "leflunomide": [
+   {
+    "pmid": "21845515",
+    "year": "2011",
+    "journal": "J Clin Immunol",
+    "title": "Immunosuppressive effects and mechanisms of leflunomide in dengue virus infection of human dendritic cells.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Immunomodulatory in dengue-stimulated dendritic cells."
+   }
+  ],
+  "lovastatin": [
+   {
+    "pmid": "26565005",
+    "year": "2016",
+    "journal": "Clin Infect Dis",
+    "title": "Lovastatin for the Treatment of Adult Patients With Dengue: A Randomized, Double-Blind, Placebo-Controlled Trial.",
+    "kind": "trial",
+    "finding": "no benefit",
+    "note": "Randomized trial in 300 adults: safe, but no benefit on any clinical measure or on viraemia."
+   },
+   {
+    "pmid": "24586275",
+    "year": "2014",
+    "journal": "PLoS One",
+    "title": "Lovastatin delays infection and increases survival rates in AG129 mice infected with dengue virus serotype 2.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Improved survival and lowered viraemia in DENV-2 infected mice."
+   }
+  ],
+  "metformin": [
+   {
+    "pmid": "40591696",
+    "year": "2025",
+    "journal": "PLoS Negl Trop Dis",
+    "title": "Safety and tolerability of metformin in overweight and obese patients with dengue: An open-label clinical trial (MeDO).",
+    "kind": "trial",
+    "finding": "no benefit",
+    "note": "Open-label trial: poorly tolerated, no clinical or virological benefit; authors advise against phase 3."
+   },
+   {
+    "pmid": "29463812",
+    "year": "2018",
+    "journal": "Sci Rep",
+    "title": "Metformin Use and Severe Dengue in Diabetic Adults.",
+    "kind": "cohort",
+    "finding": "mixed",
+    "note": "Retrospective cohort of diabetic patients; less severe dengue by one WHO definition, not the other."
+   },
+   {
+    "pmid": "40854531",
+    "year": "2025",
+    "journal": "Eur J Pharmacol",
+    "title": "Antiviral effect of metformin and phenformin analogs against dengue in Huh-7\u00a0cells and AG129 mice.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Metformin and phenformin analogs reduced infection in cells and mice."
+   },
+   {
+    "pmid": "34655660",
+    "year": "2021",
+    "journal": "Antiviral Res",
+    "title": "In vitro and in vivo efficacy of Metformin against dengue.",
+    "kind": "animal",
+    "finding": "no benefit",
+    "note": "Weak activity (mM range); in mice a high dose worsened mortality and viraemia."
+   },
+   {
+    "pmid": "40111383",
+    "year": "2025",
+    "journal": "J Gen Virol",
+    "title": "Cytoplasmic retention of dengue virus capsid protein by metformin impairing nuclear transport.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Retains dengue capsid protein in the cytoplasm by impairing nuclear transport."
+   },
+   {
+    "pmid": "33888740",
+    "year": "2021",
+    "journal": "Sci Rep",
+    "title": "The antiviral effect of metformin on zika and dengue virus infection.",
+    "kind": "lab",
+    "finding": "mixed",
+    "note": "Broad in vitro effect across flaviviruses, strongest in Huh-7 cells."
+   }
+  ],
+  "minocycline": [
+   {
+    "pmid": "29752950",
+    "year": "2018",
+    "journal": "Antiviral Res",
+    "title": "Minocycline suppresses dengue virus replication by down-regulation of macrophage migration inhibitory factor-induced autophagy.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Suppresses replication by down-regulating MIF-induced autophagy."
+   },
+   {
+    "pmid": "27396621",
+    "year": "2016",
+    "journal": "Biochem Biophys Res Commun",
+    "title": "Drug repurposing of minocycline against dengue virus infection.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Reduced RNA synthesis and infectious virions across all four serotypes."
+   }
+  ],
+  "mycophenolate_mofetil": [
+   {
+    "pmid": "31560972",
+    "year": "2019",
+    "journal": "Microb Pathog",
+    "title": "Mycophenolic acid (MPA) modulates host cellular autophagy progression in sub genomic dengue virus-2 replicon cells.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Acts through host autophagy in a DENV-2 replicon line."
+   },
+   {
+    "pmid": "16760396",
+    "year": "2006",
+    "journal": "J Gen Virol",
+    "title": "Inhibition of dengue virus replication by mycophenolic acid and ribavirin.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Mycophenolic acid IC50 0.4 uM against DEN2 (ribavirin 50.9 uM)."
+   },
+   {
+    "pmid": "12504563",
+    "year": "2002",
+    "journal": "Virology",
+    "title": "Mycophenolic acid inhibits dengue virus infection by preventing replication of viral RNA.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Mycophenolic acid cut infected cells by 99% and secreted virus up to a millionfold."
+   }
+  ],
+  "niclosamide": [
+   {
+    "pmid": "30125275",
+    "year": "2018",
+    "journal": "PLoS Negl Trop Dis",
+    "title": "The antiparasitic drug niclosamide inhibits dengue virus infection by interfering with endosomal acidification independent of mTOR.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Inhibited DENV-2 in vitro and in vivo via endosomal acidification."
+   },
+   {
+    "pmid": "31213630",
+    "year": "2019",
+    "journal": "Sci Rep",
+    "title": "Neutralization of Acidic Intracellular Vesicles by Niclosamide Inhibits Multiple Steps of the Dengue Virus Life Cycle In Vitro.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Neutralises acidic vesicles, hitting several steps of the dengue life cycle."
+   }
+  ],
+  "oseltamivir": [
+   {
+    "pmid": "34995275",
+    "year": "2022",
+    "journal": "PLoS Negl Trop Dis",
+    "title": "Effect of oseltamivir phosphate versus placebo on platelet recovery and plasma leakage in adults with dengue and thrombocytopenia; a phase 2, multicenter, double-blind, randomized trial.",
+    "kind": "trial",
+    "finding": "no benefit",
+    "note": "Phase 2 randomized trial: no effect on platelet recovery or plasma leakage."
+   }
+  ],
+  "paritaprevir": [
+   {
+    "pmid": "40248436",
+    "year": "2025",
+    "journal": "Front Mol Biosci",
+    "title": "Paritaprevir as a pan-antiviral against different flaviviruses.",
+    "kind": "lab",
+    "finding": "mixed",
+    "note": "Docking-led screen against flavivirus proteases; computational with follow-up assays."
+   }
+  ],
+  "pentoxifylline": [
+   {
+    "pmid": "22481426",
+    "year": "2012",
+    "journal": "Pediatr Infect Dis J",
+    "title": "Use of pentoxifylline in treatment of children with dengue hemorrhagic fever.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Uncontrolled pilot in 55 children with dengue haemorrhagic fever."
+   }
+  ],
+  "prednisolone": [
+   {
+    "pmid": "22521778",
+    "year": "2012",
+    "journal": "Int J Infect Dis",
+    "title": "Repeated dengue shock syndrome and 'dengue myocarditis' responding dramatically to a single dose of methyl prednisolone.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Single case of dengue shock responding to methylprednisolone; authors call for a trial."
+   },
+   {
+    "pmid": "3124276",
+    "year": "1987",
+    "journal": "Southeast Asian J Trop Med Public Health",
+    "title": "Hemodynamic response to high-dose methyl prednisolone and mannitol in severe dengue-shock patients unresponsive to fluid replacement.",
+    "kind": "trial",
+    "finding": "mixed",
+    "note": "Nine children with dengue shock unresponsive to fluids; 7 improved after high-dose steroid and mannitol."
+   }
+  ],
+  "prochlorperazine": [
+   {
+    "pmid": "25028694",
+    "year": "2015",
+    "journal": "J Infect Dis",
+    "title": "Repurposing of prochlorperazine for use against dengue virus infection.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Blocks dengue binding and entry; protected or delayed lethality in mice."
+   }
+  ],
+  "remdesivir": [
+   {
+    "pmid": "42545082",
+    "year": "2026",
+    "journal": "Antimicrob Agents Chemother",
+    "title": "Oral lipid prodrug V2043 (1-O-octadecyl-2-O-benzyl-sn-glyceryl-P-remdesivir nucleoside) protects mice from lethal dengue infection.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Oral remdesivir prodrug V2043 protected mice from lethal dengue."
+   },
+   {
+    "pmid": "32763313",
+    "year": "2020",
+    "journal": "Antiviral Res",
+    "title": "Remdesivir triphosphate can efficiently inhibit the RNA-dependent RNA polymerase from various flaviviruses.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Remdesivir triphosphate inhibits the dengue RNA polymerase."
+   }
+  ],
+  "ribavirin": [
+   {
+    "pmid": "21073903",
+    "year": "2011",
+    "journal": "Antiviral Res",
+    "title": "Combination of \u03b1-glucosidase inhibitor and ribavirin for the treatment of dengue virus infection in vitro and in vivo.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Combined with an alpha-glucosidase inhibitor in cells and animals."
+   },
+   {
+    "pmid": "2353804",
+    "year": "1990",
+    "journal": "Antiviral Res",
+    "title": "Prophylactic ribavirin treatment of dengue type 1 infection in rhesus monkeys.",
+    "kind": "animal",
+    "finding": "no benefit",
+    "note": "Placebo-controlled monkey study: ineffective as prophylaxis, no viraemia difference."
+   },
+   {
+    "pmid": "6684897",
+    "year": "1983",
+    "journal": "Antimicrob Agents Chemother",
+    "title": "Treatment of intracranial dengue virus infections in mice with a lipophilic derivative of ribavirin.",
+    "kind": "animal",
+    "finding": "mixed",
+    "note": "Plain ribavirin did not improve survival in mice; a lipophilic analog did."
+   },
+   {
+    "pmid": "29890736",
+    "year": "2018",
+    "journal": "Viruses",
+    "title": "Antiviral Effects of Clinically-Relevant Interferon-\u03b1 and Ribavirin Regimens against Dengue Virus in the Hollow Fiber Infection Model (HFIM).",
+    "kind": "lab",
+    "finding": "no benefit",
+    "note": "Ribavirin alone worked only at toxic concentrations; the benefit came from interferon."
+   },
+   {
+    "pmid": "26542647",
+    "year": "2015",
+    "journal": "Antiviral Res",
+    "title": "Inhibition of dengue virus production and cytokine/chemokine expression by ribavirin and compound A.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Cut DENV2 production and cytokine expression in A549 cells."
+   },
+   {
+    "pmid": "16760396",
+    "year": "2006",
+    "journal": "J Gen Virol",
+    "title": "Inhibition of dengue virus replication by mycophenolic acid and ribavirin.",
+    "kind": "lab",
+    "finding": "mixed",
+    "note": "Inhibited DEN2 but at IC50 50.9 uM, over 100-fold weaker than mycophenolic acid."
+   },
+   {
+    "pmid": "15650220",
+    "year": "2005",
+    "journal": "J Virol",
+    "title": "The predominant mechanism by which ribavirin exerts its antiviral activity in vitro against flaviviruses and paramyxoviruses is mediated by inhibition of IMP dehydrogenase.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Activity tracks GTP-pool depletion rather than direct polymerase blockade."
+   },
+   {
+    "pmid": "15152003",
+    "year": "2004",
+    "journal": "J Biol Chem",
+    "title": "A structural basis for the inhibition of the NS5 dengue virus mRNA 2'-O-methyltransferase domain by ribavirin 5'-triphosphate.",
+    "kind": "lab",
+    "finding": "mechanism",
+    "note": "Crystal structure showing ribavirin triphosphate inhibiting the NS5 methyltransferase."
+   },
+   {
+    "pmid": "12719009",
+    "year": "2003",
+    "journal": "Antiviral Res",
+    "title": "Interferon, ribavirin, 6-azauridine and glycyrrhizin: antiviral compounds active against pathogenic flaviviruses.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Active against 11 pathogenic flaviviruses including dengue in Vero cells."
+   },
+   {
+    "pmid": "7201778",
+    "year": "1982",
+    "journal": "Antiviral Res",
+    "title": "Antiviral effects if ribavirin and 6-mercapto-9-tetrahydro-2-furylpurine against dengue viruses in vitro.",
+    "kind": "lab",
+    "finding": "mixed",
+    "note": "Inhibited all four serotypes in LLC-MK2 cells but had no effect in human blood leukocytes."
+   }
+  ],
+  "rimantadine": [
+   {
+    "pmid": "7212165",
+    "year": "1981",
+    "journal": "Am J Trop Med Hyg",
+    "title": "Suppression of dengue virus replication in vitro by rimantadine hydrochloride.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Suppressed replication of all four dengue types in cell culture."
+   }
+  ],
+  "sofosbuvir": [
+   {
+    "pmid": "28834304",
+    "year": "2018",
+    "journal": "Chem Biol Drug Des",
+    "title": "Sofosbuvir as treatment against dengue?",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Docking plus in vitro work against the dengue polymerase catalytic motif."
+   },
+   {
+    "pmid": "28740124",
+    "year": "2017",
+    "journal": "Sci Rep",
+    "title": "Evaluation of Sofosbuvir (\u03b2-D-2'-deoxy-2'-\u03b1-fluoro-2'-\u03b2-C-methyluridine) as an inhibitor of Dengue virus replication<sup/>.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "EC50 1.4-4.9 uM in cells; its triphosphate chain-terminates dengue NS5."
+   }
+  ],
+  "sunitinib": [
+   {
+    "pmid": "30071205",
+    "year": "2018",
+    "journal": "Antiviral Res",
+    "title": "Synergism between the tyrosine kinase inhibitor sunitinib and Anti-TNF antibody protects against lethal dengue infection.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "With anti-TNF antibody, protected mice from lethal dengue."
+   },
+   {
+    "pmid": "29753658",
+    "year": "2018",
+    "journal": "Antiviral Res",
+    "title": "Feasibility and biological rationale of repurposing sunitinib and erlotinib for dengue treatment.",
+    "kind": "animal",
+    "finding": "inhibits",
+    "note": "Sunitinib/erlotinib combination suppressed systemic infection in mice."
+   }
+  ],
+  "suramin": [
+   {
+    "pmid": "25281902",
+    "year": "2014",
+    "journal": "Biochem Biophys Res Commun",
+    "title": "Suramin inhibits helicase activity of NS3 protein of dengue virus in a fluorescence-based high throughput assay format.",
+    "kind": "lab",
+    "finding": "inhibits",
+    "note": "Inhibits the dengue NS3 helicase in a high-throughput assay."
+   }
+  ]
+ }
+}

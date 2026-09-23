@@ -30,7 +30,7 @@ export default function Binding() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">{t('Tool 02')}</div>
+      <div className="eyebrow">{t('Tool 03')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('3D Binding Viewer')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 700, lineHeight: 1.65, margin: '14px 0 24px' }}>
         {t('The docked shape of a drug-like candidate; drag to rotate it, with the protein residues its pose is predicted to touch listed alongside.')}

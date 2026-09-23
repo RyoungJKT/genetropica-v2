@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GeneTropica. Finding new medicines hidden in old ones</title>
-<meta name="description" content="A computational drug-repurposing study screening 100 approved drugs against the proteins behind dengue and other neglected tropical diseases.">
+<meta name="description" content="A computational drug-repurposing study screening 100 approved or clinical-stage drugs against the proteins behind dengue and other neglected tropical diseases.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,7 +261,7 @@
           <span class="lwrap"><span class="ln">medicines <em>hidden</em></span></span>
           <span class="lwrap"><span class="ln">in old ones.</span></span>
         </h1>
-        <p class="standfirst" data-hero="sf">A search for forgotten cures: screening <b>100 approved drugs</b> against the proteins behind <b>dengue</b> and other neglected tropical diseases, using physics, chemistry, and a measured dose of machine learning.</p>
+        <p class="standfirst" data-hero="sf">A search for forgotten cures: screening <b>100 approved or clinical-stage drugs</b> against the proteins behind <b>dengue</b> and other neglected tropical diseases, using physics, chemistry, and a measured dose of machine learning.</p>
         <div class="hero-cta" data-hero="cta">
           <a class="btn btn-ghost" href="#problem">Read how it works</a>
         </div>
@@ -330,7 +330,7 @@
       </div>
       <div>
         <p class="body" data-reveal><b>Drug repurposing</b> asks a simple question: instead of inventing a new molecule, could a medicine we already trust, already proven safe in millions of people, work against a disease it was never designed for?</p>
-        <p class="body" data-reveal>It is faster, cheaper, and safer at the starting line, because the hardest question, "is this safe for humans," already has an answer. GeneTropica screens a curated library of approved drugs to find those hidden second lives.</p>
+        <p class="body" data-reveal>It is faster, cheaper, and safer at the starting line, because the hardest question, "is this safe for humans," already has an answer. GeneTropica screens a curated library of approved or clinical-stage drugs to find those hidden second lives.</p>
       </div>
     </div>
   </section>
@@ -342,9 +342,9 @@
     <span class="sec-num">03 / The method</span>
     <h2 data-reveal>Six stages, from <em>molecule</em> to candidate.</h2>
     <div class="steps">
-      <div class="step" data-reveal><div class="n">i</div><div><h3>A curated library</h3><p>100 FDA-approved drugs, chosen to span chemical space, become the search pool.</p></div></div>
+      <div class="step" data-reveal><div class="n">i</div><div><h3>A curated library</h3><p>100 approved or clinical-stage drugs, chosen to span chemical space, become the search pool. 99 docked successfully; auranofin contains a gold atom that AutoDock Vina cannot model.</p></div></div>
       <div class="step" data-reveal><div class="n">ii</div><div><h3>Six disease targets</h3><p>Key proteins from dengue, chikungunya, and leptospirosis, the machinery each disease depends on to survive.</p></div></div>
-      <div class="step" data-reveal><div class="n">iii</div><div><h3>~1,800 docking simulations</h3><p>AutoDock Vina computes how snugly every drug fits into every target, like testing keys against a lock.</p></div></div>
+      <div class="step" data-reveal><div class="n">iii</div><div><h3>594 docking runs</h3><p>AutoDock Vina computes how snugly every drug fits into every target (99 drugs × 6 targets), like testing keys against a lock.</p></div></div>
       <div class="step" data-reveal><div class="n">iv</div><div><h3>Two honest rankings</h3><p>Candidates are scored both by raw binding strength and by ligand efficiency, the binding earned per atom, shown side by side.</p></div></div>
       <div class="step" data-reveal><div class="n">v</div><div><h3>A machine-learning prior</h3><p>A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.</p></div></div>
       <div class="step" data-reveal><div class="n">vi</div><div><h3>Molecular dynamics</h3><p>The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.</p></div></div>
@@ -379,10 +379,10 @@
     <span class="sec-num">05 / Results</span>
     <h2 data-reveal>What the search <em>turned up.</em></h2>
     <div class="stats">
-      <div class="stat" data-reveal><div class="v"><span data-count="100">0</span></div><div class="k">approved drugs<br>screened</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="100">0</span></div><div class="k">drugs<br>screened</div></div>
       <div class="stat" data-reveal><div class="v"><span data-count="6">0</span></div><div class="k">protein targets<br>across 3 diseases</div></div>
-      <div class="stat" data-reveal><div class="v"><span class="pre">~</span><span data-count="1800">0</span></div><div class="k">docking<br>simulations</div></div>
-      <div class="stat" data-reveal><div class="v"><span data-count="65">0</span></div><div class="k">drug-like<br>candidates</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="594">0</span></div><div class="k">docking<br>runs</div></div>
+      <div class="stat" data-reveal><div class="v"><span data-count="63">0</span></div><div class="k">drug-like<br>candidates</div></div>
       <div class="stat" data-reveal><div class="v"><span data-count="50">0</span><span class="pre"> ns</span></div><div class="k">dynamics per<br>finalist</div></div>
     </div>
     <p class="body" data-reveal style="margin-top:46px">Two families of drugs consistently ranked near the top: <b>hepatitis-C antivirals</b> by raw binding score, and <b>nucleoside analogues</b> by binding per atom. Both already disrupt viral copying in other diseases. The same pattern appears on all six targets, not only dengue's replication machinery, which suggests that molecule size explains part of it. These are leads for a wet lab to test, not proof.</p>
@@ -450,8 +450,8 @@
     'Finding new':'Obat baru yang',
     'medicines <em>hidden</em>':'<em>tersembunyi</em> di',
     'in old ones.':'dalam obat lama.',
-    'A search for forgotten cures: screening <b>100 approved drugs</b> against the proteins behind <b>dengue</b> and other neglected tropical diseases, using physics, chemistry, and a measured dose of machine learning.':
-      'Pencarian obat yang terlupakan: menguji <b>100 obat yang telah disetujui</b> terhadap protein di balik <b>demam berdarah</b> dan penyakit tropis terabaikan lainnya, dengan fisika, kimia, dan takaran pembelajaran mesin yang terukur.',
+    'A search for forgotten cures: screening <b>100 approved or clinical-stage drugs</b> against the proteins behind <b>dengue</b> and other neglected tropical diseases, using physics, chemistry, and a measured dose of machine learning.':
+      'Pencarian obat yang terlupakan: menguji <b>100 obat yang telah disetujui atau dalam tahap uji klinis</b> terhadap protein di balik <b>demam berdarah</b> dan penyakit tropis terabaikan lainnya, dengan fisika, kimia, dan takaran pembelajaran mesin yang terukur.',
     'Read how it works':'Baca cara kerjanya',
     'Fig. 1, a candidate ligand, abstracted':'Gbr. 1, ligan kandidat, dalam bentuk abstrak',
 
@@ -469,21 +469,21 @@
     'What if the cure <em>already exists?</em>':'Bagaimana jika obatnya <em>sudah ada?</em>',
     '<b>Drug repurposing</b> asks a simple question: instead of inventing a new molecule, could a medicine we already trust, already proven safe in millions of people, work against a disease it was never designed for?':
       '<b>Penggunaan ulang obat</b> mengajukan satu pertanyaan sederhana: alih-alih menciptakan molekul baru, mungkinkah obat yang sudah kita percaya, yang sudah terbukti aman pada jutaan orang, bekerja melawan penyakit yang tidak pernah menjadi sasarannya?',
-    'It is faster, cheaper, and safer at the starting line, because the hardest question, "is this safe for humans," already has an answer. GeneTropica screens a curated library of approved drugs to find those hidden second lives.':
-      'Cara ini lebih cepat, lebih murah, dan lebih aman sejak garis awal, karena pertanyaan tersulit, "apakah ini aman bagi manusia," sudah punya jawaban. GeneTropica menyaring pustaka terkurasi berisi obat yang telah disetujui untuk menemukan kehidupan kedua yang tersembunyi itu.',
+    'It is faster, cheaper, and safer at the starting line, because the hardest question, "is this safe for humans," already has an answer. GeneTropica screens a curated library of approved or clinical-stage drugs to find those hidden second lives.':
+      'Cara ini lebih cepat, lebih murah, dan lebih aman sejak garis awal, karena pertanyaan tersulit, "apakah ini aman bagi manusia," sudah punya jawaban. GeneTropica menyaring pustaka terkurasi berisi obat yang telah disetujui atau dalam tahap uji klinis untuk menemukan kehidupan kedua yang tersembunyi itu.',
 
     /* 03 method */
     '03 / The method':'03 / Metodenya',
     'Six stages, from <em>molecule</em> to candidate.':'Enam tahap, dari <em>molekul</em> ke kandidat.',
     'A curated library':'Pustaka terkurasi',
-    '100 FDA-approved drugs, chosen to span chemical space, become the search pool.':
-      '100 obat yang disetujui FDA, dipilih agar mencakup ruang kimia yang luas, menjadi kumpulan pencarian.',
+    '100 approved or clinical-stage drugs, chosen to span chemical space, become the search pool. 99 docked successfully; auranofin contains a gold atom that AutoDock Vina cannot model.':
+      '100 obat yang telah disetujui atau dalam tahap uji klinis, dipilih agar mencakup ruang kimia yang luas, menjadi kumpulan pencarian. 99 berhasil ditambatkan; auranofin mengandung atom emas yang tidak dapat dimodelkan oleh AutoDock Vina.',
     'Six disease targets':'Enam target penyakit',
     'Key proteins from dengue, chikungunya, and leptospirosis, the machinery each disease depends on to survive.':
       'Protein kunci dari demam berdarah, chikungunya, dan leptospirosis, yaitu mesin yang diandalkan tiap penyakit untuk bertahan hidup.',
-    '~1,800 docking simulations':'~1.800 simulasi penambatan',
-    'AutoDock Vina computes how snugly every drug fits into every target, like testing keys against a lock.':
-      'AutoDock Vina menghitung seberapa pas tiap obat masuk ke tiap target, seperti mencoba anak kunci pada sebuah gembok.',
+    '594 docking runs':'594 proses penambatan',
+    'AutoDock Vina computes how snugly every drug fits into every target (99 drugs × 6 targets), like testing keys against a lock.':
+      'AutoDock Vina menghitung seberapa pas tiap obat masuk ke tiap target (99 obat × 6 target), seperti mencoba anak kunci pada sebuah gembok.',
     'Two honest rankings':'Dua peringkat yang jujur',
     'Candidates are scored both by raw binding strength and by ligand efficiency, the binding earned per atom, shown side by side.':
       'Kandidat dinilai dari kekuatan ikatan mentah sekaligus dari efisiensi ligan, yaitu ikatan yang diperoleh per atom, dan keduanya ditampilkan berdampingan.',
@@ -507,9 +507,9 @@
     /* 05 results */
     '05 / Results':'05 / Hasil',
     'What the search <em>turned up.</em>':'Apa yang <em>ditemukan</em> pencarian ini.',
-    'approved drugs<br>screened':'obat disetujui<br>yang disaring',
+    'drugs<br>screened':'obat<br>yang disaring',
     'protein targets<br>across 3 diseases':'target protein<br>di 3 penyakit',
-    'docking<br>simulations':'simulasi<br>penambatan',
+    'docking<br>runs':'proses<br>penambatan',
     'drug-like<br>candidates':'kandidat<br>mirip obat',
     'dynamics per<br>finalist':'dinamika per<br>finalis',
     "Two families of drugs consistently ranked near the top: <b>hepatitis-C antivirals</b> by raw binding score, and <b>nucleoside analogues</b> by binding per atom. Both already disrupt viral copying in other diseases. The same pattern appears on all six targets, not only dengue's replication machinery, which suggests that molecule size explains part of it. These are leads for a wet lab to test, not proof.":
@@ -531,11 +531,11 @@
   var META = {
     en: {
       title: 'GeneTropica. Finding new medicines hidden in old ones',
-      desc: 'A computational drug-repurposing study screening 100 approved drugs against the proteins behind dengue and other neglected tropical diseases.'
+      desc: 'A computational drug-repurposing study screening 100 approved or clinical-stage drugs against the proteins behind dengue and other neglected tropical diseases.'
     },
     id: {
       title: 'GeneTropica. Menemukan obat baru yang tersembunyi di dalam obat lama',
-      desc: 'Studi komputasi penggunaan ulang obat yang menguji 100 obat yang telah disetujui terhadap protein di balik demam berdarah dan penyakit tropis terabaikan lainnya.'
+      desc: 'Studi komputasi penggunaan ulang obat yang menguji 100 obat yang telah disetujui atau dalam tahap uji klinis terhadap protein di balik demam berdarah dan penyakit tropis terabaikan lainnya.'
     }
   };
 

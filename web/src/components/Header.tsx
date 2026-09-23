@@ -11,7 +11,6 @@ const LINKS: [string, string][] = [
   ['/md', 'Dynamics'],
   ['/conservation', 'Conservation'],
   ['/escape', 'Escape'],
-  ['/insights', 'Insights'],
   ['/methods', 'Methods'],
   ['/validation', 'Validation'],
 ]

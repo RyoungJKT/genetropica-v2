@@ -12,7 +12,7 @@ export default function Diseases() {
   return (
     <>
       <div className="wrap" style={{ padding: '56px 0 0' }}>
-        <div className="eyebrow">{t('Tool 09')}</div>
+        <div className="eyebrow">{t('Tool 01')}</div>
         <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Disease Overview')}</h1>
         <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
           {t('Three neglected tropical diseases endemic to Indonesia. They affect millions but attract little new drug funding. Repurposing is worth trying here because approved medicines are already known to be safe in people, which shortens the path to a trial. Safe is not the same as effective.')}

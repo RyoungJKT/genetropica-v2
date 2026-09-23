@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { useField, useDrugs, useTargets, useLiterature } from '../data/api'
+import { useField, useDrugs, useTargets } from '../data/api'
 import { BUCKETS, bucketOf } from '../lib/buckets'
 import { DrugTable } from '../components/DrugTable'
 import { DrugPanel } from '../components/DrugPanel'
@@ -27,7 +27,6 @@ export default function Explore() {
   const field = useField()
   const drugs = useDrugs()
   const targets = useTargets()
-  const lit = useLiterature()
   const [tid, setTid] = useState('DENV_NS3')
   const [q, setQ] = useState('')
   const [dlOnly, setDlOnly] = useState(false)
@@ -47,7 +46,7 @@ export default function Explore() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">{t('Tool 01')}</div>
+      <div className="eyebrow">{t('Tool 02')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Drug Explorer')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 680, lineHeight: 1.65, margin: '14px 0 26px' }}>
         {t('Every screened drug for a target, sortable and filterable. Click any drug for its full profile.')}
@@ -88,9 +87,9 @@ export default function Explore() {
           ))}
         </select>
         {selDrug && field.data ? (
-          <DrugPanel drug={selDrug} field={field.data} order={order} tName={tName} literature={(lit.data ?? []).filter((r) => r.drug === selDrug.name)} ns5NoteShown={tid === 'DENV_NS5'} />
+          <DrugPanel drug={selDrug} field={field.data} order={order} tName={tName} ns5NoteShown={tid === 'DENV_NS5'} />
         ) : (
-          <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>{t('Choose a drug above, or click a row in the table, to see its cross-target binding and literature.')}</p>
+          <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>{t('Choose a drug above, or click a row in the table, to see its cross-target binding.')}</p>
         )}
       </div>
     </div>

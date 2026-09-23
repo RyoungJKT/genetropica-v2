@@ -34,10 +34,10 @@ export default function Overview() {
         <div>
           <div className="eyebrow">{t('Drug repurposing for neglected tropical diseases')}</div>
           <h1 style={{ fontSize: 'clamp(36px,4.9vw,72px)', fontWeight: 380, letterSpacing: '-.03em', marginTop: 18, lineHeight: 1.05 }}>
-            {t('100 approved drugs,')}<br />{t('tested against the')}<br />{t('diseases we')} <em style={{ fontStyle: 'italic', color: 'var(--green)' }}>{t('forget')}</em>.
+            {t('100 approved or clinical-stage drugs,')}<br />{t('tested against the')}<br />{t('diseases we')} <em style={{ fontStyle: 'italic', color: 'var(--green)' }}>{t('forget')}</em>.
           </h1>
           <p style={{ fontSize: 'clamp(16px,1.5vw,19px)', color: 'var(--ink-soft)', maxWidth: '34ch', lineHeight: 1.65, margin: '22px 0 28px' }}>
-            {t('Dengue, chikungunya and leptospirosis affect millions, yet attract little new drug funding. GeneTropica screens medicines that are already safe and approved to see which could be repurposed.')}
+            {t('Dengue, chikungunya and leptospirosis affect millions, yet attract little new drug funding. GeneTropica screens medicines that are already approved or in clinical trials to see which could be repurposed.')}
           </p>
           <a href="#field" style={{ fontFamily: 'var(--mono)', textTransform: 'uppercase', letterSpacing: '.12em', fontSize: 12, borderRadius: 100, padding: '13px 22px', border: '1px solid var(--ink)', background: 'var(--ink)', color: 'var(--paper)' }}>
             {t('Explore the candidates')}
@@ -50,10 +50,10 @@ export default function Overview() {
       <div className="wrap">
         {summary.data && (
           <StatStrip items={[
-            { num: summary.data.drugs, label: t('Approved drugs screened') },
+            { num: summary.data.drugs, label: t('Drugs screened') },
             { num: summary.data.targets, label: t('Protein targets') },
             { num: summary.data.diseases, label: t('Neglected diseases') },
-            { num: summary.data.docking_runs, label: t('Docking runs') },
+            { num: summary.data.docking_runs, label: t('Docking runs (99 docked × 6)') },
           ]} />
         )}
       </div>

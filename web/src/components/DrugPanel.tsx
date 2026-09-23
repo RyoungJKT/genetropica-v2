@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
-import type { Drug, Field, LitRef } from '../data/types'
+import type { Drug, Field, DengueRef } from '../data/types'
+import { useDengueLit } from '../data/api'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
 import { useT } from '../i18n'
@@ -14,8 +15,44 @@ function Meta({ k, v }: { k: string; v: string }) {
   )
 }
 
-/** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), literature. */
-export function DrugPanel({ drug, field, order, tName, literature = [], ns5NoteShown = false }: { drug: Drug; field: Field; order: string[]; tName: (id: string) => string; literature?: LitRef[]; ns5NoteShown?: boolean }) {
+const FINDING_COLOR: Record<DengueRef['finding'], string> = {
+  'inhibits': 'var(--green)', 'no benefit': 'var(--clay)', 'mixed': 'var(--gold)', 'mechanism': 'var(--ink-soft)',
+}
+
+/** Published dengue work on this drug: real PubMed records, each labelled with what it found. */
+function DengueEvidence({ drug }: { drug: string }) {
+  const { t } = useT()
+  const lit = useDengueLit()
+  if (!lit.data) return null
+  const refs = lit.data.drugs[drug] ?? []
+  const tag = (label: string, color: string, solid = false) => (
+    <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.06em', textTransform: 'uppercase', padding: '2px 7px', borderRadius: 100, whiteSpace: 'nowrap', color: solid ? 'var(--paper)' : color, background: solid ? color : 'transparent', border: `1px solid ${color}` }}>{label}</span>
+  )
+  return (
+    <div style={{ marginTop: 32 }}>
+      <h3 style={{ fontSize: 15, marginBottom: 4 }}>{t('Published dengue research')}</h3>
+      <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 12px', maxWidth: 720, lineHeight: 1.5 }}>
+        {t('Papers naming this drug and dengue in the title, each read and labelled by what it found. A paper here is not a recommendation: several of these drugs failed in patients. Summarised from abstracts only.')}
+      </p>
+      {refs.length === 0 ? (
+        <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>{t('No published test of this drug against dengue was found.')}</p>
+      ) : refs.map((r) => (
+        <div key={r.pmid} style={{ padding: '9px 0', borderBottom: '1px solid var(--line)' }}>
+          <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap', marginBottom: 4 }}>
+            {tag(t(r.kind), 'var(--ink-faint)')}
+            {tag(t(r.finding), FINDING_COLOR[r.finding], true)}
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)' }}>{r.journal} · {r.year}</span>
+          </div>
+          <a href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} target="_blank" rel="noopener" style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.4 }}>{r.title}</a>
+          <div style={{ fontSize: 12, color: 'var(--ink-soft)', marginTop: 3, lineHeight: 1.5 }}>{t(r.note)}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), dengue papers. */
+export function DrugPanel({ drug, field, order, tName, ns5NoteShown = false }: { drug: Drug; field: Field; order: string[]; tName: (id: string) => string; ns5NoteShown?: boolean }) {
   const { t } = useT()
   const ref = useRef<HTMLDivElement>(null)
   const firstRender = useRef(true)
@@ -37,11 +74,6 @@ export function DrugPanel({ drug, field, order, tName, literature = [], ns5NoteS
   const ml = drug.ml ?? 0
   const xMax = Math.max(10, ...bars.map((b) => b.vina), ml)
   const ticks = [0, 2, 4, 6, 8, 10].filter((t) => t <= xMax)
-
-  const byTarget: Record<string, LitRef[]> = {}
-  for (const r of literature) (byTarget[r.target] ??= []).push(r)
-  const tierColor = (t: string) => (['direct_target', 'mechanistic', 'same_pathogen_phenotypic'].includes(t) ? 'var(--green)' : t === 'weak_keyword' ? 'var(--ink-faint)' : 'var(--gold)')
-  const verdictColor = (v?: string) => (v === 'supports' ? 'var(--green)' : v === 'related' ? 'var(--gold)' : v === 'adverse' ? 'var(--clay)' : 'var(--ink-faint)')
 
   return (
     <section ref={ref} style={{ marginTop: 36, scrollMarginTop: 80 }}>
@@ -103,34 +135,8 @@ export function DrugPanel({ drug, field, order, tName, literature = [], ns5NoteS
         </div>
       </div>
 
-      {Object.keys(byTarget).length > 0 ? (
-        <div style={{ marginTop: 32 }}>
-          <h3 style={{ fontSize: 15, marginBottom: 4 }}>{t('Literature evidence')}</h3>
-          <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 12px', maxWidth: 720, lineHeight: 1.5 }}>
-            {t('PubMed references linking this drug to each target (keyword-mined, then language-model reviewed where an "AI" verdict is shown). Evidence is a hint, not proof of activity.')}
-          </p>
-          {Object.entries(byTarget).map(([tid, refs]) => (
-            <div key={tid} style={{ marginBottom: 14 }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--clay)', marginBottom: 6 }}>{tName(tid)} · {refs.length} {refs.length === 1 ? t('ref') : t('refs')}</div>
-              {refs.map((r) => (
-                <div key={r.pmid} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 12, padding: '7px 0', borderBottom: '1px solid var(--line)', alignItems: 'start' }}>
-                  <div>
-                    <a href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} target="_blank" rel="noopener" style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.4 }}>{r.title}</a>
-                    {r.llm_verdict ? (
-                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2, lineHeight: 1.45 }}>PMID {r.pmid} · <span style={{ color: verdictColor(r.llm_verdict), fontWeight: 600 }}>{t('AI:')} {r.llm_verdict}</span>{r.llm_rel ? ` · ${r.llm_rel}` : ''}{r.llm_note ? <span style={{ color: 'var(--ink-soft)' }}> — {r.llm_note}</span> : null}</div>
-                    ) : (
-                      <div style={{ fontSize: 11, color: 'var(--ink-faint)', marginTop: 2 }}>PMID {r.pmid} · {t(r.rel)} · <span style={{ color: tierColor(r.tier) }}>{t(r.tier.replace(/_/g, ' '))}</span></div>
-                    )}
-                  </div>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)', whiteSpace: 'nowrap' }}>{r.llm_conf != null ? r.llm_conf.toFixed(2) : r.conf != null ? r.conf.toFixed(2) : ''}</span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p style={{ marginTop: 28, fontSize: 13, color: 'var(--ink-faint)' }}>{t('No literature references found for this drug.')}</p>
-      )}
+      <DengueEvidence drug={drug.name} />
+
       {tip && (
         <ChartTooltip x={tip.x} y={tip.y}>
           <div style={{ fontWeight: 600 }}>{tip.title}</div>

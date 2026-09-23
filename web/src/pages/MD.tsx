@@ -71,7 +71,7 @@ export default function MD() {
 
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
-      <div className="eyebrow">{t('Tool 03')}</div>
+      <div className="eyebrow">{t('Tool 04')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Molecular Dynamics')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 720, lineHeight: 1.65, margin: '14px 0 0' }}>
         {t('50 ns simulations of three candidates with the dengue NS5 polymerase. Each drug starts 21 to 39 Angstrom away in solvent, so these are unbiased association runs (does the drug find and hold a site?), not bound-pose-stability runs. One 50 ns run is a single anecdote, not a measurement of how strongly a drug binds.')}

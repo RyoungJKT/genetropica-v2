@@ -167,28 +167,13 @@ def main():
 
     # ADMET (admet.json, admet_profiles.json) was removed from the site on 2026-09-23.
 
-    # literature.json: PubMed evidence per drug-target (keyword-mined; evidence tier included
-    # so weak keyword hits can be shown as such and never inflate a candidate).
-    lit = [{
-        "drug": r["drug"], "target": r["target"], "pmid": r["pmid"], "title": r["title"],
-        "rel": r["rel"], "conf": round(r["conf"], 2) if r["conf"] is not None else None, "tier": r["tier"],
-    } for r in cur.execute(
-        "SELECT d.name drug, l.target_id target, l.pmid, "
-        "COALESCE(NULLIF(l.canonical_title,''), l.title) title, l.relationship rel, "
-        "l.confidence conf, l.evidence_tier tier FROM literature l "
-        "JOIN drugs d ON d.drug_id=l.drug_id ORDER BY d.name, l.target_id, l.confidence DESC")]
-    # Merge LLM relation-extraction results if scripts/llm_literature.py has been run.
-    llm_path = ROOT / "data" / "literature_llm.json"
-    if llm_path.exists():
-        llm_cache = json.loads(llm_path.read_text())
-        for e in lit:
-            c = llm_cache.get(f"{e['drug']}|{e['target']}|{e['pmid']}")
-            if c:
-                e["llm_verdict"] = c.get("verdict")
-                e["llm_rel"] = c.get("rel")
-                e["llm_conf"] = c.get("conf")
-                e["llm_note"] = c.get("note")
-    (OUT / "literature.json").write_text(json.dumps(lit, indent=2))
+    # literature.json (keyword-mined PubMed links) was removed from the site on 2026-09-23:
+    # most of its links were unrelated papers, so it is no longer built or published.
+    # It was replaced by web/public/data/dengue_literature.json, which is CURATED BY HAND,
+    # not generated here: papers were found by requiring the drug name and dengue in the
+    # PubMed title, then each abstract was read and off-topic papers dropped with a stated
+    # reason (see the "excluded" map in that file). This script does not touch that file --
+    # do not regenerate it from the `literature` database table.
 
     # binding viewer: a trimmed pocket PDB per target + per drug-like complex an
     # all-atom, bond-order-correct ligand .mol (RDKit) and the FIX-9 predicted contacts.
