@@ -60,7 +60,17 @@ All three are already graded variable, so the grades and the serotype difference
 agree. Scoring DENV-3 poses against DENV-2 grades is sound; the page should
 state that the structure is DENV-3.
 
-## OPEN DEFECT: residue 795 is a truncated side chain
+## RESOLVED: residue 795 barely matters
+
+Rebuilding the leaderboard both ways (`scripts/rebuild_escape_corrected.py`)
+settles this empirically: excluding residue 795 changes the durability of
+**3 drugs of 63, by at most 1 point**. The earlier "28 of 63 poses contact it"
+figure came from a crude 4.5 A any-atom sweep; the chemistry-aware classifier
+the pipeline actually uses is stricter, and a backbone-plus-CB stub offers
+little for it to score. No exclusion is needed. The caveat below is still worth
+stating on any page that publishes these numbers, but it does not change them.
+
+## The original concern, for the record: residue 795 is a truncated side chain
 
 DENV-2 795 (chain D residue 327) is a **tryptophan whose side chain was not
 resolved in the crystal**. It is modelled as a backbone-plus-CB stub labelled
@@ -74,6 +84,44 @@ space the real protein fills.
 
 Before rebuilding `escape.json`, either repair that side chain and re-dock, or
 exclude 795 from durability scoring and say so.
+
+## THE LEADERBOARD DOES NOT SURVIVE THE CORRECTION
+
+This is the main result of the rebuild, and it argues against republishing the
+Escape page with corrected numbers.
+
+Durability is the mean ConSurf grade of a drug's contact residues, rescaled to
+0-100. Corrected poses all land in the catalytic site -- which is, by
+definition, the most conserved part of the protein. **34 of the 42 residues the
+poses touch grade 7 or higher.** So every drug grips conserved residues, and
+every drug scores high:
+
+| | live (wrong-site poses) | corrected (catalytic site) |
+|---|---|---|
+| n | 44 | 63 |
+| range | 59-79% | 77-96% |
+| sd | 5.4 | 4.2 |
+| 85-94% band | -- | 46 of 63 drugs |
+
+**The median durability gap between adjacent drugs is 0.0 points**, and ten
+drugs share the single score 90%. Most of the ordering is an arbitrary
+tie-break. Dropping any one contact moves a drug by 1-2 points, which is more
+than the gap separating most neighbours -- and the poses themselves are not
+reproducible (see below), so which contacts a drug has is itself unstable.
+
+The old leaderboard's wider apparent spread was an artifact of the error: a box
+that missed the active site scattered poses across regions of varying
+conservation, manufacturing differences between drugs. Correcting the box
+removes that spread. The ranking looked more informative when it was wrong.
+
+Celecoxib, the drug the live page crowns most durable, falls from rank 1 to
+rank 14. Doxycycline rises from 24 to 1. Neither ordering is meaningful.
+
+Conclusion: the corrected data is suitable for saying *which residues these
+drugs contact* and *that the catalytic site is highly conserved*. It does not
+support ranking drugs by durability. Both rebuilt files are kept in
+data/docking_corrected/ as evidence, and neither should be published as a
+leaderboard.
 
 ## Runs are not bit-for-bit reproducible
 
