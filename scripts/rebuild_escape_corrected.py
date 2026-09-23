@@ -103,11 +103,13 @@ def build(drug_contacts, grades, key_nums, vina, drop_stub):
             "intermediate": sum(1 for r in rescon if r["cls"] == "intermediate"),
             "variable": sum(1 for r in rescon if r["cls"] == "variable"),
             "keyContacts": sum(1 for r in rescon if r["key"]),
-            "vina": vina.get(name),
+            "vina": None if vina.get(name) is None else round(vina[name], 2),
             "dl": 1,
             "contacts": rescon,
         })
-    drugs.sort(key=lambda x: (-x["durability"], x["vina"] if x["vina"] is not None else 0))
+    # alphabetical on purpose: the durability ordering these numbers would give is a
+    # tie-break, not a finding (see FINDINGS.md), and the page must not imply a winner.
+    drugs.sort(key=lambda x: x["name"])
     contacted = [{"num": n, "grade": grades[str(n)], "cls": _cls(grades[str(n)]),
                   "key": n in key_nums, "nDrugs": res_drug_count[n]}
                  for n in sorted(res_drug_count) if str(n) in grades]

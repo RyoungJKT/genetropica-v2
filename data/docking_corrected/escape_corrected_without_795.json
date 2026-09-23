@@ -295,126 +295,104 @@
  ],
  "drugs": [
   {
-   "name": "doxycycline",
-   "durability": 96,
-   "meanGrade": 8.67,
-   "nContacts": 6,
-   "conserved": 6,
-   "intermediate": 0,
+   "name": "abacavir",
+   "durability": 85,
+   "meanGrade": 7.79,
+   "nContacts": 14,
+   "conserved": 12,
+   "intermediate": 2,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -7.754,
+   "vina": -6.88,
    "dl": 1,
    "contacts": [
     {
-     "num": 538,
-     "res": "TRP",
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
     },
     {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
+     "num": 796,
+     "res": "SER",
      "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "prochlorperazine",
-   "durability": 95,
-   "meanGrade": 8.57,
-   "nContacts": 7,
-   "conserved": 7,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.292,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 798,
@@ -422,74 +400,20 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "chlorpromazine",
-   "durability": 95,
-   "meanGrade": 8.57,
-   "nContacts": 7,
-   "conserved": 7,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -5.979,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Ionic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
      "type": "Hydrogen Bond"
     },
     {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
      "key": false,
      "type": "Hydrophobic"
     },
     {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
@@ -497,32 +421,24 @@
    ]
   },
   {
-   "name": "miltefosine",
-   "durability": 95,
-   "meanGrade": 8.62,
-   "nContacts": 8,
-   "conserved": 8,
-   "intermediate": 0,
+   "name": "adefovir",
+   "durability": 85,
+   "meanGrade": 7.79,
+   "nContacts": 14,
+   "conserved": 12,
+   "intermediate": 2,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -5.069,
+   "vina": -6.21,
    "dl": 1,
    "contacts": [
     {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
      "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
+     "type": "Hydrophobic"
     },
     {
      "num": 607,
@@ -530,31 +446,87 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Hydrophobic"
+     "type": "Pi-Stacking"
     },
     {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
     },
     {
-     "num": 663,
-     "res": "ASP",
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Ionic"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
      "grade": 9,
      "cls": "conserved",
      "key": true,
      "type": "Salt Bridge"
     },
     {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
      "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 794,
+     "res": "THR",
+     "grade": 6,
+     "cls": "intermediate",
      "key": true,
-     "type": "Ionic"
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
     },
     {
      "num": 797,
@@ -570,20 +542,20 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Ionic"
+     "type": "Salt Bridge"
     }
    ]
   },
   {
-   "name": "darunavir",
-   "durability": 94,
-   "meanGrade": 8.56,
-   "nContacts": 9,
-   "conserved": 9,
+   "name": "albendazole",
+   "durability": 93,
+   "meanGrade": 8.43,
+   "nContacts": 7,
+   "conserved": 7,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -6.953,
+   "vina": -6.19,
    "dl": 1,
    "contacts": [
     {
@@ -597,14 +569,6 @@
     {
      "num": 539,
      "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 601,
-     "res": "SER",
      "grade": 9,
      "cls": "conserved",
      "key": false,
@@ -641,92 +605,6 @@
      "cls": "conserved",
      "key": true,
      "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    }
-   ]
-  },
-  {
-   "name": "mefloquine",
-   "durability": 94,
-   "meanGrade": 8.5,
-   "nContacts": 8,
-   "conserved": 8,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.754,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 798,
@@ -747,7 +625,7 @@
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -5.741,
+   "vina": -5.74,
    "dl": 1,
    "contacts": [
     {
@@ -841,7 +719,7 @@
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -6.706,
+   "vina": -6.71,
    "dl": 1,
    "contacts": [
     {
@@ -903,15 +781,15 @@
    ]
   },
   {
-   "name": "albendazole",
-   "durability": 93,
-   "meanGrade": 8.43,
-   "nContacts": 7,
-   "conserved": 7,
+   "name": "atorvastatin",
+   "durability": 90,
+   "meanGrade": 8.2,
+   "nContacts": 10,
+   "conserved": 10,
    "intermediate": 0,
    "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.19,
+   "keyContacts": 2,
+   "vina": -6.52,
    "dl": 1,
    "contacts": [
     {
@@ -923,12 +801,98 @@
      "type": "Pi-Stacking"
     },
     {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    }
+   ]
+  },
+  {
+   "name": "atovaquone",
+   "durability": 88,
+   "meanGrade": 8.0,
+   "nContacts": 12,
+   "conserved": 11,
+   "intermediate": 1,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -7.62,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
     },
     {
      "num": 607,
@@ -963,6 +927,54 @@
      "type": "Hydrogen Bond"
     },
     {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
      "num": 798,
      "res": "HIS",
      "grade": 8,
@@ -973,15 +985,15 @@
    ]
   },
   {
-   "name": "minocycline",
-   "durability": 92,
-   "meanGrade": 8.33,
-   "nContacts": 9,
-   "conserved": 9,
+   "name": "azathioprine",
+   "durability": 88,
+   "meanGrade": 8.0,
+   "nContacts": 8,
+   "conserved": 8,
    "intermediate": 0,
    "variable": 0,
-   "keyContacts": 2,
-   "vina": -7.69,
+   "keyContacts": 0,
+   "vina": -6.4,
    "dl": 1,
    "contacts": [
     {
@@ -990,7 +1002,7 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Pi-Stacking"
+     "type": "Hydrophobic"
     },
     {
      "num": 661,
@@ -1001,32 +1013,24 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
+     "num": 709,
+     "res": "CYS",
      "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
     },
     {
-     "num": 710,
-     "res": "SER",
+     "num": 729,
+     "res": "ARG",
      "grade": 8,
      "cls": "conserved",
      "key": false,
@@ -1059,158 +1063,24 @@
    ]
   },
   {
-   "name": "boceprevir",
-   "durability": 92,
-   "meanGrade": 8.38,
+   "name": "balapiravir",
+   "durability": 88,
+   "meanGrade": 8.0,
    "nContacts": 13,
-   "conserved": 13,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 3,
-   "vina": -6.804,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "umifenovir",
-   "durability": 92,
-   "meanGrade": 8.33,
-   "nContacts": 12,
    "conserved": 12,
-   "intermediate": 0,
+   "intermediate": 1,
    "variable": 0,
-   "keyContacts": 3,
-   "vina": -5.901,
+   "keyContacts": 1,
+   "vina": -6.91,
    "dl": 1,
    "contacts": [
     {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
      "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Ionic"
+     "type": "Hydrophobic"
     },
     {
      "num": 607,
@@ -1219,38 +1089,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
     },
     {
      "num": 709,
@@ -1277,9 +1115,65 @@
      "type": "Pi-Stacking"
     },
     {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
      "num": 798,
      "res": "HIS",
      "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
@@ -1295,7 +1189,7 @@
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -7.172,
+   "vina": -7.17,
    "dl": 1,
    "contacts": [
     {
@@ -1381,6 +1275,400 @@
    ]
   },
   {
+   "name": "benznidazole",
+   "durability": 82,
+   "meanGrade": 7.57,
+   "nContacts": 14,
+   "conserved": 11,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 0,
+   "vina": -7.07,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "boceprevir",
+   "durability": 92,
+   "meanGrade": 8.38,
+   "nContacts": 13,
+   "conserved": 13,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 3,
+   "vina": -6.8,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "camostat",
+   "durability": 87,
+   "meanGrade": 7.94,
+   "nContacts": 17,
+   "conserved": 15,
+   "intermediate": 2,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -7.33,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Ionic"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
    "name": "celecoxib",
    "durability": 91,
    "meanGrade": 8.29,
@@ -1389,7 +1677,7 @@
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -6.789,
+   "vina": -6.79,
    "dl": 1,
    "contacts": [
     {
@@ -1451,6 +1739,1292 @@
    ]
   },
   {
+   "name": "cetirizine",
+   "durability": 90,
+   "meanGrade": 8.2,
+   "nContacts": 10,
+   "conserved": 10,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -6.53,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 707,
+     "res": "PRO",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Ionic"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "chloroquine",
+   "durability": 82,
+   "meanGrade": 7.54,
+   "nContacts": 13,
+   "conserved": 10,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 0,
+   "vina": -6.17,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "chlorpromazine",
+   "durability": 95,
+   "meanGrade": 8.57,
+   "nContacts": 7,
+   "conserved": 7,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -5.98,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Ionic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "cladribine",
+   "durability": 88,
+   "meanGrade": 8.08,
+   "nContacts": 13,
+   "conserved": 12,
+   "intermediate": 1,
+   "variable": 0,
+   "keyContacts": 3,
+   "vina": -6.33,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    }
+   ]
+  },
+  {
+   "name": "clevudine",
+   "durability": 91,
+   "meanGrade": 8.25,
+   "nContacts": 8,
+   "conserved": 8,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.03,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "colchicine",
+   "durability": 90,
+   "meanGrade": 8.18,
+   "nContacts": 11,
+   "conserved": 11,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -6.66,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "darunavir",
+   "durability": 94,
+   "meanGrade": 8.56,
+   "nContacts": 9,
+   "conserved": 9,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.95,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 601,
+     "res": "SER",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    }
+   ]
+  },
+  {
+   "name": "dasabuvir",
+   "durability": 77,
+   "meanGrade": 7.18,
+   "nContacts": 11,
+   "conserved": 8,
+   "intermediate": 2,
+   "variable": 1,
+   "keyContacts": 2,
+   "vina": -8.09,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 691,
+     "res": "ILE",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 698,
+     "res": "LYS",
+     "grade": 4,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 700,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 707,
+     "res": "PRO",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 712,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 730,
+     "res": "PRO",
+     "grade": 3,
+     "cls": "variable",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "doxycycline",
+   "durability": 96,
+   "meanGrade": 8.67,
+   "nContacts": 6,
+   "conserved": 6,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -7.75,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "entecavir",
+   "durability": 86,
+   "meanGrade": 7.91,
+   "nContacts": 11,
+   "conserved": 10,
+   "intermediate": 1,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.84,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    }
+   ]
+  },
+  {
+   "name": "erlotinib",
+   "durability": 82,
+   "meanGrade": 7.6,
+   "nContacts": 10,
+   "conserved": 8,
+   "intermediate": 2,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.7,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "fenofibrate",
+   "durability": 82,
+   "meanGrade": 7.56,
+   "nContacts": 16,
+   "conserved": 12,
+   "intermediate": 4,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -7.28,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 801,
+     "res": "HIS",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "fludarabine",
+   "durability": 88,
+   "meanGrade": 8.0,
+   "nContacts": 13,
+   "conserved": 12,
+   "intermediate": 1,
+   "variable": 0,
+   "keyContacts": 3,
+   "vina": -6.45,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
    "name": "galidesivir",
    "durability": 91,
    "meanGrade": 8.27,
@@ -1459,7 +3033,7 @@
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -6.452,
+   "vina": -6.45,
    "dl": 1,
    "contacts": [
     {
@@ -1553,17 +3127,307 @@
    ]
   },
   {
-   "name": "clevudine",
-   "durability": 91,
-   "meanGrade": 8.25,
-   "nContacts": 8,
+   "name": "gemcitabine",
+   "durability": 82,
+   "meanGrade": 7.6,
+   "nContacts": 10,
    "conserved": 8,
+   "intermediate": 2,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -6.19,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 531,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 532,
+     "res": "ALA",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 533,
+     "res": "ASP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 689,
+     "res": "LYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 690,
+     "res": "ASP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 691,
+     "res": "ILE",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 697,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 698,
+     "res": "LYS",
+     "grade": 4,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 700,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "hydroxychloroquine",
+   "durability": 90,
+   "meanGrade": 8.22,
+   "nContacts": 9,
+   "conserved": 9,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -6.031,
+   "vina": -5.95,
    "dl": 1,
    "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "indomethacin",
+   "durability": 85,
+   "meanGrade": 7.82,
+   "nContacts": 11,
+   "conserved": 10,
+   "intermediate": 1,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -6.71,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 794,
+     "res": "THR",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    }
+   ]
+  },
+  {
+   "name": "leflunomide",
+   "durability": 81,
+   "meanGrade": 7.5,
+   "nContacts": 14,
+   "conserved": 11,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 0,
+   "vina": -6.95,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
     {
      "num": 607,
      "res": "TYR",
@@ -1573,12 +3437,130 @@
      "type": "Pi-Stacking"
     },
     {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "lisinopril",
+   "durability": 86,
+   "meanGrade": 7.84,
+   "nContacts": 19,
+   "conserved": 16,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 3,
+   "vina": -6.96,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
     },
     {
      "num": 661,
@@ -1594,6 +3576,164 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
+     "type": "Ionic"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Ionic"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Ionic"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "lovastatin",
+   "durability": 89,
+   "meanGrade": 8.14,
+   "nContacts": 7,
+   "conserved": 7,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.69,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
      "type": "Hydrogen Bond"
     },
     {
@@ -1631,17 +3771,25 @@
    ]
   },
   {
-   "name": "oseltamivir",
-   "durability": 91,
-   "meanGrade": 8.25,
+   "name": "mefloquine",
+   "durability": 94,
+   "meanGrade": 8.5,
    "nContacts": 8,
    "conserved": 8,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -5.519,
+   "vina": -6.75,
    "dl": 1,
    "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
     {
      "num": 607,
      "res": "TYR",
@@ -1649,6 +3797,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
     },
     {
      "num": 661,
@@ -1672,23 +3828,7 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Ionic"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
      "num": 797,
@@ -1717,7 +3857,7 @@
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -7.608,
+   "vina": -7.61,
    "dl": 1,
    "contacts": [
     {
@@ -1827,211 +3967,15 @@
    ]
   },
   {
-   "name": "vandetanib",
-   "durability": 90,
-   "meanGrade": 8.22,
-   "nContacts": 9,
-   "conserved": 9,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 3,
-   "vina": -7.098,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 707,
-     "res": "PRO",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "zidovudine",
-   "durability": 90,
-   "meanGrade": 8.17,
-   "nContacts": 12,
-   "conserved": 12,
+   "name": "miltefosine",
+   "durability": 95,
+   "meanGrade": 8.62,
+   "nContacts": 8,
+   "conserved": 8,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -6.687,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "colchicine",
-   "durability": 90,
-   "meanGrade": 8.18,
-   "nContacts": 11,
-   "conserved": 11,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.658,
+   "vina": -5.07,
    "dl": 1,
    "contacts": [
     {
@@ -2041,6 +3985,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
     },
     {
      "num": 607,
@@ -2059,20 +4011,12 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
      "num": 663,
      "res": "ASP",
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
      "num": 664,
@@ -2080,124 +4024,6 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "cetirizine",
-   "durability": 90,
-   "meanGrade": 8.2,
-   "nContacts": 10,
-   "conserved": 10,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.529,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 707,
-     "res": "PRO",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
      "type": "Ionic"
     },
     {
@@ -2214,37 +4040,29 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Pi-Stacking"
+     "type": "Ionic"
     }
    ]
   },
   {
-   "name": "atorvastatin",
-   "durability": 90,
-   "meanGrade": 8.2,
-   "nContacts": 10,
-   "conserved": 10,
+   "name": "minocycline",
+   "durability": 92,
+   "meanGrade": 8.33,
+   "nContacts": 9,
+   "conserved": 9,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -6.519,
+   "vina": -7.69,
    "dl": 1,
    "contacts": [
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
     {
      "num": 607,
      "res": "TYR",
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Hydrophobic"
+     "type": "Pi-Stacking"
     },
     {
      "num": 661,
@@ -2260,7 +4078,7 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
      "num": 664,
@@ -2268,7 +4086,7 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
      "num": 708,
@@ -2279,114 +4097,12 @@
      "type": "Pi-Stacking"
     },
     {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    }
-   ]
-  },
-  {
-   "name": "ruxolitinib",
-   "durability": 90,
-   "meanGrade": 8.18,
-   "nContacts": 11,
-   "conserved": 11,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 0,
-   "vina": -6.417,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
      "num": 710,
      "res": "SER",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
     },
     {
      "num": 796,
@@ -2415,29 +4131,37 @@
    ]
   },
   {
-   "name": "hydroxychloroquine",
-   "durability": 90,
-   "meanGrade": 8.22,
-   "nContacts": 9,
-   "conserved": 9,
-   "intermediate": 0,
+   "name": "molnupiravir",
+   "durability": 85,
+   "meanGrade": 7.77,
+   "nContacts": 13,
+   "conserved": 11,
+   "intermediate": 2,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -5.945,
+   "vina": -6.75,
    "dl": 1,
    "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
     {
      "num": 607,
      "res": "TYR",
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Hydrogen Bond"
+     "type": "Hydrophobic"
     },
     {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
@@ -2448,7 +4172,7 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Salt Bridge"
+     "type": "Hydrogen Bond"
     },
     {
      "num": 709,
@@ -2473,6 +4197,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
     },
     {
      "num": 766,
@@ -2483,6 +4215,148 @@
      "type": "Pi-Stacking"
     },
     {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "mycophenolate_mofetil",
+   "durability": 85,
+   "meanGrade": 7.82,
+   "nContacts": 17,
+   "conserved": 14,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -8.03,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
      "num": 797,
      "res": "ILE",
      "grade": 9,
@@ -2497,21 +4371,61 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
     }
    ]
   },
   {
-   "name": "pentamidine",
-   "durability": 90,
-   "meanGrade": 8.22,
-   "nContacts": 9,
-   "conserved": 9,
-   "intermediate": 0,
+   "name": "nafamostat",
+   "durability": 83,
+   "meanGrade": 7.65,
+   "nContacts": 17,
+   "conserved": 13,
+   "intermediate": 4,
    "variable": 0,
    "keyContacts": 2,
-   "vina": -5.349,
+   "vina": -8.57,
    "dl": 1,
    "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
     {
      "num": 607,
      "res": "TYR",
@@ -2521,9 +4435,9 @@
      "type": "Hydrophobic"
     },
     {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
@@ -2553,9 +4467,33 @@
      "type": "Hydrogen Bond"
     },
     {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
      "num": 711,
      "res": "HIS",
      "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
@@ -2569,184 +4507,44 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
      "num": 798,
      "res": "HIS",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
-    }
-   ]
-  },
-  {
-   "name": "praziquantel",
-   "durability": 89,
-   "meanGrade": 8.1,
-   "nContacts": 10,
-   "conserved": 10,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.942,
-   "dl": 1,
-   "contacts": [
+    },
     {
-     "num": 538,
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 801,
+     "res": "HIS",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
      "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
      "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    }
-   ]
-  },
-  {
-   "name": "lovastatin",
-   "durability": 89,
-   "meanGrade": 8.14,
-   "nContacts": 7,
-   "conserved": 7,
-   "intermediate": 0,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.692,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
     }
    ]
   },
@@ -2759,7 +4557,7 @@
    "intermediate": 2,
    "variable": 0,
    "keyContacts": 3,
-   "vina": -8.172,
+   "vina": -8.17,
    "dl": 1,
    "contacts": [
     {
@@ -2901,15 +4699,15 @@
    ]
   },
   {
-   "name": "atovaquone",
-   "durability": 88,
-   "meanGrade": 8.0,
-   "nContacts": 12,
-   "conserved": 11,
-   "intermediate": 1,
+   "name": "niclosamide",
+   "durability": 85,
+   "meanGrade": 7.79,
+   "nContacts": 14,
+   "conserved": 12,
+   "intermediate": 2,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -7.62,
+   "vina": -7.21,
    "dl": 1,
    "contacts": [
     {
@@ -2929,14 +4727,6 @@
      "type": "Hydrophobic"
     },
     {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
      "num": 661,
      "res": "SER",
      "grade": 8,
@@ -2953,8 +4743,24 @@
      "type": "Hydrogen Bond"
     },
     {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
      "num": 709,
      "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
      "grade": 8,
      "cls": "conserved",
      "key": false,
@@ -2993,17 +4799,25 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
      "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
      "key": false,
      "type": "Hydrophobic"
     },
     {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
@@ -3019,7 +4833,7 @@
    "intermediate": 1,
    "variable": 0,
    "keyContacts": 3,
-   "vina": -7.316,
+   "vina": -7.32,
    "dl": 1,
    "contacts": [
     {
@@ -3145,15 +4959,15 @@
    ]
   },
   {
-   "name": "balapiravir",
-   "durability": 88,
-   "meanGrade": 8.0,
-   "nContacts": 13,
-   "conserved": 12,
+   "name": "nitazoxanide",
+   "durability": 85,
+   "meanGrade": 7.82,
+   "nContacts": 11,
+   "conserved": 10,
    "intermediate": 1,
    "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.907,
+   "keyContacts": 0,
+   "vina": -7.32,
    "dl": 1,
    "contacts": [
     {
@@ -3170,7 +4984,7 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Hydrophobic"
+     "type": "Pi-Stacking"
     },
     {
      "num": 709,
@@ -3205,11 +5019,113 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 737,
-     "res": "ARG",
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
      "grade": 9,
      "cls": "conserved",
-     "key": true,
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "omeprazole",
+   "durability": 82,
+   "meanGrade": 7.6,
+   "nContacts": 15,
+   "conserved": 12,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 0,
+   "vina": -7.61,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
      "type": "Hydrogen Bond"
     },
     {
@@ -3253,6 +5169,784 @@
      "type": "Pi-Stacking"
     },
     {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "oseltamivir",
+   "durability": 91,
+   "meanGrade": 8.25,
+   "nContacts": 8,
+   "conserved": 8,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -5.52,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Ionic"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "pantoprazole",
+   "durability": 83,
+   "meanGrade": 7.67,
+   "nContacts": 15,
+   "conserved": 12,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -7.71,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    }
+   ]
+  },
+  {
+   "name": "pentamidine",
+   "durability": 90,
+   "meanGrade": 8.22,
+   "nContacts": 9,
+   "conserved": 9,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -5.35,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Ionic"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    }
+   ]
+  },
+  {
+   "name": "pentoxifylline",
+   "durability": 82,
+   "meanGrade": 7.57,
+   "nContacts": 14,
+   "conserved": 11,
+   "intermediate": 3,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.1,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "praziquantel",
+   "durability": 89,
+   "meanGrade": 8.1,
+   "nContacts": 10,
+   "conserved": 10,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 1,
+   "vina": -6.94,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 663,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    }
+   ]
+  },
+  {
+   "name": "prednisolone",
+   "durability": 86,
+   "meanGrade": 7.89,
+   "nContacts": 9,
+   "conserved": 8,
+   "intermediate": 1,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -7.17,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 532,
+     "res": "ALA",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 533,
+     "res": "ASP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 689,
+     "res": "LYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 691,
+     "res": "ILE",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 700,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 707,
+     "res": "PRO",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "primaquine",
+   "durability": 83,
+   "meanGrade": 7.61,
+   "nContacts": 18,
+   "conserved": 14,
+   "intermediate": 4,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -6.62,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 512,
+     "res": "LEU",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 734,
+     "res": "LEU",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 766,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 794,
+     "res": "THR",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
      "num": 803,
      "res": "TRP",
      "grade": 9,
@@ -3263,24 +5957,32 @@
    ]
   },
   {
-   "name": "fludarabine",
-   "durability": 88,
-   "meanGrade": 8.0,
-   "nContacts": 13,
-   "conserved": 12,
-   "intermediate": 1,
+   "name": "prochlorperazine",
+   "durability": 95,
+   "meanGrade": 8.57,
+   "nContacts": 7,
+   "conserved": 7,
+   "intermediate": 0,
    "variable": 0,
-   "keyContacts": 3,
-   "vina": -6.447,
+   "keyContacts": 1,
+   "vina": -6.29,
    "dl": 1,
    "contacts": [
     {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Salt Bridge"
     },
     {
      "num": 607,
@@ -3288,12 +5990,12 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Pi-Stacking"
+     "type": "Hydrophobic"
     },
     {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
@@ -3304,71 +6006,15 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
-     "num": 664,
-     "res": "ASP",
+     "num": 797,
+     "res": "ILE",
      "grade": 9,
      "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
      "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
+     "type": "Hydrophobic"
     },
     {
      "num": 798,
@@ -3381,17 +6027,33 @@
    ]
   },
   {
-   "name": "azathioprine",
-   "durability": 88,
-   "meanGrade": 8.0,
-   "nContacts": 8,
-   "conserved": 8,
+   "name": "ruxolitinib",
+   "durability": 90,
+   "meanGrade": 8.18,
+   "nContacts": 11,
+   "conserved": 11,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 0,
-   "vina": -6.397,
+   "vina": -6.42,
    "dl": 1,
    "contacts": [
+    {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
     {
      "num": 607,
      "res": "TYR",
@@ -3399,6 +6061,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
     },
     {
      "num": 661,
@@ -3417,20 +6087,20 @@
      "type": "Hydrogen Bond"
     },
     {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
      "num": 711,
      "res": "HIS",
      "grade": 7,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
     },
     {
      "num": 796,
@@ -3459,15 +6129,15 @@
    ]
   },
   {
-   "name": "cladribine",
-   "durability": 88,
-   "meanGrade": 8.08,
-   "nContacts": 13,
-   "conserved": 12,
-   "intermediate": 1,
+   "name": "sofosbuvir",
+   "durability": 85,
+   "meanGrade": 7.76,
+   "nContacts": 17,
+   "conserved": 14,
+   "intermediate": 3,
    "variable": 0,
-   "keyContacts": 3,
-   "vina": -6.325,
+   "keyContacts": 1,
+   "vina": -8.09,
    "dl": 1,
    "contacts": [
     {
@@ -3479,12 +6149,28 @@
      "type": "Hydrophobic"
     },
     {
+     "num": 538,
+     "res": "TRP",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
      "num": 607,
      "res": "TYR",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
+    },
+    {
+     "num": 610,
+     "res": "ASN",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
     },
     {
      "num": 661,
@@ -3496,14 +6182,6 @@
     },
     {
      "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 664,
      "res": "ASP",
      "grade": 9,
      "cls": "conserved",
@@ -3535,12 +6213,12 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
+     "num": 761,
+     "res": "MET",
+     "grade": 8,
      "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
+     "key": false,
+     "type": "Hydrophobic"
     },
     {
      "num": 766,
@@ -3572,7 +6250,31 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Hydrogen Bond"
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 799,
+     "res": "ALA",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Hydrophobic"
+    },
+    {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
     }
    ]
   },
@@ -3727,1275 +6429,15 @@
    ]
   },
   {
-   "name": "camostat",
-   "durability": 87,
-   "meanGrade": 7.94,
-   "nContacts": 17,
-   "conserved": 15,
-   "intermediate": 2,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -7.325,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 539,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Ionic"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "prednisolone",
-   "durability": 86,
-   "meanGrade": 7.89,
-   "nContacts": 9,
-   "conserved": 8,
-   "intermediate": 1,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -7.169,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 532,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 533,
-     "res": "ASP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 689,
-     "res": "LYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 691,
-     "res": "ILE",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 700,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 707,
-     "res": "PRO",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "lisinopril",
-   "durability": 86,
-   "meanGrade": 7.84,
-   "nContacts": 19,
-   "conserved": 16,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 3,
-   "vina": -6.958,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Ionic"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Ionic"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Ionic"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "entecavir",
-   "durability": 86,
-   "meanGrade": 7.91,
-   "nContacts": 11,
-   "conserved": 10,
-   "intermediate": 1,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.839,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    }
-   ]
-  },
-  {
-   "name": "trifluridine",
-   "durability": 86,
-   "meanGrade": 7.91,
-   "nContacts": 11,
-   "conserved": 10,
-   "intermediate": 1,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.413,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "sofosbuvir",
-   "durability": 85,
-   "meanGrade": 7.76,
-   "nContacts": 17,
-   "conserved": 14,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -8.085,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "mycophenolate_mofetil",
-   "durability": 85,
-   "meanGrade": 7.82,
-   "nContacts": 17,
-   "conserved": 14,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -8.026,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 538,
-     "res": "TRP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 610,
-     "res": "ASN",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 664,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "nitazoxanide",
-   "durability": 85,
-   "meanGrade": 7.82,
-   "nContacts": 11,
-   "conserved": 10,
-   "intermediate": 1,
-   "variable": 0,
-   "keyContacts": 0,
-   "vina": -7.319,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "niclosamide",
-   "durability": 85,
-   "meanGrade": 7.79,
-   "nContacts": 14,
-   "conserved": 12,
-   "intermediate": 2,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -7.214,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "abacavir",
-   "durability": 85,
-   "meanGrade": 7.79,
-   "nContacts": 14,
-   "conserved": 12,
-   "intermediate": 2,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.883,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "molnupiravir",
-   "durability": 85,
-   "meanGrade": 7.77,
-   "nContacts": 13,
+   "name": "sunitinib",
+   "durability": 82,
+   "meanGrade": 7.53,
+   "nContacts": 15,
    "conserved": 11,
-   "intermediate": 2,
+   "intermediate": 4,
    "variable": 0,
    "keyContacts": 1,
-   "vina": -6.748,
+   "vina": -7.68,
    "dl": 1,
    "contacts": [
     {
@@ -5015,32 +6457,16 @@
      "type": "Hydrophobic"
     },
     {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
      "num": 663,
      "res": "ASP",
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
      "num": 709,
      "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
      "grade": 8,
      "cls": "conserved",
      "key": false,
@@ -5053,6 +6479,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
     },
     {
      "num": 761,
@@ -5077,6 +6511,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
     },
     {
      "num": 798,
@@ -5095,114 +6537,28 @@
      "type": "Hydrophobic"
     },
     {
+     "num": 800,
+     "res": "HIS",
+     "grade": 5,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 801,
+     "res": "HIS",
+     "grade": 6,
+     "cls": "intermediate",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
      "num": 803,
      "res": "TRP",
      "grade": 9,
      "cls": "conserved",
      "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "indomethacin",
-   "durability": 85,
-   "meanGrade": 7.82,
-   "nContacts": 11,
-   "conserved": 10,
-   "intermediate": 1,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.715,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
      "type": "Hydrophobic"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Salt Bridge"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 794,
-     "res": "THR",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Salt Bridge"
     }
    ]
   },
@@ -5333,15 +6689,15 @@
    ]
   },
   {
-   "name": "adefovir",
-   "durability": 85,
-   "meanGrade": 7.79,
-   "nContacts": 14,
-   "conserved": 12,
-   "intermediate": 2,
+   "name": "trifluridine",
+   "durability": 86,
+   "meanGrade": 7.91,
+   "nContacts": 11,
+   "conserved": 10,
+   "intermediate": 1,
    "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.211,
+   "keyContacts": 1,
+   "vina": -6.41,
    "dl": 1,
    "contacts": [
     {
@@ -5353,28 +6709,12 @@
      "type": "Hydrophobic"
     },
     {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 661,
-     "res": "SER",
+     "num": 709,
+     "res": "CYS",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
     },
     {
      "num": 710,
@@ -5390,7 +6730,7 @@
      "grade": 7,
      "cls": "conserved",
      "key": false,
-     "type": "Ionic"
+     "type": "Pi-Stacking"
     },
     {
      "num": 729,
@@ -5398,7 +6738,7 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Salt Bridge"
+     "type": "Hydrogen Bond"
     },
     {
      "num": 737,
@@ -5406,7 +6746,7 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Salt Bridge"
+     "type": "Hydrogen Bond"
     },
     {
      "num": 761,
@@ -5425,14 +6765,6 @@
      "type": "Pi-Stacking"
     },
     {
-     "num": 794,
-     "res": "THR",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
      "num": 796,
      "res": "SER",
      "grade": 8,
@@ -5441,42 +6773,42 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
      "num": 798,
      "res": "HIS",
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Salt Bridge"
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 803,
+     "res": "TRP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
     }
    ]
   },
   {
-   "name": "nafamostat",
-   "durability": 83,
-   "meanGrade": 7.65,
-   "nContacts": 17,
-   "conserved": 13,
-   "intermediate": 4,
+   "name": "umifenovir",
+   "durability": 92,
+   "meanGrade": 8.33,
+   "nContacts": 12,
+   "conserved": 12,
+   "intermediate": 0,
    "variable": 0,
-   "keyContacts": 2,
-   "vina": -8.569,
+   "keyContacts": 3,
+   "vina": -5.9,
    "dl": 1,
    "contacts": [
     {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
     },
     {
      "num": 538,
@@ -5485,6 +6817,14 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
+    },
+    {
+     "num": 539,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": false,
+     "type": "Ionic"
     },
     {
      "num": 607,
@@ -5516,133 +6856,7 @@
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Ionic"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 801,
-     "res": "HIS",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "pantoprazole",
-   "durability": 83,
-   "meanGrade": 7.67,
-   "nContacts": 15,
-   "conserved": 12,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -7.707,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
+     "type": "Salt Bridge"
     },
     {
      "num": 708,
@@ -5677,90 +6891,34 @@
      "type": "Pi-Stacking"
     },
     {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
      "num": 798,
      "res": "HIS",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     }
    ]
   },
   {
-   "name": "primaquine",
-   "durability": 83,
-   "meanGrade": 7.61,
-   "nContacts": 18,
-   "conserved": 14,
-   "intermediate": 4,
+   "name": "vandetanib",
+   "durability": 90,
+   "meanGrade": 8.22,
+   "nContacts": 9,
+   "conserved": 9,
+   "intermediate": 0,
    "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.616,
+   "keyContacts": 3,
+   "vina": -7.1,
    "dl": 1,
    "contacts": [
     {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
+     "num": 534,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Salt Bridge"
     },
     {
      "num": 607,
@@ -5768,7 +6926,7 @@
      "grade": 8,
      "cls": "conserved",
      "key": false,
-     "type": "Pi-Stacking"
+     "type": "Hydrophobic"
     },
     {
      "num": 661,
@@ -5777,156 +6935,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 734,
-     "res": "LEU",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 794,
-     "res": "THR",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "sunitinib",
-   "durability": 82,
-   "meanGrade": 7.53,
-   "nContacts": 15,
-   "conserved": 11,
-   "intermediate": 4,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -7.681,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 663,
@@ -5937,1114 +6945,12 @@
      "type": "Salt Bridge"
     },
     {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 801,
-     "res": "HIS",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "omeprazole",
-   "durability": 82,
-   "meanGrade": 7.6,
-   "nContacts": 15,
-   "conserved": 12,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 0,
-   "vina": -7.607,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "fenofibrate",
-   "durability": 82,
-   "meanGrade": 7.56,
-   "nContacts": 16,
-   "conserved": 12,
-   "intermediate": 4,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -7.284,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 729,
-     "res": "ARG",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 801,
-     "res": "HIS",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "benznidazole",
-   "durability": 82,
-   "meanGrade": 7.57,
-   "nContacts": 14,
-   "conserved": 11,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 0,
-   "vina": -7.066,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "erlotinib",
-   "durability": 82,
-   "meanGrade": 7.6,
-   "nContacts": 10,
-   "conserved": 8,
-   "intermediate": 2,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.7,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 737,
-     "res": "ARG",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "gemcitabine",
-   "durability": 82,
-   "meanGrade": 7.6,
-   "nContacts": 10,
-   "conserved": 8,
-   "intermediate": 2,
-   "variable": 0,
-   "keyContacts": 2,
-   "vina": -6.19,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 531,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 532,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 533,
-     "res": "ASP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 689,
-     "res": "LYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 690,
-     "res": "ASP",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 691,
-     "res": "ILE",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 697,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 698,
-     "res": "LYS",
-     "grade": 4,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 700,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "chloroquine",
-   "durability": 82,
-   "meanGrade": 7.54,
-   "nContacts": 13,
-   "conserved": 10,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 0,
-   "vina": -6.165,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "pentoxifylline",
-   "durability": 82,
-   "meanGrade": 7.57,
-   "nContacts": 14,
-   "conserved": 11,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 1,
-   "vina": -6.096,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 663,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 797,
-     "res": "ILE",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    }
-   ]
-  },
-  {
-   "name": "leflunomide",
-   "durability": 81,
-   "meanGrade": 7.5,
-   "nContacts": 14,
-   "conserved": 11,
-   "intermediate": 3,
-   "variable": 0,
-   "keyContacts": 0,
-   "vina": -6.945,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 512,
-     "res": "LEU",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 607,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 661,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 708,
-     "res": "PHE",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 709,
-     "res": "CYS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 710,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 711,
-     "res": "HIS",
-     "grade": 7,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 761,
-     "res": "MET",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 766,
-     "res": "TYR",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 796,
-     "res": "SER",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 798,
-     "res": "HIS",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 799,
-     "res": "ALA",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 800,
-     "res": "HIS",
-     "grade": 5,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Pi-Stacking"
-    },
-    {
-     "num": 803,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    }
-   ]
-  },
-  {
-   "name": "dasabuvir",
-   "durability": 77,
-   "meanGrade": 7.18,
-   "nContacts": 11,
-   "conserved": 8,
-   "intermediate": 2,
-   "variable": 1,
-   "keyContacts": 2,
-   "vina": -8.093,
-   "dl": 1,
-   "contacts": [
-    {
-     "num": 534,
-     "res": "ASP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
      "num": 664,
      "res": "ASP",
      "grade": 9,
      "cls": "conserved",
      "key": true,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 691,
-     "res": "ILE",
-     "grade": 6,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
-     "num": 698,
-     "res": "LYS",
-     "grade": 4,
-     "cls": "intermediate",
-     "key": false,
-     "type": "Hydrogen Bond"
-    },
-    {
-     "num": 700,
-     "res": "TRP",
-     "grade": 9,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
+     "type": "Salt Bridge"
     },
     {
      "num": 707,
@@ -7077,22 +6983,116 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
+    }
+   ]
+  },
+  {
+   "name": "zidovudine",
+   "durability": 90,
+   "meanGrade": 8.17,
+   "nContacts": 12,
+   "conserved": 12,
+   "intermediate": 0,
+   "variable": 0,
+   "keyContacts": 2,
+   "vina": -6.69,
+   "dl": 1,
+   "contacts": [
+    {
+     "num": 607,
+     "res": "TYR",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrophobic"
     },
     {
-     "num": 712,
-     "res": "HIS",
+     "num": 661,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 664,
+     "res": "ASP",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 708,
+     "res": "PHE",
      "grade": 8,
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
     },
     {
-     "num": 730,
-     "res": "PRO",
-     "grade": 3,
-     "cls": "variable",
+     "num": 709,
+     "res": "CYS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 710,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 711,
+     "res": "HIS",
+     "grade": 7,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
+    },
+    {
+     "num": 729,
+     "res": "ARG",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 737,
+     "res": "ARG",
+     "grade": 9,
+     "cls": "conserved",
+     "key": true,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 796,
+     "res": "SER",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Hydrogen Bond"
+    },
+    {
+     "num": 797,
+     "res": "ILE",
+     "grade": 9,
+     "cls": "conserved",
      "key": false,
      "type": "Hydrophobic"
+    },
+    {
+     "num": 798,
+     "res": "HIS",
+     "grade": 8,
+     "cls": "conserved",
+     "key": false,
+     "type": "Pi-Stacking"
     }
    ]
   }
