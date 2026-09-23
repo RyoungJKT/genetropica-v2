@@ -244,13 +244,6 @@
    "nDrugs": 4
   },
   {
-   "num": 795,
-   "grade": 8,
-   "cls": "conserved",
-   "key": false,
-   "nDrugs": 10
-  },
-  {
    "num": 796,
    "grade": 8,
    "cls": "conserved",
@@ -1073,8 +1066,8 @@
    "name": "balapiravir",
    "durability": 88,
    "meanGrade": 8.0,
-   "nContacts": 14,
-   "conserved": 13,
+   "nContacts": 13,
+   "conserved": 12,
    "intermediate": 1,
    "variable": 0,
    "keyContacts": 1,
@@ -1154,14 +1147,6 @@
      "type": "Pi-Stacking"
     },
     {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
      "num": 796,
      "res": "SER",
      "grade": 8,
@@ -1198,9 +1183,9 @@
   {
    "name": "baricitinib",
    "durability": 91,
-   "meanGrade": 8.27,
-   "nContacts": 11,
-   "conserved": 11,
+   "meanGrade": 8.3,
+   "nContacts": 10,
+   "conserved": 10,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
@@ -1262,14 +1247,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 796,
@@ -1426,9 +1403,9 @@
   {
    "name": "boceprevir",
    "durability": 92,
-   "meanGrade": 8.36,
-   "nContacts": 14,
-   "conserved": 14,
+   "meanGrade": 8.38,
+   "nContacts": 13,
+   "conserved": 13,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 3,
@@ -1522,14 +1499,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 797,
@@ -2250,9 +2219,9 @@
   {
    "name": "colchicine",
    "durability": 90,
-   "meanGrade": 8.17,
-   "nContacts": 12,
-   "conserved": 12,
+   "meanGrade": 8.18,
+   "nContacts": 11,
+   "conserved": 11,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
@@ -2338,14 +2307,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 798,
@@ -2711,10 +2672,10 @@
   },
   {
    "name": "erlotinib",
-   "durability": 83,
-   "meanGrade": 7.64,
-   "nContacts": 11,
-   "conserved": 9,
+   "durability": 82,
+   "meanGrade": 7.6,
+   "nContacts": 10,
+   "conserved": 8,
    "intermediate": 2,
    "variable": 0,
    "keyContacts": 1,
@@ -2776,14 +2737,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 796,
@@ -4093,10 +4046,10 @@
   },
   {
    "name": "minocycline",
-   "durability": 91,
-   "meanGrade": 8.3,
-   "nContacts": 10,
-   "conserved": 10,
+   "durability": 92,
+   "meanGrade": 8.33,
+   "nContacts": 9,
+   "conserved": 9,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
@@ -4152,14 +4105,6 @@
      "type": "Hydrogen Bond"
     },
     {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
-    },
-    {
      "num": 796,
      "res": "SER",
      "grade": 8,
@@ -4188,9 +4133,9 @@
   {
    "name": "molnupiravir",
    "durability": 85,
-   "meanGrade": 7.79,
-   "nContacts": 14,
-   "conserved": 12,
+   "meanGrade": 7.77,
+   "nContacts": 13,
+   "conserved": 11,
    "intermediate": 2,
    "variable": 0,
    "keyContacts": 1,
@@ -4268,14 +4213,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 796,
@@ -4615,8 +4552,8 @@
    "name": "nelfinavir",
    "durability": 88,
    "meanGrade": 8.0,
-   "nContacts": 18,
-   "conserved": 16,
+   "nContacts": 17,
+   "conserved": 15,
    "intermediate": 2,
    "variable": 0,
    "keyContacts": 3,
@@ -4718,14 +4655,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 796,
@@ -5267,10 +5196,10 @@
   },
   {
    "name": "oseltamivir",
-   "durability": 90,
-   "meanGrade": 8.22,
-   "nContacts": 9,
-   "conserved": 9,
+   "durability": 91,
+   "meanGrade": 8.25,
+   "nContacts": 8,
+   "conserved": 8,
    "intermediate": 0,
    "variable": 0,
    "keyContacts": 2,
@@ -5316,14 +5245,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 796,
@@ -6210,9 +6131,9 @@
   {
    "name": "sofosbuvir",
    "durability": 85,
-   "meanGrade": 7.78,
-   "nContacts": 18,
-   "conserved": 15,
+   "meanGrade": 7.76,
+   "nContacts": 17,
+   "conserved": 14,
    "intermediate": 3,
    "variable": 0,
    "keyContacts": 1,
@@ -6306,14 +6227,6 @@
      "cls": "conserved",
      "key": false,
      "type": "Pi-Stacking"
-    },
-    {
-     "num": 795,
-     "res": "ALA",
-     "grade": 8,
-     "cls": "conserved",
-     "key": false,
-     "type": "Hydrophobic"
     },
     {
      "num": 796,
@@ -7189,7 +7102,7 @@
   "supersedes": "poses from the 5CCV box whose centre was 30.0 A from the GDD motif",
   "numbering": "mapped to DENV-2 by alignment (4V0R_to_DENV2_map.json); offset is not constant",
   "structure_serotype": "DENV-3 (96.9% identity), scored against DENV-2 ConSurf grades",
-  "stub_residue_795": "included; unresolved TRP side chain modelled as ALA",
+  "stub_residue_795": "excluded",
   "ranking_caveat": "the underlying Vina scores do not discriminate actives from decoys at this site (AUC 0.494, 95% CI 0.306-0.684)",
   "reproducibility": "ligand conformers are embedded unseeded; repeat runs vary ~0.2 kcal/mol"
  }

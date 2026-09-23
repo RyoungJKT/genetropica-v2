@@ -1,0 +1,275 @@
+{
+  "target": "DENV_NS5",
+  "receptor": "4V0R chain A, 2.40 A, catalytic Mg2+ retained",
+  "receptor_file": "colab/4V0R_chainA_Mg.pdbqt",
+  "center": [
+    -11.3,
+    19.2,
+    -7.8
+  ],
+  "box_size": 25,
+  "exhaustiveness": 8,
+  "seed": 42,
+  "num_modes": 3,
+  "vina": "AutoDock Vina v1.2.7",
+  "supersedes": "the 5CCV box centred at (-118.9, 60.8, 40.2), whose nearest GDD catalytic atom was 30.0 A away while the box reached only 21.7 A to its corner",
+  "numbering_warning": "Poses here are in 4V0R chain A numbering (GDD at 194-196). The ConSurf grades escape.json uses are in the DENV-2 frame 5CCV follows (GDD at 662-664). The offset is +468 for 390 of 406 shared residues, but 4 percent differ in amino acid, so the structures are not the same sequence. Map by alignment, not by assuming the offset, before recomputing any durability score.",
+  "ranking_warning": "At this corrected site the retrospective benchmark scored AUC 0.494 (95 percent CI 0.306-0.684). Correcting the box fixes where a drug is placed, not whether the Vina score can rank drugs.",
+  "n_docked": 63,
+  "n_failed": 0,
+  "failed": [],
+  "results": {
+    "abacavir": {
+      "vina": -6.883,
+      "mw": 286.34
+    },
+    "adefovir": {
+      "vina": -6.211,
+      "mw": 273.19
+    },
+    "albendazole": {
+      "vina": -6.19,
+      "mw": 265.34
+    },
+    "amlodipine": {
+      "vina": -5.741,
+      "mw": 408.88
+    },
+    "artemisinin": {
+      "vina": -6.706,
+      "mw": 282.34
+    },
+    "atorvastatin": {
+      "vina": -6.519,
+      "mw": 558.65
+    },
+    "atovaquone": {
+      "vina": -7.62,
+      "mw": 366.84
+    },
+    "azathioprine": {
+      "vina": -6.397,
+      "mw": 277.27
+    },
+    "balapiravir": {
+      "vina": -6.907,
+      "mw": 494.51
+    },
+    "baricitinib": {
+      "vina": -7.172,
+      "mw": 371.43
+    },
+    "benznidazole": {
+      "vina": -7.066,
+      "mw": 260.25
+    },
+    "boceprevir": {
+      "vina": -6.804,
+      "mw": 519.69
+    },
+    "camostat": {
+      "vina": -7.325,
+      "mw": 398.42
+    },
+    "celecoxib": {
+      "vina": -6.789,
+      "mw": 381.38
+    },
+    "cetirizine": {
+      "vina": -6.529,
+      "mw": 388.9
+    },
+    "chloroquine": {
+      "vina": -6.165,
+      "mw": 319.88
+    },
+    "chlorpromazine": {
+      "vina": -5.979,
+      "mw": 318.87
+    },
+    "cladribine": {
+      "vina": -6.325,
+      "mw": 285.69
+    },
+    "clevudine": {
+      "vina": -6.031,
+      "mw": 260.22
+    },
+    "colchicine": {
+      "vina": -6.658,
+      "mw": 399.44
+    },
+    "darunavir": {
+      "vina": -6.953,
+      "mw": 547.67
+    },
+    "dasabuvir": {
+      "vina": -8.093,
+      "mw": 493.59
+    },
+    "doxycycline": {
+      "vina": -7.754,
+      "mw": 444.44
+    },
+    "entecavir": {
+      "vina": -6.839,
+      "mw": 277.28
+    },
+    "erlotinib": {
+      "vina": -6.7,
+      "mw": 393.44
+    },
+    "fenofibrate": {
+      "vina": -7.284,
+      "mw": 360.84
+    },
+    "fludarabine": {
+      "vina": -6.447,
+      "mw": 285.24
+    },
+    "galidesivir": {
+      "vina": -6.452,
+      "mw": 265.27
+    },
+    "gemcitabine": {
+      "vina": -6.19,
+      "mw": 263.2
+    },
+    "hydroxychloroquine": {
+      "vina": -5.945,
+      "mw": 335.88
+    },
+    "indomethacin": {
+      "vina": -6.715,
+      "mw": 357.79
+    },
+    "leflunomide": {
+      "vina": -6.945,
+      "mw": 270.21
+    },
+    "lisinopril": {
+      "vina": -6.958,
+      "mw": 405.5
+    },
+    "lovastatin": {
+      "vina": -6.692,
+      "mw": 404.55
+    },
+    "mefloquine": {
+      "vina": -6.754,
+      "mw": 378.32
+    },
+    "methotrexate": {
+      "vina": -7.608,
+      "mw": 454.45
+    },
+    "miltefosine": {
+      "vina": -5.069,
+      "mw": 407.58
+    },
+    "minocycline": {
+      "vina": -7.69,
+      "mw": 457.48
+    },
+    "molnupiravir": {
+      "vina": -6.748,
+      "mw": 329.31
+    },
+    "mycophenolate_mofetil": {
+      "vina": -8.026,
+      "mw": 433.5
+    },
+    "nafamostat": {
+      "vina": -8.569,
+      "mw": 347.38
+    },
+    "nelfinavir": {
+      "vina": -8.172,
+      "mw": 567.8
+    },
+    "niclosamide": {
+      "vina": -7.214,
+      "mw": 327.12
+    },
+    "nirmatrelvir": {
+      "vina": -7.316,
+      "mw": 499.53
+    },
+    "nitazoxanide": {
+      "vina": -7.319,
+      "mw": 307.29
+    },
+    "omeprazole": {
+      "vina": -7.607,
+      "mw": 345.42
+    },
+    "oseltamivir": {
+      "vina": -5.519,
+      "mw": 312.41
+    },
+    "pantoprazole": {
+      "vina": -7.707,
+      "mw": 383.38
+    },
+    "pentamidine": {
+      "vina": -5.349,
+      "mw": 340.43
+    },
+    "pentoxifylline": {
+      "vina": -6.096,
+      "mw": 278.31
+    },
+    "praziquantel": {
+      "vina": -6.942,
+      "mw": 312.41
+    },
+    "prednisolone": {
+      "vina": -7.169,
+      "mw": 360.45
+    },
+    "primaquine": {
+      "vina": -6.616,
+      "mw": 259.35
+    },
+    "prochlorperazine": {
+      "vina": -6.292,
+      "mw": 373.95
+    },
+    "ruxolitinib": {
+      "vina": -6.417,
+      "mw": 306.37
+    },
+    "sofosbuvir": {
+      "vina": -8.085,
+      "mw": 529.46
+    },
+    "sorafenib": {
+      "vina": -9.38,
+      "mw": 464.83
+    },
+    "sunitinib": {
+      "vina": -7.681,
+      "mw": 398.48
+    },
+    "tenofovir": {
+      "vina": -6.43,
+      "mw": 287.22
+    },
+    "trifluridine": {
+      "vina": -6.413,
+      "mw": 296.2
+    },
+    "umifenovir": {
+      "vina": -5.901,
+      "mw": 477.42
+    },
+    "vandetanib": {
+      "vina": -7.098,
+      "mw": 475.36
+    },
+    "zidovudine": {
+      "vina": -6.687,
+      "mw": 267.25
+    }
+  }
+}
