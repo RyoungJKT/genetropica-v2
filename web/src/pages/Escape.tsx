@@ -125,7 +125,7 @@ export default function Escape() {
       <div className="eyebrow">{t('Tool 06')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Where These Drugs Grip NS5')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('Every candidate here docks into the catalytic site of dengue NS5 — the pocket the virus uses to copy its own genome, and the part it can least afford to change. This page shows which residues each drug touches and how conserved those positions are across dengue and related flaviviruses. It does not rank the drugs; the section below explains why.')}
+        {t('Every candidate here docks into the catalytic site of dengue NS5. That is the pocket the virus uses to copy its own genome, and the part it can least afford to change. This page shows which residues each drug touches and how conserved those positions are across dengue and related flaviviruses. It does not rank the drugs; the section below explains why.')}
       </p>
 
       {!data && <p className="mono" style={{ marginTop: 20 }}>{t('Loading escape analysis...')}</p>}
@@ -172,7 +172,7 @@ export default function Escape() {
               {t('Re-docking at the correct site fixed the poses but removed the ranking. Because every candidate now binds the same highly conserved pocket, their scores bunch together: the median gap between neighbouring candidates is zero, and dropping any single contact moves a candidate further than the gap separating it from the next. An ordering built on that would be a tie-break presented as a finding.')}
             </p>
             <p style={{ color: 'var(--ink-soft)', maxWidth: 780, lineHeight: 1.65, margin: '12px 0 0', fontSize: 14.5 }}>
-              {t('The wider spread the old leaderboard showed was an artefact of the error, not a signal. What survives the correction is the map above: where each candidate binds, and how conserved that pocket is. The retrospective benchmark on the Validation page is the companion result — at this site the docking scores did not separate known inhibitors from decoys.')}
+              {t('The wider spread the old leaderboard showed was an artefact of the error, not a signal. What survives the correction is the map above: where each candidate binds, and how conserved that pocket is. The retrospective benchmark on the Validation page is the companion result. At this site the docking scores did not separate known inhibitors from decoys.')}
             </p>
           </section>
         </>
