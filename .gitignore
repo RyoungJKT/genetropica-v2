@@ -79,3 +79,6 @@ data/database/*.bak_pre_fix1
 
 # local scratch output
 brag-output/
+
+# corrected re-dock intermediates (regenerable)
+data/docking_corrected/**/_ligands/
