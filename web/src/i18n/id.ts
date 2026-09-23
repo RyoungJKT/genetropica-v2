@@ -140,7 +140,7 @@ export const ID: Record<string, string> = {
   "EF top 1%": "EF 1% teratas",
   "EF top 10%": "EF 10% teratas",
   "Enrichment factors (same initial test)": "Faktor pengayaan (uji awal yang sama)",
-  "Escape": "Resistensi",
+  "Resistance": "Resistensi",
   "Every drug is ranked by how strongly it grips the chosen target; the bar is binding strength. Flip to \"by efficiency\" to rank by grip per atom instead. Watch the \"outside drug-like range\" tag: the very strongest binders are often just the biggest molecules.": "Setiap obat diperingkat berdasarkan seberapa kuat cengkeramannya pada target yang dipilih; batang menunjukkan kekuatan ikatan. Beralihlah ke \"Menurut efisiensi\" untuk memeringkat berdasarkan cengkeraman per atom. Perhatikan label \"di luar rentang mirip obat\": pengikat yang paling kuat sering kali hanyalah molekul yang paling besar.",
   "Every drug ranked by how strongly it binds the chosen target. Switch the target to re-rank, sort by efficiency, or hover a row for a plain-English read.": "Setiap obat diperingkat berdasarkan seberapa kuat ikatannya dengan target yang dipilih. Ganti targetnya untuk menyusun ulang peringkat, urutkan berdasarkan efisiensi, atau arahkan kursor ke salah satu baris untuk penjelasan dalam bahasa sederhana.",
   "Every drug, ranked by how it binds": "Setiap obat, diperingkat menurut cara pengikatannya",
