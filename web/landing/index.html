@@ -348,7 +348,7 @@
       <div class="step" data-reveal><div class="n">iii</div><div><h3>594 docking runs</h3><p>AutoDock Vina computes how snugly every drug fits into every target (99 drugs × 6 targets), like testing keys against a lock.</p></div></div>
       <div class="step" data-reveal><div class="n">iv</div><div><h3>Two honest rankings</h3><p>Candidates are scored both by raw binding strength and by ligand efficiency, the binding earned per atom, shown side by side.</p></div></div>
       <div class="step" data-reveal><div class="n">v</div><div><h3>A machine-learning prior</h3><p>A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.</p></div></div>
-      <div class="step" data-reveal><div class="n">vi</div><div><h3>Molecular dynamics</h3><p>The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.</p></div></div>
+      <div class="step" data-reveal><div class="n">vi</div><div><h3>Molecular dynamics</h3><p>Selected candidates were explored using 50 ns unbiased simulations, starting with each ligand in solvent.</p></div></div>
     </div>
     <p class="body" data-reveal style="margin-top:44px"><b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, and conservation analysis on CPUs.</p>
   </section>
@@ -492,8 +492,8 @@
     'A model trained on known actives adds a hint of likely activity. It is treated as a clue, never the verdict.':
       'Model yang dilatih pada senyawa aktif yang sudah dikenal menambahkan petunjuk kemungkinan aktivitas. Ini diperlakukan sebagai petunjuk, tidak pernah sebagai keputusan.',
     'Molecular dynamics':'Dinamika molekuler',
-    'The strongest candidates are stress-tested with 50-nanosecond simulations to see whether the fit actually holds.':
-      'Kandidat terkuat diuji ketahanannya dengan simulasi 50 nanodetik untuk melihat apakah kecocokannya benar-benar bertahan.',
+    'Selected candidates were explored using 50 ns unbiased simulations, starting with each ligand in solvent.':
+      'Kandidat terpilih dieksplorasi dengan simulasi tanpa bias selama 50 ns, dimulai dengan setiap ligan berada dalam pelarut.',
     '<b>These are real computed results, not illustrations.</b> Every run was executed on Google Colab: the 50-nanosecond molecular-dynamics simulations on an <b>NVIDIA A100 GPU</b>, and the docking, machine learning, and conservation analysis on CPUs.':
       '<b>Ini hasil perhitungan nyata, bukan ilustrasi.</b> Setiap proses dijalankan di Google Colab: simulasi dinamika molekuler 50 nanodetik pada <b>GPU NVIDIA A100</b>, sedangkan penambatan, pembelajaran mesin, dan analisis konservasi pada CPU.',
 
