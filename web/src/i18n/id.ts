@@ -155,7 +155,7 @@ export const ID: Record<string, string> = {
   "For each drug, simulate how tightly it latches onto a protein the pathogen needs to survive. A tighter, well-fitted grip means more potential to disrupt the disease.": "Untuk setiap obat, simulasikan seberapa erat obat itu mencengkeram protein yang dibutuhkan patogen untuk bertahan hidup. Cengkeraman yang lebih erat dan lebih pas berarti potensi yang lebih besar untuk mengganggu penyakit tersebut.",
   "for the rest of the protein, so they are more conserved. But the difference is": "pada bagian protein lainnya, sehingga residu tersebut lebih terkonservasi. Namun, perbedaannya",
   "forget": "lupakan",
-  "GeneTropica · A computational drug-repurposing study · Russell Young, 2026": "GeneTropica · Studi komputasi penggunaan ulang obat · Russell Young, 2026",
+  "GeneTropica · A computational drug-repurposing study": "GeneTropica · Studi komputasi penggunaan ulang obat",
   "GI": "GI",
   "GI abs.": "Abs. GI",
   "Grade": "Skor",
