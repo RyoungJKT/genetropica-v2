@@ -47,9 +47,11 @@ export function TargetCards() {
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.1em', color: 'var(--clay)', textTransform: 'uppercase' }}>PDB {target.pdb_id}</div>
                     <h4 style={{ fontSize: 21, margin: '8px 0 10px' }}>{target.name}</h4>
                     <p style={{ fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>{ROLES[target.target_id] ? t(ROLES[target.target_id]) : ''}</p>
-                    <span style={{ display: 'inline-block', marginTop: 12, fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.06em', textTransform: 'uppercase', borderRadius: 100, padding: '3px 9px', border: '1px solid var(--line)', color: validated(target.validation_status) ? 'var(--clay)' : 'var(--ink-faint)' }}>
-                      {validated(target.validation_status) ? t('Tested: AUC 0.49 (inconclusive)') : t('Not yet validated, hypothesis only')}
-                    </span>
+                    {validated(target.validation_status) && (
+                      <span style={{ display: 'inline-block', marginTop: 12, fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.06em', textTransform: 'uppercase', borderRadius: 100, padding: '3px 9px', border: '1px solid var(--line)', color: 'var(--clay)' }}>
+                        {t('Tested: AUC 0.49 (inconclusive)')}
+                      </span>
+                    )}
                   </div>
                 </Reveal>
               ))}
