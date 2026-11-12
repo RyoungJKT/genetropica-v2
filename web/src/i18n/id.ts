@@ -333,7 +333,7 @@ export const ID: Record<string, string> = {
   "Six doors into three diseases": "Enam pintu menuju tiga penyakit",
   "Sofosbuvir is a control": "Sofosbuvir adalah kontrol",
   "Sofosbuvir is included as a known-active positive control, not a discovery.": "Sofosbuvir disertakan sebagai kontrol positif senyawa aktif yang telah diketahui, bukan sebagai temuan.",
-  "Start with safe drugs": "Mulai dari obat yang aman",
+  "Start with medicines with human data": "Mulai dari obat yang memiliki data pada manusia",
   "Strong on what it is. Clear on what it isn't.": "Kuat pada klaimnya. Jelas pada batasnya.",
   "Taller, greener bars are residues the virus is least able to mutate without a fitness cost, so contacts there raise the barrier to resistance. Shorter, clay bars are variable positions the virus can change to escape.": "Batang yang lebih tinggi dan lebih hijau adalah residu yang paling sulit dimutasi virus tanpa kehilangan kebugaran, sehingga kontak pada posisi tersebut menaikkan hambatan terhadap resistensi. Batang yang lebih pendek dan berwarna tanah liat adalah posisi variabel yang dapat diubah virus untuk meloloskan diri.",
   "Target": "Target",
