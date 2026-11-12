@@ -4,7 +4,6 @@ import { StatStrip } from '../components/StatStrip'
 import { Reveal } from '../components/Reveal'
 import { Steps } from '../components/Steps'
 import { TargetCards } from '../components/TargetCards'
-import { HonestyBand } from '../components/HonestyBand'
 import { Footer } from '../components/Footer'
 import { FieldPanel } from '../components/FieldPanel'
 import { HeroMolecule } from '../three/HeroMolecule'
@@ -100,7 +99,6 @@ export default function Overview() {
       </section>
 
       <TargetCards />
-      <HonestyBand />
       <Footer />
     </>
   )
