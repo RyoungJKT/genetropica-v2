@@ -13,7 +13,7 @@ export default function App() {
           <div className="mono" style={{ textAlign: 'center', lineHeight: 1.7 }}>
             {t('GeneTropica · A computational drug-repurposing study')}
             {' · '}
-            <a href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>
+            <a href="https://www.russellyoung.id" target="_blank" rel="noopener" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>Russell Young</a>
             {', 2026'}
           </div>
         </div>

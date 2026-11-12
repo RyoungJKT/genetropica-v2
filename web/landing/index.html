@@ -190,6 +190,7 @@
   footer{border-top:1px solid var(--line);padding:46px 0 60px;background:var(--paper-2)}
   .colophon{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-faint);text-transform:uppercase}
   .colophon a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+  .colophon a.byline{text-decoration:underline;text-underline-offset:3px;border-bottom:0}
   .colophon a:hover{color:var(--green)}
   .stack{display:flex;gap:18px;flex-wrap:wrap}
 
@@ -408,7 +409,7 @@
 
 <footer>
   <div class="wrap colophon">
-    <div>GeneTropica · A computational drug-repurposing study · <a href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>, 2026</div>
+    <div>GeneTropica · A computational drug-repurposing study · <a class="byline" href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>, 2026</div>
     <div class="stack">
       <span>AutoDock Vina</span><span>RDKit</span><span>scikit-learn</span><span>GROMACS</span><span>React</span>
     </div>
@@ -523,8 +524,8 @@
     'Explore every drug, target, and 3D binding pose <em>yourself.</em>':
       'Jelajahi sendiri setiap obat, target, dan <em>pose ikatan 3D.</em>',
     'Launch the dashboard <span class="arr">→</span>':'Buka dasbornya <span class="arr">→</span>',
-    'GeneTropica · A computational drug-repurposing study · <a href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>, 2026':
-      'GeneTropica · Studi komputasi penggunaan ulang obat · <a href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>, 2026',
+    'GeneTropica · A computational drug-repurposing study · <a class="byline" href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>, 2026':
+      'GeneTropica · Studi komputasi penggunaan ulang obat · <a class="byline" href="https://www.russellyoung.id" target="_blank" rel="noopener">Russell Young</a>, 2026',
     'Dashboard':'Dasbor'
   };
 
