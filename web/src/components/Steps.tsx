@@ -2,9 +2,9 @@ import { Reveal } from './Reveal'
 import { useT } from '../i18n'
 
 const STEPS = [
-  { n: '1', h: 'Start with medicines with human data', p: 'Begin with 100 medicines that are already approved or in clinical trials, so most already have human safety data. No need to start from scratch.', chip: 'Approved & clinical-stage library' },
+  { n: '1', h: 'Start with medicines with human data', p: 'Begin with 100 medicines that are approved or in clinical trials. Their existing human data can inform, but not establish, safety for a new use.', chip: 'Approved & clinical-stage library' },
   { n: '2', h: 'Simulate the grip', p: 'For each drug, simulate how tightly it latches onto a protein the pathogen needs to survive. A tighter, well-fitted grip means more potential to disrupt the disease.', chip: 'AutoDock Vina, 50 ns MD' },
-  { n: '3', h: 'Rank the realistic ones', p: 'Score every candidate two ways to avoid bias, keep the drug-like and safe ones, and surface the most promising classes for a scientist to follow up.', chip: 'Dual-metric ranking' },
+  { n: '3', h: 'Rank the realistic ones', p: 'Score every candidate two ways to reduce ranking bias. Use computed drug likeness and liability flags to prioritize classes for scientific review.', chip: 'Dual-metric ranking' },
 ]
 
 export function Steps() {
