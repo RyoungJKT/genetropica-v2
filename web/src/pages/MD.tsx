@@ -117,13 +117,13 @@ export default function MD() {
           <ChartBlock title={t('Protein backbone RMSD')} caption={t('How far the protein drifts from its starting shape over time. A low, flat line means the protein stayed stable through the run.')}>
             <MultiLineChart lines={series('rmsd', 1)} xLabel={t('time (ns)')} yLabel={t('RMSD (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title={t('Ligand RMSD vs its bound pose')} caption={t("Once a drug settles into a site, how much its pose wobbles, measured against that drug's own bound pose. Dasabuvir never settles, so it has none.")}>
+          <ChartBlock title={t('Ligand RMSD vs its bound pose')} caption={t('Ligand heavy-atom RMSD relative to its associated pose, measuring post-association conformational fluctuation. Dasabuvir does not form a stable associated pose.')}>
             <MultiLineChart lines={series('rmsd', 2)} xLabel={t('time (ns)')} yLabel={t('RMSD (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title={t('Ligand-protein minimum distance')} caption={t('The headline of these runs: each drug starts 21 to 39 Å away and either finds the protein (distance drops toward 2 Å) or does not. Celecoxib and methotrexate associate; dasabuvir stays far.')}>
             <MultiLineChart lines={series('mindist', 1)} xLabel={t('time (ns)')} yLabel={t('min distance (Å)')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
-          <ChartBlock title={t('Drug-protein hydrogen bonds')} caption={t('Hydrogen bonds between the drug and the protein over time. More sustained bonds indicate a tighter grip once bound.')}>
+          <ChartBlock title={t('Drug-protein hydrogen bonds')} caption={t('Drug–protein hydrogen bonds over time. Persistent hydrogen-bond occupancy indicates a more stabilized polar interaction network once associated.')}>
             <MultiLineChart lines={series('hbonds', 1)} xLabel={t('time (ns)')} yLabel={t('H-bonds')} yMin={0} playheadX={playheadNs} />
           </ChartBlock>
           <ChartBlock title={t('Per-residue flexibility (RMSF)')} caption={t('Which parts of the protein move most. Peaks are flexible loops, troughs the rigid core. Similar across the three runs, as expected for the same protein.')}>

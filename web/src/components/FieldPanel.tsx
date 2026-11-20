@@ -9,7 +9,7 @@ export function FieldPanel() {
       <Card>
         <h4 style={{ fontSize: 20, marginBottom: 8 }}>{t('Read it like this')}</h4>
         <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>
-          {t('Every drug is ranked by how strongly it grips the chosen target; the bar is binding strength. Flip to "by efficiency" to rank by grip per atom instead. Watch the "outside drug-like range" tag: the very strongest binders are often just the biggest molecules.')}
+          {t('Compounds are ranked by predicted AutoDock Vina binding affinity for the selected target; bar length reflects score magnitude. Switch to "By efficiency" to rank by ligand efficiency (affinity per heavy atom). Note the "outside drug-like range" tag: top raw scores often reflect larger molecular weight.')}
         </p>
       </Card>
       <Card>

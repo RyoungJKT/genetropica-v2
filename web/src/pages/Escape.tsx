@@ -6,6 +6,7 @@ import { useT } from '../i18n'
 
 const CLS_COLOR: Record<string, string> = { conserved: '#1F5740', intermediate: '#A8742C', variable: '#A8492C' }
 const cap = (s: string) => s.replace(/_/g, ' ')
+const fmtP = (p: number | null | undefined) => (p == null ? 'n/a' : p < 0.001 ? '< 0.001' : p.toFixed(3))
 
 type Tip = { x: number; y: number; node: React.ReactNode } | null
 
@@ -123,9 +124,9 @@ export default function Escape() {
   return (
     <div className="wrap" style={{ padding: '56px 0' }}>
       <div className="eyebrow">{t('Tool 06')}</div>
-      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('Where These Drugs Grip NS5')}</h1>
+      <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('NS5 Active-Site Contact & Conservation Profile')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('Every candidate here docks into the catalytic site of dengue NS5. That is the pocket the virus uses to copy its own genome, and the part it can least afford to change. This page shows which residues each drug touches and how conserved those positions are across dengue and related flaviviruses. It does not rank the drugs; the section below explains why.')}
+        {t('Every candidate here docks into the catalytic site of dengue NS5—the active pocket responsible for viral genome replication and subject to strong evolutionary constraint. This page maps the residues each compound contacts and their conservation across dengue and related flaviviruses. It does not rank candidates; the section below explains why.')}
       </p>
 
       {!data && <p className="mono" style={{ marginTop: 20 }}>{t('Loading escape analysis...')}</p>}
@@ -146,19 +147,19 @@ export default function Escape() {
           </div>
 
           <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '15px 18px', margin: '18px 0 0', maxWidth: 820, fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.6 }}>
-            {t('A structure-and-conservation map for dengue NS5, the one target with residue-level ConSurf data, not an experimental resistance assay. Binding-site residues are more conserved than the rest of the protein')} ({t('grade')} {data.bindingMean} vs {data.nonbindingMean}); {t('with few binding residues the gap is')} {data.mwSignificant ? t('significant') : <>{t('not yet statistically significant')} (Mann-Whitney p = {data.mwP})</>}. {t('Poses come from the catalytic site; an earlier version of this page used poses from a search box that never contained it. The structure is a DENV-3 polymerase and its residue numbers are mapped onto the DENV-2 conservation frame by sequence alignment.')}
+            {t('A structure-and-conservation map for dengue NS5, the one target with residue-level ConSurf data, not an experimental resistance assay. Binding-site residues show a higher mean conservation grade than the rest of the protein')} ({t('grade')} {data.bindingMean} vs. {data.nonbindingMean}); {t('given the small number of binding-site residues, this difference')} {data.mwSignificant ? t('reaches statistical significance') : <>{t('does not reach statistical significance')} (Mann–Whitney U test, p = {fmtP(data.mwP)})</>}. {t('Poses come from the catalytic site; an earlier version of this page used poses from a search box that never contained it. The structure is a DENV-3 polymerase and its residue numbers are mapped onto the DENV-2 conservation frame by sequence alignment.')}
           </div>
 
           <div className="rstack" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.05fr) minmax(0,1fr)', gap: 30, alignItems: 'start', marginTop: 30 }}>
             <div>
               <h3 style={{ fontSize: 22 }}>{t('Candidates')}</h3>
               <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '4px 0 14px', maxWidth: 560 }}>
-                {t('Every drug-like NS5 candidate, listed alphabetically. Pick one to see exactly where it grips.')}
+                {t('Every drug-like NS5 candidate, listed alphabetically. Select one to inspect its predicted contact profile.')}
               </p>
               <CandidateList drugs={drugs} sel={sel.name} onSel={setSelName} />
             </div>
             <div>
-              <h3 style={{ fontSize: 22, marginBottom: 14 }}>{t('Where it grips NS5')}</h3>
+              <h3 style={{ fontSize: 22, marginBottom: 14 }}>{t('Predicted NS5 contact profile')}</h3>
               <GripDetail d={sel} />
             </div>
           </div>

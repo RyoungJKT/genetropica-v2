@@ -6,6 +6,7 @@ import { useInView } from '../lib/anim'
 import { useT } from '../i18n'
 
 const VIRUSES = ['DENV-1', 'DENV-2', 'DENV-3', 'DENV-4', 'ZIKV', 'WNV', 'JEV', 'YFV', 'HCV']
+const fmtP = (p: number) => (p < 0.001 ? '< 0.001' : p.toFixed(3))
 const idColor = (p: number) => {
   const t = Math.max(0, Math.min(1, p / 100))
   const l = (a: number, b: number) => Math.round(a + (b - a) * t)
@@ -124,7 +125,7 @@ export default function Conservation() {
             <div style={{ marginTop: 36 }}>
               <h3 style={{ fontSize: 22 }}>{t('Are the binding-site residues more conserved?')}</h3>
               <div style={{ background: 'var(--paper-2)', border: '1px solid var(--line)', borderRadius: 12, padding: '16px 18px', marginTop: 10, maxWidth: 760, fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6 }}>
-                {t('The')} {mw.n_binding} {t('binding-site residues average a conservation grade of')} <b>{mw.binding_mean}</b>, {t('versus')} <b>{mw.nonbinding_mean}</b> {t('for the rest of the protein, so they are more conserved. But the difference is')} <b>{t('not statistically significant')}</b> (Mann-Whitney p = {mw.p_value}), {t('reported honestly given the small number of binding residues.')}
+                {t('The')} {mw.n_binding} {t('binding-site residues show a higher mean conservation grade')} (<b>{mw.binding_mean}</b> {t('vs.')} <b>{mw.nonbinding_mean}</b> {t('for the rest of the protein), although this difference')} <b>{t('does not reach statistical significance')}</b> (Mann–Whitney U test, p = {fmtP(mw.p_value)}), {t('reflecting limited statistical power from the small number of binding-site residues.')}
               </div>
             </div>
           )}

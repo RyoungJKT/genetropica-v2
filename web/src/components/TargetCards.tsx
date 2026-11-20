@@ -5,12 +5,12 @@ import { useIsMobile } from '../lib/useIsMobile'
 import { useT } from '../i18n'
 
 const ROLES: Record<string, string> = {
-  DENV_NS5: 'The copy machine the virus uses to multiply. Jam it and the virus cannot replicate.',
-  DENV_NS3: 'Molecular scissors and an unzipper the virus needs to mature its proteins.',
-  DENV_E: 'The key the virus turns to enter a human cell in the first place.',
-  CHIKV_nsP2: 'The enzyme that cuts the virus freshly made proteins into working parts.',
-  CHIKV_nsP1: 'Protects the virus genetic messages so the cell will read them.',
-  LEPTO_LipL32: 'An abundant surface protein of the Leptospira bacterium, and a drug target.',
+  DENV_NS5: 'Catalyzes viral RNA synthesis; inhibiting its active site blocks genome replication.',
+  DENV_NS3: 'Bifunctional protease–helicase required for viral polyprotein processing and RNA unwinding.',
+  DENV_E: 'Mediates host-cell attachment and pH-dependent membrane fusion during viral entry.',
+  CHIKV_nsP2: 'Cleaves the viral non-structural polyprotein into mature functional subunits.',
+  CHIKV_nsP1: "Catalyzes 5'-RNA capping to stabilize viral transcripts and enable host translation.",
+  LEPTO_LipL32: 'Major outer-membrane lipoprotein of pathogenic Leptospira spp., evaluated here as a candidate surface target.',
 }
 
 function validated(vs: string) {
@@ -49,7 +49,7 @@ export function TargetCards() {
                     <p style={{ fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>{ROLES[target.target_id] ? t(ROLES[target.target_id]) : ''}</p>
                     {validated(target.validation_status) && (
                       <span style={{ display: 'inline-block', marginTop: 12, fontFamily: 'var(--mono)', fontSize: 9.5, letterSpacing: '.06em', textTransform: 'uppercase', borderRadius: 100, padding: '3px 9px', border: '1px solid var(--line)', color: 'var(--clay)' }}>
-                        {t('Tested: AUC 0.49 (inconclusive)')}
+                        {t('Benchmark: ROC-AUC 0.49 (no enrichment over random)')}
                       </span>
                     )}
                   </div>

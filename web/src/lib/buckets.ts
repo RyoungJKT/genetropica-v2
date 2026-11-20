@@ -40,9 +40,9 @@ export function insight(p: FieldPoint): string {
   if (p.name.toLowerCase() === 'sofosbuvir')
     return 'Included on purpose as a known-active control to test the method, not as a discovery.'
   if (p.mw >= 700)
-    return "Binds hard, but it is a very large molecule, so its grip per atom is poor. Likely a size artefact more than a real lead."
+    return 'Strong raw Vina score, but high molecular weight yields low ligand efficiency—likely a size-dependent scoring artefact.'
   if (p.le !== null && p.le >= 0.27)
-    return 'Unusually efficient for its small size, even if its raw grip is modest. The kind of profile worth a closer look.'
+    return 'High ligand efficiency relative to molecular size despite a modest raw docking score; merits closer inspection.'
   if (p.dl === 1 && p.vina <= -7)
     return 'Drug-like and binds well. A candidate worth following up.'
   if (p.dl === 1)
@@ -54,7 +54,7 @@ export const AXIS = {
   plain: {
     x: 'Binding strength',
     y: 'Efficiency per atom',
-    body: 'Further right grips the protein harder. Higher up means more grip per atom. Bigger dots are heavier molecules. The catch: the hardest grippers are often just the biggest molecules, which is exactly why we also score efficiency.',
+    body: 'Further right indicates stronger predicted binding affinity. Higher up indicates greater ligand efficiency per heavy atom. Larger points represent heavier molecules, which often dominate raw docking scores—hence the dual-metric view.',
   },
   sci: {
     x: 'AutoDock Vina (kcal/mol)',
