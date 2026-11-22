@@ -34,7 +34,7 @@ const SOURCES = [
   ['NCBI E-utilities / PubMed', 'Published dengue papers, title-matched then read'],
 ]
 const COMPUTE = [
-  ['Molecular dynamics (GROMACS, 50 ns)', 'NVIDIA A100 GPU, on Google Colab'],
+  ['Molecular dynamics (GROMACS, 50 ns)', 'NVIDIA H100 GPU, on Google Colab'],
   ['Docking, machine learning, conservation', 'CPU, on Google Colab'],
 ]
 
@@ -93,7 +93,7 @@ export default function Methods() {
 
       <Block title={t('Compute environment')}>
         <p style={{ fontSize: 13.5, color: 'var(--ink-soft)', margin: '0 0 12px', maxWidth: 760 }}>
-          {t('Every figure on this dashboard is a computed result, not a placeholder. The runs were executed on Google Colab: the heavy molecular dynamics on an NVIDIA A100 GPU, and the docking and analysis on CPUs.')}
+          {t('Every figure on this dashboard is a computed result, not a placeholder. The runs were executed on Google Colab: the heavy molecular dynamics on an NVIDIA H100 GPU, and the docking and analysis on CPUs.')}
         </p>
         <div style={{ border: '1px solid var(--line)', borderRadius: 14, overflow: 'hidden', maxWidth: 640, background: 'var(--paper)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
