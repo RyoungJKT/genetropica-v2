@@ -4,7 +4,6 @@ import { useDengueLit } from '../data/api'
 import { ChartTooltip } from './ChartTooltip'
 import { useInView } from '../lib/anim'
 import { useT } from '../i18n'
-import { Ns5DockingNote } from './Ns5DockingNote'
 
 function Meta({ k, v }: { k: string; v: string }) {
   return (
@@ -52,7 +51,7 @@ function DengueEvidence({ drug }: { drug: string }) {
 }
 
 /** Inline per-drug detail: metadata, cross-target binding bars (Vina + the constant ML prior), dengue papers. */
-export function DrugPanel({ drug, field, order, tName, ns5NoteShown = false }: { drug: Drug; field: Field; order: string[]; tName: (id: string) => string; ns5NoteShown?: boolean }) {
+export function DrugPanel({ drug, field, order, tName }: { drug: Drug; field: Field; order: string[]; tName: (id: string) => string }) {
   const { t } = useT()
   const ref = useRef<HTMLDivElement>(null)
   const firstRender = useRef(true)
@@ -131,7 +130,6 @@ export function DrugPanel({ drug, field, order, tName, ns5NoteShown = false }: {
           <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', marginTop: 16, lineHeight: 1.5 }}>
             {t('Absolute Vina binding score (kcal/mol) per target. The ML score is a target-agnostic activity prior, so it is identical across every target.')}
           </p>
-          {!ns5NoteShown && <Ns5DockingNote style={{ fontSize: 11.5, margin: '8px 0 0', padding: '7px 11px' }} />}
         </div>
       </div>
 

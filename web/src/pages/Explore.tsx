@@ -5,7 +5,6 @@ import { DrugTable } from '../components/DrugTable'
 import { DrugPanel } from '../components/DrugPanel'
 import { TargetAnalysis } from '../components/TargetAnalysis'
 import { useT } from '../i18n'
-import { Ns5DockingNote } from '../components/Ns5DockingNote'
 
 const ORDER = ['DENV_NS5', 'DENV_NS3', 'DENV_E', 'CHIKV_nsP2', 'CHIKV_nsP1', 'LEPTO_LipL32']
 const DEFAULT_DRUG = 'celecoxib'
@@ -57,8 +56,6 @@ export default function Explore() {
           <button key={id} onClick={() => setTid(id)} style={pillBtn(tid === id)}>{tName(id)}</button>
         ))}
       </div>
-      {tid === 'DENV_NS5' && <Ns5DockingNote />}
-
       {field.data && <TargetAnalysis points={all} targetName={tName(tid)} shown={filtered.length} />}
 
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', marginBottom: 16, marginTop: 36 }}>
@@ -87,7 +84,7 @@ export default function Explore() {
           ))}
         </select>
         {selDrug && field.data ? (
-          <DrugPanel drug={selDrug} field={field.data} order={order} tName={tName} ns5NoteShown={tid === 'DENV_NS5'} />
+          <DrugPanel drug={selDrug} field={field.data} order={order} tName={tName} />
         ) : (
           <p style={{ marginTop: 16, fontSize: 14, color: 'var(--ink-faint)' }}>{t('Choose a drug above, or click a row in the table, to see its cross-target binding.')}</p>
         )}
