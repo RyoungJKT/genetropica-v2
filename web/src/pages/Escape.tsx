@@ -126,7 +126,7 @@ export default function Escape() {
       <div className="eyebrow">{t('Tool 06')}</div>
       <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 380, marginTop: 12 }}>{t('NS5 Active-Site Contact & Conservation Profile')}</h1>
       <p style={{ color: 'var(--ink-soft)', maxWidth: 760, lineHeight: 1.65, margin: '14px 0 0' }}>
-        {t('Every candidate here docks into the catalytic site of dengue NS5—the active pocket responsible for viral genome replication and subject to strong evolutionary constraint. This page maps the residues each compound contacts and their conservation across dengue and related flaviviruses. It does not rank candidates; the section below explains why.')}
+        {t('Every candidate here docks into the catalytic site of dengue NS5, the active pocket responsible for viral genome replication and subject to strong evolutionary constraint. This page maps the residues each compound contacts and their conservation across dengue and related flaviviruses. It does not rank candidates; the section below explains why.')}
       </p>
 
       {!data && <p className="mono" style={{ marginTop: 20 }}>{t('Loading escape analysis...')}</p>}
