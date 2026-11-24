@@ -30,9 +30,6 @@ function DengueEvidence({ drug }: { drug: string }) {
   return (
     <div style={{ marginTop: 32 }}>
       <h3 style={{ fontSize: 15, marginBottom: 4 }}>{t('Published dengue research')}</h3>
-      <p style={{ fontSize: 11.5, color: 'var(--ink-faint)', margin: '0 0 12px', maxWidth: 720, lineHeight: 1.5 }}>
-        {t('Papers naming this drug and dengue in the title, each read and labelled by what it found. A paper here is not a recommendation: several of these drugs failed in patients. Summarised from abstracts only.')}
-      </p>
       {refs.length === 0 ? (
         <p style={{ fontSize: 13, color: 'var(--ink-faint)' }}>{t('No published test of this drug against dengue was found.')}</p>
       ) : refs.map((r) => (

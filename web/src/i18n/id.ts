@@ -371,7 +371,6 @@ export const ID: Record<string, string> = {
   "Tool 07": "Alat 07",
   "Tool 08": "Alat 08",
   "Published dengue research": "Riset demam berdarah yang telah terbit",
-  "Papers naming this drug and dengue in the title, each read and labelled by what it found. A paper here is not a recommendation: several of these drugs failed in patients. Summarised from abstracts only.": "Makalah yang menyebut obat ini dan demam berdarah pada judulnya, masing-masing dibaca dan diberi label sesuai temuannya. Kehadiran sebuah makalah di sini bukan rekomendasi: beberapa obat ini gagal pada pasien. Dirangkum dari abstrak saja.",
   "No published test of this drug against dengue was found.": "Tidak ditemukan pengujian obat ini terhadap demam berdarah yang telah terbit.",
   "trial": "uji klinis",
   "cohort": "kohort",
